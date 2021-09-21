@@ -6,7 +6,7 @@
 
 body {
     font-style: normal;
-    /* font-weight: bold; */
+    font-weight:bold;
     font-size: 1.3rem;
     background-color: #F8fbf8;
 }
@@ -130,5 +130,6 @@ li {
 .bottom-container i {
     margin-left: 75px;
     font-size: 25px;
+    font-weight: normal;
     line-height: 25px;
 }

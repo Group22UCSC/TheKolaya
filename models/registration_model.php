@@ -14,7 +14,7 @@ class Registration_Model extends Model {
         $emp_id = $data['emp_id'];
         $address = $data['address'];
         $password = $data['password'];
-        $user_type = 'Land_Owner';
+        $user_type = 'Product_Manager';
 
         $query = "INSERT INTO employee(emp_id, name, address, contact_number, user_type, password) values('$emp_id','$name','$address', '$contact_number', '$user_type', '$password')";
         
