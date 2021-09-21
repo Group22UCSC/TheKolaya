@@ -1,7 +1,7 @@
 <?php include 'topContainer.php';?>
     
     <div class="middle-container">
-        <h1>GOOD SUPPERVISOR</h1>
+        <h1>SUPERVISOR</h1>
         <hr>
         
         <div class="img-btn-container">
@@ -14,7 +14,7 @@
             </div>
 
             <div class="btn-list">
-                <button class="btn btn-land"><i class="fas fa-user"></i> LAND OWNERS</button>
+                <button class="btn btn-land"><i class="fas fa-user"></i> UPDATE TEA<br>MEASURE</button>
 
                 <button class="btn btn-fertilizer"><i class="fas fa-tree"></i> FERTILIZER</button>
 
