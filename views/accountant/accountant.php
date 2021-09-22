@@ -5,7 +5,7 @@
 <!-- ******************* middle-container  **************************-->
 <div class="middle-container">
 
-    <h1>I AM THE ACCOUNTANT</h1>
+    <h1>ACCOUNTANT</h1>
 
     <div class="img-graph-container">
         <div class="graph-container one" id="income">
@@ -33,9 +33,9 @@
                     case 2:
                         graphName = "Payment"
                         break
-                    case 3:
-                        graphName = "Stock";
-                        break
+                    // case 3:
+                    //     graphName = "Stock";
+                    //     break
 
                 }
                 var chartNum = "myChart"+i
