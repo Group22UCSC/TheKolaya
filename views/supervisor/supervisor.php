@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/supervisor-style.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/supervisor-queries.css">
 <?php include 'topContainer.php';?>
     
     <div class="middle-container">

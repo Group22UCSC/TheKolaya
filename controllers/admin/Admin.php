@@ -9,6 +9,10 @@
         function index() {
             $this->view->showPage('Admin/Admin');
         }
+
+        public function createAccount() {
+            $this->view->showPage('Admin/createAccount');
+        }
     }
 
 ?>

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/admin-style.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/admin-queries.css">
 <?php include 'topContainer.php';?>
 
   <div class="middle-conatiner">
@@ -9,14 +11,17 @@
 
     <div class="middle-right">
       <div class="btn-list">
-        <button class="btn btn-create-accounts"><i class="fas fa-user"></i> CREATE ACCOUNTS</button>
+        <a href="<?php echo URL?>admin/createAccount"><button class="btn btn-create-accounts"><i class="fas fa-user"></i> CREATE ACCOUNTS</button></a>
 
-        <button class="btn btn-delete-accounts"><i class="fas fa-leaf"></i> DELETE ACCOUNTS</button>
+        <a href="#"><button class="btn btn-delete-accounts" ><i class="fas fa-leaf"></i> DELETE ACCOUNTS</button></a>
+        
+        <a href="#"><button class="btn btn-update-accounts"><i class="fas fa-hand-holding-usd"></i> UPDATE ACCOUNTS</button></a>
 
-        <button class="btn btn-update-accounts"><i class="fas fa-hand-holding-usd"></i> UPDATE ACCOUNTS</button>
+        
       </div>
       
     </div>
 
   </div>
+
 <?php include 'views/bottomContainer.php';?>

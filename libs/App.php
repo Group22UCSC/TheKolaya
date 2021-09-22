@@ -67,7 +67,7 @@ class App {
     private function _loadControllerMethod() {
         $urlLength = count($this->_url);
 
-        if($urlLength > 2) {
+        if($urlLength > 1) {
             if (!method_exists($this->_controller, $this->_url[1])){
                 echo "Request method not found!!";
                 exit;
@@ -77,16 +77,22 @@ class App {
         switch($urlLength) {
             case 6:
                 $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5]);
+                break;
             case 5:
                 $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
+                break;
             case 4:
                 $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
+                break;
             case 3:
                 $this->_controller->{$this->_url[1]}($this->_url[2]);
+                break;
             case 2:
                 $this->_controller->{$this->_url[1]}();
+                break;
             default:
                 $this->_controller->index();
+                break;
         }
     }
 }
