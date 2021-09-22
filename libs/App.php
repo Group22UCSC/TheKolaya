@@ -60,7 +60,10 @@ class App {
             return true;
         }
         else {
-            echo "Sorry, Page not found";
+            require 'controllers/Errors.php';
+            $this->_controller = new Errors();
+
+            $this->_controller->index();
             return false;
         }
     }
