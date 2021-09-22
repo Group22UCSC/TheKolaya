@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/productmanager/productmanager-style.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/productmanager/productmanager-queries.css">
 <?php include 'topContainer.php';?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <!-- ******************* middle-container  **************************-->

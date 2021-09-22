@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-style.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-queries.css">
 <?php include 'topContainer.php';?>
 
   <div class="middle-conatiner">

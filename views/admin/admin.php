@@ -11,20 +11,17 @@
 
     <div class="middle-right">
       <div class="btn-list">
-        <a href="<?php echo URL?>admin/createAccount">create</a>
-        <button class="btn btn-create-accounts" onclick="load('Admin/createAccount')"><i class="fas fa-user"></i> CREATE ACCOUNTS</button>
+        <a href="<?php echo URL?>admin/createAccount"><button class="btn btn-create-accounts"><i class="fas fa-user"></i> CREATE ACCOUNTS</button></a>
 
-        <button class="btn btn-delete-accounts" ><i class="fas fa-leaf"></i> DELETE ACCOUNTS</button>
+        <a href="#"><button class="btn btn-delete-accounts" ><i class="fas fa-leaf"></i> DELETE ACCOUNTS</button></a>
+        
+        <a href="#"><button class="btn btn-update-accounts"><i class="fas fa-hand-holding-usd"></i> UPDATE ACCOUNTS</button></a>
 
-        <button class="btn btn-update-accounts"><i class="fas fa-hand-holding-usd"></i> UPDATE ACCOUNTS</button>
+        
       </div>
       
     </div>
 
   </div>
-  <script>
-    function load(path) {
-      window.location = path;
-    }
-  </script>
+
 <?php include 'views/bottomContainer.php';?>
