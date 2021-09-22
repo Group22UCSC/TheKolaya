@@ -4,8 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo TITLE?></title>
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/<?php echo $_SESSION['user_type']?>/<?php echo $_SESSION['user_type']?>-style.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/<?php echo $_SESSION['user_type']?>/<?php echo $_SESSION['user_type']?>-queries.css">
+    
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/top-bottom-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/top-bottom-query.css">

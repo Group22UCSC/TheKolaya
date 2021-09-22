@@ -67,7 +67,7 @@ class App {
     private function _loadControllerMethod() {
         $urlLength = count($this->_url);
 
-        if($urlLength > 2) {
+        if($urlLength > 1) {
             if (!method_exists($this->_controller, $this->_url[1])){
                 echo "Request method not found!!";
                 exit;

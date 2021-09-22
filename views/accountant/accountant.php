@@ -15,16 +15,16 @@
                 <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
             </div>
 
-            <div class="graph-container three" id="stock">
+            <!-- <div class="graph-container three" id="stock">
                 <canvas id="myChart3" style="width:100%;max-width:600px"></canvas>
-            </div>
+            </div> -->
 
             <script>
                 var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
                 var yValues = [55, 49, 44, 24, 15];
                 var barColors = ["red", "green","blue","orange","brown"];
                 var graphName;
-                for(var i = 1; i <= 3; i++) {
+                for(var i = 1; i <= 2; i++) {
                     switch(i) {
                         case 1:
                             graphName = "Income"
