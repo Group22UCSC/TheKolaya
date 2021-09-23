@@ -29,6 +29,14 @@
          public function updateAccount1() {
             $this->view->showPage('Admin/updateAccount1');
         }
+
+        public function deleteAccount() {
+            $this->view->showPage('Admin/deleteAccount');
+        }
+
+          public function deleteAccount1() {
+            $this->view->showPage('Admin/deleteAccount1');
+        }
     }
 
 ?>
