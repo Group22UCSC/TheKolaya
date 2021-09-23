@@ -21,6 +21,14 @@
          public function viewAccount1() {
             $this->view->showPage('Admin/viewAccount1');
         }
+
+         public function updateAccount() {
+            $this->view->showPage('Admin/updateAccount');
+        }
+
+         public function updateAccount1() {
+            $this->view->showPage('Admin/updateAccount1');
+        }
     }
 
 ?>

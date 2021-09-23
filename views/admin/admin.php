@@ -15,7 +15,7 @@
 
         <a href="#"><button class="btn btn-delete-accounts" ><i class="fas fa-leaf"></i> DELETE ACCOUNTS</button></a>
         
-        <a href="#"><button class="btn btn-update-accounts"><i class="fas fa-hand-holding-usd"></i> UPDATE ACCOUNTS</button></a>
+        <a href="<?php echo URL?>admin/updateAccount"><button class="btn btn-update-accounts"><i class="fas fa-hand-holding-usd"></i> UPDATE ACCOUNTS</button></a>
 
         
       </div>
