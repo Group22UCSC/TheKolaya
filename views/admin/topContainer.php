@@ -5,6 +5,7 @@
     <title><?php echo TITLE?></title>
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
+  
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/top-bottom-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/top-bottom-query.css">
     <script src="https://kit.fontawesome.com/a8f32993e8.js" crossorigin="anonymous"></script>

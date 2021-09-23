@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/admin-style.css">
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/admin-queries.css">
 <?php include 'topContainer.php';?>
-
+ <div class="middle">ADMIN</div>
   <div class="middle-conatiner">
     
     <div class="middle-left">
-      <button class="btn btn-view-accounts"><i class="fas fa-chart-line"></i> VIEW ACCOUNTS</button>
+       <a href="<?php echo URL?>admin/viewAccount"><button class="btn btn-view-accounts"><i class="fas fa-chart-line"></i> VIEW ACCOUNTS</button></a>
     </div>
 
 

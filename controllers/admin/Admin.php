@@ -13,6 +13,14 @@
         public function createAccount() {
             $this->view->showPage('Admin/createAccount');
         }
+
+         public function viewAccount() {
+            $this->view->showPage('Admin/viewAccount');
+        }
+
+         public function viewAccount1() {
+            $this->view->showPage('Admin/viewAccount1');
+        }
     }
 
 ?>
