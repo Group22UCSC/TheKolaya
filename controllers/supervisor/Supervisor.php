@@ -11,6 +11,9 @@ class Supervisor extends Controller{
         $this->view->showPage('Supervisor/Supervisor');
     }
 
+    function updateTeaMeasure() {
+        $this->view->showPage('Supervisor/updateTeaMeasure');
+    }
 
 }
 
