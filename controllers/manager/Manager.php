@@ -20,5 +20,19 @@
         public function viewTeaQuality() {
             $this->view->showPage('Manager/viewTeaQuality');
         }
+
+         public function viewTeaQuality1() {
+            $this->view->showPage('Manager/viewTeaQuality1');
+        }
+
+
+         public function viewPayments() {
+            $this->view->showPage('Manager/viewPayments');
+        }
+
+
+         public function viewPayments1() {
+            $this->view->showPage('Manager/viewPayments1');
+        }
     }
 ?>
