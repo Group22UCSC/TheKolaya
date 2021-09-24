@@ -6,9 +6,9 @@
 
     <div class="middle-left">
         <div class="btn-list">
-          <button class="btn btn-account"><i class="fas fa-user"></i> ACCOUNTS</button>
+          <a href="<?php echo URL?>manager/viewAccount"> <button class="btn btn-account"><i class="fas fa-user"></i> ACCOUNTS</button></a>
 
-          <button class="btn btn-tea"><i class="fas fa-leaf"></i>TEA QUALITY</button>
+           <a href="<?php echo URL?>manager/viewTeaQuality"> <button class="btn btn-tea"><i class="fas fa-leaf"></i>TEA QUALITY</button></a>
 
           <button class="btn btn-payments"><i class="fas fa-hand-holding-usd"></i> PAYMENTS</button>
 

@@ -1,0 +1,99 @@
+*{ margin: 0; padding: 0; }
+
+.middle-conatiner {
+   background-image: url("../../images/admin/3.jpg");
+   background-repeat: no-repeat;
+    background-size: 100% 100%;
+   /* margin: 25px 0px;*/
+   margin-top: 25px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+.middle{
+    color: green;
+    size: 15px;
+    margin: 25px 0px;
+    /*margin-left: 43%;*/
+    text-align: center;
+    width: 100%;
+    
+}
+
+
+
+.btn {
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-top: 30px;
+  width: 200px;
+  height: 75px;
+  background: #8AF2AD;
+  border: 1px solid #000000;
+  color: white;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: bold;
+  /* letter-spacing: 0.3rem; */
+}
+
+.btn-btn-register {
+  margin-top: 0px;
+}
+
+
+
+.btn:hover {
+  background-color: #24dd62;
+}
+
+
+/*.btn-list {
+  width: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+*/
+
+.table{
+   background-image: url("../../images/admin/3.jpg");
+   background-repeat: no-repeat;
+    background-size: 100% 100%;
+  padding-top: 125px;
+  padding-bottom: 150px;
+  padding-left:12% ;
+
+}
+
+
+ 
+
+.tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
+.tg td{background-color:#e8edff;border-color:#aabcfe;border-style:solid;border-width:1px;color:#669;
+  font-family:Arial, sans-serif;font-size:24px;overflow:hidden;padding:20px 20px;word-break:normal;}
+.tg th{background-color:#b9c9fe;border-color:#aabcfe;border-style:solid;border-width:1px;color:#039;
+  font-family:Arial, sans-serif;font-size:24px;font-weight:normal;overflow:hidden;padding:20px 20px;word-break:normal;}
+.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-uorz{background-color:#38fff8;border-color:inherit;font-size:24px;text-align:center;vertical-align:top}
+.tg .tg-h7c6{background-color:#38fff8;border-color:inherit;text-align:center;vertical-align:top}
+
+
+
+input {
+  /*display: block;*/
+  height: 45px;
+  width: 200px;
+}
