@@ -34,5 +34,23 @@
          public function viewPayments1() {
             $this->view->showPage('Manager/viewPayments1');
         }
+
+          public function viewStock() {
+            $this->view->showPage('Manager/viewStock');
+        }
+
+         public function viewProduct() {
+            $this->view->showPage('Manager/viewProduct');
+        }
+
+         public function viewFertilizer() {
+            $this->view->showPage('Manager/viewFertilizer');
+        }
+
+         public function viewFirewood() {
+            $this->view->showPage('Manager/viewFirewood');
+        }
+
+
     }
 ?>
