@@ -11,7 +11,7 @@
          <span class="tooltip">Search</span>
       </li> -->
       <li>
-        <a href="<?php echo URL?>Supervisor">
+        <a href="<?php echo URL?>Admin">
           <i class="fas fa-th-large"></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -19,11 +19,11 @@
       </li>
       
       <li>
-       <a href="<?php echo URL?>Supervisor/updateTeaMeasure">
+       <a href="<?php echo URL?>Admin/createAccount">
         <i class="fas fa-weight"></i>
-         <span class="links_name">Update Tea Measure</span>
+         <span class="links_name">Create Accounts</span>
        </a>
-       <span class="tooltip">Update Tea Measure</span>
+       <span class="tooltip">Create Accounts</span>
      </li>
      <li>
        <a href="<?php echo URL?>Supervisor/manageRequests">
