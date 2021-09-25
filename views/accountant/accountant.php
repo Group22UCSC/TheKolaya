@@ -60,9 +60,9 @@
     <canvas id="myChart" style="width:100%;max-width:300px"></canvas>
 
     <script>
-        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        var yValues = [55, 49, 44, 24, 15];
-        var barColors = ["red", "green", "blue", "orange", "brown"];
+        var xValues = ["Italy", "France", "Spain", "USA"];
+        var yValues = [24, 49, 44, 55];
+        var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff"];
 
         new Chart("myChart", {
             type: "doughnut",
