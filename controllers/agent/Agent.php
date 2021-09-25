@@ -11,13 +11,14 @@ class Agent extends Controller{
         $this->view->showPage('Agent/Agent');
     }
 
-    function availalbleList(){
+    function viewAvailableLandownerList(){
         $this->view->showPage('Agent/AvailableList');
     }
 
-    function teaCollection(){
+    function updateTeaWeight(){
         $this->view->showPage('Agent/TeaCollection');
     }
+
 
 }
 
