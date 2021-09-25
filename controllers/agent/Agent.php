@@ -11,6 +11,14 @@ class Agent extends Controller{
         $this->view->showPage('Agent/Agent');
     }
 
+    function availalbleList(){
+        $this->view->showPage('Agent/AvailableList');
+    }
+
+    function teaCollection(){
+        $this->view->showPage('Agent/TeaCollection');
+    }
+
 }
 
 ?>
