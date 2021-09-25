@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-style.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-dashboardstyle.css">
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-queries.css">
 
 <?php include 'topContainer.php';?>
