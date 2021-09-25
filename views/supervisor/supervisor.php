@@ -12,39 +12,49 @@
    </head>
 <body>
 <?php include 'top-container.php';?>
-    <div class="text">Dashboard</div>
+    <div class="title-container">
+        <h2>Supervisor</h2>
+    </div>
     <div class="middle-container">
-        <div class="graph-container">
-        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-        <?php include 'vendors/js/supervisor/dashboard-chart.php'?>
-        </div>
+      <div class="graph-container">
+      <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+      <?php include 'vendors/js/supervisor/dashboard-chart.php'?>
+      </div>
 
-        <div class="agent-tea-table">
-        <div class="table-row"><div class="table-name">Today Tea Collection</div></div>
-          <div class="table-row table-head">
-            <div class="table-element">Landowner ID</div>
-            <div class="table-element">Agent ID</div>
-            <div class="table-element">Tea Weight(kg)</div>
-          </div>
-          <div class="table-row">
-            <div class="table-element">Lan-001</div>
-            <div class="table-element">Agent-000</div>
-            <div class="table-element">50</div>
-          </div>
-
+      <div class="agent-tea-table">
+      <div class="table-row"><div class="table-name"><b>Today Tea Collection</b></div></div>
+        <div class="table-row table-head">
+          <div class="table-element"><b>Landowner ID</b></div>
+          <div class="table-element"><b>Agent ID</b></div>
+          <div class="table-element"><b>Tea Weight(kg)</b></div>
         </div>
+        <?php
+          for($i = 0; $i < 10; $i++) {
+            echo '<div class="table-row">
+                    <div class="table-element">Lan-00'.$i.'</div>
+                    <div class="table-element">Sasindu Wijegunasinghe</div>
+                    <div class="table-element">50'.$i.'</div>
+                  </div>';
+          }
+        ?>
+
+      </div>
         <div class="request-tabel">
-          <div class="table-row"><div class="table-name">Today Request</div></div>
+          <div class="table-row"><div class="table-name"><b>Today Requests</b></div></div>
           <div class="table-row table-head">
-            <div class="table-element">Landowner ID</div>
-            <div class="table-element">Name</div>
-            <div class="table-element">Amount(Kg)</div>
+            <div class="table-element"><b>Landowner ID</b></div>
+            <div class="table-element"><b>Name</b></div>
+            <div class="table-element"><b>Amount(kg)</b></div>
           </div>
-          <div class="table-row">
-            <div class="table-element">Lan-000</div>
-            <div class="table-element">Sasindu Wijegunasinghe</div>
-            <div class="table-element">50</div>
-          </div>
+          <?php
+            for($i = 0; $i < 2; $i++) {
+              echo '<div class="table-row">
+                      <div class="table-element">Lan-00'.$i.'</div>
+                      <div class="table-element">Sasindu Wijegunasinghe</div>
+                      <div class="table-element">50'.$i.'</div>
+                    </div>';
+            }
+          ?>
 
           <div class="table-row">
             <a href="<?php echo URL?>Supervisor/manageRequests"><button class="table-btn">Go to confirm</button></a>

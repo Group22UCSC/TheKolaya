@@ -230,7 +230,7 @@
 
 .thekolya-logo {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 20px;
   width: 130px;
   height: auto;
 }
@@ -271,7 +271,7 @@
   width: 50px;
   height: 50px;
   border-radius: 40px;
-  background-color: #F5F5F5;
+  background-color: #E4F9F5;
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   cursor: pointer;
 }
@@ -303,7 +303,7 @@
 
 .profile-container {
   border-radius: 30px;
-  background-color: #F5F5F5;
+  background-color: #E4F9F5;
   padding: 6px 12px;
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
 }
@@ -314,6 +314,13 @@
   border-radius: 20px;
 }
 
+/*table*/
+.table-row {
+  display: grid;
+  grid-gap: 0.5rem;
+  margin: 0.5rem;
+  grid-auto-rows: minmax(30px, auto);
+}
 
 @media (max-width: 600px) {
   .mobile-nav-icon {display: block;}

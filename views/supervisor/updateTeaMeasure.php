@@ -11,11 +11,10 @@
    </head>
 <body>
 <?php include 'top-container.php';?>
-
-    <div class="middle-container">
-      <div class="title-container">
+    <div class="title-container">
         <h2>update tea measure</h2>
-      </div>
+    </div>
+    <div class="middle-container">
       
       <div class="form-container-outside">
         <div class="form-container">
@@ -78,7 +77,7 @@
       </div>
 
       <div class="table-container">
-        <div class="table-row"><div class="table-name">Today Tea Collection</div></div>
+        <div class="table-row"><div class="table-name"><b>Today Tea Measure</b></div></div>
           <div class="table-row table-head">
             <div class="table-element">Landowner ID</div>
             <div class="table-element">Reductions(kg)</div>

@@ -5,11 +5,6 @@
         <i class="fas fa-bars" id="btn"></i>
     </div>
     <ul class="nav-list">
-      <!-- <li>
-          <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-      </li> -->
       <li>
         <a href="<?php echo URL?>Supervisor">
           <i class="fas fa-th-large"></i>
@@ -67,16 +62,6 @@
        </a>
        <span class="tooltip">Logout</span>
      </li>
-     <!-- <li class="profile">
-         <div class="profile-details">
-           <img src="profile.jpg" alt="profileImg">
-           <div class="name_job">
-             <div class="name">Prem Shahi</div>
-             <div class="job">Web designer</div>
-           </div>
-         </div>
-         <i class='bx bx-log-out' id="log_out" ></i>
-     </li> -->
     </ul>
 
     <div class="social_media_icon">
