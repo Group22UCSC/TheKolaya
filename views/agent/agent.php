@@ -1,74 +1,114 @@
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-dashboardstyle.css">
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-queries.css">
-
-<?php include 'topContainer.php';?>
-    
-<div class="middle-container">
-        <h1>I'M THE COLLECTOR</h1>
-        <hr>
-        
-        <div class="img-btn-container" id="middle-img-btn-container">
-            <div class="img-btn-container top" id="img-btn-top">
-                <div class="container top left">
-                    <img src="<?php echo URL;?>vendors/images/agent/1.png" alt="">
-                    <div class="btn-container top-left">
-                        <button class="btn btn-available"><i class="fas fa-align-justify"></i> AVAILABLE LIST</button>
-                    </div>
-                </div>
-
-                <div class="container top right" id="btn-top-right">
-                    <img src="<?php echo URL;?>vendors/images/agent/2.png" alt="">
-                    <div class="btn-container top-right">
-                        <button class="btn btn-tea"><i class="fas fa-leaf"></i>TEA</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="img-btn-container bottom" id="img-btn-bottom">
-                <div class="container bottom left">
-                    <img src="<?php echo URL;?>vendors/images/agent/3.png" alt="">
-                    <div class="btn-container bottom-left">
-                        <button class="btn btn-confirm"><i class="fas fa-shopping-cart"></i>CONFIRM</button>
-                    </div>
-                </div>
-
-                <div class="container bottom right" id="btn-bottom-right">
-                    <img src="<?php echo URL;?>vendors/images/agent/4.png" alt="">
-                    <div class="btn-container bottom-right">
-                        <button class="btn btn-emergency"><i class="fas fa-concierge-bell"></i>EMERGENCY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-img-btn-container">
-            <div class="container">
-                <img src="<?php echo URL;?>vendors/images/agent/1.png" alt="">
-                <div class="btn-container">
-                    <button class="btn btn-available"><i class="fas fa-align-justify"></i></i> AVAILABLE</button>
-                </div>
-            </div>
-
-            <div class="container">
-                <img src="<?php echo URL;?>vendors/images/agent/2.png" alt="">
-                <div class="btn-container">
-                    <button class="btn btn-tea"><i class="fas fa-leaf"></i>TEA</button>
-                </div>
-            </div>
-
-            <div class="container">
-                <img src="<?php echo URL;?>vendors/images/agent/3.png" alt="">
-                <div class="btn-container">
-                    <button class="btn btn-confirm"><i class="fas fa-shopping-cart"></i>CONFIRM</button>
-                </div>
-            </div>
-
-            <div class="container">
-                <img src="<?php echo URL;?>vendors/images/agent/4.png" alt="">
-                <div class="btn-container">
-                    <button class="btn btn-emergency"><i class="fas fa-concierge-bell"></i>EMERGENCY</button>
-                </div>
-            </div>
-        </div>
-        <hr id="hr-bottom">
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Agent Dashboard</title>
+    <link rel = "icon" href = "<?php echo URL?>vendors/images/agent/thekolaya2.png" type = "image/x-icon">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-dashboardstyle.css">
+    <!-- Boxicons CDN Link -->
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
+        <i class="fas fa-bars" id="btn"></i>
     </div>
-<?php include 'views/bottomContainer.php';?>
+    <ul class="nav-list">
+      <!-- <li>
+          <i class='bx bx-search' ></i>
+         <input type="text" placeholder="Search...">
+         <span class="tooltip">Search</span>
+      </li> -->
+      <li>
+        <a href="#">
+          <i class="fas fa-th-large"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="#">
+        <i class="fa fa-list" aria-hidden="true"></i>
+         <span class="links_name">Available Landowner List</span>
+       </a>
+       <span class="tooltip">Available Landowner List</span>
+     </li>
+     <li>
+       <a href="#">
+        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+         <span class="links_name">Initial Tea Weight</span>
+       </a>
+       <span class="tooltip">Initial Tea Weight</span>
+     </li>
+     <li>
+       <a href="#">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+         <span class="links_name">Emergency Message</span>
+       </a>
+       <span class="tooltip">Emergency Message</span>
+     </li>
+     <li>
+       <a href="#">
+        <i class="fa fa-check-square" aria-hidden="true"></i>
+         <span class="links_name">Confirm Deliverables</span>
+       </a>
+       <span class="tooltip">Confirm Deliverables</span>
+     </li>
+     <li class="mobile-nav-icon">
+      <a href="#">
+        <i class="fas fa-bell"></i>
+        <span class="links_name">Notification</span>
+      </a>
+      <span class="tooltip">Notification</span>
+    </li>
+    <li class="mobile-nav-icon">
+      <a href="#">
+        <i class="fas fa-user"></i>
+        <span class="links_name">Profile</span>
+      </a>
+      <span class="tooltip">Profile</span>
+    </li>
+     <li>
+       <a href="#">
+        <i class="fas fa-sign-out-alt"></i>
+         <span class="links_name">Logout</span>
+       </a>
+       <span class="tooltip">Logout</span>
+     </li>
+     <!-- <li class="profile">
+         <div class="profile-details">
+           <img src="profile.jpg" alt="profileImg">
+           <div class="name_job">
+             <div class="name">Prem Shahi</div>
+             <div class="job">Web designer</div>
+           </div>
+         </div>
+         <i class='bx bx-log-out' id="log_out" ></i>
+     </li> -->
+    </ul>
+  </div>
+  <section class="home-section">
+      <div class="header">
+        <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
+        <ul>
+          <li><i class="fas fa-bell"></i></li>
+          <li class="profile">
+            <div class="profile-details">
+              <div class="name_job">
+                <div class="name">Roneki<br><span>Agent</span></div>
+              </div>
+              <img src="<?php echo URL?>vendors/images/agent/profile.jpg" alt="profileImg">
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="text">Dashboard</div>
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
