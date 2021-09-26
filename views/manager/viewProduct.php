@@ -1,8 +1,8 @@
+
+
+<?php include 'top-container.php';?>
+
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewProduct.css">
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-queries.css">
-<?php include 'topContainer.php';?>
-
-
 
 
     
@@ -48,4 +48,4 @@
       
    
 
-<?php include 'views/bottomContainer.php';?>
+<?php include 'bottom-container.php';?>

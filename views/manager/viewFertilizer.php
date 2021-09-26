@@ -1,8 +1,8 @@
+
+
+<?php include 'top-container.php';?>
+
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewFertilizer.css">
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-queries.css">
-<?php include 'topContainer.php';?>
-
-
 
 
     
@@ -26,7 +26,7 @@
 </colgroup>
 <thead>
   <tr>
-    <th class="tg-uorz">Name</th>
+    <th class="tg-uorz">Date</th>
     <th class="tg-uorz">Full Fertilizer Stock</th>
   </tr>
 </thead>
@@ -42,4 +42,4 @@
       
    
 
-<?php include 'views/bottomContainer.php';?>
+<?php include 'bottom-container.php';?>
