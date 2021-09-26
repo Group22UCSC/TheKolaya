@@ -16,7 +16,7 @@
 <body>
 <?php include 'top-container.php';?>
     <div class="title-container">
-        <h2>Update Fertilizer Details</h2>
+        <h2>Update Firewood Details</h2>
     </div>
     <div class="middle-container">
       <div class="form-instock">
@@ -38,7 +38,7 @@
               <div class="inputfield">
                 <input type="submit" value="Sumbit" class="accept-btn">
               </div>
-              <a href="<?php echo URL?>Supervisor">
+              <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">
                   <input type="button" value="Firewood Buy Details" class="accept-btn">
                 </div>
@@ -63,7 +63,7 @@
               <div class="inputfield">
                 <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit">
               </div>
-              <a href="<?php echo URL?>Supervisor">
+              <a href="<?php echo URL?>Supervisor/firewoodOutStock">
                 <div class="inputfield">
                   <input type="button" value="Firewood Usage Details" class="accept-btn">
                 </div>
@@ -76,7 +76,7 @@
     </div>
     <div class="title-container btn-container-outside">
       <div class="btn-container">
-        <a href="<?php echo URL?>Supervisor">
+        <a href="<?php echo URL?>Supervisor/firewoodStock">
           <div class="inputfield">
             <input type="button" value="Firewood details" class="accept-btn">
           </div>

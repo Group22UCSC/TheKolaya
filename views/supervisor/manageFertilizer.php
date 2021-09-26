@@ -38,7 +38,7 @@
               <div class="inputfield">
                 <input type="submit" value="Sumbit" class="accept-btn">
               </div>
-              <a href="<?php echo URL?>Supervisor">
+              <a href="<?php echo URL?>Supervisor/fertilizerInstock">
                 <div class="inputfield">
                   <input type="button" value="Fertilizer InStock" class="accept-btn">
                 </div>
@@ -64,7 +64,7 @@
               <div class="inputfield">
                 <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit">
               </div>
-              <a href="<?php echo URL?>Supervisor">
+              <a href="<?php echo URL?>Supervisor/fertilizerOutstock">
                 <div class="inputfield">
                   <input type="button" value="Fertilizer outStock" class="accept-btn">
                 </div>
@@ -77,7 +77,7 @@
     </div>
     <div class="title-container btn-container-outside">
       <div class="btn-container">
-        <a href="<?php echo URL?>Supervisor">
+        <a href="<?php echo URL?>Supervisor/fertilizerStock">
           <div class="inputfield">
             <input type="button" value="Fertilizer Stock" class="accept-btn">
           </div>

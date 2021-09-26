@@ -2,7 +2,6 @@
     max-width: 500px;
     width: 100%;
     margin: 20px auto;
-    /* box-shadow: 0 0 8px rgba(0,0,0,0.4); */
     padding: 30px;
 }
 
@@ -120,17 +119,17 @@
 }
 
 .form-container .form .inputfield .accept-btn{
-background:  #4DD101;
+    background:  #4DD101;
 }
 
 .form-container .form .inputfield .accept-btn:hover{
-background: #089633;
+    background: #089633;
 }
 
 .form-container .form .inputfield .decline-btn{
-background:  #FF2400;
+    background:  #FF2400;
 }
 
 .form-container .form .inputfield .decline-btn:hover{
-background: #b11204;
+    background: #b11204;
 }

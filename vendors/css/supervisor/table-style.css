@@ -46,10 +46,6 @@
     margin: 0.5rem;
 }
 
-.table-head > div {
-    background-color: #8ff058;
-}
-
 .table-row > div{
     border: black 1px solid;
     text-align: center;
@@ -62,7 +58,7 @@
 
 .table-btn {
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     background-color: #5eca67;
     color: #fff;

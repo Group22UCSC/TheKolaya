@@ -31,8 +31,24 @@
 }
 
 
-.table-row a {
+.middle-container .request-table .table-row a {
     margin-top: 30px;
     grid-column: 3/5;
     justify-self: center;
 }
+
+.middle-container .graph-container .table-row a {
+    grid-column: none;
+}
+
+.middle-container .graph-container .table-row > div{
+    border: none;
+    text-align: center;
+    box-shadow: none;
+}
+
+.middle-container .graph-container .table-row > .firewood-btn{
+    grid-column: 3;
+}
+
+

@@ -14,14 +14,14 @@
 <body>
 <?php include 'top-container.php';?>
     <div class="title-container">
-        <h2>Fertilizer In-stock Details</h2>
+        <h2>Firewood buy details</h2>
     </div>
     <div class="middle-container">
         <div class="form-container">
             <form action="#">
                 <div class="form">
                     <div class="inputfield">
-                    <label class="search-lable">Search InStock by Date</label>
+                    <label class="search-lable">Search firewood buy</label>
                     <input type="date" class="search-label input">
                     <input type="submit" value="Search" class="accept-btn">
                     </div>
@@ -29,7 +29,7 @@
             </form>
         </div>
         
-        <div class="table-container">
+        <div class="tabel-container">
           
           <div class="table-row table-head">
             <div class="table-element"><b>Date</b></div>
@@ -51,7 +51,7 @@
           ?>
         </div>
 
-        <div class="table-container">
+        <div class="tabel-container">
           
           <div class="table-row table-head">
             <div class="table-element"><b>Date</b></div>
@@ -73,11 +73,9 @@
           ?>
 
           <div class="table-row">
-            <a href="<?php echo URL?>Supervisor/fertilizerStock"><button class="table-btn">fertilizer Stock</button></a>
+            <a href="<?php echo URL?>Supervisor/firewoodStock"><button class="table-btn">firewood Stock</button></a>
           </div>
         </div>
     </div>
 <?php include 'bottom-container.php';?>
-
-
 

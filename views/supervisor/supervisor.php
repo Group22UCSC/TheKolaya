@@ -21,6 +21,10 @@
       <div class="graph-container">
       <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
       <?php include 'vendors/js/supervisor/dashboard-chart.php'?>
+        <div class="table-row">
+          <div class="fertilizer-btn"><a href="<?php echo URL?>Supervisor/fertilizerStock"><button class="table-btn">fertilizer Stock</button></a></div>
+          <div class="firewood-btn"><a href="<?php echo URL?>Supervisor/firewoodStock"><button class="table-btn">firewood stock</button></a></div>
+        </div>
       </div>
 
       <div class="agent-tea-table">
@@ -41,7 +45,7 @@
         ?>
 
       </div>
-        <div class="request-tabel">
+        <div class="request-table">
           <div class="table-row"><div class="table-name"><b>Today Requests</b></div></div>
           <div class="table-row table-head">
             <div class="table-element"><b>Landowner ID</b></div>
