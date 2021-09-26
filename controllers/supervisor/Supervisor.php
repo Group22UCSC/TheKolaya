@@ -11,6 +11,7 @@ class Supervisor extends Controller{
         $this->view->showPage('Supervisor/Supervisor');
     }
 
+    
 
 }
 

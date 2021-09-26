@@ -1,18 +1,27 @@
 *{ margin: 0; padding: 0; }
 
 .middle-conatiner {
-   background-image: url("../../images/admin/3.jpg");
+  /* background-image: url("../../images/admin/3.jpg");
    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%;*/
    /* margin: 25px 0px;*/
+   height: 250px;
+  background: transparent no-repeat center;
+  background-size: cover;
+  background-image: url('http://i.imgur.com/lNB7QSt.jpg')
    margin-top: 25px;
     text-align: center;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-
-
+/*.frame {
+  height: 250px;
+  background: transparent no-repeat center;
+  background-size: cover;
+  background-image: url('http://i.imgur.com/lNB7QSt.jpg')
+}
+*/
 
 
 
