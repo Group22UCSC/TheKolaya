@@ -106,7 +106,7 @@
           </li>
         </ul>
       </div>
-      <div class="text">Dashboard</div>
+      
   </section>
 
   <script src="script.js"></script>
