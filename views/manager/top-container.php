@@ -30,31 +30,29 @@
       </li>
       
       <li>
-       <a href="<?php echo URL?>admin/createAccount">
+       <a href="<?php echo URL?>manager/viewStock">
         <!-- <i class="fas fa-weight"></i> -->
-        <i class="fas fa-user-plus"></i>
-         <span class="links_name">Create Accounts</span>
+        <i class="fas fa-box-open"></i>
+         <span class="links_name">Stock Details</span>
        </a>
-       <span class="tooltip">Create Accounts</span>
+       <span class="tooltip">Stock Details</span>
      </li>
      <li>
         <a href="<?php echo URL?>admin/deleteAccount">
-        <!-- <i class="fab fa-acquisitions-incorporated"></i> -->
-        <i class="fas fa-trash"></i>
-         <span class="links_name">Delete Account</span>
+        <i class="fas fa-hand-holding-usd"></i>
+         <span class="links_name">Payments</span>
        </a>
-       <span class="tooltip">Delete Account</span>
+       <span class="tooltip">Payments</span>
      </li>
      <li>
        <a href="<?php echo URL?>admin/updateAccount">
-       <!--  <i class="fas fa-tree"></i> -->
-       <i class="fas fa-user-edit"></i>
-         <span class="links_name">Update Account</span>
+      <i class="fas fa-book"></i>
+         <span class="links_name">Tea Quality</span>
        </a>
-       <span class="tooltip">Update Account</span>
+       <span class="tooltip">Tea Quality</span>
      </li>
      <li>
-        <a href="<?php echo URL?>admin/viewAccount">
+        <a href="<?php echo URL?>manager/viewAccount">
         <!-- <i class="fas fa-fire"></i> -->
         <i class="fas fa-eye"></i>
          <span class="links_name">View Account</span>
@@ -103,9 +101,9 @@
             <div class="profile-container">
               <div class="profile-details">
                 <div class="name_job">
-                  <div class="name">Sasindu Dias<br><span>Admin</span></div>
+                  <div class="name">Sasindu Dias<br><span>Manager</span></div>
                 </div>
-                <img src="<?php echo URL?>/vendors/images/admin/sasi.jpg" alt="profileImg">
+                <img src="<?php echo URL?>/vendors/images/manager/sasi.jpg" alt="profileImg">
               </div>
             </div>
           </li>

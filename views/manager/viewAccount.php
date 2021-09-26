@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewAccount.css">
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-queries.css">
-<?php include 'topContainer.php';?>
 
+
+<?php include 'top-container.php';?>
+
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewAccount.css">
 
 
 
@@ -12,10 +13,20 @@
 
      <div class="name">
      
+
+         <!-- <div class="wrap"> -->
+   <div class="search">
+      <input type="text" class="searchTerm" placeholder="Enter User Name?">
+        <a href="<?php echo URL?>manager/viewAccount1"><button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button></a>
+   </div>
+</div>
+
          
-        <label for="name">Name </label>
-       <input type="text" name="name" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search name">
-       <a href="<?php echo URL?>manager/viewAccount1"><input type="submit" name="submit"></a>
+       <!--  <label for="name">Name </label>
+       <input type="text" name="name" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search name"> -->
+       <!-- <a href="<?php echo URL?>admin/deleteAccount1"><input type="submit" name="submit"></a> -->
 
     
 
@@ -108,6 +119,6 @@
         -->
 
       
-    </div>
-
-<?php include 'views/bottomContainer.php';?>
+    
+  </div>
+<?php include 'bottom-container.php';?>
