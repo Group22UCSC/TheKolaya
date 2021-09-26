@@ -11,6 +11,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+  
   <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
