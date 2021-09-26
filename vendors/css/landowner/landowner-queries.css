@@ -1,0 +1,77 @@
+@media only screen and (max-width: 950px) {
+    .btn {
+        height: 200px;
+    }
+
+    .button-container a {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .desktop {
+        display: none;
+    }
+    
+    .mobile {
+        display: block;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-left: 1%;
+    }
+
+    .top {
+        margin-bottom: 30px;
+    }
+
+    .landowners, .tea-price {
+        margin-left: 0px;
+    }
+
+    .btn {
+        width: 33.33%;
+    }
+
+    .button-container a {
+        font-size: px;
+    }
+
+    .middle-container {
+        margin: 50px 0px;
+    }
+
+    .img-graph-container {
+        margin: 0px 30px;
+    }
+
+    .button-container {
+        margin: 50px 1% 0px 1%;
+    }
+
+    .graph-container {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .btn {
+        height: 150px;
+    }
+
+    .button-container {
+        margin: 100px 0px 0px 0px;
+    }
+
+
+    .middle-container {
+        margin: 30px 0px;
+    }
+
+    .button-container {
+        margin: 30px 1% 0px 1%;
+    }
+
+}
