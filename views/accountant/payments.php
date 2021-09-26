@@ -79,7 +79,7 @@
 
                 </tr>
                 <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
                     <td class="tdcls">March</td>
                     <td class="tdcls">120</td>
                     <td class="tdcls">12500</td>
@@ -104,25 +104,53 @@
                     </td>
 
                 </tr>
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls">February</td>
+                    <td class="tdcls">129</td>
+                    <td class="tdcls">12500</td>
+                    <td class="tdcls">0</td>
+                    <td class="tdcls">1500</td>
+                    <td class="tdcls">11000</td>
+                    <td class="tdcls">
+                        <p id="pendingbtn" class="status status-pending">Pending</p>
+                    </td>
+
+                </tr>
             </tbody>
 
         </table>
     </div>
 </div>
-<div id="priceForm" class="form-container">
+<div id="" class="paymentFormContainer">
+    <button class="open-button" onclick="openForm()">Make The Payment</button>
 
-    <div class="middleform">
-        <form class="form-inline" action="#">
-            <label for="year">Year:</label>
-            <input type="text" id="year" placeholder="Year" name="year">
-            <label for="month">Month:</label>
-            <input type="text" id="month" placeholder="Month" name="month">
-            <label for="price">Price:</label>
-            <input type="text" id="price" placeholder="Price" name="price">
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Monthly Payment</h1>
 
-            <button type="submit">Submit</button>
+            <label for="lid"><b>Lid</b></label>
+            <input type="text" placeholder="Enter Lid" name="lid" required>
+
+            <label for="date"><b>Date</b></label>
+            <input type="date" placeholder="Enter Date" name="date" required>
+
+            <label for="amount"><b>Amount(Rs)</b></label>
+            <input type="text" placeholder="Enter the amount" name="amount" required>
+
+            <button type="submit" class="btn">Pay</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
 
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
 </div>
 <?php include 'bottom-container.php'; ?>
