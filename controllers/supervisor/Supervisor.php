@@ -19,12 +19,12 @@ class Supervisor extends Controller{
         $this->view->showPage('Supervisor/manageRequests');
     }
 
-    function managerFertilizer() {
-        $this->view->showPage('Supervisor/managerFertilizer');
+    function manageFertilizer() {
+        $this->view->showPage('Supervisor/manageFertilizer');
     }
 
-    function managerFirewood() {
-        $this->view->showPage('Supervisor/managerFirewood');
+    function manageFirewood() {
+        $this->view->showPage('Supervisor/manageFirewood');
     }
 
 }

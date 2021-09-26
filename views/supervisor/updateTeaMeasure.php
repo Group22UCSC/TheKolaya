@@ -6,6 +6,8 @@
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/updateTeaMeasure-style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/form-style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/table-style.css">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -69,7 +71,7 @@
                 </label>
               </div>
               <div class="inputfield">
-                <input type="submit" value="Update" class="btn">
+                <input type="submit" value="Update" class="accept-btn">
               </div>
             </div>
           </form>
@@ -79,10 +81,10 @@
       <div class="table-container">
         <div class="table-row"><div class="table-name"><b>Today Tea Measure</b></div></div>
           <div class="table-row table-head">
-            <div class="table-element">Landowner ID</div>
-            <div class="table-element">Reductions(kg)</div>
-            <div class="table-element">Net-Weight(kg)</div>
-            <div class="table-element">Tea Quality</div>
+            <div class="table-element"><b>Landowner ID</b></div>
+            <div class="table-element"><b>Reductions(kg)</b></div>
+            <div class="table-element"><b>Net-Weight(kg)</b></div>
+            <div class="table-element"><b>Tea Quality</b></div>
           </div>
 
           <div class="table-row">

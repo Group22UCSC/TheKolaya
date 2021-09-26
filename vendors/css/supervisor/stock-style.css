@@ -1,0 +1,45 @@
+.middle-container {
+    grid-template-columns: 1fr 1fr;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* .accept-btn {
+    text-align: center;
+} */
+
+#out-stock-submit {
+    margin-top: 56px;
+}
+
+
+.btn-container-outside .btn-container .inputfield .accept-btn, .btn-container-outside .btn-container .inputfield .decline-btn {
+    width: 40%;
+    padding: 8px 10px;
+    font-size: 15px; 
+    border: 0px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+    transition: 0.5s;
+}
+
+
+.btn-container-outside .btn-container .inputfield .accept-btn{
+    background:  #4DD101;
+}
+
+.btn-container-outside .btn-container .inputfield .accept-btn:hover{
+    background: #089633;
+}
+
+.btn-container-outside .btn-container .inputfield .decline-btn{
+    background:  #FF2400;
+}
+
+.btn-container-outside .btn-container .inputfield .decline-btn:hover{
+    background: #b11204;
+}

@@ -259,6 +259,10 @@
   color: #4DD101;
 }
 
+.fa-bell {
+  font-size: 20px;
+}
+
 .header li i:hover {
   color: #367413;
 }

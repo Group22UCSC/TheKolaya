@@ -28,14 +28,14 @@
        <span class="tooltip">Requests</span>
      </li>
      <li>
-       <a href="<?php echo URL?>Supervisor/managerFertilizer">
+       <a href="<?php echo URL?>Supervisor/manageFertilizer">
         <i class="fas fa-tree"></i>
          <span class="links_name">Fertilizer</span>
        </a>
        <span class="tooltip">Fertilizer</span>
      </li>
      <li>
-       <a href="<?php echo URL?>Supervisor/managerFirewood">
+       <a href="<?php echo URL?>Supervisor/manageFirewood">
         <i class="fas fa-fire"></i>
          <span class="links_name">Firewood</span>
        </a>
