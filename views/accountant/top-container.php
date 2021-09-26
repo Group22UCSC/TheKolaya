@@ -28,13 +28,6 @@
          <span class="tooltip">Dashboard</span>
       </li>
       
-      <li>
-       <a href="<?php echo URL?>supervisor/updateTeaMeasure">
-        <i class="fas fa-weight"></i>
-         <span class="links_name">Update Tea Measure</span>
-       </a>
-       <span class="tooltip">Update Tea Measure</span>
-     </li>
      <li>
        <a href="accountant.php">
         <i class="far fa-registered fa-2x"></i>
@@ -43,7 +36,7 @@
        <span class="tooltip">Requests</span>
      </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>accountant/payments">
         <i class="fas fa-hand-holding-usd fa-2x"></i>
          <span class="links_name">Payments</span>
        </a>

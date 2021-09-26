@@ -13,7 +13,10 @@ class Accountant extends Controller{
     function setTeaPrice() {
         $this->view->showPage('accountant/setTeaPrice');
     }
-
+    function payments() {
+        $this->view->showPage('accountant/payments');
+    }
+    
 }
 
 ?>
