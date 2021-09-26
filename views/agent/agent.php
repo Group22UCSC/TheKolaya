@@ -33,7 +33,7 @@
        <span class="tooltip">Available Landowner List</span>
      </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>agent/updateTeaWeight">
         <i class="fa fa-balance-scale" aria-hidden="true"></i>
          <span class="links_name">Initial Tea Weight</span>
        </a>
@@ -94,7 +94,7 @@
       
   </section>
 
-  <script src="<?php echo URL?>vendors/js/script.js"></script>
+  <script src="<?php echo URL?>vendors/js/agentscript.js"></script>
 
 </body>
 </html>

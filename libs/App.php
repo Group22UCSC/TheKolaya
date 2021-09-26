@@ -42,7 +42,7 @@ class App {
 
     private function _loadController() {
         $file = null;
-        if($this->_url[0] == 'login' || $this->_url[0] == 'registration') {
+        if($this->_url[0] == 'login' || $this->_url[0] == 'registration') { 
             $file = 'controllers/'. $this->_url[0] . '.php';
         }else if(!empty($_SESSION['user_type'])) {
             $file = 'controllers/'. $_SESSION['user_type'].'/'. $this->_url[0] . '.php';
