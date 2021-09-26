@@ -1,33 +1,4 @@
-<?php include 'topContainer.php';
+<?php include 'agent.php';
 echo 'hello from tea collection';
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php include 'bottomContainer.php';?>

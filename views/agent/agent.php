@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -17,12 +17,7 @@
         <div class="logo_name"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
         <i class="fas fa-bars" id="btn"></i>
     </div>
-    <ul class="nav-list">
-      <!-- <li>
-          <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-      </li> -->
+    <ul class="nav-list">     
       <li>
         <a href="#">
           <i class="fas fa-th-large"></i>
@@ -83,7 +78,7 @@
   </div>
   <section class="home-section">
       <div class="header">
-        <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
+        <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>        
         <ul>
           <li><i class="fas fa-bell"></i></li>
           <li class="profile">
@@ -99,7 +94,7 @@
       
   </section>
 
-  <script src="script.js"></script>
+  <script src="<?php echo URL?>vendors/js/script.js"></script>
 
 </body>
 </html>

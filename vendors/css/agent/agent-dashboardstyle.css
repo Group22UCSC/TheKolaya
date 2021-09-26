@@ -6,6 +6,8 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
+
+
 .sidebar{
   position: fixed;
   left: 0;
@@ -228,6 +230,7 @@
   width: 100%;
   height: 100%;
 }
+
 
 .header ul {
   position: absolute;
