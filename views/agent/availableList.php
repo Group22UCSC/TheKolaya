@@ -1,5 +1,6 @@
-<?php include 'topContainer.php';
-echo 'hello from availalble list';
+<?php
+
+echo 'hello from available list';
 ?>
 
 
@@ -30,4 +31,3 @@ echo 'hello from availalble list';
 
 
 
-<?php include 'bottomContainer.php';?>

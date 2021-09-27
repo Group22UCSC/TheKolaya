@@ -33,7 +33,7 @@
        <span class="tooltip">Available Landowner List</span>
      </li>
      <li>
-       <a href="<?php echo URL?>agent/updateTeaWeight">
+       <a href="#"  onclick="loadTeaCollectionPage()">
         <i class="fa fa-balance-scale" aria-hidden="true"></i>
          <span class="links_name">Initial Tea Weight</span>
        </a>
