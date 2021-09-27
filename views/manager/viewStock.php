@@ -3,7 +3,7 @@
 
  <link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewStock.css">
 
- <div class="first">Stock Details</div>
+ <div class="first">STOCK DETAILS</div>
 
     <div class="middle">
         <div class="btn-list">

@@ -59,7 +59,7 @@
 
 
        <div class="b">
-        <input type="submit" value="Register" class="btn">
+        <input type="submit" value="Delete" class="btn">
       </div>
            
 

@@ -22,7 +22,7 @@
          <span class="tooltip">Search</span>
       </li> -->
       <li>
-        <a href="#">
+        <a href="<?php echo URL?>manager/manager">
           <i class="fas fa-th-large"></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -38,14 +38,14 @@
        <span class="tooltip">Stock Details</span>
      </li>
      <li>
-        <a href="<?php echo URL?>admin/deleteAccount">
+        <a href="<?php echo URL?>manager/viewPayments">
         <i class="fas fa-hand-holding-usd"></i>
          <span class="links_name">Payments</span>
        </a>
        <span class="tooltip">Payments</span>
      </li>
      <li>
-       <a href="<?php echo URL?>admin/updateAccount">
+       <a href="<?php echo URL?>manager/viewTeaQuality">
       <i class="fas fa-book"></i>
          <span class="links_name">Tea Quality</span>
        </a>
@@ -74,7 +74,7 @@
       <span class="tooltip">Profile</span>
     </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>login/logout">
         <i class="fas fa-sign-out-alt"></i>
          <span class="links_name">Logout</span>
        </a>

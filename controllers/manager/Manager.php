@@ -51,6 +51,11 @@
             $this->view->showPage('Manager/viewFirewood');
         }
 
+        public function manager() {
+            $this->view->showPage('Manager/Manager');
+        }
+
+
 
     }
 ?>

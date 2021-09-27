@@ -22,7 +22,7 @@
 
 
 .table{
-   background-image: url("../../images/admin/2.jpg");
+   background-image: url("../../images/manager/13.jpg");
    background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 90%;
@@ -35,8 +35,3 @@
 }
 
 
-input {
-  /*display: block;*/
-  height: 45px;
-  width: 200px;
-}

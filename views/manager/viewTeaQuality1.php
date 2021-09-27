@@ -1,7 +1,6 @@
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewTeaQuality1.css">
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-queries.css">
-<?php include 'topContainer.php';?>
+<?php include 'top-container.php';?>
 
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewTeaQuality1.css">
 
 
 
@@ -45,4 +44,4 @@
       
     </div>
 
-<?php include 'views/bottomContainer.php';?>
+<?php include 'bottom-container.php';?>
