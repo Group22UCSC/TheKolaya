@@ -34,6 +34,7 @@
 .labelSection{
     display: grid;
     grid-template-columns: 0.5fr 2fr 0.5fr;
+    margin-bottom: 10px;
 }
 .labelSection .label {
     margin: 15px;
@@ -59,9 +60,39 @@
       .requestsbtn{
         
       }
-/* ************  bar chart section ******** */
-.barChartSection{
-    margin-top: 20px;
+/* ************  bar chart section and rating section ******** */
+.barChartAndRatingSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: white;
+    margin-top: 30px;
+}
+/* bar chart secction */
+.barChartSection{
+    
+    
+}
+#myChart1{
+    width: 50%;
+    float: left;
+    margin-left: 25px;
+}
+/* rating section */
+#myChart2{
+    width: 50%;
+    /* float: right; */
+    margin-left: 30px;
+}
+ul{
+    display: inline;
+}
+.list{
+    padding: 40px;
+    padding-top: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.list ul{
+    list-style: square;
 }
 
