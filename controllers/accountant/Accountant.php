@@ -23,6 +23,9 @@ class Accountant extends Controller{
     function landownersGraphpage() {
         $this->view->showPage('accountant/landownersGraphpage');
     }
+    function requests(){
+        $this->view->showPage('accountant/requests');
+    }
 }
 
 ?>
