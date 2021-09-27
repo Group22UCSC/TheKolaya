@@ -79,7 +79,7 @@
                 },
                 title: {
                     display: true,
-                    text: "World Wine Production 2018"
+                    text: "Income Details of 2021"
                 }
             }
         });

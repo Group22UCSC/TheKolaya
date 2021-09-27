@@ -1,0 +1,28 @@
+.top-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.top-container >div{
+    padding:1em;
+    align-items: center;
+}
+.middle{
+    background: rgb(35, 173, 104);
+    align-self: center;
+    justify-self: center;
+   border-radius: 50px;
+   color: white;
+    
+}
+.barChartSection{
+    background-color: white;
+}
+.labelSection .label {
+    color: white;
+    padding: 8px;
+  }
+  .info {
+      background-color: #2196F3;
+    } /* Blue */
