@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Agent Dashboard</title>
+    <title>Initial Tea Weight</title>
     <link rel = "icon" href = "<?php echo URL?>vendors/images/agent/thekolaya2.png" type = "image/x-icon">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-dashboardstyle.css">
-    <!-- Boxicons CDN Link -->
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/teacollection.css">
+    
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  
   <div class="sidebar">
-    <div class="logo-details">
-        <div class="logo_name"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
+  <div class="logo-details">
+  <div class="logo_name"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
         <i class="fas fa-bars" id="btn"></i>
     </div>
-    <ul class="nav-list">     
+    <ul class="nav-list">      
       <li>
         <a href="#">
           <i class="fas fa-th-large"></i>
@@ -33,7 +31,7 @@
        <span class="tooltip">Available Landowner List</span>
      </li>
      <li>
-       <a href="#"  onclick="loadTeaCollectionPage()">
+       <a href="#">
         <i class="fa fa-balance-scale" aria-hidden="true"></i>
          <span class="links_name">Initial Tea Weight</span>
        </a>
@@ -73,12 +71,13 @@
          <span class="links_name">Logout</span>
        </a>
        <span class="tooltip">Logout</span>
-     </li>    
+     </li>
+    
     </ul>
   </div>
   <section class="home-section">
       <div class="header">
-        <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>        
+        <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/agent/thekolaya.png" alt=""></div>
         <ul>
           <li><i class="fas fa-bell"></i></li>
           <li class="profile">
@@ -86,15 +85,32 @@
               <div class="name_job">
                 <div class="name">Roneki<br><span>Agent</span></div>
               </div>
-              <img src="<?php echo URL?>vendors/images/agent/profile.jpg" alt="profileImg">
+              <img src="<?php echo URL?>vendors/css/agent/profile.jpg" alt="profileImg">
             </div>
           </li>
         </ul>
       </div>
-      
-  </section>
-
-  <script src="<?php echo URL?>vendors/js/agentscript.js"></script>
-
+      <div class="text">
+        <div class="wrapper">
+          <div class="title">
+            Update Tea Weight
+          </div>
+          <div class="form">
+             <div class="inputfield">
+                <label>Landowner ID</label>
+                <input type="text" class="input">
+             </div>  
+              <div class="inputfield">
+                <label>Initial Tea Weight</label>
+                <input type="text" class="input">
+             </div>        
+            <div class="inputfield">
+              <input type="submit" value="Add Weight" class="btn">
+            </div>
+          </div>
+      </div>	        
+      </div>
+  </section> 
+  <script src="<?php echo URL?>vendors/js/agent/script.js"></script>
 </body>
 </html>
