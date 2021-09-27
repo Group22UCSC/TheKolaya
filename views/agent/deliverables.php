@@ -1,5 +1,5 @@
 <?php include 'topContainer.php';?>
 
-<p>available list</p>
+<p>deliverables</p>
 <?php include 'bottomContainer.php';?>
 
