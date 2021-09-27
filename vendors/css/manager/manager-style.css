@@ -4,7 +4,7 @@
 .king{
   display: flex;
   flex-direction: row;
-  /*justify-content: space-around;*/
+  justify-content: center;
   
   
 }
@@ -13,20 +13,51 @@
  background-image: url("../../images/admin/17.jpg");
     background-repeat: no-repeat;
   background-size: 100% 100%;
+  width: 65%;
+  height: 600px;
+  text-align: center;
+   font-style: italic;
+   
+   color: whitesmoke;
+   font-weight: 700;
 /*  padding-top: 10px;
   padding-bottom: 10px;*/
 /*  width: 90%;*/
   /*height: 600px;*/
-  /*margin-left: 5%;*/
+  margin-left: 25px;
 }
 
 .top{
-  background-image: url("../../images/admin/15.jpg");
-    background-repeat: no-repeat;
-  background-size: 100% 100%;
-   /*height: 600px;*/
+ background-color: whitesmoke;
+   height: 600px;
+   width: 30%;
+   padding-left: 55px;
+   margin-left: 10px;
+   padding-top: 45px;
 
 }
+
+
+
+
+.img h1{
+  font-style: initial;
+  font-weight: bold;
+  font-size: 50px;
+  color: white;
+}
+
+.img h2{
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  font-style: initial;
+}
+
+.last{
+  margin-top: 300px;
+}
+
 
 /*.middle-conatiner {
     margin: 100px 0px;

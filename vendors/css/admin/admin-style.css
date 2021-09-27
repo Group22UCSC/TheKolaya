@@ -4,7 +4,8 @@
 .top{
    text-align: center;
    font-style: italic;
-   color: mediumspringgreen;
+   color: whitesmoke;
+   font-weight: 700;
    /*font-weight: bold;*/
    background-image: url("../../images/admin/15.jpg");
     background-repeat: no-repeat;
@@ -18,16 +19,18 @@
 
 .top h1{
   font-style: initial;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 50px;
   color: seagreen;
 }
 
 .top h2{
-  font-weight: bold;
+  font-weight: 700;
   font-size: 30px;
   color: seagreen;
   font-style: initial;
 }
 
-
+.last{
+  margin-top: 200px;
+}
