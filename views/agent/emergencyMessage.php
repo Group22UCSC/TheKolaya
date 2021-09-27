@@ -1,5 +1,5 @@
 <?php include 'topContainer.php';?>
 
-<p>available list</p>
+<p>emergency message</p>
 <?php include 'bottomContainer.php';?>
 
