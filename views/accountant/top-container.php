@@ -30,7 +30,7 @@
       </li>
       
      <li>
-       <a href="accountant.php">
+       <a href="<?php echo URL?>/accountant/requests">
         <i class="far fa-registered fa-2x"></i>
          <span class="links_name">Requests</span>
        </a>
