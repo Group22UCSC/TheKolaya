@@ -58,7 +58,7 @@
       <span class="tooltip">Stock</span>
     </li>
      <li>
-      <a href="#">
+      <a href="<?php echo URL?>/accountant/landowners">
        <i class="fas fa-user-tie fa-2x"></i>
         <span class="links_name">Landowners</span>
       </a>

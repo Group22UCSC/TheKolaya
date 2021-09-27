@@ -16,7 +16,13 @@ class Accountant extends Controller{
     function payments() {
         $this->view->showPage('accountant/payments');
     }
+    function landowners() {
+        $this->view->showPage('accountant/landowners');
+    }
     
+    function landownersGraphpage() {
+        $this->view->showPage('accountant/landownersGraphpage');
+    }
 }
 
 ?>
