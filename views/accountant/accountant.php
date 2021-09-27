@@ -55,35 +55,71 @@
 </div>
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<div class="barchart1">
+<div class="barChartSection">
 
-    <canvas id="myChart" style="width:100%;max-width:300px"></canvas>
+<div class="barchar1">
+        <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
 
-    <script>
-        var xValues = ["Italy", "France", "Spain", "USA"];
-        var yValues = [24, 49, 44, 55];
-        var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff"];
+        <script>
+            var xValues = ["January", "February", "March", "April", "May"];
+            var yValues = [4500, 4900, 3400, 2400, 2500];
+            var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff"];
 
-        new Chart("myChart", {
-            type: "doughnut",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
+            new Chart("myChart1", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
                 },
-                title: {
-                    display: true,
-                    text: "Income Details of 2021"
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: "Income to the factory in Rs   "
+                    }
                 }
-            }
-        });
-    </script>
+            });
+        </script>
+
+    </div>
+    <!-- ********* Rating Section ********* -->
+    <div class="ratingSection">
+        <!-- <p> Tea Quality Rating</p> -->
+        
+        <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
+
+        <script>
+            var xValues = ["Best", "Good", "Average", "Poor"];
+            var yValues = [60, 20, 10, 10];
+            var barColors = ["#2BD47D", "#ffc233", "#e05260"];
+
+            new Chart("myChart2", {
+                type: "doughnut",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: "Tea Quality Rating"
+                    }
+                }
+            });
+        </script>
+    </div>
+
 </div>
 <!-- bar chart 2 -->
 

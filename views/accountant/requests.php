@@ -1,6 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/payments.css">
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/requests.css">
 <div class="middle-section">
     <div class="top-container">
         <div class="left"></div>
@@ -27,9 +27,9 @@
         <table class="teapricetable">
             <thead class="threadcls">
                 <tr class="trcls">
-                    <th class="thcls">Year</th>
-                    <th class="thcls">Month</th>
-                    <th class="thcls">Lid(Rs)</th>
+                    <th class="thcls">Rid</th>
+                    <th class="thcls">Lid</th>
+                    <th class="thcls">Date(Rs)</th>
                     <th class="thcls">Income</th>
                     <th class="thcls">Fertilizer Expences</th>
                     <th class="thcls">Advance Expences</th>
