@@ -37,6 +37,10 @@
           public function deleteAccount1() {
             $this->view->showPage('Admin/deleteAccount1');
         }
+
+        public function admin() {
+            $this->view->showPage('Admin/Admin');
+        }
     }
 
 ?>

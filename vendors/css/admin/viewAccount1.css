@@ -77,7 +77,7 @@
    /* margin: 25px 0px;*/
    margin-top: 15px;
     text-align: center;
-    height: 520px;
+    height: 600px;
     width: 90%;
     margin-left: 5%;
     padding-right: 33%;
@@ -87,27 +87,6 @@
 
 
 
-
-.btn {
-  outline: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.5s;
-  margin-top: 30px;
-  width: 200px;
-  height: 75px;
-  background: #8AF2AD;
-  border: 1px solid #000000;
-  color: white;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 14px;
-
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: bold;
-  /* letter-spacing: 0.3rem; */
-}
 
 .table{
   padding-top: 100px;
@@ -126,9 +105,3 @@
 .tg .tg-hmp3{background-color:#D2E4FC;text-align:left;vertical-align:top}
 .tg .tg-6b4q{background-color:#38FFF8;font-size:24px;text-align:center;vertical-align:top}
 .tg .tg-ovly{background-color:#38fff8;font-size:24px;text-align:center;vertical-align:top}
-
-input {
-  /*display: block;*/
-  height: 45px;
-  width: 200px;
-}

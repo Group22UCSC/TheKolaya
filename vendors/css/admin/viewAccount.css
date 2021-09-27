@@ -87,31 +87,11 @@
 
 
 
-.btn {
-  outline: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.5s;
-  margin-top: 30px;
-  width: 200px;
-  height: 75px;
-  background: #8AF2AD;
-  border: 1px solid #000000;
-  color: white;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 14px;
-
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: bold;
-  /* letter-spacing: 0.3rem; */
-}
 
 .table{
   padding-top: 50px;
   padding-bottom: 50px;
-  padding-left:8% ;
+  margin-left: 5%;
 
 }
 
@@ -127,8 +107,3 @@
 .tg .tg-uorz{background-color:#38fff8;border-color:inherit;font-size:24px;text-align:center;vertical-align:top}
 .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
 
-input {
-  /*display: block;*/
-  height: 45px;
-  width: 200px;
-}
