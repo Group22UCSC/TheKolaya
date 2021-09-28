@@ -21,6 +21,7 @@
 .table-container{
     font-family: 'Poppins', sans-serif;
   display: grid;
+  
   padding: 40px;
   color: #4f546c;
   font-size: 0.9rem;
@@ -121,9 +122,11 @@
     background-color: dodgerblue;
     border: 1px solid #ddd;
     color: white;
+    cursor: pointer;
   }
   
   .form-inline button:hover {
+    cursor: pointer;
     background-color: royalblue;
   }
   

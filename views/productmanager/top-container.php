@@ -30,40 +30,34 @@
       </li>
       
      <li>
-       <a href="<?php echo URL?>/accountant/requests">
-        <i class="far fa-registered fa-2x"></i>
-         <span class="links_name">Requests</span>
+       <a href="<?php echo URL?>/productmanager/UpdateProducts">
+        <i class="fas fa-plus fa-2x"></i>
+         <span class="links_name">Update Products</span>
        </a>
-       <span class="tooltip">Requests</span>
+       <span class="tooltip">Update Products</span>
      </li>
      <li>
        <a href="<?php echo URL?>accountant/payments">
-        <i class="fas fa-hand-holding-usd fa-2x"></i>
-         <span class="links_name">Payments</span>
+        <i class="fas fa-coffee fa-2x"></i>
+         <span class="links_name">Products</span>
        </a>
-       <span class="tooltip">Payments</span>
+       <span class="tooltip">Products</span>
      </li>
      <li>
        <a href="<?php echo URL?>accountant/setTeaPrice">
-        <i class="fa fa-dollar-sign fa-2x"></i>
-         <span class="links_name">Tea Price</span>
+        <i class="fas fa-funnel-dollar fa-2x"></i>
+         <span class="links_name">Update Auction</span>
        </a>
-       <span class="tooltip">Tea Price</span>
+       <span class="tooltip">Update Auction</span>
      </li>
      <li>
       <a href="#">
-       <i class="fas fa-chart-line fa-2x"></i>
-        <span class="links_name">Stock</span>
+       <i class="fas fa-file-invoice-dollar"></i>
+        <span class="links_name">Auction Details</span>
       </a>
-      <span class="tooltip">Stock</span>
+      <span class="tooltip">Auction Details</span>
     </li>
-     <li>
-      <a href="<?php echo URL?>/accountant/landowners">
-       <i class="fas fa-user-tie fa-2x"></i>
-        <span class="links_name">Landowners</span>
-      </a>
-      <span class="tooltip">Landowners</span>
-    </li>
+     
      <li class="mobile-nav-icon">
       <a href="#">
         <i class="fas fa-bell"></i>
@@ -106,9 +100,9 @@
             <div class="profile-container">
               <div class="profile-details">
                 <div class="name_job">
-                  <div class="name">Melaka<br><span>Accountant</span></div>
+                  <div class="name">Melaka<br><span>Product Manager</span></div>
                 </div>
-                <img src="<?php echo URL?>/vendors/images/accountant/profile.jpg" alt="profileImg">
+                <img src="<?php echo URL?>/vendors/images/productmanager/profile.jpg" alt="profileImg">
               </div>
             </div>
           </li>
