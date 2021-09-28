@@ -2,21 +2,17 @@
 
 <?php include 'top-container.php';?>
 
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/createAccount.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/updateAccount1.css">
 
 
      <div class="middle"> 
-     <a >CREATE ACCOUNTS</a> </div>
+     <a >UPDATE ACCOUNTS</a> </div>
   
 
-  <div class="k1">
-    
+  <div class="k1">  
 
-     
 <div class="wrapper">
-    <div class="title">
-      Registration Form
-    </div>
+    <div class="title">  Update Form  </div>
 
     <div class="form">
       
@@ -50,26 +46,29 @@
           <input type="password" class="input">
        </div>  
 
-      <div class="inputfield">
-          <label>Confirm Password</label>
-          <input type="password" class="input">
-       </div> 
-       
+       <div class="inputfield">
+          <a>If you want to update the account</a>
       
-       
-      <div class="inputfield">
-        <input type="submit" value="Register" class="btn">
+       </div> 
+
+      
+      <div class="last">
+            <div class="a">
+       <a href="<?php echo URL?>admin/updateAccount"><input type="submit" value="Discard" class="btn"></a>
       </div>
 
+
+       <div class="b">
+        <input type="submit" value="Update" class="btn">
+      </div>
+           
+
+      </div>
+
+     
+
     </div>
-   
-
-
 
   </div> 
-
-
-      
-   
-
+</div>
 <?php include 'bottom-container.php';?>
