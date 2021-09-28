@@ -1,0 +1,17 @@
+
+@media only screen and (max-width: 1150px){
+    .middle-conatiner {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .middle-left {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .middle-right {
+        width: 100%;
+    }
+
+}

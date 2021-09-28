@@ -18,12 +18,12 @@
             </div>
             <h2 class="title">LOG IN</h2>
             <?php flash('register_success');?>
-            <div class="input-field <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
+            <div class="input-field <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>">
               <i class="fas fa-phone icon <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>"></i>
               <input class="input<?php echo (!empty($data['contact_number_err'])) ? '-is-invalid' : ''; ?>" type="tel" placeholder="<?php (!empty($data['contact_number_err'])) ? print $data['contact_number_err'] : print 'mobile number*'; ?>" name="contact_number"/>
             </div>
 
-            <div class="input-field <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
+            <div class="input-field <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>">
               <i class="fas fa-lock icon <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>"></i>
               <input class="input<?php echo (!empty($data['password_err'])) ? '-is-invalid' : ''; ?>"  type="password" placeholder="<?php (!empty($data['password_err'])) ? print $data['password_err'] : print 'password*'; ?>" name="password"/>
             </div>
