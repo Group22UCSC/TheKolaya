@@ -1,27 +1,19 @@
+
+<?php include 'top-container.php';?>
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/admin-style.css">
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/admin-queries.css">
-<?php include 'topContainer.php';?>
+<div class="text">Dashboard</div>
 
-  <div class="middle-conatiner">
-    
-    <div class="middle-left">
-      <button class="btn btn-view-accounts"><i class="fas fa-chart-line"></i> VIEW ACCOUNTS</button>
-    </div>
+<div class="top">
+	<h1>Welcome to Home of Samrin Teas</h1> <br>
+  <h2>Taste of Excellence</h2> <br><br> 
+<div class="last">
+	
+	It is a matter of pride for Samrin Tea Estates PLC to be a part of the Hayleys Group, one of the largest and most diversified multinational conglomerates in Sri Lanka with a history spanning 140 years, with whom we continue to bring you the greatest Ceylon teas of the land. <br>
+
+As one of the leading tea plantations in Sri Lanka, Samrin Tea Estates PLC produces the best of high quality Ceylon Tea in 17 of the most enviable tea gardens, duly situated in the panoramic tea country in Sri Lanka. 12 of these tea gardens, situated in the sublimely cool environs of Nuwara Eliya, manufacture the finest high grown tea in Sri Lanka in their mountain-based factories, whilst the rest, situated in the verdant south, produce equally-admirable high quality low grown teas of Sri Lanka, to satisfy the discerning traits of even the most ardent connoisseurs of tea worldwide.
+</div>
 
 
-    <div class="middle-right">
-      <div class="btn-list">
-        <a href="<?php echo URL?>admin/createAccount"><button class="btn btn-create-accounts"><i class="fas fa-user"></i> CREATE ACCOUNTS</button></a>
+</div>
 
-        <a href="#"><button class="btn btn-delete-accounts" ><i class="fas fa-leaf"></i> DELETE ACCOUNTS</button></a>
-        
-        <a href="#"><button class="btn btn-update-accounts"><i class="fas fa-hand-holding-usd"></i> UPDATE ACCOUNTS</button></a>
-
-        
-      </div>
-      
-    </div>
-
-  </div>
-
-<?php include 'views/bottomContainer.php';?>
+<?php include 'bottom-container.php';?>

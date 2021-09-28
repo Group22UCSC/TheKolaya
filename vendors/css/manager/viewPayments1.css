@@ -1,0 +1,53 @@
+*{ margin: 0; padding: 0; }
+
+
+.middle{
+  border: 1px solid #d5dbd9;
+  margin-top: 15px;
+  height: 50px;
+  width: 90%;
+  background-color: white;
+  margin-left: 5%;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 13px;
+}
+
+
+
+.table{
+
+   background-image: url("../../images/admin/8.jpg");
+   background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 25px;
+  padding-top: 125px;
+  padding-bottom: 150px;
+  height: 600px;
+    width: 90%;
+ margin-left: 5%;
+ padding-left: 13%;
+
+}
+
+
+ 
+
+.tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
+.tg td{background-color:#e8edff;border-color:#aabcfe;border-style:solid;border-width:1px;color:#669;
+  font-family:Arial, sans-serif;font-size:24px;overflow:hidden;padding:20px 20px;word-break:normal;}
+.tg th{background-color:#b9c9fe;border-color:#aabcfe;border-style:solid;border-width:1px;color:#039;
+  font-family:Arial, sans-serif;font-size:24px;font-weight:normal;overflow:hidden;padding:20px 20px;word-break:normal;}
+.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-uorz{background-color:#38fff8;border-color:inherit;font-size:24px;text-align:center;vertical-align:top}
+.tg .tg-h7c6{background-color:#38fff8;border-color:inherit;text-align:center;vertical-align:top}
+
+
+
+input {
+  /*display: block;*/
+  height: 45px;
+  width: 200px;
+}
