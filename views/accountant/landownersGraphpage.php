@@ -8,7 +8,7 @@
 <!-- *********** Landowners details section ******** -->
 <div class="labelSection">
     <div class="backbtnsection">
-        <button class="backbtn" onclick="location.href='<?php echo URL ?>/accountant/landowners';">Back</button>
+        <button class="backbtn" onclick="goBack()">Back</button>
     </div>
     <div class="labelsection">
         <span class="">Landowner's ID:</span>
@@ -64,7 +64,7 @@
         <script>
             var xValues = ["Best", "Good", "Average", "Poor"];
             var yValues = [60, 20, 10, 10];
-            var barColors = ["#2BD47D", "#ffc233", "#e05260"];
+            var barColors = ["#2BD47D","#91f084", "#ffc233", "#e05260"];
 
             new Chart("myChart2", {
                 type: "doughnut",
@@ -98,5 +98,9 @@
         </div>
 
 </div>
-
+<script>
+    function goBack(){
+        window.history.back();
+    }
+</script>
 <?php include 'bottom-container.php'; ?>
