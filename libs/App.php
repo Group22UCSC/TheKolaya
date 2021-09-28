@@ -42,10 +42,10 @@ class App {
 
     private function _loadController() {
         $file = null;
-        if($this->_url[0] == 'login' || $this->_url[0] == 'registration') {
+        if($this->_url[0] == 'login' || $this->_url[0] == 'registration') { 
             $file = 'controllers/'. $this->_url[0] . '.php';
         }else if(!empty($_SESSION['user_type'])) {
-            $file = 'controllers/'. $_SESSION['user_type'].'/'. $this->_url[0] . '.php';
+            $file = 'controllers/'. $_SESSION['user_type'].'/'. $this->_url[0] . '.php';            
         }
 
         if(file_exists($file)) {
@@ -54,13 +54,16 @@ class App {
             $this->_controller = new $this->_url[0];
             if($this->_url[0] == 'login' || $this->_url[0] == 'registration') {
                 $this->_controller->loadModelUser($this->_url[0]);
-            }else if(!empty($_SESSION['user_type'])) {
+            }else if(!empty($_SESSION['user_type'])) {                
                 $this->_controller->loadModel($_SESSION['user_type'],$this->_url[0]);
             }
             return true;
         }
         else {
-            echo "Sorry, Page not found";
+            require 'controllers/Errors.php';
+            $this->_controller = new Errors();
+
+            $this->_controller->index();
             return false;
         }
     }
