@@ -45,9 +45,9 @@
               <input class="input<?php echo (!empty($data['contact_number_err'])) ? '-is-invalid' : ''; ?>" type="tel" placeholder="<?php (!empty($data['contact_number_err'])) ? print $data['contact_number_err'] : print 'mobile number*'; ?>" name="contact_number"/>
             </div>
 
-            <div class="input-field <?php echo (!empty($data['emp_id_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
-              <i class="far fa-id-card icon <?php echo (!empty($data['emp_id_err'])) ? 'is-invalid' : ''; ?>"></i>
-              <input class="input<?php echo (!empty($data['emp_id_err'])) ? '-is-invalid' : ''; ?>"  type="text" placeholder="<?php (!empty($data['emp_id_err'])) ? print $data['emp_id_err'] : print 'user id*'; ?>" name="emp_id"/>
+            <div class="input-field <?php echo (!empty($data['user_id_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
+              <i class="far fa-id-card icon <?php echo (!empty($data['user_id_err'])) ? 'is-invalid' : ''; ?>"></i>
+              <input class="input<?php echo (!empty($data['user_id_err'])) ? '-is-invalid' : ''; ?>"  type="text" placeholder="<?php (!empty($data['user_id_err'])) ? print $data['user_id_err'] : print 'user id*'; ?>" name="user_id"/>
             </div>
             
             <div class="input-field <?php echo (!empty($data['address_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">

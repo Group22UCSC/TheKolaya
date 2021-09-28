@@ -11,14 +11,14 @@ class Registration extends Controller {
             $data = [
                 'name' => trim($_POST['name']),
                 'contact_number' => trim($_POST['contact_number']),
-                'emp_id' => trim($_POST['emp_id']),
+                'user_id' => trim($_POST['user_id']),
                 'address' => trim($_POST['address']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
 
                 'name_err' => '',
                 'contact_number_err' => '',
-                'emp_id_err' => '',
+                'user_id_err' => '',
                 'address_err' => '',
                 'password_err' => '',
                 'confirm_password_err' => ''
@@ -38,8 +38,8 @@ class Registration extends Controller {
             }
 
             //Validate user id
-            if(empty($data['emp_id'])) {
-                $data['emp_id_err'] = "Please enter the user id";
+            if(empty($data['user_id'])) {
+                $data['user_id_err'] = "Please enter the user id";
             }
 
             //Validate address
@@ -81,14 +81,14 @@ class Registration extends Controller {
             $data = [
                 'name' => '',
                 'contact_number' => '',
-                'emp_id' => '',
+                'user_id' => '',
                 'address' => '',
                 'password' => '',
                 'confirm_password' => '',
                 
                 'name_err' => '',
                 'contact_number_err' => '',
-                'emp_id_err' => '',
+                'user_id_err' => '',
                 'address_err' => '',
                 'password_err' => '',
                 'confirm_password_err' => ''

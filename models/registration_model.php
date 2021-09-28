@@ -11,12 +11,12 @@ class Registration_Model extends Model {
     public function registration($data) {
         $name = $data['name'];
         $contact_number = $data['contact_number'];
-        $emp_id = $data['emp_id'];
+        $user_id = $data['user_id'];
         $address = $data['address'];
         $password = $data['password'];
-        $user_type = 'Product_Manager';
+        $user_type = 'Land_Owner';
 
-        $query = "INSERT INTO employee(emp_id, name, address, contact_number, user_type, password) values('$emp_id','$name','$address', '$contact_number', '$user_type', '$password')";
+        $query = "INSERT INTO employee(user_id, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
         
         $this->db->insertQuery($query);
     }
