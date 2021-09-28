@@ -13,9 +13,7 @@
 <!--  ******* search bar ********* -->
 <div class="searchbar">
     <form class="search-form" action="#">
-        <label for="lid">Landowner's ID:</label>
-        <input type="text" id="lid" placeholder="Lid" name="lid">
-        <button type="submit">Search</button>
+        
         <label for="lname">Landowner's name:</label>
         <input type="text" id="lname" placeholder="Landowner's Name" name="lname">
         <button type="submit">Search</button>
@@ -61,7 +59,7 @@
                     <td class="tdcls">1500</td>
                     <td class="tdcls">11000</td>
                     <td class="tdcls">
-                        <p class="status status-paid">Paid</p>
+                        <a class="status status-paid" href="#" onclick="openForm()">Select</a>
                     </td>
 
                 </tr>

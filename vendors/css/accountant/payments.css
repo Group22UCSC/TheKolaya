@@ -16,6 +16,9 @@
    color: white;
     
 }
+/*  ****  Update tea form ************** */
+
+
 
 /* **************** table container ********************** */
 .table-container{
@@ -60,7 +63,9 @@
     .tdcls {
       padding: 1rem 2rem;
     }
-  
+    .tdcls a{
+      text-decoration: none;
+    }
     .acls {
       text-decoration: none;
       color:#2962ff;

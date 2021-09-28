@@ -1,30 +1,163 @@
 .top-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 15px;
-    margin-bottom: 15px;
+  display: block;
+  background: rgb(35, 173, 104);
+  color: white;
+  height: 50px;
+  align-items: center;
+  justify-items: center;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
-.top-container >div{
-    padding:1em;
-    align-items: center;
+.top-container>p{
+text-align: center;
+padding-top: 15px;
+
+justify-self: center ;
 }
+/* .top-container >div{
+
+  padding:1em;
+  align-items: center;
+  justify-self: center;
+} */
 .middle{
-    background: rgb(35, 173, 104);
-    align-self: center;
-    justify-self: center;
-   border-radius: 50px;
-   color: white;
-    
+  
+  align-self: center;
+  justify-self: center;
+ border-radius: 50px;
+ color: white;
+  
+}
+/*  ***************   set tea price form ******** */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.wrapper{
+  max-width: 500px;
+  width: 100%;
+  background: white;
+  margin: 30px auto ;
+ border-radius: 25px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  padding: 40px;
+}
+.wrapper .title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: rgb(35, 173, 104);
+  text-transform: uppercase;
+  text-align: center;
+}
+.wrapper .form{
+  width: 100%; 
+}
+.wrapper .form .inputfield{
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .form .inputfield label{
+   width: 200px;
+   color: rgb(35, 173, 104);
+   margin-right: 10px;
+  font-size: 14px;
+}
+
+.wrapper .form .inputfield .input,
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  height: 125px;
+  resize: none;
+}
+
+
+
+.wrapper .form .inputfield .input:focus,
+.wrapper .form .inputfield .textarea:focus,
+.wrapper .form .inputfield .custom_select select:focus{
+  border: 1px solid rgb(35, 173, 104);
+}
+
+
+
+
+.wrapper .form .inputfield .btn{
+  width: 50%;
+  padding: 8px 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  font-size: 15px; 
+  border: 0px;
+  background:  rgb(35, 173, 104);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+.wrapper .form .inputfield .btn:hover{
+  background: #01830c73;
+  color:#01830c;
+}
+.wrapper .form .inputfield:last-child{
+  margin-bottom: 0;
+}
+
+  @media (max-width:420px) {
+    .wrapper .form .inputfield{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .wrapper .form .inputfield label{
+      margin-bottom: 5px;
+    }
+    .wrapper .form .inputfield.terms{
+      flex-direction: row;
+    }
+  }
+
+/*  ************* view previous details button ********** */
+.previousDetails{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  
+}
+.previousDetails button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.previousDetails button:hover {
+  background-color: royalblue;
 }
 
 /* **************** table container ********************** */
-.table-container{
+#pricetbl{
     font-family: 'Poppins', sans-serif;
-  display: grid;
+  display: none;
   padding: 40px;
   color: #4f546c;
   font-size: 0.9rem;
-  background-color: #f9fbff;;
+  background-color: #f9fbff;
+  margin-top: 20px;
 }
 .teapricetable {
     border-collapse: collapse;
