@@ -8,7 +8,7 @@ class Search extends Model {
     }
     
     function searchData($id) {
-        $query = "SELECT * FROM users WHERE first_name='$id'";
+        $query = "SELECT * FROM user WHERE user_id='$id'";
         return $this->db->searchQuery($query);
     }
     

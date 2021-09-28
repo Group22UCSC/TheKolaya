@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
    </head>
 <body>
   <div class="sidebar">
@@ -21,29 +22,22 @@
          <span class="tooltip">Search</span>
       </li> -->
       <li>
-        <a href="<?php echo URL?>accountant/index">
+        <a href="<?php echo URL?>accountant">
           <i class="fas fa-th-large"></i>
           <span class="links_name">Dashboard</span>
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
       
-      <li>
-       <a href="<?php echo URL?>supervisor/updateTeaMeasure">
-        <i class="fas fa-weight"></i>
-         <span class="links_name">Update Tea Measure</span>
-       </a>
-       <span class="tooltip">Update Tea Measure</span>
-     </li>
      <li>
-       <a href="accountant.php">
+       <a href="<?php echo URL?>/accountant/requests">
         <i class="far fa-registered fa-2x"></i>
          <span class="links_name">Requests</span>
        </a>
        <span class="tooltip">Requests</span>
      </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>accountant/payments">
         <i class="fas fa-hand-holding-usd fa-2x"></i>
          <span class="links_name">Payments</span>
        </a>
@@ -64,7 +58,7 @@
       <span class="tooltip">Stock</span>
     </li>
      <li>
-      <a href="#">
+      <a href="<?php echo URL?>/accountant/landowners">
        <i class="fas fa-user-tie fa-2x"></i>
         <span class="links_name">Landowners</span>
       </a>
@@ -85,7 +79,7 @@
       <span class="tooltip">Profile</span>
     </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>login/logout"">
         <i class="fas fa-sign-out-alt"></i>
          <span class="links_name">Logout</span>
        </a>
