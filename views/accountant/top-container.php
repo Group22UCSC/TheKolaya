@@ -22,7 +22,7 @@
          <span class="tooltip">Search</span>
       </li> -->
       <li>
-        <a href="<?php echo URL?>accountant/index">
+        <a href="<?php echo URL?>accountant">
           <i class="fas fa-th-large"></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -79,7 +79,7 @@
       <span class="tooltip">Profile</span>
     </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>login/logout"">
         <i class="fas fa-sign-out-alt"></i>
          <span class="links_name">Logout</span>
        </a>

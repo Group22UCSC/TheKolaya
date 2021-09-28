@@ -98,8 +98,8 @@
 
         </table>
     </div>
-</div>
-<div id="" class="paymentFormContainer">
+
+    <div id="" class="paymentFormContainer">
 
     <div class="form-popup" id="myForm">
         <form action="/action_page.php" class="form-container">
@@ -129,4 +129,7 @@
         }
     </script>
 </div>
+
+</div>
+
 <?php include 'bottom-container.php'; ?>
