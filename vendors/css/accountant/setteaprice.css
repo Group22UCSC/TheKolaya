@@ -129,6 +129,100 @@ justify-self: center ;
     }
   }
 
+
+/*  **** set button pop up ******** */
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 3px solid rgb(182, 15, 15);
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 300px;
+  max-width: 80%;
+ 
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid black;
+  color:  rgb(35, 173, 104);
+}
+
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 30px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+.confirmbtn{
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 30px;
+}
+.confirmbtn input:hover {
+  background-color: royalblue;
+}
+.editbtn{
+  padding: 10px 20px;
+  background-color: rgb(35, 173, 104);
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
 /*  ************* view previous details button ********** */
 .previousDetails{
   display: grid;
