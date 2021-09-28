@@ -22,7 +22,7 @@ class Login_Model extends Model {
     }
 
     public function findUserByMobileNumber($contact_number) {
-        $query = "SELECT * FROM employee WHERE contact_number = '$contact_number'";
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 
         $row = $this->db->searchQuery($query);
 
@@ -35,7 +35,7 @@ class Login_Model extends Model {
 
     //Login a user
     public function login($contact_number, $password) {
-        $query = "SELECT * FROM employee WHERE contact_number = '$contact_number'";
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 
         $row = $this->db->searchQuery($query);
         
