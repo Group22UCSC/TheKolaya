@@ -14,9 +14,9 @@ class Login_Model extends Model {
         $user_id = $data['user_id'];
         $address = $data['address'];
         $password = $data['password'];
-        $user_type = 'Supervisor';
+        $user_type = 'Land_Owner';
 
-        $query = "INSERT INTO employee(user_id, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
+        $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
         
         $this->db->insertQuery($query);
     }
