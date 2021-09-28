@@ -12,11 +12,11 @@
     <div class="form">
         <div class="inputfield">
             <label>Year</label>
-            <input type="text" class="input">
+            <input type="text" class="input" value="2021" >
         </div>
         <div class="inputfield">
             <label>Month</label>
-            <input type="text" class="input">
+            <input type="text" class="input" value="octomber">
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
@@ -91,7 +91,6 @@
                     <th class="thcls">Year</th>
                     <th class="thcls">Month</th>
                     <th class="thcls">Price(Rs)</th>
-                    <th class="thcls">Status</th>
 
                 </tr>
             </thead>
@@ -108,39 +107,31 @@
 
 
             <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">2021</td>
                 <td class="tdcls">February</td>
                 <td class="tdcls">129</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
+                
 
             </tr>
             <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">2021</td>
                 <td class="tdcls">March</td>
                 <td class="tdcls">120</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
+               
 
             </tr>
             <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">2021</td>
                 <td class="tdcls">April</td>
                 <td class="tdcls">125</td>
-                <td class="tdcls">
-                    <p class="status status-notupdated">Not Updated</p>
-                </td>
+               
 
             </tr>
             <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">2021</td>
                 <td class="tdcls">May</td>
                 <td class="tdcls">127</td>
-                <td class="tdcls">
-                    <p class="status status-pending">Pending</p>
-                </td>
+                
 
             </tr>
             </tr>
