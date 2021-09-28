@@ -13,9 +13,6 @@
 <!--  ******* search bar ********* -->
 <div class="searchbar">
     <form class="search-form" action="#">
-        <label for="lid">Landowner's ID:</label>
-        <input type="text" id="lid" placeholder="Lid" name="lid">
-        <button type="submit">Search</button>
         <label for="lname">Landowner's name:</label>
         <input type="text" id="lname" placeholder="Landowner's Name" name="lname">
         <button type="submit">Search</button>
@@ -24,17 +21,14 @@
 <!-- Table container -->
 <div class="table-container">
     <div class="table-section">
-        <table class="teapricetable">
+        <table class="requeststbl">
             <thead class="threadcls">
                 <tr class="trcls">
                     <th class="thcls">Rid</th>
                     <th class="thcls">Lid</th>
-                    <th class="thcls">Date(Rs)</th>
-                    <th class="thcls">Income</th>
-                    <th class="thcls">Fertilizer Expences</th>
-                    <th class="thcls">Advance Expences</th>
-                    <th class="thcls">Final Payment</th>
-                    <th class="thcls">Status</th>
+                    <th class="thcls">Request Date(Rs)</th>
+                    <th class="thcls">Amount</th>
+                    <th class="thcls">Action</th>
 
                 </tr>
             </thead>
@@ -53,81 +47,63 @@
 
 
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">February</td>
-                    <td class="tdcls">129</td>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">0</td>
-                    <td class="tdcls">1500</td>
-                    <td class="tdcls">11000</td>
                     <td class="tdcls">
-                        <p class="status status-paid">Paid</p>
+                        <a class="select" href="#" onclick="openForm()">Select</a>
                     </td>
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">March</td>
-                    <td class="tdcls">120</td>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">0</td>
-                    <td class="tdcls">1500</td>
-                    <td class="tdcls">11000</td>
                     <td class="tdcls">
-                        <p class="status status-paid">Paid</p>
+                        <a class="select" href="#" onclick="openForm()">Select</a>
                     </td>
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">March</td>
-                    <td class="tdcls">120</td>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">0</td>
-                    <td class="tdcls">1500</td>
-                    <td class="tdcls">11000</td>
                     <td class="tdcls">
-                        <p class="status status-paid">Paid</p>
+                        <a class="select" href="#" onclick="openForm()">Select</a>
                     </td>
-
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">February</td>
-                    <td class="tdcls">129</td>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">0</td>
-                    <td class="tdcls">1500</td>
-                    <td class="tdcls">11000</td>
                     <td class="tdcls">
-                        <p id="pendingbtn" class="status status-pending">Pending</p>
+                        <a class="select" href="#" onclick="openForm()">Select</a>
                     </td>
-
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">February</td>
-                    <td class="tdcls">129</td>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">0</td>
-                    <td class="tdcls">1500</td>
-                    <td class="tdcls">11000</td>
                     <td class="tdcls">
-                        <p id="pendingbtn" class="status status-pending">Pending</p>
+                    <a class="select" href="#" onclick="openForm()">Select</a>
                     </td>
-
                 </tr>
+               
             </tbody>
 
         </table>
     </div>
-</div>
-<div id="" class="paymentFormContainer">
-    <button class="open-button" onclick="openForm()">Make The Payment</button>
+
+    <div id="" class="paymentFormContainer">
 
     <div class="form-popup" id="myForm">
         <form action="/action_page.php" class="form-container">
-            <h1>Monthly Payment</h1>
+            <h1>Advance Request</h1>
 
             <label for="lid"><b>Lid</b></label>
             <input type="text" placeholder="Enter Lid" name="lid" required>
@@ -137,9 +113,9 @@
 
             <label for="amount"><b>Amount(Rs)</b></label>
             <input type="text" placeholder="Enter the amount" name="amount" required>
-
-            <button type="submit" class="btn">Pay</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            <a class="btn viewlandowner" href="<?php echo URL?>/accountant/landownersGraphpage">View Landowner</a>
+            <a class="btn">Pay</a>
+            <a class="btn cancel" onclick="closeForm()">Close</a>
         </form>
     </div>
 
@@ -153,4 +129,7 @@
         }
     </script>
 </div>
+
+</div>
+
 <?php include 'bottom-container.php'; ?>

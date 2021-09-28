@@ -21,12 +21,13 @@
 .table-container{
     font-family: 'Poppins', sans-serif;
   display: grid;
+  
   padding: 40px;
   color: #4f546c;
   font-size: 0.9rem;
-  background-color: #f9fbff;
+  background-color: #91f084;
 }
-.teapricetable {
+.requeststbl {
     border-collapse: collapse;
     box-shadow: 0 5px 10px #e1e5ee;
     background-color: white;
@@ -65,28 +66,19 @@
       text-decoration: none;
       color:#2962ff;
     }
-  
-    .status {
+  /*  *** select button **** */
+    .select {
       border-radius:  0.2rem;
-      background-color: red;
+      background-color: rgb(64, 231, 139);
+        color: #fff;
       padding: 0.2rem 1rem;
       text-align: center;
-  }
-     .status-pending {
-        background-color: #fff0c2;
-        color: #a68b00;
-      }
+      text-decoration: none;
       
-        
-       .status-paid {
-        background-color: #c8e6c9;
-        color:  #388e3c;
-      }
-  
-        .status-notupdated {
-        background-color: #ffcdd2;
-        color: #c62828;
-      }
+  }
+     .select:hover{
+       background-color: dodgerblue;
+     }
     
   
     .amount {
@@ -130,9 +122,11 @@
     background-color: dodgerblue;
     border: 1px solid #ddd;
     color: white;
+    cursor: pointer;
   }
   
   .form-inline button:hover {
+    cursor: pointer;
     background-color: royalblue;
   }
   
@@ -235,21 +229,27 @@
   
   /* Set a style for the submit/login button */
   .form-container .btn {
+    display: inline-block;
     background-color: #04AA6D;
     color: white;
-    padding: 16px 20px;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
     width: 100%;
-    margin-bottom:10px;
+    margin:6px;
     opacity: 0.8;
   }
-  
+  .form-container .a {
+    margin:10px;
+  }
   /* Add a red background color to the cancel button */
   .form-container .cancel {
     background-color: red;
   }
-  
+  .form-container .viewlandowner {
+    background-color: dodgerblue;
+    text-decoration: none;
+  }
   /* Add some hover effects to buttons */
   .form-container .btn:hover, .open-button:hover {
     opacity: 1;

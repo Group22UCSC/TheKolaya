@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title><?php echo TITLE?></title>
-    <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
+
   <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name"><img src="<?php echo URL?>vendors/images/thekolaya-white.png" alt=""></div>
         <i class="fas fa-bars" id="btn"></i>
     </div>
     <ul class="nav-list">
-      <!-- <li>
-          <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-      </li> -->
       <li>
-        <a href="#">
+        <a href="<?php echo URL?>Supervisor">
           <i class="fas fa-th-large"></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -29,28 +14,28 @@
       </li>
       
       <li>
-       <a href="<?php echo URL?>supervisor/updateTeaMeasure">
+       <a href="<?php echo URL?>Supervisor/updateTeaMeasure">
         <i class="fas fa-weight"></i>
          <span class="links_name">Update Tea Measure</span>
        </a>
        <span class="tooltip">Update Tea Measure</span>
      </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>Supervisor/manageRequests">
         <i class="fab fa-acquisitions-incorporated"></i>
          <span class="links_name">Requests</span>
        </a>
        <span class="tooltip">Requests</span>
      </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>Supervisor/manageFertilizer">
         <i class="fas fa-tree"></i>
          <span class="links_name">Fertilizer</span>
        </a>
        <span class="tooltip">Fertilizer</span>
      </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>Supervisor/manageFirewood">
         <i class="fas fa-fire"></i>
          <span class="links_name">Firewood</span>
        </a>
@@ -71,23 +56,22 @@
       <span class="tooltip">Profile</span>
     </li>
      <li>
-       <a href="#">
+       <a href="<?php echo URL?>login/logout">
         <i class="fas fa-sign-out-alt"></i>
          <span class="links_name">Logout</span>
        </a>
        <span class="tooltip">Logout</span>
      </li>
-     <!-- <li class="profile">
-         <div class="profile-details">
-           <img src="profile.jpg" alt="profileImg">
-           <div class="name_job">
-             <div class="name">Prem Shahi</div>
-             <div class="job">Web designer</div>
-           </div>
-         </div>
-         <i class='bx bx-log-out' id="log_out" ></i>
-     </li> -->
     </ul>
+
+    <div class="social_media_icon">
+      <div class="social_media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    
   </div>
   <section class="home-section">
       <div class="header">

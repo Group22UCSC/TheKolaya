@@ -1,102 +1,54 @@
-h1 {
-    color: #4DD101;
-    margin: 100px auto;
-    text-align: center;
-    letter-spacing: 0.335em;
-}
-
-hr {
-    border: none;
-    width: 80%;
-    margin: 50px auto;
-    border: 4px solid #4DD101;
-}
-
 .middle-container {
-    position: relative;
-    margin: 100px 0px;
+    grid-template-columns: 1fr 1fr;
 }
 
-.img-btn-container {
-    position: relative;
-    margin: 100px 100px;
+.middle-container > div {
+    background: #fff;
 }
 
-.img-btn-container img {
-    width: 100%;
-    height: 100%;
-    border: 2px solid #000000;
+.agent-tea-table {
+    grid-column: 2/4;
+    grid-row: 1/3;
 }
 
-.left {
-    display: inline-block;
-    width: 47%;
-    height: auto;
+.graph-container {
+    grid-row: 1;
 }
 
-
-.right {
-    position: absolute;
-    right: 0px;
-    display: inline-block;
-    width: 47%;
-    height: auto;
+.table-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(30px, auto);
 }
 
-.btn-list {
-    width: 389px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.table-row > div{
+    border: black 1px solid;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.table-name {
+    grid-column: 1/4;
 }
 
 
-.btn {
-    outline: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.5s;
+.middle-container .request-table .table-row a {
     margin-top: 30px;
-    width: 389px;
-    height: 132px;
-    background: #8AF2AD;
-    border: 1px solid #000000;
-    color: white;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 14px;
-
-    font-size: 33px;
-    line-height: 39px;
-    font-weight: bold;
+    grid-column: 3/5;
+    justify-self: center;
 }
 
-  
-.btn:hover {
-    background-color: #24dd62;
+.middle-container .graph-container .table-row a {
+    grid-column: none;
 }
 
-/* .btn:hover {
-    background-color: white;
-    color: #8AF2AD;
-    transition: background-color 0.6s;
-} */
-
-.btn.btn-land {
-    letter-spacing: 0.205em;
-    margin-top: 0px;
+.middle-container .graph-container .table-row > div{
+    border: none;
+    text-align: center;
+    box-shadow: none;
 }
 
-.btn-fertilizer {
-    letter-spacing: 0.35em;
+.middle-container .graph-container .table-row > .firewood-btn{
+    grid-column: 3;
 }
 
-.btn-firewood {
-    letter-spacing: 0.45em;
-}
-
-.btn-request {
-    letter-spacing: 0.45em;
-}
 
