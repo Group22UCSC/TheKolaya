@@ -16,13 +16,13 @@ class Registration_Model extends Model {
         $password = $data['password'];
         $user_type = 'Land_Owner';
 
-        $query = "INSERT INTO employee(user_id, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
+        $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
         
         $this->db->insertQuery($query);
     }
 
     public function findUserByMobileNumber($contact_number) {
-        $query = "SELECT * FROM employee WHERE contact_number = '$contact_number'";
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 
         $row = $this->db->searchQuery($query);
 
@@ -35,7 +35,7 @@ class Registration_Model extends Model {
 
     //Login a user
     public function login($contact_number, $password) {
-        $query = "SELECT * FROM employee WHERE contact_number = '$contact_number'";
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 
         $row = $this->db->searchQuery($query);
         
