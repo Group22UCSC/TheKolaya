@@ -68,7 +68,7 @@ class Login extends Controller {
     }
 
     public function createUserSession($user) {
-        $_SESSION['emp_id'] = $user[0]['emp_id'];
+        $_SESSION['user_id'] = $user[0]['user_id'];
         $_SESSION['user_type'] = str_replace("_", "", $user[0]['user_type']);
         $_SESSION['user_contact_number'] = $user[0]['contact_number'];
         $_SESSION['user_name'] = $user[0]['name'];
@@ -78,7 +78,7 @@ class Login extends Controller {
 
       public function logout() {
         session_start();
-        unset($_SESSION['emp_id']);
+        unset($_SESSION['user_id']);
         unset($_SESSION['user_type']);
         unset($_SESSION['user_contact_number']);
         unset($_SESSION['user_name']);
@@ -88,7 +88,7 @@ class Login extends Controller {
       }
 
       public function isLoggedIn() {
-          if(isset($_SESSION['emp_id'])) {
+          if(isset($_SESSION['user_id'])) {
               return true;
           }else {
               return false;

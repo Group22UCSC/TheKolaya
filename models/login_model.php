@@ -11,12 +11,12 @@ class Login_Model extends Model {
     public function registration($data) {
         $name = $data['name'];
         $contact_number = $data['contact_number'];
-        $user_id = $data['user'];
+        $user_id = $data['user_id'];
         $address = $data['address'];
         $password = $data['password'];
-        $user_type = 'Supervisor';
+        $user_type = 'Land_Owner';
 
-        $query = "INSERT INTO user(user, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
+        $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
         
         $this->db->insertQuery($query);
     }
