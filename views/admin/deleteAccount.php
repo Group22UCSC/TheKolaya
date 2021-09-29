@@ -24,89 +24,9 @@
 </div>
 
          
-       <!--  <label for="name">Name </label>
-       <input type="text" name="name" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search name"> -->
-       <!-- <a href="<?php echo URL?>admin/deleteAccount1"><input type="submit" name="submit"></a> -->
-
-    
-
-
+       
      
 <div class="table">
- <!--  
-<style type="text/css">
-.tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
-.tg td{background-color:#e8edff;border-color:#aabcfe;border-style:solid;border-width:1px;color:#669;
-  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:20px 5px;word-break:normal;}
-.tg th{background-color:#b9c9fe;border-color:#aabcfe;border-style:solid;border-width:1px;color:#039;
-  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:20px 5px;word-break:normal;}
-.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-uorz{background-color:#38fff8;border-color:inherit;font-size:24px;text-align:center;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style> -->
-<!-- <table class="tg" style="undefined;table-layout: fixed; width: 1161px">
-<colgroup>
-<col style="width: 369px">
-<col style="width: 392px">
-<col style="width: 400px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-uorz">Name</th>
-    <th class="tg-uorz">ID</th>
-    <th class="tg-uorz">User Type</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-  </tr>
-  <tr>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-  </tr>
-  <tr>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-  </tr>
-  <tr>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-  </tr>
-  <tr>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-  </tr>
-</tbody>
-</table>
-     
- -->
 
 <div class="table-container">
     <div class="table-section">
@@ -136,18 +56,18 @@
 
 
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">February</td>
-                    <td class="tdcls">129</td>
+                    <td class="tdcls"><a class="acls" href="#">Kumud Perera</a></td>
+                    <td class="tdcls">001</td>
+                    <td class="tdcls">Landowner</td>
                     <td class="tdcls">
                         <p class="status status-paid">select</p>
                     </td>
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">March</td>
-                    <td class="tdcls">120</td>
+                    <td class="tdcls"><a class="acls" href="#">Roneki Saranga</a></td>
+                    <td class="tdcls">002</td>
+                    <td class="tdcls">Landowner</td>
                   
                     <td class="tdcls">
                         <p class="status status-paid">select</p>
@@ -155,9 +75,9 @@
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">March</td>
-                    <td class="tdcls">120</td>
+                    <td class="tdcls"><a class="acls" href="#">Pasindu Melaka</a></td>
+                    <td class="tdcls">003</td>
+                    <td class="tdcls">Accountant</td>
                 
                     <td class="tdcls">
                         <p class="status status-paid">select</p>
@@ -165,18 +85,18 @@
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">February</td>
-                    <td class="tdcls">129</td>
+                    <td class="tdcls"><a class="acls" href="#">Pasindu Lakmal</a></td>
+                    <td class="tdcls">004</td>
+                    <td class="tdcls">Landowner</td>
                     <td class="tdcls">
                         <p class="status status-paid">select</p>
                     </td>
                    
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                    <td class="tdcls">February</td>
-                    <td class="tdcls">129</td>
+                    <td class="tdcls"><a class="acls" href="#">Sasindu Dias</a></td>
+                    <td class="tdcls">005</td>
+                    <td class="tdcls">Agent</td>
                     <td class="tdcls">
                         <p class="status status-paid">select</p>
                     </td>
