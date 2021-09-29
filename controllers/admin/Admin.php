@@ -41,6 +41,10 @@
         public function admin() {
             $this->view->showPage('Admin/Admin');
         }
+
+        public function setTeaPrice() {
+            $this->view->showPage('Admin/setteaprice');
+        }
     }
 
 ?>
