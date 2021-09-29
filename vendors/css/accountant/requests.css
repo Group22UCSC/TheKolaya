@@ -27,13 +27,20 @@
   font-size: 0.9rem;
   background-color: #91f084;
 }
-.requeststbl {
+#requeststbl {
     border-collapse: collapse;
     box-shadow: 0 5px 10px #e1e5ee;
     background-color: white;
     text-align: left;
     overflow: hidden;
     width: 100%;
+    transition: all .5s ease;
+  }
+  #requeststbl tr:not(:first-child){
+    cursor: pointer; transition: all .25s ease-in-out;
+  }
+  #requeststbl tr:not(:first-child):hover{
+    background-color: #ddd;
   }
   .teapricetable tbody{
     /* Set the height of table body */
@@ -192,7 +199,7 @@
     position: fixed;
     bottom: 23px;
     right: 28px;
-    width: 280px;
+    width: 480px;
   }
   
   /* The popup form - hidden by default */

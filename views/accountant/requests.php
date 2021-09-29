@@ -21,8 +21,8 @@
 <!-- Table container -->
 <div class="table-container">
     <div class="table-section">
-        <table class="requeststbl">
-            <thead class="threadcls">
+        <table class="requeststbl" id="requeststbl">
+            <!-- <thead class="threadcls"> -->
                 <tr class="trcls">
                     <th class="thcls">Rid</th>
                     <th class="thcls">Lid</th>
@@ -31,7 +31,7 @@
                     <th class="thcls">Action</th>
 
                 </tr>
-            </thead>
+            <!-- </thead> -->
 
             <!-- <tr>
                 <td class="tdcls"><a class="acls" href="#">2021</a></td>
@@ -43,10 +43,10 @@
 
             </tr> -->
 
-            <tbody>
+            <!-- <tbody> -->
 
 
-                <tr>
+                <tr onclick="openForm()">
                     <td class="tdcls">AR352</td>
                     <td class="tdcls">L453</td>
                     <td class="tdcls">09/09/2021</td>
@@ -94,7 +94,7 @@
                     </td>
                 </tr>
                
-            </tbody>
+            <!-- </tbody> -->
 
         </table>
     </div>
@@ -121,7 +121,11 @@
 
     <script>
         function openForm() {
+            
             document.getElementById("myForm").style.display = "block";
+            document.getElementById("requeststbl").style.width = "50%";
+            
+            requeststbl
         }
 
         function closeForm() {
