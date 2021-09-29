@@ -44,8 +44,12 @@ class App {
         $file = null;
         if($this->_url[0] == 'login' || $this->_url[0] == 'registration') { 
             $file = 'controllers/'. $this->_url[0] . '.php';
-        }else if(!empty($_SESSION['user_type'])) {
-            $file = 'controllers/'. $_SESSION['user_type'].'/'. $this->_url[0] . '.php';            
+        }else if(isset($_SESSION['user_type']))
+                $file = 'controllers/'. $_SESSION['user_type'].'/'. $this->_url[0] . '.php';
+        else {
+            $this->_url = [];
+            $this->_url[0] = 'login';
+            $file = 'controllers/'.$this->_url[0].'.php';
         }
 
         if(file_exists($file)) {
