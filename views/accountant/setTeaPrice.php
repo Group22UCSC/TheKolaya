@@ -43,7 +43,7 @@
             <label>Month : September</label>
         </div>
         <div class="price">
-            <label>Tea Price(Rs): 2300</label>
+            <label>Tea Price(Rs): 2400</label>
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
