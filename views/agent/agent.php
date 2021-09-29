@@ -5,8 +5,8 @@
     </div>
 <div class="tables">
   <div class="availablelist">
-    <h3>Available Landowner List </h3>
-    <table>
+    <h3 class ="availabletopic">Available Landowner List </h3>
+    <table class = "availabletable">
       <tr>
         <th>Landowner ID</th>
         <th>Container Estimation</th>
@@ -30,8 +30,8 @@
     </table>
   </div>
   <div class="deliverylist">
-    <h3>Delivery List </h3>
-    <table>
+    <h3 class="deliverytopic">Delivery List </h3>
+    <table class="deliverytable">
     <tr>
         <th>Landowner ID</th>
         <th>Container Estimation</th>
