@@ -101,7 +101,7 @@
             <div class="profile-container">
               <div class="profile-details">
                 <div class="name_job">
-                  <div class="name">Sasindu Dias<br><span>Manager</span></div>
+                  <div class="name">Sasindu<br><span>Manager</span></div>
                 </div>
                 <img src="<?php echo URL?>/vendors/images/manager/sasi.jpg" alt="profileImg">
               </div>
