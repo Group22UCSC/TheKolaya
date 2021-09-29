@@ -77,6 +77,7 @@
         }
     }
     function scrollFunc(){
+
         window.scrollTo(0, 500);
     }
     // let scrollerID;
