@@ -11,12 +11,12 @@
 
    <div class="middle-conatiner">
 
-     <div class="name">
+     <div class="name1">
      
 
          <!-- <div class="wrap"> -->
    <div class="search">
-      <input type="text" class="searchTerm" placeholder="Enter User Name?">
+      <input type="text" class="searchTerm" placeholder="Enter User Name or ID?">
         <a href="<?php echo URL?>admin/viewAccount1"><button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
      </button></a>
