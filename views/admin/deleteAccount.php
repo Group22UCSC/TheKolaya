@@ -44,7 +44,7 @@
 .tg .tg-uorz{background-color:#38fff8;border-color:inherit;font-size:24px;text-align:center;vertical-align:top}
 .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
 </style> -->
-<table class="tg" style="undefined;table-layout: fixed; width: 1161px">
+<!-- <table class="tg" style="undefined;table-layout: fixed; width: 1161px">
 <colgroup>
 <col style="width: 369px">
 <col style="width: 392px">
@@ -106,17 +106,95 @@
 </tbody>
 </table>
      
+ -->
+
+<div class="table-container">
+    <div class="table-section">
+        <table class="teapricetable">
+            <thead class="threadcls">
+                <tr class="trcls">
+                    <th class="thcls">Name</th>
+                    <th class="thcls">ID</th>
+                    <th class="thcls">User Type</th>
+                   
+                    <th class="thcls">Status</th>
+
+                </tr>
+            </thead>
+
+            <!-- <tr>
+                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">January</td>
+                <td class="tdcls">98</td>
+                <td class="tdcls">
+                    <p class="status status-paid">Updated</p>
+                </td>
+
+            </tr> -->
+
+            <tbody>
+
+
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls">February</td>
+                    <td class="tdcls">129</td>
+                    <td class="tdcls">
+                        <p class="status status-paid">select</p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls">March</td>
+                    <td class="tdcls">120</td>
+                  
+                    <td class="tdcls">
+                        <p class="status status-paid">select</p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls">March</td>
+                    <td class="tdcls">120</td>
+                
+                    <td class="tdcls">
+                        <p class="status status-paid">select</p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls">February</td>
+                    <td class="tdcls">129</td>
+                    <td class="tdcls">
+                        <p class="status status-paid">select</p>
+                    </td>
+                   
+                </tr>
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls">February</td>
+                    <td class="tdcls">129</td>
+                    <td class="tdcls">
+                        <p class="status status-paid">select</p>
+                    </td>
+                    
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
 
 
       
      </div>
-
-
-
-     <!--  <div class="submit">
-          <a href="#"><button class="btn btn-register" ><i class="fas fa-leaf"></i> REGISTER</button></a> 
-      </div>
-        -->
 
       
     
