@@ -37,7 +37,7 @@
        <span class="tooltip">Update Products</span>
      </li>
      <li>
-       <a href="<?php echo URL?>accountant/payments">
+       <a href="<?php echo URL?>productmanager/products">
         <i class="fas fa-coffee fa-2x"></i>
          <span class="links_name">Products</span>
        </a>

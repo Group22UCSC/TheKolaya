@@ -10,8 +10,11 @@ class ProductManager extends Controller{
 
         $this->view->showPage('Productmanager/Productmanager');
     }
+    function products() {
 
-
+        $this->view->showPage('Productmanager/products');
+    }
+   
 }
 
 ?>
