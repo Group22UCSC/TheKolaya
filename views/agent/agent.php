@@ -1,55 +1,60 @@
 <?php include 'topContainer.php';?>
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent-dashboard.css">    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div class="row">
-  <div class="column">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css"> 
+<div class="text">
+    <h2>THINGS TO DO</h2>
+    </div>
+<div class="tables">
+  <div class="availablelist">
+    <h3>Available Landowner List </h3>
     <table>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Points</th>
+        <th>Landowner ID</th>
+        <th>Container Estimation</th>
+        
       </tr>
       <tr>
-        <td>Jill</td>
-        <td>Smith</td>
-        <td>50</td>
+        <td>L001</td>
+        <td>10</td>
+        
       </tr>
       <tr>
-        <td>Eve</td>
-        <td>Jackson</td>
-        <td>94</td>
+        <td>L002</td>
+        <td>20</td>
+       
       </tr>
       <tr>
-        <td>Adam</td>
-        <td>Johnson</td>
-        <td>67</td>
+        <td>L003</td>
+        <td>4</td>
+        
       </tr>
     </table>
   </div>
-  <div class="column">
+  <div class="deliverylist">
+    <h3>Delivery List </h3>
     <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Points</th>
+    <tr>
+        <th>Landowner ID</th>
+        <th>Container Estimation</th>
+        
       </tr>
       <tr>
-        <td>Jill</td>
-        <td>Smith</td>
-        <td>50</td>
+        <td>L001</td>
+        <td>10</td>
+        
       </tr>
       <tr>
-        <td>Eve</td>
-        <td>Jackson</td>
-        <td>94</td>
+        <td>L002</td>
+        <td>20</td>
+       
       </tr>
       <tr>
-        <td>Adam</td>
-        <td>Johnson</td>
-        <td>67</td>
+        <td>L003</td>
+        <td>4</td>
+        
       </tr>
     </table>
   </div>
 </div>
+
 <script src="<?php echo URL?>vendors/js/agent/dashboard.js"></script>
 <?php include 'bottomContainer.php';?>
