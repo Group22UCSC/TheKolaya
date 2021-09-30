@@ -27,9 +27,10 @@
                 <tr class="trcls">
                     <th class="thcls">Rid</th>
                     <th class="thcls">Lid</th>
+                    <th class="thcls">Name</th>
                     <th class="thcls">Request Date(Rs)</th>
                     <th class="thcls">Amount</th>
-                    <th class="thcls">Action</th>
+                   
 
                 </tr>
             <!-- </thead> -->
@@ -50,89 +51,113 @@
                 <tr onclick="openForm()">
                     <td class="tdcls">AR352</td>
                     <td class="tdcls">L453</td>
+                    <td class="tdcls">L.Gunapala</td>
                     <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">
-                        <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                   
 
                 </tr>
                 <tr>
                     <td class="tdcls">AR445</td>
                     <td class="tdcls">L45</td>
+                    <td class="tdcls">R.Gunasena</td>
                     <td class="tdcls">09/06/2021</td>
                     <td class="tdcls">1200</td>
-                    <td class="tdcls">
-                        <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                    
 
                 </tr>
                 <tr>
                     <td class="tdcls">AR32</td>
                     <td class="tdcls">L43</td>
+                    <td class="tdcls">L.Gunapala</td>
                     <td class="tdcls">09/08/2021</td>
                     <td class="tdcls">12800</td>
-                    <td class="tdcls">
-                        <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                    
                 </tr>
                 <tr>
                     <td class="tdcls">AR52</td>
                     <td class="tdcls">L453</td>
+                    <td class="tdcls">Wimal Perera</td>
                     <td class="tdcls">06/09/2021</td>
                     <td class="tdcls">22500</td>
-                    <td class="tdcls">
-                        <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                    
                 </tr>
                 <tr>
                     <td class="tdcls">AR352</td>
                     <td class="tdcls">L453</td>
+                    <td class="tdcls">Sunil Gomez</td>
                     <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">
-                    <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                   
                 </tr>
 
                 <tr>
                     <td class="tdcls">AR352</td>
                     <td class="tdcls">L453</td>
+                    <td class="tdcls">Wimal Perera</td>
                     <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">
-                    <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                   
+                </tr>
+                <tr>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">L.Gunapala</td>
+                    <td class="tdcls">09/09/2021</td>
+                    <td class="tdcls">12500</td>
+                   
+                    
+                </tr>
+                <tr>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">Sunil Gomez</td>
+                    <td class="tdcls">09/09/2021</td>
+                    <td class="tdcls">12500</td>
+                  
+                    
+                </tr>
+                <tr>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">Wimal Perera</td>
+                    <td class="tdcls">09/09/2021</td>
+                    <td class="tdcls">12500</td>
+                    
+                </tr>
+                <tr>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">L.Gunapala</td>
+                    <td class="tdcls">09/09/2021</td>
+                    <td class="tdcls">12500</td>
+                    
+                </tr>   
+                <tr>
+                    <td class="tdcls">AR352</td>
+                    <td class="tdcls">L453</td>
+                    <td class="tdcls">L.Gunapala</td>
+                    <td class="tdcls">09/09/2021</td>
+                    <td class="tdcls">12500</td>
+                    
                 </tr>
 
                 <tr>
                     <td class="tdcls">AR352</td>
                     <td class="tdcls">L453</td>
+                    <td class="tdcls">Wimal Perera</td>
                     <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">
-                    <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                    
                 </tr>
 
                 <tr>
                     <td class="tdcls">AR352</td>
                     <td class="tdcls">L453</td>
+                    <td class="tdcls">L.Gunapala</td>
                     <td class="tdcls">09/09/2021</td>
                     <td class="tdcls">12500</td>
-                    <td class="tdcls">
-                    <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                    <td class="tdcls">
-                    <a class="select" href="#" onclick="openForm()">Select</a>
-                    </td>
+                    
                 </tr>
                
             <!-- </tbody> -->
@@ -151,6 +176,9 @@
             <label for="lid"><b>Lid</b></label>
             <input type="text" placeholder="Enter Lid" name="lid" id="lid" required readonly>
 
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" id="name" required readonly>
+
             <label for="date"><b>Date</b></label>
             <input type="text" placeholder="Enter Date" name="date" id="date" required readonly>
 
@@ -158,8 +186,8 @@
             <input id="amount" type="text" placeholder="Enter the amount" name="amount" required readonly>
 
             <label for="Comment"><b>Comment</b></label>
-            <input id="Comment" type="text" placeholder="Comment" name="comment"  >
-            
+            <!-- <textarea id="Comment" type="text" placeholder="Comment" name="comment" </textarea> -->
+            <textarea name="" id="Comment" cols="30" rows="10" placeholder="Please Enter Your Comment Here" name="coment"></textarea>
             <a class="btn viewlandowner" href="<?php echo URL?>/accountant/landownersGraphpage">View Landowner</a>
             <a class="btn accept">Accept</a>
             <a class="btn cancel">Reject</a>
