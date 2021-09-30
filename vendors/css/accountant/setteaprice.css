@@ -258,6 +258,7 @@ justify-self: center ;
   display: grid;
   align-items: center;
   justify-content: center;
+ 
   animation: fadeIn 2.5s;
   -webkit-animation: fadeIn 2.5s;
   -moz-animation: fadeIn 2.5s;
@@ -271,6 +272,7 @@ justify-self: center ;
   color: white;
   border-radius: 12px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .previousDetails button:hover {
