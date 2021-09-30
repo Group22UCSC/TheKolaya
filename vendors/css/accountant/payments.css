@@ -1,24 +1,114 @@
 .top-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 15px;
-    margin-bottom: 15px;
+  display: block;
+  background: rgb(35, 173, 104);
+  color: white;
+  height: 50px;
+  align-items: center;
+  justify-items: center;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  margin-top: 7px;
+  margin-bottom: 15px;
 }
-.top-container >div{
-    padding:1em;
-    align-items: center;
-}
-.middle{
-    background: rgb(35, 173, 104);
-    align-self: center;
-    justify-self: center;
-   border-radius: 50px;
-   color: white;
-    
-}
-/*  ****  Update tea form ************** */
+.top-container>p{
+text-align: center;
+padding-top: 15px;
 
+justify-self: center ;
+}
+/*  ****  payement form ************** */
 
+.formSection{
+  padding: 10px 90px 20px 90px;
+ 
+}
+.formSection form {
+	background-color: white;
+	border-radius: 20px;
+	-webkit-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
+	-moz-box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
+	box-shadow: 5px 5px 20px 0px rgba(173,173,173,1);
+	padding: 1.5em; 
+	@media screen and (min-width: 768px) {
+		padding: 2.5em;
+	}
+}
+
+.formSection h2 {
+	text-align: center;
+	font-size: 28px;
+	padding: 0;
+	margin-bottom: 20px;
+}
+
+@media screen and (min-width: 700px) {
+	.large-group {
+		display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	}
+	
+	.small-group {
+		width: 45%;
+	}
+}
+
+.formSection label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.formSection input, select {
+	padding: 10px 16px;
+	width: 100%;
+	outline: 0;
+	margin-bottom: 10px;
+	border-radius: 20px;
+	border: 0;
+	background-color: #ededed;
+	font-size: 14px;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+}
+
+.formSection .textarea-div {
+	width: 100%;
+}
+
+.formSection textarea {
+	padding: 10px;
+	width: 100%;
+	outline: 0;
+	margin-bottom: 20px;
+	border-radius: 20px;
+	border: 0;
+	background-color: #ededed;
+	font-size: 14px;
+	height: 100px;
+}
+
+.formSection .btn { 
+	background-color: dodgerblue;
+	padding: 12px 15px;
+	width: 100%;
+	font-size: 16px;
+  font-weight: 500;
+  opacity: 90%;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+	border-radius: 20px;
+  /* transition: 0.3s all ease; */
+  cursor: pointer;
+	color: white;
+	
+}
+.btn:hover {
+    background-color: royalblue;
+}
+.finalPayment input{
+  border: 1px solid ;
+  border-color: red;
+}
 
 /* **************** table container ********************** */
 .table-container{
@@ -193,69 +283,4 @@
   }
   
   /* *************************** Bottom  Pop Up form **************************** */
-  .open-button {
-    background-color: #555;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8;
-    position: fixed;
-    bottom: 23px;
-    right: 28px;
-    width: 280px;
-  }
-  
-  /* The popup form - hidden by default */
-  .form-popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-  }
-  
-  /* Add styles to the form container */
-  .form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
-  }
-  
-  /* Full-width input fields */
-  .form-container input[type=text], .form-container input[type=date] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  /* When the inputs get focus, do something */
-  .form-container input[type=text]:focus, .form-container input[type=date]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-  
-  /* Set a style for the submit/login button */
-  .form-container .btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-  }
-  
-  /* Add a red background color to the cancel button */
-  .form-container .cancel {
-    background-color: red;
-  }
-  
-  /* Add some hover effects to buttons */
-  .form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-  }
+ 
