@@ -66,7 +66,7 @@
 }
 
 
-.name{
+.name1{
   padding-top: 10px;
   width: 80%;
   padding-left: 20%;
@@ -101,12 +101,82 @@
 
  
 
-.tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
-.tg td{background-color:#e8edff;border-color:#aabcfe;border-style:solid;border-width:1px;color:#669;
-  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:20px 5px;word-break:normal;}
-.tg th{background-color:#b9c9fe;border-color:#aabcfe;border-style:solid;border-width:1px;color:#039;
-  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:20px 5px;word-break:normal;}
-.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-uorz{background-color:#38fff8;border-color:inherit;font-size:24px;text-align:center;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-
+.table-container{
+    font-family: 'Poppins', sans-serif;
+  display: grid;
+  padding: 40px;
+  color: #4f546c;
+  font-size: 0.9rem;
+ /* background-color: #f9fbff;*/
+}
+.teapricetable {
+    border-collapse: collapse;
+  /*  box-shadow: 0 5px 10px #e1e5ee;*/
+    background-color: white;
+    text-align: left;
+    overflow: hidden;
+    width: 90%;
+  }
+  .teapricetable tbody{
+    /* Set the height of table body */
+    height: 20px; 
+              
+    /* Set vertical scroll */
+    overflow-y: auto;
+      
+    /* Hide the horizontal scroll */
+    overflow-x: hidden; 
+  }
+  
+    .threadcls {
+      box-shadow: 0 5px 10px #e1e5ee;
+    }
+  
+    .thcls   {
+      padding: 1rem 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      font-size: 0.7rem;
+      font-weight: 900;
+    }
+  
+    .tdcls {
+      padding: 1rem 2rem;
+    }
+  
+    .acls {
+      text-decoration: none;
+      color:#2962ff;
+    }
+  
+    .status {
+      border-radius:  0.2rem;
+      background-color: red;
+      padding: 0.2rem 1rem;
+      text-align: center;
+  }
+     .status-pending {
+        background-color: #fff0c2;
+        color: #a68b00;
+      }
+      
+        
+       .status-paid {
+        background-color: #c8e6c9;
+        color:  #388e3c;
+      }
+  
+        .status-notupdated {
+        background-color: #ffcdd2;
+        color: #c62828;
+      }
+    
+  
+    .amount {
+      text-align: right;
+    }
+  
+   
+    tr:nth-child(even) {
+      background-color: #f4f6fb;
+    }

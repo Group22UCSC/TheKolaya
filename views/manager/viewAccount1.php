@@ -19,37 +19,52 @@
      
 <div class="table">
  
-    
-<table class="tg" style="undefined;table-layout: fixed; width: 1146px">
-<colgroup>
-<col style="width: 156px">
-<col style="width: 115px">
-<col style="width: 170px">
-<col style="width: 315px">
-<col style="width: 186px">
-<col style="width: 204px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-ovly">Name</th>
-    <th class="tg-ovly">ID</th>
-    <th class="tg-6b4q">User Type</th>
-    <th class="tg-6b4q">Address</th>
-    <th class="tg-6b4q">Monthly Weight</th>
-    <th class="tg-6b4q">Tea Quality</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-  </tr>
-</tbody>
-</table>
+
+
+<div class="table-container">
+    <div class="table-section">
+        <table class="teapricetable">
+            <thead class="threadcls">
+                <tr class="trcls">
+                    <th class="thcls">Name</th>
+                    <th class="thcls">ID</th>
+                    <th class="thcls">User Type</th>
+                    <th class="thcls">Address</th>
+                    <th class="thcls">Monthly Weight</th>
+                    <th class="thcls">Tea Quality</th>
+
+                </tr>
+            </thead>
+
+            <!-- <tr>
+                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">January</td>
+                <td class="tdcls">98</td>
+                <td class="tdcls">
+                    <p class="status status-paid">Updated</p>
+                </td>
+
+            </tr> -->
+
+            <tbody>
+
+
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">Kumud Perera</a></td>
+                    <td class="tdcls">001</td>
+                    <td class="tdcls">Landowner</td>
+                    <td class="tdcls">Colombo 07</td>
+                    <td class="tdcls">300Kg</td>
+                    <td class="tdcls">Good</td>
+                    
+
+                </tr>
+               
+            </tbody>
+
+        </table>
+    </div>
+</div>
 
 
 

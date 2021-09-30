@@ -9,36 +9,49 @@
    
 <div class="table">
 
-<table class="tg" style="undefined;table-layout: fixed; width: 1192px">
-<colgroup>
-<col style="width: 274px">
-<col style="width: 78px">
-<col style="width: 166px">
-<col style="width: 396px">
-<col style="width: 152px">
-<col style="width: 126px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-h7c6">Name</th>
-    <th class="tg-h7c6">ID</th>
-    
-    <th class="tg-uorz">Address</th>
-   
-    <th class="tg-uorz">Tea Quality</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-    
-    <td class="tg-phtq"></td>
-    
-    <td class="tg-phtq"></td>
-  </tr>
-</tbody>
-</table>
+
+
+<div class="table-container">
+    <div class="table-section">
+        <table class="teapricetable">
+            <thead class="threadcls">
+                <tr class="trcls">
+                    <th class="thcls">Name</th>
+                    <th class="thcls">ID</th>
+                    <th class="thcls">Address</th>
+                   
+                    <th class="thcls">Tea Quality</th>
+
+                </tr>
+            </thead>
+
+            <!-- <tr>
+                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">January</td>
+                <td class="tdcls">98</td>
+                <td class="tdcls">
+                    <p class="status status-paid">Updated</p>
+                </td>
+
+            </tr> -->
+
+            <tbody>
+
+
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">Kumud Perera</a></td>
+                    <td class="tdcls">001</td>
+                    <td class="tdcls">colombo 07</td>
+                    <td class="tdcls">Good</td>
+                    
+
+                </tr>
+               
+            </tbody>
+
+        </table>
+    </div>
+</div>
       
      </div>
       

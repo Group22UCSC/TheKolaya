@@ -41,27 +41,6 @@
        </a>
        <span class="tooltip">Firewood</span>
      </li>
-     <li class="mobile-nav-icon">
-      <a href="#">
-        <i class="fas fa-bell"></i>
-        <span class="links_name">Notification</span>
-      </a>
-      <span class="tooltip">Notification</span>
-    </li>
-    <li class="mobile-nav-icon">
-      <a href="#">
-        <i class="fas fa-user"></i>
-        <span class="links_name">Profile</span>
-      </a>
-      <span class="tooltip">Profile</span>
-    </li>
-     <li>
-       <a href="<?php echo URL?>login/logout">
-        <i class="fas fa-sign-out-alt"></i>
-         <span class="links_name">Logout</span>
-       </a>
-       <span class="tooltip">Logout</span>
-     </li>
     </ul>
 
     <div class="social_media_icon">
@@ -74,19 +53,101 @@
     
   </div>
   <section class="home-section">
-      <div class="header">
-        <div class="thekolya-logo"><img src="<?php echo URL?>/vendors/images/thekolaya.png" alt=""></div>
-        <ul>
-          <li class="bell-notification"><i class="fas fa-bell"></i></li>
-          <li class="profile">
-            <div class="profile-container">
-              <div class="profile-details">
-                <div class="name_job">
-                  <div class="name">Kumud Perera<br><span>Supervisor</span></div>
-                </div>
-                <img src="<?php echo URL?>/vendors/images/supervisor/profile.jpg" alt="profileImg">
+  <div class="wrapper">
+        <div class="navbar">
+          <div class="navbar_left">
+            <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/thekolaya.png" alt=""></div>
+          </div>
+      
+          <div class="navbar_right">
+            <div class="notifications">
+              <div id="bell" class="icon_wrap"><i class="far fa-bell"></i></div>
+              
+              <div class="notification_dd">
+                  <ul class="notification_ul">
+                      <?php
+                        for($i = 0; $i < 4; $i++) {
+                          echo '<li class="starbucks success">
+                                  <div class="notify_icon">
+                                    <span class="icon"><i class="fas fa-bell"></i></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                                </li>';
+                        }
+                      ?> 
+                      <li class="show_all">
+                          <p class="link">Show All Activities</p>
+                      </li> 
+                  </ul>
+              </div>
+              
+            </div>
+            <div class="profile">
+              <div class="icon_wrap" id="account-web">
+                <img src="<?php echo URL?>vendors/images/supervisor/profile.jpg" alt="profile_pic">
+                <span class="name">Kumud Perera</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+      
+              <div class="profile_dd">
+                <ul class="profile_ul">
+                  <li class="profile_li">
+                      <div class="icon_wrap" id="account">
+                        <img src="<?php echo URL?>vendors/images/supervisor/profile.jpg" alt="profile_pic">
+                        <span class="name">Kumud Perera</span>
+                      </div>
+                  </li>
+                  <li><a class="profile" href="#"><span class="picon"><i class="fas fa-user-alt"></i></span>Profile</a></li>
+                  <li><a class="settings" href="#"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
+                  <li><a class="logout" href="<?php echo URL?>login/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+                </ul>
               </div>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
+        
+        <div class="popup">
+          <div class="shadow"></div>
+          <div class="inner_popup">
+              <div class="notification_dd">
+                  <ul class="notification_ul">
+                      <li class="title">
+                          <p>All Notifications</p>
+                          <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
+                      </li>
+                      <?php
+                        for($i = 0; $i < 6; $i++) {
+                          echo '<li class="starbucks success">
+                                  <div class="notify_icon">
+                                    <span class="icon"><i class="fas fa-bell"></i></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                                </li>';
+                        }
+                      ?>
+                  </ul>
+              </div>
+          </div>
+        </div>
+        
       </div>

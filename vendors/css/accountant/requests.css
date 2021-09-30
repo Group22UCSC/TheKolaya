@@ -3,6 +3,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 15px;
     margin-bottom: 15px;
+    
 }
 .top-container >div{
     padding:1em;
@@ -21,19 +22,31 @@
 .table-container{
     font-family: 'Poppins', sans-serif;
   display: grid;
-  
+  grid-template-columns: 1fr 1fr;
   padding: 40px;
   color: #4f546c;
   font-size: 0.9rem;
   background-color: #91f084;
+  animation: fadeIn 2.5s;
+      -webkit-animation: fadeIn 2.5s;
+      -moz-animation: fadeIn 2.5s;
+      -o-animation: fadeIn 2.5s;
+      -ms-animation: fadeIn 2.5s;
 }
-.requeststbl {
+#requeststbl {
     border-collapse: collapse;
     box-shadow: 0 5px 10px #e1e5ee;
     background-color: white;
     text-align: left;
     overflow: hidden;
     width: 100%;
+    transition: all .5s ease;
+  }
+  #requeststbl tr:not(:first-child){
+    cursor: pointer; transition: all .25s ease-in-out;
+  }
+  #requeststbl tr:not(:first-child):hover{
+    background-color: #ddd;
   }
   .teapricetable tbody{
     /* Set the height of table body */
@@ -91,10 +104,47 @@
     }
 
   /*  ***************************bottom payment form ************************ */
-    .paymentFormContainer{
-        height: auto;
-        padding: 15px;
+    .form-popup{
+        height: 350px;
+        padding-left: 30px;
+        
     }
+
+    /* .fade-in-image {
+      animation: fadeIn 5s;
+      -webkit-animation: fadeIn 5s;
+      -moz-animation: fadeIn 5s;
+      -o-animation: fadeIn 5s;
+      -ms-animation: fadeIn 5s;
+    } */
+    @keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-moz-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-webkit-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-o-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-ms-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+
+
+
+
 .form-inline {
     display: flex;
     flex-flow: row wrap;
@@ -192,22 +242,26 @@
     position: fixed;
     bottom: 23px;
     right: 28px;
-    width: 280px;
+    width: 480px;
   }
-  
+  /* .buttonset{
+    margin-top: 35px;
+    display: inline;
+  } */
   /* The popup form - hidden by default */
   .form-popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
+    display: grid;
+    
+    /* position: fixed; */
+    /* bottom: 0;
+    right: 15px; */
+    ;
+    /* z-index: 9; */
   }
   
   /* Add styles to the form container */
   .form-container {
-    max-width: 300px;
+    /* max-width: 300px; */
     padding: 10px;
     background-color: white;
   }
@@ -215,11 +269,12 @@
   /* Full-width input fields */
   .form-container input[type=text], .form-container input[type=date] {
     width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+    padding: 10px;
+    margin: 5px 0 20px 0;
     border: none;
     background: #f1f1f1;
   }
+  
   
   /* When the inputs get focus, do something */
   .form-container input[type=text]:focus, .form-container input[type=date]:focus {
@@ -229,26 +284,31 @@
   
   /* Set a style for the submit/login button */
   .form-container .btn {
-    display: inline-block;
-    background-color: #04AA6D;
+    background-color:  rgb(64, 231, 139);
+    /* margin:5%; */
     color: white;
-    padding: 10px 20px;
-    border: none;
+    padding: 15px;
     cursor: pointer;
-    width: 100%;
-    margin:6px;
-    opacity: 0.8;
+    border-radius: 12px;
+    text-decoration: none;  
   }
-  .form-container .a {
-    margin:10px;
+  .accept:hover{
+    background-color:rgb(89, 202, 140);
   }
+  
   /* Add a red background color to the cancel button */
   .form-container .cancel {
-    background-color: red;
+    background-color: rgb(211, 36, 36);
+  }
+  .cancel:hover{
+    background-color: rgb(212, 66, 66);
   }
   .form-container .viewlandowner {
     background-color: dodgerblue;
-    text-decoration: none;
+
+  }
+  .viewlandowner:hover{
+    background-color: royalblue;
   }
   /* Add some hover effects to buttons */
   .form-container .btn:hover, .open-button:hover {
