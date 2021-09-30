@@ -1,6 +1,6 @@
 <?php include 'topContainer.php';?>
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">
-<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <div class="text">
     <h2>THINGS TO DO</h2>
     </div>
@@ -11,25 +11,16 @@
       <tr>
         <th>Landowner <br> ID</th>
         <th>Container <br>Estimation</th>
-        
       </tr>
+      <?php
+        for($i=1;$i<4;$i++){
+          echo '<tr data-href ="Agent/updateTeaWeight">
+                    <td>L00'.$i.'</td>                                    
+                    <td>28</td>
+                </tr>';                
+        }
+      ?>
       
-      <tr data-href="<?php echo URL?>Agent/updateTeaWeight">
-        <td>L001</td>
-        <td>10</td>
-        
-      </tr>
-      <tr data-href="<?php echo URL?>Agent/updateTeaWeight">
-        <td>L002</td>
-        <td>20</td>
-       
-      </tr>
-      <tr data-href="<?php echo URL?>Agent/updateTeaWeight">
-        <td>L003</td>
-        <td>4</td>
-        
-      </tr>
-
     </table>
   </div>
   <div class="deliverylist">
@@ -42,27 +33,17 @@
         <th>Amount</th>
         
       </tr>
-      <tr data-href="<?php echo URL?>Agent/confirmDeliverables">
-        <td>L001</td>
-        <td>R10</td>
-        <td>Fertilizer</td>
-        <td>10</td>
-        
-      </tr>
-      <tr data-href="<?php echo URL?>Agent/confirmDeliverables">
-        <td>L002</td>
-        <td>R20</td>
-        <td>Advance</td>
-        <td>5000</td>
-       
-      </tr>
-      <tr data-href="<?php echo URL?>Agent/confirmDeliverables">
-        <td>L003</td>
-        <td>R4</td>
-        <td>Firewood</td>
-        <td>25</td>
-        
-      </tr>
+     
+      <?php
+        for($i=1;$i<4;$i++){
+          echo '<tr data-href ="Agent/confirmDeliverables">
+                    <td>L00'.$i.'</td>
+                    <td>R'.$i.'</td>
+                    <td>Firewood</td>
+                    <td>28</td>
+                </tr>';                
+        }
+      ?>
     </table>
   </div>
 </div>
