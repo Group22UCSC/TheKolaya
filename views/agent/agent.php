@@ -1,11 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title><?php echo TITLE?></title>
+    <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
 <?php include 'topContainer.php';?>
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-<div class="text">
-    <h2>THINGS TO DO</h2>
-    </div>
 <div class="tables">
   <div class="availablelist">
+    <?php $x=4?>
+   <h4>You have <?php echo $x?> landowners to collect <br>tea leaves today!</h4>
     <h3 class ="availabletopic">Available Landowner List </h3>
     <table class = "availabletable" id="table">
       <tr>
@@ -13,7 +25,7 @@
         <th>Container <br>Estimation</th>
       </tr>
       <?php
-        for($i=1;$i<4;$i++){
+        for($i=1;$i<=$x;$i++){
           echo '<tr data-href ="Agent/updateTeaWeight">
                     <td>L00'.$i.'</td>                                    
                     <td>28</td>
@@ -24,6 +36,8 @@
     </table>
   </div>
   <div class="deliverylist">
+  <?php $x=3?>
+   <h4>You have <?php echo $x?> landowners to deliver <br>requested items today!</h4>
     <h3 class="deliverytopic">Delivery List </h3>
     <table class="deliverytable">
     <tr>
@@ -35,7 +49,7 @@
       </tr>
      
       <?php
-        for($i=1;$i<4;$i++){
+        for($i=1;$i<=$x;$i++){
           echo '<tr data-href ="Agent/confirmDeliverables">
                     <td>L00'.$i.'</td>
                     <td>R'.$i.'</td>
