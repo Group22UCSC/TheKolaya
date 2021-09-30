@@ -10,33 +10,55 @@
    
 <div class="table">
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
-.tg td{background-color:#e8edff;border-color:#aabcfe;border-style:solid;border-width:1px;color:#669;
-  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:20px 20px;word-break:normal;}
-.tg th{background-color:#b9c9fe;border-color:#aabcfe;border-style:solid;border-width:1px;color:#039;
-  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:20px 20px;word-break:normal;}
-.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-uorz{background-color:#38fff8;border-color:inherit;font-size:24px;text-align:center;vertical-align:top}
-</style>
-<table class="tg" style="undefined;table-layout: fixed; width: 909px">
-<colgroup>
-<col style="width: 414px">
-<col style="width: 495px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-uorz">Date</th>
-    <th class="tg-uorz">Full Fertilizer Stock</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-phtq"></td>
-    <td class="tg-phtq"></td>
-  </tr>
-</tbody>
-</table>
+<div class="table-container">
+    <div class="table-section">
+        <table class="teapricetable">
+            <thead class="threadcls">
+                <tr class="trcls">
+                    <th class="thcls">Date</th>
+                    <th class="thcls">Remain Fertilizer Stock</th>
+                </tr>
+            </thead>
+
+            <!-- <tr>
+                <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                <td class="tdcls">January</td>
+                <td class="tdcls">98</td>
+                <td class="tdcls">
+                    <p class="status status-paid">Updated</p>
+                </td>
+
+            </tr> -->
+
+            <tbody>
+
+
+                <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021.01.10</a></td>
+                    <td class="tdcls">150Kg</td>
+                  
+                </tr>
+
+                 <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021.28.09</a></td>
+                    <td class="tdcls">200Kg</td>
+                  
+                </tr>
+               
+                 <tr>
+                    <td class="tdcls"><a class="acls" href="#">2021.25.09</a></td>
+                    <td class="tdcls">250Kg</td>
+                  
+                </tr>
+
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+      
+    
       
      </div>
       
