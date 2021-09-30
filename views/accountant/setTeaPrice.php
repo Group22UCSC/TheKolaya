@@ -43,7 +43,7 @@
             <label>Month : September</label>
         </div>
         <div class="price">
-            <label>Tea Price(Rs): 2300</label>
+            <label>Tea Price(Rs): 2500</label>
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
@@ -77,6 +77,7 @@
         }
     }
     function scrollFunc(){
+
         window.scrollTo(0, 500);
     }
     // let scrollerID;
