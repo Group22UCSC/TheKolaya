@@ -60,7 +60,8 @@
 				<input id="advance" type="text" name="advance"/>
 			</div> -->
 			
-				<input id="submit" class="btn" type="submit" name="submit"/>
+                <input id="submit" class="btn" type="submit" name="submit"/>
+                
 
 		</div>
 	</form>
