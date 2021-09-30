@@ -50,6 +50,14 @@ class Supervisor extends Controller{
     function firewoodStock() {
         $this->view->showPage('Supervisor/firewoodStock');
     }
+
+    function profile() {
+        $this->view->showPage('Supervisor/profile');
+    }
+
+    function editProfile() {
+        $this->view->showPage('Supervisor/editProfile');
+    }
 }
 
 ?>
