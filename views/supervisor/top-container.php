@@ -56,7 +56,7 @@
   <div class="wrapper">
         <div class="navbar">
           <div class="navbar_left">
-            <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/thekolaya-white.png" alt=""></div>
+            <div class="thekolya-logo"><img src="<?php echo URL?>vendors/images/thekolaya.png" alt=""></div>
           </div>
       
           <div class="navbar_right">
