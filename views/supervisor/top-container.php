@@ -107,8 +107,8 @@
                         <span class="name">Kumud Perera</span>
                       </div>
                   </li>
-                  <li><a class="profile" href="#"><span class="picon"><i class="fas fa-user-alt"></i></span>Profile</a></li>
-                  <li><a class="settings" href="#"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
+                  <li><a class="profile" href="<?php echo URL?>Supervisor/profile"><span class="picon"><i class="fas fa-user-alt"></i></span>Profile</a></li>
+                  <li><a class="settings" href="<?php echo URL?>Supervisor/editProfile"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
                   <li><a class="logout" href="<?php echo URL?>login/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
                 </ul>
               </div>

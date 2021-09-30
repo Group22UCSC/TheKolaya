@@ -25,5 +25,3 @@ function menuBtnChange() {
    closeBtn.classList.replace("fa-times","fa-bars");
  }
 }
-
-

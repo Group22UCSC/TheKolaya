@@ -176,6 +176,24 @@
   margin-right: 10px;
 }
 
+.sidebar .social_media_icon {
+  display: none;
+}
+
+.sidebar .social_media{
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  transform: translateX(-40%);
+  display: flex;
+}
+
+.sidebar .social_media a{
+  display: block;
+  text-align: center;
+  margin: 0 5px;
+}
+
 .home-section {
   position: relative;
   background: #e4e9f7;
