@@ -1,25 +1,70 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/payments.css">
-<div class="middle-section">
-    <div class="top-container">
-        <div class="left"></div>
-        <div class="middle">
-            Monthly Payments
-        </div>
-        <div class="right"></div>
-    </div>
+<div class="top-container">
+    <p>Monthly Payment</p>
 </div>
 <!--  ******* search bar ********* -->
-<div class="searchbar">
+<!-- <div class="searchbar">
     <form class="search-form" action="#">
-        <label for="lid">Landowner's ID:</label>
-        <input type="text" id="lid" placeholder="Lid" name="lid">
-        <button type="submit">Search</button>
-        <label for="lname">Landowner's name:</label>
-        <input type="text" id="lname" placeholder="Landowner's Name" name="lname">
+        
+        <label for="lname" style="font-weight: 600;">Enter Lid:</label>
+        <input type="text" id="lname" placeholder="Landowner Id" name="lname">
         <button type="submit">Search</button>
     </form>
+</div> -->
+<div class="formSection">
+<form>
+		<!-- <h2>CSS Form</h2> -->
+		<div class="large-group">
+			<div class="small-group">
+				<label for="lid">Lid</label>
+				<input id="lid" type="text" name="lid" placeholder="Enter Lid" autofocus />
+			</div>
+			
+			<div class="small-group">
+				<label for="name">Landowner's Name</label>
+				<input for="name" type="text" name="name"readonly />
+			</div>
+			
+			<div class="small-group">
+                <label for="year">Year</label>
+				<input for="year" type="text" name="year" readonly/>
+			</div>
+			<div class="small-group">
+				<label for="month">Month</label>
+				<input for="month" type="text" name="month" readonly/>
+			</div>
+			
+			<div class="small-group">
+				<label for="grossIncome">Gross Income(Rs)</label>
+				<input id="grossIncome" type="text" name="grossIncome" readonly/>
+			</div>
+			
+			<div class="small-group">
+				<label for="fertilizer">Fertilizer Expenses(Rs)</label>
+				<input id="fertilizer" type="text" name="fertilizer" readonly/>
+			</div>
+            
+            <div class="small-group">
+				<label for="advance">Advance Expenses(Rs)</label>
+				<input id="advance" type="text" name="advance" readonly/>
+            </div>
+            <div class="small-group finalPayment">
+				<label for="final" style="color:red">Final Payment(Rs)</label>
+				<input id="final" type="text" name="final" readonly/>
+            </div>
+            <!-- for text area  -->
+			<!-- <div class="textarea-div">
+				<label for="advance">Advance Expenses</label>
+				<input id="advance" type="text" name="advance"/>
+			</div> -->
+			
+                <input id="submit" class="btn" type="submit" name="submit"/>
+                
+
+		</div>
+	</form>
 </div>
 <!-- Table container -->
 <div class="table-container">
@@ -34,7 +79,7 @@
                     <th class="thcls">Fertilizer Expences</th>
                     <th class="thcls">Advance Expences</th>
                     <th class="thcls">Final Payment</th>
-                    <th class="thcls">Status</th>
+                    <!-- <th class="thcls">Status</th> -->
 
                 </tr>
             </thead>
@@ -53,68 +98,70 @@
 
 
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <td class="tdcls">2021</td>
                     <td class="tdcls">February</td>
                     <td class="tdcls">129</td>
                     <td class="tdcls">12500</td>
                     <td class="tdcls">0</td>
                     <td class="tdcls">1500</td>
                     <td class="tdcls">11000</td>
-                    <td class="tdcls">
-                        <p class="status status-paid">Paid</p>
-                    </td>
+                    <!-- <td class="tdcls">
+                        <a class="status status-paid" href="#" onclick="openForm()">Select</a>
+                    </td> -->
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <!-- <td class="tdcls"><a class="acls" href="#">2021</a></td> -->
+                    <td class="tdcls">2021</td>
                     <td class="tdcls">March</td>
                     <td class="tdcls">120</td>
                     <td class="tdcls">12500</td>
                     <td class="tdcls">0</td>
                     <td class="tdcls">1500</td>
                     <td class="tdcls">11000</td>
-                    <td class="tdcls">
+                    <!-- <td class="tdcls">
                         <p class="status status-paid">Paid</p>
-                    </td>
+                    </td> -->
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <!-- <td class="tdcls"><a class="acls" href="#">2021</a></td> -->
+                    <td class="tdcls">2021</td>
                     <td class="tdcls">March</td>
                     <td class="tdcls">120</td>
                     <td class="tdcls">12500</td>
                     <td class="tdcls">0</td>
                     <td class="tdcls">1500</td>
                     <td class="tdcls">11000</td>
-                    <td class="tdcls">
+                    <!-- <td class="tdcls">
                         <p class="status status-paid">Paid</p>
-                    </td>
+                    </td> -->
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <!-- <td class="tdcls"><a class="acls" href="#">2021</a></td> -->
+                    <td class="tdcls">2021</td>
                     <td class="tdcls">February</td>
                     <td class="tdcls">129</td>
                     <td class="tdcls">12500</td>
                     <td class="tdcls">0</td>
                     <td class="tdcls">1500</td>
                     <td class="tdcls">11000</td>
-                    <td class="tdcls">
+                    <!-- <td class="tdcls">
                         <p id="pendingbtn" class="status status-pending">Pending</p>
-                    </td>
+                    </td> -->
 
                 </tr>
                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021</a></td>
+                    <!-- <td class="tdcls"><a class="acls" href="#">2021</a></td> -->
+                     <td class="tdcls">2021</td>
                     <td class="tdcls">February</td>
                     <td class="tdcls">129</td>
                     <td class="tdcls">12500</td>
                     <td class="tdcls">0</td>
                     <td class="tdcls">1500</td>
                     <td class="tdcls">11000</td>
-                    <td class="tdcls">
-                        <p id="pendingbtn" class="status status-pending">Pending</p>
-                    </td>
+                    
 
                 </tr>
             </tbody>
@@ -122,35 +169,6 @@
         </table>
     </div>
 </div>
-<div id="" class="paymentFormContainer">
-    <button class="open-button" onclick="openForm()">Make The Payment</button>
 
-    <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
-            <h1>Monthly Payment</h1>
 
-            <label for="lid"><b>Lid</b></label>
-            <input type="text" placeholder="Enter Lid" name="lid" required>
-
-            <label for="date"><b>Date</b></label>
-            <input type="date" placeholder="Enter Date" name="date" required>
-
-            <label for="amount"><b>Amount(Rs)</b></label>
-            <input type="text" placeholder="Enter the amount" name="amount" required>
-
-            <button type="submit" class="btn">Pay</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
-
-    <script>
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-        }
-    </script>
-</div>
 <?php include 'bottom-container.php'; ?>

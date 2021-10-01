@@ -1,9 +1,9 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
-<script defer src="<?php echo URL ?>vendors/js/accountant/setteaprice.js""></script>
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateProducts.css">
+<script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
 <div class="top-container">
-    <p>Set Tea Price</p>
+    <p>Update Products</p>
 </div>
 <!--  *** Update tea price box **** -->
 <div class="wrapper">
@@ -12,19 +12,26 @@
         </div>         -->
     <div class="form">
         <div class="inputfield">
-            <label>Year</label>
-            <input type="text" class="input" value="2021" >
+            <label for="pid">Product Id</label>
+            <!-- <input list="browsers"> -->
+            <select id="productIds" class="input">
+                <option value="P001">P001</option>
+                <option value="P002">P002</option>
+                <option value="P003">P003</option>
+                <option value="P004">P004</option>
+                <option value="P005">P005</option>
+            </select>
         </div>
         <div class="inputfield">
-            <label>Month</label>
-            <input type="text" class="input" value="octomber">
+            <label for="productName">Product Name</label>
+            <input type="text" class="input" id="productName">
         </div>
         <div class="inputfield">
-            <label>Tea Price(Rs)</label>
-            <input type="text" class="input">
+            <label for="amount" >Amount(Kg)</label>
+            <input type="text" class="input" id="amount">
         </div>
         <div class="inputfield">
-            <input type="submit" value="Set Price" data-modal-target="#modal" class="btn">
+            <input type="submit" value="Update" data-modal-target="#modal" class="btn">
         </div>
     </div>
 </div>
@@ -32,21 +39,21 @@
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
   <div class="modal" id="modal">
     <div class="modal-header">
-      <div class="title">Confirm Tea Price</div>
+      <div class="title">Update Confirmation</div>
       <button data-close-button class="close-button">&times;</button>
     </div>
     <div class="modal-body">
         <div class="year">
-            <label>Year : 2021</label>
+            <label>Product Id : P002</label>
         </div>
         <div class="month">
-            <label>Month : September</label>
+            <label>Product Name : B102-Green</label>
         </div>
         <div class="price">
-            <label>Tea Price(Rs): 2500</label>
+            <label>Amount(Kg): 122</label>
         </div>
         <div class="buttonSection">
-        <a class="editbtn" data-close-button>Edit</a>
+        <a class="editbtn" data-close-button>Cancel</a>
         
         <input type="submit" value="Confirm" class="confirmbtn" >
         
@@ -57,10 +64,10 @@
   </div>
   <div id="overlay"></div>
 
-<!--  **********   view previous details   *** -->
+<!--  **********   view prouduct stock   *** -->
 
 <div class="previousDetails">
-    <button  onclick="previousPrices();scrollFunc();">Previous Tea Prices</button>
+    <button  onclick="previousPrices();scrollFunc();">View Updated Product List</button>
 </div>
 <script>
     function openModel(){
@@ -120,9 +127,10 @@
         <table class="teapricetable">
             <thead class="threadcls">
                 <tr class="trcls">
-                    <th class="thcls">Year</th>
-                    <th class="thcls">Month</th>
-                    <th class="thcls">Price(Rs)</th>
+                    <th class="thcls">Updated Date</th>
+                    <th class="thcls">Pid</th>
+                    <th class="thcls">Product Name</th>
+                    <th class="thcls">Amount(Kg)</th>
 
                 </tr>
             </thead>
@@ -139,50 +147,46 @@
 
 
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">February</td>
-                <td class="tdcls">129</td>
-                
+                <td class="tdcls">12/10/2021</td>
+                <td class="tdcls">P001</td>
+                <td class="tdcls">B-345-Black-Tea</td>
+                <td class="tdcls">234</td>
 
             </tr>
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">March</td>
-                <td class="tdcls">120</td>
-               
+                <td class="tdcls">12/10/2021</td>
+                <td class="tdcls">P001</td>
+                <td class="tdcls">B-345-Black-Tea</td>
+                <td class="tdcls">234</td>
 
             </tr>
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">April</td>
-                <td class="tdcls">125</td>
-               
+                 <td class="tdcls">12/10/2021</td>
+                <td class="tdcls">P001</td>
+                <td class="tdcls">B-345-Black-Tea</td>
+                <td class="tdcls">234</td>
 
             </tr>
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">May</td>
-                <td class="tdcls">127</td>
+                 <td class="tdcls">12/10/2021</td>
+                <td class="tdcls">P001</td>
+                <td class="tdcls">B-345-Black-Tea</td>
+                <td class="tdcls">234</td>
             
             </tr>
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">June</td>
-                <td class="tdcls">127</td>
-            
+                 <td class="tdcls">12/10/2021</td>
+                <td class="tdcls">P001</td>
+                <td class="tdcls">B-345-Black-Tea</td>
+                <td class="tdcls">234</td>
             </tr>
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">July</td>
-                <td class="tdcls">127</td>
-            
+                <td class="tdcls">12/10/2021</td>
+                <td class="tdcls">P001</td>
+                <td class="tdcls">B-345-Black-Tea</td>
+                <td class="tdcls">234</td>
             </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">August</td>
-                <td class="tdcls">127</td>
             
-            </tr>
             
 
         </table>

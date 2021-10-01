@@ -37,11 +37,11 @@
        <span class="tooltip">Update Products</span>
      </li>
      <li>
-       <a href="<?php echo URL?>accountant/payments">
+       <a href="<?php echo URL?>productmanager/products">
         <i class="fas fa-coffee fa-2x"></i>
-         <span class="links_name">Products</span>
+         <span class="links_name">Product Stock</span>
        </a>
-       <span class="tooltip">Products</span>
+       <span class="tooltip">Product Stock</span>
      </li>
      <li>
        <a href="<?php echo URL?>accountant/setTeaPrice">
@@ -51,7 +51,7 @@
        <span class="tooltip">Update Auction</span>
      </li>
      <li>
-      <a href="#">
+      <a href="<?php echo URL?>productmanager/auctionDetails">
        <i class="fas fa-file-invoice-dollar"></i>
         <span class="links_name">Auction Details</span>
       </a>
