@@ -68,19 +68,80 @@
           <div class="table-row"><div class="table-name"><b>Landowner Request Details</b></div></div>
           <div class="table-row table-head">
             <div class="table-element"><b>Request Date</b></div>
-            <div class="table-element"><b>Tea Quality</b></div>
+            <!-- <div class="table-element"><b>Tea Quality</b></div> -->
             <div class="table-element"><b>Monthly Tea Amount(kg)</b></div>
           </div>
           <?php
             for($i = 0; $i < 2; $i++) {
               echo '<div class="table-row">
                       <div class="table-element">Lan-00'.$i.'</div>
-                      <div class="table-element">Sasindu Wijegunasinghe</div>
                       <div class="table-element">50'.$i.'</div>
                     </div>';
             }
           ?>
 
+        </div>
+        <div class="landowner-rate-outside">
+          <div class="landowner-rate">
+            <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Sasindu's Tea Quality</h2>
+            <div class="row">
+              <div class="side">
+                <div>5 stars</div>
+              </div>
+              <div class="middle">
+                <div class="bar-container">
+                  <div class="bar-5"></div>
+                </div>
+              </div>
+              <div class="side right">
+                <div>150</div>
+              </div>
+              <div class="side">
+                <div>4 stars</div>
+              </div>
+              <div class="middle">
+                <div class="bar-container">
+                  <div class="bar-4"></div>
+                </div>
+              </div>
+              <div class="side right">
+                <div>63</div>
+              </div>
+              <div class="side">
+                <div>3 stars</div>
+              </div>
+              <div class="middle">
+                <div class="bar-container">
+                  <div class="bar-3"></div>
+                </div>
+              </div>
+              <div class="side right">
+                <div>15</div>
+              </div>
+              <div class="side">
+                <div>2 stars</div>
+              </div>
+              <div class="middle">
+                <div class="bar-container">
+                  <div class="bar-2"></div>
+                </div>
+              </div>
+              <div class="side right">
+                <div>6</div>
+              </div>
+              <div class="side">
+                <div>1 star</div>
+              </div>
+              <div class="middle">
+                <div class="bar-container">
+                  <div class="bar-1"></div>
+                </div>
+              </div>
+              <div class="side right">
+                <div>20</div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 <?php include 'vendors/js/supervisor/table-js.php'?>
