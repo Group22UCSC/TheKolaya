@@ -26,8 +26,16 @@ class Agent extends Controller{
         $this->view->showPage('Agent/Deliverables');
     }
 
-   
+    function profile() {
+        $this->view->showPage('Agent/agentProfile');
+    }
 
+    function editProfile() {
+        $this->view->showPage('Agent/agentEditProfile');
+    }
 }
+
+
+
 
 ?>
