@@ -23,16 +23,18 @@
       <tr>
         <th>Landowner <br> ID</th>
         <th>Container <br>Estimation</th>
+        
       </tr>
       <?php
         for($i=1;$i<=$x;$i++){
-          echo '<tr data-href ="Agent/updateTeaWeight">
-                    <td>L00'.$i.'</td>                                    
-                    <td>28</td>
+          echo '<tr>
+          
+                    <td><a href="www.google.com"></a>L00'.$i.'</td>                                    
+                    <td>28</td>   
+                    <td><button class="btn"><i class="fa fa-trash"></i> Remove</button></i></td>                    
                 </tr>';                
         }
-      ?>
-      
+      ?>      
     </table>
   </div>
   <div class="deliverylist">
@@ -45,6 +47,7 @@
         <th>Request ID</th>
         <th>Type</th>
         <th>Amount</th>
+        <th>Delete</th>
         
       </tr>
      
@@ -55,6 +58,7 @@
                     <td>R'.$i.'</td>
                     <td>Firewood</td>
                     <td>28</td>
+                    <td><button class="btn"><i class="fa fa-trash"></i> Remove</button></i></td>                    
                 </tr>';                
         }
       ?>
@@ -62,7 +66,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   document.addEventListener("DOMContentLoaded",() => {
     const rows = document.querySelectorAll("tr[data-href]");
     rows.forEach(row =>{
@@ -72,7 +76,23 @@
     });
 });
 
+var index, table = document.querySelector("tables");
 
+for(var i = 1; i < table.rows.length; i++)
+            {
+                table.rows[i].cells[3].onclick = function()
+                {
+                    var c = confirm("do you want to delete this row");
+                    if(c === true)
+                    {
+                        index = this.parentElement.rowIndex;
+                        table.deleteRow(index);
+                    }
+                    
+                    //console.log(index);
+                };
+                
+            }
 // $(document).ready(function(){
 //   $(document.table).on("click", "tr[data-href]", function(){
 //     window.location.href = this.dataset.href;
@@ -90,5 +110,5 @@ mytable.addEventListener("click", function(e){
   }
 })
 */
-</script>
+</script> -->
 <?php include 'bottomContainer.php';?>

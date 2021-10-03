@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
     <!-- Boxicons CDN Link -->
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
