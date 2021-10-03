@@ -103,6 +103,16 @@ form.sign-in-form {
   color: #333;
 }
 
+.input-field select{
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.input-field select option {
+  
+}
+
 .is-invalid {
   color: red;
   border: solid 1px red;
@@ -149,11 +159,6 @@ form.sign-in-form {
   text-decoration: none;
   font-size: 1.1rem;
   transition: 0.3s;
-}
-
-.social-icon:hover {
-  color: #4481eb;
-  border-color: #4481eb;
 }
 
 .btn {
