@@ -3,8 +3,6 @@
 
 
 
-
-
 .middle{
     background-color: white;
   margin-top: 15px;
@@ -24,7 +22,7 @@
 
 
 .table{
-   background-image: url("../../images/manager/2.jpg");
+   background-image: url("../../images/admin/7.jpg");
    background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 90%;
@@ -32,88 +30,7 @@
     height: 600px;
   padding-top: 125px;
   padding-bottom: 150px;
-  padding-left:23% ;
+  padding-left:10% ;
 
 }
 
-
-
-.table-container{
-    font-family: 'Poppins', sans-serif;
-  display: grid;
-  padding: 40px;
-  color: #4f546c;
-  font-size: 0.9rem;
- /* background-color: #f9fbff;*/
-}
-.teapricetable {
-    border-collapse: collapse;
-  /*  box-shadow: 0 5px 10px #e1e5ee;*/
-    background-color: white;
-    text-align: left;
-    overflow: hidden;
-    width: 60%;
-  }
-  .teapricetable tbody{
-    /* Set the height of table body */
-    height: 20px; 
-              
-    /* Set vertical scroll */
-    overflow-y: auto;
-      
-    /* Hide the horizontal scroll */
-    overflow-x: hidden; 
-  }
-  
-    .threadcls {
-      box-shadow: 0 5px 10px #e1e5ee;
-    }
-  
-    .thcls   {
-      padding: 1rem 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      font-size: 0.7rem;
-      font-weight: 900;
-    }
-  
-    .tdcls {
-      padding: 1rem 2rem;
-    }
-  
-    .acls {
-      text-decoration: none;
-      color:#2962ff;
-    }
-  
-    .status {
-      border-radius:  0.2rem;
-      background-color: red;
-      padding: 0.2rem 1rem;
-      text-align: center;
-  }
-     .status-pending {
-        background-color: #fff0c2;
-        color: #a68b00;
-      }
-      
-        
-       .status-paid {
-        background-color: #c8e6c9;
-        color:  #388e3c;
-      }
-  
-        .status-notupdated {
-        background-color: #ffcdd2;
-        color: #c62828;
-      }
-    
-  
-    .amount {
-      text-align: right;
-    }
-  
-   
-    tr:nth-child(even) {
-      background-color: #f4f6fb;
-    }
