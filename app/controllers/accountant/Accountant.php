@@ -26,9 +26,6 @@ class Accountant extends Controller{
     function requests(){
         $this->view->showPage('accountant/requests');
     }
-    function auction(){
-        $this->view->showPage('accountant/auction');
-    }
 }
 
 ?>

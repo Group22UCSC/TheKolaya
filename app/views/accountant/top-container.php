@@ -51,7 +51,7 @@
        <span class="tooltip">Tea Price</span>
      </li>
      <li>
-      <a href="<?php echo URL?>accountant/auction">
+      <a href="#">
        <i class="fas fa-chart-line fa-2x"></i>
         <span class="links_name">Auction Deatils</span>
       </a>
