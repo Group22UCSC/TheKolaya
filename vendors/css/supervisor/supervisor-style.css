@@ -15,6 +15,37 @@
     grid-row: 1;
 }
 
+.graph-container .green {
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+}
+
+.green.dark {
+    background-color: #089633;
+}
+
+.graph-container .right-div {
+    /* display: inline-block; */
+    float: right;
+    margin: 10px 10px 10px 0px;
+}
+
+.graph-container .left-div {
+    /* display: inline-block; */
+    float: left;
+    margin: 10px 0px 10px 10px;
+}
+
+.green.light {
+    background-color: #4DD101;
+}
+
+.graph-container span {
+    position: relative;
+    bottom: 10px;
+}
+
 .table-row {
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: minmax(30px, auto);

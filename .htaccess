@@ -1,9 +1,5 @@
-RewriteEngine On
-RewriteBase /Thekolaya/
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-l
-
-RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
-
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteRule ^$ vendors/ [L]
+  RewriteRule (.*) vendors/$1 [L]
+</IfModule>
