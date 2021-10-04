@@ -12,7 +12,7 @@
       <div class="forms-container">
         <div class="signin-signup">
 
-        <form action="<?php echo URL?>login" class="sign-in-form" method="POST">
+        <form action="<?php echo URL?>Login" class="sign-in-form" method="POST">
             <div class="logo">
             <img src="<?php echo URL?>vendors/images/login/logo.png" alt="">
             </div>

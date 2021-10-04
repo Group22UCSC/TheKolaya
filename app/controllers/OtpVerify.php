@@ -12,13 +12,12 @@ class OtpVerify extends Controller {
     function checkOtp() {
         $verifyOTP = "";
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $OTP = $_SESSION['OTP'];
             for($i = 1; $i < 5; $i++) {
                 $number = 'n-'.$i;
                 $verifyOTP .= trim($_POST[$number]);
             }
 
-            if($verifyOTP == $OTP){
+            if($verifyOTP == $_SESSION['OTP']){
                 $_SESSION['verify'] = 1;
                 $this->view->render('otp/correctOTP');
             }
@@ -31,7 +30,8 @@ class OtpVerify extends Controller {
     }
 
     function otpSend() {
-        $OTPcode = '1000';
+        $OTPcode = '1001';
+        $_SESSION['OTP'] = $OTPcode;
         // $OTPcode = rand(1000, 9999);
         // $contact_number = $_SESSION['contact_number'];
         // $_SESSION['OTP'] = $OTPcode;
