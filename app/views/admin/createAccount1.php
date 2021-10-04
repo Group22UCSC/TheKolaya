@@ -15,7 +15,7 @@
      
 <div class="wrapper11">
     <div class="title">
-     Landowner Registration Form
+     Employee Registration Form
     </div>
 
     <div class="form">
