@@ -16,7 +16,7 @@
             <h2 style="text-align: center; color: #089633;">Your OTP Is Correct</h2><br>
             <h3 style="text-align: center; color: #089633;">Now you can Log in</h3>
         </p>
-        <a style="text-decoration:none;" href="<?php echo URL?>Login"><input type="button" value="Login Here" name="verify" class="btn" /></a>
+        <a style="text-decoration:none;" href="<?php echo URL?>login"><input type="button" value="Login Here" name="verify" class="btn" /></a>
     </div>
     <script src="<?php echo URL?>vendors/js/otp/otp-js.js"></script>
 </body>

@@ -34,7 +34,13 @@ class Login extends Controller {
                   //User not Found
                   $data['contact_number_err'] = "No User Found";
               }
-  
+
+            //   if($this->model->isRegisteredUser($data['contact_number'])) {
+            //       //User is registred
+            //   }else {
+            //       $data['contact_number_err'] = "User is not Registered";
+            //   }
+
               //Make sure errors are empty
               if(empty($data['contact_number_err']) && empty($data['password_err'])) {
                   //Validated
