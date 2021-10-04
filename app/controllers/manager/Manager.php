@@ -55,7 +55,13 @@
             $this->view->showPage('Manager/Manager');
         }
 
+        public function profile() {
+        $this->view->showPage('manager/profile');
+        }
 
+        public function editProfile() {
+        $this->view->showPage('manager/editProfile');
+        }
 
     }
 ?>

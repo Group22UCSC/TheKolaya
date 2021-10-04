@@ -11,7 +11,7 @@
 
   <div class="k1">  
 
-<div class="wrapper">
+<div class="wrapper1">
     <div class="title">  Delete Form  </div>
 
     <div class="form">
