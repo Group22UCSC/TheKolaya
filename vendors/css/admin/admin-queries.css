@@ -1,0 +1,17 @@
+@media only screen and (max-width: 1150px){
+    .middle-conatiner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .middle-left {
+        width: 100%;
+
+    }
+
+    .middle-right {
+        margin-top: 50px;
+        width: 100%;
+    }
+
+}
