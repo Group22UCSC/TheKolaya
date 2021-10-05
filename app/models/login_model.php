@@ -33,6 +33,18 @@ class Login_Model extends Model {
         }
     }
 
+    public function isRegisteredUser($contact_number) {
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND verify = 1";
+
+        $row = $this->db->searchQuery($query);
+
+        if(count($row)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     //Login a user
     public function login($contact_number, $password) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";

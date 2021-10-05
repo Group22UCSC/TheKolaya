@@ -26,8 +26,13 @@ class Registration extends Controller {
                 'password_err' => '',
                 'confirm_password_err' => ''
             ];
+            
+            $_SESSION['name'] = $data['name'];
             $_SESSION['contact_number'] = $data['contact_number'];
-            $_SESSION['verify'] = 0;
+            $_SESSION['user_id'] = $data['user_id'];
+            $_SESSION['landowner_type'] = $data['landowner_type'];
+            $_SESSION['address'] = $data['address'];
+            $_SESSION['password'] = $data['password'];
             //Validate name
             if(empty($data['name'])) {
                 $data['name_err'] = "Please enter the name";
@@ -77,7 +82,6 @@ class Registration extends Controller {
                     $OTPcode = '1000';
                     $_SESSION['OTP'] = $OTPcode;
                     if($this->model->findUser($data['contact_number'], $data['user_id'])) {
-                        $this->view->render('otp/OTPverify', $data);
                         // $user = "94769372530";
                         // $password = "9208";
                         // $text = urlencode("Your තේ කොළය verification code is: ".$OTPcode);
@@ -89,15 +93,8 @@ class Registration extends Controller {
     
                         // $res= explode(":",$ret[0]);
     
-                        // redirect('OtpVerify');
+                        redirect('OtpVerify');
                     }
-                }
-                // $this->model->registration($data);
-                $data['verify'] = $_SESSION['verify'];
-                if($data['verify'] == 1) {
-                    $this->model->registration($data);
-                // flash('register_success', 'You are registed and can log in');
-                // redirect('login');
                 }
                 
 
@@ -110,10 +107,12 @@ class Registration extends Controller {
                 'name' => '',
                 'contact_number' => '',
                 'user_id' => '',
+                'landowner_type' => '',
                 'address' => '',
                 'password' => '',
+                'verify' => '',
                 'confirm_password' => '',
-                
+
                 'name_err' => '',
                 'contact_number_err' => '',
                 'user_id_err' => '',
@@ -121,10 +120,52 @@ class Registration extends Controller {
                 'password_err' => '',
                 'confirm_password_err' => ''
             ];
-            session_destroy();
             $this->view->render('user/registration', $data);
         }
 
+    }
+
+    function checkOtp() {
+        $verifyOTP = "";
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            for($i = 1; $i < 5; $i++) {
+                $number = 'n-'.$i;
+                $verifyOTP .= trim($_POST[$number]);
+            }
+
+            if($verifyOTP == $_SESSION['OTP']){
+                $_SESSION['verify'] = 1;
+                
+                $this->view->render('otp/correctOTP');
+                $this->updateVerifiedUser();
+            }
+            else{
+                $_SESSION['verify'] = 0;
+                $this->view->render('otp/wrongOTP');
+            }
+        }
+        
+    }
+
+    public function updateVerifiedUser(){
+        $data = [
+            'name' => $_SESSION['name'],
+            'contact_number' => $_SESSION['contact_number'],
+            'user_id' => $_SESSION['user_id'],
+            'landowner_type' => $_SESSION['landowner_type'],
+            'address' => $_SESSION['address'],
+            'password' => $_SESSION['password'],
+            'verify' => $_SESSION['verify']
+        ];
+        unset($_SESSION['name']);
+        unset($_SESSION['contact_number']);
+        unset($_SESSION['user_id']);
+        unset($_SESSION['landowner_type']);
+        unset($_SESSION['address']);
+        unset($_SESSION['password']);
+        unset($_SESSION['verify']);
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $this->model->registration($data);
     }
 }
 
