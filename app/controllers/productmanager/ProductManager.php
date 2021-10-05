@@ -14,7 +14,16 @@ class ProductManager extends Controller{
 
         $this->view->showPage('Productmanager/products');
     }
-   
+    function auctionDetails() {
+
+        $this->view->showPage('Productmanager/auctionDetails');
+    }
+    function updateProducts() {
+
+        $this->view->showPage('Productmanager/updateProducts');
+    }
+    
+    
 }
 
 ?>
