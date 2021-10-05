@@ -10,8 +10,16 @@
             $this->view->showPage('Admin/Admin');
         }
 
-        public function createAccount() {
+        public function createAccountSelect() {
+            $this->view->showPage('Admin/createAccountSelect');
+        }
+
+         public function createAccount() {
             $this->view->showPage('Admin/createAccount');
+        }
+
+         public function createAccount1() {
+            $this->view->showPage('Admin/createAccount1');
         }
 
          public function viewAccount() {
@@ -44,6 +52,14 @@
 
         public function setTeaPrice() {
             $this->view->showPage('Admin/setteaprice');
+        }
+
+        public function profile() {
+        $this->view->showPage('admin/profile');
+        }
+
+        public function editProfile() {
+        $this->view->showPage('admin/editProfile');
         }
     }
 
