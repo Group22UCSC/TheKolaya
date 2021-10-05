@@ -2,6 +2,25 @@
 <html lang="en">
   <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .signin-signup .forget-password {
+        margin-top: 10px;
+      }
+
+      .signin-signup .forget-password a:link,
+      .signin-signup .forget-password a:visited {
+        text-decoration: none;
+        color: #33aa3d;
+        padding: 1px 0px;
+        border-bottom: 1px solid transparent;
+        transition: border-bottom 0.2s;
+      }
+
+      .signin-signup .forget-password a:hover,
+      .signin-signup .forget-password a:active {
+        border-bottom: 1px solid #33aa3d;
+      }
+    </style>
     <title><?php echo TITLE?></title>
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
@@ -29,7 +48,10 @@
             </div>
 
             <input type="submit" value="Login" name="login" class="btn solid" />
+            
           </form>
+          <div style="text-align: center;" class="forget-password">
+          <a href="<?php echo URL?>login/forgetPassword">Forget Password?</a></div>
         </div>
       </div>
 
