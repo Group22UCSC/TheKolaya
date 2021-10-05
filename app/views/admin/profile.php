@@ -23,7 +23,7 @@
         <div class="wrapper-profile">
             <div class="profile-container middle">
                 <div class="profile-img middle">
-                    <img src="<?php echo URL?>vendors/images/admin/sasi.jpg" alt="">
+                    <img src="<?php echo URL?>vendors/images/admin/profile.jpg" alt="">
                 </div>
                 <div class="profile-container-text"><h1>Sasindu Wijegunasinghe</h1></div>
                 <div class="profile-container-text">Admin</div>

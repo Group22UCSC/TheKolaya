@@ -37,7 +37,13 @@
 
         <div class="inputfield">
           <label>Type</label>
-          <input type="text" class="input">
+          
+<select class="type" id="type">
+  <option value="direct_landowner">Direct Landowner</option>
+  <option value="indirect_landowner">Indirect Landowner</option>
+</select>
+
+
        </div>
 
         <div class="inputfield">

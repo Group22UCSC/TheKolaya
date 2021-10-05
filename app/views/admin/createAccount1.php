@@ -37,7 +37,17 @@
 
         <div class="inputfield">
           <label>Type</label>
-          <input type="text" class="input">
+          
+<select class="type" id="type">
+  <option value="agent">Agent</option>
+  <option value="accountant">Accountant</option>
+  <option value="supervisor">Supervisor</option>
+  <option value="product_manager">Product Manager</option>
+  <option value="manager">Manager</option>
+  <option value="admin">Admin</option>
+</select>
+
+
        </div>
 
         <div class="inputfield">

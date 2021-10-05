@@ -27,11 +27,10 @@
       </tr>
       <?php
         for($i=1;$i<=$x;$i++){
-          echo '<tr>
-          
-                    <td><a href="www.google.com"></a>L00'.$i.'</td>                                    
+          echo '<tr data-href ="Agent/updateTeaWeight">          
+                    <td>L00'.$i.'</td>
                     <td>28</td>   
-                    <td><button class="btn"><i class="fa fa-trash"></i> Remove</button></i></td>                    
+                    <td><button class="btn"><a href = "https://www.google.com/"><i class="fa fa-trash"></i> Remove</a></button></td>
                 </tr>';                
         }
       ?>      
@@ -58,7 +57,7 @@
                     <td>R'.$i.'</td>
                     <td>Firewood</td>
                     <td>28</td>
-                    <td><button class="btn"><i class="fa fa-trash"></i> Remove</button></i></td>                    
+                    <td><button class="btn"><a href = "https://www.google.com/"><i class="fa fa-trash"></i> Remove</a></button></td>
                 </tr>';                
         }
       ?>
@@ -66,7 +65,7 @@
   </div>
 </div>
 
-<!-- <script>
+ <script>
   document.addEventListener("DOMContentLoaded",() => {
     const rows = document.querySelectorAll("tr[data-href]");
     rows.forEach(row =>{
@@ -76,39 +75,30 @@
     });
 });
 
-var index, table = document.querySelector("tables");
 
-for(var i = 1; i < table.rows.length; i++)
-            {
-                table.rows[i].cells[3].onclick = function()
-                {
-                    var c = confirm("do you want to delete this row");
-                    if(c === true)
-                    {
-                        index = this.parentElement.rowIndex;
-                        table.deleteRow(index);
-                    }
+// var index, table = document.querySelector("tables");
+
+// for(var i = 1; i < table.rows.length; i++)
+//             {
+//                 table.rows[i].cells[3].onclick = function()
+//                 {
+//                     var c = confirm("do you want to delete this row");
+//                     if(c === true)
+//                     {
+//                         index = this.parentElement.rowIndex;
+//                         table.deleteRow(index);
+//                     }
                     
-                    //console.log(index);
-                };
+//                     //console.log(index);
+//                 };
                 
-            }
+//             }
 // $(document).ready(function(){
 //   $(document.table).on("click", "tr[data-href]", function(){
 //     window.location.href = this.dataset.href;
 //   });
 // });
 
-/*
-const mytable = document.getElementById("table");
 
-mytable.addEventListener("click", function(e){
-  const target = e.target;
-
-  if(target.matches("tr[data-href]")){
-    window.location.href=target.dataset.href;
-  }
-})
-*/
-</script> -->
+</script>
 <?php include 'bottomContainer.php';?>
