@@ -91,10 +91,8 @@
     text-align: center;
 }
 
-@media (max-width: 800px){
-  .availablelist .deliverylist{
-    flex: 100%;
-  }
+a{
+  color:red;
 }
   
 
