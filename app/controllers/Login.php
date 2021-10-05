@@ -73,7 +73,7 @@ class Login extends Controller {
           }
     }
 
-    public function createUserSession($user) {
+    function createUserSession($user) {
         session_start();
         $_SESSION['user_id'] = $user[0]['user_id'];
         $_SESSION['user_type'] = str_replace("_", "", $user[0]['user_type']);
@@ -81,25 +81,79 @@ class Login extends Controller {
         $_SESSION['user_name'] = $user[0]['name'];
         //   echo $_SESSION['user_type'];
         redirect($_SESSION['user_type']);
-      }
+    }
 
-      public function logout() {
+    function logout() {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_type']);
         unset($_SESSION['user_contact_number']);
         unset($_SESSION['user_name']);
-          
+            
         session_destroy();
         redirect('login');
-      }
+    }
 
-      public function isLoggedIn() {
-          if(isset($_SESSION['user_id'])) {
-              return true;
-          }else {
-              return false;
-          }
-      }
+    function isLoggedIn() {
+        if(isset($_SESSION['user_id'])) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    function forgetPassword() {
+        if(isset($_POST['enter_btn'])) {
+            $data = [
+                'contact_number' => trim($_POST['contact_number'])
+            ];
+            $_SESSION['contact_number'] = $data['contact_number'];
+            if($this->model->isRegisteredUser($data['contact_number'])) {
+                require_once '../app/controllers/OtpVerify.php';
+                $otp = new OtpVerify();
+                $otp->otpSend('login', $data);
+            }else {
+                $this->view->render('User/forgetPassword/wrongNumber', $data);
+            }
+        }
+        
+        else {
+            $this->view->render('User/forgetPassword/forgetPassword');
+        }
+    }
+
+    public function changePassword() {
+        if(isset($_POST['change_pw_btn'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'new_password' => $_POST['new_password'],
+                'confirm_password' => $_POST['confirm_password'],
+                'contact_number' => $_SESSION['contact_number'],
+
+                'new_password_err' => '',
+                'confirm_password_err' => ''
+            ];
+            unset($_SESSION['contact_number']);
+            if(empty($data['new_password'])) {
+                $data['new_password_err'] = "Please enter a new passoword";
+            }
+
+            if(empty($data['confirm_password'])) {
+                $data['confirm_password_err'] = "Please confirm the password";
+            }else if($data['new_password'] != $data['confirm_password']) {
+                $data['confirm_password_err'] = "Doesn't match with password";
+            }
+
+            if(!empty($data['new_password']) || !empty($data['confirm_password'])) {
+                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
+                $this->model->changePassword($data);
+                redirect('login');
+            }else {
+                $this->view->render('User/forgetPassword/changePassword', $data);
+            }
+        }else {
+            $this->view->render('User/forgetPassword/changePassword');
+        }
+    }
 }
 
 ?>

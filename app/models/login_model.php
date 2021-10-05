@@ -60,5 +60,18 @@ class Login_Model extends Model {
         }
     }
 
+    public function changePassword($data = []) {
+        $new_password = $data['new_password'];
+        $contact_number = $data['contact_number'];
+        
+        $query = "UPDATE user SET password='$new_password' WHERE contact_number='$contact_number'";
+        $row = $this->db->updateQuery($query);
+        if($row) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }
 ?>

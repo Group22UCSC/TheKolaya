@@ -7,7 +7,6 @@ class Registration extends Controller {
 
     function index() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_SESSION['register_btn_click_time'] = time();
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'name' => trim($_POST['name']),
@@ -15,9 +14,9 @@ class Registration extends Controller {
                 'user_id' => trim($_POST['user_id']),
                 'landowner_type' => trim($_POST['landowner_type']),
                 'address' => trim($_POST['address']),
-                'password' => trim($_POST['password']),
+                'password' => $_POST['password'],
                 'verify' => '0',
-                'confirm_password' => trim($_POST['confirm_password']),
+                'confirm_password' => $_POST['confirm_password'],
 
                 'name_err' => '',
                 'contact_number_err' => '',
@@ -78,22 +77,10 @@ class Registration extends Controller {
                 //Register a user
                 if(!($this->model->isRegisteredUser($data['contact_number']))) {
                     $contact_number = $data['contact_number'];
-                    // $OTPcode = rand(1000, 9999);
-                    $OTPcode = '1000';
-                    $_SESSION['OTP'] = $OTPcode;
                     if($this->model->findUser($data['contact_number'], $data['user_id'])) {
-                        // $user = "94769372530";
-                        // $password = "9208";
-                        // $text = urlencode("Your තේ කොළය verification code is: ".$OTPcode);
-                        // $to = "$contact_number";
-    
-                        // $baseurl ="http://www.textit.biz/sendmsg";
-                        // $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-                        // $ret = file($url);
-    
-                        // $res= explode(":",$ret[0]);
-    
-                        redirect('OtpVerify');
+                        require_once '../app/controllers/OtpVerify.php';
+                        $otp = new OtpVerify();
+                        $otp->otpSend('registration', $data);
                     }
                 }
                 
@@ -158,7 +145,7 @@ class Registration extends Controller {
             'verify' => $_SESSION['verify']
         ];
         unset($_SESSION['name']);
-        unset($_SESSION['contact_number']);
+        // unset($_SESSION['contact_number']);
         unset($_SESSION['user_id']);
         unset($_SESSION['landowner_type']);
         unset($_SESSION['address']);
