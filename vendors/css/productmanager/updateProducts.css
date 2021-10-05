@@ -177,7 +177,7 @@ justify-self: center ;
   border-radius: 10px;
   z-index: 10;
   background-color: white;
-  width: 300px;
+  width: 400px;
   max-width: 80%;
  
 }
@@ -233,25 +233,28 @@ justify-self: center ;
 
 .confirmbtn{
   padding: 10px 20px;
-  background-color: dodgerblue;
+  background-color: rgb(224, 64, 64);
   border: 1px solid #ddd;
   color: white;
   border-radius: 12px;
   text-decoration: none;
   cursor: pointer;
-  margin: 30px;
+  margin: 10px;
 }
-.confirmbtn input:hover {
-  background-color: royalblue;
+.confirmbtn:hover {
+  background-color: rgb(231, 111, 100);
 }
 .editbtn{
-  padding: 10px 20px;
+  padding: 10px;
   background-color: rgb(35, 173, 104);
   border: 1px solid #ddd;
   color: white;
   border-radius: 12px;
   text-decoration: none;
   cursor: pointer;
+}
+.editbtn:hover{
+  background-color: rgb(114, 221, 168);
 }
 /*  ************* view previous details button ********** */
 .previousDetails{
