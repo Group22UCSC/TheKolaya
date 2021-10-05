@@ -36,12 +36,6 @@
 
 
 
-body {
-  background: #fec107;
-/*  padding: 0 10px;*/
-}
-
-
 
 .wrapper11{
     margin-top: 7px;
@@ -201,6 +195,18 @@ body {
 .wrapper11 .form .inputfield:last-child{
   margin-bottom: 0;
 }
+
+
+.wrapper11 .form .inputfield .type{
+  width: 100%;
+  height: 40px;
+   border: 1px solid #d5dbd9;
+  
+  border-radius: 3px;
+}
+
+.wrapper11 .form .inputfield .type:hover{border:1px solid #fec107;}
+.wrapper11 .form .inputfield .type:{border:1px solid #fec107;}
 
 @media (max-width:420px) {
   .wrapper11 .form .inputfield{
