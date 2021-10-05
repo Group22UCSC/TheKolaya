@@ -11,11 +11,13 @@
 </head>
 <body>
     <div class="container">
-        <p style="text-align: center;"><i style="color: #7cdd84;" class="far fa-check-circle"></i><br>
-            <h2 style="text-align: center; color: #089633;">Your OTP Is Correct</h2><br>
-            <h3 style="text-align: center; color: #089633;">Now you can Log in</h3>
+        
+        <p style="text-align: center;"><i style="color: red;" class="far fa-times-circle"></i><br>
+            <h2 style="text-align: center; color: #089633;">Oops! <br>
+            <span style="color: black; font-size:22px"><?php echo $data['contact_number']?></span> Is Not Registered</h2><br>
+            <h3 style="text-align: center; color: #089633;">Please Enter The Correct Number</h3>
         </p>
-        <a style="text-decoration:none;" href="<?php echo URL?>login"><input type="button" value="Login Here" name="verify" class="btn" /></a>
+        <a style="text-decoration:none;" href="<?php echo URL?>login/forgetPassword"><input type="button" value="Try again" name="verify" class="btn"/></a>
     </div>
     <script src="<?php echo URL?>vendors/js/otp/otp-js.js"></script>
 </body>

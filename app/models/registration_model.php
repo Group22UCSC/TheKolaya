@@ -16,7 +16,7 @@ class Registration_Model extends Model {
         $password = $data['password'];
         $verify = $data['verify'];
         // $verify = 0;
-        $user_type = 'Land_Owner';
+        $user_type = 'supervisor';
         $landowner_type = $data['landowner_type'];
         
 

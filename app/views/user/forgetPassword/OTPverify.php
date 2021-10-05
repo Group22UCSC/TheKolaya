@@ -15,7 +15,7 @@
         <h3 class="title">OTP Verification</h3>
         <p class="sub-title">
           Enter the OTP you received to
-          <span class="phone-number"><?php echo $_SESSION['contact_number']?></span>
+          <span class="phone-number"><?php echo $data['contact_number']?></span>
         </p>
         <form action="<?php echo URL?>OtpVerify/checkOtp" method="POST">
             <div class="wrapper">
@@ -25,7 +25,7 @@
             <input type="text" class="field 4" name="n-4">
             
             </div>
-            <!-- <input type="submit" value="Verify" name="verify" class="btn" /> -->
+            <!-- <input type="submit" value="Verify" name="verify-forgetpw" class="btn" /> -->
             <input type="submit" value="Verify" name="<?php echo $_SESSION['controller']?>-verify" class="btn" />
         </form>
         
