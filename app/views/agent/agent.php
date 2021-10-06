@@ -17,10 +17,10 @@
 <?php include 'topContainer.php';?>
 <div class = "maindiv" id="blur">
 <div class="notice">
-<?php $x=4?>
-   <h4>You have <?php echo $x?> landowners to collect <br>tea leaves today!</h4>
-   <?php $y=3?>
-   <h4>You have <?php echo $y?> landowners to deliver <br>requested items today!</h4>
+<?php $x=5?>
+   <h4 id="availablenotice">You have <?php echo $x?> landowners to collect <br>tea leaves today!</h4>
+   <?php $y=4?>
+   <h4 id="deliverynotice">You have <?php echo $y?> landowners to deliver <br>requested items today!</h4>
   
   </div>
   <div class="availablelist">    
@@ -99,7 +99,7 @@
 
 var table = document.getElementById('availabletable');
                 
-                for(var i = 1; i < table.rows.length; i++)
+for(var i = 1; i < table.rows.length; i++)
                 {
                     table.rows[i].onclick = function()
                     {
@@ -118,7 +118,7 @@ var table = document.getElementById('availabletable');
                          document.getElementById("rid").value = this.cells[1].innerHTML;                         
                     };
                 }
-
+                
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
   var blur = document.getElementById('blur');
@@ -146,15 +146,17 @@ function closerequestform(){
 
 
 var index, table1 = document.getElementById('availabletable');
-            for(var i = 1; i < table.rows.length; i++)
+            for(var i = 1; i < table1.rows.length; i++)
+           
             {
                 table1.rows[i].cells[4].onclick = function()
                 {
-                    var c = confirm("do you want to delete this avaailable row");
+                    var c = confirm("do you want to delete this available row?");
                     if(c === true)
                     {
                         index = this.parentElement.rowIndex;
                         table1.deleteRow(index);
+                        document.getElementById("availablenotice").innerHTML = "You have <?php echo $x-1;?> landowners to collect <br>tea leaves today!";
                     }
                     
                     //console.log(index);
@@ -167,11 +169,12 @@ var index, table1 = document.getElementById('availabletable');
             {
                 table2.rows[i].cells[5].onclick = function()
                 {
-                    var c = confirm("do you want to delete this request row");
+                    var c = confirm("do you want to delete this request row?");
                     if(c === true)
                     {
                         index = this.parentElement.rowIndex;
                         table.deleteRow(index);
+                        document.getElementById("deliverynotice").innerHTML = "You have <?php echo $y-1;?> landowners to deliver <br>requested items today!";
                     }
                     
                     //console.log(index);
