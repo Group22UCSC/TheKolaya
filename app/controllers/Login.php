@@ -74,7 +74,6 @@ class Login extends Controller {
     }
 
     function createUserSession($user) {
-        session_start();
         $_SESSION['user_id'] = $user[0]['user_id'];
         $_SESSION['user_type'] = str_replace("_", "", $user[0]['user_type']);
         $_SESSION['user_contact_number'] = $user[0]['contact_number'];
@@ -104,13 +103,18 @@ class Login extends Controller {
     function forgetPassword() {
         if(isset($_POST['enter_btn'])) {
             $data = [
-                'contact_number' => trim($_POST['contact_number'])
+                'contact_number' => trim($_POST['contact_number']),
+                'controller' => 'login'
             ];
-            $_SESSION['contact_number'] = $data['contact_number'];
+            
             if($this->model->isRegisteredUser($data['contact_number'])) {
+                
                 require_once '../app/controllers/OtpVerify.php';
-                $otp = new OtpVerify();
-                $otp->otpSend('login', $data);
+                // $otp = new OtpVerify;
+                // $otp->otpSend($data);
+                $_SESSION['mobile_number'] = $data['contact_number'];
+                $_SESSION['controller'] = $data['controller'];
+                otpSend($data);
             }else {
                 $this->view->render('User/forgetPassword/wrongNumber', $data);
             }
