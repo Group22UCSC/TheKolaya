@@ -23,7 +23,7 @@
     <div class="from-container-outside">
         <div class="form-container">
           <div class="title">Edit Your Profile</div>
-          <form action="#">
+          <form action="<?php echo URL?>supervisor/editProfile" method="POST">
             <div class="form">
               <div class="inputfield">
                 <label>Name</label>

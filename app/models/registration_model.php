@@ -54,8 +54,8 @@ class Registration_Model extends Model {
                     break;
                     
             }
-            $this->db->updateQuery($query);
-            $this->db->insertQuery($queryUser);
+            $this->db->runQuery($query);
+            $this->db->runQuery($queryUser);
         }
         // $this->db->insertQuery($query);
     }
@@ -63,7 +63,7 @@ class Registration_Model extends Model {
     public function findUser($contact_number, $user_id) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND user_id = '$user_id'";
 
-        $row = $this->db->searchQuery($query);
+        $row = $this->db->runQuery($query);
 
         if(count($row)) {
             return true;
@@ -75,7 +75,7 @@ class Registration_Model extends Model {
     public function isRegisteredUser($contact_number) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND verify = 1";
 
-        $row = $this->db->searchQuery($query);
+        $row = $this->db->runQuery($query);
 
         if(count($row)) {
             return true;
@@ -88,7 +88,7 @@ class Registration_Model extends Model {
     public function login($contact_number, $password) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 
-        $row = $this->db->searchQuery($query);
+        $row = $this->db->runQuery($query);
         
         $hashed_password = $row[0]['password'];
 

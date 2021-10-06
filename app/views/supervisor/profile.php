@@ -36,7 +36,7 @@
                     <span class="label-left"><b>Address</b></span><span class="label-right">Ariyawanshagama, Welipenna</span>
                 </div>
             </div>
-            <div class="profile-edit middle"><a href="<?php echo URL?>Supervisor/editProfile">Edit Profile</a></div>
+            <div class="profile-edit middle"><a href="<?php echo URL?>supervisor/editProfile">Edit Profile</a></div>
             
         </div>
     </div>
