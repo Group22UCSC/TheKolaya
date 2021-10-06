@@ -12,7 +12,7 @@
       </div> 
             
       <div class="inputfield">
-      <button class="back" onclick="requesttoggle()">Back</button> 
+      <button class="back" onclick="closerequestform()">Back</button> 
       <input type="submit" value="Confirm" class="btn">     
       </div>
   </div>
