@@ -36,7 +36,7 @@
             <img src="<?php echo URL?>vendors/images/login/logo.png" alt="">
             </div>
             <h2 class="title">LOG IN</h2>
-            <?php flash('register_success');?>
+
             <div class="input-field <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>">
               <i class="fas fa-phone icon <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>"></i>
               <input class="input<?php echo (!empty($data['contact_number_err'])) ? '-is-invalid' : ''; ?>" type="tel" placeholder="<?php (!empty($data['contact_number_err'])) ? print $data['contact_number_err'] : print 'mobile number*'; ?>" name="contact_number"/>
