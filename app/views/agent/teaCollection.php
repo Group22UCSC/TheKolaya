@@ -15,7 +15,7 @@
                 <input type="text" class="input">
             </div>        
             <div class="inputfield">
-            <button class="back" onclick="teatoggle()">Back</button>
+            <button class="back" onclick="closeteaform()">Back</button>
             <input type="submit" value="Add Weight" class="btn">
             </div>
         </div>

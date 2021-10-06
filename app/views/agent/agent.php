@@ -19,13 +19,13 @@
 <div class="notice">
 <?php $x=4?>
    <h4>You have <?php echo $x?> landowners to collect <br>tea leaves today!</h4>
-   <?php $x=3?>
-   <h4>You have <?php echo $x?> landowners to deliver <br>requested items today!</h4>
+   <?php $y=3?>
+   <h4>You have <?php echo $y?> landowners to deliver <br>requested items today!</h4>
   
   </div>
-  <div class="availablelist" id="blur">    
+  <div class="availablelist">    
     
-    <h3 class ="availabletopic">Available Landowner List </h3>
+    <h3 class ="availabletopic">Available  Landowner  List </h3>
     <table class = "availabletable" id="availabletable">
       <tr>
         <th>Landowner ID</th>
@@ -42,7 +42,7 @@
                     <td>L00'.$i.'</td>
                     <td>28</td>  
                     <td>Matara</td>                   
-                    <td class="updatecol"><button class="update" onclick="teatoggle()"><i class="far fa-edit"></i></button></td>
+                    <td class="updatecol"><button class="update" onclick="openteaform()"><i class="far fa-edit"></i></button></td>
                     <td class="deletecol"><button class = "delete"><i class="fa fa-trash"></i></button></td>
                 </tr>';                
         }       
@@ -52,7 +52,7 @@
       
   <div class="deliverylist">
   
-    <h3 class="deliverytopic">Delivery List </h3>
+    <h3 class="deliverytopic">Request  Delivery  List </h3>
     <table class="deliverytable" id="deliverytable">
     <tr>
         <th>Landowner ID</th>
@@ -64,13 +64,13 @@
       </tr>
      
       <?php
-        for($i=1;$i<=$x;$i++){
-          echo '<tr onclick="requesttoggle()">
+        for($i=1;$i<=$y;$i++){
+          echo '<tr ">
                     <td>L00'.$i.'</td>
                     <td>R'.$i.'</td>
                     <td>Firewood</td>
                     <td>28</td>
-                    <td class="updatecol"><button class = "update" onclick="requesttoggle()"><i class="far fa-edit"></i></button></td>
+                    <td class="updatecol"><button class = "update" onclick="openrequestform()"><i class="far fa-edit"></i></button></td>
                     <td class="deletecol"><button class = "delete"><i class="fa fa-trash"></i></button></td>
                 </tr>';                
         }
@@ -118,42 +118,66 @@ var table = document.getElementById('availabletable');
                          document.getElementById("rid").value = this.cells[1].innerHTML;                         
                     };
                 }
- function teatoggle()
-{
+
+function openteaform(){
+  document.getElementById("teapopup").style.display = "block";
   var blur = document.getElementById('blur');
   blur.classList.toggle('active');
-  
-  var blur = document.getElementById('teapopup');
-  teapopup.classList.teatoggle('active');
 }
 
-function requesttoggle()
-{
+function closeteaform(){
+  document.getElementById("teapopup").style.display = "none";
+  var blur = document.getElementById('blur');
+  blur.classList.toggle('close');
+}
+
+function openrequestform(){
+  document.getElementById("requestpopup").style.display = "block";
   var blur = document.getElementById('blur');
   blur.classList.toggle('active');
-  
-  var blur = document.getElementById('requestpopup');
-  popup.classList.toggle('active');
+}
+
+function closerequestform(){
+  document.getElementById("requestpopup").style.display = "none";
+  var blur = document.getElementById('blur');
+  blur.classList.toggle('close');
 }
 
 
-// var index, table = document.querySelector("tables");
 
-// for(var i = 1; i < table.rows.length; i++)
-//             {
-//                 table.rows[i].cells[3].onclick = function()
-//                 {
-//                     var c = confirm("do you want to delete this row");
-//                     if(c === true)
-//                     {
-//                         index = this.parentElement.rowIndex;
-//                         table.deleteRow(index);
-//                     }
+var index, table1 = document.getElementById('availabletable');
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                table1.rows[i].cells[4].onclick = function()
+                {
+                    var c = confirm("do you want to delete this avaailable row");
+                    if(c === true)
+                    {
+                        index = this.parentElement.rowIndex;
+                        table1.deleteRow(index);
+                    }
                     
-//                     //console.log(index);
-//                 };
+                    //console.log(index);
+                };
                 
-//             }
+            }
+
+            var index, table2 = document.getElementById('deliverytable');
+            for(var i = 1; i < table2.rows.length; i++)
+            {
+                table2.rows[i].cells[5].onclick = function()
+                {
+                    var c = confirm("do you want to delete this request row");
+                    if(c === true)
+                    {
+                        index = this.parentElement.rowIndex;
+                        table.deleteRow(index);
+                    }
+                    
+                    //console.log(index);
+                };
+                
+            }
 // $(document).ready(function(){
 //   $(document.table).on("click", "tr[data-href]", function(){
 //     window.location.href = this.dataset.href;
