@@ -27,16 +27,16 @@
             <div class="form">
               <div class="inputfield">
                 <label>Name</label>
-                <input type="text" class="input" id="Name" value="<?php echo 'Kumud Nethmal'?>">
+                <input type="text" class="input" id="Name" value="<?php echo $_SESSION['user_name']?>" name="name">
               </div>
               <div class="inputfield">
                 <label>Mobile Number</label>
-                <input type="number" class="input" id="Mobile-number" value="<?php echo '0761234567'?>">
+                <input type="number" class="input" id="Mobile-number" value="<?php echo  $_SESSION['user_contact_number']?>" name="contact_number">
               </div>
                 <div class="inputfield" id="left-btn">
-                    <input type="button" value="Change Password" class="accept-btn change">
+                    <a href="#"><input type="button" value="Change Password" class="accept-btn change"></a>
                 </div>
-            <div id="hide-inputfield">
+            <!-- <div id="hide-inputfield">
                 <div class="inputfield">
                     <label>Old Password</label>
                     <input type="password" class="input" >
@@ -50,7 +50,7 @@
                     <input type="password" class="input" >
                 </div>
                 
-            </div>
+            </div> -->
                 <div class="inputfield" id="right-btn">
                     <input type="submit" value="Accept" class="accept-btn"name="accept-btn">
                 </div>

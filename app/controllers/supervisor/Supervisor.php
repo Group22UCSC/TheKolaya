@@ -56,8 +56,22 @@ class Supervisor extends Controller{
     }
 
     function editProfile() {
-        $this->view->showPage('Supervisor/editProfile');
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'contact_number' => trim($_POST['contact_number']),
+                'name' => trim($_POST['name'])
+            ];
+
+            $this->model->editProfile($data);
+            $this->view->showPage('Profile/enterPassword');
+        }else
+            $this->view->showPage('Supervisor/editProfile');
     }
+
+    // function enterPassword() {
+        
+        
+    // }
 }
 
 ?>
