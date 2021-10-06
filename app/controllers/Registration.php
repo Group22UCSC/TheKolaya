@@ -17,6 +17,7 @@ class Registration extends Controller {
                 'password' => $_POST['password'],
                 'verify' => '0',
                 'confirm_password' => $_POST['confirm_password'],
+                'controller' => 'registration',
 
                 'name_err' => '',
                 'contact_number_err' => '',
@@ -78,9 +79,9 @@ class Registration extends Controller {
                 if(!($this->model->isRegisteredUser($data['contact_number']))) {
                     $contact_number = $data['contact_number'];
                     if($this->model->findUser($data['contact_number'], $data['user_id'])) {
-                        require_once '../app/controllers/OtpVerify.php';
-                        $otp = new OtpVerify();
-                        $otp->otpSend('registration', $data);
+                        $_SESSION['mobile_number'] = $data['contact_number'];
+                        $_SESSION['controller'] = $data['controller'];
+                        otpSend($data);
                     }
                 }
                 
@@ -151,6 +152,7 @@ class Registration extends Controller {
         unset($_SESSION['address']);
         unset($_SESSION['password']);
         unset($_SESSION['verify']);
+        session_destroy();
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $this->model->registration($data);
     }
