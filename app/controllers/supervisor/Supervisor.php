@@ -57,15 +57,28 @@ class Supervisor extends Controller{
 
     function editProfile() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $data = [
-                'contact_number' => trim($_POST['contact_number']),
-                'name' => trim($_POST['name'])
-            ];
-
-            $this->model->editProfile($data);
-            $this->view->showPage('Profile/enterPassword');
+            if(isset($_POST['accept-btn'])) {
+                $data = [
+                    'contact_number' => trim($_POST['contact_number']),
+                    'name' => trim($_POST['name'])
+                ];
+    
+                
+                $this->view->render('user/profile/enterPassword');
+            }else if(isset($_POST['enter-btn'])) {
+                $data = [
+                    'password' => $_POST['password']
+                ];
+                if($this->model->checkPassword($data)) {
+                    $this->model->editProfile($data);
+                    $this->view->render('user/profile/correctPassword');
+                }else {
+                    $this->view->render('user/profile/wrongPassword');
+                }
+            }
+            
         }else
-            $this->view->showPage('Supervisor/editProfile');
+            $this->view->render('Supervisor/editProfile');
     }
 
     // function enterPassword() {

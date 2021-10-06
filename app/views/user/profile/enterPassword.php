@@ -19,10 +19,10 @@
         <form action="<?php echo URL?>supervisor/enterPassword" method="POST">
             <div class="form">
                 <div class="inputfield">
-                  <input type="password" class="input" name="contact_number">
+                  <input type="password" class="input" name="password">
                 </div>
               <div class="inputfield">
-                <input type="submit" value="Enter" name="enter_btn" class="btn">
+                <input type="submit" value="Enter" name="enter_btn" class="btn" name="enter-btn">
               </div>
             </div>
         </form>
