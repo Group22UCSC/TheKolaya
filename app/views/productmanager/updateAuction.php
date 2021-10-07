@@ -1,6 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateProducts.css">
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
 <script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
 <div class="top-container">
     <p>Update Auction Details</p>
