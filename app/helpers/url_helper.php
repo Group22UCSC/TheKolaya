@@ -4,7 +4,7 @@ function redirect($page) {
     header('location: ' . URL . $page);
 }
 
-function otpSend($data) {
+function otpSend() {
     $OTPcode = '1001';
     $_SESSION['OTP'] = $OTPcode;
     // $data['OTP'] = $OTPcode;

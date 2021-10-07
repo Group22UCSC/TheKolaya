@@ -12,17 +12,24 @@
 </head>
 <body>
     <div class="container">
-        <h3 class="title">Verify Your Password</h3>
+        <h3 class="title">Change your Password</h3>
         <p class="sub-title">
-          Enter Password
+          Fill those Fields
         </p>
-        <form action="<?php echo URL?>Supervisor/editProfile" method="POST">
+        <form action="<?php echo URL.$_SESSION['user_type']?>/changePassword" method="POST">
             <div class="form">
+                <div class="inputfield">
+                  <label for="new-password">old password</label>
+                    <input type="password" class="input" name="password">
+
+                    <label for="new-password">new password</label>
+                    <input type="password" class="input" name="new_password">
+
+                    <label for="confirm-password">Confirm password</label>
+                    <input type="password" class="input" name="confirm_password">
+                </div>
               <div class="inputfield">
-                <input type="password" class="input" name="password">
-              </div>
-              <div class="inputfield">
-                <input type="submit" value="Enter" class="btn" name="enter_btn">
+                <input type="submit" value="Change" name="change_pw_btn" class="btn">
               </div>
             </div>
         </form>
