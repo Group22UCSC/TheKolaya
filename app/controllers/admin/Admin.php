@@ -14,8 +14,8 @@
             $this->view->showPage('Admin/createAccountSelect');
         }
 
-         public function createAccount() {
-            $this->view->showPage('Admin/createAccount');
+         public function DLandowner_createAccount() {
+            $this->view->showPage('Admin/DLandowner_createAccount');
         }
 
          public function createAccount1() {

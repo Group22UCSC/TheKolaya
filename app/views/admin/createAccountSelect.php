@@ -20,7 +20,7 @@
       <div class="row">
         <div class="column">
           <h3>Create Full Accounts</h3>
-          <a href="#">Direct Landowner</a>
+          <a href="<?php echo URL?>admin/DLandowner_createAccount">Direct Landowner</a>
           <a href="#">Indirect Landowner</a>
           <a href="#">Agent</a>
           <a href="#">Accountant</a>
