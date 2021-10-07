@@ -21,24 +21,24 @@
         <div class="column">
           <h3>Create Full Accounts</h3>
           <a href="<?php echo URL?>admin/DLandowner_createAccount">Direct Landowner</a>
-          <a href="#">Indirect Landowner</a>
-          <a href="#">Agent</a>
-          <a href="#">Accountant</a>
-          <a href="#">Product Manager</a>
-          <a href="#">Supervisor</a>
-          <a href="#">Manager</a>
-          <a href="#">Admin</a>
+          <a href="<?php echo URL?>admin/InDLandowner_createAccount">Indirect Landowner</a>
+          <a href="<?php echo URL?>admin/">Agent</a>
+          <a href="<?php echo URL?>admin/">Accountant</a>
+          <a href="<?php echo URL?>admin/">Product Manager</a>
+          <a href="<?php echo URL?>admin/">Supervisor</a>
+          <a href="<?php echo URL?>admin/">Manager</a>
+          <a href="<?php echo URL?>admin/">Admin</a>
         </div>
         <div class="column">
           <h3>Create Temporary Accounts</h3>
-          <a href="#">Direct Landowner</a>
-          <a href="#">Indirect Landowner</a>
-          <a href="#">Agent</a>
-          <a href="#">Accountant</a>
-          <a href="#">Product Manager</a>
-          <a href="#">Supervisor</a>
-          <a href="#">Manager</a>
-          <a href="#">Admin</a>
+          <a href="<?php echo URL?>admin/DLandowner_create_Temp_Account">Direct Landowner</a>
+          <a href="<?php echo URL?>admin/InDLandowner_create_Temp_Account">Indirect Landowner</a>
+          <a href="<?php echo URL?>admin/">Agent</a>
+          <a href="<?php echo URL?>admin/">Accountant</a>
+          <a href="<?php echo URL?>admin/">Product Manager</a>
+          <a href="<?php echo URL?>admin/">Supervisor</a>
+          <a href="<?php echo URL?>admin/">Manager</a>
+          <a href="<?php echo URL?>admin/">Admin</a>
         </div>
       </div>
     </div>
