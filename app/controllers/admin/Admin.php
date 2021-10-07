@@ -83,6 +83,15 @@
             $this->view->showPage('Admin/create_agentTemp');
         }
 
+         public function create_accountant() {
+            $this->view->showPage('Admin/create_accountant');
+        }
+
+          public function create_accountantTemp() {
+            $this->view->showPage('Admin/create_accountantTemp');
+        }
+
+
     }
 
 ?>

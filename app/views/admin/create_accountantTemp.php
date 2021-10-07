@@ -2,7 +2,7 @@
 
 <?php include 'top-container.php';?>
 
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/InDLandowner_create_Temp_Account.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/create_accountantTemp.css">
 
 
      <div class="middle"> 
@@ -15,7 +15,7 @@
      
 <div class="wrapper11">
     <div class="title">
-     Indirect Landowner Registration Form
+     Agent Registration Form
     </div>
 
     <div class="form">

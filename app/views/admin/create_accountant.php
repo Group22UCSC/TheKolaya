@@ -2,7 +2,7 @@
 
 <?php include 'top-container.php';?>
 
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/DLandowner_createAccount.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/create_accountant.css">
 
 
      <div class="middle"> 
@@ -15,7 +15,7 @@
      
 <div class="wrapper11">
     <div class="title">
-    Direct Landowner Registration Form
+     Accountant Registration Form
     </div>
 
     <div class="form">
@@ -57,12 +57,12 @@
           <label>Phone number</label>
           <input type="text" class="input">
        </div>
-
+<!-- 
        <div class="inputfield">
           <label>Route number</label>
           <input type="text" class="input">
        </div>
-
+ -->
 
        <div class="inputfield">
           <label>Password</label>
