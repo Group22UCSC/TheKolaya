@@ -51,7 +51,7 @@
 /* **************** table container ********************** */
 #pricetbl{
   font-family: 'Poppins', sans-serif;
-display: none;
+display: block;
 padding: 40px;
 color: #4f546c;
 font-size: 0.9rem;

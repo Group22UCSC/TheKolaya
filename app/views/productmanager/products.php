@@ -21,7 +21,7 @@
         <table class="teapricetable">
             <thead class="threadcls">
                 <tr class="trcls">
-                    <th class="thcls">Updated Date</th>
+                    <!-- <th class="thcls">Updated Date</th> -->
                     <th class="thcls">Pid</th>
                     <th class="thcls">Product Name</th>
                     <th class="thcls">Amount(Kg)</th>
@@ -41,41 +41,41 @@
 
 
             <tr>
-                <td class="tdcls">12/10/2021</td>
+                <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
 
             </tr>
             <tr>
-                <td class="tdcls">12/10/2021</td>
+                <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
 
             </tr>
             <tr>
-                 <td class="tdcls">12/10/2021</td>
+                 <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
 
             </tr>
             <tr>
-                 <td class="tdcls">12/10/2021</td>
+                 <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
             
             </tr>
             <tr>
-                 <td class="tdcls">12/10/2021</td>
+                 <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
             </tr>
             <tr>
-                <td class="tdcls">12/10/2021</td>
+                <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateProducts.css">
 <script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
 <div class="top-container">
-    <p>Update Products</p>
+    <p>Update Auction Details</p>
 </div>
 <!--  *** Update tea price box **** -->
 <div class="wrapper">
@@ -29,6 +29,21 @@
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
             <input type="text" class="input" id="amount">
+        </div>
+        <div class="inputfield">
+            <label for="price" >Price Per Kilo(Rs)</label>
+            <input type="text" class="input" id="price">
+        </div>
+        <div class="inputfield">
+            <label for="pid">Buyer</label>
+            <!-- <input list="browsers"> -->
+            <select id="productIds" class="input">
+                <option value="P001">Akbar Brothers</option>
+                <option value="P002">Empire Teas Pvt Ltd</option>
+                <option value="P003">Van Rees Ceylon Ltd</option>
+                <option value="P004">ACRIL Holdings</option>
+                <option value="P005">Abacus Tea Pvt</option>
+            </select>
         </div>
         <div class="inputfield">
             <input type="submit" value="Update" data-modal-target="#modal" class="btn">
@@ -71,7 +86,7 @@
 </div> -->
 <script>
     function openModel(){
-
+        
     }
     function previousPrices() {
         
@@ -124,72 +139,69 @@
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
     <div class="table-section">
-        <table class="teapricetable">
-            <thead class="threadcls">
-                <tr class="trcls">
-                    <th class="thcls">Updated Date</th>
-                    <th class="thcls">Pid</th>
-                    <th class="thcls">Product Name</th>
-                    <th class="thcls">Amount(Kg)</th>
-
-                </tr>
-            </thead>
-
-            <!-- <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                <td class="tdcls">January</td>
-                <td class="tdcls">98</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
-
-            </tr> -->
-
-
-            <tr>
-                <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-
-            </tr>
-            <!-- <tr>
-                <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-
-            </tr> -->
-            <tr>
-                 <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-
-            </tr>
-            <tr>
-                 <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
+    <table class="teapricetable">
             
-            </tr>
-            <tr>
-                 <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-            </tr>
-            
-            
+            <tr class="trcls">
+                <th class="thcls">Date</th>
+                <th class="thcls">Product Id</th>
+                <th class="thcls">Product Name</th>
+                <th class="thcls">Sold Amount(Kg)</th>
+                <th class="thcls">Sold Price(Per 1Kg)</th>
+                <th class="thcls">Buyer</th>
+                <th class="thcls">Total Income(Rs)</th>
 
-        </table>
+
+            </tr>
+       
+
+
+
+        <tr>
+            <td class="tdcls">12/09/2021</td>
+            <td class="tdcls">P23</td>
+            <td class="tdcls">Green Tea</td>
+            <td class="tdcls">456</td>
+            <td class="tdcls">120</td>
+            <td class="tdcls">Gohn Keels Pvt</td>
+            <td class="tdcls">34,560</td>
+        </tr>
+        <tr>
+            <td class="tdcls">12/09/2021</td>
+            <td class="tdcls">P23</td>
+            <td class="tdcls">Green Tea</td>
+            <td class="tdcls">456</td>
+            <td class="tdcls">120</td>
+            <td class="tdcls">Akbhar Brothers Pvt</td>
+            <td class="tdcls">34,560</td>
+        </tr>
+        <tr>
+            <td class="tdcls">12/09/2021</td>
+            <td class="tdcls">P23</td>
+            <td class="tdcls">Green Tea</td>
+            <td class="tdcls">456</td>
+            <td class="tdcls">120</td>
+            <td class="tdcls">Gohn Keels Pvt</td>
+            <td class="tdcls">34,560</td>
+        </tr>
+        <tr>
+            <td class="tdcls">12/09/2021</td>
+            <td class="tdcls">P23</td>
+            <td class="tdcls">Green Tea</td>
+            <td class="tdcls">456</td>
+            <td class="tdcls">120</td>
+            <td class="tdcls">Gohn Keels Pvt</td>
+            <td class="tdcls">34,560</td>
+        </tr>
+        <tr>
+            <td class="tdcls">12/09/2021</td>
+            <td class="tdcls">P23</td>
+            <td class="tdcls">Green Tea</td>
+            <td class="tdcls">456</td>
+            <td class="tdcls">120</td>
+            <td class="tdcls">Gohn Keels Pvt</td>
+            <td class="tdcls">34,560</td>
+        </tr>
+    </table>
     </div>
 </div>
 <!-- <div id="priceForm" class="form-container">
