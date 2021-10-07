@@ -98,6 +98,14 @@
          public function create_PmanagerTemp() {
             $this->view->showPage('Admin/create_PmanagerTemp');
         }
+
+          public function create_supervisor() {
+            $this->view->showPage('Admin/create_supervisor');
+        }
+
+        public function create_supervisorTemp() {
+            $this->view->showPage('Admin/create_supervisorTemp');
+        }
     }
 
 ?>
