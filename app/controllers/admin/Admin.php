@@ -91,7 +91,13 @@
             $this->view->showPage('Admin/create_accountantTemp');
         }
 
+         public function create_Pmanager() {
+            $this->view->showPage('Admin/create_Pmanager');
+        }
 
+         public function create_PmanagerTemp() {
+            $this->view->showPage('Admin/create_PmanagerTemp');
+        }
     }
 
 ?>
