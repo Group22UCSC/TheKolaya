@@ -106,6 +106,14 @@
         public function create_supervisorTemp() {
             $this->view->showPage('Admin/create_supervisorTemp');
         }
+
+          public function create_manager() {
+            $this->view->showPage('Admin/create_manager');
+        }
+
+         public function create_managerTemp() {
+            $this->view->showPage('Admin/create_managerTemp');
+        }
     }
 
 ?>
