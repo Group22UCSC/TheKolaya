@@ -66,9 +66,9 @@
 
 <!--  **********   view prouduct stock   *** -->
 
-<div class="previousDetails">
+<!-- <div class="previousDetails">
     <button  onclick="previousPrices();scrollFunc();">View Updated Product List</button>
-</div>
+</div> -->
 <script>
     function openModel(){
 
@@ -153,13 +153,13 @@
                 <td class="tdcls">234</td>
 
             </tr>
-            <tr>
+            <!-- <tr>
                 <td class="tdcls">12/10/2021</td>
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
 
-            </tr>
+            </tr> -->
             <tr>
                  <td class="tdcls">12/10/2021</td>
                 <td class="tdcls">P001</td>

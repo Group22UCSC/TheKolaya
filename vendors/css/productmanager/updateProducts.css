@@ -1,3 +1,5 @@
+
+
 .top-container{
   display: block;
   background: rgb(35, 173, 104);
@@ -41,11 +43,16 @@ justify-self: center ;
  border-radius: 25px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
   padding: 40px;
+  background-image: url("../../images/productmanager/tea_plant3.png");
+  /* background: rgba(255, 255, 255, 0.3) url("../../images/productmanager/tea_plant.jpg"); */
   /* animation: fadeIn 2s;
       -webkit-animation: fadeIn 2s;
       -moz-animation: fadeIn 2s;
       -o-animation: fadeIn 2s;
       -ms-animation: fadeIn 2s; */
+}
+.wrapper {
+  
 }
 @keyframes fadeIn {
   0% {opacity:0;}
@@ -91,7 +98,7 @@ justify-self: center ;
 
 .wrapper .form .inputfield label{
    width: 200px;
-   color: rgb(35, 173, 104);
+   color: rgb(249, 255, 252);
    margin-right: 10px;
   font-size: 14px;
 }
@@ -139,7 +146,7 @@ justify-self: center ;
 }
 
 .wrapper .form .inputfield .btn:hover{
-  background: #01830c73;
+  background: #3cdf4a73;
   color:#01830c;
 }
 .wrapper .form .inputfield:last-child{
@@ -285,7 +292,7 @@ justify-self: center ;
 /* **************** table container ********************** */
 #pricetbl{
     font-family: 'Poppins', sans-serif;
-  display: none;
+  display: grid;
   padding: 40px;
   color: #4f546c;
   font-size: 0.9rem;

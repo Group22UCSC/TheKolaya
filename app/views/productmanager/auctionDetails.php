@@ -25,8 +25,42 @@
 
                 </tr>
            
-
-
+                <tr>
+                <td class="tdcls">12/07/2021</td>
+                <td class="tdcls">P23</td>
+                <td class="tdcls">Green Tea</td>
+                <td class="tdcls">456</td>
+                <td class="tdcls">120</td>
+                <td class="tdcls">Gohn Keels Pvt</td>
+                <td class="tdcls">34,560</td>
+            </tr>
+                <tr>
+                <td class="tdcls">12/07/2021</td>
+                <td class="tdcls">P23</td>
+                <td class="tdcls">Green Tea</td>
+                <td class="tdcls">456</td>
+                <td class="tdcls">120</td>
+                <td class="tdcls">Gohn Keels Pvt</td>
+                <td class="tdcls">34,560</td>
+            </tr>
+            <tr>
+                <td class="tdcls">12/08/2021</td>
+                <td class="tdcls">P23</td>
+                <td class="tdcls">Green Tea</td>
+                <td class="tdcls">456</td>
+                <td class="tdcls">120</td>
+                <td class="tdcls">Gohn Keels Pvt</td>
+                <td class="tdcls">34,560</td>
+            </tr>
+            <tr>
+                <td class="tdcls">12/08/2021</td>
+                <td class="tdcls">P23</td>
+                <td class="tdcls">Green Tea</td>
+                <td class="tdcls">456</td>
+                <td class="tdcls">120</td>
+                <td class="tdcls">Gohn Keels Pvt</td>
+                <td class="tdcls">34,560</td>
+            </tr>
 
             <tr>
                 <td class="tdcls">12/09/2021</td>
