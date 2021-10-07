@@ -74,6 +74,15 @@
         public function editProfile() {
         $this->view->showPage('admin/editProfile');
         }
+     
+         public function create_agent() {
+            $this->view->showPage('Admin/create_agent');
+        }
+        
+          public function create_agentTemp() {
+            $this->view->showPage('Admin/create_agentTemp');
+        }
+
     }
 
 ?>
