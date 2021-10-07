@@ -36,7 +36,7 @@
           <a href="<?php echo URL?>admin/create_agentTemp">Agent</a>
           <a href="<?php echo URL?>admin/create_accountantTemp">Accountant</a>
           <a href="<?php echo URL?>admin/create_PmanagerTemp">Product Manager</a>
-          <a href="<?php echo URL?>admin/">Supervisor</a>
+          <a href="<?php echo URL?>admin/create_supervisorTemp">Supervisor</a>
           <a href="<?php echo URL?>admin/">Manager</a>
           <a href="<?php echo URL?>admin/">Admin</a>
         </div>
