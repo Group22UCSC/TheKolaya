@@ -2,19 +2,159 @@
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/products.css">
 <!-- Top content -->
 <div class="top-container">
-    <p>Product Stock Details</p>
+    <p>Products</p>
 </div>
 
- 
-  
- <!--  ******* search bar ********* -->
-<div class="searchbar">
+
+
+<!--  ******* search bar ********* -->
+<!-- <div class="searchbar">
     <form class="search-form" action="#">
         <label for="lname">Landowner's name:</label>
         <input type="text" id="lname" placeholder="Landowner's Name" name="lname">
         <button type="submit">Search</button>
     </form>
+</div> -->
+
+<!-- ************* product item cards  -->
+
+<div class="container">
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/c.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>B-100 Black Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/d.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>N Black Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/earlygrey.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>Early Grey</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/greentea.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>Green Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/masalachai.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>Masala Chai</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>  
+
 </div>
+
+
+<!-- Second row -->
+
+
+<div class="container" style="padding-left: 140px;">
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/matcha.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>Matcha Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/whitetea.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>White Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/oolang.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>Oolang Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/sencha.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>Sencha Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>
+
+
+    <!-- <div class="card">
+        <div class="imgBx">
+            <img src="<?php echo URL ?>vendors/images/productmanager/c.png" alt="nike-air-shoe">
+        </div>
+
+        <div class="contentBx">
+
+            <h2>Green Tea</h2>
+            <a href="#">3536KG</a>
+        </div>
+    </div>   -->
+
+</div>
+
+
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
     <div class="table-section">
@@ -55,21 +195,21 @@
 
             </tr>
             <tr>
-                 <!-- <td class="tdcls">12/10/2021</td> -->
+                <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
 
             </tr>
             <tr>
-                 <!-- <td class="tdcls">12/10/2021</td> -->
+                <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
-            
+
             </tr>
             <tr>
-                 <!-- <td class="tdcls">12/10/2021</td> -->
+                <!-- <td class="tdcls">12/10/2021</td> -->
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
@@ -80,11 +220,11 @@
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
             </tr>
-            
-            
+
+
 
         </table>
     </div>
 </div>
 
-  <?php include 'bottom-container.php'; ?>
+<?php include 'bottom-container.php'; ?>

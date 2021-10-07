@@ -84,9 +84,10 @@
 <!-- <div class="previousDetails">
     <button  onclick="previousPrices();scrollFunc();">View Updated Product List</button>
 </div> -->
+
 <script>
     function openModel(){
-        
+
     }
     function previousPrices() {
         
