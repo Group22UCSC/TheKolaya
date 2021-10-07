@@ -18,6 +18,19 @@
             $this->view->showPage('Admin/DLandowner_createAccount');
         }
 
+         public function DLandowner_create_Temp_Account() {
+            $this->view->showPage('Admin/DLandowner_create_Temp_Account');
+        }
+
+          public function InDLandowner_createAccount() {
+            $this->view->showPage('Admin/InDLandowner_createAccount');
+        }
+
+          public function InDLandowner_create_Temp_Account() {
+            $this->view->showPage('Admin/InDLandowner_create_Temp_Account');
+        }
+
+
          public function createAccount1() {
             $this->view->showPage('Admin/createAccount1');
         }

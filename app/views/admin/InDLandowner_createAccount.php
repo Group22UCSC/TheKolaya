@@ -2,11 +2,11 @@
 
 <?php include 'top-container.php';?>
 
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/DLandowner_createAccount.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/InDLandowner_createAccount.css">
 
 
      <div class="middle"> 
-     <a >DIRECT LANDOWNER CREATE ACCOUNTS</a> </div>
+     <a >INDIRECT LANDOWNER CREATE ACCOUNTS</a> </div>
   
 
   <div class="k1">
