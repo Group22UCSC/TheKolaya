@@ -44,7 +44,7 @@
        <span class="tooltip">Product Stock</span>
      </li>
      <li>
-       <a href="<?php echo URL?>accountant/setTeaPrice">
+       <a href="<?php echo URL?>productmanager/updateAuction">
         <i class="fas fa-funnel-dollar fa-2x"></i>
          <span class="links_name">Update Auction</span>
        </a>
