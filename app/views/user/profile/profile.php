@@ -14,7 +14,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-<?php include 'top-container.php';?>
+<?php include '../app/views/'.$_SESSION["user_type"].'/top-container.php';?>
     <div class="title-container">
         <h2>Profile</h2>
     </div>
@@ -23,21 +23,21 @@
         <div class="wrapper-profile">
             <div class="profile-container middle">
                 <div class="profile-img middle">
-                    <img src="<?php echo URL?>vendors/images/supervisor/profile.jpg" alt="">
+                    <img src="<?php echo URL?>vendors/images/<?php echo $_SESSION['user_type']?>/profile.jpg" alt="">
                 </div>
-                <div class="profile-container-text"><h1>Kumud perera</h1></div>
-                <div class="profile-container-text">Supervisor</div>
+                <div class="profile-container-text"><h1><?php echo $_SESSION['name']?></h1></div>
+                <div class="profile-container-text"><?php echo $_SESSION['user_type']?></div>
             </div>
             <div class="details-container">
                 <div class="label-container id">
-                    <span class="label-left"><b>ID</b></span><span class="label-right">Lan-000</span>
+                    <span class="label-left"><b>ID</b></span><span class="label-right"><?php echo $_SESSION['user_id']?></span>
                 </div>
                 <div class="label-container address">
-                    <span class="label-left"><b>Address</b></span><span class="label-right">Ariyawanshagama, Welipenna</span>
+                    <span class="label-left"><b>Address</b></span><span class="label-right"><?php echo $_SESSION['address']?></span>
                 </div>
             </div>
-            <div class="profile-edit middle"><a href="<?php echo URL?>Supervisor/editProfile">Edit Profile</a></div>
+            <div class="profile-edit middle"><a href="<?php echo URL.$_SESSION['user_type']?>/editProfile">Edit Profile</a></div>
             
         </div>
     </div>
-<?php include 'bottom-container.php';?>
+    <?php include '../app/views/'.$_SESSION["user_type"].'/bottom-container.php';?>

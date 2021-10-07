@@ -1,5 +1,4 @@
 <?php
-
 class App {
 
     private $_url = null;

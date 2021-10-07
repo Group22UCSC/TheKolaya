@@ -7,23 +7,7 @@ class Database extends PDO{
     }
 
     //In there you can define database queiries as pre define functions
-    public function searchQuery($query) {
-        $stmt = $this->prepare($query);
-
-        $stmt->execute();
-
-        return $stmt->fetchAll();
-    }
-
-    public function insertQuery($query) {
-        $stmt = $this->prepare($query);
-
-        $stmt->execute();
-
-        return $stmt->fetchAll();
-    }
-
-    public function updateQuery($query) {
+    public function runQuery($query) {
         $stmt = $this->prepare($query);
 
         $stmt->execute();

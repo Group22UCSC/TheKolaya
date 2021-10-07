@@ -18,13 +18,13 @@ class Login_Model extends Model {
 
         $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password')";
         
-        $this->db->insertQuery($query);
+        $this->db->runQuery($query);
     }
 
     public function findUserByMobileNumber($contact_number) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 
-        $row = $this->db->searchQuery($query);
+        $row = $this->db->runQuery($query);
 
         if(count($row)) {
             return true;
@@ -36,7 +36,7 @@ class Login_Model extends Model {
     public function isRegisteredUser($contact_number) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND verify = 1";
 
-        $row = $this->db->searchQuery($query);
+        $row = $this->db->runQuery($query);
 
         if(count($row)) {
             return true;
@@ -49,7 +49,7 @@ class Login_Model extends Model {
     public function login($contact_number, $password) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 
-        $row = $this->db->searchQuery($query);
+        $row = $this->db->runQuery($query);
         
         $hashed_password = $row[0]['password'];
 
@@ -65,7 +65,7 @@ class Login_Model extends Model {
         $contact_number = $data['contact_number'];
         
         $query = "UPDATE user SET password='$new_password' WHERE contact_number='$contact_number'";
-        $row = $this->db->updateQuery($query);
+        $row = $this->db->runQuery($query);
         if($row) {
             return true;
         }else {

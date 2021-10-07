@@ -1,0 +1,150 @@
+/* **** Top Container *** */
+.top-container{
+    display: block;
+    background: rgb(35, 173, 104);
+    color: white;
+    height: 50px;
+    align-items: center;
+    justify-items: center;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.top-container>p{
+  text-align: center;
+  padding-top: 15px;
+ 
+  justify-self: center ;
+}
+/* .top-container >div{
+  
+    padding:1em;
+    align-items: center;
+    justify-self: center;
+} */
+.middle{
+    
+    align-self: center;
+    justify-self: center;
+   border-radius: 50px;
+   color: white;
+    
+}
+
+/*  ************  Table Section **************** */
+
+.table-section{
+    font-family: 'Poppins', sans-serif;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  padding: 40px;
+  color: #4f546c;
+  font-size: 0.9rem;
+  background-color: #f9fbff;;
+  animation: fadeIn 2.5s;
+      -webkit-animation: fadeIn 2.5s;
+      -moz-animation: fadeIn 2.5s;
+      -o-animation: fadeIn 2.5s;
+      -ms-animation: fadeIn 2.5s; 
+}
+.teapricetable {
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px #e1e5ee;
+    background-color: white;
+    text-align: left;
+    overflow: hidden;
+    width: 100%;
+  }
+    .threadcls {
+      box-shadow: 0 5px 10px #e1e5ee;
+    }
+  
+    .thcls   {
+      padding: 1rem 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      font-size: 0.7rem;
+      font-weight: 900;
+    }
+  
+    .tdcls {
+      padding: 1rem 2rem;
+    }
+  
+    .acls {
+      text-decoration: none;
+      color:#2962ff;
+    }
+    .tdcls .tblbutton{
+      background-color: rgb(35, 173, 104);
+      padding: 10px 20px;
+    
+    border: 1px solid #ddd;
+    color: white;
+    border-radius: 12px;
+    }
+    .tdcls .tblbutton:hover{
+      background-color: rgb(221, 119, 51);
+    }
+    /* .status {
+      border-radius:  0.2rem;
+      background-color: red;
+      padding: 0.2rem 1rem;
+      text-align: center;
+  }
+     .status-pending {
+        background-color: #fff0c2;
+        color: #a68b00;
+      }
+  
+       .status-paid {
+        background-color: #c8e6c9;
+        color:  #388e3c;
+      }
+  
+        .status-notupdated {
+        background-color: #ffcdd2;
+        color: #c62828;
+      } */
+    
+  
+    .amount {
+      text-align: right;
+    }
+  
+   
+    tr:nth-child(even) {
+      background-color: #f4f6fb;
+    }
+/*  Changin color when mouse over rows */
+    table tr:not(:first-child){
+      cursor: pointer; transition: all .25s ease-in-out;
+    }
+    table tr:not(:first-child):hover{
+      background-color: #ddd;
+    }
+
+    @keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-moz-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-webkit-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-o-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    
+    @-ms-keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }

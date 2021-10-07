@@ -15,7 +15,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-<?php include 'top-container.php';?>
+<?php include '../app/views/'.$_SESSION["user_type"].'/top-container.php';?>
     <div class="title-container">
         <h2>Edit Profile</h2>
     </div>
@@ -23,20 +23,20 @@
     <div class="from-container-outside">
         <div class="form-container">
           <div class="title">Edit Your Profile</div>
-          <form action="#">
+          <form action="<?php echo URL.$_SESSION['user_type']?>/editProfile" method="POST">
             <div class="form">
               <div class="inputfield">
                 <label>Name</label>
-                <input type="text" class="input" id="Name" value="<?php echo 'Kumud Nethmal'?>">
+                <input type="text" class="input" id="Name" value="<?php echo $_SESSION['name']?>" name="name">
               </div>
               <div class="inputfield">
                 <label>Mobile Number</label>
-                <input type="number" class="input" id="Mobile-number" value="<?php echo '0761234567'?>">
+                <input type="number" class="input" id="Mobile-number" value="<?php echo  $_SESSION['contact_number']?>" name="contact_number">
               </div>
                 <div class="inputfield" id="left-btn">
-                    <input type="button" value="Change Password" class="accept-btn change">
+                    <a href="<?php echo URL.$_SESSION['user_type']?>/changePassword"><input type="button" value="Change Password" class="accept-btn change"></a>
                 </div>
-            <div id="hide-inputfield">
+            <!-- <div id="hide-inputfield">
                 <div class="inputfield">
                     <label>Old Password</label>
                     <input type="password" class="input" >
@@ -50,7 +50,7 @@
                     <input type="password" class="input" >
                 </div>
                 
-            </div>
+            </div> -->
                 <div class="inputfield" id="right-btn">
                     <input type="submit" value="Accept" class="accept-btn"name="accept-btn">
                 </div>
@@ -61,4 +61,4 @@
       </div>
     </div>
 <script src="<?php echo URL?>vendors/js/editProfile.js"></script>
-<?php include 'bottom-container.php';?>
+<?php include '../app/views/'.$_SESSION["user_type"].'/bottom-container.php';?>

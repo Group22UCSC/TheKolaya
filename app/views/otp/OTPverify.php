@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +29,7 @@
         </form>
         
         <p class="sub-title bottom-sub">Didn't receive the code?</p>
-        <a href="<?php echo URL?>OtpVerify/otpSend" class="resend">Resend OTP <i class="fa fa-caret-right"></i></a>
+        <a href="<?php echo URL?>OtpVerify/reSendOtp" class="resend">Resend OTP <i class="fa fa-caret-right"></i></a>
         
     </div>
     <script src="<?php echo URL?>vendors/js/otp/otp-js.js"></script>

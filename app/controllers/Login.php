@@ -74,20 +74,20 @@ class Login extends Controller {
     }
 
     function createUserSession($user) {
-        session_start();
         $_SESSION['user_id'] = $user[0]['user_id'];
         $_SESSION['user_type'] = str_replace("_", "", $user[0]['user_type']);
-        $_SESSION['user_contact_number'] = $user[0]['contact_number'];
-        $_SESSION['user_name'] = $user[0]['name'];
-        //   echo $_SESSION['user_type'];
+        $_SESSION['contact_number'] = $user[0]['contact_number'];
+        $_SESSION['name'] = $user[0]['name'];
+        $_SESSION['address'] = $user[0]['address'];
         redirect($_SESSION['user_type']);
     }
 
     function logout() {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_type']);
-        unset($_SESSION['user_contact_number']);
-        unset($_SESSION['user_name']);
+        unset($_SESSION['contact_number']);
+        unset($_SESSION['name']);
+        unset($_SESSION['address']);
             
         session_destroy();
         redirect('login');
@@ -104,13 +104,16 @@ class Login extends Controller {
     function forgetPassword() {
         if(isset($_POST['enter_btn'])) {
             $data = [
-                'contact_number' => trim($_POST['contact_number'])
+                'contact_number' => trim($_POST['contact_number']),
+                'controller' => 'login'
             ];
-            $_SESSION['contact_number'] = $data['contact_number'];
+            
             if($this->model->isRegisteredUser($data['contact_number'])) {
-                require_once '../app/controllers/OtpVerify.php';
-                $otp = new OtpVerify();
-                $otp->otpSend('login', $data);
+                // $otp = new OtpVerify;
+                // $otp->otpSend($data);
+                $_SESSION['mobile_number'] = $data['contact_number'];
+                $_SESSION['controller'] = $data['controller'];
+                otpSend();
             }else {
                 $this->view->render('User/forgetPassword/wrongNumber', $data);
             }

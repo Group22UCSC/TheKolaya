@@ -24,27 +24,36 @@ class OtpVerify extends Controller {
                     $otpCorrect = new registration();
                     $otpCorrect->loadModelUser('registration');
                     $otpCorrect->updateVerifiedUser();
-                    // unset($_SESSION['OTP']);
-                    // unset($_SESSION['controller']);
+                    unset($_SESSION['OTP']);
                     $this->view->render('otp/correctOTP');
                 }
                 else{
                     $verifyOTP = '';
                     $_SESSION['verify'] = 0;
-                    // unset($_SESSION['OTP']);
+                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
             }
             else if(isset($_POST['login-verify'])) {
                 if($verifyOTP == $_SESSION['OTP']){
                     $verifyOTP = '';
-                    // unset($_SESSION['OTP']);
-                    // unset($_SESSION['controller']);
+                    unset($_SESSION['OTP']);
                     redirect('login/changePassword');
                 }
                 else{
                     $verifyOTP = '';
-                    // unset($_SESSION['controller']);
+                    unset($_SESSION['OTP']);
+                    $this->view->render('otp/wrongOTP');
+                }
+            }else if(isset($_POST['profile-verify'])) {
+                if($verifyOTP == $_SESSION['OTP']){
+                    $verifyOTP = '';
+                    unset($_SESSION['OTP']);
+                    $this->view->render('user/profile/changePassword');
+                }
+                else{
+                    $verifyOTP = '';
+                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
             }
@@ -52,9 +61,10 @@ class OtpVerify extends Controller {
         }
     }
 
-    public function otpSend($controller, $data) {
-        $OTPcode = '1001';
+    public function reSendOtp() {
+        $OTPcode = '1002';
         $_SESSION['OTP'] = $OTPcode;
+        // $data['OTP'] = $OTPcode;
         // $OTPcode = rand(1000, 9999);
         // $contact_number = $_SESSION['contact_number'];
         // $_SESSION['OTP'] = $OTPcode;
@@ -68,9 +78,9 @@ class OtpVerify extends Controller {
         // $ret = file($url);
 
         // $res= explode(":",$ret[0]);
-        $_SESSION['controller'] = $controller;
-        // redirect('OtpVerify');
-        $this->view->render('otp/OTPverify', $data);
+        // $_SESSION['controller'] = $controller;
+        redirect('OtpVerify');
+        // $this->view->render('otp/OTPverify', $data);
     }
 }
 
