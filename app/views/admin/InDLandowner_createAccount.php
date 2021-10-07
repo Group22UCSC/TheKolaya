@@ -6,7 +6,7 @@
 
 
      <div class="middle"> 
-     <a >INDIRECT LANDOWNER CREATE ACCOUNTS</a> </div>
+     <a >CREATE ACCOUNTS</a> </div>
   
 
   <div class="k1">
@@ -15,7 +15,7 @@
      
 <div class="wrapper11">
     <div class="title">
-     Landowner Registration Form
+     Indirect Landowner Registration Form
     </div>
 
     <div class="form">

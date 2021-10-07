@@ -6,7 +6,7 @@
 
 
      <div class="middle"> 
-     <a >AGENT CREATE TEMPORARY ACCOUNTS</a> </div>
+     <a >CREATE TEMPORARY ACCOUNTS</a> </div>
   
 
   <div class="k1">

@@ -34,7 +34,7 @@
           <a href="<?php echo URL?>admin/DLandowner_create_Temp_Account">Direct Landowner</a>
           <a href="<?php echo URL?>admin/InDLandowner_create_Temp_Account">Indirect Landowner</a>
           <a href="<?php echo URL?>admin/create_agentTemp">Agent</a>
-          <a href="<?php echo URL?>admin/">Accountant</a>
+          <a href="<?php echo URL?>admin/create_accountantTemp">Accountant</a>
           <a href="<?php echo URL?>admin/">Product Manager</a>
           <a href="<?php echo URL?>admin/">Supervisor</a>
           <a href="<?php echo URL?>admin/">Manager</a>
