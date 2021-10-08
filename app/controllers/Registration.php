@@ -81,7 +81,7 @@ class Registration extends Controller {
                     if($this->model->findUser($data['contact_number'], $data['user_id'])) {
                         $_SESSION['mobile_number'] = $data['contact_number'];
                         $_SESSION['controller'] = $data['controller'];
-                        otpSend($data);
+                        otpSend();
                     }
                 }
                 
