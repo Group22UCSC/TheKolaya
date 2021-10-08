@@ -67,6 +67,7 @@ class Admin_Model extends Model {
             $landowner_type = $data['user_type'];
         }
         $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+        $queryUser = null;
         switch($user_type) {
             case 'accountant' :
                 $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
@@ -110,7 +111,7 @@ class Admin_Model extends Model {
             $landowner_type = $data['user_type'];
         }
         $query = "INSERT INTO user(user_id, contact_number, user_type, verify) values('$user_id', '$contact_number', '$user_type', '$verify')";
-        
+        $queryUser = null;
 
         switch($user_type) {
             case 'accountant' :
