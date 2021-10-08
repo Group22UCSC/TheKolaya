@@ -17,14 +17,32 @@ class Supervisor extends Controller{
 
     function manageRequests() {
         $request = $this->model->manageRequests();
-        // print_r($request);
-        // echo "<br>";
-        // echo count($request);
         $this->view->render('Supervisor/manageRequests', $request);
     }
 
     function manageFertilizer() {
-        $this->view->showPage('Supervisor/manageFertilizer');
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(isset($_POST['fertlizer_in'])) {
+                $data = [
+                    'stock_type' => 'in_stock',
+                    'type' => 'fertilizer',
+                    'price_per_unit' => trim($_POST['price_per_unit']),
+                    'amount' => trim($_POST['amount'])
+                ];
+                $this->model->manageStock($data);
+                $this->view->render('Supervisor/manageFertilizer');
+            }else if(isset($_POST['fertilizer_out'])) {
+                $data = [
+                    'stock_type' => 'out_stock',
+                    'type' => 'fertilizer',
+                    'amount' => trim($_POST['amount'])
+                ];
+                $this->model->manageStock($data);
+            }
+            
+        }else {
+            $this->view->showPage('Supervisor/manageFertilizer');
+        }
     }
 
     function manageFirewood() {
