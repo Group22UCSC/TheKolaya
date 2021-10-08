@@ -29,13 +29,13 @@
           <div class="table-element"><b>Request Amount(kg)</b></div>
         </div>
           <?php
-            
-            for($i = 0; $i < count($row); $i++) {
+            $x = count($data);
+            for($i = 0; $i < $x; $i++) {
               echo '<div class="table-row-2 get-id">
-                      <div class="table-element">'.$row[$i]['request_date'].'</div>
-                      <div class="table-element user-id">Lan-0'.$row[$i]['lid'].'</div>
-                      <div class="table-element">'.$row[$i]['name'].'</div>
-                      <div class="table-element">50'.$row[$i]['request_date'].'</div>
+                      <div class="table-element">'.$data[$i]['request_date'].'</div>
+                      <div class="table-element user-id">'.$data[$i]['lid'].'</div>
+                      <div class="table-element">'.$data[$i]['name'].'</div>
+                      <div class="table-element">'.$data[$i]['amount'].'</div>
                     </div>';
             }
           ?>

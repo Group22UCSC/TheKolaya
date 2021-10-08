@@ -16,8 +16,11 @@ class Supervisor extends Controller{
     }
 
     function manageRequests() {
-        $row = $this->model->manageRequests();
-        // $this->view->render('Supervisor/manageRequests', $row);
+        $request = $this->model->manageRequests();
+        // print_r($request);
+        // echo "<br>";
+        // echo count($request);
+        $this->view->render('Supervisor/manageRequests', $request);
     }
 
     function manageFertilizer() {
