@@ -38,10 +38,11 @@ class Supervisor extends Controller{
                     'amount' => trim($_POST['amount'])
                 ];
                 $this->model->manageStock($data);
+                $this->view->render('Supervisor/manageFertilizer');
             }
             
         }else {
-            $this->view->showPage('Supervisor/manageFertilizer');
+            $this->view->render('Supervisor/manageFertilizer');
         }
     }
 

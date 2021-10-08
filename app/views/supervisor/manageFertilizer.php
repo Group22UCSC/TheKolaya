@@ -55,7 +55,7 @@
           <div class="title">
             Fertilizer Out From the Factory
           </div>
-          <form action="#">
+          <form action="<?php echo URL?>Supervisor/manageFertilizer" method="POST">
             <div class="form">
                 <div class="inputfield">
                   <label>Amount(kg)</label>
