@@ -14,21 +14,21 @@
     <div class="title">
      Registration Form
     </div>
-   <form action="#" method="POST">
+   <form action="<?php echo URL?>admin/agent_land_account" method="POST">
       <div class="form">
          <div class="inputfield">
             <label> Name</label>
-            <input type="text" class="input" name="name">
+            <input type="text" class="input" name="name" required>
          </div> 
 
          <div class="inputfield">
             <label>Uesr ID</label>
-            <input type="text" class="input" name="user_id">
+            <input type="text" class="input" name="user_id" required>
          </div> 
 
          <div class="inputfield">
             <label>User Type</label>
-            <select class="type" id="type" name="user_type">
+            <select class="type" id="type" name="user_type" required>
                <option value="agent">Agent</option>
                <option value="direct_landowner">Direct Landowner</option>
                <option value="indirect_landowner">Indirect Landowner</option>
@@ -37,16 +37,17 @@
 
          <div class="inputfield">
             <label>Address</label>
-            <textarea class="textarea" name="address"></textarea>
+            <textarea class="textarea" name="address" required></textarea>
          </div>
 
          <div class="inputfield">
             <label>Contact Number</label>
-            <input type="text" class="input" name="contact_number" required>
+            <?php echo $data['contact_number_err'];?>
+            <input type="tel" class="input" name="contact_number" required>
          </div>
          <div class="inputfield">
             <label>Route number</label>
-            <input type="text" class="input" name="route_number" required>
+            <input type="number" class="input" name="route_number" required>
          </div>
          <div class="inputfield">
             <label>Password</label>
@@ -54,6 +55,7 @@
          </div>
          <div class="inputfield">
             <label>Confirm Password</label>
+            <?php echo $data['confirm_password_err'];?>
             <input type="password" class="input" name="confirm_password" required>
          </div> 
          <div class="inputfield">

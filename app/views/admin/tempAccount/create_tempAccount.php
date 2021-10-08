@@ -3,20 +3,14 @@
 <?php include '../app/views/admin/top-container.php';?>
 
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/create_Account.css">
-
-
      <div class="middle"> 
      <a >CREATE TEMPORARY ACCOUNTS</a> </div>
-  
-
   <div class="k1">
-
-     
 <div class="wrapper11">
     <div class="title">
     Registration Form
     </div>
-    <form action="#" method="POST">
+    <form action="<?php echo URL?>admin/create_tempAccount" method="POST">
     <div class="form">
         <div class="inputfield">
           <label> Name</label>
@@ -38,7 +32,7 @@
        </div>
         <div class="inputfield">
           <label>Contact number</label>
-          <input type="text" class="input" name="contact_number" required>
+          <input type="tel" class="input" name="contact_number" required>
        </div>
       <div class="inputfield">
         <input type="submit" value="Register" class="btn">
