@@ -14,7 +14,7 @@
      
 <div class="wrapper11">
     <div class="title">
-     User Registration Form
+    Registration Form
     </div>
     <form action="#" method="POST">
     <div class="form">

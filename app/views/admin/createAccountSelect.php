@@ -38,7 +38,7 @@
           <a href="<?php echo URL?>admin/create_tempAccount">Product Manager</a>
           <a href="<?php echo URL?>admin/create_tempAccount">Supervisor</a>
           <a href="<?php echo URL?>admin/create_tempAccount">Manager</a>
-          <a href="<?php echo URL?>admin/create_tempAccount">Admin</a>
+          <a href="<?php echo URL?>admin/create_tempAccaount">Admin</a>
         </div>
       </div>
     </div>

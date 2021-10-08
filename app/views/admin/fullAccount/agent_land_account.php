@@ -12,7 +12,7 @@
   <div class="k1">
 <div class="wrapper11">
     <div class="title">
-     Agent And Landowner Registration Form
+     Registration Form
     </div>
    <form action="#" method="POST">
       <div class="form">
@@ -62,9 +62,5 @@
       </div>
    </form>
 </div> 
-
-
-      
-   
 
 <?php include '../app/views/admin/bottom-container.php';?>
