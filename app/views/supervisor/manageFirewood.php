@@ -25,19 +25,19 @@
           <div class="title">
             Firewood buy
           </div>
-          <form action="#">
+          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST">
             <div class="form">
               <div class="inputfield">
                 <label>Price per unit</label>
-                <input type="number" class="input">
+                <input type="number" class="input" name="price_per_unit">
               </div>  
               <div class="inputfield">
                 <label>Amount(kg)</label>
-                <input type="number" class="input">
+                <input type="number" class="input" name="amount">
               </div>  
               
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn">
+                <input type="submit" value="Sumbit" class="accept-btn" name="firewood_in">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">
@@ -54,15 +54,15 @@
           <div class="title">
             Firewood use
           </div>
-          <form action="#">
+          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST">
             <div class="form">
                 <div class="inputfield">
                   <label>Amount(kg)</label>
-                  <input type="number" class="input">
+                  <input type="number" class="input" name="amount">
                 </div>  
                 
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit">
+                <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit" name="firewood_out">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodOutStock">
                 <div class="inputfield">
