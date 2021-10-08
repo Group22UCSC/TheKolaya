@@ -14,9 +14,22 @@
             $this->view->showPage('Admin/createAccountSelect');
         }
 
-         public function createAccount() {
-            $this->view->showPage('Admin/createAccount');
+         public function DLandowner_createAccount() {
+            $this->view->showPage('Admin/DLandowner_createAccount');
         }
+
+         public function DLandowner_create_Temp_Account() {
+            $this->view->showPage('Admin/DLandowner_create_Temp_Account');
+        }
+
+          public function InDLandowner_createAccount() {
+            $this->view->showPage('Admin/InDLandowner_createAccount');
+        }
+
+          public function InDLandowner_create_Temp_Account() {
+            $this->view->showPage('Admin/InDLandowner_create_Temp_Account');
+        }
+
 
          public function createAccount1() {
             $this->view->showPage('Admin/createAccount1');
@@ -60,6 +73,46 @@
 
         public function editProfile() {
         $this->view->showPage('admin/editProfile');
+        }
+     
+         public function create_agent() {
+            $this->view->showPage('Admin/create_agent');
+        }
+        
+          public function create_agentTemp() {
+            $this->view->showPage('Admin/create_agentTemp');
+        }
+
+         public function create_accountant() {
+            $this->view->showPage('Admin/create_accountant');
+        }
+
+          public function create_accountantTemp() {
+            $this->view->showPage('Admin/create_accountantTemp');
+        }
+
+         public function create_Pmanager() {
+            $this->view->showPage('Admin/create_Pmanager');
+        }
+
+         public function create_PmanagerTemp() {
+            $this->view->showPage('Admin/create_PmanagerTemp');
+        }
+
+          public function create_supervisor() {
+            $this->view->showPage('Admin/create_supervisor');
+        }
+
+        public function create_supervisorTemp() {
+            $this->view->showPage('Admin/create_supervisorTemp');
+        }
+
+          public function create_manager() {
+            $this->view->showPage('Admin/create_manager');
+        }
+
+         public function create_managerTemp() {
+            $this->view->showPage('Admin/create_managerTemp');
         }
     }
 
