@@ -11,8 +11,8 @@
  /* background: whitesmoke;*/
   margin-top: 15px;
   background-image: url("../../images/admin/14.jpg");
-   background-repeat: no-repeat;
-    background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   padding-top: 10px;
   padding-bottom: 17px;
   width: 90%;
@@ -33,11 +33,6 @@
   font-size: 20px;
   padding-top: 13px;
 }
-
-
-
-
-
 
 .wrapper11{
     margin-top: 7px;
@@ -131,7 +126,7 @@
 .wrapper11 .form .inputfield .input:focus,
 .wrapper11 .form .inputfield .textarea:focus,
 .wrapper11 .form .inputfield .custom_select select:focus{
-  border: 1px solid #fec107;
+  border: 1px solid #4DD101;
 }
 
 .wrapper11 .form .inputfield p{
@@ -154,7 +149,7 @@
 .wrapper11 .form .inputfield .check .checkmark{
   width: 15px;
   height: 15px;
-  border: 1px solid #fec107;
+  border: 1px solid #4DD101;
   display: block;
   position: relative;
 }
@@ -171,7 +166,7 @@
   display: none;
 }
 .wrapper11 .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
-  background: #fec107;
+  background: #4DD101;
 }
 
 .wrapper11 .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
@@ -183,15 +178,16 @@
    padding: 8px 10px;
   font-size: 15px; 
   border: 0px;
-  background:  green;
+  background:  #089633;
   color: #fff;
   cursor: pointer;
   border-radius: 3px;
   outline: none;
+  transition: 0.5s;
 }
 
 .wrapper11 .form .inputfield .btn:hover{
-  background: #ffd658;
+  background: #4DD101;
 }
 
 .wrapper11 .form .inputfield:last-child{
@@ -206,8 +202,8 @@
   border-radius: 3px;
 }
 
-.wrapper11 .form .inputfield .type:hover{border:1px solid #fec107;}
-.wrapper11 .form .inputfield .type:{border:1px solid #fec107;}
+.wrapper11 .form .inputfield .type:hover{border:1px solid #4DD101;}
+.wrapper11 .form .inputfield .type {border:1px solid #4DD101;}
 
 
 @media (max-width:420px) {
