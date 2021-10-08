@@ -14,27 +14,6 @@
             $this->view->showPage('Admin/createAccountSelect');
         }
 
-         public function DLandowner_createAccount() {
-            $this->view->showPage('Admin/DLandowner_createAccount');
-        }
-
-         public function DLandowner_create_Temp_Account() {
-            $this->view->showPage('Admin/DLandowner_create_Temp_Account');
-        }
-
-          public function InDLandowner_createAccount() {
-            $this->view->showPage('Admin/InDLandowner_createAccount');
-        }
-
-          public function InDLandowner_create_Temp_Account() {
-            $this->view->showPage('Admin/InDLandowner_create_Temp_Account');
-        }
-
-
-         public function createAccount1() {
-            $this->view->showPage('Admin/createAccount1');
-        }
-
          public function viewAccount() {
             $this->view->showPage('Admin/viewAccount');
         }
@@ -74,46 +53,24 @@
         public function editProfile() {
         $this->view->showPage('admin/editProfile');
         }
+
+        //Create Accounts
+        public function agent_land_account() {
+            $this->view->render('admin/fullAccount/agent_land_account');
+        }
+
+        public function create_account() {
+            $this->view->render('admin/fullAccount/create_account');
+        }
+
+        public function agent_land_tempaAccount() {
+            $this->view->render('admin/tempAccount/agent_land_tempaAccount');
+        }
+
+        public function create_tempAccount() {
+            $this->view->render('admin/tempAccount/create_tempAccount');
+        }
      
-         public function create_agent() {
-            $this->view->showPage('Admin/create_agent');
-        }
-        
-          public function create_agentTemp() {
-            $this->view->showPage('Admin/create_agentTemp');
-        }
-
-         public function create_accountant() {
-            $this->view->showPage('Admin/create_accountant');
-        }
-
-          public function create_accountantTemp() {
-            $this->view->showPage('Admin/create_accountantTemp');
-        }
-
-         public function create_Pmanager() {
-            $this->view->showPage('Admin/create_Pmanager');
-        }
-
-         public function create_PmanagerTemp() {
-            $this->view->showPage('Admin/create_PmanagerTemp');
-        }
-
-          public function create_supervisor() {
-            $this->view->showPage('Admin/create_supervisor');
-        }
-
-        public function create_supervisorTemp() {
-            $this->view->showPage('Admin/create_supervisorTemp');
-        }
-
-          public function create_manager() {
-            $this->view->showPage('Admin/create_manager');
-        }
-
-         public function create_managerTemp() {
-            $this->view->showPage('Admin/create_managerTemp');
-        }
     }
 
 ?>
