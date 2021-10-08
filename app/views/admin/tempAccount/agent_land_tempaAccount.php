@@ -13,7 +13,7 @@
     <div class="title">
     Registration Form
     </div>
-   <form action="#" method="POST">
+   <form action="<?php echo URL?>admin/agent_land_tempaAccount" method="POST">
       <div class="form">
 
          <div class="inputfield">
@@ -32,12 +32,12 @@
 
          <div class="inputfield">
             <label>Contact Number</label>
-            <input type="text" class="input" name="contact_number" required>
+            <input type="tel" class="input" name="contact_number" required>
          </div>
 
          <div class="inputfield">
             <label>Route number</label>
-            <input type="text" class="input" name="route_number" required>
+            <input type="number" class="input" name="route_number" required>
          </div>
 
          <div class="inputfield">
