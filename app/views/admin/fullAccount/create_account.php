@@ -15,7 +15,7 @@
      
 <div class="wrapper11">
     <div class="title">
-     Accountant Registration Form
+    Registration Form
     </div>
 
     <form action="#" method="POST">

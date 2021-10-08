@@ -10,10 +10,6 @@
             $this->view->showPage('Admin/Admin');
         }
 
-        public function createAccountSelect() {
-            $this->view->showPage('Admin/createAccountSelect');
-        }
-
          public function viewAccount() {
             $this->view->showPage('Admin/viewAccount');
         }
@@ -55,6 +51,13 @@
         }
 
         //Create Accounts
+
+        public function createAccountSelect() {
+            
+            $this->view->showPage('Admin/createAccountSelect');
+            $_SESSION["selectUser"] = $_POST["selectUser"];
+        }
+
         public function agent_land_account() {
             $this->view->render('admin/fullAccount/agent_land_account');
         }
