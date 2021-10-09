@@ -72,6 +72,7 @@
                     <td class="tdcls">'.$data[$i]['name'].'</td>
                     <td class="tdcls">'.$data[$i]['sold_amount']*$data[$i]['sold_price'].'</td>
                 </tr>';
+                
             }
           ?>
 

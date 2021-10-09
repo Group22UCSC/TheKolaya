@@ -58,13 +58,16 @@ class Accountant_Model extends Model {
                 INNER JOIN buyer 
                 ON auction.buyer_id=buyer.buyer_id";
         $row = $this->db->runQuery($query);
-        // print($lastInsertID);
-        // print_r($row);
-        // for($i = 0; $i < 2; $i++) {
-        //     echo $row[$i]['request_id']." ".$row[$i]['request_date']." ".$row[$i]['name']." ".$row[$i]['amount']." ".$row[$i]['lid']."<br>";
-            
-        // }
-        // print($row[0]['name']);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function teaPriceTable(){
+        $query = "SELECT * FROM monthly_tea_price";
+        $row = $this->db->runQuery($query);
         if($row) {
             return $row;
         }else {
