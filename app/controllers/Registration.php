@@ -70,7 +70,7 @@ class Registration extends Controller {
             }
 
             //Make sure errors are empty
-            if(empty($data['name_err']) && empty($data['contact_number_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
+            if(empty($data['name_err']) && empty($data['contact_number_err']) && empty($data['address_err']) && empty($data['user_id_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
                 //Validated
                 
                 //Hash Password
@@ -81,7 +81,7 @@ class Registration extends Controller {
                     if($this->model->findUser($data['contact_number'], $data['user_id'])) {
                         $_SESSION['mobile_number'] = $data['contact_number'];
                         $_SESSION['controller'] = $data['controller'];
-                        otpSend($data);
+                        otpSend();
                     }
                 }
                 

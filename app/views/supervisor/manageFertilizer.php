@@ -25,19 +25,19 @@
           <div class="title">
             Fertilizer into the Factory
           </div>
-          <form action="#">
+          <form action="<?php echo URL?>Supervisor/manageFertilizer" method="POST">
             <div class="form">
               <div class="inputfield">
                 <label>Price per unit</label>
-                <input type="number" class="input">
+                <input type="number" class="input" name="price_per_unit" required>
               </div>  
               <div class="inputfield">
                 <label>Amount(kg)</label>
-                <input type="number" class="input">
+                <input type="number" class="input" name="amount" required>
               </div>  
               
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn">
+                <input type="submit" value="Sumbit" class="accept-btn" name="fertlizer_in">
               </div>
               <a href="<?php echo URL?>Supervisor/fertilizerInstock">
                 <div class="inputfield">
@@ -55,15 +55,15 @@
           <div class="title">
             Fertilizer Out From the Factory
           </div>
-          <form action="#">
+          <form action="<?php echo URL?>Supervisor/manageFertilizer" method="POST">
             <div class="form">
                 <div class="inputfield">
                   <label>Amount(kg)</label>
-                  <input type="number" class="input">
+                  <input type="number" class="input" name="amount" required>
                 </div>  
                 
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit">
+                <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit" name="fertilizer_out">
               </div>
               <a href="<?php echo URL?>Supervisor/fertilizerOutstock">
                 <div class="inputfield">
