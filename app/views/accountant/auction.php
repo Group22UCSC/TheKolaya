@@ -52,7 +52,27 @@
 
                 </tr>
            
+                <?php
+            $x = count($data);
+            for($i = 0; $i < $x; $i++) {
+            //   echo '<div class="table-row-2 get-id">
+            //           <div class="table-element">'.$data[$i]['request_date'].'</div>
+            //           <div class="table-element user-id">'.$data[$i]['lid'].'</div>
+            //           <div class="table-element">'.$data[$i]['name'].'</div>
+            //           <div class="table-element">'.$data[$i]['amount'].'</div>
+            //         </div>';
 
+                 echo'<tr>
+                    <td class="tdcls">'.$data[$i]['date'].'</td>
+                    <td class="tdcls">'.$data[$i]['product_id'].'</td>
+                    <td class="tdcls">Test</td>
+                    <td class="tdcls">'.$data[$i]['sold_amount'].'</td>
+                    <td class="tdcls">'.$data[$i]['sold_price'].'</td>
+                    <td class="tdcls">'.$data[$i]['buyer_id'].'</td>
+                    <td class="tdcls">Test</td>
+                </tr>';
+            }
+          ?>
 
 
             <tr>
