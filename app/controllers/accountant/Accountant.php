@@ -34,7 +34,7 @@ class Accountant extends Controller{
     //auction details page
     function auction(){
         $result = $this->model->auction();
-        //print_r($result);
+       // print_r($result);
         $this->view->render('accountant/auction', $result);
         //$this->view->showPage('accountant/auction');
     }

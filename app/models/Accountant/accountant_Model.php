@@ -49,8 +49,27 @@ class Accountant_Model extends Model {
     }
     //auctionDetails
     function auction(){
-        $query="SELECT * FROM auction";
-        return $this->db->runQuery($query);
+        
+
+        $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name
+                FROM auction 
+                INNER JOIN product 
+                ON auction.product_id=product.product_id 
+                INNER JOIN buyer 
+                ON auction.buyer_id=buyer.buyer_id";
+        $row = $this->db->runQuery($query);
+        // print($lastInsertID);
+        // print_r($row);
+        // for($i = 0; $i < 2; $i++) {
+        //     echo $row[$i]['request_id']." ".$row[$i]['request_date']." ".$row[$i]['name']." ".$row[$i]['amount']." ".$row[$i]['lid']."<br>";
+            
+        // }
+        // print($row[0]['name']);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
     }
     
 }
