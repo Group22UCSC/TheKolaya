@@ -7,6 +7,59 @@
 
      <div class="middle"> 
      <a >CREATE ACCOUNTS</a> </div>
+
+
+
+
+
+// table
+
+<div class="table-container">
+    <div class="table-section">
+        <table class="teapricetable">
+            
+                <tr class="trcls">
+                    <th class="thcls">ID</th>
+                    <th class="thcls">Contact number</th>
+                    <th class="thcls">Landowner Type</th>
+                    <th class="thcls">Route no</th>
+                  
+
+                </tr>
+           
+                <?php
+            $x = count($data);
+            for($i = 0; $i < $x; $i++) {
+            
+                 echo'<tr>
+                    <td class="tdcls">'.$data[$i]['user_id'].'</td>
+                    <td class="tdcls">'.$data[$i]['contact_number'].'</td>
+                    <td class="tdcls">'.$data[$i]['landowner_type'].'</td>
+                    <td class="tdcls">'.$data[$i]['route_number'].'</td>
+                  
+                </tr>';
+                    
+            }
+          ?>
+
+    
+        </table>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
   
 
   <div class="k1">
@@ -63,6 +116,16 @@
          </div>
       </div>
    </form>
+
+
+
+
 </div> 
+
+</div> 
+
+
+
+
 
 <?php include '../app/views/admin/bottom-container.php';?>
