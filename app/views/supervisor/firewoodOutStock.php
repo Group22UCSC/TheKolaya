@@ -64,9 +64,9 @@
             }
           ?>
 
-          <div class="table-row">
+          <!-- <div class="table-row">
             <a href="<?php echo URL?>Supervisor/firewoodStock"><button class="table-btn">Firewood Stock</button></a>
-          </div>
+          </div> -->
         </div>
     </div>
 <?php include 'bottom-container.php';?>

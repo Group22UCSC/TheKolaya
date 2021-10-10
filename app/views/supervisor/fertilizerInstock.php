@@ -20,11 +20,11 @@
     </div>
     <div class="middle-container">
         <div class="form-container">
-            <form action="#">
+            <form action="<?php echo URL?>Supervisor/fertilizerInStock" method="POST">
                 <div class="form">
                     <div class="inputfield">
                     <label class="search-lable">Search InStock by Date</label>
-                    <input type="date" class="search-label input">
+                    <input type="date" class="search-label input" name="date">
                     <input type="submit" value="Search" class="accept-btn">
                     </div>
                 </div>
@@ -41,13 +41,14 @@
             <div class="table-element"><b>Emp_id</b></div>
           </div>
           <?php
-            for($i = 0; $i < 1; $i++) {
+
+            for($i = 0; $i < 2; $i++) {
               echo '<div class="table-row">
-                      <div class="table-element">Lan-00'.$i.'</div>
-                      <div class="table-element">10'.$i.'</div>
-                      <div class="table-element">60'.$i.'</div>
-                      <div class="table-element">60'.$i.'</div>
-                      <div class="table-element">50'.$i.'</div>
+                    <div class="table-element">Lan-00'.$i.'</div>
+                    <div class="table-element">10'.$i.'</div>
+                    <div class="table-element">60'.$i.'</div>
+                    <div class="table-element">60'.$i.'</div>
+                    <div class="table-element">50'.$i.'</div>
                     </div>';
             }
           ?>
@@ -63,20 +64,23 @@
             <div class="table-element"><b>Emp_id</b></div>
           </div>
           <?php
-            for($i = 0; $i < 2; $i++) {
-              echo '<div class="table-row">
-                    <div class="table-element">Lan-00'.$i.'</div>
-                    <div class="table-element">10'.$i.'</div>
-                    <div class="table-element">60'.$i.'</div>
-                    <div class="table-element">60'.$i.'</div>
-                    <div class="table-element">50'.$i.'</div>
+            for($i = 0; $i < count($data); $i++) {
+              if($data[$i]['type'] == 'fertilizer') {
+                echo '<div class="table-row">
+                      <div class="table-element">'.$data[$i]['in_date'].'</div>
+                      <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
+                      <div class="table-element">'.$data[$i]['in_quantity'].'</div>
+                      <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
+                      <div class="table-element">'.$data[$i]['emp_id'].'</div>
                     </div>';
+              }
             }
+            
           ?>
 
-          <div class="table-row">
+          <!-- <div class="table-row">
             <a href="<?php echo URL?>Supervisor/fertilizerStock"><button class="table-btn">fertilizer Stock</button></a>
-          </div>
+          </div> -->
         </div>
     </div>
 <?php include 'bottom-container.php';?>
