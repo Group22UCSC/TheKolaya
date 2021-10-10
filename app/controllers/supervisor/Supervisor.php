@@ -30,7 +30,7 @@ class Supervisor extends Controller{
                     'amount' => trim($_POST['amount'])
                 ];
                 $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFertilizer');
+                // $this->view->render('Supervisor/manageFertilizer');
             }else if(isset($_POST['fertilizer_out'])) {
                 $data = [
                     'stock_type' => 'out_stock',
@@ -38,7 +38,7 @@ class Supervisor extends Controller{
                     'amount' => trim($_POST['amount'])
                 ];
                 $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFertilizer');
+                // $this->view->render('Supervisor/manageFertilizer');
             }
             
         }else {
@@ -73,7 +73,28 @@ class Supervisor extends Controller{
     }
 
     function fertilizerInStock() {
-        $this->view->showPage('Supervisor/fertilizerInStock');
+        $data = [
+            'stock_type' => 'in_stock',
+            'type' => 'fertilizer',
+        ];
+        $_SESSION['search'] = 0;
+        if($_SERVER['REQUEST_METHOD']=='POST') {
+            $_SESSION['search'] = 1;
+            $data = [
+                'date' => trim($_POST['date']),
+                'stock_type' => 'in_stock',
+                'type' => 'fertilizer',
+            ];
+            if($this->model->searchByDate($data)) {
+                $instock = $this->model->searchByDate($data);
+            }else {
+                $instock = [];
+            }
+            $this->view->render('Supervisor/fertilizerInStock', $instock);
+        }
+            $instock = $this->model->stock($data);
+            $this->view->render('Supervisor/fertilizerInStock', $instock);
+        
     }
 
     function firewoodInStock() {
@@ -86,14 +107,6 @@ class Supervisor extends Controller{
     
     function firewoodOutStock() {
         $this->view->showPage('Supervisor/firewoodOutStock');
-    }
-
-    function fertilizerStock() {
-        $this->view->showPage('Supervisor/fertilizerStock');
-    }
-
-    function firewoodStock() {
-        $this->view->showPage('Supervisor/firewoodStock');
     }
 
     function profile() {
