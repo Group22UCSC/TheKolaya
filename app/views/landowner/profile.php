@@ -28,7 +28,7 @@
                     <img src="<?php echo URL ?>vendors/images/landowner/profile.jpg" alt="">
                 </div>
                 <div class="profile-container-text">
-                    <h1>Sasindu <br> Wijegunasinghe</h1>
+                    <h1>Pasindu <br> Lakmal</h1>
                 </div>
                 <div class="profile-container-text">landowner</div>
             </div>
@@ -37,7 +37,7 @@
                     <span class="label-left"><b>ID</b></span><span class="label-right">Lan-006</span>
                 </div>
                 <div class="label-container address">
-                    <span class="label-left"><b>Address</b></span><span class="label-right">Imaduwa, Galle</span>
+                    <span class="label-left"><b>Address</b></span><span class="label-right">Walahanduwa, Galle</span>
                 </div>
             </div>
             <div class="profile-edit middle"><a href="<?php echo URL ?>landowner/editProfile">Edit Profile</a></div>
