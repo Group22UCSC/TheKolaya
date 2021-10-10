@@ -73,15 +73,28 @@ class Supervisor extends Controller{
     }
 
     function fertilizerInStock() {
+        $data = [
+            'stock_type' => 'in_stock',
+            'type' => 'fertilizer',
+        ];
         $_SESSION['search'] = 0;
         if($_SERVER['REQUEST_METHOD']=='POST') {
             $_SESSION['search'] = 1;
-            $date = trim($_POST['date']);
-            $instock = $this->model->searchByDate($date);
+            $data = [
+                'date' => trim($_POST['date']),
+                'stock_type' => 'in_stock',
+                'type' => 'fertilizer',
+            ];
+            if($this->model->searchByDate($data)) {
+                $instock = $this->model->searchByDate($data);
+            }else {
+                $instock = [];
+            }
             $this->view->render('Supervisor/fertilizerInStock', $instock);
         }
-        $instock = $this->model->inStock();
-        $this->view->render('Supervisor/fertilizerInStock', $instock);
+            $instock = $this->model->stock($data);
+            $this->view->render('Supervisor/fertilizerInStock', $instock);
+        
     }
 
     function firewoodInStock() {

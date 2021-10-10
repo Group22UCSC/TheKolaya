@@ -73,11 +73,30 @@ class Supervisor_Model extends Model {
         }
     }
 
-    function inStock() {
+    function stock($data) {
+        $type = $data['type'];
+        $query = "SELECT DATE(in_date) 
+                AS in_date, 
+                price_per_unit, price_for_amount, in_quantity, emp_id 
+                FROM ".$data['stock_type']." WHERE type='$type'";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function searchByDate($data) {
+        $stock_type = $data['stock_type'];
+        $type = $data['type'];
+        $search_date = $data['date'];
+
         $query = "SELECT DATE(in_date) 
                 AS in_date, 
                 type, price_per_unit, price_for_amount, in_quantity, emp_id 
-                FROM in_stock";
+                FROM '$stock_type' WHERE type='$type' WHERE in_date='$search_date'";
+
         $row = $this->db->runQuery($query);
         if($row) {
             return $row;
