@@ -30,7 +30,7 @@
       <tr>
         <th>Landowner ID</th>
         <th>Container Estimation</th> 
-        <th>Addess</th>
+        <th>Address</th>
         <th>Update</th>
         <th>Delete</th> 
               
