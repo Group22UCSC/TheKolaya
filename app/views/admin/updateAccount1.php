@@ -14,37 +14,51 @@
 <div class="wrapper1">
     <div class="title">  Update Form  </div>
 
-    <div class="form">
+    
       
+<form action="<?php echo URL?>admin/updateAccount1" method="POST">
+      <div class="form">
+
         <div class="inputfield">
           <label> Name</label>
-          <input type="text" class="input">
+           <input type="text" class="input" name="name" required>
        </div> 
 
         <div class="inputfield">
           <label>ID</label>
-          <input type="text" class="input">
+          <input type="text" class="input" name="user_id" required>
        </div> 
 
        <div class="inputfield">
           <label>Address</label>
-          <textarea class="textarea"></textarea>
+          <textarea class="textarea" name="address" required></textarea>
        </div> 
 
-        <div class="inputfield">
-          <label>Type(Landowner/Employee)</label>
-          <input type="text" class="input">
-       </div>
+       <div class="inputfield">
+            <label>User Type</label>
+           <select class="type" id="type" name="user_type" required>
+               <option value="accountant">Accountant</option>
+               <option value="admin">Admin</option>
+               <option value="manager">Manager</option>
+               <option value="supervisor">Supervisor</option>
+               <option value="product_manager">Product Manager</option>
+            </select>
+         </div>
 
         <div class="inputfield">
-          <label>Phone number</label>
-          <input type="text" class="input">
+          <label>Contact Number</label>
+            <input type="tel" class="input" name="contact_number" required>
        </div>
 
        <div class="inputfield">
           <label>Password</label>
-          <input type="password" class="input">
+          <input type="password" class="input" name="password" required>
        </div>  
+
+       <div class="inputfield">
+            <label>Confirm Password</label>
+            <input type="password" class="input" name="confirm_password" required>
+         </div>
 
        <div class="inputfield">
           <a>If you want to update the account</a>
@@ -65,7 +79,7 @@
 
       </div>
 
-     
+     </form>
 
     </div>
 

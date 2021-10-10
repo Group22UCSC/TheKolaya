@@ -42,64 +42,41 @@
             
                 <tr class="trcls">
                     <th class="thcls">Date</th>
-                    <th class="thcls">Product Id</th>
+                    <th class="thcls">PId</th>
                     <th class="thcls">Product Name</th>
                     <th class="thcls">Sold Amount(Kg)</th>
-                    <th class="thcls">Sold Price(Per 1Kg)</th>
+                    <th class="thcls">Sold Price(1Kg/Rs)</th>
                     <th class="thcls">Buyer</th>
-                    <th class="thcls">Total Income(Rs)</th>
+                    <th class="thcls">Income(Rs)</th>
 
 
                 </tr>
            
+                <?php
+            $x = count($data);
+            for($i = 0; $i < $x; $i++) {
+            //   echo '<div class="table-row-2 get-id">
+            //           <div class="table-element">'.$data[$i]['request_date'].'</div>
+            //           <div class="table-element user-id">'.$data[$i]['lid'].'</div>
+            //           <div class="table-element">'.$data[$i]['name'].'</div>
+            //           <div class="table-element">'.$data[$i]['amount'].'</div>
+            //         </div>';
+            // auction.date,product.product_id, product.product_name, 
+            // auction.sold_amount, auction.sold_price,buyer.name
+                 echo'<tr>
+                    <td class="tdcls">'.$data[$i]['date'].'</td>
+                    <td class="tdcls">'.$data[$i]['product_id'].'</td>
+                    <td class="tdcls">'.$data[$i]['product_name'].'</td>
+                    <td class="tdcls">'.$data[$i]['sold_amount'].'</td>
+                    <td class="tdcls">'.$data[$i]['sold_price'].'</td>
+                    <td class="tdcls">'.$data[$i]['name'].'</td>
+                    <td class="tdcls">'.$data[$i]['sold_amount']*$data[$i]['sold_price'].'</td>
+                </tr>';
+                    
+            }
+          ?>
 
-
-
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Akbhar Brothers Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
+    
         </table>
     </div>
 

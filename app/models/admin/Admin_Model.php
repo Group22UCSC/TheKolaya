@@ -145,5 +145,68 @@ class Admin_Model extends Model {
         $this->db->runQuery($query);
         $this->db->runQuery($queryUser);
     }
+
+
+
+
+     function userRegistration11($data = []) {
+        $name = $data['name'];
+        $contact_number = $data['contact_number'];
+        $user_id = $data['user_id'];
+        $address = $data['address'];
+        $password = $data['password'];
+        $user_type = $data['user_type'];
+        // $route_number = $data['route_number'];
+        $verify = 1;
+        if($data['user_type'] == 'direct_landowner' || $data['user_type'] == 'indirect_landowner'){
+            $user_type = 'Land_Owner';
+            $landowner_type = $data['user_type'];
+        }
+        // $query = "UPDATE user SET(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+
+
+         $query="UPDATE user SET";
+         $query="user_id= {$user_id},";
+          $query="name= {$name},";
+           $query="address= {$address},";
+            $query="contact_number= {$contact_number},";
+             $query="user_type= {$user_type},";
+              $query="password= {$password},";
+               $query="verify= {$verify},";
+
+        $queryUser = null;
+        switch($user_type) {
+            case 'accountant' :
+                $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
+                break;
+            
+            case 'admin' :
+                $queryUser = "INSERT INTO admin(emp_id) values('$user_id')";
+                break;
+            
+            case 'agent' :
+                $queryUser = "INSERT INTO agent(emp_id, route_no) values('$user_id', '$route_number')";
+                break;
+            
+            case 'manager' :
+                $queryUser = "INSERT INTO manager(emp_id) values('$user_id')";
+                break;
+
+            case 'Land_Owner' :
+                $queryUser = "INSERT INTO landowner(user_id, contact_number, landowner_type, route_no) values('$user_id', '$contact_number', '$landowner_type', '$route_number')";
+                break;
+
+            case 'product_manager' :
+                $queryUser = "INSERT INTO product_manager(emp_id) values('$user_id')";
+                break;
+
+            case 'supervisor' :
+                $queryUser = "INSERT INTO supervisor(emp_id) values('$user_id')";
+                break;
+        }
+        $this->db->runQuery($query);
+        $this->db->runQuery($queryUser);
+    }
+
 }
 ?>
