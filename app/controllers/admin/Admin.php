@@ -287,6 +287,27 @@
             }
         }
      
+
+
+
+
+
+
+
+
+
+
+
+ //auction details page
+    function auction(){
+        $result = $this->model->auction();
+       // print_r($result);
+        $this->view->render('admin/auction', $result);
+        //$this->view->showPage('admin/auction');
+    }
+
+
+
     }
 
 ?>

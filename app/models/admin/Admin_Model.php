@@ -208,5 +208,49 @@ class Admin_Model extends Model {
         $this->db->runQuery($queryUser);
     }
 
+   
+   
+    //Test
+    function testModel(){
+       $query="SELECT * FROM product";
+       return $this->db->runQuery($query);
+    }
+   //auctionDetails
+    function auction(){
+        
+
+        // $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name
+        //         FROM auction 
+        //         INNER JOIN product 
+        //         ON auction.product_id=product.product_id 
+        //         INNER JOIN buyer 
+        //         ON auction.buyer_id=buyer.buyer_id";
+
+        $query = "SELECT user_id,contact_number,landowner_type, route_no 
+                FROM landowner ";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function teaPriceTable(){
+        $query = "SELECT * FROM monthly_tea_price";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+    
+
+
+
+
+
+
 }
 ?>
