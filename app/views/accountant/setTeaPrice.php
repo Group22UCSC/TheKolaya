@@ -10,7 +10,7 @@
     <!-- <div class="title">
            Emergency Message
         </div>         -->
-    <div class="form">
+    <div class="form" >
         <div class="inputfield">
             <label>Year</label>
             <input type="text" class="input" value="2021" >
