@@ -11,7 +11,8 @@ class Accountant extends Controller{
         $this->view->showPage('accountant/accountant');
     }
     function setTeaPrice() {
-        $this->view->showPage('accountant/setTeaPrice');
+        $result = $this->model->teaPriceTable();
+        $this->view->render('accountant/setTeaPrice',$result);
     }
     function payments() {
         $this->view->showPage('accountant/payments');
@@ -34,7 +35,7 @@ class Accountant extends Controller{
     //auction details page
     function auction(){
         $result = $this->model->auction();
-        //print_r($result);
+       // print_r($result);
         $this->view->render('accountant/auction', $result);
         //$this->view->showPage('accountant/auction');
     }

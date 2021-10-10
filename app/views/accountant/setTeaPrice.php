@@ -10,7 +10,7 @@
     <!-- <div class="title">
            Emergency Message
         </div>         -->
-    <div class="form">
+    <div class="form" >
         <div class="inputfield">
             <label>Year</label>
             <input type="text" class="input" value="2021" >
@@ -137,52 +137,33 @@
 
             </tr> -->
 
+            <?php 
+            $x=count($data);
+           // print_r($data);
+            // $year = date('Y', strtotime($data['date']));
 
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">February</td>
-                <td class="tdcls">129</td>
-                
+            // $month = date('F', strtotime($data['date']));
+            // $date = $data[0]['price'];
+            // echo  $date;
 
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">March</td>
-                <td class="tdcls">120</td>
-               
+            // $year = date('Y', strtotime($date));
 
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">April</td>
-                <td class="tdcls">125</td>
-               
-
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">May</td>
-                <td class="tdcls">127</td>
+            // $month = date('F', strtotime($date));
+            // echo $year;
+            // echo $month;
             
-            </tr>
+            for($i=0;$i<$x;$i++){
+                $date=$data[$i]['date'];
+                $year = date('Y', strtotime($date));
+                $month = date('F', strtotime($date));
+            echo '
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">June</td>
-                <td class="tdcls">127</td>
-            
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">July</td>
-                <td class="tdcls">127</td>
-            
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">August</td>
-                <td class="tdcls">127</td>
-            
-            </tr>
+                <td class="tdcls">'.$year.'</td>
+                <td class="tdcls">'.$month.'</td>
+                <td class="tdcls">'.$data[$i]['price'].'</td>
+            </tr> ';
+            }
+            ?>
             
 
         </table>
