@@ -2,6 +2,7 @@
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
 <script defer src="<?php echo URL ?>vendors/js/accountant/setteaprice.js""></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="top-container">
     <p>Set Tea Price</p>
 </div>
@@ -11,25 +12,46 @@
            Emergency Message
         </div>         -->
     <div class="form" >
+        <?php
+            $dateToday=date("Y-m-d");
+            $year = date('Y', strtotime($dateToday));
+            $month = date('F', strtotime($dateToday));
+            //print_r($data);
+            $y=count($data);
+            $isPriceSet=0;
+            for($j=0;$j<$y;$j++){
+                $dbdate=$data[$j]['date'];
+                $dbyear = date('Y', strtotime($dbdate));
+                $dbmonth = date('F', strtotime($dbdate));
+                if($year==$dbyear AND $month==$dbmonth){
+                    $isPriceSet=1;
+                }
+            }
+            
+        ?>
+
         <div class="inputfield">
             <label>Year</label>
-            <input type="text" class="input" value="2021" >
+            <input type="text" class="input" value="<?php echo $year?>" readonly>
         </div>
         <div class="inputfield">
             <label>Month</label>
-            <input type="text" class="input" value="octomber">
+            <input type="text" class="input" value="<?php echo $month?>" readonly>
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
-            <input type="text" class="input">
+            <input type="text" id="priceid" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
         </div>
         <div class="inputfield">
-            <input type="submit" value="Set Price" data-modal-target="#modal" class="btn">
+            <input type="button" value="Set Price" data-modal-target="#modal" class="btn" name="price" <?php if($isPriceSet){echo "disabled";} ?>>
         </div>
+        
+
     </div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
+<form action="<?php echo URL?>accountant/setTeaPrice" method="post">
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="title">Confirm Tea Price</div>
@@ -37,18 +59,21 @@
     </div>
     <div class="modal-body">
         <div class="year">
-            <label>Year : 2021</label>
+            <label>Year : </label>
+            <input type="text" name="year" class="model-input" value="<?php echo $year?>" readonly>
         </div>
         <div class="month">
-            <label>Month : September</label>
+            <label>Month : </label>
+            <input type="text" name="month" class="model-input" value="<?php echo $month?>" readonly>
         </div>
-        <div class="price">
-            <label>Tea Price(Rs): 2500</label>
+        <div class="price"> 
+            <label>Tea Price(Rs): </label>
+            <input type="text" id="priceInput" class="model-input" name="teaPrice" readonly>
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
         
-        <input type="submit" value="Confirm" class="confirmbtn" >
+        <input type="submit" value="Submit" class="confirmbtn" name="teaPriceConfirm">
         
         
         
@@ -56,6 +81,7 @@
     </div>
   </div>
   <div id="overlay"></div>
+  </form>
 
 <!--  **********   view previous details   *** -->
 

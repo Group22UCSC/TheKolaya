@@ -30,20 +30,14 @@
       <tr>
         <th>Landowner ID</th>
         <th>Container Estimation</th> 
-        <th>Addess</th>
-        <th>Update</th>
-        <th>Delete</th> 
-              
-        
+        <th>Address</th>                              
       </tr>
       <?php
         for($i=1;$i<=$x;$i++){
-          echo '<tr>
+          echo '<tr id="tea" data-href-tea="">
                     <td>L00'.$i.'</td>
                     <td>28</td>  
-                    <td>Matara</td>                   
-                    <td class="updatecol"><button class="update" onclick="openteaform()"><i class="far fa-edit"></i></button></td>
-                    <td class="deletecol"><button class = "delete"><i class="fa fa-trash"></i></button></td>
+                    <td>Matara</td>                                      
                 </tr>';                
         }       
       ?>         
@@ -58,20 +52,16 @@
         <th>Landowner ID</th>
         <th>Request ID</th>
         <th>Type</th>
-        <th>Amount</th>
-        <th>Update</th>
-        <th>Delete</th>        
+        <th>Amount</th>            
       </tr>
      
       <?php
         for($i=1;$i<=$y;$i++){
-          echo '<tr ">
+          echo '<tr  id = "request" data-href-request="" >
                     <td>L00'.$i.'</td>
                     <td>R'.$i.'</td>
                     <td>Firewood</td>
-                    <td>28</td>
-                    <td class="updatecol"><button class = "update" onclick="openrequestform()"><i class="far fa-edit"></i></button></td>
-                    <td class="deletecol"><button class = "delete"><i class="fa fa-trash"></i></button></td>
+                    <td>28</td>                                      
                 </tr>';                
         }
       ?>
@@ -81,21 +71,29 @@
       <div class="forms">
     <?php  include 'deliverables.php';?>   
     <?php  include 'teaCollection.php';?>   
+    
       </div>
       <?php include 'bottomContainer.php'?>
 
 
  <script>
-//   document.addEventListener("DOMContentLoaded",() => {
-//     const rows = document.querySelectorAll("tr[data-href]");
-//     rows.forEach(row =>{
-//         row.addEventListener("click", ()=>{
-//             window.location.href = row.dataset.href;
-//         });
-//     });
-// });
+  document.addEventListener("DOMContentLoaded",() => {
+    const rows = document.querySelectorAll("tr[data-href-tea]");
+    rows.forEach(row =>{
+        row.addEventListener("click", ()=>{
+         openteaform();
+        });
+    });
+});
 
-
+document.addEventListener("DOMContentLoaded",() => {
+    const rows = document.querySelectorAll("tr[data-href-request]");
+    rows.forEach(row =>{
+        row.addEventListener("click", ()=>{
+         openrequestform();
+        });
+    });
+});
 
 var table = document.getElementById('availabletable');
                 
@@ -121,26 +119,26 @@ for(var i = 1; i < table.rows.length; i++)
                 
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('active');
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('active');
 }
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('close');
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('close');
 }
 
 function openrequestform(){
   document.getElementById("requestpopup").style.display = "block";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('active');
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('active');
 }
 
 function closerequestform(){
   document.getElementById("requestpopup").style.display = "none";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('close');
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('close');
 }
 
 
