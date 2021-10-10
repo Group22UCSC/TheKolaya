@@ -78,22 +78,12 @@ class Supervisor extends Controller{
             'type' => 'fertilizer',
         ];
         $_SESSION['search'] = 0;
-        if($_SERVER['REQUEST_METHOD']=='POST') {
+        if(isset($_GET['search_btn'])) {
+            $_SESSION['searchDate'] = trim($_GET['date']);
             $_SESSION['search'] = 1;
-            $data = [
-                'date' => trim($_POST['date']),
-                'stock_type' => 'in_stock',
-                'type' => 'fertilizer',
-            ];
-            if($this->model->searchByDate($data)) {
-                $instock = $this->model->searchByDate($data);
-            }else {
-                $instock = [];
-            }
-            $this->view->render('Supervisor/fertilizerInStock', $instock);
         }
-            $instock = $this->model->stock($data);
-            $this->view->render('Supervisor/fertilizerInStock', $instock);
+        $instock = $this->model->stock($data);
+        $this->view->render('Supervisor/fertilizerInStock', $instock);
         
     }
 
