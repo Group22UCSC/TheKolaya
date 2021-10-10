@@ -11,7 +11,25 @@ class Accountant extends Controller{
         $this->view->showPage('accountant/accountant');
     }
     function setTeaPrice() {
-        $this->view->showPage('accountant/setTeaPrice');
+        if(!empty($_POST)){
+            
+
+            $result = $this->model->insertTeaPrice();
+            if($result==true){
+                // if there is a result which mean query is executed - > success pop up
+                echo "successfuly added";
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        }
+        else{
+            $result = $this->model->teaPriceTable();
+            $this->view->render('accountant/setTeaPrice',$result);
+        }
+        
     }
     function payments() {
         $this->view->showPage('accountant/payments');
@@ -34,7 +52,7 @@ class Accountant extends Controller{
     //auction details page
     function auction(){
         $result = $this->model->auction();
-        //print_r($result);
+       // print_r($result);
         $this->view->render('accountant/auction', $result);
         //$this->view->showPage('accountant/auction');
     }

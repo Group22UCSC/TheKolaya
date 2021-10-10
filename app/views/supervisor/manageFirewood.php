@@ -75,7 +75,7 @@
       </div>
       
     </div>
-    <div class="title-container btn-container-outside">
+    <!-- <div class="title-container btn-container-outside">
       <div class="btn-container">
         <a href="<?php echo URL?>Supervisor/firewoodStock">
           <div class="inputfield">
@@ -83,7 +83,7 @@
           </div>
         </a>
       </div>
-    </div>
+    </div> -->
 <?php include 'bottom-container.php';?>
 
 
