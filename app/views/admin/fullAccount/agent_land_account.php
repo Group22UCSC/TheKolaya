@@ -7,24 +7,13 @@
 
      <div class="middle"> 
      <a >CREATE ACCOUNTS</a> </div>
-
-
-
-
-
-// table
-
 <div class="table-container">
     <div class="table-section">
         <table class="teapricetable">
-            
                 <tr class="trcls">
                     <th class="thcls">ID</th>
                     <th class="thcls">Contact number</th>
-                    <th class="thcls">Landowner Type</th>
-                    <th class="thcls">Route no</th>
-                  
-
+                    <th class="thcls">User Type</th>
                 </tr>
            
                 <?php
@@ -34,10 +23,8 @@
                  echo'<tr>
                     <td class="tdcls">'.$data[$i]['user_id'].'</td>
                     <td class="tdcls">'.$data[$i]['contact_number'].'</td>
-                    <td class="tdcls">'.$data[$i]['landowner_type'].'</td>
-                    <td class="tdcls">'.$data[$i]['route_number'].'</td>
-                  
-                </tr>';
+                    <td class="tdcls">'.$data[$i]['user_type'].'</td>
+                     </tr>';
                     
             }
           ?>
@@ -76,7 +63,7 @@
 
          <div class="inputfield">
             <label>Uesr ID</label>
-            <input type="text" class="input" name="user_id" required>
+            <input type="text" class="input" name="user_id" placeholder="<?php (!empty($user_data['user_id_err'])) ? print $user_data['user_id_err'] : print ''; ?>" required>
          </div> 
 
          <div class="inputfield">
@@ -95,7 +82,7 @@
 
          <div class="inputfield">
             <label>Contact Number</label>
-            <?php echo $data['contact_number_err'];?>
+            <?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>
             <input type="tel" class="input" name="contact_number" required>
          </div>
          <div class="inputfield">
@@ -108,7 +95,7 @@
          </div>
          <div class="inputfield">
             <label>Confirm Password</label>
-            <?php echo $data['confirm_password_err'];?>
+            <?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>
             <input type="password" class="input" name="confirm_password" required>
          </div> 
          <div class="inputfield">
