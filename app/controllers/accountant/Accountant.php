@@ -26,8 +26,17 @@ class Accountant extends Controller{
     function requests(){
         $this->view->showPage('accountant/requests');
     }
+    // testing model
+    function testModel(){
+        $this->view->auction=$this->model->testModel();
+        $this->view->showPage('accountant/test');
+    }
+    //auction details page
     function auction(){
-        $this->view->showPage('accountant/auction');
+        $result = $this->model->auction();
+        //print_r($result);
+        $this->view->render('accountant/auction', $result);
+        //$this->view->showPage('accountant/auction');
     }
 }
 
