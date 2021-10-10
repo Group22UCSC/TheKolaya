@@ -2,6 +2,7 @@
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
 <script defer src="<?php echo URL ?>vendors/js/accountant/setteaprice.js""></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="top-container">
     <p>Set Tea Price</p>
 </div>
@@ -39,15 +40,18 @@
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
-            <input type="text" class="input" value="<?php if(!$isPriceSet){echo "Tea Price Already Set";} ?>">
+            <input type="text" id="priceid" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
         </div>
         <div class="inputfield">
-            <input type="submit" value="Set Price" data-modal-target="#modal" class="btn" name="price">
+            <input type="button" value="Set Price" data-modal-target="#modal" class="btn" name="price" <?php if($isPriceSet){echo "disabled";} ?>>
         </div>
+        
+
     </div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
+<form action="<?php echo URL?>accountant/setTeaPrice" method="post">
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="title">Confirm Tea Price</div>
@@ -55,18 +59,21 @@
     </div>
     <div class="modal-body">
         <div class="year">
-            <label>Year : <?php echo $year?></label>
+            <label>Year : </label>
+            <input type="text" name="year" class="model-input" value="<?php echo $year?>" readonly>
         </div>
         <div class="month">
-            <label>Month : <?php echo $month?></label>
+            <label>Month : </label>
+            <input type="text" name="month" class="model-input" value="<?php echo $month?>" readonly>
         </div>
-        <div class="price">
-            <label>Tea Price(Rs): <?php echo $_POST['submit']['price']?></label>
+        <div class="price"> 
+            <label>Tea Price(Rs): </label>
+            <input type="text" id="priceInput" class="model-input" name="teaPrice" readonly>
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
         
-        <input type="submit" value="Confirm" class="confirmbtn" >
+        <input type="submit" value="Submit" class="confirmbtn" name="teaPriceConfirm">
         
         
         
@@ -74,6 +81,7 @@
     </div>
   </div>
   <div id="overlay"></div>
+  </form>
 
 <!--  **********   view previous details   *** -->
 
