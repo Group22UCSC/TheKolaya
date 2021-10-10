@@ -10,21 +10,39 @@
     <!-- <div class="title">
            Emergency Message
         </div>         -->
-    <div class="form">
+    <div class="form" >
+        <?php
+            $dateToday=date("Y-m-d");
+            $year = date('Y', strtotime($dateToday));
+            $month = date('F', strtotime($dateToday));
+            //print_r($data);
+            $y=count($data);
+            $isPriceSet=0;
+            for($j=0;$j<$y;$j++){
+                $dbdate=$data[$j]['date'];
+                $dbyear = date('Y', strtotime($dbdate));
+                $dbmonth = date('F', strtotime($dbdate));
+                if($year==$dbyear AND $month==$dbmonth){
+                    $isPriceSet=1;
+                }
+            }
+            
+        ?>
+
         <div class="inputfield">
             <label>Year</label>
-            <input type="text" class="input" value="2021" >
+            <input type="text" class="input" value="<?php echo $year?>" readonly>
         </div>
         <div class="inputfield">
             <label>Month</label>
-            <input type="text" class="input" value="octomber">
+            <input type="text" class="input" value="<?php echo $month?>" readonly>
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
-            <input type="text" class="input">
+            <input type="text" class="input" value="<?php if(!$isPriceSet){echo "Tea Price Already Set";} ?>">
         </div>
         <div class="inputfield">
-            <input type="submit" value="Set Price" data-modal-target="#modal" class="btn">
+            <input type="submit" value="Set Price" data-modal-target="#modal" class="btn" name="price">
         </div>
     </div>
 </div>
@@ -37,13 +55,13 @@
     </div>
     <div class="modal-body">
         <div class="year">
-            <label>Year : 2021</label>
+            <label>Year : <?php echo $year?></label>
         </div>
         <div class="month">
-            <label>Month : September</label>
+            <label>Month : <?php echo $month?></label>
         </div>
         <div class="price">
-            <label>Tea Price(Rs): 2500</label>
+            <label>Tea Price(Rs): <?php echo $_POST['submit']['price']?></label>
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
@@ -137,52 +155,33 @@
 
             </tr> -->
 
+            <?php 
+            $x=count($data);
+           // print_r($data);
+            // $year = date('Y', strtotime($data['date']));
 
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">February</td>
-                <td class="tdcls">129</td>
-                
+            // $month = date('F', strtotime($data['date']));
+            // $date = $data[0]['price'];
+            // echo  $date;
 
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">March</td>
-                <td class="tdcls">120</td>
-               
+            // $year = date('Y', strtotime($date));
 
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">April</td>
-                <td class="tdcls">125</td>
-               
-
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">May</td>
-                <td class="tdcls">127</td>
+            // $month = date('F', strtotime($date));
+            // echo $year;
+            // echo $month;
             
-            </tr>
+            for($i=0;$i<$x;$i++){
+                $date=$data[$i]['date'];
+                $year = date('Y', strtotime($date));
+                $month = date('F', strtotime($date));
+            echo '
             <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">June</td>
-                <td class="tdcls">127</td>
-            
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">July</td>
-                <td class="tdcls">127</td>
-            
-            </tr>
-            <tr>
-                <td class="tdcls">2021</td>
-                <td class="tdcls">August</td>
-                <td class="tdcls">127</td>
-            
-            </tr>
+                <td class="tdcls">'.$year.'</td>
+                <td class="tdcls">'.$month.'</td>
+                <td class="tdcls">'.$data[$i]['price'].'</td>
+            </tr> ';
+            }
+            ?>
             
 
         </table>
