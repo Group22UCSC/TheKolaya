@@ -43,7 +43,7 @@
             <input type="text" id="priceid" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
         </div>
         <div class="inputfield">
-            <input type="button" value="Set Price" data-modal-target="#modal" class="btn" name="price" >
+            <input type="button" value="Set Price" data-modal-target="#modal" class="btn" name="price" <?php if($isPriceSet){echo "disabled";} ?>>
         </div>
         
 
@@ -73,7 +73,7 @@
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
         
-        <input type="submit" value="Confirm" class="confirmbtn" name="teaPriceConfirm">
+        <input type="submit" value="Submit" class="confirmbtn" name="teaPriceConfirm">
         
         
         
