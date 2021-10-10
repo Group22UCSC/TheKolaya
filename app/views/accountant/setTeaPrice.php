@@ -11,20 +11,38 @@
            Emergency Message
         </div>         -->
     <div class="form" >
+        <?php
+            $dateToday=date("Y-m-d");
+            $year = date('Y', strtotime($dateToday));
+            $month = date('F', strtotime($dateToday));
+            //print_r($data);
+            $y=count($data);
+            $isPriceSet=0;
+            for($j=0;$j<$y;$j++){
+                $dbdate=$data[$j]['date'];
+                $dbyear = date('Y', strtotime($dbdate));
+                $dbmonth = date('F', strtotime($dbdate));
+                if($year==$dbyear AND $month==$dbmonth){
+                    $isPriceSet=1;
+                }
+            }
+            
+        ?>
+
         <div class="inputfield">
             <label>Year</label>
-            <input type="text" class="input" value="2021" >
+            <input type="text" class="input" value="<?php echo $year?>" readonly>
         </div>
         <div class="inputfield">
             <label>Month</label>
-            <input type="text" class="input" value="octomber">
+            <input type="text" class="input" value="<?php echo $month?>" readonly>
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
-            <input type="text" class="input">
+            <input type="text" class="input" value="<?php if(!$isPriceSet){echo "Tea Price Already Set";} ?>">
         </div>
         <div class="inputfield">
-            <input type="submit" value="Set Price" data-modal-target="#modal" class="btn">
+            <input type="submit" value="Set Price" data-modal-target="#modal" class="btn" name="price">
         </div>
     </div>
 </div>
@@ -37,13 +55,13 @@
     </div>
     <div class="modal-body">
         <div class="year">
-            <label>Year : 2021</label>
+            <label>Year : <?php echo $year?></label>
         </div>
         <div class="month">
-            <label>Month : September</label>
+            <label>Month : <?php echo $month?></label>
         </div>
         <div class="price">
-            <label>Tea Price(Rs): 2500</label>
+            <label>Tea Price(Rs): <?php echo $_POST['submit']['price']?></label>
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
