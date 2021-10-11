@@ -23,8 +23,10 @@ class ProductManager extends Controller{
         $this->view->showPage('Productmanager/updateProducts');
     }
     function updateAuction() {
-
-        $this->view->showPage('Productmanager/updateAuction');
+       
+            $result = $this->model->auction();
+           // print_r($result);
+            $this->view->render('Productmanager/updateAuction', $result);
     }
     
     
