@@ -8,7 +8,10 @@ class Agent extends Controller{
 
     function index() {
 
-       $this->view->showPage('Agent/Agent');    
+      
+       $result = $this->model->availablelistTable();
+      // print_r($result);
+       $this->view->render('Agent/Agent',$result);
     }
 
     function availableLandownerList(){
@@ -16,7 +19,7 @@ class Agent extends Controller{
     }
 
     function updateTeaWeight(){
-        $this->view->showPage('Agent/TeaCollection');
+        $this->view->showPage('Agent/popup');
     }
     function sendEmergencyMessage(){
         $this->view->showPage('Agent/EmergencyMessage');
@@ -32,6 +35,10 @@ class Agent extends Controller{
 
     function editProfile() {
         $this->view->showPage('Agent/agentEditProfile');
+    }
+
+    function loadPopup(){
+        $this->view->showPage('Agent/popup');
     }
 }
 
