@@ -19,7 +19,7 @@ class Agent extends Controller{
     }
 
     function updateTeaWeight(){
-        $this->view->showPage('Agent/TeaCollection');
+        $this->view->showPage('Agent/popup');
     }
     function sendEmergencyMessage(){
         $this->view->showPage('Agent/EmergencyMessage');
@@ -35,6 +35,10 @@ class Agent extends Controller{
 
     function editProfile() {
         $this->view->showPage('Agent/agentEditProfile');
+    }
+
+    function loadPopup(){
+        $this->view->showPage('Agent/popup');
     }
 }
 
