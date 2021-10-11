@@ -9,11 +9,11 @@
 
             <div class="inputfield">
                 <label>Landowner ID</label>
-                <input type="text" class="input" id="lid" name="lid">
+                <input type="text" class="input" id="lid" name="lid" readonly>
             </div>  
             <div class="inputfield">
                 <label>Initial Tea Weight</label>
-                <input type="text" class="input" name="weight" required>
+                <input type="text" class="input" name="weight" id="weight" required>
             </div>        
             <div class="inputfield">
             <button class="back" onclick="closeteaform()">Back</button>
