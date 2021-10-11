@@ -113,8 +113,9 @@ class Admin_Model extends Model {
     }
 
     function userTempRegistration($data = []) {
-        $contact_number = $data['mobile_number'];
         $user_id = $data['reg_id'];
+        $user_type = $data['reg_type'];
+        $contact_number = $data['mobile_number'];
         $route_number = $data['route_number'];
         $verify = 0;
         if($data['reg_type'] == 'direct_landowner' || $data['reg_type'] == 'indirect_landowner'){
@@ -267,7 +268,7 @@ class Admin_Model extends Model {
     
 
 
-// user registration model(admin manager supervisor PM accountant)
+// user full registration model(admin manager supervisor PM accountant)
         function userRegistration_employee($data = []) {
         $name = $data['name'];
         $contact_number = $data['mobile_number'];

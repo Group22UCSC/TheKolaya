@@ -219,13 +219,13 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $user_data = [
-                    'user_id' => trim($_POST['user_id']),
-                    'user_type' => trim($_POST['user_type']),
-                    'contact_number' => trim($_POST['contact_number']),
+                    'reg_id' => trim($_POST['user_id']),
+                    'reg_type' => trim($_POST['user_type']),
+                    'mobile_number' => trim($_POST['contact_number']),
                     'route_number' => trim($_POST['route_number']),
                 ];
 
-                if($this->model->searchUserContact($data['contact_number'])) {
+                if($this->model->searchUserContact($data['mobile_number'])) {
                     $user_data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
