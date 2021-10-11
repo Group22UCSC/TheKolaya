@@ -8,7 +8,10 @@ class Agent extends Controller{
 
     function index() {
 
-       $this->view->showPage('Agent/Agent');    
+      
+       $result = $this->model->availablelistTable();
+      // print_r($result);
+       $this->view->render('Agent/Agent',$result);
     }
 
     function availableLandownerList(){

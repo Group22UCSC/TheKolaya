@@ -17,7 +17,7 @@
 <?php include 'topContainer.php';?>
 <div class = "maindiv" id="blur">
 <div class="notice">
-<?php $x=5?>
+<?php $x=count($data);?>
    <h4 id="availablenotice">You have <?php echo $x?> landowners to collect <br>tea leaves today!</h4>
    <?php $y=4?>
    <h4 id="deliverynotice">You have <?php echo $y?> landowners to deliver <br>requested items today!</h4>
@@ -30,14 +30,15 @@
       <tr>
         <th>Landowner ID</th>
         <th>Container Estimation</th> 
-        <th>Address</th>                              
+        <!--<th>Address</th>    -->                          
       </tr>
       <?php
-        for($i=1;$i<=$x;$i++){
+
+        for($i=0;$i<$x;$i++){
           echo '<tr id="tea" data-href-tea="">
-                    <td>L00'.$i.'</td>
-                    <td>28</td>  
-                    <td>Matara</td>                                      
+                    <td>'.$data[$i]['user_id'].'</td>
+                    <td>'.$data[$i]['no_of_estimated_containers'].'</td>
+                    
                 </tr>';                
         }       
       ?>         
