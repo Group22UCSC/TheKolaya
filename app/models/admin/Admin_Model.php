@@ -53,18 +53,28 @@ class Admin_Model extends Model {
         }
     }
 
+    function searchUserId($user_id) {
+        $query = "SELECT * FROM user WHERE user_id='$user_id'";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row[0]['user_id'];
+        }else {
+            return false;
+        }
+    }
+
     function userRegistration($data = []) {
         $name = $data['name'];
-        $contact_number = $data['contact_number'];
-        $user_id = $data['user_id'];
+        $contact_number = $data['mobile_number'];
+        $user_id = $data['reg_id'];
         $address = $data['address'];
         $password = $data['password'];
-        $user_type = $data['user_type'];
+        $user_type = $data['reg_type'];
         $route_number = $data['route_number'];
         $verify = 1;
-        if($data['user_type'] == 'direct_landowner' || $data['user_type'] == 'indirect_landowner'){
+        if($data['reg_type'] == 'direct_landowner' || $data['reg_type'] == 'indirect_landowner'){
             $user_type = 'Land_Owner';
-            $landowner_type = $data['user_type'];
+            $landowner_type = $data['reg_type'];
         }
         $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
         $queryUser = null;
@@ -97,18 +107,19 @@ class Admin_Model extends Model {
                 $queryUser = "INSERT INTO supervisor(emp_id) values('$user_id')";
                 break;
         }
+
         $this->db->runQuery($query);
         $this->db->runQuery($queryUser);
     }
 
     function userTempRegistration($data = []) {
-        $contact_number = $data['contact_number'];
-        $user_id = $data['user_id'];
+        $contact_number = $data['mobile_number'];
+        $user_id = $data['reg_id'];
         $route_number = $data['route_number'];
         $verify = 0;
-        if($data['user_type'] == 'direct_landowner' || $data['user_type'] == 'indirect_landowner'){
+        if($data['reg_type'] == 'direct_landowner' || $data['reg_type'] == 'indirect_landowner'){
             $user_type = 'Land_Owner';
-            $landowner_type = $data['user_type'];
+            $landowner_type = $data['reg_type'];
         }
         $query = "INSERT INTO user(user_id, contact_number, user_type, verify) values('$user_id', '$contact_number', '$user_type', '$verify')";
         $queryUser = null;
@@ -146,21 +157,18 @@ class Admin_Model extends Model {
         $this->db->runQuery($queryUser);
     }
 
-
-
-
      function userRegistration11($data = []) {
         $name = $data['name'];
-        $contact_number = $data['contact_number'];
-        $user_id = $data['user_id'];
+        $contact_number = $data['mobile_number'];
+        $user_id = $data['reg_id'];
         $address = $data['address'];
         $password = $data['password'];
-        $user_type = $data['user_type'];
+        $user_type = $data['reg_type'];
         // $route_number = $data['route_number'];
         $verify = 1;
-        if($data['user_type'] == 'direct_landowner' || $data['user_type'] == 'indirect_landowner'){
+        if($data['reg_type'] == 'direct_landowner' || $data['reg_type'] == 'indirect_landowner'){
             $user_type = 'Land_Owner';
-            $landowner_type = $data['user_type'];
+            $landowner_type = $data['reg_type'];
         }
         // $query = "UPDATE user SET(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
 
@@ -215,20 +223,31 @@ class Admin_Model extends Model {
        $query="SELECT * FROM product";
        return $this->db->runQuery($query);
     }
-   //auctionDetails
-    function auction(){
-        
+   //CheckDetails
+    function checkTable(){
+        $userTypes = ['Accountant', 'Admin', 'Agent', 'Manager', 'Land_Owner', 'Product_Manager', 'Supervisor'];
+        $users = array();
+        for($i = 0; $i < count($userTypes); $i++) {
+            $query = "SELECT * FROM user 
+                WHERE user_type='".$userTypes[$i]."' 
+                ORDER BY user_id DESC";
+            
+            $row = $this->db->runQuery($query);
+            $users[$i] = $row[0]['user_id'];
+        }
 
-        // $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name
-        //         FROM auction 
-        //         INNER JOIN product 
-        //         ON auction.product_id=product.product_id 
-        //         INNER JOIN buyer 
-        //         ON auction.buyer_id=buyer.buyer_id";
-
-        $query = "SELECT user_id,contact_number,landowner_type, route_no 
-                FROM landowner ";
+        $query = "SELECT user_id, user_type, contact_number 
+                FROM user
+                WHERE user_id='".$users[0]."' 
+                OR user_id='".$users[1]."' 
+                OR user_id='".$users[2]."' 
+                OR user_id='".$users[3]."' 
+                OR user_id='".$users[4]."' 
+                OR user_id='".$users[5]."' 
+                OR user_id='".$users[6]."' 
+                ";
         $row = $this->db->runQuery($query);
+
         if($row) {
             return $row;
         }else {
@@ -246,6 +265,57 @@ class Admin_Model extends Model {
         }
     }
     
+
+
+// user registration model(admin manager supervisor PM accountant)
+        function userRegistration_employee($data = []) {
+        $name = $data['name'];
+        $contact_number = $data['mobile_number'];
+        $user_id = $data['reg_id'];
+        $address = $data['address'];
+        $password = $data['password'];
+        $user_type = $data['reg_type'];
+       
+        $verify = 1;
+        if($data['reg_type'] == 'direct_landowner' || $data['reg_type'] == 'indirect_landowner'){
+            $user_type = 'Land_Owner';
+            $landowner_type = $data['reg_type'];
+        }
+        $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+        $queryUser = null;
+        switch($user_type) {
+            case 'accountant' :
+                $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
+                break;
+            
+            case 'admin' :
+                $queryUser = "INSERT INTO admin(emp_id) values('$user_id')";
+                break;
+            
+            case 'agent' :
+                $queryUser = "INSERT INTO agent(emp_id, route_no) values('$user_id', '$route_number')";
+                break;
+            
+            case 'manager' :
+                $queryUser = "INSERT INTO manager(emp_id) values('$user_id')";
+                break;
+
+            case 'Land_Owner' :
+                $queryUser = "INSERT INTO landowner(user_id, contact_number, landowner_type, route_no) values('$user_id', '$contact_number', '$landowner_type', '$route_number')";
+                break;
+
+            case 'product_manager' :
+                $queryUser = "INSERT INTO product_manager(emp_id) values('$user_id')";
+                break;
+
+            case 'supervisor' :
+                $queryUser = "INSERT INTO supervisor(emp_id) values('$user_id')";
+                break;
+        }
+
+        $this->db->runQuery($query);
+        $this->db->runQuery($queryUser);
+    }
 
 
 

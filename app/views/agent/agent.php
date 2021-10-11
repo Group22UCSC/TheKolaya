@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/teacollection.css">  
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
 <?php include 'topContainer.php';?>
 <div class = "maindiv" id="blur">
 <div class="notice">
-<?php $x=5?>
+<?php $x=count($data);?>
    <h4 id="availablenotice">You have <?php echo $x?> landowners to collect <br>tea leaves today!</h4>
    <?php $y=4?>
    <h4 id="deliverynotice">You have <?php echo $y?> landowners to deliver <br>requested items today!</h4>
@@ -30,20 +30,15 @@
       <tr>
         <th>Landowner ID</th>
         <th>Container Estimation</th> 
-        <th>Addess</th>
-        <th>Update</th>
-        <th>Delete</th> 
-              
-        
+        <!--<th>Address</th>    -->                          
       </tr>
       <?php
-        for($i=1;$i<=$x;$i++){
-          echo '<tr>
-                    <td>L00'.$i.'</td>
-                    <td>28</td>  
-                    <td>Matara</td>                   
-                    <td class="updatecol"><button class="update" onclick="openteaform()"><i class="far fa-edit"></i></button></td>
-                    <td class="deletecol"><button class = "delete"><i class="fa fa-trash"></i></button></td>
+
+        for($i=0;$i<$x;$i++){
+          echo '<tr id="tea" data-href-tea="">
+                    <td>'.$data[$i]['user_id'].'</td>
+                    <td>'.$data[$i]['no_of_estimated_containers'].'</td>
+                    
                 </tr>';                
         }       
       ?>         
@@ -58,20 +53,16 @@
         <th>Landowner ID</th>
         <th>Request ID</th>
         <th>Type</th>
-        <th>Amount</th>
-        <th>Update</th>
-        <th>Delete</th>        
+        <th>Amount</th>            
       </tr>
      
       <?php
         for($i=1;$i<=$y;$i++){
-          echo '<tr ">
+          echo '<tr  id = "request" data-href-request="" >
                     <td>L00'.$i.'</td>
                     <td>R'.$i.'</td>
                     <td>Firewood</td>
-                    <td>28</td>
-                    <td class="updatecol"><button class = "update" onclick="openrequestform()"><i class="far fa-edit"></i></button></td>
-                    <td class="deletecol"><button class = "delete"><i class="fa fa-trash"></i></button></td>
+                    <td>28</td>                                      
                 </tr>';                
         }
       ?>
@@ -80,22 +71,30 @@
       </div>
       <div class="forms">
     <?php  include 'deliverables.php';?>   
-    <?php  include 'teaCollection.php';?>   
+    <?php  include 'teaCollection.php';?>       
       </div>
+      <?php  include 'popup.php';?>        
       <?php include 'bottomContainer.php'?>
 
 
  <script>
-//   document.addEventListener("DOMContentLoaded",() => {
-//     const rows = document.querySelectorAll("tr[data-href]");
-//     rows.forEach(row =>{
-//         row.addEventListener("click", ()=>{
-//             window.location.href = row.dataset.href;
-//         });
-//     });
-// });
+  document.addEventListener("DOMContentLoaded",() => {
+    const rows = document.querySelectorAll("tr[data-href-tea]");
+    rows.forEach(row =>{
+        row.addEventListener("click", ()=>{
+         openteaform();
+        });
+    });
+});
 
-
+document.addEventListener("DOMContentLoaded",() => {
+    const rows = document.querySelectorAll("tr[data-href-request]");
+    rows.forEach(row =>{
+        row.addEventListener("click", ()=>{
+         openrequestform();
+        });
+    });
+});
 
 var table = document.getElementById('availabletable');
                 
@@ -121,26 +120,26 @@ for(var i = 1; i < table.rows.length; i++)
                 
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('active');
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('active');
 }
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('close');
+  //  var blur = document.getElementById('blur');
+  // blur.classList.toggle('maindiv');
 }
 
 function openrequestform(){
   document.getElementById("requestpopup").style.display = "block";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('active');
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('active');
 }
 
 function closerequestform(){
   document.getElementById("requestpopup").style.display = "none";
-  var blur = document.getElementById('blur');
-  blur.classList.toggle('close');
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('close');
 }
 
 
@@ -181,11 +180,38 @@ var index, table1 = document.getElementById('availabletable');
                 };
                 
             }
-// $(document).ready(function(){
-//   $(document.table).on("click", "tr[data-href]", function(){
-//     window.location.href = this.dataset.href;
-//   });
-// });
+function openpopup(){
+// Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  //var c = confirm("Are you sure to add this weight?");
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+}
+function closepopup(){
+  document.getElementById("myModal").style.display = "none";
+  //  var blur = document.getElementById('blur');
+  // blur.classList.toggle('maindiv');
+}
 
 </script>

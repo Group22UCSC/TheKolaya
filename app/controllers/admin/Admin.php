@@ -23,7 +23,6 @@
         }
 
         //update form
-
          public function updateAccount1() {
             // $this->view->showPage('Admin/updateAccount1');
 
@@ -76,21 +75,6 @@
                 $this->view->render('admin/updateAccount1', $data);
             }
         }
-           
-
-
-
-
-
-
-
-
-       
-
-
-
-
-
 
         public function deleteAccount() {
             $this->view->showPage('Admin/deleteAccount');
@@ -124,39 +108,45 @@
         }
 
         public function agent_land_account() {
+            $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $data = [
+                $user_data = [
                     'name' => trim($_POST['name']),
-                    'user_id' => trim($_POST['user_id']),
-                    'user_type' => trim($_POST['user_type']),
+                    'reg_id' => trim($_POST['user_id']),
+                    'reg_type' => trim($_POST['user_type']),
                     'address' => trim($_POST['address']),
-                    'contact_number' => trim($_POST['contact_number']),
+                    'mobile_number' => trim($_POST['contact_number']),
                     'route_number' => trim($_POST['route_number']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
 
 
+                    'user_id_err' => '',
                     'contact_number_err' => '',
                     'confirm_password_err' => ''
                 ];
 
-                if($data['password'] != $data['confirm_password']) {
-                    $data['confirm_password_err'] = "confirmation not matching";
+                if($user_data['password'] != $user_data['confirm_password']) {
+                    $user_data['confirm_password_err'] = "confirmation not matching";
                 }
-                if($this->model->searchUserContact($data['contact_number'])) {
-                    $data['contact_number_err'] = "This mobile number is already Taken";
+                if($this->model->searchUserContact($user_data['mobile_number'])) {
+                    $user_data['contact_number_err'] = "This mobile number is already Taken";
+                }
+                if($this->model->searchUserId($user_data['reg_id'])) {
+                    $user_data['user_id_err'] = "This user_id is already Taken";
                 }
 
-                if(empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    $this->model->userRegistration($data);
-                    $this->view->render('admin/fullAccount/agent_land_account', $data);
+                if(empty($user_data['mobile_number_err']) && empty($user_data['confirm_password_err']) && empty($user_data['mobile_number_err'])) {
+                    $user_data['password'] = password_hash($user_data['password'], PASSWORD_DEFAULT);
+                    $this->model->userRegistration($user_data);
+                    
+                    $this->view->show('admin/fullAccount/agent_land_account', $data, $user_data);
                 }else {
-                    $this->view->render('admin/fullAccount/agent_land_account', $data);
+                    $this->view->show('admin/fullAccount/agent_land_account', $data, $user_data);
                 }
             }else{
-                $data = [
+                $user_data = [
                     'name' => '',
                     'user_id' => '',
                     'user_type' => '',
@@ -170,50 +160,49 @@
                     'contact_number_err' => '',
                     'confirm_password_err' => ''
                 ];
-                $this->view->render('admin/fullAccount/agent_land_account', $data);
+                $user_data = $this->model->checkTable();
+                $this->view->show('admin/fullAccount/agent_land_account', $data, $user_data);
             }
         }
 
         public function create_account() {
+            $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $data = [
+                $user_data = [
                     'name' => trim($_POST['name']),
-                    'user_id' => trim($_POST['user_id']),
-                    'user_type' => trim($_POST['user_type']),
+                    'reg_id' => trim($_POST['user_id']),
+                    'reg_type' => trim($_POST['user_type']),
                     'address' => trim($_POST['address']),
-                    'contact_number' => trim($_POST['contact_number']),
-                    'route_number' => trim($_POST['route_number']),
+                    'mobile_number' => trim($_POST['contact_number']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
-
 
                     'contact_number_err' => '',
                     'confirm_password_err' => ''
                 ];
 
-                if($data['password'] != $data['confirm_password']) {
-                    $data['confirm_password_err'] = "confirmation not matching";
+                if($user_data['password'] != $user_data['confirm_password']) {
+                    $user_data['confirm_password_err'] = "confirmation not matching";
                 }
-                if($this->model->searchUserContact($data['contact_number'])) {
-                    $data['contact_number_err'] = "This mobile number is already Taken";
+                if($this->model->searchUserContact($user_data['mobile_number'])) {
+                    $user_data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
-                if(empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    $this->model->userRegistration($data);
-                    $this->view->render('admin/fullAccount/create_account', $data);
+                if(empty($user_data['contact_number_err']) && empty($user_data['confirm_password_err'])) {
+                    $user_data['password'] = password_hash($user_data['password'], PASSWORD_DEFAULT);
+                    $this->model->userRegistration_employee($user_data);
+                    $this->view->show('admin/fullAccount/create_account', $data, $user_data);
                 }else {
-                    $this->view->render('admin/fullAccount/create_account', $data);
+                    $this->view->show('admin/fullAccount/create_account', $data, $user_data);
                 }
             }else{
-                $data = [
+                $user_data = [
                     'name' => '',
                     'user_id' => '',
                     'user_type' => '',
                     'address' => '',
                     'contact_number' => '',
-                    'route_number' => '',
                     'password' => '',
                     'confirm_password' => '',
 
@@ -221,14 +210,15 @@
                     'contact_number_err' => '',
                     'confirm_password_err' => ''
                 ];
-                $this->view->render('admin/fullAccount/create_account', $data);
+                $this->view->show('admin/fullAccount/create_account', $data, $user_data);
             }
         }
 
         public function agent_land_tempaAccount() {
+            $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $data = [
+                $user_data = [
                     'user_id' => trim($_POST['user_id']),
                     'user_type' => trim($_POST['user_type']),
                     'contact_number' => trim($_POST['contact_number']),
@@ -236,78 +226,61 @@
                 ];
 
                 if($this->model->searchUserContact($data['contact_number'])) {
-                    $data['contact_number_err'] = "This mobile number is already Taken";
+                    $user_data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
-                if(empty($data['contact_number_err'])) {
+                if(empty($user_data['contact_number_err'])) {
                     $this->model->userTempRegistration($data);
-                    $this->view->render('admin/tempAccount/agent_land_tempaAccount', $data);
+                    $this->view->show('admin/tempAccount/agent_land_tempaAccount', $data, $user_data);
                 }else {
-                    $this->view->render('admin/tempAccount/agent_land_tempaAccount', $data);
+                    $this->view->show('admin/tempAccount/agent_land_tempaAccount', $data, $user_data);
                 }
             }else{
-                $data = [
-                    'user_id' => '',
-                    'user_type' => '',
-                    'contact_number' => '',
-                    'route_number' => '',
+                $user_data = [
+                    'confirm_password_err' => '',
+                    'contact_number_err' => ''
                 ];
-                $this->view->render('admin/tempAccount/agent_land_tempaAccount', $data);
+                $this->view->show('admin/tempAccount/agent_land_tempaAccount', $data, $user_data);
             }
         }
 
         public function create_tempAccount() {
+            $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $user_data = $this->model->checkTable();
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $data = [
-                    'user_id' => trim($_POST['user_id']),
+                $user_data = [
+                    'name' => trim($_POST['name']),
                     'user_type' => trim($_POST['user_type']),
+                    'user_id' => trim($_POST['user_id']),
                     'contact_number' => trim($_POST['contact_number']),
-                    'route_number' => trim($_POST['route_number']),
+                    // 'route_number' => trim($_POST['route_number']),
                 ];
 
-                if($this->model->searchUserContact($data['contact_number'])) {
-                    $data['contact_number_err'] = "This mobile number is already Taken";
+                if($this->model->searchUserContact($user_data['contact_number'])) {
+                    $user_data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
-                if(empty($data['contact_number_err'])) {
-                    $this->model->userTempRegistration($data);
-                    $this->view->render('admin/tempAccount/create_tempAccount', $data);
+                if(empty($user_data['contact_number_err'])) {
+                    $this->model->userTempRegistration($user_data);
+                    $this->view->show('admin/tempAccount/create_tempAccount', $data, $user_data);
                 }else {
-                    $this->view->render('admin/tempAccount/create_tempAccount', $data);
+                    $this->view->show('admin/tempAccount/create_tempAccount', $data, $user_data);
                 }
             }else{
-                $data = [
+                $user_data = [
                     'user_id' => '',
                     'user_type' => '',
                     'contact_number' => '',
                     'route_number' => '',
+
+                    'confirm_password_err' => '',
+                    'contact_number_err' => ''
                 ];
-                $this->view->render('admin/tempAccount/create_tempAccount', $data);
+                $this->view->show('admin/tempAccount/create_tempAccount', $data, $user_data);
             }
         }
      
-
-
-
-
-
-
-
-
-
-
-
- //auction details page
-    function auction(){
-        $result = $this->model->auction();
-       // print_r($result);
-        $this->view->render('admin/auction', $result);
-        //$this->view->showPage('admin/auction');
-    }
-
-
-
     }
 
 ?>
