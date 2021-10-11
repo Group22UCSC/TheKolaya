@@ -185,16 +185,16 @@
                 if($user_data['password'] != $user_data['confirm_password']) {
                     $user_data['confirm_password_err'] = "confirmation not matching";
                 }
-                if($this->model->searchUserContact($user_data['contact_number'])) {
+                if($this->model->searchUserContact($user_data['mobile_number'])) {
                     $user_data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
                 if(empty($user_data['contact_number_err']) && empty($user_data['confirm_password_err'])) {
                     $user_data['password'] = password_hash($user_data['password'], PASSWORD_DEFAULT);
-                    $this->model->userRegistration($user_data);
-                    $this->view->show('admin/fullAccount/agent_land_account', $data, $user_data);
+                    $this->model->userRegistration_employee($user_data);
+                    $this->view->show('admin/fullAccount/create_account', $data, $user_data);
                 }else {
-                    $this->view->show('admin/fullAccount/agent_land_account', $data, $user_data);
+                    $this->view->show('admin/fullAccount/create_account', $data, $user_data);
                 }
             }else{
                 $user_data = [
@@ -210,7 +210,7 @@
                     'contact_number_err' => '',
                     'confirm_password_err' => ''
                 ];
-                $this->view->show('admin/fullAccount/agent_land_account', $data, $user_data);
+                $this->view->show('admin/fullAccount/create_account', $data, $user_data);
             }
         }
 
@@ -250,10 +250,11 @@
                 $user_data = $this->model->checkTable();
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $user_data = [
-                    'user_id' => trim($_POST['user_id']),
+                    'name' => trim($_POST['name']),
                     'user_type' => trim($_POST['user_type']),
+                    'user_id' => trim($_POST['user_id']),
                     'contact_number' => trim($_POST['contact_number']),
-                    'route_number' => trim($_POST['route_number']),
+                    // 'route_number' => trim($_POST['route_number']),
                 ];
 
                 if($this->model->searchUserContact($user_data['contact_number'])) {
