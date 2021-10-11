@@ -1,4 +1,5 @@
 <?php include 'top-container.php'; ?>
+
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
 <script defer src="<?php echo URL ?>vendors/js/accountant/setteaprice.js""></script>
@@ -7,6 +8,9 @@
     <p>Set Tea Price</p>
 </div>
 <!--  *** Update tea price box **** -->
+<div class="wrapperdiv">
+
+
 <div class="wrapper">
     <!-- <div class="title">
            Emergency Message
@@ -48,6 +52,7 @@
         
 
     </div>
+</div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
