@@ -22,11 +22,22 @@
     margin-left:10px;
     margin-right:10px;
     flex:100%;
-    
-    
+    font-size: 20px;
+    justify-content: center;
+    position: relative;
+    animation: example 500ms ease-in;
+    animation-fill-mode: forwards;
+    transform: translateX(-100px);
+    opacity: 0;
   }
 
+  .maindiv{   
+  position:relative;
+  width:100%;
+  min-height:100vh;    
+  z-index: -1;
 
+  }
   .availablelist, .deliverylist  {
     
     padding: 5px;
@@ -37,14 +48,22 @@
     animation-fill-mode: forwards;
     transform: translateY(-20px);
     opacity: 0;
-
+    flex-direction: row;
+    
   }
-
-  /* .active{
+/* 
+  .active
+  {
     filter:blur(10px);
     pointer-events:none;
     user-select:none;
-  } */
+  }
+
+  .closeblur{
+    filter:none;
+    pointer-events: initial;
+    user-select: initial;
+  }  */
 
   
   .page{
@@ -89,8 +108,11 @@
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    border: 2px solid rgb(255, 255, 255);    
+    border:none;    
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
   }
   
@@ -225,4 +247,16 @@ button{
 @keyframes animatetop {
   from {top:-300px; opacity:0}
   to {top:0; opacity:1}
+}
+
+@keyframes example {
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
