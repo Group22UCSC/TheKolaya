@@ -9,9 +9,44 @@
      <a >CREATE ACCOUNTS</a> </div>
   
 
-  <div class="k1">
-    
 
+<div class="table-container">
+    <div class="table-section">
+        <table class="teapricetable">
+                <tr class="trcls">
+                    <th class="thcls">ID</th>
+                    <th class="thcls">Contact number</th>
+                    <th class="thcls">User Type</th>
+                </tr>
+           
+                <?php
+            $x = count($data);
+            for($i = 0; $i < $x; $i++) {
+            
+                 echo'<tr>
+                    <td class="tdcls">'.$data[$i]['user_id'].'</td>
+                    <td class="tdcls">'.$data[$i]['contact_number'].'</td>
+                    <td class="tdcls">'.$data[$i]['user_type'].'</td>
+                     </tr>';
+                    
+            }
+          ?>
+
+    
+        </table>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+  
+
+  <div class="k1">
      
 <div class="wrapper11">
     <div class="title">
@@ -50,10 +85,10 @@
             <label>Contact Number</label>
             <input type="tel" class="input" name="contact_number" required>
          </div>
-         <div class="inputfield">
+        <!--  <div class="inputfield">
             <label>Route number</label>
             <input type="number" class="input" name="route_number" required>
-         </div>
+         </div> -->
          <div class="inputfield">
             <label>Password</label>
             <input type="password" class="input" name="password" required>

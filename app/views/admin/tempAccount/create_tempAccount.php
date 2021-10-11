@@ -5,6 +5,39 @@
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/create_Account.css">
      <div class="middle"> 
      <a >CREATE TEMPORARY ACCOUNTS</a> </div>
+
+   <div class="table-container">
+    <div class="table-section">
+        <table class="teapricetable">
+                <tr class="trcls">
+                    <th class="thcls">ID</th>
+                    <th class="thcls">Contact number</th>
+                    <th class="thcls">User Type</th>
+                </tr>
+           
+                <?php
+            $x = count($data);
+            for($i = 0; $i < $x; $i++) {
+            
+                 echo'<tr>
+                    <td class="tdcls">'.$data[$i]['user_id'].'</td>
+                    <td class="tdcls">'.$data[$i]['contact_number'].'</td>
+                    <td class="tdcls">'.$data[$i]['user_type'].'</td>
+                     </tr>';
+                    
+            }
+          ?>
+
+    
+        </table>
+    </div>
+
+
+</div>
+
+
+
+
   <div class="k1">
 <div class="wrapper11">
     <div class="title">

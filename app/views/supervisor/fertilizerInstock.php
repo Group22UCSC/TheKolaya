@@ -20,12 +20,12 @@
     </div>
     <div class="middle-container">
         <div class="form-container">
-            <form action="<?php echo URL?>Supervisor/fertilizerInStock" method="POST">
+            <form action="<?php echo URL?>Supervisor/fertilizerInStock" method="GET">
                 <div class="form">
                     <div class="inputfield">
                     <label class="search-lable">Search InStock by Date</label>
                     <input type="date" class="search-label input" name="date">
-                    <input type="submit" value="Search" class="accept-btn">
+                    <input type="submit" value="Search" class="accept-btn" name="search_btn">
                     </div>
                 </div>
             </form>
@@ -34,7 +34,14 @@
         <div class="table-container">
           <?php
           if($_SESSION['search']==1) {
-            if(count($data) > 0) {
+            $_SESSION['find'] = 0;
+            for($i = 0; $i < count($data); $i++) {
+              if($data[$i]['in_date'] == $_SESSION['searchDate']) {
+                $_SESSION['find'] = $i;
+              }
+            }
+
+            if($_SESSION['find']) {
               echo '<div class="table-row table-head">
                       <div class="table-element"><b>Date</b></div>
                       <div class="table-element"><b>Price Per Unit(Rs)</b></div>
@@ -43,43 +50,48 @@
                       <div class="table-element"><b>Emp_id</b></div>
                     </div>';
               for($i = 0; $i < count($data); $i++) {
-                echo '<div class="table-row">
-                        <div class="table-element">'.$data[$i]['in_date'].'</div>
-                        <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
-                        <div class="table-element">'.$data[$i]['in_quantity'].'</div>
-                        <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
-                        <div class="table-element">'.$data[$i]['emp_id'].'</div>
-                      </div>';
-              }
-              $_SESSION['search'] = 0;
+                
+                  echo '<div class="table-row">
+                          <div class="table-element">'.$data[$_SESSION['find']]['in_date'].'</div>
+                          <div class="table-element">'.$data[$_SESSION['find']]['price_per_unit'].'</div>
+                          <div class="table-element">'.$data[$_SESSION['find']]['in_quantity'].'</div>
+                          <div class="table-element">'.$data[$_SESSION['find']]['price_for_amount'].'</div>
+                          <div class="table-element">'.$data[$_SESSION['find']]['emp_id'].'</div>
+                        </div>';
+                }
             }else {
-              echo "Data is not find for the Date";
+              echo 'Search Data is not exists';
             }
+            $_SESSION['search'] = 0;
           }
-            
           ?>
         </div>
 
         <div class="table-container">
           
-          <div class="table-row table-head">
-            <div class="table-element"><b>Date</b></div>
-            <div class="table-element"><b>Price Per Unit(Rs)</b></div>
-            <div class="table-element"><b>Amount(kg)</b></div>
-            <div class="table-element"><b>Price For Amount(Rs)</b></div>
-            <div class="table-element"><b>Emp_id</b></div>
-          </div>
+          
           <?php
+          if(count($data) > 0) {
+            echo '<div class="table-row table-head">
+                    <div class="table-element"><b>Date</b></div>
+                    <div class="table-element"><b>Price Per Unit(Rs)</b></div>
+                    <div class="table-element"><b>Amount(kg)</b></div>
+                    <div class="table-element"><b>Price For Amount(Rs)</b></div>
+                    <div class="table-element"><b>Emp_id</b></div>
+                  </div>';
             for($i = 0; $i < count($data); $i++) {
-                echo '<div class="table-row">
-                      <div class="table-element">'.$data[$i]['in_date'].'</div>
-                      <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
-                      <div class="table-element">'.$data[$i]['in_quantity'].'</div>
-                      <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
-                      <div class="table-element">'.$data[$i]['emp_id'].'</div>
-                    </div>';
-
+              echo '<div class="table-row">
+                    <div class="table-element">'.$data[$i]['in_date'].'</div>
+                    <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
+                    <div class="table-element">'.$data[$i]['in_quantity'].'</div>
+                    <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
+                    <div class="table-element">'.$data[$i]['emp_id'].'</div>
+                  </div>';
             }
+          }else {
+            echo 'Data is not inserted';
+          }
+            
             
           ?>
 
