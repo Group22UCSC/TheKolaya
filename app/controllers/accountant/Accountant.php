@@ -17,7 +17,10 @@ class Accountant extends Controller{
             $result = $this->model->insertTeaPrice();
             if($result==true){
                 // if there is a result which mean query is executed - > success pop up
-                echo "successfuly added";
+                $_POST['success']=1;
+                $result = $this->model->teaPriceTable();
+                $this->view->render('accountant/setTeaPrice',$result);
+                //echo "successfuly added";
             }
             else{
                 // un successfull pop up 
