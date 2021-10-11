@@ -2,6 +2,9 @@
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
 <script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
+
+<!-- Ajex for select oprtions in the form ex: Product id selection -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
 <div class="top-container">
     <p>Update Auction Details</p>
 </div>
@@ -14,12 +17,13 @@
         <div class="inputfield">
             <label for="pid">Product Id</label>
             <!-- <input list="browsers"> -->
-            <select id="productIds" class="input">
-                <option value="P001">P001</option>
-                <option value="P002">P002</option>
+            <select id="productid" class="input" name="productid">
+                <option value="">Select Product Id</option>
+                
+                <!-- <option value="P002">P002</option>
                 <option value="P003">P003</option>
                 <option value="P004">P004</option>
-                <option value="P005">P005</option>
+                <option value="P005">P005</option> -->
             </select>
         </div>
         <div class="inputfield">
@@ -138,72 +142,51 @@
 </script>
 
 <!-- **************   Table container   *********-->
-<div class="table-container" id="pricetbl">
+<div class="table-container">
     <div class="table-section">
-    <table class="teapricetable">
+        <table class="teapricetable">
             
-            <tr class="trcls">
-                <th class="thcls">Date</th>
-                <th class="thcls">Product Id</th>
-                <th class="thcls">Product Name</th>
-                <th class="thcls">Sold Amount(Kg)</th>
-                <th class="thcls">Sold Price(Per 1Kg)</th>
-                <th class="thcls">Buyer</th>
-                <th class="thcls">Total Income(Rs)</th>
+                <tr class="trcls">
+                    <th class="thcls">Date</th>
+                    <th class="thcls">PId</th>
+                    <th class="thcls">Product Name</th>
+                    <th class="thcls">Sold Amount(Kg)</th>
+                    <th class="thcls">Sold Price(1Kg/Rs)</th>
+                    <th class="thcls">Buyer</th>
+                    <th class="thcls">Income(Rs)</th>
 
 
-            </tr>
-       
+                </tr>
+           
+                <?php
+            $x = count($data);
+            for($i = 0; $i < $x; $i++) {
+            //   echo '<div class="table-row-2 get-id">
+            //           <div class="table-element">'.$data[$i]['request_date'].'</div>
+            //           <div class="table-element user-id">'.$data[$i]['lid'].'</div>
+            //           <div class="table-element">'.$data[$i]['name'].'</div>
+            //           <div class="table-element">'.$data[$i]['amount'].'</div>
+            //         </div>';
+            // auction.date,product.product_id, product.product_name, 
+            // auction.sold_amount, auction.sold_price,buyer.name
+                 echo'<tr>
+                    <td class="tdcls">'.$data[$i]['date'].'</td>
+                    <td class="tdcls">'.$data[$i]['product_id'].'</td>
+                    <td class="tdcls">'.$data[$i]['product_name'].'</td>
+                    <td class="tdcls">'.$data[$i]['sold_amount'].'</td>
+                    <td class="tdcls">'.$data[$i]['sold_price'].'</td>
+                    <td class="tdcls">'.$data[$i]['name'].'</td>
+                    <td class="tdcls">'.$data[$i]['sold_amount']*$data[$i]['sold_price'].'</td>
+                </tr>';
+                    
+            }
+          ?>
 
-
-
-        <tr>
-            <td class="tdcls">12/09/2021</td>
-            <td class="tdcls">P23</td>
-            <td class="tdcls">Green Tea</td>
-            <td class="tdcls">456</td>
-            <td class="tdcls">120</td>
-            <td class="tdcls">Gohn Keels Pvt</td>
-            <td class="tdcls">34,560</td>
-        </tr>
-        <tr>
-            <td class="tdcls">12/09/2021</td>
-            <td class="tdcls">P23</td>
-            <td class="tdcls">Green Tea</td>
-            <td class="tdcls">456</td>
-            <td class="tdcls">120</td>
-            <td class="tdcls">Akbhar Brothers Pvt</td>
-            <td class="tdcls">34,560</td>
-        </tr>
-        <tr>
-            <td class="tdcls">12/09/2021</td>
-            <td class="tdcls">P23</td>
-            <td class="tdcls">Green Tea</td>
-            <td class="tdcls">456</td>
-            <td class="tdcls">120</td>
-            <td class="tdcls">Gohn Keels Pvt</td>
-            <td class="tdcls">34,560</td>
-        </tr>
-        <tr>
-            <td class="tdcls">12/09/2021</td>
-            <td class="tdcls">P23</td>
-            <td class="tdcls">Green Tea</td>
-            <td class="tdcls">456</td>
-            <td class="tdcls">120</td>
-            <td class="tdcls">Gohn Keels Pvt</td>
-            <td class="tdcls">34,560</td>
-        </tr>
-        <tr>
-            <td class="tdcls">12/09/2021</td>
-            <td class="tdcls">P23</td>
-            <td class="tdcls">Green Tea</td>
-            <td class="tdcls">456</td>
-            <td class="tdcls">120</td>
-            <td class="tdcls">Gohn Keels Pvt</td>
-            <td class="tdcls">34,560</td>
-        </tr>
-    </table>
+    
+        </table>
     </div>
+
+
 </div>
 <!-- <div id="priceForm" class="form-container">
 
