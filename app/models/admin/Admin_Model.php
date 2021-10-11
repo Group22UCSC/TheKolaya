@@ -157,9 +157,6 @@ class Admin_Model extends Model {
         $this->db->runQuery($queryUser);
     }
 
-
-
-
      function userRegistration11($data = []) {
         $name = $data['name'];
         $contact_number = $data['mobile_number'];

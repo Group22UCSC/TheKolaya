@@ -36,4 +36,14 @@ class landowner extends Controller
     {
         $this->view->showPage('landowner/Monthly_Tea_Price');
     }
+
+    public function profile()
+    {
+        $this->view->showPage('landowner/profile');
+    }
+
+    public function editProfile()
+    {
+        $this->view->showPage('landowner/editProfile');
+    }
 }

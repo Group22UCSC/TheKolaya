@@ -55,7 +55,7 @@
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="title">Confirm Tea Price</div>
-      <button data-close-button class="close-button">&times;</button>
+      <a data-close-button class="close-button"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
     </div>
     <div class="modal-body">
         <div class="year">
