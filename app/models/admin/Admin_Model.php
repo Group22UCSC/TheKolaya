@@ -268,5 +268,62 @@ class Admin_Model extends Model {
         }
     }
     
+
+
+// user registration model(admin manager supervisor PM accountant)
+        function userRegistration_employee($data = []) {
+        $name = $data['name'];
+        $contact_number = $data['mobile_number'];
+        $user_id = $data['reg_id'];
+        $address = $data['address'];
+        $password = $data['password'];
+        $user_type = $data['reg_type'];
+       
+        $verify = 1;
+        if($data['reg_type'] == 'direct_landowner' || $data['reg_type'] == 'indirect_landowner'){
+            $user_type = 'Land_Owner';
+            $landowner_type = $data['reg_type'];
+        }
+        $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+        $queryUser = null;
+        switch($user_type) {
+            case 'accountant' :
+                $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
+                break;
+            
+            case 'admin' :
+                $queryUser = "INSERT INTO admin(emp_id) values('$user_id')";
+                break;
+            
+            case 'agent' :
+                $queryUser = "INSERT INTO agent(emp_id, route_no) values('$user_id', '$route_number')";
+                break;
+            
+            case 'manager' :
+                $queryUser = "INSERT INTO manager(emp_id) values('$user_id')";
+                break;
+
+            case 'Land_Owner' :
+                $queryUser = "INSERT INTO landowner(user_id, contact_number, landowner_type, route_no) values('$user_id', '$contact_number', '$landowner_type', '$route_number')";
+                break;
+
+            case 'product_manager' :
+                $queryUser = "INSERT INTO product_manager(emp_id) values('$user_id')";
+                break;
+
+            case 'supervisor' :
+                $queryUser = "INSERT INTO supervisor(emp_id) values('$user_id')";
+                break;
+        }
+
+        $this->db->runQuery($query);
+        $this->db->runQuery($queryUser);
+    }
+
+
+
+
+
+
 }
 ?>
