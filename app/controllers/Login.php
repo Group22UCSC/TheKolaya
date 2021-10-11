@@ -9,7 +9,6 @@ class Login extends Controller {
         // $this->view->goHome('user/login');
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Process form
-  
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
               $data = [
                   'contact_number' => trim($_POST['contact_number']),
@@ -34,12 +33,6 @@ class Login extends Controller {
                   //User not Found
                   $data['contact_number_err'] = "No User Found";
               }
-
-            //   if($this->model->isRegisteredUser($data['contact_number'])) {
-            //       //User is registred
-            //   }else {
-            //       $data['contact_number_err'] = "User is not Registered";
-            //   }
 
               //Make sure errors are empty
               if(empty($data['contact_number_err']) && empty($data['password_err'])) {

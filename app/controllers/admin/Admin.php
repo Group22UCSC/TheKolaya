@@ -23,7 +23,6 @@
         }
 
         //update form
-
          public function updateAccount1() {
             // $this->view->showPage('Admin/updateAccount1');
 
