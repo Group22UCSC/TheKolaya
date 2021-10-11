@@ -2,6 +2,9 @@
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
 <script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
+
+<!-- Ajex for select oprtions in the form ex: Product id selection -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
 <div class="top-container">
     <p>Update Auction Details</p>
 </div>
@@ -14,12 +17,13 @@
         <div class="inputfield">
             <label for="pid">Product Id</label>
             <!-- <input list="browsers"> -->
-            <select id="productIds" class="input">
-                <option value="">P001</option>
-                <option value="P002">P002</option>
+            <select id="productid" class="input" name="productid">
+                <option value="">Select Product Id</option>
+                
+                <!-- <option value="P002">P002</option>
                 <option value="P003">P003</option>
                 <option value="P004">P004</option>
-                <option value="P005">P005</option>
+                <option value="P005">P005</option> -->
             </select>
         </div>
         <div class="inputfield">
