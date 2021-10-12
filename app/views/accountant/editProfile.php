@@ -29,11 +29,11 @@
           <div class="form">
             <div class="inputfield">
               <label>Name</label>
-              <input type="text" class="input" id="Name" value="<?php echo 'Pasindu Lakmal' ?>">
+              <input type="text" class="input" id="Name" value="<?php echo 'Pasindu Melaka' ?>">
             </div>
             <div class="inputfield">
               <label>Mobile Number</label>
-              <input type="number" class="input" id="Mobile-number" value="<?php echo '0771292250' ?>">
+              <input type="number" class="input" id="Mobile-number" value="<?php echo '0773158043' ?>">
             </div>
             <div class="inputfield" id="left-btn">
               <input type="button" value="Change Password" class="accept-btn change">

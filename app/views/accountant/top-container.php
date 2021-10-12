@@ -117,7 +117,7 @@
           <div class="profile">
             <div class="icon_wrap" id="account-web">
               <img src="<?php echo URL ?>vendors/images/accountant/profile.jpg" alt="profile_pic">
-              <span class="name">Pasindu<br>Lakmal</span>
+              <span class="name">Pasindu<br>Melaka</span>
               <i class="fas fa-chevron-down"></i>
             </div>
 
@@ -126,7 +126,7 @@
                 <li class="profile_li">
                   <div class="icon_wrap" id="account">
                     <img src="<?php echo URL ?>vendors/images/accountant/profile.jpg" alt="profile_pic">
-                    <span class="name">Pasindu lakmal</span>
+                    <span class="name">Pasindu Melaka</span>
                   </div>
                 </li>
                 <li><a class="profile" href="<?php echo URL ?>accountant/profile"><span class="picon"><i class="fas fa-user-alt"></i></span>Profile</a></li>
