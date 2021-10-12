@@ -30,7 +30,7 @@ class Supervisor extends Controller{
                     'amount' => trim($_POST['amount'])
                 ];
                 $this->model->manageStock($data);
-                // $this->view->render('Supervisor/manageFertilizer');
+                $this->view->render('Supervisor/manageFertilizer');
             }else if(isset($_POST['fertilizer_out'])) {
                 $data = [
                     'stock_type' => 'out_stock',
@@ -38,7 +38,7 @@ class Supervisor extends Controller{
                     'amount' => trim($_POST['amount'])
                 ];
                 $this->model->manageStock($data);
-                // $this->view->render('Supervisor/manageFertilizer');
+                $this->view->render('Supervisor/manageFertilizer');
             }
             
         }else {

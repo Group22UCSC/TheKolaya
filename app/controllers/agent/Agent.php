@@ -14,19 +14,23 @@ class Agent extends Controller{
        $this->view->render('Agent/Agent',$result);
     }
 
-    function availableLandownerList(){
-        $this->view->showPage('Agent/AvailableList');
-    }
+    // function availableLandownerList(){
+    //     $this->view->showPage('Agent/AvailableList');
+    // }
 
-    function updateTeaWeight(){
-        $this->view->showPage('Agent/popup');
-    }
+    // function updateTeaWeight(){
+    //     $this->view->showPage('Agent/popup');
+    // }
     function sendEmergencyMessage(){
         $this->view->showPage('Agent/EmergencyMessage');
     }
 
+    function viewPreviousUpdates(){
+        $this->view->showPage('Agent/previousUpdates');
+    }
+
     function confirmDeliverables(){
-        $this->view->showPage('Agent/Deliverables');
+        $this->view->showPage('Agent/DeliveryList');
     }
 
     function profile() {

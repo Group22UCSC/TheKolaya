@@ -21,8 +21,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   background-color: #fefefe;
   margin: auto;
   padding: 0;
-  border: 1px solid #888;
-  border-radius: 5px;
+  height: 50%; 
   width: 50%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
@@ -49,21 +48,26 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #01830c;
+  background: linear-gradient(to right,  rgba(51, 51, 51,1) 0%,rgba(102, 102, 102,1) 100%);     
   color: white;
-  border-radius: 5px;
+  font-size: 20px;
+  
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+  padding-bottom:30px;
+}
 
 .modal-footer {
-  padding: 2px 16px;  
-  background-color: #01830c;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ background: linear-gradient(to right,  rgba(51, 51, 51,1) 0%,rgba(102, 102, 102,1) 100%);     
   color: white;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  border-radius: 5px;
+
 }  
 
 .no{
@@ -83,15 +87,31 @@ body {font-family: Arial, Helvetica, sans-serif;}
   .yes{
   
     margin-right: 30px;  
-    background:  #888;  
+    background:  #00b300;  
   }
   
   .yes:hover{
-    background-color: white;
-    color: black;
+    background-color: #ccffcc;
+    color: #00b300;
     cursor: pointer;
     transform: scale(1.03);
     z-index: 5;
+  }
+
+  
+  .mid-content{
+    font-size: 20px;
+    text-align: center;
+    padding-top:40px;
+    padding-left: 10px;
+   
+  }
+
+  .inputpop{
+    border:none;   
+     color: black;
+     font-size: 20px;
+     text-align: center;    
   }
 
   /* Add Animation */

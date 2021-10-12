@@ -18,26 +18,22 @@
 
 .box-one {
   display: flex;
-  justify-content: center;
   grid-area: box-one;
 }
 
 .box-two {
   display: flex;
-  justify-content: center;
   grid-area: box-two;
 }
 
 .box-tree {
   grid-area: box-tree;
   display: flex;
-  width: 100%;
 }
 
 .box-four {
   grid-area: box-four;
   display: flex;
-  width: ;
 }
 
 .chart-head {
@@ -55,6 +51,9 @@
 }
 
 .chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   grid-area: chart;
   background-color: rgb(252, 255, 255);
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
@@ -62,15 +61,16 @@
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 .chartplace {
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
-  top: 5rem;
 }
 
 /* space */
 
 .box {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;

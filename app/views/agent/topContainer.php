@@ -20,11 +20,11 @@
        <span class="tooltip">Available Landowners</span>
      </li>
      <li>
-       <a href="<?php echo URL?>Agent/updateTeaWeight">
+       <a href="<?php echo URL?>Agent/viewPreviousUpdates">
         <i class="fa fa-balance-scale" aria-hidden="true"></i>
-         <span class="links_name">Initial Tea Weight</span>
+         <span class="links_name">View Previous Updates</span>
        </a>
-       <span class="tooltip">Initial Tea Weight</span>
+       <span class="tooltip">View Previous Updates</span>
      </li>
      <li>
        <a href="<?php echo URL?>Agent/sendEmergencyMessage">
