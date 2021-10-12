@@ -1,6 +1,6 @@
 <?php
 
-class Accountant_Model extends Model {
+class productmanager_Model extends Model {
 
     function __construct()
     {
@@ -65,18 +65,7 @@ class Accountant_Model extends Model {
         }
     }
 
-    function teaPriceTable(){
-        $query = "SELECT * FROM monthly_tea_price";
-        $row = $this->db->runQuery($query);
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
-    function getEmpId(){
-        //$query="SELECT * FROM "
-    }
+    
     function insertTeaPrice(){
             $date=date("Y-m-d");
             $teaPrice=$_POST['teaPrice'];

@@ -11,8 +11,28 @@ class Accountant extends Controller{
         $this->view->showPage('accountant/accountant');
     }
     function setTeaPrice() {
-        $result = $this->model->teaPriceTable();
-        $this->view->render('accountant/setTeaPrice',$result);
+        if(!empty($_POST)){
+            
+
+            $result = $this->model->insertTeaPrice();
+            if($result==true){
+                // if there is a result which mean query is executed - > success pop up
+                $_POST['success']=1;
+                $result = $this->model->teaPriceTable();
+                $this->view->render('accountant/setTeaPrice',$result);
+                //echo "successfuly added";
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        }
+        else{
+            $result = $this->model->teaPriceTable();
+            $this->view->render('accountant/setTeaPrice',$result);
+        }
+        
     }
     function payments() {
         $this->view->showPage('accountant/payments');

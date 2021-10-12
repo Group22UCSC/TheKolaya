@@ -8,7 +8,7 @@ openModalButtons.forEach(button => {
     const modal = document.querySelector(button.dataset.modalTarget)
     openModal(modal);
     getPrice();
-    
+    reqType();
   })
 })
 
@@ -43,5 +43,9 @@ function closeModal(modal) {
 function getPrice(){
   var price=document.getElementById('priceid').value;
   document.getElementById('priceInput').value=price;
+}
+function reqType(){
+  var price=document.getElementById('RequestType').value;
+  document.getElementById('rtype').value=price;
 }
 
