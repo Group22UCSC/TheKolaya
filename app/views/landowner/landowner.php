@@ -9,14 +9,14 @@
   <div class="box-one">
     <div class="box">
       <div class="right-side">
-        <div class="box-topic">Last Month Fertilizer Usage</div>
-        <div class="number">100kg</div>
+        <div class="box-topic">Last Month Income</div>
+        <div class="number">40,876</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Up from previous month</span>
         </div>
       </div>
-      <i class='bx bxs-cart-add cart two'></i>
+      <i class='bx bxs-cart-add cart one'></i>
     </div>
   </div>
   <div class="box-two">
