@@ -81,7 +81,7 @@
                   </div>';
             for($i = 0; $i < count($data); $i++) {
               echo '<div class="table-row">
-                    <div class="table-element">'.$data[$i]['in_date'].'</div>
+                    <div class="table-element date">'.$data[$i]['in_date'].'</div>
                     <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
                     <div class="table-element">'.$data[$i]['in_quantity'].'</div>
                     <div class="table-element">'.$data[$i]['price_for_amount'].'</div>

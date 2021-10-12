@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">
-    
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +17,9 @@
 <div class = "maindiv" id="blur">
 <div class="notice">
 <?php $x=count($data);?>
-   <h4 id="availablenotice">You have <?php echo $x?> landowners to collect <br>tea leaves today!</h4>
+   <div class = "avanot"><h4 id="availablenotice"><?php echo $x?> landowners to collect <br>tea leaves!</h4></div>
    <?php $y=4?>
-   <h4 id="deliverynotice">You have <?php echo $y?> landowners to deliver <br>requested items today!</h4>
+   <div class="delnot"><h4 id="deliverynotice"><?php echo $y?> landowners to deliver <br>requests!</h4></div>
   
   </div>
   <div class="availablelist">    
@@ -45,7 +44,7 @@
     </table>    
       </div>
       
-  <div class="deliverylist">
+  <!-- <div class="deliverylist">
   
     <h3 class="deliverytopic">Request  Delivery  List </h3>
     <table class="deliverytable" id="deliverytable">
@@ -54,23 +53,14 @@
         <th>Request ID</th>
         <th>Type</th>
         <th>Amount</th>            
-      </tr>
+      </tr> -->
      
-      <?php
-        for($i=1;$i<=$y;$i++){
-          echo '<tr  id = "request" data-href-request="" >
-                    <td>L00'.$i.'</td>
-                    <td>R'.$i.'</td>
-                    <td>Firewood</td>
-                    <td>28</td>                                      
-                </tr>';                
-        }
-      ?>
-    </table>
-      </div>
+      
+    <!-- </table>
+      </div> -->
       </div>
       <div class="forms">
-    <?php  include 'deliverables.php';?>   
+    <?php  include 'deliveryform.php';?>   
     <?php  include 'teaCollection.php';?>       
       </div>
       <?php  include 'popup.php';?>        
@@ -117,17 +107,32 @@ for(var i = 1; i < table.rows.length; i++)
                          document.getElementById("rid").value = this.cells[1].innerHTML;                         
                     };
                 }
-                
+
+// function teatoggle()
+// {
+//   console.log("hello");
+//   document.getElementById("teapopup").style.display = "block";
+//   var blur = document.getElementById('blur');
+//   blur.classList.toggle('active');
+  
+//   var blur = document.getElementById('teapopup');
+//   blur.classList.toggle('active');
+// }
+
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
+  //console.log("before blur");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('active');
+  //console.log("after blur");
 }
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
-  //  var blur = document.getElementById('blur');
-  // blur.classList.toggle('maindiv');
+  //console.log("before blur back");
+  // var blur = document.getElementById('blur');
+  // blur.classList.toggle('closeblur');
+  //console.log("after blur back");
 }
 
 function openrequestform(){
@@ -144,42 +149,42 @@ function closerequestform(){
 
 
 
-var index, table1 = document.getElementById('availabletable');
-            for(var i = 1; i < table1.rows.length; i++)
+// var index, table1 = document.getElementById('availabletable');
+//             for(var i = 1; i < table1.rows.length; i++)
            
-            {
-                table1.rows[i].cells[4].onclick = function()
-                {
-                    var c = confirm("do you want to delete this available row?");
-                    if(c === true)
-                    {
-                        index = this.parentElement.rowIndex;
-                        table1.deleteRow(index);
-                        document.getElementById("availablenotice").innerHTML = "You have <?php echo $x-1;?> landowners to collect <br>tea leaves today!";
-                    }
+//             {
+//                 table1.rows[i].cells[4].onclick = function()
+//                 {
+//                     var c = confirm("do you want to delete this available row?");
+//                     if(c === true)
+//                     {
+//                         index = this.parentElement.rowIndex;
+//                         table1.deleteRow(index);
+//                         document.getElementById("availablenotice").innerHTML = "You have <?php echo $x-1;?> landowners to collect <br>tea leaves today!";
+//                     }
                     
-                    //console.log(index);
-                };
+//                     //console.log(index);
+//                 };
                 
-            }
+//             }
 
-            var index, table2 = document.getElementById('deliverytable');
-            for(var i = 1; i < table2.rows.length; i++)
-            {
-                table2.rows[i].cells[5].onclick = function()
-                {
-                    var c = confirm("do you want to delete this request row?");
-                    if(c === true)
-                    {
-                        index = this.parentElement.rowIndex;
-                        table.deleteRow(index);
-                        document.getElementById("deliverynotice").innerHTML = "You have <?php echo $y-1;?> landowners to deliver <br>requested items today!";
-                    }
+//             var index, table2 = document.getElementById('deliverytable');
+//             for(var i = 1; i < table2.rows.length; i++)
+//             {
+//                 table2.rows[i].cells[5].onclick = function()
+//                 {
+//                     var c = confirm("do you want to delete this request row?");
+//                     if(c === true)
+//                     {
+//                         index = this.parentElement.rowIndex;
+//                         table.deleteRow(index);
+//                         document.getElementById("deliverynotice").innerHTML = "You have <?php echo $y-1;?> landowners to deliver <br>requested items today!";
+//                     }
                     
-                    //console.log(index);
-                };
+//                     //console.log(index);
+//                 };
                 
-            }
+//             }
 function openpopup(){
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -191,9 +196,12 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  //var c = confirm("Are you sure to add this weight?");
+btn.onclick = function() { 
   modal.style.display = "block";
+  var x = document.getElementById("lid").value;  
+  document.getElementById("lid-pop").value = x;
+  var y = document.getElementById("weight").value;  
+  document.getElementById("weight-pop").value = y;
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -212,6 +220,13 @@ function closepopup(){
   document.getElementById("myModal").style.display = "none";
   //  var blur = document.getElementById('blur');
   // blur.classList.toggle('maindiv');
+}
+
+function closeformpopup(){
+  document.getElementById("myModal").style.display = "none";
+  closeteaform();
+  //document.getElementById("availableTable").deleteRow(1);
+  
 }
 
 </script>
