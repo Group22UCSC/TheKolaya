@@ -10,6 +10,18 @@ class Accountant extends Controller{
 
         $this->view->showPage('accountant/accountant');
     }
+
+    public function profile()
+    {
+        $this->view->showPage('accountant/profile');
+    }
+
+    public function editProfile()
+    {
+        $this->view->showPage('accountant/editProfile');
+    }
+
+
     function setTeaPrice() {
         if(!empty($_POST)){
             

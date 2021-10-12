@@ -1,3 +1,5 @@
+
+
 .top-container{
   display: block;
   background: rgb(35, 173, 104);
@@ -32,13 +34,14 @@ justify-self: center ;
 }
 /*  ***************   set tea price form ******** */
 
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 .wrapperdiv{
   background-image: url("../../images/productmanager/tea_plant3.png");
   padding: 40px;
   background-size:100% 100%;
 }
-.wrapper{
+.wrapperform{
   max-width: 500px;
   width: 100%;
   background: white;
@@ -78,7 +81,7 @@ justify-self: center ;
   100% {opacity:1;}
 }
 
-.wrapper .title{
+.wrapperform .title{
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 25px;
@@ -86,16 +89,16 @@ justify-self: center ;
   text-transform: uppercase;
   text-align: center;
 }
-.wrapper .form{
+.wrapperform .form{
   width: 100%; 
 }
-.wrapper .form .inputfield{
+.wrapperform .form .inputfield{
   margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
-.wrapper .form .inputfield label{
+.wrapperform .form .inputfield label{
    width: 200px;
    color: rgb(5, 5, 5);
    margin-right: 10px;
@@ -103,8 +106,8 @@ justify-self: center ;
   font-weight: 500;
 }
 
-.wrapper .form .inputfield .input,
-.wrapper .form .inputfield .textarea{
+.wrapperform .form .inputfield .input,
+.wrapperform .form .inputfield .textarea{
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
@@ -124,7 +127,7 @@ justify-self: center ;
   color: #ff1f01;
   
 }
-.wrapper .form .inputfield .textarea{
+.wrapperform .form .inputfield .textarea{
   width: 100%;
   height: 125px;
   resize: none;
@@ -132,16 +135,16 @@ justify-self: center ;
 
 
 
-.wrapper .form .inputfield .input:focus,
-.wrapper .form .inputfield .textarea:focus,
-.wrapper .form .inputfield .custom_select select:focus{
+.wrapperform .form .inputfield .input:focus,
+.wrapperform .form .inputfield .textarea:focus,
+.wrapperform .form .inputfield .custom_select select:focus{
   border: 1px solid rgb(35, 173, 104);
 }
 
 
 
 
-.wrapper .form .inputfield .btn{
+.wrapperform .form .inputfield .btn{
   width: 50%;
   padding: 8px 10px;
   margin-top: 20px;
@@ -155,23 +158,23 @@ justify-self: center ;
   outline: none;
 }
 
-.wrapper .form .inputfield .btn:hover{
+.wrapperform .form .inputfield .btn:hover{
   background: #01830c73;
   color:#0c0b0b;
 }
-.wrapper .form .inputfield:last-child{
+.wrapperform .form .inputfield:last-child{
   margin-bottom: 0;
 }
 
   @media (max-width:420px) {
-    .wrapper .form .inputfield{
+    .wrapperform .form .inputfield{
       flex-direction: column;
       align-items: flex-start;
     }
-    .wrapper .form .inputfield label{
+    .wrapperform .form .inputfield label{
       margin-bottom: 5px;
     }
-    .wrapper .form .inputfield.terms{
+    .wrapperform .form .inputfield.terms{
       flex-direction: row;
     }
   }

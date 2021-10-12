@@ -13,6 +13,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ 
 }
 
 /* Modal Content */
@@ -48,7 +49,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .modal-header {
   padding: 2px 16px;
-  background: linear-gradient(to right,rgba(2, 202, 19,1) 0%,  rgba(1, 131, 12,1) 50%,rgba(2, 202, 19,1) 100%); 
+  background: linear-gradient(to right,  rgba(51, 51, 51,1) 0%,rgba(102, 102, 102,1) 100%);     
   color: white;
   font-size: 20px;
   
@@ -62,7 +63,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .modal-footer {
  padding-top: 10px;
  padding-bottom: 10px;
- background: linear-gradient(to right,rgba(2, 202, 19,1) 0%,  rgba(1, 131, 12,1) 50%,rgba(2, 202, 19,1) 100%); 
+ background: linear-gradient(to right,  rgba(51, 51, 51,1) 0%,rgba(102, 102, 102,1) 100%);     
   color: white;
   display: flex;
   justify-content: center;
@@ -87,12 +88,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
   .yes{
   
     margin-right: 30px;  
-    background:  #00e600;  
+    background:  #00b300;  
   }
   
   .yes:hover{
-    background-color: white;
-    color: black;
+    background-color: #ccffcc;
+    color: #00b300;
     cursor: pointer;
     transform: scale(1.03);
     z-index: 5;
@@ -101,7 +102,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   
   .mid-content{
     font-size: 20px;
-    text-align: left;
+    text-align: center;
     padding-top:40px;
     padding-left: 10px;
    
@@ -113,6 +114,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
      font-size: 20px;
      text-align: center;    
   }
+
+  
 
   /* Add Animation */
 @-webkit-keyframes animatetop {

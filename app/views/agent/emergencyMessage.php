@@ -14,7 +14,7 @@
    </head>
 <body>
 <?php include 'topContainer.php';?>
-
+<div class="topic">Send Emergency Message </div>
 <div class="page">
         <div class="title">
            Emergency Message

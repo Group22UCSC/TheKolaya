@@ -1,0 +1,37 @@
+.form-container{
+    display: flex;
+    flex-direction:row;
+}
+
+.searchform, .resultform{
+
+}
+.searchform{
+    /* display: flex;
+    flex-direction: column; */
+    width:50%;
+    margin: 20px;
+    padding:20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.resultform{
+    margin-top: 10px;
+    width:50%;
+    margin: 20px;
+    padding:20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.inputarea{
+    padding:10px;
+}
+.button{
+    width: 25%;
+}
+.topic{
+    text-align: center;      
+      font-size: 30px;      
+      background-color: rgb(211, 243, 190);
+      color: rgba(1, 131, 12,1);
+}

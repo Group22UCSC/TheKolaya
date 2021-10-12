@@ -1,5 +1,23 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
+<?php
+    function getProductIds($data2){
+        $output='';
+        // $x=count($data2);
+        foreach($data2 as $row){
+            $output.='<option value="'.$row["product_id"].'">'.$row["product_id"].'</option>';  
+        }
+        return $output;
+    }
+    function getProductName($data2){
+        $output='';
+        // $x=count($data2);
+        foreach($data2 as $row){
+            $output.='<option value="'.$row["product_id"].'">'.$row["product_id"].'</option>';  
+        }
+        return $output;
+    }
+?>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
 <script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
 
@@ -9,24 +27,40 @@
     <p>Update Auction Details</p>
 </div>
 <!--  *** Update tea price box **** -->
+
 <div class="wrapper">
     <!-- <div class="title">
            Emergency Message
         </div>         -->
     <div class="form">
         <div class="inputfield">
+            
             <label for="pid">Product Id</label>
             <!-- <input list="browsers"> -->
             <select id="productid" class="input" name="productid">
                 <option value="">Select Product Id</option>
-                
-                <!-- <option value="P002">P002</option>
-                <option value="P003">P003</option>
-                <option value="P004">P004</option>
-                <option value="P005">P005</option> -->
+                <?php
+                echo getProductIds($data2);
+                ?>
             </select>
         </div>
+
         <div class="inputfield">
+        <script>  
+            $(document).ready(function(){  
+                $('#productid').change(function(){  
+                    var brand_id = $(this).val();  
+                    $.ajax({  
+                            url:"<?php echo URL?>productmanager/loadProductNames",  
+                            method:"POST",  
+                            data:{product_id:brand_id},  
+                            success:function(data){  
+                                $('#productName').html(data);  
+                            }  
+                    });  
+                });  
+            });  
+        </script>  
             <label for="productName">Product Name</label>
             <input type="text" class="input" id="productName">
         </div>
@@ -159,7 +193,7 @@
                 </tr>
            
                 <?php
-            $x = count($data);
+            $x = count($data1);
             for($i = 0; $i < $x; $i++) {
             //   echo '<div class="table-row-2 get-id">
             //           <div class="table-element">'.$data[$i]['request_date'].'</div>
@@ -170,13 +204,13 @@
             // auction.date,product.product_id, product.product_name, 
             // auction.sold_amount, auction.sold_price,buyer.name
                  echo'<tr>
-                    <td class="tdcls">'.$data[$i]['date'].'</td>
-                    <td class="tdcls">'.$data[$i]['product_id'].'</td>
-                    <td class="tdcls">'.$data[$i]['product_name'].'</td>
-                    <td class="tdcls">'.$data[$i]['sold_amount'].'</td>
-                    <td class="tdcls">'.$data[$i]['sold_price'].'</td>
-                    <td class="tdcls">'.$data[$i]['name'].'</td>
-                    <td class="tdcls">'.$data[$i]['sold_amount']*$data[$i]['sold_price'].'</td>
+                    <td class="tdcls">'.$data1[$i]['date'].'</td>
+                    <td class="tdcls">'.$data1[$i]['product_id'].'</td>
+                    <td class="tdcls">'.$data1[$i]['product_name'].'</td>
+                    <td class="tdcls">'.$data1[$i]['sold_amount'].'</td>
+                    <td class="tdcls">'.$data1[$i]['sold_price'].'</td>
+                    <td class="tdcls">'.$data1[$i]['name'].'</td>
+                    <td class="tdcls">'.$data1[$i]['sold_amount']*$data1[$i]['sold_price'].'</td>
                 </tr>';
                     
             }
