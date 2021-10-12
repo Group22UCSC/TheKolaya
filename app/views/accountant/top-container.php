@@ -117,7 +117,7 @@
           <div class="profile">
             <div class="icon_wrap" id="account-web">
               <img src="<?php echo URL ?>vendors/images/accountant/profile.jpg" alt="profile_pic">
-              <span class="name">Pasindu<br>Melaka</span>
+              <span class="name">Accountant<br>Melaka</span>
               <i class="fas fa-chevron-down"></i>
             </div>
 
