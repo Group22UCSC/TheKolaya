@@ -25,19 +25,19 @@
           <div class="title">
             Firewood Purchase
           </div>
-          <form action="<?php echo URL?>Supervisor/manageFirewood" method="GET">
+          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST" id="form_instock">
             <div class="form">
               <div class="inputfield">
                 <label>Price per unit</label>
-                <input type="number" class="input" name="price_per_unit">
+                <input type="number" class="input" name="price_per_unit" id="price_per_unit">
               </div>  
               <div class="inputfield">
                 <label>Amount(kg)</label>
-                <input type="number" class="input" name="amount">
+                <input type="number" class="input" name="amount" id="in_amount">
               </div>  
               
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn" name="firewood_in" onclick="clearForm();">
+                <input type="submit" value="Sumbit" class="accept-btn" name="firewood_in" id="instock_submit_btn">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">
@@ -53,11 +53,11 @@
           <div class="title">
             Firewood use
           </div>
-          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST">
+          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST" id="form_outstock">
             <div class="form">
                 <div class="inputfield">
                   <label>Amount(kg)</label>
-                  <input type="number" class="input" name="amount">
+                  <input type="number" class="input" name="amount" id="out_amount" >
                 </div>  
                 
               <div class="inputfield">
@@ -74,22 +74,7 @@
       </div>
       
     </div>
-    <!-- <div class="title-container btn-container-outside">
-      <div class="btn-container">
-        <a href="<?php echo URL?>Supervisor/firewoodStock">
-          <div class="inputfield">
-            <input type="button" value="Firewood details" class="accept-btn">
-          </div>
-        </a>
-      </div>
-    </div> -->
-    <!-- <script>
-      function clearForm() {
-        var inputField=document.querySelector('.form-container .form .inputfield .input');
-        inputField.value = "";
-      }
-    </script> -->
+    <script src="<?php echo URL?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
+    
+<?php include 'js/supervisor/manageFirewood-js.php';?>
 <?php include 'bottom-container.php';?>
-
-
-

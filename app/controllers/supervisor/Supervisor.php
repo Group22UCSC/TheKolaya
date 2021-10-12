@@ -46,21 +46,17 @@ class Supervisor extends Controller{
     }
 
     function manageFirewood() {
-        if(isset($_GET['firewood_in'])) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
-                'stock_type' => 'in_stock',
-                'type' => 'firewood',
-                'price_per_unit' => trim($_GET['price_per_unit']),
-                'amount' => trim($_GET['amount'])
+                'stock_type' => $_POST['stock_type'],
+                'type' => $_POST['type'],
+                'price_per_unit' => '',
+                'amount' => trim($_POST['amount'])
             ];
-            $this->model->manageStock($data);
-            $this->view->render('Supervisor/manageFirewood');
-        }else if(isset($_GET['firewood_out'])) {
-            $data = [
-                'stock_type' => 'out_stock',
-                'type' => 'firewood',
-                'amount' => trim($_GET['amount'])
-            ];
+            if($_POST['stock_type'] == 'in_stock') {
+                $data['price_per_unit'] = trim($_POST['price_per_unit']);
+            }
+            
             $this->model->manageStock($data);
             $this->view->render('Supervisor/manageFirewood');
         }else {
