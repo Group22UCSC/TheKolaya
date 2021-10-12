@@ -10,17 +10,19 @@
     opacity: 0;
     flex-direction: row;
     z-index:-1;
+   overflow-x: auto;
+   overflow-y: auto;
     
   }
 
-  .deliverytopic{
-    background: linear-gradient(to right,  rgba(1, 131, 12,1) 0%,rgba(2, 202, 19,1) 100%);  
-      color:#fff;
-      text-align: center;
-      border-radius: 50px;
-      width:50%;
-      margin-left: 25%;
+  .topic{
+    text-align: center;      
+      font-size: 30px;      
+      background-color: rgb(211, 243, 190);
+      color: rgba(1, 131, 12,1);
   }
+
+ 
 
   table {
     border-collapse: collapse;
@@ -30,16 +32,15 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
     
   }
-  
-  th, td {
+ td {
     text-align: center;
     padding: 10px;
   }
 
-  th{
+  .th{
       background-color:#01830c ;
       color: #fff;
   }

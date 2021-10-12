@@ -14,7 +14,7 @@
    </head>
 <body>
 <?php include 'topContainer.php';?>
-<h3>View Previous Tea Updates</h3>
+<div class="topic">View Previous Tea Updates</div>
 <div class="form-container">
 <div class="searchform">
     <div class="inputarea">
