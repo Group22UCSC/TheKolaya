@@ -3,50 +3,50 @@
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-queries.css">
-  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
   <!-- toop button container -->
   <div class="home-content">
     <div class="overview-boxes">
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Order</div>
+          <div class="box-topic">Total Income (Rs)</div>
           <div class="number">40,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
-            <span class="text">Up from yesterday</span>
+            <span class="text">Last 30 Days</span>
           </div>
         </div>
         <i class='bx bxs-cart-add cart one'></i>
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Sales</div>
+          <div class="box-topic">Total Expenses (Rs)</div>
           <div class="number">38,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
-            <span class="text">Up from yesterday</span>
+            <span class="text">Last 30 Days</span>
           </div>
         </div>
         <i class='bx bxs-cart-add cart two'></i>
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Profit</div>
-          <div class="number">$12,876</div>
+          <div class="box-topic">Total Profit (Rs)</div>
+          <div class="number">12,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
-            <span class="text">Up from yesterday</span>
+            <span class="text">Last 30 Days</span>
           </div>
         </div>
         <i class='bx bx-cart cart three'></i>
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Return</div>
+          <div class="box-topic">Total Sales (Kg)</div>
           <div class="number">11,086</div>
           <div class="indicator">
-            <i class='bx bx-down-arrow-alt down'></i>
-            <span class="text">Down From Today</span>
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Last 30 Days</span>
           </div>
         </div>
         <i class='bx bxs-cart-download cart four'></i>
@@ -95,10 +95,10 @@
       <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
 
       <script>
-        var xValues = ["Best", "Good", "Average", "Poor"];
-        var yValues = [60, 20, 10, 10];
-        var barColors = ["#2BD47D", "#ffc233", "#e05260"];
-
+        var xValues = ["Income","Expences"];
+        var yValues = [60,30];
+        var barColors = ["#2BD47D", "#ffc233"];
+  
         new Chart("myChart2", {
           type: "doughnut",
           data: {
