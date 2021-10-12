@@ -23,13 +23,16 @@ class ProductManager extends Controller{
         $this->view->showPage('Productmanager/updateProducts');
     }
 
-    function loadProductIds(){
-        
+    function loadProductNames(){
+            $productResults = $this->model->getProductDetails();
+            return $productResults;
     }
     function updateAuction(){
-            $result = $this->model->auction();
+            $tblResult = $this->model->auction();
+            $productResults = $this->model->getProductDetails();
+            
            // print_r($result);
-            $this->view->render('Productmanager/updateAuction', $result);
+            $this->view->render2('Productmanager/updateAuction', $tblResult,$productResults);
     }
     
     

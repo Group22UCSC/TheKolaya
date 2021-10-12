@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+}
+
 .top-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
