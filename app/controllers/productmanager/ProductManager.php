@@ -5,11 +5,20 @@ class ProductManager extends Controller{
     {
         parent::__construct();
     }
+    public function profile()
+    {
+        $this->view->showPage('Productmanager/profile');
+    }
 
+    public function editProfile()
+    {
+        $this->view->showPage('Productmanager/editProfile');
+    }
     function index() {
 
         $this->view->showPage('Productmanager/Productmanager');
     }
+    
     function products() {
 
         $this->view->showPage('Productmanager/products');

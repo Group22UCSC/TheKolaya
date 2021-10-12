@@ -30,17 +30,17 @@
                 <div class="profile-container-text">
                     <h1>Pasindu <br> Melaka</h1>
                 </div>
-                <div class="profile-container-text">Accountant</div>
+                <div class="profile-container-text">Product Manager</div>
             </div>
             <div class="details-container">
                 <div class="label-container id">
-                    <span class="label-left"><b>ID</b></span><span class="label-right">ACC-000</span>
+                    <span class="label-left"><b>ID</b></span><span class="label-right">PM -000</span>
                 </div>
                 <div class="label-container address">
                     <span class="label-left"><b>Address</b></span><span class="label-right">Karapitiya, Galle</span>
                 </div>
             </div>
-            <div class="profile-edit middle"><a href="<?php echo URL ?>accountant/editProfile">Edit Profile</a></div>
+            <div class="profile-edit middle"><a href="<?php echo URL ?>productmanager/editProfile">Edit Profile</a></div>
 
         </div>
     </div>
