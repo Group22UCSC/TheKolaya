@@ -61,11 +61,12 @@
        </div>
         <div class="inputfield">
           <label>User ID</label>
-          <input type="text" class="input" name="user_id" required>
+          <input type="text" class="input" name="user_id" placeholder="<?php (!empty($user_data['user_id_err'])) ? print $user_data['user_id_err'] : print ''; ?>" required>
        </div>
         <div class="inputfield">
           <label>Contact number</label>
-          <input type="tel" class="input" name="contact_number" required>
+           <?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>
+            <input type="tel" class="input" name="contact_number" required>
        </div>
       <div class="inputfield">
         <input type="submit" value="Register" class="btn">
