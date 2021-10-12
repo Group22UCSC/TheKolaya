@@ -20,12 +20,12 @@
     </div>
     <div class="middle-container">
         <div class="form-container">
-            <form action="#">
+            <form action="<?php echo URL?>Supervisor/firewoodInStock" method="GET">
                 <div class="form">
                     <div class="inputfield">
                     <label class="search-lable">Search firewood buy</label>
-                    <input type="date" class="search-label input">
-                    <input type="submit" value="Search" class="accept-btn">
+                    <input type="date" class="search-label input" name="date">
+                    <input type="submit" value="Search" class="accept-btn" name="search_btn">
                     </div>
                 </div>
             </form>
@@ -33,45 +33,61 @@
         
         <div class="tabel-container">
           
-          <div class="table-row table-head">
+          <!-- <div class="table-row table-head">
             <div class="table-element"><b>Date</b></div>
             <div class="table-element"><b>Price Per Unit(Rs)</b></div>
             <div class="table-element"><b>Amount(kg)</b></div>
             <div class="table-element"><b>Price For Amount(Rs)</b></div>
             <div class="table-element"><b>Emp_id</b></div>
-          </div>
+          </div> -->
           <?php
+          
+          if(count($data) > 0) {
+            echo '<div class="table-row table-head">
+                    <div class="table-element"><b>Date</b></div>
+                    <div class="table-element"><b>Price Per Unit(Rs)</b></div>
+                    <div class="table-element"><b>Amount(kg)</b></div>
+                    <div class="table-element"><b>Price For Amount(Rs)</b></div>
+                    <div class="table-element"><b>Emp_id</b></div>
+                  </div>';
             for($i = 0; $i < 1; $i++) {
               echo '<div class="table-row">
-                      <div class="table-element">Lan-00'.$i.'</div>
-                      <div class="table-element">Sasindu Wijegunasinghe</div>
-                      <div class="table-element">Sasindu Wijegunasinghe</div>
-                      <div class="table-element">Sasindu Wijegunasinghe</div>
-                      <div class="table-element">50'.$i.'</div>
-                    </div>';
+                    <div class="table-element date">'.$data[$i]['in_date'].'</div>
+                    <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
+                    <div class="table-element">'.$data[$i]['in_quantity'].'</div>
+                    <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
+                    <div class="table-element">'.$data[$i]['emp_id'].'</div>
+                  </div>';
             }
+          }else {
+            echo 'Data is not inserted';
+          }
           ?>
         </div>
 
         <div class="tabel-container">
           
-          <div class="table-row table-head">
-            <div class="table-element"><b>Date</b></div>
-            <div class="table-element"><b>Price Per Unit(Rs)</b></div>
-            <div class="table-element"><b>Amount(kg)</b></div>
-            <div class="table-element"><b>Price For Amount(Rs)</b></div>
-            <div class="table-element"><b>Emp_id</b></div>
-          </div>
           <?php
-            for($i = 0; $i < 2; $i++) {
+          if(count($data) > 0) {
+            echo '<div class="table-row table-head">
+                    <div class="table-element"><b>Date</b></div>
+                    <div class="table-element"><b>Price Per Unit(Rs)</b></div>
+                    <div class="table-element"><b>Amount(kg)</b></div>
+                    <div class="table-element"><b>Price For Amount(Rs)</b></div>
+                    <div class="table-element"><b>Emp_id</b></div>
+                  </div>';
+            for($i = 0; $i < count($data); $i++) {
               echo '<div class="table-row">
-                      <div class="table-element">Lan-00'.$i.'</div>
-                      <div class="table-element">Sasindu Wijegunasinghe</div>
-                      <div class="table-element">Sasindu Wijegunasinghe</div>
-                      <div class="table-element">Sasindu Wijegunasinghe</div>
-                      <div class="table-element">50'.$i.'</div>
-                    </div>';
+                    <div class="table-element date">'.$data[$i]['in_date'].'</div>
+                    <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
+                    <div class="table-element">'.$data[$i]['in_quantity'].'</div>
+                    <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
+                    <div class="table-element">'.$data[$i]['emp_id'].'</div>
+                  </div>';
             }
+          }else {
+            echo 'Data is not inserted';
+          }
           ?>
 
           <!-- <div class="table-row">
