@@ -15,20 +15,22 @@
    <body>
 <?php include 'topContainer.php';?>
 <div class = "maindiv" id="blur">
+  <div class = "topic"><h3>My Dashboard</h3></div>
 <div class="notice">
 <?php $x=count($data);?>
-   <div class = "avanot"><h4 id="availablenotice"><?php echo $x?> landowners to collect <br>tea leaves!</h4></div>
+   <div class = "avanot"><?php echo $x?> landowners to collect <br>tea leaves!</div>
    <?php $y=4?>
-   <div class="delnot"><h4 id="deliverynotice"><?php echo $y?> landowners to deliver <br>requests!</h4></div>
+   <div class="delnot"><?php echo $y?> landowners to deliver <br>requests!</div>
   
   </div>
   <div class="availablelist">    
     
-    <h3 class ="availabletopic">Available  Landowner  List </h3>
-    <table class = "availabletable" id="availabletable">
+    <div class ="availabletopic">Available  Landowner  List </div>
+    <div style="overflow-x:auto; overflow-y:auto;">
+    <table class = "availabletable" id="availabletable">      
       <tr>
-        <th>Landowner ID</th>
-        <th>Container Estimation</th> 
+        <td class="th">Landowner ID</td>
+        <td class="th">Container Estimation</td> 
         <!--<th>Address</th>    -->                          
       </tr>
       <?php
@@ -41,7 +43,8 @@
                 </tr>';                
         }       
       ?>         
-    </table>    
+    </table>
+      </div>    
       </div>
       
   <!-- <div class="deliverylist">
