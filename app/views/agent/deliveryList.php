@@ -14,16 +14,14 @@
    </head>
 <body>
 <?php include 'topContainer.php';?>
-
+<div class="topic">Request  Delivery  List </div>
 <div class="deliverylist">
-  
-    <h3 class="deliverytopic">Request  Delivery  List </h3>
     <table class="deliverytable" id="deliverytable">
     <tr>
-        <th>Landowner ID</th>
-        <th>Request ID</th>
-        <th>Type</th>
-        <th>Amount</th>            
+    <td class="th">Landowner ID</td>
+    <td class="th">Request ID</td>
+    <td class="th">Type</td>
+    <td class="th">Amount</td>            
       </tr>
      
       <?php
@@ -72,7 +70,11 @@ var table = document.getElementById('deliverytable');
                     table.rows[i].onclick = function()
                     {
                          //rIndex = this.rowIndex;
-                         document.getElementById("rid").value = this.cells[1].innerHTML;                         
+                         document.getElementById("rid").value = this.cells[1].innerHTML;  
+                         document.getElementById("lid").value = this.cells[0].innerHTML;  
+                         document.getElementById("rtype").value = this.cells[2].innerHTML;  
+                         document.getElementById("amount").value = this.cells[3].innerHTML;  
+                                                
                     };
                 }
 
