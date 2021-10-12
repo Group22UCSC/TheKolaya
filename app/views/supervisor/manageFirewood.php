@@ -23,7 +23,7 @@
       <div class="form-instock">
         <div class="form-container">
           <div class="title">
-            Firewood buy
+            Firewood Purchase
           </div>
           <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST">
             <div class="form">
@@ -41,7 +41,7 @@
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">
-                  <input type="button" value="Firewood Buy Details" class="accept-btn">
+                  <input type="button" value="Firewood Purchase Details" class="accept-btn">
                 </div>
               </a>
               
@@ -62,7 +62,7 @@
                 </div>  
                 
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit" name="firewood_out">
+                <input type="submit" value="Submit" class="accept-btn" id="out-stock-submit" name="firewood_out">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodOutStock">
                 <div class="inputfield">
