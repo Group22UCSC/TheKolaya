@@ -106,7 +106,8 @@
         public function createAccountSelect() {
             $this->view->showPage('Admin/createAccountSelect');
         }
-
+        
+//111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
         public function agent_land_account() {
             $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -165,6 +166,7 @@
             }
         }
 
+//222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
         public function create_account() {
             $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -214,6 +216,8 @@
             }
         }
 
+
+//33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
         public function agent_land_tempaAccount() {
             $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -225,25 +229,32 @@
                     'route_number' => trim($_POST['route_number']),
                 ];
 
-                if($this->model->searchUserContact($data['mobile_number'])) {
+                if($this->model->searchUserContact($user_data['mobile_number'])) {
                     $user_data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
                 if(empty($user_data['contact_number_err'])) {
-                    $this->model->userTempRegistration($data);
+                    $this->model->userTempRegistration($user_data);
                     $this->view->show('admin/tempAccount/agent_land_tempaAccount', $data, $user_data);
                 }else {
                     $this->view->show('admin/tempAccount/agent_land_tempaAccount', $data, $user_data);
                 }
             }else{
                 $user_data = [
-                    'confirm_password_err' => '',
+                    'user_id' => '',
+                    'user_type' => '',
+                    'contact_number' => '',
+                   'route_number' => '',
+
                     'contact_number_err' => ''
                 ];
+                 $user_data = $this->model->checkTable();
                 $this->view->show('admin/tempAccount/agent_land_tempaAccount', $data, $user_data);
             }
         }
 
+
+//4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444
         public function create_tempAccount() {
             $data = $this->model->checkTable();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -251,32 +262,34 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $user_data = [
                     'name' => trim($_POST['name']),
-                    'user_type' => trim($_POST['user_type']),
-                    'user_id' => trim($_POST['user_id']),
-                    'contact_number' => trim($_POST['contact_number']),
+                    'reg_type' => trim($_POST['user_type']),
+                    'reg_id' => trim($_POST['user_id']),
+                    'mobile_number' => trim($_POST['contact_number']),
                     // 'route_number' => trim($_POST['route_number']),
                 ];
 
-                if($this->model->searchUserContact($user_data['contact_number'])) {
+                if($this->model->searchUserContact($user_data['mobile_number'])) {
                     $user_data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
                 if(empty($user_data['contact_number_err'])) {
-                    $this->model->userTempRegistration($user_data);
+                    $this->model->userTempRegistration_employee($user_data);
                     $this->view->show('admin/tempAccount/create_tempAccount', $data, $user_data);
                 }else {
                     $this->view->show('admin/tempAccount/create_tempAccount', $data, $user_data);
                 }
             }else{
                 $user_data = [
-                    'user_id' => '',
+                    'name' => '',
                     'user_type' => '',
+                    'user_id' => '',
                     'contact_number' => '',
-                    'route_number' => '',
+                    // 'route_number' => '',
 
-                    'confirm_password_err' => '',
+                    // 'confirm_password_err' => '',
                     'contact_number_err' => ''
                 ];
+                 $user_data = $this->model->checkTable();
                 $this->view->show('admin/tempAccount/create_tempAccount', $data, $user_data);
             }
         }
