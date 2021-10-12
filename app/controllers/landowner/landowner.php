@@ -14,7 +14,23 @@ class landowner extends Controller
 
     function Make_Requests()
     {
-        $this->view->showPage('landowner/Make_Requests');
+        if (!empty($_POST)) {
+
+            $result = $this->model->insertRequest();
+            print_r($result);
+            // if ($result == true) {
+            //     // if there is a result which mean query is executed - > success pop up
+            //     echo "successfuly added";
+            // } else {
+            //     // un successfull pop up 
+            //     // first check using a alert ()
+            //     echo "failed to add";
+            // }
+        } else {
+            //$result = $this->model->teaPriceTable();
+            // $this->view->render('landowner/Make_Requests', $result);
+            $this->view->render('landowner/Make_Requests');
+        }
     }
 
     function Update_Tea_Availability()
