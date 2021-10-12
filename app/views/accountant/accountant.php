@@ -2,7 +2,8 @@
 <!-- Top dashboard home content -->
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-queries.css">
+  <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
   <!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
   <!-- toop button container -->
   <div class="home-content">
