@@ -7,7 +7,6 @@ class Supervisor extends Controller{
     }
 
     function index() {
-
         $this->view->showPage('Supervisor/Supervisor');
     }
 
@@ -47,26 +46,23 @@ class Supervisor extends Controller{
     }
 
     function manageFirewood() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if(isset($_POST['firewood_in'])) {
-                $data = [
-                    'stock_type' => 'in_stock',
-                    'type' => 'firewood',
-                    'price_per_unit' => trim($_POST['price_per_unit']),
-                    'amount' => trim($_POST['amount'])
-                ];
-                $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFirewood');
-            }else if(isset($_POST['firewood_out'])) {
-                $data = [
-                    'stock_type' => 'out_stock',
-                    'type' => 'firewood',
-                    'amount' => trim($_POST['amount'])
-                ];
-                $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFirewood');
-            }
-            
+        if(isset($_GET['firewood_in'])) {
+            $data = [
+                'stock_type' => 'in_stock',
+                'type' => 'firewood',
+                'price_per_unit' => trim($_GET['price_per_unit']),
+                'amount' => trim($_GET['amount'])
+            ];
+            $this->model->manageStock($data);
+            $this->view->render('Supervisor/manageFirewood');
+        }else if(isset($_GET['firewood_out'])) {
+            $data = [
+                'stock_type' => 'out_stock',
+                'type' => 'firewood',
+                'amount' => trim($_GET['amount'])
+            ];
+            $this->model->manageStock($data);
+            $this->view->render('Supervisor/manageFirewood');
         }else {
             $this->view->render('Supervisor/manageFirewood');
         }
@@ -88,7 +84,21 @@ class Supervisor extends Controller{
     }
 
     function firewoodInStock() {
-        $this->view->showPage('Supervisor/firewoodInStock');
+        $data = [
+            'stock_type' => 'in_stock',
+            'type' => 'firewood',
+            'date' => ''
+        ];
+        if(isset($_GET['search_btn'])) {
+            $data['date'] = trim($_GET['date']);
+            $instock = $this->model->stock($data);
+            $searchResult = $this->model->searchByDate($data);
+            $this->view->show('Supervisor/firewoodInStock', $instock, $searchResult);
+        }else {
+            $instock = $this->model->stock($data);
+            $this->view->show('Supervisor/firewoodInStock', $instock);
+        }
+        
     }
 
     function fertilizerOutStock() {

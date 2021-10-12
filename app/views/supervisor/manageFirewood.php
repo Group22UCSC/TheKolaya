@@ -25,7 +25,7 @@
           <div class="title">
             Firewood Purchase
           </div>
-          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST">
+          <form action="<?php echo URL?>Supervisor/manageFirewood" method="GET">
             <div class="form">
               <div class="inputfield">
                 <label>Price per unit</label>
@@ -37,14 +37,13 @@
               </div>  
               
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn" name="firewood_in">
+                <input type="submit" value="Sumbit" class="accept-btn" name="firewood_in" onclick="clearForm();">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">
                   <input type="button" value="Firewood Purchase Details" class="accept-btn">
                 </div>
               </a>
-              
             </div>
           </form>
         </div>
@@ -84,6 +83,12 @@
         </a>
       </div>
     </div> -->
+    <!-- <script>
+      function clearForm() {
+        var inputField=document.querySelector('.form-container .form .inputfield .input');
+        inputField.value = "";
+      }
+    </script> -->
 <?php include 'bottom-container.php';?>
 
 
