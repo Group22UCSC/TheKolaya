@@ -72,6 +72,10 @@ class Login extends Controller {
         $_SESSION['contact_number'] = $user[0]['contact_number'];
         $_SESSION['name'] = $user[0]['name'];
         $_SESSION['address'] = $user[0]['address'];
+        
+        if($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'LandOwner') {
+            $this->model->getRoute($_SESSION['user_type']);
+        }
         redirect($_SESSION['user_type']);
     }
 
