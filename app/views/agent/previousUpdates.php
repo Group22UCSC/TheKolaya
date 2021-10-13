@@ -16,20 +16,11 @@
 <?php include 'topContainer.php';?>
 <div class="topic">View Previous Tea Updates</div>
 <div class="form-container">
-<div class="searchform">
-    <div class="inputarea">
-<label for="date" >Enter Date:</label>
-  <input type="date" id="date" name="date">
-</div>
-<div class="inputarea">
-  <label for="lid">Enter ID:</label>
-  <input type="text" id="lid" name="lid">
-</div>
-  <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button>
-</div>
-
+<form class="searchform">
+    <input type="date" id="date" name="date" placeholder="Enter Date">
+    <input type="text" id="search" placeholder="Enter Landowner ID.." required>
+    <input type="submit" value="go" id="submit">
+</form>
 <div class="resultform">
     <div class="inputarea">
 <label for="date" >Date:</label>
