@@ -73,5 +73,15 @@ class Login_Model extends Model {
         }
     }
 
+    //Get Route
+    public function getRoute($user_type) {
+        $user_id = $_SESSION['user_id'];
+        if($user_type = 'Agent')
+            $query = "SELECT * FROM agent WHERE emp_id='$user_id'";
+        else if($user_type = 'LandOwner')
+            $query = "SELECT * FROM landowner WHERE user_id='$user_id'";
+        $row = $this->db->runQuery($query);
+        $_SESSION['route'] = $row[0]['route_no'];
+    }
 }
 ?>
