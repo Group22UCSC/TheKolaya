@@ -14,21 +14,23 @@
    </head>
    <body>
 <?php include 'topContainer.php';?>
-<div class = "maindiv" id="blur">
+<div id="overlay"></div>
+  <div class = "topic"><h3>My Dashboard</h3></div>
 <div class="notice">
 <?php $x=count($data);?>
-   <div class = "avanot"><h4 id="availablenotice"><?php echo $x?> landowners to collect <br>tea leaves!</h4></div>
+   <div class = "avanot"><?php echo $x?> landowners to collect <br>tea leaves!</div>
    <?php $y=4?>
-   <div class="delnot"><h4 id="deliverynotice"><?php echo $y?> landowners to deliver <br>requests!</h4></div>
+   <div class="delnot"><?php echo $y?> landowners to deliver <br>requests!</div>
   
   </div>
   <div class="availablelist">    
     
-    <h3 class ="availabletopic">Available  Landowner  List </h3>
-    <table class = "availabletable" id="availabletable">
+    <div class ="availabletopic">Available  Landowner  List </div>
+    <div style="overflow-x:auto; overflow-y:auto;">
+    <table class = "availabletable" id="availabletable">      
       <tr>
-        <th>Landowner ID</th>
-        <th>Container Estimation</th> 
+        <td class="th">Landowner ID</td>
+        <td class="th">Container Estimation</td> 
         <!--<th>Address</th>    -->                          
       </tr>
       <?php
@@ -41,8 +43,9 @@
                 </tr>';                
         }       
       ?>         
-    </table>    
-      </div>
+    </table>
+      </div>    
+  
       
   <!-- <div class="deliverylist">
   
@@ -60,7 +63,7 @@
       </div> -->
       </div>
       <div class="forms">
-    <?php  include 'deliveryform.php';?>   
+   
     <?php  include 'teaCollection.php';?>       
       </div>
       <?php  include 'popup.php';?>        
@@ -73,18 +76,22 @@
     rows.forEach(row =>{
         row.addEventListener("click", ()=>{
          openteaform();
+         
+
         });
     });
 });
 
-document.addEventListener("DOMContentLoaded",() => {
-    const rows = document.querySelectorAll("tr[data-href-request]");
-    rows.forEach(row =>{
-        row.addEventListener("click", ()=>{
-         openrequestform();
-        });
-    });
-});
+
+
+// document.addEventListener("DOMContentLoaded",() => {
+//     const rows = document.querySelectorAll("tr[data-href-request]");
+//     rows.forEach(row =>{
+//         row.addEventListener("click", ()=>{
+//          openrequestform();
+//         });
+//     });
+// });
 
 var table = document.getElementById('availabletable');
                 
@@ -121,6 +128,7 @@ for(var i = 1; i < table.rows.length; i++)
 
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
   //console.log("before blur");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('active');
@@ -129,6 +137,7 @@ function openteaform(){
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
   //console.log("before blur back");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('closeblur');

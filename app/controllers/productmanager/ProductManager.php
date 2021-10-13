@@ -5,11 +5,20 @@ class ProductManager extends Controller{
     {
         parent::__construct();
     }
+    public function profile()
+    {
+        $this->view->showPage('Productmanager/profile');
+    }
 
+    public function editProfile()
+    {
+        $this->view->showPage('Productmanager/editProfile');
+    }
     function index() {
 
         $this->view->showPage('Productmanager/Productmanager');
     }
+    
     function products() {
 
         $this->view->showPage('Productmanager/products');
@@ -23,13 +32,16 @@ class ProductManager extends Controller{
         $this->view->showPage('Productmanager/updateProducts');
     }
 
-    function loadProductIds(){
-        
+    function loadProductNames(){
+            $productResults = $this->model->getProductDetails();
+            return $productResults;
     }
     function updateAuction(){
-            $result = $this->model->auction();
+            $tblResult = $this->model->auction();
+            $productResults = $this->model->getProductDetails();
+            
            // print_r($result);
-            $this->view->render('Productmanager/updateAuction', $result);
+            $this->view->render2('Productmanager/updateAuction', $tblResult,$productResults);
     }
     
     

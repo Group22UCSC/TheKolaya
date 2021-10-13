@@ -14,44 +14,36 @@
    </head>
 <body>
 <?php include 'topContainer.php';?>
-<h3>View Previous Tea Updates</h3>
+<div class="topic">View Previous Tea Updates</div>
 <div class="form-container">
-<div class="searchform">
-    <div class="inputarea">
-<label for="date" >Enter Date:</label>
-  <input type="date" id="date" name="date">
+<form class="searchform">
+    <input type="date" id="date" name="date"  required>
+    <input type="text" id="search" placeholder="Enter Landowner ID.." required>
+    <input type="submit" value="go" id="submit">
+</form>
+<form class="resultform">
+  <div class="inputfield">
+    <label class="resultlbl">Landowner ID</label>
+    <input type="text" id="lid"  size="6"  readonly>
+    </div>
+    <div class="inputfield">
+    <label class="resultlbl">Request Date</label>
+    <input type="date" id="rdate" name="date"  size="6"  readonly>
+    </div>
+    <div class="inputfield">
+    <label class="resultlbl">Confirm Date</label>
+    <input type="date" id="cdate" name="date"  size="6"  readonly>
+    </div>
+    <div class="inputfield">
+    <label class="resultlbl">Request Type</label>
+    <input type="text" id="rtype"  size="6"  readonly>
+    </div>
+    <div class="inputfield">
+    <label class="resultlbl">Amount</label>
+    <input type="text" id="ramount"  size="6"  readonly>
 </div>
-<div class="inputarea">
-  <label for="lid">Enter ID:</label>
-  <input type="text" id="lid" name="lid">
-</div>
-  <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button>
-</div>
-
-<div class="resultform">
-    <div class="inputarea">
-<label for="date" >Date:</label>
-  <input type="date" id="resdate" name="date">
-</div>
-<div class="inputarea">
-  <label >Landowner ID:</label>
-  <input type="text" id="reslid" name="lid">
-</div>
-<div class="inputarea">
-  <label >Initial Weight:</label>
-  <input type="text" id="resweight" name="lid">
-</div>
-<div class="inputarea">
-  <label >Request Type:</label>
-  <input type="text" id="restype" name="lid">
-</div>
-<div class="inputarea">
-  <label >Request Amount:</label>
-  <input type="text" id="resamount" name="lid">
-</div>
-  
-</div>
+    
+    
+</form>
 </div>
   <?php include 'bottomContainer.php';?>

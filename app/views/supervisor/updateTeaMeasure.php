@@ -16,7 +16,7 @@
 <body>
 <?php include 'top-container.php';?>
     <div class="title-container">
-        <h2>update tea measure</h2>
+        <h2>Update Net-Weight</h2>
     </div>
     <div class="middle-container">
       
@@ -62,26 +62,6 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-                <!-- <label class="check">
-                  <input type="checkbox" name="too-bad">
-                  <span class="checkmark"></span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" name="bad">
-                  <span class="checkmark"></span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" name="average">
-                  <span class="checkmark"></span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" name="good">
-                  <span class="checkmark"></span>
-                </label>
-                <label class="check last-check">
-                  <input type="checkbox" name="best">
-                  <span class="checkmark"></span>
-                </label> -->
               </div>
               <div class="inputfield">
                 <input type="submit" value="Update" class="accept-btn">
@@ -92,7 +72,7 @@
       </div>
 
       <div class="table-container">
-        <div class="table-row"><div class="table-name"><b>Today Tea Measure</b></div></div>
+        <div class="table-row"><div class="table-name"><b><?php echo date("Y/m/d");?> - Updated Tea-Weight</b></div></div>
           <div class="table-row table-head">
             <div class="table-element"><b>Landowner ID</b></div>
             <div class="table-element"><b>Reductions(kg)</b></div>

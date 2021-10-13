@@ -65,21 +65,29 @@ class productmanager_Model extends Model {
         }
     }
 
-    
-    function insertTeaPrice(){
-            $date=date("Y-m-d");
-            $teaPrice=$_POST['teaPrice'];
-            // HAS TO CHANGE THIS
-            $emp_id='ACC-000';
-            $query = "INSERT INTO monthly_tea_price (date,price,emp_id) VALUES ('{$date}','{$teaPrice}','{$emp_id}')";
-            $row = $this->db->insertQuery($query);
-            //print_r($row);
-            if($row){
-                return true;
-            }else {
-                return false;
-            }
+    function getProductDetails(){
+        $query = "SELECT product_id,product_name,amount FROM product";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
     }
+    // function insertTeaPrice(){
+    //         $date=date("Y-m-d");
+    //         $teaPrice=$_POST['teaPrice'];
+    //         // HAS TO CHANGE THIS
+    //         $emp_id='ACC-000';
+    //         $query = "INSERT INTO monthly_tea_price (date,price,emp_id) VALUES ('{$date}','{$teaPrice}','{$emp_id}')";
+    //         $row = $this->db->insertQuery($query);
+    //         //print_r($row);
+    //         if($row){
+    //             return true;
+    //         }else {
+    //             return false;
+    //         }
+    // }
     
 }
 ?>
