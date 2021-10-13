@@ -177,15 +177,17 @@ class Admin_Model extends Model {
         }
         // $query = "UPDATE user SET(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
 
+        
+           $query = "UPDATE user SET user_id='$user_id', name='$name', address='$address', contact_number='$contact_number', user_type='$user_type', password='$password' WHERE user_id='$user_id'";
 
-         $query="UPDATE user SET";
-         $query="user_id= {$user_id},";
-          $query="name= {$name},";
-           $query="address= {$address},";
-            $query="contact_number= {$contact_number},";
-             $query="user_type= {$user_type},";
-              $query="password= {$password},";
-               $query="verify= {$verify},";
+         // $query="UPDATE user SET";
+         // $query="user_id= {$user_id},";
+         //  $query="name= {$name},";
+         //   $query="address= {$address},";
+         //    $query="contact_number= {$contact_number},";
+         //     $query="user_type= {$user_type},";
+         //      $query="password= {$password},";
+         //       $query="verify= {$verify},";
 
         $queryUser = null;
         switch($user_type) {
@@ -338,7 +340,7 @@ class Admin_Model extends Model {
             $user_type = 'Land_Owner';
             $landowner_type = $data['reg_type'];
         }
-        $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+        $query = "INSERT INTO user(user_id, name, contact_number, user_type, verify) values('$user_id', '$name', '$contact_number', '$user_type', '$verify')";
         $queryUser = null;
         switch($user_type) {
             case 'accountant' :
