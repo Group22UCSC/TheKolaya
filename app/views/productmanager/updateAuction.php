@@ -1,29 +1,12 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<?php
-    function getProductIds($data2){
-        $output='';
-        // $x=count($data2);
-        foreach($data2 as $row){
-            $output.='<option value="'.$row["product_id"].'">'.$row["product_id"].'</option>';  
-        }
-        return $output;
-    }
-    function getProductName($data2){
-        $output='';
-        // $x=count($data2);
-        foreach($data2 as $row){
-            $output.='<option value="'.$row["product_id"].'">'.$row["product_id"].'</option>';  
-        }
-        return $output;
-    }
-?>
+<body onload="loadPid()"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
 <script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
 
 <!-- Ajex for select oprtions in the form ex: Product id selection -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
-<div class="top-container">
+<div class="top-container" >
     <p>Update Auction Details</p>
 </div>
 <!--  *** Update tea price box **** -->
@@ -33,20 +16,9 @@
            Emergency Message
         </div>         -->
     <div class="form">
-        <div class="inputfield">
-            
-            <label for="pid">Product Id</label>
-            <!-- <input list="browsers"> -->
-            <select id="productid" class="input" name="productid">
-                <option value="">Select Product Id</option>
-                <?php
-                echo getProductIds($data2);
-                ?>
-            </select>
-        </div>
 
-        <div class="inputfield">
-        <script>  
+    <div class="inputfield">
+        <!-- <script>  
             $(document).ready(function(){  
                 $('#productid').change(function(){  
                     var brand_id = $(this).val();  
@@ -60,10 +32,39 @@
                     });  
                 });  
             });  
-        </script>  
+        </script>   -->
             <label for="productName">Product Name</label>
-            <input type="text" class="input" id="productName">
+            <select id="productName" class="input" name="productName"  onchange="loadPid()">
+            <?php 
+            foreach($data2 as $row){
+                ?>
+                <option value="<?php echo $row['product_id'];?>"><?php echo $row['product_name'];?></option>
+            }
+           <?php
+            }
+            ?>
+            </select>
+            <!-- <input type="text" class="input" id="productName"> -->
         </div>
+
+        <script>
+            function loadPid(){
+                var e = document.getElementById("productName");
+                var val= e.options[e.selectedIndex].value;
+                document.getElementById('pid').value=val;
+            }
+        </script>
+
+        <div class="inputfield">
+            
+            <label for="pid">Product Id</label>
+            <!-- <input list="browsers"> -->
+            <input type="text" class="input" readonly id="pid">
+                
+            </select>
+        </div>
+
+        
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
             <input type="text" class="input" id="amount">

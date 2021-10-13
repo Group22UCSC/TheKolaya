@@ -64,13 +64,7 @@
       </a>
       <span class="tooltip">Landowners</span>
     </li>
-     <li class="mobile-nav-icon">
-      <a href="#">
-        <i class="fas fa-bell"></i>
-        <span class="links_name">Notification</span>
-      </a>
-      <span class="tooltip">Notification</span>
-    </li>
+     
     
     </ul>
   </div>
