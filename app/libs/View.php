@@ -19,6 +19,7 @@ class View {
             die('View does not exist');
         }
     }
+    
     public function show($viewName, $data = [], $user_data = []) {
         if(file_exists('../app/views/' .$viewName. '.php')){
             require '../app/views/' .$viewName. '.php';

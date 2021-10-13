@@ -63,7 +63,7 @@
       </div> -->
       </div>
       <div class="forms">
-    <?php  include 'deliveryform.php';?>   
+   
     <?php  include 'teaCollection.php';?>       
       </div>
       <?php  include 'popup.php';?>        

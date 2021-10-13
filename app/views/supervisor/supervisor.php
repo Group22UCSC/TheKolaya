@@ -26,8 +26,8 @@
       <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
       <?php include 'js/supervisor/dashboard-chart.php'?>
         <div class="table-row">
-          <div class="fertilizer-btn"><a href="<?php echo URL?>Supervisor/fertilizerStock"><button class="table-btn">fertilizer Stock</button></a></div>
-          <div class="firewood-btn"><a href="<?php echo URL?>Supervisor/firewoodStock"><button class="table-btn">firewood stock</button></a></div>
+          <!-- <div class="fertilizer-btn"><a href="<?php echo URL?>Supervisor/fertilizerStock"><button class="table-btn">fertilizer Stock</button></a></div>
+          <div class="firewood-btn"><a href="<?php echo URL?>Supervisor/firewoodStock"><button class="table-btn">firewood stock</button></a></div> -->
         </div>
       </div>
 
