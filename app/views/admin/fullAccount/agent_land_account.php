@@ -46,15 +46,13 @@
 
 
 
-
-  
-
+<?php $_SESSION['account_type'] = 'agentLandFull'?>
   <div class="k1">
 <div class="wrapper11">
     <div class="title">
      Registration Form
     </div>
-   <form action="<?php echo URL?>admin/agent_land_account" method="POST">
+   <form action="<?php echo URL?>admin/create_account" method="POST">
       <div class="form">
          <div class="inputfield">
             <label> Name</label>
@@ -82,8 +80,7 @@
 
          <div class="inputfield">
             <label>Contact Number</label>
-            <?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>
-            <input type="tel" class="input" name="contact_number" required>
+            <input type="tel" class="input" name="contact_number" placeholder="<?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>" required>
          </div>
          <div class="inputfield">
             <label>Route number</label>
@@ -96,7 +93,7 @@
          <div class="inputfield">
             <label>Confirm Password</label>
             <?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>
-            <input type="password" class="input" name="confirm_password" required>
+            <input type="password" class="input" name="confirm_password" placeholder="<?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>" required>
          </div> 
          <div class="inputfield">
             <input type="submit" value="Register" class="btn">
