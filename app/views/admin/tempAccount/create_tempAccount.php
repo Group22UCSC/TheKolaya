@@ -37,14 +37,13 @@
 
 
 
-<?php $_SESSION['account_type'] = 'temp'?>
 
   <div class="k1">
 <div class="wrapper11">
     <div class="title">
     Registration Form
     </div>
-    <form action="<?php echo URL?>admin/create_account" method="POST">
+    <form action="<?php echo URL?>admin/create_tempAccount" method="POST">
     <div class="form">
         <div class="inputfield">
           <label> Name</label>
@@ -66,7 +65,8 @@
        </div>
         <div class="inputfield">
           <label>Contact number</label>
-            <input type="tel" class="input" name="contact_number" placeholder="<?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>" required>
+           <?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>
+            <input type="tel" class="input" name="contact_number" required>
        </div>
       <div class="inputfield">
         <input type="submit" value="Register" class="btn">

@@ -31,9 +31,9 @@
         </div>
         <div class="column">
           <h3>Create Temporary Accounts</h3>
-          <a href="<?php echo URL?>admin/agent_land_tempAccount">Direct Landowner</a>
-          <a href="<?php echo URL?>admin/agent_land_tempAccount">Indirect Landowner</a>
-          <a href="<?php echo URL?>admin/agent_land_tempAccount">Agent</a>
+          <a href="<?php echo URL?>admin/agent_land_tempaAccount">Direct Landowner</a>
+          <a href="<?php echo URL?>admin/agent_land_tempaAccount">Indirect Landowner</a>
+          <a href="<?php echo URL?>admin/agent_land_tempaAccount">Agent</a>
           <a href="<?php echo URL?>admin/create_tempAccount">Accountant</a>
           <a href="<?php echo URL?>admin/create_tempAccount">Product Manager</a>
           <a href="<?php echo URL?>admin/create_tempAccount">Supervisor</a>
