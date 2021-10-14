@@ -45,6 +45,7 @@
 
 
   
+<?php $_SESSION['account_type'] = 'full'?>
 
   <div class="k1">
      
@@ -62,7 +63,7 @@
 
          <div class="inputfield">
             <label>Uesr ID</label>
-            <input type="text" class="input" name="user_id" required>
+            <input type="text" class="input" name="user_id" placeholder="<?php (!empty($user_data['user_id_err'])) ? print $user_data['user_id_err'] : print ''; ?>" required>
          </div> 
 
          <div class="inputfield">
@@ -83,19 +84,15 @@
 
          <div class="inputfield">
             <label>Contact Number</label>
-            <input type="tel" class="input" name="contact_number" required>
+            <input type="tel" class="input" name="contact_number" placeholder="<?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>" required>
          </div>
-        <!--  <div class="inputfield">
-            <label>Route number</label>
-            <input type="number" class="input" name="route_number" required>
-         </div> -->
          <div class="inputfield">
             <label>Password</label>
             <input type="password" class="input" name="password" required>
          </div>
          <div class="inputfield">
             <label>Confirm Password</label>
-            <input type="password" class="input" name="confirm_password" required>
+            <input type="password" class="input" name="confirm_password" placeholder="<?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>" required>
          </div> 
          <div class="inputfield">
             <input type="submit" value="Register" class="btn">
