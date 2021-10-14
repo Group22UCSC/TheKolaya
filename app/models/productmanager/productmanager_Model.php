@@ -51,7 +51,7 @@ class productmanager_Model extends Model {
     function auction(){
         
 
-        $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name
+        $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name,buyer.buyer_id
                 FROM auction 
                 INNER JOIN product 
                 ON auction.product_id=product.product_id 
