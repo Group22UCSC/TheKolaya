@@ -33,7 +33,7 @@ class ProductManager extends Controller{
     }
 
     function loadProductNames(){
-            $productResults = $this->model->getProductDetails();
+            $productResults = $this->model->getProductDetails();//"SELECT product_id,product_name,amount FROM product";
             return $productResults;
     }
     function updateAuction(){

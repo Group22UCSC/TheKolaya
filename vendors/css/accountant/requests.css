@@ -23,6 +23,11 @@
 }
 
 /* **************** table container ********************** */
+.table-section{
+  /* overflow-x:auto;
+  overflow-y:auto;
+  height: 600px; */
+}
 .table-container{
     font-family: 'Poppins', sans-serif;
   display: grid;
@@ -47,6 +52,7 @@
     border-radius: 10px;
     width: 100%;
     transition: all .5s ease;
+  
   }
   #requeststbl tr:not(:first-child){
     cursor: pointer; transition: all .25s ease-in-out;
@@ -108,10 +114,15 @@
     tr:nth-child(even) {
       background-color: #f4f6fb;
     }
+  /* ********************* idtable-container ************** */
+
+    #idtable-container{
+      
+    }
 
   /*  ***************************bottom payment form ************************ */
     .form-popup{
-        height: 670px;
+        height: 600px;
         padding-left: 30px;
         
     }
