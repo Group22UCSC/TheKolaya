@@ -76,7 +76,7 @@
     rows.forEach(row =>{
         row.addEventListener("click", ()=>{
          openteaform();
-         
+         //window.location.href=row.dataset.href;
 
         });
     });
