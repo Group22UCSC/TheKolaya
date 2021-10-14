@@ -14,7 +14,7 @@
    </head>
    <body>
 <?php include 'topContainer.php';?>
-<div id="overlay"></div>
+<div class = "maindiv" id="blur">
   <div class = "topic"><h3>My Dashboard</h3></div>
 <div class="notice">
 <?php $x=count($data);?>
@@ -45,7 +45,7 @@
       ?>         
     </table>
       </div>    
-  
+      </div>
       
   <!-- <div class="deliverylist">
   
@@ -76,22 +76,18 @@
     rows.forEach(row =>{
         row.addEventListener("click", ()=>{
          openteaform();
-         
-
         });
     });
 });
 
-
-
-// document.addEventListener("DOMContentLoaded",() => {
-//     const rows = document.querySelectorAll("tr[data-href-request]");
-//     rows.forEach(row =>{
-//         row.addEventListener("click", ()=>{
-//          openrequestform();
-//         });
-//     });
-// });
+document.addEventListener("DOMContentLoaded",() => {
+    const rows = document.querySelectorAll("tr[data-href-request]");
+    rows.forEach(row =>{
+        row.addEventListener("click", ()=>{
+         openrequestform();
+        });
+    });
+});
 
 var table = document.getElementById('availabletable');
                 
@@ -128,7 +124,6 @@ for(var i = 1; i < table.rows.length; i++)
 
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
-  document.getElementById("overlay").style.display = "block";
   //console.log("before blur");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('active');
@@ -137,7 +132,6 @@ function openteaform(){
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
-  document.getElementById("overlay").style.display = "none";
   //console.log("before blur back");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('closeblur');

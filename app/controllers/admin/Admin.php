@@ -22,50 +22,43 @@
             $this->view->showPage('Admin/updateAccount');
         }
 
-//////////////////////////////////update form///////////////////////////////////////////////////////////////////////////////////
+        //update form
          public function updateAccount1() {
             // $this->view->showPage('Admin/updateAccount1');
-                $data = $this->model->checkTable();
+
               if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $user_data = [
+                $data = [
                     'name' => trim($_POST['name']),
-                    'reg_id' => trim($_POST['user_id']),
-                    'reg_type' => trim($_POST['user_type']),
+                    'user_id' => trim($_POST['user_id']),
+                    'user_type' => trim($_POST['user_type']),
                     'address' => trim($_POST['address']),
-                    'mobile_number' => trim($_POST['contact_number']),
+                    'contact_number' => trim($_POST['contact_number']),
                     // 'route_number' => trim($_POST['route_number']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
 
-               
-                    'user_id_err' => '',
+
                     'contact_number_err' => '',
                     'confirm_password_err' => ''
                 ];
-                
-                
-                if($user_data['password'] != $user_data['confirm_password']) {
-                    $user_data['confirm_password_err'] = "confirmation not matching";
-                }
-                if($this->model->searchUserContact($user_data['mobile_number'])) {
-                    $user_data['contact_number_err'] = "This mobile number is already Taken";
-                }
 
-                if($this->model->searchUserId($user_data['reg_id'])) {
-                    $user_data['user_id_err'] = "This ID is already Taken";
+                if($data['password'] != $data['confirm_password']) {
+                    $data['confirm_password_err'] = "confirmation not matching";
+                }
+                if($this->model->searchUserContact($data['contact_number'])) {
+                    $data['contact_number_err'] = "This mobile number is already Taken";
                 }
 
-
-                if(empty($user_data['contact_number_err']) && empty($user_data['confirm_password_err'])) {
-                    $user_data['password'] = password_hash($user_data['password'], PASSWORD_DEFAULT);
-                    $this->model->userRegistration11($user_data);
-                    $this->view->render('admin/updateAccount1', $data, $user_data);
+                if(empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    $this->model->userRegistration11($data);
+                    $this->view->render('admin/updateAccount1', $data);
                 }else {
-                    $this->view->render('admin/updateAccount1', $data, $user_data);
+                    $this->view->render('admin/updateAccount1', $data);
                 }
             }else{
-                $user_data = [
+                $data = [
                     'name' => '',
                     'user_id' => '',
                     'user_type' => '',
@@ -79,8 +72,7 @@
                     'contact_number_err' => '',
                     'confirm_password_err' => ''
                 ];
-                 $user_data = $this->model->checkTable();
-                $this->view->render('admin/updateAccount1', $data, $user_data);
+                $this->view->render('admin/updateAccount1', $data);
             }
         }
 
