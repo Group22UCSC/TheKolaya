@@ -21,7 +21,9 @@
         }
 
         public function viewTeaQuality() {
-            $this->view->showPage('Manager/viewTeaQuality');
+            $result = $this->model->availablelistTable_landowners();
+      // print_r($result);
+       $this->view->render('Manager/viewTeaQuality',$result);
         }
 
          public function viewTeaQuality1() {
