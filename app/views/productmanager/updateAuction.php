@@ -6,6 +6,12 @@
 
 <!-- Ajex for select oprtions in the form ex: Product id selection -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+
+<?php
+
+
+
+?>
 <div class="top-container" >
     <p>Update Auction Details</p>
 </div>
@@ -80,8 +86,9 @@
             ?>
             </select>
         </div>
+            
         <div class="inputfield">
-            <input type="submit" value="Update" data-modal-target="#modal" class="btn" >
+            <input type="submit" value="Update" data-modal-target="#modal" class="btn" onsubmit="return validate()" >
         </div>
     </div>
 </div>
@@ -101,19 +108,22 @@
         </div>
         <div class="year">
             <label>Product Id :</label>
-            <input type="text" class="modalInput" id="modalPid"  readonly required>
+            <input type="text" class="modalInput" id="modalPid"  readonly required name="pid">
         </div>
         <div class="year">
             <label>Amount(Kg):</label>
-            <input type="text" class="modalInput" id="modalAmount"  readonly required>
+            <input type="text" class="modalInput" id="modalAmount"  readonly required name="amount">
         </div>
         <div class="year">
             <label>Price(1kg/Rs):</label>
-            <input type="text" class="modalInput" id="modalPrice"  readonly required /> 
+            <input type="text" class="modalInput" id="modalPrice"  readonly required  name="price"> 
         </div>
         <div class="year">
             <label>Buyer:</label>
             <input type="text" class="modalInput" id="modalBuyer" required readonly>
+        </div>
+        <div>
+            <input type="text" id="modalBid" hidden name="bid">
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Cancel</a>

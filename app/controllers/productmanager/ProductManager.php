@@ -37,12 +37,33 @@ class ProductManager extends Controller{
             return $productResults;
     }
     function updateAuction(){
+        if(!empty($_POST)){
+            
+
+            $result = $this->model->insertAution();
+            if($result==true){
+                $buyers=$this->model->getBuyersDetails();
+            $tblResult = $this->model->auction();
+            $productResults = $this->model->getProductDetails();
+            
+           // print_r($result);
+            $this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        }
+        else{
             $buyers=$this->model->getBuyersDetails();
             $tblResult = $this->model->auction();
             $productResults = $this->model->getProductDetails();
             
            // print_r($result);
             $this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
+        }
+            
     }
     
     
