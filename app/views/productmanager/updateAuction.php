@@ -11,7 +11,7 @@
 </div>
 <!--  *** Update tea price box **** -->
 
-<div class="wrapper">
+<div class="wrapperform">
     <!-- <div class="title">
            Emergency Message
         </div>         -->
@@ -77,11 +77,10 @@
             <label for="pid">Buyer</label>
             <!-- <input list="browsers"> -->
             <select id="productIds" class="input">
-                <option value="P001">Akbar Brothers</option>
-                <option value="P002">Empire Teas Pvt Ltd</option>
-                <option value="P003">Van Rees Ceylon Ltd</option>
-                <option value="P004">ACRIL Holdings</option>
-                <option value="P005">Abacus Tea Pvt</option>
+            <?php 
+            
+            print_r($data1);
+            ?>
             </select>
         </div>
         <div class="inputfield">
