@@ -73,4 +73,15 @@ class Manager_Model extends Model {
             return false;
         }
     }
+
+      function availableListTable(){
+        $query = "SELECT name,user_id,user_type FROM user WHERE verify=1";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
 }
