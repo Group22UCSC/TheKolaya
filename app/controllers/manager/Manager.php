@@ -27,7 +27,11 @@
 
 
          public function viewPayments() {
-            $this->view->showPage('Manager/viewPayments');
+            // $this->view->showPage('Manager/viewPayments');
+               $result = $this->model->availablelistTable_landowners();
+      // print_r($result);
+       $this->view->render('Manager/viewPayments',$result);
+
         }
 
 
