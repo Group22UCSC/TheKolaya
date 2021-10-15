@@ -28,7 +28,7 @@
 <?php
         $x=count($data);
         for($i=0;$i<$x;$i++){
-          echo '<tr id="tea" data-href-tea="">
+          echo '<tr id="tea" data-href-tea="Admin/viewAccount1">
                     <td>'.$data[$i]['name'].'</td>
                     <td>'.$data[$i]['user_id'].'</td>
                     <td>'.$data[$i]['user_type'].'</td>
