@@ -81,7 +81,7 @@ class Accountant_Model extends Model {
             $date=date("Y-m-d");
             $teaPrice=$_POST['teaPrice'];
             // HAS TO CHANGE THIS
-            $emp_id='ACC-000';
+            $emp_id=$_SESSION['user_id'];
             $query = "INSERT INTO monthly_tea_price (date,price,emp_id) VALUES ('{$date}','{$teaPrice}','{$emp_id}')";
             $row = $this->db->insertQuery($query);
             //print_r($row);
