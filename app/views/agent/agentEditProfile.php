@@ -24,11 +24,11 @@
             <div class="form">
               <div class="inputfield">
                 <label>Name</label>
-                <input type="text" class="input" id="Name" value="<?php echo 'Roneki'?>">
+                <input type="text" class="input" id="Name" value="<?php echo $_SESSION['name'];?>">
               </div>
               <div class="inputfield">
                 <label>Mobile Number</label>
-                <input type="number" class="input" id="Mobile-number" value="<?php echo '0777816920'?>">
+                <input type="number" class="input" id="Mobile-number" value="0<?php echo $_SESSION['contact_number'];?>">
               </div>
                 <div class="inputfield" id="left-btn">
                     <input type="button" value="Change Password" class="accept-btn change">

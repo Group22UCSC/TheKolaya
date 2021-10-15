@@ -26,7 +26,7 @@
   <div class="availablelist">    
     
     <div class ="availabletopic">Available  Landowner  List </div>
-    <div style="overflow-x:auto; overflow-y:auto;">
+    <div style="overflow:auto;">
     <table class = "availabletable" id="availabletable">      
       <tr>
         <td class="th">Landowner ID</td>
