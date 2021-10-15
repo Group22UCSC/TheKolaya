@@ -7,29 +7,30 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">
-    
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/dashboard.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
    <body>
 <?php include 'topContainer.php';?>
-<div class = "maindiv" id="blur">
+<div id="overlay"></div>
+  <div class = "topic"><h3>My Dashboard</h3></div>
 <div class="notice">
 <?php $x=count($data);?>
-   <h4 id="availablenotice"><?php echo $x?> landowners to collect <br>tea leaves today!</h4>
+   <div class = "avanot"><?php echo $x?> landowners to collect <br>tea leaves!</div>
    <?php $y=4?>
-   <h4 id="deliverynotice"><?php echo $y?> landowners to deliver <br>requested items today!</h4>
+   <div class="delnot"><?php echo $y?> landowners to deliver <br>requests!</div>
   
   </div>
   <div class="availablelist">    
     
-    <h3 class ="availabletopic">Available  Landowner  List </h3>
-    <table class = "availabletable" id="availabletable">
+    <div class ="availabletopic">Available  Landowner  List </div>
+    <div style="overflow:auto;">
+    <table class = "availabletable" id="availabletable">      
       <tr>
-        <th>Landowner ID</th>
-        <th>Container Estimation</th> 
+        <td class="th">Landowner ID</td>
+        <td class="th">Container Estimation</td> 
         <!--<th>Address</th>    -->                          
       </tr>
       <?php
@@ -42,10 +43,11 @@
                 </tr>';                
         }       
       ?>         
-    </table>    
-      </div>
+    </table>
+      </div>    
+  
       
-  <div class="deliverylist">
+  <!-- <div class="deliverylist">
   
     <h3 class="deliverytopic">Request  Delivery  List </h3>
     <table class="deliverytable" id="deliverytable">
@@ -54,23 +56,14 @@
         <th>Request ID</th>
         <th>Type</th>
         <th>Amount</th>            
-      </tr>
+      </tr> -->
      
-      <?php
-        for($i=1;$i<=$y;$i++){
-          echo '<tr  id = "request" data-href-request="" >
-                    <td>L00'.$i.'</td>
-                    <td>R'.$i.'</td>
-                    <td>Firewood</td>
-                    <td>28</td>                                      
-                </tr>';                
-        }
-      ?>
-    </table>
-      </div>
+      
+    <!-- </table>
+      </div> -->
       </div>
       <div class="forms">
-    <?php  include 'deliverables.php';?>   
+   
     <?php  include 'teaCollection.php';?>       
       </div>
       <?php  include 'popup.php';?>        
@@ -83,18 +76,22 @@
     rows.forEach(row =>{
         row.addEventListener("click", ()=>{
          openteaform();
+         //window.location.href=row.dataset.href;
+
         });
     });
 });
 
-document.addEventListener("DOMContentLoaded",() => {
-    const rows = document.querySelectorAll("tr[data-href-request]");
-    rows.forEach(row =>{
-        row.addEventListener("click", ()=>{
-         openrequestform();
-        });
-    });
-});
+
+
+// document.addEventListener("DOMContentLoaded",() => {
+//     const rows = document.querySelectorAll("tr[data-href-request]");
+//     rows.forEach(row =>{
+//         row.addEventListener("click", ()=>{
+//          openrequestform();
+//         });
+//     });
+// });
 
 var table = document.getElementById('availabletable');
                 
@@ -131,6 +128,7 @@ for(var i = 1; i < table.rows.length; i++)
 
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
   //console.log("before blur");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('active');
@@ -139,6 +137,7 @@ function openteaform(){
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
   //console.log("before blur back");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('closeblur');

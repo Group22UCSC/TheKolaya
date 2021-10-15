@@ -1,35 +1,70 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
+<body onload="loadPid()"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
 <script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
 
 <!-- Ajex for select oprtions in the form ex: Product id selection -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
-<div class="top-container">
+<div class="top-container" >
     <p>Update Auction Details</p>
 </div>
 <!--  *** Update tea price box **** -->
+
 <div class="wrapper">
     <!-- <div class="title">
            Emergency Message
         </div>         -->
     <div class="form">
+
+    <div class="inputfield">
+        <!-- <script>  
+            $(document).ready(function(){  
+                $('#productid').change(function(){  
+                    var brand_id = $(this).val();  
+                    $.ajax({  
+                            url:"<?php echo URL?>productmanager/loadProductNames",  
+                            method:"POST",  
+                            data:{product_id:brand_id},  
+                            success:function(data){  
+                                $('#productName').html(data);  
+                            }  
+                    });  
+                });  
+            });  
+        </script>   -->
+            <label for="productName">Product Name</label>
+            <select id="productName" class="input" name="productName"  onchange="loadPid()">
+            <?php 
+            foreach($data2 as $row){
+                ?>
+                <option value="<?php echo $row['product_id'];?>"><?php echo $row['product_name'];?></option>
+            }
+           <?php
+            }
+            ?>
+            </select>
+            <!-- <input type="text" class="input" id="productName"> -->
+        </div>
+
+        <script>
+            function loadPid(){
+                var e = document.getElementById("productName");
+                var val= e.options[e.selectedIndex].value;
+                document.getElementById('pid').value=val;
+            }
+        </script>
+
         <div class="inputfield">
+            
             <label for="pid">Product Id</label>
             <!-- <input list="browsers"> -->
-            <select id="productid" class="input" name="productid">
-                <option value="">Select Product Id</option>
+            <input type="text" class="input" readonly id="pid">
                 
-                <!-- <option value="P002">P002</option>
-                <option value="P003">P003</option>
-                <option value="P004">P004</option>
-                <option value="P005">P005</option> -->
             </select>
         </div>
-        <div class="inputfield">
-            <label for="productName">Product Name</label>
-            <input type="text" class="input" id="productName">
-        </div>
+
+        
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
             <input type="text" class="input" id="amount">
@@ -159,7 +194,7 @@
                 </tr>
            
                 <?php
-            $x = count($data);
+            $x = count($data1);
             for($i = 0; $i < $x; $i++) {
             //   echo '<div class="table-row-2 get-id">
             //           <div class="table-element">'.$data[$i]['request_date'].'</div>
@@ -170,13 +205,13 @@
             // auction.date,product.product_id, product.product_name, 
             // auction.sold_amount, auction.sold_price,buyer.name
                  echo'<tr>
-                    <td class="tdcls">'.$data[$i]['date'].'</td>
-                    <td class="tdcls">'.$data[$i]['product_id'].'</td>
-                    <td class="tdcls">'.$data[$i]['product_name'].'</td>
-                    <td class="tdcls">'.$data[$i]['sold_amount'].'</td>
-                    <td class="tdcls">'.$data[$i]['sold_price'].'</td>
-                    <td class="tdcls">'.$data[$i]['name'].'</td>
-                    <td class="tdcls">'.$data[$i]['sold_amount']*$data[$i]['sold_price'].'</td>
+                    <td class="tdcls">'.$data1[$i]['date'].'</td>
+                    <td class="tdcls">'.$data1[$i]['product_id'].'</td>
+                    <td class="tdcls">'.$data1[$i]['product_name'].'</td>
+                    <td class="tdcls">'.$data1[$i]['sold_amount'].'</td>
+                    <td class="tdcls">'.$data1[$i]['sold_price'].'</td>
+                    <td class="tdcls">'.$data1[$i]['name'].'</td>
+                    <td class="tdcls">'.$data1[$i]['sold_amount']*$data1[$i]['sold_price'].'</td>
                 </tr>';
                     
             }

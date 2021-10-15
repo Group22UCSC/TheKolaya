@@ -16,9 +16,9 @@
       <li>
        <a href="<?php echo URL?>Supervisor/updateTeaMeasure">
         <i class="fas fa-weight"></i>
-         <span class="links_name">Update Tea Measure</span>
+         <span class="links_name">Update Net-Weight</span>
        </a>
-       <span class="tooltip">Update Tea Measure</span>
+       <span class="tooltip">Update Net-Weight</span>
      </li>
      <li>
        <a href="<?php echo URL?>Supervisor/manageRequests">

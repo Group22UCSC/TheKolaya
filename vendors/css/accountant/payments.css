@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+}
+
 .top-container{
   display: block;
   background: rgb(35, 173, 104);
@@ -17,9 +21,39 @@ justify-self: center ;
 }
 /*  ****  payement form ************** */
 
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
 .formSection{
   padding: 10px 90px 20px 90px;
- 
+
+  animation: fadeIn 1.8s;
+  -webkit-animation: fadeIn 1.8s;
+  -moz-animation: fadeIn 1.8s;
+  -o-animation: fadeIn 1.8s;
+  -ms-animation: fadeIn 1.8s; 
+  
 }
 .formSection form {
 	background-color: white;

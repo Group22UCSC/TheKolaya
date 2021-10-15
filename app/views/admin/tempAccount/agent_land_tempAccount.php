@@ -40,19 +40,22 @@
 
 
 
-
+<?php $_SESSION['account_type'] = 'agentLandTemp'?>
   <div class="k1">
 <div class="wrapper11">
     <div class="title">
     Registration Form
     </div>
-   <form action="<?php echo URL?>admin/agent_land_tempaAccount" method="POST">
+   <form action="<?php echo URL?>admin/create_account" method="POST">
       <div class="form">
-
+         <div class="inputfield">
+            <label>Name</label>
+            <input type="text" class="input" name="name" required>
+         </div>
          <div class="inputfield">
             <label>Uesr ID</label>
-            <input type="text" class="input" name="user_id" required>
-         </div> 
+            <input type="text" class="input" name="user_id" placeholder="<?php (!empty($user_data['user_id_err'])) ? print $user_data['user_id_err'] : print ''; ?>" required>
+         </div>
 
          <div class="inputfield">
             <label>User Type</label>
@@ -65,7 +68,7 @@
 
          <div class="inputfield">
             <label>Contact Number</label>
-            <input type="tel" class="input" name="contact_number" required>
+            <input type="tel" class="input" name="contact_number" placeholder="<?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>" required>
          </div>
 
          <div class="inputfield">
