@@ -47,6 +47,16 @@ class productmanager_Model extends Model {
        $query="SELECT * FROM product";
        return $this->db->runQuery($query);
     }
+    //get buyers details
+    function getBuyersDetails(){
+        $query = "SELECT buyer_id,name FROM buyer";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
     //auctionDetails
     function auction(){
         

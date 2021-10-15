@@ -37,11 +37,12 @@ class ProductManager extends Controller{
             return $productResults;
     }
     function updateAuction(){
+            $buyers=$this->model->getBuyersDetails();
             $tblResult = $this->model->auction();
             $productResults = $this->model->getProductDetails();
             
            // print_r($result);
-            $this->view->render2('Productmanager/updateAuction', $tblResult,$productResults);
+            $this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
     }
     
     

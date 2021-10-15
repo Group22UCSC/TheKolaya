@@ -74,12 +74,16 @@
             <input type="text" class="input" id="price">
         </div>
         <div class="inputfield">
-            <label for="pid">Buyer</label>
+            <label for="buyer">Buyer</label>
             <!-- <input list="browsers"> -->
-            <select id="productIds" class="input">
+            <select id="buyer" class="input" name="buyer">
             <?php 
-            
-            print_r($data1);
+            foreach($data3 as $row){
+                ?>
+                <option value="<?php echo $row['buyer_id'];?>"><?php echo $row['name'];?></option>
+            }
+           <?php
+            }
             ?>
             </select>
         </div>
@@ -97,13 +101,24 @@
     </div>
     <div class="modal-body">
         <div class="year">
-            <label>Product Id : P002</label>
+            <label>Product Name : </label> 
+            <input type="text" class="modalInput">
         </div>
-        <div class="month">
-            <label>Product Name : B102-Green</label>
+        <div class="year">
+            <label>Product Id :</label>
+            <input type="text" class="modalInput">
         </div>
-        <div class="price">
-            <label>Amount(Kg): 122</label>
+        <div class="year">
+            <label>Amount(Kg):</label>
+            <input type="text" class="modalInput">
+        </div>
+        <div class="year">
+            <label>Price Per Kilo(Rs):</label>
+            <input type="text" class="modalInput">
+        </div>
+        <div class="year">
+            <label>Buyer:</label>
+            <input type="text" class="modalInput">
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Cancel</a>
