@@ -15,12 +15,13 @@ class Registration_Model extends Model {
         $address = $data['address'];
         $password = $data['password'];
         $verify = $data['verify'];
-        // $verify = 0;
-        $user_type = 'supervisor';
-        $landowner_type = $data['landowner_type'];
+        $user_type = $data['user_type'];
+        $landowner_type = null;
         
-
-        // $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id','$name','$address', '$contact_number', '$user_type', '$password',".$verify.")";
+        if($user_type == 'direct_landowner' || $user_type == 'indirect_landowner') {
+            $landowner_type = $user_type;
+            $user_type = 'Land_Owner';
+        }
         
         if($user_type && $verify != 0) {
             $query = "UPDATE user SET user_id='$user_id', name='$name', address='$address', verify='$verify', password='$password' WHERE contact_number='$contact_number'";
@@ -33,16 +34,8 @@ class Registration_Model extends Model {
                     $queryUser = "INSERT INTO admin(emp_id) values('$user_id')";
                     break;
                 
-                case 'agent' :
-                    $queryUser = "INSERT INTO agent(emp_id) values('$user_id')";
-                    break;
-                
                 case 'manager' :
                     $queryUser = "INSERT INTO manager(emp_id) values('$user_id')";
-                    break;
-
-                case 'Land_Owner' :
-                    $queryUser = "INSERT INTO landowner(user_id, contact_number, landowner_type) values('$user_id', '$contact_number', '$landowner_type')";
                     break;
 
                 case 'product_manager' :
@@ -57,15 +50,14 @@ class Registration_Model extends Model {
             $this->db->runQuery($query);
             $this->db->runQuery($queryUser);
         }
-        // $this->db->insertQuery($query);
     }
 
-    public function findUser($contact_number, $user_id) {
-        $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND user_id = '$user_id'";
-
+    public function checkUserByUserID($data) {
+        $contact_number = $data['contact_number'];
+        $user_id = $data['user_id'];
+        $query = "SELECT * FROM user WHERE contact_number='$contact_number'";
         $row = $this->db->runQuery($query);
-
-        if(count($row)) {
+        if($row[0]['user_id'] == $user_id) {
             return true;
         }else {
             return false;
@@ -84,19 +76,48 @@ class Registration_Model extends Model {
         }
     }
 
-    //Login a user
-    public function login($contact_number, $password) {
-        $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
-
+    public function checkUserByUserType($data) {
+        $user_type = $data['user_type'];
+        $contact_number = $data['contact_number'];
+        $user_id = $data['user_id'];
+        if($user_type == 'direct_landowner' || $user_type == 'indirect_landowner') {
+            $user_type = 'Land_Owner';
+        }
+        $query = "SELECT * FROM user WHERE contact_number='$contact_number' AND user_id='$user_id' AND user_type='$user_type'";
         $row = $this->db->runQuery($query);
-        
-        $hashed_password = $row[0]['password'];
 
-        if(password_verify($password, $hashed_password)) {
-            return $row;
+        if(count($row)) {
+            return true;
         }else {
             return false;
         }
     }
+
+    public function findUser($contact_number, $user_id) {
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND user_id = '$user_id'";
+
+        $row = $this->db->runQuery($query);
+
+        if(count($row)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    // //Login a user
+    // public function login($contact_number, $password) {
+    //     $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
+
+    //     $row = $this->db->runQuery($query);
+        
+    //     $hashed_password = $row[0]['password'];
+
+    //     if(password_verify($password, $hashed_password)) {
+    //         return $row;
+    //     }else {
+    //         return false;
+    //     }
+    // }
 
 }

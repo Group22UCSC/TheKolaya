@@ -25,7 +25,7 @@
           <div class="title">
             Firewood Purchase
           </div>
-          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST" id="form_instock">
+          <form method="POST" id="form_instock">
             <div class="form">
               <div class="inputfield">
                 <label>Price per unit</label>
@@ -75,6 +75,6 @@
       
     </div>
     <script src="<?php echo URL?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
-    
+    <script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>   
 <?php include 'js/supervisor/manageFirewood-js.php';?>
 <?php include 'bottom-container.php';?>
