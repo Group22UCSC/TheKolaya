@@ -45,7 +45,7 @@
      </li>
      <li>
        <a href="<?php echo URL?>productmanager/updateAuction">
-        <i class="fas fa-funnel-dollar fa-2x"></i>
+       <i class="far fa-edit"></i>
          <span class="links_name">Update Auction</span>
        </a>
        <span class="tooltip">Update Auction</span>

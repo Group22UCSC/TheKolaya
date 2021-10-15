@@ -284,10 +284,8 @@ justify-self: center ;
   font-size: 15px;
   font-weight: 500;
 }
-.model-input:active{
-  
-  border: none;
-  
+.model-input:focus{
+  outline: none;
 }
 /*  ************* view previous details button ********** */
 .previousDetails{
