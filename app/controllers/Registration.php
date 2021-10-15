@@ -12,7 +12,7 @@ class Registration extends Controller {
                 'name' => trim($_POST['name']),
                 'contact_number' => trim($_POST['contact_number']),
                 'user_id' => trim($_POST['user_id']),
-                'landowner_type' => trim($_POST['landowner_type']),
+                'user_type' => trim($_POST['user_type']),
                 'address' => trim($_POST['address']),
                 'password' => $_POST['password'],
                 'verify' => '0',
@@ -22,6 +22,7 @@ class Registration extends Controller {
                 'name_err' => '',
                 'contact_number_err' => '',
                 'user_id_err' => '',
+                'user_type_err' => '',
                 'address_err' => '',
                 'password_err' => '',
                 'confirm_password_err' => ''
@@ -30,7 +31,7 @@ class Registration extends Controller {
             $_SESSION['name'] = $data['name'];
             $_SESSION['contact_number'] = $data['contact_number'];
             $_SESSION['user_id'] = $data['user_id'];
-            $_SESSION['landowner_type'] = $data['landowner_type'];
+            $_SESSION['user_type'] = $data['user_type'];
             $_SESSION['address'] = $data['address'];
             $_SESSION['password'] = $data['password'];
             //Validate name
@@ -44,10 +45,17 @@ class Registration extends Controller {
             }elseif($this->model->isRegisteredUser($data['contact_number'])) {
                 $data['contact_number_err'] = "Mobile number is already Taken";
             }
-
             //Validate user id
             if(empty($data['user_id'])) {
                 $data['user_id_err'] = "Please enter the user id";
+            }else if(!($this->model->checkUserByUserID($data))) {
+                $data['user_id_err'] = "Your are not registered";
+            }
+
+            if(empty($data['user_type'])) {
+                $data['user_type_err'] = "Please enter the user type";
+            }else if(!($this->model->checkUserByUserType($data))) {
+                $data['user_type_err'] = "Entered user type is wrong!";
             }
 
             //Validate address
@@ -70,7 +78,7 @@ class Registration extends Controller {
             }
 
             //Make sure errors are empty
-            if(empty($data['name_err']) && empty($data['contact_number_err']) && empty($data['address_err']) && empty($data['user_id_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
+            if(empty($data['name_err']) && empty($data['contact_number_err']) && empty($data['address_err']) && empty($data['user_id_err']) && empty($data['user_type_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
                 //Validated
                 //Hash Password
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -94,7 +102,7 @@ class Registration extends Controller {
                 'name' => '',
                 'contact_number' => '',
                 'user_id' => '',
-                'landowner_type' => '',
+                'user_type' => '',
                 'address' => '',
                 'password' => '',
                 'verify' => '',
@@ -103,6 +111,7 @@ class Registration extends Controller {
                 'name_err' => '',
                 'contact_number_err' => '',
                 'user_id_err' => '',
+                'user_type_err' => '',
                 'address_err' => '',
                 'password_err' => '',
                 'confirm_password_err' => ''
@@ -139,7 +148,7 @@ class Registration extends Controller {
             'name' => $_SESSION['name'],
             'contact_number' => $_SESSION['contact_number'],
             'user_id' => $_SESSION['user_id'],
-            'landowner_type' => $_SESSION['landowner_type'],
+            'user_type' => $_SESSION['user_type'],
             'address' => $_SESSION['address'],
             'password' => $_SESSION['password'],
             'verify' => $_SESSION['verify']
@@ -147,7 +156,7 @@ class Registration extends Controller {
         unset($_SESSION['name']);
         // unset($_SESSION['contact_number']);
         unset($_SESSION['user_id']);
-        unset($_SESSION['landowner_type']);
+        unset($_SESSION['user_type']);
         unset($_SESSION['address']);
         unset($_SESSION['password']);
         unset($_SESSION['verify']);
