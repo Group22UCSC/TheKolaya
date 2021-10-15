@@ -93,7 +93,7 @@
             <div class="profile">
               <div class="icon_wrap" id="account-web">
                 <img src="<?php echo URL?>vendors/images/agent/profile.jpg" alt="profile_pic">
-                <span class="name">Roneki</span>
+                <span class="name"><?php echo $_SESSION['name'];?></span>
                 <i class="fas fa-chevron-down"></i>
               </div>
       

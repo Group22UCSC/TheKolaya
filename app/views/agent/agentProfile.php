@@ -23,15 +23,16 @@
                 <div class="profile-img middle">
                     <img src="<?php echo URL?>vendors/images/agent/profile.jpg" alt="">
                 </div>
-                <div class="profile-container-text"><h1>Roneki</h1></div>
-                <div class="profile-container-text">Agent</div>
+                <div class="profile-container-text"><h1><?php echo $_SESSION['name'];?></h1></div>
+                <div class="profile-container-text"><?php echo $_SESSION['user_type'];?></div>
             </div>
             <div class="details-container">
                 <div class="label-container id">
-                    <span class="label-left"><b>ID</b></span><span class="label-right">Lan-000</span>
+                    <span class="label-left"><b>ID</b></span><span class="label-right"><?php echo $_SESSION['user_id'];?></span>
+                    
                 </div>
                 <div class="label-container address">
-                    <span class="label-left"><b>Address</b></span><span class="label-right">Kamburugamuwa,Matara</span>
+                    <span class="label-left"><b>Address</b></span><span class="label-right"><?php echo $_SESSION['address'];?></span>
                 </div>
             </div>
             <div class="profile-edit middle"><a href="<?php echo URL?>Agent/editProfile">Edit Profile</a></div>
