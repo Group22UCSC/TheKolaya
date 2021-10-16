@@ -6,12 +6,11 @@
 
 <!-- Ajex for select oprtions in the form ex: Product id selection -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
-
-<?php
-
-
-
-?>
+<script src="<?php echo URL ?>vendors/js/sweetalert.min.js"></script> 
+<script>
+    
+    
+</script>
 <div class="top-container" >
     <p>Update Auction Details</p>
 </div>
