@@ -73,9 +73,15 @@
 
             <div class="input-field <?php echo (!empty($data['user_type_err'])) ? 'is-invalid' : ''; ?>">
               <i class="fas fa-chevron-circle-right icon <?php echo (!empty($data['user_type_err'])) ? 'is-invalid' : ''; ?>"></i>
-              <select name="landowner_type" id="landowner_type">
+              <!-- <label width for=""></label> -->
+              <select name="user_type" id="landowner_type">
+                <option value="accountant">Accountant</option>
+                <option value="agent">Agent</option>
                 <option value="direct_landowner">Direct Land Owner</option>
                 <option value="indirect_landowner">Indirect Land Owner</option>
+                <option value="manager">Manager</option>
+                <option value="product_manager">Product Manager</option>
+                <option value="supervisor">Supervisor</option>
               </select>
             </div>
             

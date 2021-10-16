@@ -1,6 +1,6 @@
 <?php
 
-class Accountant_Model extends Model {
+class Manager_Model extends Model {
 
     function __construct()
     {
@@ -42,22 +42,31 @@ class Accountant_Model extends Model {
         }
     }
 
-    //Test
-    function testModel(){
-       $query="SELECT * FROM product";
-       return $this->db->runQuery($query);
+    //Create Account
+    function searchUserContact($contact_number) {
+        $query = "SELECT * FROM user WHERE contact_number='$contact_number'";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row[0]['contact_number'];
+        }else {
+            return false;
+        }
     }
-    //auctionDetails
-    function auction(){
+
+    function searchUserId($user_id) {
+        $query = "SELECT * FROM user WHERE user_id='$user_id'";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row[0]['user_id'];
+        }else {
+            return false;
+        }
+    }
+
+     function availableListTable_landowners(){
+        $query = "SELECT name,user_id,user_type FROM user WHERE user_type='Land_Owner'";
+        $row = $this->db->runQuery($query);
         
-
-        $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name
-                FROM auction 
-                INNER JOIN product 
-                ON auction.product_id=product.product_id 
-                INNER JOIN buyer 
-                ON auction.buyer_id=buyer.buyer_id";
-        $row = $this->db->runQuery($query);
         if($row) {
             return $row;
         }else {
@@ -65,32 +74,14 @@ class Accountant_Model extends Model {
         }
     }
 
-    function teaPriceTable(){
-        $query = "SELECT * FROM monthly_tea_price";
+      function availableListTable(){
+        $query = "SELECT name,user_id,user_type FROM user WHERE verify=1";
         $row = $this->db->runQuery($query);
+        
         if($row) {
             return $row;
         }else {
             return false;
         }
     }
-    function getEmpId(){
-        //$query="SELECT * FROM "
-    }
-    function insertTeaPrice(){
-            $date=date("Y-m-d");
-            $teaPrice=$_POST['teaPrice'];
-            // HAS TO CHANGE THIS
-            $emp_id=$_SESSION['user_id'];
-            $query = "INSERT INTO monthly_tea_price (date,price,emp_id) VALUES ('{$date}','{$teaPrice}','{$emp_id}')";
-            $row = $this->db->insertQuery($query);
-            //print_r($row);
-            if($row){
-                return true;
-            }else {
-                return false;
-            }
-    }
-    
 }
-?>
