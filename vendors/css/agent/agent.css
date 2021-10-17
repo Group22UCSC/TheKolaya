@@ -1,5 +1,7 @@
 .home-section{
     background-image: url("../../images/agent/teaback.png");
+    background-position: center center;
     background-size: cover;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }

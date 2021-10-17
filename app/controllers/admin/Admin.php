@@ -11,7 +11,10 @@
         }
 
          public function viewAccount() {
-            $this->view->showPage('Admin/viewAccount');
+               // $this->view->showPage('Manager/viewAccount');
+               $result = $this->model->availablelistTable();
+               // print_r($result);
+                $this->view->render('Admin/viewAccount',$result);
         }
 
          public function viewAccount1() {

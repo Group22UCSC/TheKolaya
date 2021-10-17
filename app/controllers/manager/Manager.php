@@ -10,7 +10,10 @@
         }
 
         public function viewAccount() {
-            $this->view->showPage('Manager/viewAccount');
+            // $this->view->showPage('Manager/viewAccount');
+              $result = $this->model->availablelistTable();
+      // print_r($result);
+       $this->view->render('Manager/viewAccount',$result);
         }
 
         public function viewAccount1() {
@@ -18,7 +21,9 @@
         }
 
         public function viewTeaQuality() {
-            $this->view->showPage('Manager/viewTeaQuality');
+            $result = $this->model->availablelistTable_landowners();
+      // print_r($result);
+       $this->view->render('Manager/viewTeaQuality',$result);
         }
 
          public function viewTeaQuality1() {
@@ -27,7 +32,11 @@
 
 
          public function viewPayments() {
-            $this->view->showPage('Manager/viewPayments');
+            // $this->view->showPage('Manager/viewPayments');
+               $result = $this->model->availablelistTable_landowners();
+      // print_r($result);
+       $this->view->render('Manager/viewPayments',$result);
+
         }
 
 

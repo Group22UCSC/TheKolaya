@@ -1,17 +1,22 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<body onload="loadPid()"></body>
+<body onload="loadPid();"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
-<script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
+<script defer src="<?php echo URL ?>vendors/js/productmanager/updateAuction.js""></script>
 
 <!-- Ajex for select oprtions in the form ex: Product id selection -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+<script src="<?php echo URL ?>vendors/js/sweetalert.min.js"></script> 
+<script>
+    
+    
+</script>
 <div class="top-container" >
     <p>Update Auction Details</p>
 </div>
 <!--  *** Update tea price box **** -->
-
-<div class="wrapper">
+<div class="wrapperdiv">
+<div class="wrapperform">
     <!-- <div class="title">
            Emergency Message
         </div>         -->
@@ -34,7 +39,7 @@
             });  
         </script>   -->
             <label for="productName">Product Name</label>
-            <select id="productName" class="input" name="productName"  onchange="loadPid()">
+            <select id="productName" class="input" name="productName"  onchange="loadPid();loadModalName(this);" >
             <?php 
             foreach($data2 as $row){
                 ?>
@@ -47,14 +52,7 @@
             <!-- <input type="text" class="input" id="productName"> -->
         </div>
 
-        <script>
-            function loadPid(){
-                var e = document.getElementById("productName");
-                var val= e.options[e.selectedIndex].value;
-                document.getElementById('pid').value=val;
-            }
-        </script>
-
+      
         <div class="inputfield">
             
             <label for="pid">Product Id</label>
@@ -67,44 +65,64 @@
         
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
-            <input type="text" class="input" id="amount">
+            <input type="text" class="input" id="amount" required>
         </div>
         <div class="inputfield">
             <label for="price" >Price Per Kilo(Rs)</label>
-            <input type="text" class="input" id="price">
+            <input type="text" class="input" id="price" required>
         </div>
         <div class="inputfield">
-            <label for="pid">Buyer</label>
+            <label for="buyer">Buyer</label>
             <!-- <input list="browsers"> -->
-            <select id="productIds" class="input">
-                <option value="P001">Akbar Brothers</option>
-                <option value="P002">Empire Teas Pvt Ltd</option>
-                <option value="P003">Van Rees Ceylon Ltd</option>
-                <option value="P004">ACRIL Holdings</option>
-                <option value="P005">Abacus Tea Pvt</option>
+            <select id="buyer" class="input" name="buyer">
+            <?php 
+            foreach($data3 as $row){
+                ?>
+                <option value="<?php echo $row['buyer_id'];?>"><?php echo $row['name'];?></option>
+            }
+           <?php
+            }
+            ?>
             </select>
         </div>
+            
         <div class="inputfield">
-            <input type="submit" value="Update" data-modal-target="#modal" class="btn">
+            <input type="submit" value="Update" data-modal-target="#modal" class="btn" onsubmit="return validate()" >
         </div>
     </div>
 </div>
+</div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
+<form action="<?php echo URL?>productmanager/updateAuction" method="post">
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="title">Update Confirmation</div>
-      <button data-close-button class="close-button">&times;</button>
+      <a data-close-button class="close-button"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
     </div>
     <div class="modal-body">
         <div class="year">
-            <label>Product Id : P002</label>
+            <label>Product Name : </label> 
+            <input type="text" class="modalInput" id="modalName" required readonly>
         </div>
-        <div class="month">
-            <label>Product Name : B102-Green</label>
+        <div class="year">
+            <label>Product Id :</label>
+            <input type="text" class="modalInput" id="modalPid"  readonly required name="pid">
         </div>
-        <div class="price">
-            <label>Amount(Kg): 122</label>
+        <div class="year">
+            <label>Amount(Kg):</label>
+            <input type="text" class="modalInput" id="modalAmount"  readonly required name="amount">
+        </div>
+        <div class="year">
+            <label>Price(1kg/Rs):</label>
+            <input type="text" class="modalInput" id="modalPrice"  readonly required  name="price"> 
+        </div>
+        <div class="year">
+            <label>Buyer:</label>
+            <input type="text" class="modalInput" id="modalBuyer" required readonly>
+        </div>
+        <div>
+            <input type="text" id="modalBid" hidden name="bid">
         </div>
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Cancel</a>
@@ -117,7 +135,7 @@
     </div>
   </div>
   <div id="overlay"></div>
-
+  </form>
 <!--  **********   view prouduct stock   *** -->
 
 <!-- <div class="previousDetails">

@@ -19,47 +19,6 @@
 <?php include 'topContainer.php';?>
 
 
-<button class="btn clear">CLEAR FORM</button>
 
-
-<div class="confirm-wrapper">
-	<div class="overlay"></div>
-	<div class="confirm">
-		<div class="content">
-			<p>Are you sure you want to clear this form?</p>
-		</div>
-		<div class="btn-wrap">
-			<button value="Yes" class="yes">Yes</button>
-			<button value="No" class="no">No</button>
-		</div>
-	</div>
-</div>  
-
-<script>
-  $(document).ready(function() {
-	var clear = $(".clear"),
-	    wrapper = $(".confirm-wrapper"),
-	    overlay = $(".confirm-wrapper .overlay"),
-	    confirm = $(".confirm-wrapper .confirm");
-	
-	clear.click(function() {
-		wrapper.addClass("show");
-		overlay.addClass("show");
-		confirm.addClass("show");
-	});
-	
-	
-	$(".confirm-wrapper .btn-wrap button.yes").click(function() {
-		window.location.replace("updateTeaWeight");
-	});
-										    
-	$(".confirm-wrapper .btn-wrap button.no").click(function() {
-		wrapper.removeClass("show");
-		overlay.removeClass("show");
-		confirm.removeClass("show");
-	});
-	
-});
-</script>
 
 <?php include 'bottomContainer.php';?>
