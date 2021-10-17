@@ -28,8 +28,8 @@ class ProductManager extends Controller{
         $this->view->showPage('Productmanager/auctionDetails');
     }
     function updateProducts() {
-
-        $this->view->showPage('Productmanager/updateProducts');
+        $productResults = $this->model->getProductDetails();
+        $this->view->render('Productmanager/updateProducts',$productResults);
     }
 
     function loadProductNames(){
