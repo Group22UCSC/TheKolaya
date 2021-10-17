@@ -62,8 +62,7 @@
     <!-- </table>
       </div> -->
       </div>
-      <div class="forms">
-   
+      <div class="forms">   
     <?php  include 'teaCollection.php';?>       
       </div>
       <?php  include 'popup.php';?>        
@@ -104,16 +103,16 @@ for(var i = 1; i < table.rows.length; i++)
                     };
                 }
     
-                var table = document.getElementById('deliverytable');
+                // var table = document.getElementById('deliverytable');
                 
-                for(var i = 1; i < table.rows.length; i++)
-                {
-                    table.rows[i].onclick = function()
-                    {
-                         //rIndex = this.rowIndex;
-                         document.getElementById("rid").value = this.cells[1].innerHTML;                         
-                    };
-                }
+                // for(var i = 1; i < table.rows.length; i++)
+                // {
+                //     table.rows[i].onclick = function()
+                //     {
+                //          //rIndex = this.rowIndex;
+                //          document.getElementById("rid").value = this.cells[1].innerHTML;                         
+                //     };
+                // }
 
 // function teatoggle()
 // {
@@ -128,7 +127,7 @@ for(var i = 1; i < table.rows.length; i++)
 
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
-  document.getElementById("overlay").style.display = "block";
+  // document.getElementById("overlay").style.display = "block";
   //console.log("before blur");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('active');
@@ -137,7 +136,7 @@ function openteaform(){
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
-  document.getElementById("overlay").style.display = "none";
+  // document.getElementById("overlay").style.display = "none";
   //console.log("before blur back");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('closeblur');
@@ -205,37 +204,43 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() { 
+ 
   modal.style.display = "block";
   var x = document.getElementById("lid").value;  
   document.getElementById("lid-pop").value = x;
   var y = document.getElementById("weight").value;  
   document.getElementById("weight-pop").value = y;
-}
+
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+
 }
 function closepopup(){
   document.getElementById("myModal").style.display = "none";
   //  var blur = document.getElementById('blur');
   // blur.classList.toggle('maindiv');
+  
 }
 
 function closeformpopup(){
   document.getElementById("myModal").style.display = "none";
   closeteaform();
+  
   //document.getElementById("availableTable").deleteRow(1);
   
 }
+
+function clearWeight(){   
+    document.getElementById("weight").value=" ";
+  }
 
 </script>

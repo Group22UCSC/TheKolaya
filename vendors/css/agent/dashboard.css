@@ -22,7 +22,7 @@
       color: rgba(1, 131, 12,1);
     } 
     
-    #overlay {
+    /* #overlay {
       position: fixed;
       display: none;
       width: 100%;
@@ -34,7 +34,7 @@
       background-color: rgba(0,0,0,0.5);
       z-index: 2;
       cursor: pointer;
-    }
+    } */
   
   .notice {
     display: flex;
@@ -283,3 +283,4 @@ h3{
     height: 100px;
   }
 }
+

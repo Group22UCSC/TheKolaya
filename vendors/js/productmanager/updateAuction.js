@@ -104,7 +104,17 @@ function validation(){
       //update hidden feilds
       var buyer2=document.getElementById('buyer').value;
       document.getElementById('modalBid').value=buyer2;
-    }
+  }
 // }
+
+  //sweet alert success
+  function success(){
+    swal({
+        title: "Success!",
+        text: "Database updated successfully!",
+        icon: "success",
+        button: "Done!",
+    });
+  } 
 
   

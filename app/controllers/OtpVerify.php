@@ -24,25 +24,21 @@ class OtpVerify extends Controller {
                     $otpCorrect = new registration();
                     $otpCorrect->loadModelUser('registration');
                     $otpCorrect->updateVerifiedUser();
-                    unset($_SESSION['OTP']);
                     $this->view->render('otp/correctOTP');
                 }
                 else{
                     $verifyOTP = '';
                     $_SESSION['verify'] = 0;
-                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
             }
             else if(isset($_POST['login-verify'])) {
                 if($verifyOTP == $_SESSION['OTP']){
                     $verifyOTP = '';
-                    unset($_SESSION['OTP']);
                     redirect('login/changePassword');
                 }
                 else{
                     $verifyOTP = '';
-                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
             }else if(isset($_POST['profile-verify'])) {
