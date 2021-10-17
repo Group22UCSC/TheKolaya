@@ -1,12 +1,29 @@
 <script>
     $(document).ready(function(){
     $('#instock_submit_btn').click(function(event){
+        event.preventDefault();
         var form = $('#form_instock').serializeArray();
         form.push({name:'stock_type', value: 'in_stock'});
         form.push({name:'type', value: 'firewood'});
 
-        var inStock = $('#in_amount').val();
+        $('.error').remove();
+        var inAmount = $('#in_amount').val();
         var pricePerUnit = $('#price_per_unit').val();
+
+        if(inAmount < 0) {
+            $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+        }else if(inAmount == 0) {
+            $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
+        }
+        if(pricePerUnit < 0) {
+            $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+        }else if(pricePerUnit == 0) {
+            $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+        }
+
+        if(pricePerUnit <= 0 || inAmount <= 0) {
+            return;
+        }
         Swal.fire({
         title: 'Are you sure?',
         text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value'],
@@ -41,13 +58,23 @@
                 })
             }
         })
-        event.preventDefault();
     })
 
     $('#out-stock-submit').click(function(event){
+        event.preventDefault();
         var form = $('#form_outstock').serializeArray();
         form.push({name:'stock_type', value: 'out_stock'});
         form.push({name:'type', value: 'firewood'});
+
+        $('.error').remove();
+        var outAmount = $('#out_amount').val();
+        if(outAmount < 0) {
+            $('#out_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+            return;
+        }else if(outAmount == 0) {
+            $('#out_amount').parent().after("<p class=\"error\">Please insert the amount</p>");
+            return;
+        }
 
         Swal.fire({
         title: 'Are you sure?',
@@ -82,7 +109,6 @@
                 })
             }
         })
-        event.preventDefault();
     })
 })
 </script>
