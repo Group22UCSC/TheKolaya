@@ -5,6 +5,8 @@
         form.push({name:'stock_type', value: 'in_stock'});
         form.push({name:'type', value: 'firewood'});
 
+        var inStock = $('#in_amount').val();
+        var pricePerUnit = $('#price_per_unit').val();
         Swal.fire({
         title: 'Are you sure?',
         text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value'],
