@@ -207,7 +207,7 @@
                     <th class="thcls">Sold Price(1Kg/Rs)</th>
                     <th class="thcls">Buyer</th>
                     <th class="thcls">Income(Rs)</th>
-
+                    <th class="thcls">Action</th>
 
                 </tr>
            
@@ -230,6 +230,7 @@
                     <td class="tdcls">'.$data1[$i]['sold_price'].'</td>
                     <td class="tdcls">'.$data1[$i]['name'].'</td>
                     <td class="tdcls">'.$data1[$i]['sold_amount']*$data1[$i]['sold_price'].'</td>
+                    <td class="tdcls">No Action</td>
                 </tr>';
                     
             }

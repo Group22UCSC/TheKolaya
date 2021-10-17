@@ -112,18 +112,14 @@ h1 {
 /*  *** bar chart and pie chart section **** */
 .barChartSection{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   background-color: white;
   margin-top: 30px;
 }
+.barchar1{
+  margin-left: 80px;
+}
+.ratingSection{
+  margin-left:120px;
+}
 
-.list{
-  padding: 40px;
-  padding-top: 100px;
-  align-items: center;
-  justify-content: center;
-}
-.list ul{
-  list-style: square;
-  
-}
