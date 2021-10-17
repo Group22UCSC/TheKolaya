@@ -25,7 +25,7 @@
           <div class="title">
             Firewood Purchase
           </div>
-          <form method="POST" id="form_instock">
+          <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST" id="form_instock">
             <div class="form">
               <div class="inputfield">
                 <label>Price per unit</label>
@@ -57,7 +57,7 @@
             <div class="form">
                 <div class="inputfield">
                   <label>Amount(kg)</label>
-                  <input type="number" class="input" name="amount" id="out_amount" >
+                  <input type="number" class="input" name="amount" id="out_amount">
                 </div>  
                 
               <div class="inputfield">
