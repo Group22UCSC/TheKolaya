@@ -117,7 +117,11 @@ class Admin_Model extends Model {
         }
 
         if($_SESSION['account_type'] == 'full' || $_SESSION['account_type'] == 'agentLandFull' || $_SESSION['account_type'] == 'agentLandTemp') {
-            $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+            if($_SESSION['account_type'] = 'agentLandTemp') {
+                $query = "INSERT INTO user(user_id, name, contact_number, user_type, verify) values('$user_id', '$name', '$contact_number', '$user_type', '$verify')";
+            }else {
+                $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+            }
             $queryUser = null;
             switch($user_type) {
                 case 'accountant' :
