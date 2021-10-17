@@ -71,9 +71,13 @@ class Agent_Model extends Model{
     // function deliveryListTable(){
     //     $route_no=$_SESSION['route'];        
     //     $query = "SELECT request.lid, request.request_id, request.request_type, 
-    //     print_r($route_no);
+    //             fertilizer_request.amount , advance_request.amount    FROM request 
+    //             INNER JOIN fertilizer_request    
+    //             ON request.request_id = fertlizer_request.request_id
+    //             INNER JOIN advance_request
+    //             ON request.request_id = advance_request.request_id";
     //     $row = $this->db->runQuery($query);
-        
+    //     print_r($row);
     //     if($row) {
     //         return $row;
     //     }else {
