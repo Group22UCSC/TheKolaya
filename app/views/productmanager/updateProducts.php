@@ -1,7 +1,8 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
+<body onload="loadPid();"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateProducts.css">
-<script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js""></script>
+<script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js"></script>
 <div class="top-container">
     <p>Update Products</p>
 </div>
@@ -12,19 +13,22 @@
         </div>         -->
     <div class="form">
         <div class="inputfield">
-            <label for="pid">Product Id</label>
-            <!-- <input list="browsers"> -->
-            <select id="productIds" class="input">
-                <option value="P001">P001</option>
-                <option value="P002">P002</option>
-                <option value="P003">P003</option>
-                <option value="P004">P004</option>
-                <option value="P005">P005</option>
+        <label for="productName">Product Name</label>
+            <select id="productName" class="input" name="productName"  onchange="loadPid();loadModalName(this);" >
+            <?php 
+            foreach($data as $row){
+                ?>
+                <option value="<?php echo $row['product_id'];?>"><?php echo $row['product_name'];?></option>
+            }
+           <?php
+            }
+            ?>
             </select>
         </div>
         <div class="inputfield">
-            <label for="productName">Product Name</label>
-            <input type="text" class="input" id="productName">
+            <label for="pid">Product Id</label>
+            <!-- <input list="browsers"> -->
+            <input type="text" class="input" readonly id="pid">
         </div>
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
@@ -43,11 +47,13 @@
       <a data-close-button class="close-button"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
     </div>
     <div class="modal-body">
-        <div class="year">
-            <label>Product Id : P002</label>
+    <div class="year">
+            <label>Product Name : </label> 
+            <input type="text" class="modalInput" id="modalName" required readonly>
         </div>
-        <div class="month">
-            <label>Product Name : B102-Green</label>
+        <div class="year">
+            <label>Product Id :</label>
+            <input type="text" class="modalInput" id="modalPid"  readonly required name="pid">
         </div>
         <div class="price">
             <label>Amount(Kg): 122</label>

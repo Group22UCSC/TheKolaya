@@ -6,6 +6,8 @@ openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
     const modal = document.querySelector(button.dataset.modalTarget)
     openModal(modal)
+    
+      loadModalName2();
   })
 })
 
@@ -33,4 +35,20 @@ function closeModal(modal) {
   if (modal == null) return
   modal.classList.remove('active')
   overlay.classList.remove('active')
+}
+
+/// loading the pid for the first form
+function loadPid(){
+  //console.log("ada");
+  var e = document.getElementById("productName");
+  var val= e.options[e.selectedIndex].value;
+  document.getElementById('pid').value=val;
+}
+
+/// getAll the details from the first form to the second
+function loadModalName(element){
+
+  var text = element.options[element.selectedIndex].text;
+  document.getElementById('modalName').value=text;
+
 }
