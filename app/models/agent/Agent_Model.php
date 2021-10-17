@@ -59,10 +59,13 @@ class Agent_Model extends Model{
         $landowner_id = $data['lid'];
         $weight = $data['initial_weight'];
         $emp_id = $data['agent_id'];
-
-        $query = "INSERT INTO tea(date, lid, initial_weight_agent, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, agent_id, quality) 
+        
+        $query = "INSERT INTO tea(date, lid, initial_weight_agent, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, agent_id, quality)         
                     VALUES ('$date', '$landowner_id', '$weight', '0', '0', '0', '0','0', 'SUP-000','$emp_id', '0')";
+        $next_query = "UPDATE landowner SET tea_availability = '0' WHERE user_id = '$landowner_id'";
         $this->db->runQuery($query);
+        $this->db->runQuery($next_query);
+
     }
 
     // function deliveryListTable(){
