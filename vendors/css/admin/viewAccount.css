@@ -33,7 +33,8 @@
 
 
 .middle-conatiner {
-   background-image: url("../../images/admin/9.jpg");
+   background-image: url("../../images/admin/11.jpg");
+   opacity: 80%;
    background-repeat: no-repeat;
     background-size: 100% 100%;
    /* margin: 25px 0px;*/
@@ -69,12 +70,14 @@
   width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
-/* height: 100px;*/
- overflow-x: auto;
+ display: block;
+  height: 500px;
+  overflow-y: auto;
 
 }
 
 #myTable th, #myTable td {
+  width: 100%;
   text-align: left;
   padding: 12px;
 }
@@ -86,4 +89,15 @@
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
+
+/*#myTable .vertical{
+  display: block;
+  height: 600px;
+  overflow-y: auto;
+}
+*/
+#myTable.vertical tr{
+  display: block;
+}
+
 
