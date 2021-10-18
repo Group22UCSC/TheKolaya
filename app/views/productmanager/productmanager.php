@@ -9,7 +9,7 @@
     <div class="overview-boxes">
     <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Income (Rs)</div>
+          <div class="box-topic">Auction Income (Rs)</div>
           <div class="number">40,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
@@ -20,7 +20,7 @@
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Expenses (Rs)</div>
+          <div class="box-topic">Total Tea Stock(Kg)</div>
           <div class="number">38,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
@@ -31,7 +31,7 @@
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Profit (Rs)</div>
+          <div class="box-topic">Sold Tea Stock(Kg)</div>
           <div class="number">12,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
@@ -42,8 +42,8 @@
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Sales (Kg)</div>
-          <div class="number">11,086</div>
+          <div class="box-topic">Most Beneficial Product</div>
+          <div class="number">Green Tea</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
@@ -95,8 +95,8 @@
       <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
 
       <script>
-        var xValues = ["Best", "Good", "Average", "Poor"];
-        var yValues = [60, 20, 10, 10];
+        var xValues = ["Green Tea", "Black Tea", "N Black Tea", "Matcha Tea"];
+        var yValues = [60000, 20000, 10500, 10100];
         var barColors = ["#2BD47D", "#ffc233", "#e05260"];
 
         new Chart("myChart2", {
@@ -114,20 +114,13 @@
             },
             title: {
               display: true,
-              text: "Tea Quality Rating"
+              text: "Sales from the last auction(Kg)"
             }
           }
         });
       </script>
     </div>
-    <div class="list">
-        <ul>
-            <li>Best Quality</li>
-            <li>Good Quality</li>
-            <li>Average Quality</li>
-            <li>Poor Quality</li>
-        </ul>
-        </div>
+    
   </div>
   <!-- bar chart 2 -->
 
