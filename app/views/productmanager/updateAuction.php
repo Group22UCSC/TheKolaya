@@ -23,21 +23,7 @@
     <div class="form">
 
     <div class="inputfield">
-        <!-- <script>  
-            $(document).ready(function(){  
-                $('#productid').change(function(){  
-                    var brand_id = $(this).val();  
-                    $.ajax({  
-                            url:"<?php echo URL?>productmanager/loadProductNames",  
-                            method:"POST",  
-                            data:{product_id:brand_id},  
-                            success:function(data){  
-                                $('#productName').html(data);  
-                            }  
-                    });  
-                });  
-            });  
-        </script>   -->
+        
             <label for="productName">Product Name</label>
             <select id="productName" class="input" name="productName"  onchange="loadPid();loadModalName(this);" >
             <?php 
@@ -54,12 +40,11 @@
 
       
         <div class="inputfield">
-            
+           
             <label for="pid">Product Id</label>
             <!-- <input list="browsers"> -->
             <input type="text" class="input" readonly id="pid">
-                
-            </select>
+             
         </div>
 
         
@@ -207,7 +192,7 @@
                     <th class="thcls">Sold Price(1Kg/Rs)</th>
                     <th class="thcls">Buyer</th>
                     <th class="thcls">Income(Rs)</th>
-
+                    <th class="thcls">Action</th>
 
                 </tr>
            
@@ -230,6 +215,7 @@
                     <td class="tdcls">'.$data1[$i]['sold_price'].'</td>
                     <td class="tdcls">'.$data1[$i]['name'].'</td>
                     <td class="tdcls">'.$data1[$i]['sold_amount']*$data1[$i]['sold_price'].'</td>
+                    <td class="tdcls">No Action</td>
                 </tr>';
                     
             }
