@@ -19,13 +19,14 @@
 
 <table id="myTable">
   <tr class="header">
-    <th style="width:40%;">Name</th>
-    <th style="width:20%;">ID</th>
-    <th style="width:40%;">Type</th>
+    <th style="width:33.33%;">Name</th>
+    <th style="width:33.33%;">ID</th>
+    <th style="width:33.33%;">Type</th>
    
   </tr>
-
-<?php
+  <div class="vertical">
+    
+          <?php
         $x=count($data);
         for($i=0;$i<$x;$i++){
           echo '<tr id="tea" data-href-tea="Admin/viewAccount1">
@@ -38,6 +39,8 @@
       ?>         
 
 
+
+  </div>
   
 </table>
 
