@@ -64,7 +64,7 @@ class Manager_Model extends Model {
     }
 
      function availableListTable_landowners(){
-        $query = "SELECT name,user_id,user_type FROM user WHERE user_type='Land_Owner'";
+        $query = "SELECT name,user_id,user_type FROM user WHERE user_type='Land_Owner' AND verify=1";
         $row = $this->db->runQuery($query);
         
         if($row) {
