@@ -249,7 +249,7 @@
 </div> -->
 <script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert.min.js"></script>
 
-<script type="text/javascript" src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+<?php include 'js/productmanager/updateAuctionjs.php';?>
 <?php include 'bottom-container.php'; ?>
