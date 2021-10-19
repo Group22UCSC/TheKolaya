@@ -1,3 +1,4 @@
+<script>
 function validation(){
   // var errArray=[];
   // errArray['name']="Melka";
@@ -114,7 +115,7 @@ function validation(){
   }
 // }
 
-// JQuery
+// *******  JQuery *******
 
 $(document).ready(function(){
   $('#updateBtn').click(function(event){
@@ -189,3 +190,5 @@ $(document).ready(function(){
       })
   })
 })
+
+</script>
