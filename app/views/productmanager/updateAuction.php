@@ -6,7 +6,7 @@
 
 <!-- Ajex for select oprtions in the form ex: Product id selection -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
-<script src="<?php echo URL ?>vendors/js/sweetalert.min.js"></script> 
+ 
 <script>
     
     
@@ -21,7 +21,7 @@
            Emergency Message
         </div>         -->
     <div class="form">
-
+    <form action="<?php echo URL?>productmanager/updateAuction" id="auctionForm">
     <div class="inputfield">
         
             <label for="productName">Product Name</label>
@@ -43,23 +43,23 @@
            
             <label for="pid">Product Id</label>
             <!-- <input list="browsers"> -->
-            <input type="text" class="input" readonly id="pid">
+            <input type="text" class="input" readonly id="pid" name="pid">
              
         </div>
 
         
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
-            <input type="text" class="input" id="amount" required>
+            <input type="text" class="input" id="amount" required name="amount">
         </div>
         <div class="inputfield">
             <label for="price" >Price Per Kilo(Rs)</label>
-            <input type="text" class="input" id="price" required>
+            <input type="text" class="input" id="price" required name="price">
         </div>
         <div class="inputfield">
             <label for="buyer">Buyer</label>
             <!-- <input list="browsers"> -->
-            <select id="buyer" class="input" name="buyer">
+            <select id="buyer" class="input" name="buyer" onchange="loadBid()">
             <?php 
             foreach($data3 as $row){
                 ?>
@@ -70,10 +70,14 @@
             ?>
             </select>
         </div>
-            
-        <div class="inputfield">
-            <input type="submit" value="Update" data-modal-target="#modal" class="btn" onsubmit="return validate()" >
+        <div>
+            <input type="text" id="bid" hidden name="bid">
         </div>
+        <div class="inputfield">
+            <!-- <input type="button" value="Update" data-modal-target="#modal" class="btn" id="updateBtn" > -->
+            <input type="submit" value="Update"  class="btn" id="updateBtn" >
+        </div>
+        </form>
     </div>
 </div>
 </div>
@@ -112,7 +116,7 @@
         <div class="buttonSection">
         <a class="editbtn" data-close-button>Cancel</a>
         
-        <input type="submit" value="Confirm" class="confirmbtn" >
+        <input type="submit" value="Confirm" class="confirmbtn" name="submit">
         
         
         
@@ -243,4 +247,9 @@
     </div>
 
 </div> -->
+<script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert.min.js"></script>
+
+<script type="text/javascript" src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+
 <?php include 'bottom-container.php'; ?>
