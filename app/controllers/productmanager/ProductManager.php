@@ -38,7 +38,7 @@ class ProductManager extends Controller{
     }
     function updateAuction(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
-
+                
             $result = $this->model->insertAution();
             if($result==true){
                 $buyers=$this->model->getBuyersDetails();
