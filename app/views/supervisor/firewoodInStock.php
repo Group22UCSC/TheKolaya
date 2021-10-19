@@ -32,14 +32,6 @@
         </div>
         
         <div class="tabel-container">
-          
-          <!-- <div class="table-row table-head">
-            <div class="table-element"><b>Date</b></div>
-            <div class="table-element"><b>Price Per Unit(Rs)</b></div>
-            <div class="table-element"><b>Amount(kg)</b></div>
-            <div class="table-element"><b>Price For Amount(Rs)</b></div>
-            <div class="table-element"><b>Emp_id</b></div>
-          </div> -->
           <?php
           
           if(count($data) > 0) {

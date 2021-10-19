@@ -1,7 +1,7 @@
 
 <script>
     var xValues = ["Firewood", "fertilizer"];
-    var yValues = [55, 49, 0];
+    var yValues = [<?php echo $data[1]['full_stock']?>, <?php echo $data[0]['full_stock']?>, 0];
     var barColors = ["#4DD101", "#089633"];
     // 4DD101
     new Chart("myChart", {
