@@ -28,7 +28,8 @@
             
       <div class="inputfield">
       <button class="back" onclick="closerequestform()">Back</button> 
-      <input type="submit" value="Confirm" class="btn">     
+      <button class  = "btn" id="myBtn" onclick = "openpopup()"> Confirm </button>
+         
       </div>
   </div>
 </div>	              
