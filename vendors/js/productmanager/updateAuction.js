@@ -61,7 +61,13 @@ function validation(){
       var val= e.options[e.selectedIndex].value;
       document.getElementById('pid').value=val;
   }
-  
+  function loadBid(){
+     
+     var e = document.getElementById("buyer");
+     var val= e.options[e.selectedIndex].value;
+     document.getElementById('bid').value=val;
+    //console.log(document.getElementById('bid').value);
+  }
   /// getAll the details from the first form to the second
   function loadModalName(element){
   
@@ -69,7 +75,7 @@ function validation(){
       document.getElementById('modalName').value=text;
   
   }
-  function loadModalName2(){
+  function loadModalName2(){  // loading the buyers name to the pop up
     // console.log("ada");
       var element=document.getElementById('productName');
       var text = element.options[element.selectedIndex].text;
@@ -104,17 +110,79 @@ function validation(){
       //update hidden feilds
       var buyer2=document.getElementById('buyer').value;
       document.getElementById('modalBid').value=buyer2;
+      //console.log(document.getElementById('modalBid').value);
   }
 // }
 
-  //sweet alert success
-  function success(){
-    swal({
-        title: "Success!",
-        text: "Database updated successfully!",
-        icon: "success",
-        button: "Done!",
-    });
-  } 
+// JQuery
 
-  
+$(document).ready(function(){
+  $('#updateBtn').click(function(event){
+      event.preventDefault();
+      var form = $('#auctionForm').serializeArray();
+      // form.push({name:'stock_type', value: 'in_stock'});
+      // form.push({name:'type', value: 'firewood'});
+
+      $('.error').remove();
+      var amount = $('#amount').val();
+      var pid = $('#pid').val();
+      var price = $('#price').val();
+      var bid = $('#buyer').val();
+      //console.log(amount+pid+price+bid);
+
+      if(amount < 0) {
+          // $('#amount').parent().after("<p class=\"error\">Amount cannot be negative</p>");
+          $('#amount').parent().after("<p class=\"error\">*Amount cannot be negative</p>");
+      }else if(amount == 0) {
+          $('#amount').parent().after("<p class=\"error\">*Please insert a valid amount</p>")
+      }
+      if(price < 0) {
+          $('#price').parent().after("<p class=\"error\">*Price cannot be negative</p>");
+      }else if(price == 0) {
+          $('#price').parent().after("<p class=\"error\">*Price cannot be zero</p>");
+      }
+
+      if(amount <= 0 || price <= 0) {
+          return;
+      }
+      Swal.fire({
+      title: 'Confirm Update ',
+      text: "Price Per Unit:  "+"Amount: "+"\n"+"Amount",
+      icon: 'warning',
+      confirmButtonColor: '#4DD101',
+      cancelButtonColor: '#FF2400',
+      confirmButtonText: 'Confirm!',
+      showCancelButton: true
+      }).then((result) => {
+          if (result.isConfirmed) {
+              $("#auctionForm").trigger("reset");
+              $.ajax({
+                  type: "POST",
+                  url: "<?php echo URL?>productmanager/updateAuction",
+                  cache: false,
+                  data: {
+                    amount:amount,
+                    pid:pid,
+                    price:price,
+                    bid:bid,
+                  },
+                  success: function(data) {
+                      Swal.fire(
+                      'Updated!',
+                      'Your file has been updated.',
+                      'success'
+                      )
+                  },
+                  error : function (xhr, ajaxOptions, thrownError) {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Oops...',
+                          text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                          // footer: '<a href="">Why do I have this issue?</a>'
+                      })
+                  }
+              })
+          }
+      })
+  })
+})
