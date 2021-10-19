@@ -28,8 +28,8 @@ class ProductManager extends Controller{
         $this->view->showPage('Productmanager/auctionDetails');
     }
     function updateProducts() {
-
-        $this->view->showPage('Productmanager/updateProducts');
+        $productResults = $this->model->getProductDetails();
+        $this->view->render('Productmanager/updateProducts',$productResults);
     }
 
     function loadProductNames(){
@@ -37,23 +37,23 @@ class ProductManager extends Controller{
             return $productResults;
     }
     function updateAuction(){
-        if(!empty($_POST)){
-            
+        if(isset($_POST['submit'])){
+            return "s";
 
-            $result = $this->model->insertAution();
-            if($result==true){
-                $buyers=$this->model->getBuyersDetails();
-            $tblResult = $this->model->auction();
-            $productResults = $this->model->getProductDetails();
+        //     $result = $this->model->insertAution();
+        //     if($result==true){
+        //         $buyers=$this->model->getBuyersDetails();
+        //     $tblResult = $this->model->auction();
+        //     $productResults = $this->model->getProductDetails();
             
-           // print_r($result);
-            $this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
-            }
-            else{
-                // un successfull pop up 
-                // first check using a alert ()
-                echo "failed to add";
-            }
+        //    // print_r($result);
+        //     $this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
+        //     }
+        //     else{
+        //         // un successfull pop up 
+        //         // first check using a alert ()
+        //         echo "failed to add";
+        //     }
         }
         else{
             $buyers=$this->model->getBuyersDetails();

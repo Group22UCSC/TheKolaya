@@ -39,7 +39,7 @@
       </div>
 
 <?php include 'deliveryform.php';?>
-
+<?php  include 'deliverypopup.php';?>   
 <?php include 'bottomContainer.php';?>
 <script>
 
@@ -77,5 +77,61 @@ var table = document.getElementById('deliverytable');
                                                 
                     };
                 }
+
+                function openpopup(){
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+ 
+  modal.style.display = "block";
+  var a = document.getElementById("rid").value;  
+  document.getElementById("rid-pop").value = a;
+  var b = document.getElementById("lid").value;  
+  document.getElementById("lid-pop").value = b;
+  var c = document.getElementById("rtype").value;  
+  document.getElementById("rtype-pop").value = c;
+  var d = document.getElementById("amount").value;  
+  document.getElementById("amount-pop").value = d;
+
+
+// When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
+
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+
+}
+function closepopup(){
+  document.getElementById("myModal").style.display = "none";
+  //  var blur = document.getElementById('blur');
+  // blur.classList.toggle('maindiv');
+  
+}
+
+function closeformpopup(){
+  document.getElementById("myModal").style.display = "none";
+  closerequestform();
+  
+  //document.getElementById("availableTable").deleteRow(1);
+  
+}
+
+// function clearWeight(){   
+//     document.getElementById("weight").value=" ";
+//   }
+
+
 
 </script>

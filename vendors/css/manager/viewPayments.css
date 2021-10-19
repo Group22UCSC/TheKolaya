@@ -67,12 +67,16 @@
   width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
-/* height: 100px;*/
- overflow-x: auto;
+ font-weight: bold;
+ display: block;
+  height: 500px;
+  overflow-y: auto;
+
 
 }
 
 #myTable th, #myTable td {
+  width: 100%;
   text-align: left;
   padding: 12px;
 }
