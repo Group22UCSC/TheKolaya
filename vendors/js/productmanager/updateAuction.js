@@ -129,7 +129,7 @@ $(document).ready(function(){
       var price = $('#price').val();
       var bid = $('#buyer').val();
       //console.log(amount+pid+price+bid);
-
+      var action='save';
       if(amount < 0) {
           // $('#amount').parent().after("<p class=\"error\">Amount cannot be negative</p>");
           $('#amount').parent().after("<p class=\"error\">*Amount cannot be negative</p>");
@@ -156,17 +156,20 @@ $(document).ready(function(){
       }).then((result) => {
           if (result.isConfirmed) {
               $("#auctionForm").trigger("reset");
+              
               $.ajax({
                   type: "POST",
                   url: "<?php echo URL?>productmanager/updateAuction",
                   cache: false,
                   data: {
+                    action:action,
                     amount:amount,
                     pid:pid,
                     price:price,
                     bid:bid,
                   },
                   success: function(data) {
+                      console.log(data);
                       Swal.fire(
                       'Updated!',
                       'Your file has been updated.',
