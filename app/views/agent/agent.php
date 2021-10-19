@@ -14,7 +14,7 @@
    </head>
    <body>
 <?php include 'topContainer.php';?>
-<div class = "maindiv" id="blur">
+<div id="overlay"></div>
   <div class = "topic"><h3>My Dashboard</h3></div>
 <div class="notice">
 <?php $x=count($data);?>
@@ -26,7 +26,7 @@
   <div class="availablelist">    
     
     <div class ="availabletopic">Available  Landowner  List </div>
-    <div style="overflow-x:auto; overflow-y:auto;">
+    <div style="overflow:auto;">
     <table class = "availabletable" id="availabletable">      
       <tr>
         <td class="th">Landowner ID</td>
@@ -45,7 +45,7 @@
       ?>         
     </table>
       </div>    
-      </div>
+  
       
   <!-- <div class="deliverylist">
   
@@ -62,8 +62,7 @@
     <!-- </table>
       </div> -->
       </div>
-      <div class="forms">
-   
+      <div class="forms">   
     <?php  include 'teaCollection.php';?>       
       </div>
       <?php  include 'popup.php';?>        
@@ -76,18 +75,22 @@
     rows.forEach(row =>{
         row.addEventListener("click", ()=>{
          openteaform();
+         //window.location.href=row.dataset.href;
+
         });
     });
 });
 
-document.addEventListener("DOMContentLoaded",() => {
-    const rows = document.querySelectorAll("tr[data-href-request]");
-    rows.forEach(row =>{
-        row.addEventListener("click", ()=>{
-         openrequestform();
-        });
-    });
-});
+
+
+// document.addEventListener("DOMContentLoaded",() => {
+//     const rows = document.querySelectorAll("tr[data-href-request]");
+//     rows.forEach(row =>{
+//         row.addEventListener("click", ()=>{
+//          openrequestform();
+//         });
+//     });
+// });
 
 var table = document.getElementById('availabletable');
                 
@@ -100,16 +103,16 @@ for(var i = 1; i < table.rows.length; i++)
                     };
                 }
     
-                var table = document.getElementById('deliverytable');
+                // var table = document.getElementById('deliverytable');
                 
-                for(var i = 1; i < table.rows.length; i++)
-                {
-                    table.rows[i].onclick = function()
-                    {
-                         //rIndex = this.rowIndex;
-                         document.getElementById("rid").value = this.cells[1].innerHTML;                         
-                    };
-                }
+                // for(var i = 1; i < table.rows.length; i++)
+                // {
+                //     table.rows[i].onclick = function()
+                //     {
+                //          //rIndex = this.rowIndex;
+                //          document.getElementById("rid").value = this.cells[1].innerHTML;                         
+                //     };
+                // }
 
 // function teatoggle()
 // {
@@ -124,6 +127,7 @@ for(var i = 1; i < table.rows.length; i++)
 
 function openteaform(){
   document.getElementById("teapopup").style.display = "block";
+  // document.getElementById("overlay").style.display = "block";
   //console.log("before blur");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('active');
@@ -132,6 +136,7 @@ function openteaform(){
 
 function closeteaform(){
   document.getElementById("teapopup").style.display = "none";
+  // document.getElementById("overlay").style.display = "none";
   //console.log("before blur back");
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('closeblur');
@@ -199,37 +204,43 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() { 
+ 
   modal.style.display = "block";
   var x = document.getElementById("lid").value;  
   document.getElementById("lid-pop").value = x;
   var y = document.getElementById("weight").value;  
   document.getElementById("weight-pop").value = y;
-}
+
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+
 }
 function closepopup(){
   document.getElementById("myModal").style.display = "none";
   //  var blur = document.getElementById('blur');
   // blur.classList.toggle('maindiv');
+  
 }
 
 function closeformpopup(){
   document.getElementById("myModal").style.display = "none";
   closeteaform();
+  
   //document.getElementById("availableTable").deleteRow(1);
   
 }
+
+function clearWeight(){   
+    document.getElementById("weight").value=" ";
+  }
 
 </script>

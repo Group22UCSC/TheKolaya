@@ -43,7 +43,8 @@ class Agent_Model extends Model{
     }
 
     function availableListTable(){
-        $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no=1 AND landowner_type='indirect_landowner' AND tea_availability=1 ";
+        $route_no=$_SESSION['route']; 
+        $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no='$route_no' AND landowner_type='indirect_landowner' AND tea_availability=1 ";
         $row = $this->db->runQuery($query);
         
         if($row) {
@@ -52,5 +53,36 @@ class Agent_Model extends Model{
             return false;
         }
     }
+
+    function updateWeight($data = []){
+        $date = $data['date'];
+        $landowner_id = $data['lid'];
+        $weight = $data['initial_weight'];
+        $emp_id = $data['agent_id'];
+        
+        $query = "INSERT INTO tea(date, lid, initial_weight_agent, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, agent_id, quality)         
+                    VALUES ('$date', '$landowner_id', '$weight', '0', '0', '0', '0','0', 'SUP-000','$emp_id', '0')";
+        $next_query = "UPDATE landowner SET tea_availability = '0' WHERE user_id = '$landowner_id'";
+        $this->db->runQuery($query);
+        $this->db->runQuery($next_query);
+
+    }
+
+    // function deliveryListTable(){
+    //     $route_no=$_SESSION['route'];        
+    //     $query = "SELECT request.lid, request.request_id, request.request_type, 
+    //             fertilizer_request.amount , advance_request.amount    FROM request 
+    //             INNER JOIN fertilizer_request    
+    //             ON request.request_id = fertlizer_request.request_id
+    //             INNER JOIN advance_request
+    //             ON request.request_id = advance_request.request_id";
+    //     $row = $this->db->runQuery($query);
+    //     print_r($row);
+    //     if($row) {
+    //         return $row;
+    //     }else {
+    //         return false;
+    //     }
+    // }
     
 }

@@ -57,7 +57,7 @@
             <div class="form">
                 <div class="inputfield">
                   <label>Amount(kg)</label>
-                  <input type="number" class="input" name="amount" id="out_amount" >
+                  <input type="number" class="input" name="amount" id="out_amount">
                 </div>  
                 
               <div class="inputfield">
@@ -75,6 +75,6 @@
       
     </div>
     <script src="<?php echo URL?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
-    
+    <script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>   
 <?php include 'js/supervisor/manageFirewood-js.php';?>
 <?php include 'bottom-container.php';?>

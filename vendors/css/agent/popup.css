@@ -2,9 +2,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
+   display: none;/*Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 4;/* Sit on top */ 
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -23,12 +23,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
   margin: auto;
   padding: 0;
   height: 50%; 
-  width: 50%;
+  width: 25%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  z-index:10;
 }
 
 
@@ -61,6 +62,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 .modal-footer {
+  margin: auto;
  padding-top: 10px;
  padding-bottom: 10px;
  background: linear-gradient(to right,  rgba(51, 51, 51,1) 0%,rgba(102, 102, 102,1) 100%);     
@@ -68,12 +70,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
   display: flex;
   justify-content: center;
   flex-direction: row;
-
+  align-items: center;
 }  
 
 .no{
   
-    margin-right: 30px;  
+    margin: auto;  
     background:  #ff3300;  
   }
   
@@ -87,8 +89,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
   .yes{
   
-    margin-right: 30px;  
+    margin: auto;  
     background:  #00b300;  
+    
   }
   
   .yes:hover{
@@ -112,7 +115,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
     border:none;   
      color: black;
      font-size: 20px;
-     text-align: center;    
+     text-align: center;     
+  }
+
+  .mid-content label{   
+    margin:15px;
   }
 
   

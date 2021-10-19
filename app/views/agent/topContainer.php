@@ -12,13 +12,13 @@
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
-      <li>
+      <!-- <li>
        <a href="<?php echo URL?>Agent/availableLandownerList">
         <i class="fa fa-list" aria-hidden="true"></i>
          <span class="links_name">Available Landowners</span>
        </a>
        <span class="tooltip">Available Landowners</span>
-     </li>
+     </li> -->
      <li>
        <a href="<?php echo URL?>Agent/viewPreviousUpdates">
         <i class="fa fa-balance-scale" aria-hidden="true"></i>
@@ -93,7 +93,7 @@
             <div class="profile">
               <div class="icon_wrap" id="account-web">
                 <img src="<?php echo URL?>vendors/images/agent/profile.jpg" alt="profile_pic">
-                <span class="name">Roneki</span>
+                <span class="name"><?php echo $_SESSION['name'];?></span>
                 <i class="fas fa-chevron-down"></i>
               </div>
       

@@ -16,18 +16,17 @@
                     <th class="thcls">User Type</th>
                 </tr>
            
-                <?php
-            $x = count($data);
-            for($i = 0; $i < $x; $i++) {
-            
-                 echo'<tr>
-                    <td class="tdcls">'.$data[$i]['user_id'].'</td>
-                    <td class="tdcls">'.$data[$i]['contact_number'].'</td>
-                    <td class="tdcls">'.$data[$i]['user_type'].'</td>
-                     </tr>';
-                    
-            }
-          ?>
+            <?php
+               $x = count($data);
+               for($i = 0; $i < $x; $i++) {
+                  echo'<tr class="table-row">
+                           <td class="tdcls">'.$data[$i]['user_id'].'</td>
+                           <td class="tdcls">'.$data[$i]['contact_number'].'</td>
+                           <td class="tdcls">'.$data[$i]['user_type'].'</td>
+                        </tr>';
+                     
+               }
+            ?>
 
     
         </table>
@@ -36,37 +35,15 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
+<?php $_SESSION['account_type'] = 'agentLandFull'?>
   <div class="k1">
 <div class="wrapper11">
     <div class="title">
      Registration Form
     </div>
-   <form action="<?php echo URL?>admin/agent_land_account" method="POST">
+   <form action="<?php echo URL?>admin/create_account" method="POST">
       <div class="form">
-         <div class="inputfield">
-            <label> Name</label>
-            <input type="text" class="input" name="name" required>
-         </div> 
-
-         <div class="inputfield">
-            <label>Uesr ID</label>
-            <input type="text" class="input" name="user_id" placeholder="<?php (!empty($user_data['user_id_err'])) ? print $user_data['user_id_err'] : print ''; ?>" required>
-         </div> 
-
-         <div class="inputfield">
+         <div class="inputfield" id="user-type">
             <label>User Type</label>
             <select class="type" id="type" name="user_type" required>
                <option value="agent">Agent</option>
@@ -76,28 +53,41 @@
          </div>
 
          <div class="inputfield">
+            <label> Name</label>
+            <input type="text" class="input" name="name" required>
+         </div> 
+
+         <div class="inputfield">
+            <label>Uesr ID</label>
+            <input type="text" class="input" id="user-id" name="user_id" placeholder="<?php (!empty($user_data['user_id_err'])) ? print $user_data['user_id_err'] : print ''; ?>" required>
+         </div> 
+
+         <div class="inputfield">
             <label>Address</label>
             <textarea class="textarea" name="address" required></textarea>
          </div>
 
          <div class="inputfield">
             <label>Contact Number</label>
-            <?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>
-            <input type="tel" class="input" name="contact_number" required>
+            <input type="tel" class="input" name="contact_number" placeholder="<?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>" required>
          </div>
+
          <div class="inputfield">
             <label>Route number</label>
             <input type="number" class="input" name="route_number" required>
          </div>
+         
          <div class="inputfield">
             <label>Password</label>
             <input type="password" class="input" name="password" required>
          </div>
+
          <div class="inputfield">
             <label>Confirm Password</label>
             <?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>
-            <input type="password" class="input" name="confirm_password" required>
-         </div> 
+            <input type="password" class="input" name="confirm_password" placeholder="<?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>" required>
+         </div>
+
          <div class="inputfield">
             <input type="submit" value="Register" class="btn">
          </div>
@@ -111,7 +101,7 @@
 
 </div> 
 
-
+<script src="<?php echo URL?>vendors/js/admin/create-account.js"></script>
 
 
 

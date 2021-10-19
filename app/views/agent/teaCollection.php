@@ -6,7 +6,7 @@
            Update Tea Weight
         </div>
         <div class="form">
-
+           
             <div class="inputfield">
                 <label>Landowner ID</label>
                 <input type="text" class="input" id="lid" name="lid" readonly>
@@ -17,9 +17,11 @@
             </div>        
             <div class="inputfield">
             <button class="back" onclick="closeteaform()">Back</button>
-            <input type="submit" value="Add Weight" class="btn" id="myBtn" onclick="openpopup()">
+            <button class  = "btn" id="myBtn" onclick = "openpopup()"> Add Weight </button>
+            <!-- <input type="submit" value="Add Weight" class="btn" id="myBtn"  onclick="openpopup()" >             -->
             </div>
+       
         </div>
       </div>	     
 
-      
+      <!-- onclick="openpopup()" -->
