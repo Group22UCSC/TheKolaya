@@ -5,7 +5,7 @@
         var form = $('#form_instock').serializeArray();
         form.push({name:'stock_type', value: 'in_stock'});
         form.push({name:'type', value: 'firewood'});
-
+        console.log(form);
         $('.error').remove();
         var inAmount = $('#in_amount').val();
         var pricePerUnit = $('#price_per_unit').val();
@@ -65,7 +65,7 @@
         var form = $('#form_outstock').serializeArray();
         form.push({name:'stock_type', value: 'out_stock'});
         form.push({name:'type', value: 'firewood'});
-
+        console.log(form);
         $('.error').remove();
         var outAmount = $('#out_amount').val();
         if(outAmount < 0) {
@@ -86,6 +86,7 @@
         confirmButtonText: 'Yes, Update it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                $("#form_outstock").trigger("reset");
                 $.ajax({
                     type: "POST",
                     url: "<?php echo URL?>Supervisor/manageFirewood",
@@ -97,6 +98,8 @@
                         'Your file has been updated.',
                         'success'
                         )
+                        console.log(data);
+
                     },
                     error : function (xhr, ajaxOptions, thrownError) {
                         Swal.fire({

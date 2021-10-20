@@ -31,31 +31,31 @@
             </form>
         </div>
         
-        <div class="tabel-container">
+        <!-- <div class="tabel-container">
           <?php
           
-          if(count($data) > 0) {
-            echo '<div class="table-row table-head">
-                    <div class="table-element"><b>Date</b></div>
-                    <div class="table-element"><b>Price Per Unit(Rs)</b></div>
-                    <div class="table-element"><b>Amount(kg)</b></div>
-                    <div class="table-element"><b>Price For Amount(Rs)</b></div>
-                    <div class="table-element"><b>Emp_id</b></div>
-                  </div>';
-            for($i = 0; $i < 1; $i++) {
-              echo '<div class="table-row">
-                    <div class="table-element date">'.$data[$i]['in_date'].'</div>
-                    <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
-                    <div class="table-element">'.$data[$i]['in_quantity'].'</div>
-                    <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
-                    <div class="table-element">'.$data[$i]['emp_id'].'</div>
-                  </div>';
-            }
-          }else {
-            echo 'Data is not inserted';
-          }
+          // if(count($data) > 0) {
+          //   echo '<div class="table-row table-head">
+          //           <div class="table-element"><b>Date</b></div>
+          //           <div class="table-element"><b>Price Per Unit(Rs)</b></div>
+          //           <div class="table-element"><b>Amount(kg)</b></div>
+          //           <div class="table-element"><b>Price For Amount(Rs)</b></div>
+          //           <div class="table-element"><b>Emp_id</b></div>
+          //         </div>';
+          //   for($i = 0; $i < 1; $i++) {
+          //     echo '<div class="table-row">
+          //           <div class="table-element date">'.$data[$i]['in_date'].'</div>
+          //           <div class="table-element">'.$data[$i]['price_per_unit'].'</div>
+          //           <div class="table-element">'.$data[$i]['in_quantity'].'</div>
+          //           <div class="table-element">'.$data[$i]['price_for_amount'].'</div>
+          //           <div class="table-element">'.$data[$i]['emp_id'].'</div>
+          //         </div>';
+          //   }
+          // }else {
+          //   echo 'Data is not inserted';
+          // }
           ?>
-        </div>
+        </div> -->
 
         <div class="tabel-container">
           
