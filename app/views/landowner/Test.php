@@ -1,7 +1,7 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Test.css">
-<script defer src="<?php echo URL ?>vendors/js/Landowner/Test.js""></script>
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Update_Tea_Availability.css">
+<script defer src="<?php echo URL ?>vendors/js/Landowner/Update_Tea_Availability.js""></script>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="top-container">
   <p>Update Tea Availability</p>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="inputfield">
-      <label>Container count</label>
+      <label>No. of Containers Available</label>
       <input type="text" id="priceid" class="input<?php echo ($isPriceSet) ? '-set' : '' ?>" value="<?php echo ($isPriceSet) ? "Tea Price Already Set For {$month}" : ''; ?>" <?php if ($isPriceSet) {
                                                                                                                                                                                 echo "readonly";
                                                                                                                                                                               } ?>>
@@ -48,16 +48,11 @@
 
     <div class="inputfield">
       <label>Update Availability</label>
-      <input class="input" type="checkbox">
+      <input class=" input " type="checkbox" value="Confirm Requests" data-modal-target="#modal" class="btn" name="price" <?php if ($isPriceSet) {
+                                                                                                                            echo "disabled";
+                                                                                                                          } ?>>
     </div>
 
-
-
-    <div class="inputfield">
-      <input type="button" value="Confirm Requests" data-modal-target="#modal" class="btn" name="price" <?php if ($isPriceSet) {
-                                                                                                          echo "disabled";
-                                                                                                        } ?>>
-    </div>
 
 
   </div>
@@ -77,12 +72,9 @@
       </div>
       <div class="month">
         <label>Time : </label>
-        <input type="text" name="time" class="model-input" value="<?php echo date("h : i : s a") ?>" readonly>
+        <input type="text" name="time" class="model-input" value="<?php echo date("h : i a") ?>" readonly>
       </div>
-      <div class="month">
-        <label>Request Type : </label>
-        <input type="text" id="rtype" name="rtype" class="model-input" readonly>
-      </div>
+
       <div class="price">
         <label>Quantity : </label>
         <input type="text" id="priceInput" class="model-input" name="qty" readonly>
@@ -91,11 +83,6 @@
       <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
         <input type="submit" value="Submit" class="confirmbtn" name="teaPriceConfirm">
-      </div>
-
-      <div class="inputfield">
-        <label>Update Availability</label>
-        <input class="input" type="checkbox">
       </div>
 
 
