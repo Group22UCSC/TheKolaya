@@ -58,8 +58,12 @@ class Agent extends Controller{
         $this->view->showPage('Agent/previousUpdates');
     }
 
-    function confirmDeliverables(){       
-        $this->view->showPage('Agent/DeliveryList');
+    function confirmDeliverables(){ 
+        $result1 = $this->model->fertilizerdeliveryListTable();
+        $result2 = $this->model->advancedeliveryListTable();
+        // print_r($result);
+        $this->view->render2('Agent/DeliveryList', $result1, $result2);
+        // $this->view->showPage('Agent/DeliveryList');
     }
 
     function profile() {

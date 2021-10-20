@@ -20,7 +20,13 @@ class Database extends PDO{
         return $stmt->execute();
     }
 
+    public function selectQuery($query) {
+        $stmt = $this->prepare($query);
 
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>
