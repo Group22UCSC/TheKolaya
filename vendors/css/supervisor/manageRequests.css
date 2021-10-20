@@ -3,9 +3,9 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.middle-container > div {
+/* .middle-container > div {
     background: #E4F9F5;
-}
+} */
 
 .table-row {
     grid-template-columns: 1fr 1fr;

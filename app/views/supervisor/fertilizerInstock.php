@@ -4,12 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo TITLE ?></title>
-  <link rel="icon" href="<?php echo URL ?>vendors/images/thekolaya2.png" type="image/x-icon">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
+  <?php include 'styles-titleIcon-included.php'?>
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/instock-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table2-style.css">
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
