@@ -1,10 +1,12 @@
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/popup.css">  
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/popup.css"> 
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> 
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-  <form class="popup-content-form" action="<?php echo URL?>agent/updateTeaWeight"  method="POST" onsubmit="clearWeight()">
+  <form class="popup-content-form" action="<?php echo URL?>agent/updateTeaWeight" name = "teaUpdateForm" method="POST" onsubmit="return validateForm()">
     <div class="modal-header">
       <span class="close">&times;</span>
       <h2>Are You Sure?</h2>
@@ -27,6 +29,24 @@
   </div>
 
 </div>
+<script>
+  function validateForm(){
+    let x = document.forms["teaUpdateForm"]["weight-popup"].value;
+    console.log("ValidateForm");
+    if(x==""){
+      alert("Weight must be filled out");     
+      return false;
+    }
+    else{
+      clearWeight();
+      return true;
+    }    
+  }
 
+  function clearWeight(){   
+    document.getElementById("weight").value=" ";
+  }
+
+  </script>
 
   
