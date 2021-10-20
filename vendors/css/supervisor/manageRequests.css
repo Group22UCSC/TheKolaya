@@ -51,7 +51,7 @@
 }
 
 /* Clear floats after the columns */
-.row:after {
+.rating-row:after {
   content: "";
   display: table;
   clear: both;

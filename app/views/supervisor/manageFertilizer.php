@@ -63,7 +63,7 @@
                 </div>  
                 
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn" id="out-stock-submit" name="fertilizer_out">
+                <input type="submit" value="Submit" class="accept-btn" id="out-stock-submit" name="fertilizer_out">
               </div>
               <a href="<?php echo URL?>Supervisor/fertilizerOutstock">
                 <div class="inputfield">
