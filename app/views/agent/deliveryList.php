@@ -16,22 +16,45 @@
 <?php include 'topContainer.php';?>
 <div class="topic">Request  Delivery  List </div>
 <div class="deliverylist">
-    <table class="deliverytable" id="deliverytable">
+    <div class = fertilizer_topic> Fertilizer </div>
+    <table class="fertilizer_delivery_table" id="fertilizer_delivery_table">
     <tr>
     <td class="th">Landowner ID</td>
     <td class="th">Request ID</td>
-    <td class="th">Type</td>
+    <!-- <td class="th">Type</td> -->
     <td class="th">Amount</td>            
       </tr>
      
       <?php
-      $y=4;
-        for($i=1;$i<=$y;$i++){
+      $y=count($data1);
+      // print_r($y);
+        for($i=0;$i<$y;$i++){
           echo '<tr  id = "request" data-href-request="" >
-                    <td>L00'.$i.'</td>
-                    <td>R'.$i.'</td>
-                    <td>Firewood</td>
-                    <td>28</td>                                      
+                    <td>'.$data1[$i]['lid'].'</td>                   
+                    <td>'.$data1[$i]['request_id'].'</td>
+                    <td>'.$data1[$i]['amount_kg'].'</td> 
+                </tr>';                
+        }
+      ?>
+    </table>
+      </div>
+      <div class="deliverylist">
+      <div class = advance_topic> Advance </div>
+    <table class="advance_delivery_table" id="advance_delivery_table">
+    <tr>
+    <td class="th">Landowner ID</td>
+    <td class="th">Request ID</td>    
+    <td class="th">Amount</td>            
+      </tr>
+     
+      <?php
+      $y=count($data2);
+      // print_r($y);
+        for($i=0;$i<$y;$i++){
+          echo '<tr  id = "request" data-href-request="" >
+          <td>'.$data2[$i]['lid'].'</td>                   
+          <td>'.$data2[$i]['request_id'].'</td>
+          <td>'.$data2[$i]['amount_rs'].'</td> 
                 </tr>';                
         }
       ?>
@@ -63,18 +86,33 @@ function closerequestform(){
   // var blur = document.getElementById('blur');
   // blur.classList.toggle('close');
 }
-var table = document.getElementById('deliverytable');
+var table1 = document.getElementById('fertilizer_delivery_table');
                 
-                for(var i = 1; i < table.rows.length; i++)
+                for(var i = 1; i < table1.rows.length; i++)
                 {
-                    table.rows[i].onclick = function()
+                    table1.rows[i].onclick = function()
                     {
                          //rIndex = this.rowIndex;
                          document.getElementById("rid").value = this.cells[1].innerHTML;  
                          document.getElementById("lid").value = this.cells[0].innerHTML;  
-                         document.getElementById("rtype").value = this.cells[2].innerHTML;  
-                         document.getElementById("amount").value = this.cells[3].innerHTML;  
-                                                
+                         document.getElementById("rtype").value = "Fertilizer";  
+                         document.getElementById("amount").value = this.cells[2].innerHTML;  
+                                                 
+                    };
+                }
+
+                var table2 = document.getElementById('advance_delivery_table');
+                
+                for(var i = 1; i < table2.rows.length; i++)
+                {
+                    table2.rows[i].onclick = function()
+                    {
+                         //rIndex = this.rowIndex;
+                         document.getElementById("rid").value = this.cells[1].innerHTML;  
+                         document.getElementById("lid").value = this.cells[0].innerHTML;  
+                         document.getElementById("rtype").value = "Advance";  
+                         document.getElementById("amount").value = this.cells[2].innerHTML;  
+                                                 
                     };
                 }
 
