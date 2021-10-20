@@ -1,6 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<body onload="loadPid();"></body>
+<body onload="loadPid();getTable();"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateAuction.css">
 
 <div class="top-container" >
@@ -79,8 +79,8 @@
 <!-- **************   Table container   *********-->
 <div class="table-container">
     <div class="table-section">
-        <table class="teapricetable">
-            
+        <table class="teapricetable" id="updateAuctionTable">
+                
                 <tr class="trcls">
                     <th class="thcls">Date</th>
                     <th class="thcls">PId</th>
@@ -92,28 +92,8 @@
                     <th class="thcls">Action</th>
 
                 </tr>
-           
-                <?php
-            $x = count($data1);
-            $dateToday=date("Y-m-d");
-            for($i = 0; $i < $x; $i++) {
-          
-            $dt = date('Y-m-d', strtotime($data1[$i]['date']));
-                 echo'<tr>
-                    <td class="tdcls">'.$data1[$i]['date'].'</td>
-                    <td class="tdcls">'.$data1[$i]['product_id'].'</td>
-                    <td class="tdcls">'.$data1[$i]['product_name'].'</td>
-                    <td class="tdcls">'.$data1[$i]['sold_amount'].'</td>
-                    <td class="tdcls">'.$data1[$i]['sold_price'].'</td>
-                    <td class="tdcls">'.$data1[$i]['name'].'</td>
-                    <td class="tdcls">'.$data1[$i]['sold_amount']*$data1[$i]['sold_price'].'</td>
-                    <td class="tdcls">'.
-                                        (($dt==$dateToday)?  '<a class="deleteBtn" href="">Delete</a>': " NoAction ")  .'</td>
-                </tr>';
-                    
-            }
-          ?>
-
+                <!-- <tbody></tbody> -->
+               <!--  OLD TABLE IS IN THE TRASH FILE -> TRASH.PHP -->
     
         </table>
     </div>
