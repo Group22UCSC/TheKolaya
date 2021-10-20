@@ -321,23 +321,34 @@ animation: fadeIn 2.5s;
     -ms-animation: fadeIn 2.5s; 
 }
 .teapricetable {
+  display:block;
+    overflow-y:scroll ;
+  height: 300px;
   border-collapse: collapse;
   box-shadow: 0 5px 10px #e1e5ee;
   background-color: white;
   text-align: left;
-  overflow: hidden;
   width: 100%;
+  
 }
   .threadcls {
     box-shadow: 0 5px 10px #e1e5ee;
   }
-
+  /* .trcls{
+    display:block;
+    overflow-y:scroll ;
+  height: 300px;
+  } */
   .thcls   {
+    
     padding: 1rem 2rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-size: 0.7rem;
     font-weight: 900;
+    /* position: fixed;
+    top: 0px; display:none;
+    background-color:white; */
   }
 
   .tdcls {
