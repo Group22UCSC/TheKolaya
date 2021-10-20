@@ -3,14 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title><?php echo TITLE?></title>
-    <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
+    <?php include 'styles-titleIcon-included.php'?>
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/form-style.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/table-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/stock-style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -74,7 +70,6 @@
       </div>
       
     </div>
-    <script src="<?php echo URL?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
-    <script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>   
+<?php include 'script-included.php'?>
 <?php include 'js/supervisor/manageFirewood-js.php';?>
 <?php include 'bottom-container.php';?>
