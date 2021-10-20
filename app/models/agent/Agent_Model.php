@@ -68,21 +68,51 @@ class Agent_Model extends Model{
 
     }
 
-    // function deliveryListTable(){
-    //     $route_no=$_SESSION['route'];        
-    //     $query = "SELECT request.lid, request.request_id, request.request_type, 
-    //             fertilizer_request.amount , advance_request.amount    FROM request 
-    //             INNER JOIN fertilizer_request    
-    //             ON request.request_id = fertlizer_request.request_id
-    //             INNER JOIN advance_request
-    //             ON request.request_id = advance_request.request_id";
-    //     $row = $this->db->runQuery($query);
-    //     print_r($row);
-    //     if($row) {
-    //         return $row;
-    //     }else {
-    //         return false;
-    //     }
-    // }
-    
+    function fertilizerdeliveryListTable(){
+        $route_no=$_SESSION['route'];        
+        $query = "SELECT request.request_id, request.request_type, request.lid, 
+                 fertilizer_request.amount_kg FROM request 
+                  INNER JOIN fertilizer_request
+                  ON  request.request_id = fertilizer_request.request_id                   
+                 WHERE request.lid IN 
+                (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
+                AND request.response_status = 1";
+                
+        $row = $this->db->runQuery($query);
+        // return $row;
+        // print_r($row);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function advancedeliveryListTable(){
+        $route_no=$_SESSION['route'];        
+        $query = "SELECT request.request_id, request.request_type, request.lid, 
+                 advance_request.amount_rs FROM request 
+                  INNER JOIN advance_request
+                  ON  request.request_id = advance_request.request_id                   
+                 WHERE request.lid IN 
+                (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
+                AND request.response_status = 1";
+                
+        $row = $this->db->runQuery($query);
+        // return $row;
+        // print_r($row);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+   
 }
+
+ // $query = "SELECT request_id, request_type, lid FROM request WHERE lid IN (SELECT user_id FROM landowner WHERE route_no = '$route_no')";
+// advance_request.amount_rs 
+
+
+// INNER JOIN advance_request
+//                   ON  request.request_id = advance_request.request_id 
