@@ -5,7 +5,6 @@
   height: 50px;
   align-items: center;
   justify-items: center;
-  /* grid-template-columns: 1fr 1fr 1fr; */
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -15,12 +14,7 @@
 
   justify-self: center;
 }
-/* .top-container >div{
 
-  padding:1em;
-  align-items: center;
-  justify-self: center;
-} */
 .middle {
   align-self: center;
   justify-self: center;
@@ -39,13 +33,8 @@
   border-radius: 10px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
   padding: 40px;
-
-  /* animation: fadeIn 2s;
-      -webkit-animation: fadeIn 2s;
-      -moz-animation: fadeIn 2s;
-      -o-animation: fadeIn 2s;
-      -ms-animation: fadeIn 2s; */
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -145,7 +134,7 @@
 
 .wrapperform .form .inputfield .input:focus,
 .wrapperform .form .inputfield .textarea:focus,
-.wrapperform .form .inputfield .custom_select select:focus {
+.wrapperform .form .inputfield select:focus {
   border: 1px solid rgb(35, 173, 104);
 }
 
@@ -162,6 +151,38 @@
   border-radius: 3px;
   outline: none;
 }
+/* slider  start */
+.wrapperform .form .inputfield .input[type="checkbox"] {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  -webkit-appearance: none;
+  background: #c6c6c6;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+.wrapperform .form .inputfield .input:checked[type="checkbox"] {
+  background: rgb(35, 173, 104);
+}
+.wrapperform .form .inputfield .input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+.wrapperform .form .inputfield .input:checked[type="checkbox"]::before {
+  left: 40px;
+}
+/* slider  stop */
 
 .wrapperform .form .inputfield .btn:hover {
   background: #01830c73;
@@ -285,106 +306,6 @@
   border: none;
   max-width: 70px;
 }
-/*  ************* view previous details button ********** */
-.previousDetails {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-
-  animation: fadeIn 2.5s;
-  -webkit-animation: fadeIn 2.5s;
-  -moz-animation: fadeIn 2.5s;
-  -o-animation: fadeIn 2.5s;
-  -ms-animation: fadeIn 2.5s;
-}
-.previousDetails button {
-  padding: 10px 20px;
-  background-color: dodgerblue;
-  border: 1px solid #ddd;
-  color: white;
-  border-radius: 12px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.previousDetails button:hover {
-  background-color: royalblue;
-}
-
-/* **************** table container ********************** */
-#pricetbl {
-  font-family: "Poppins", sans-serif;
-  display: none;
-  padding: 40px;
-  color: #4f546c;
-  font-size: 0.9rem;
-  background-color: #f9fbff;
-  margin-top: 20px;
-  animation: fadeIn 1.6s;
-  -webkit-animation: fadeIn 1.6s;
-  -moz-animation: fadeIn 1.6;
-  -o-animation: fadeIn 1.6s;
-  -ms-animation: fadeIn 1.6s;
-}
-.teapricetable {
-  border-collapse: collapse;
-  box-shadow: 0 5px 10px #e1e5ee;
-  background-color: white;
-  text-align: left;
-  overflow: hidden;
-  width: 100%;
-}
-.threadcls {
-  box-shadow: 0 5px 10px #e1e5ee;
-}
-
-.thcls {
-  padding: 1rem 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  font-size: 0.7rem;
-  font-weight: 900;
-}
-
-.tdcls {
-  padding: 1rem 2rem;
-}
-
-.acls {
-  text-decoration: none;
-  color: #2962ff;
-}
-
-.status {
-  border-radius: 0.2rem;
-  background-color: red;
-  padding: 0.2rem 1rem;
-  text-align: center;
-}
-.status-pending {
-  background-color: #fff0c2;
-  color: #a68b00;
-}
-
-.status-paid {
-  background-color: #c8e6c9;
-  color: #388e3c;
-}
-
-.status-notupdated {
-  background-color: #ffcdd2;
-  color: #c62828;
-}
-
-.amount {
-  text-align: right;
-}
-
-tr:nth-child(even) {
-  background-color: #f4f6fb;
-}
-
-/* ********** table section over ********** */
 
 /* ********* set price form *********** */
 /* Style the form - display items horizontally */
@@ -437,65 +358,4 @@ tr:nth-child(even) {
   }
 }
 
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
+/* Rounded sliders(toogle switch) */

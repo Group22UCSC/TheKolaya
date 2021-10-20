@@ -9,8 +9,8 @@
 <!--  *** Update tea price box **** -->
 <div class="wrapperform">
   <!-- <div class="title">
-           Emergency Message
-        </div>         -->
+    Emergency Message
+  </div> -->
   <div class="form">
     <?php
     $dateToday = date("Y-m-d");
@@ -41,16 +41,15 @@
 
     <div class="inputfield">
       <label>Request Type</label>
-      <select id="RequestType" name="RequestType">
+      <select class="input" id="RequestType" name="RequestType">
         <option value="Fertilizer">Fertilizer</option>
         <option value="Advance">Advance</option>
       </select>
     </div>
 
     <div class="inputfield">
-      <label class="switch">Update Availability</label>
-      <input type="checkbox">
-      <span class="slider round"></span>
+      <label>Update Availability</label>
+      <input class="input" type="checkbox">
     </div>
 
 
