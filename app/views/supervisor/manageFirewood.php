@@ -37,7 +37,7 @@
               </div>  
               
               <div class="inputfield">
-                <input type="submit" value="Sumbit" class="accept-btn" name="firewood_in" id="instock_submit_btn">
+                <input type="submit" value="Submit" class="accept-btn" name="firewood_in" id="instock_submit_btn">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">
