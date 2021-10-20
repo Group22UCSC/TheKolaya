@@ -14,46 +14,7 @@ function validation(){
   // }
   return false;
 }
-// if(validation()){
-  const openModalButtons = document.querySelectorAll('[data-modal-target]')
-  const closeModalButtons = document.querySelectorAll('[data-close-button]')
-  const overlay = document.getElementById('overlay')
-  
-  openModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(button.dataset.modalTarget)
-      openModal(modal);
-      getDetails();
-      loadModalName2();
-    })
-  })
-  
-  overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
-    modals.forEach(modal => {
-      closeModal(modal)
-    })
-  })
-  
-  closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = button.closest('.modal')
-      closeModal(modal)
-    })
-  })
-  
-  function openModal(modal) {
-    if (modal == null) return
-    modal.classList.add('active')
-    overlay.classList.add('active')
-  }
-  
-  function closeModal(modal) {
-    if (modal == null) return
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
-  }
-  
+
   /// loading the pid for the first form
   
   function loadPid(){
@@ -146,6 +107,7 @@ $(document).ready(function(){
       if(amount <= 0 || price <= 0) {
           return;
       }
+    
       Swal.fire({
       title: 'Confirm Update ',
       text: "Price Per Unit:  "+"Amount: "+"\n"+"Amount",
@@ -160,7 +122,7 @@ $(document).ready(function(){
               
               $.ajax({
                   type: "POST",
-                  url: "<?php echo URL?>productmanager/updateAuction",
+                  url: "http://localhost/Thekolaya/productmanager/updateAuction",
                   cache: false,
                   data: {
                     action:action,
@@ -170,7 +132,7 @@ $(document).ready(function(){
                     bid:bid,
                   },
                   success: function(data) {
-                      console.log(data);
+                      
                       Swal.fire(
                       'Updated!',
                       'Your file has been updated.',
