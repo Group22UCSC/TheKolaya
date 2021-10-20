@@ -30,14 +30,19 @@
         </div>
           <?php
             $x = count($data);
-            for($i = 0; $i < $x; $i++) {
-              echo '<div class="table-row-2 get-id">
-                      <div class="table-element">'.$data[$i]['request_date'].'</div>
-                      <div class="table-element user-id">'.$data[$i]['lid'].'</div>
-                      <div class="table-element">'.$data[$i]['name'].'</div>
-                      <div class="table-element">'.$data[$i]['amount'].'</div>
-                    </div>';
+            if($x > 0) {
+              for($i = 0; $i < $x; $i++) {
+                echo '<div class="table-row-2 get-id">
+                        <div class="table-element">'.$data[$i]['request_date'].'</div>
+                        <div class="table-element user-id">'.$data[$i]['lid'].'</div>
+                        <div class="table-element">'.$data[$i]['name'].'</div>
+                        <div class="table-element">'.$data[$i]['amount'].'</div>
+                      </div>';
+              }
+            }else {
+              echo '<p>No data found</p>';
             }
+            
           ?>
 
       </div>
