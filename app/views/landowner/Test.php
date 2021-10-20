@@ -36,15 +36,14 @@
     </div>
     <div class="inputfield">
       <label>Time</label>
-      <input type="text" class="input" value="<?php echo date("h : i : s a") ?>" readonly>
+      <input type="text" class="input" value="<?php echo date("h : i a") ?>" readonly>
     </div>
 
     <div class="inputfield">
-      <label>Request Type</label>
-      <select class="input" id="RequestType" name="RequestType">
-        <option value="Fertilizer">Fertilizer</option>
-        <option value="Advance">Advance</option>
-      </select>
+      <label>Container count</label>
+      <input type="text" id="priceid" class="input<?php echo ($isPriceSet) ? '-set' : '' ?>" value="<?php echo ($isPriceSet) ? "Tea Price Already Set For {$month}" : ''; ?>" <?php if ($isPriceSet) {
+                                                                                                                                                                                echo "readonly";
+                                                                                                                                                                              } ?>>
     </div>
 
     <div class="inputfield">
@@ -53,12 +52,7 @@
     </div>
 
 
-    <div class="inputfield">
-      <label>Quantity</label>
-      <input type="text" id="priceid" class="input<?php echo ($isPriceSet) ? '-set' : '' ?>" value="<?php echo ($isPriceSet) ? "Tea Price Already Set For {$month}" : ''; ?>" <?php if ($isPriceSet) {
-                                                                                                                                                                                echo "readonly";
-                                                                                                                                                                              } ?>>
-    </div>
+
     <div class="inputfield">
       <input type="button" value="Confirm Requests" data-modal-target="#modal" class="btn" name="price" <?php if ($isPriceSet) {
                                                                                                           echo "disabled";
@@ -93,14 +87,18 @@
         <label>Quantity : </label>
         <input type="text" id="priceInput" class="model-input" name="qty" readonly>
       </div>
+
       <div class="buttonSection">
         <a class="editbtn" data-close-button>Edit</a>
-
         <input type="submit" value="Submit" class="confirmbtn" name="teaPriceConfirm">
-
-
-
       </div>
+
+      <div class="inputfield">
+        <label>Update Availability</label>
+        <input class="input" type="checkbox">
+      </div>
+
+
     </div>
   </div>
   <div id="overlay"></div>

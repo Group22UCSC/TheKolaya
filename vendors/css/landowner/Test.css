@@ -21,7 +21,7 @@
   border-radius: 50px;
   color: white;
 }
-/*  ***************   set tea price form ******** */
+/*  ***************   update tea availability form ******** */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
@@ -107,7 +107,8 @@
 
 .wrapperform .form .inputfield .input,
 .wrapperform .form .inputfield .textarea,
-.wrapperform .form .inputfield select {
+.wrapperform .form .inputfield select,
+.wrapperform .form .inputfield select option {
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
