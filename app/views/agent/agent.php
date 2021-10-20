@@ -239,8 +239,8 @@ function closeformpopup(){
   
 }
 
-function clearWeight(){   
-    document.getElementById("weight").value=" ";
-  }
+// function clearWeight(){   
+//     document.getElementById("weight").value=" ";
+//   }
 
 </script>
