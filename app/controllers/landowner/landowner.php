@@ -25,7 +25,13 @@ class landowner extends Controller
 
     function Update_Tea_Availability()
     {
-        $this->view->showPage('landowner/Update_Tea_Availability');
+        if (!empty($_POST)) {
+
+            $result = $this->model->insertRequest();
+            print_r($result);
+        } else {
+            $this->view->render('landowner/Test');
+        }
     }
 
     function Monthly_Income()

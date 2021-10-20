@@ -81,7 +81,7 @@
             },
             title: {
               display: true,
-              text: ""
+              text: "Monthly Profit(Rs)"
             }
           }
         });
