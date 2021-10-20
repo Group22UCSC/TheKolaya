@@ -78,6 +78,7 @@ function validation(){
 
 // *******  JQuery *******
 
+//  form submit - INSERT
 $(document).ready(function(){
   $('#updateBtn').click(function(event){
       event.preventDefault();
@@ -86,6 +87,8 @@ $(document).ready(function(){
       // form.push({name:'type', value: 'firewood'});
 
       $('.error').remove();
+      var productName=$('#productName option:selected').text();
+      var buyer=$('#buyer option:selected').text();
       var amount = $('#amount').val();
       var pid = $('#pid').val();
       var price = $('#price').val();
@@ -107,11 +110,17 @@ $(document).ready(function(){
       if(amount <= 0 || price <= 0) {
           return;
       }
-    
+      var str="Product Name:  " +productName+ "\n" +
+              "Amount :   " +amount+ "\n" +
+              "Price:  " +price+ "\n" +
+              "Buyer:  " +buyer+ "\n" +
+              "\n";
       Swal.fire({
       title: 'Confirm Update ',
-      text: "Price Per Unit:  "+"Amount: "+"\n"+"Amount",
       icon: 'warning',
+    //   html:'<div>Line0<br />Line1<br /></div>',
+    html: '<pre>' + str + '</pre>',
+      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
       confirmButtonColor: '#4DD101',
       cancelButtonColor: '#FF2400',
       confirmButtonText: 'Confirm!',
@@ -123,7 +132,7 @@ $(document).ready(function(){
               $.ajax({
                   type: "POST",
                   url: "http://localhost/Thekolaya/productmanager/updateAuction",
-                  cache: false,
+                  
                   data: {
                     action:action,
                     amount:amount,
@@ -138,6 +147,8 @@ $(document).ready(function(){
                       'Your file has been updated.',
                       'success'
                       )
+                      clearTable();
+                      getTable();
                   },
                   error : function (xhr, ajaxOptions, thrownError) {
                       Swal.fire({
@@ -152,5 +163,66 @@ $(document).ready(function(){
       })
   })
 })
+
+
+// * get auction table - SELECT
+<?php $dateToday=date("Y-m-d"); ?>
+function getTable(){
+    var url="http://localhost/Thekolaya/productmanager/getAuctionTable";
+    $.ajax({
+        url:url,
+        type:"GET",
+        dataType:"JSON",
+        success:function(data){
+            console.log(data);
+            var len=data.length;
+           //    $('#updateAuctionTable not(tbody)').empty();
+        //$("#updateAuctionTable").trigger("reset");
+       // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
+            for(var i=0;i<len;i++){
+               var date=data[i].date;
+                var str=
+                "<tr class='row'>"+
+                "<td>"+
+                    data[i].date+
+                "</td>"+
+                "<td>"+
+                    data[i].product_id+
+                "</td>"+
+                "<td>"+
+                    data[i].product_name+
+                "</td>"+
+                "<td>"+
+                    data[i].sold_amount+
+                "</td>"+
+                "<td>"+
+                    data[i].sold_price+
+                "</td>"+
+                "<td>"+
+                    data[i].name+
+                "</td>"+
+                "<td>"+
+                    data[i].sold_amount*data[i].sold_price+
+                "</td>"+
+                
+                "<td>"+
+                    // (date==date)? "Hi":"Bye";
+                "</td>"+
+                "</tr>";
+                $("#updateAuctionTable tbody").append(str);
+                // there in the table DO NOT DEFINE <tbody> MANULLY
+                //IF SO IT WILL SHOW THE RESULTS TWICE
+            }
+            
+        }
+    })
+
+}
+// last row of auction table
+
+function clearTable(){
+    // $("#updateAuctionTable tr").remove();
+    $('.row ').remove(); // removing the previus rows in the ui
+}
 
 </script>

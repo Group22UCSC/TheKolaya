@@ -22,7 +22,11 @@
         }
 
          public function updateAccount() {
-            $this->view->showPage('Admin/updateAccount');
+              // $this->view->showPage('Manager/viewAccount');
+               $result = $this->model->availablelistTable();
+               // print_r($result);
+                $this->view->render('Admin/updateAccount',$result);
+            
         }
 
         //update form

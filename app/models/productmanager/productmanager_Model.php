@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 class productmanager_Model extends Model {
 
     function __construct()
@@ -66,14 +68,19 @@ class productmanager_Model extends Model {
                 INNER JOIN product 
                 ON auction.product_id=product.product_id 
                 INNER JOIN buyer 
-                ON auction.buyer_id=buyer.buyer_id";
-        $row = $this->db->runQuery($query);
-        if($row) {
+                ON auction.buyer_id=buyer.buyer_id ORDER BY auction.date";
+        $row = $this->db->selectQuery($query);
+        //echo gettype($row);
+        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
+        if($row){
             return $row;
         }else {
             return false;
         }
     }
+
+
+
 
     function getProductDetails(){
         $query = "SELECT product_id,product_name,amount FROM product";
@@ -85,6 +92,7 @@ class productmanager_Model extends Model {
         }
     }
     function insertAution(){
+            date_default_timezone_set('Asia/Colombo');
             $date=date("Y-m-d h:i:s a");
             $pid=$_POST['pid'];
             $amount=$_POST['amount'];
