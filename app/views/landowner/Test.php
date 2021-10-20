@@ -1,7 +1,7 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Test.css">
-<script defer src="<?php echo URL ?>vendors/js/Landowner/Test.js""></script>
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Update_Tea_Availability.css">
+<script defer src="<?php echo URL ?>vendors/js/Landowner/Update_Tea_Availability.js""></script>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="top-container">
   <p>Update Tea Availability</p>

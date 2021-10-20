@@ -55,7 +55,7 @@
 
                 if(empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    $this->model->userRegistration11($data);
+                    $this->model->userRegistration($data);
                     $this->view->render('admin/updateAccount1', $data);
                 }else {
                     $this->view->render('admin/updateAccount1', $data);

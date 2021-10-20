@@ -7,7 +7,12 @@ class Supervisor extends Controller{
     }
 
     function index() {
-        $this->view->showPage('Supervisor/Supervisor');
+        if($this->model->getStock()) {
+            $stock = $this->model->getStock();
+            $this->view->render('Supervisor/Supervisor', $stock);
+        }else {
+            $this->view->render('Supervisor/Supervisor');
+        }
     }
 
     function updateTeaMeasure() {
@@ -182,5 +187,3 @@ class Supervisor extends Controller{
     }
 
 }
-
-?>
