@@ -70,4 +70,24 @@ class landowner_Model extends Model
             return false;
         }
     }
+
+
+    //test
+    function Test()
+    {
+        $date = date("Y-m-d");
+        $requests_type = $_POST['rtype'];
+        // HAS TO CHANGE THIS
+        // $lid = 'LAN-000';
+        // $qty = $_POST['qty'];
+        // $query = "INSERT INTO request (requests_date,response_status,requests_type,lid) VALUES ('{$date}','0','{$requests_type}',{$lid})";
+
+        // $row = $this->db->insertQuery($query);
+        // print_r($row);
+        // if ($row) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+    }
 }

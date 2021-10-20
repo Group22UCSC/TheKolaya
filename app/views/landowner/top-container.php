@@ -74,6 +74,13 @@
         </a>
         <span class="tooltip">Make Requests</span>
       </li>
+      <li>
+        <a href="<?php echo URL ?>landowner/test">
+          <i class="fas fa-vial fa-2x"></i>
+          <span class="links_name">Test</span>
+        </a>
+        <span class="tooltip">Test</span>
+      </li>
 
       <li>
         <a href="<?php echo URL ?>login/logout">
