@@ -41,12 +41,12 @@ class ProductManager extends Controller{
                 
             $result = $this->model->insertAution();
             if($result==true){
-                $buyers=$this->model->getBuyersDetails();
-            $tblResult = $this->model->auction();
-            $productResults = $this->model->getProductDetails();
+            //     $buyers=$this->model->getBuyersDetails();
+            // $tblResult = $this->model->auction();
+            // $productResults = $this->model->getProductDetails();
             
            // print_r($result);
-            $this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
+            //$this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
             }
             else{
                 // un successfull pop up 
@@ -64,6 +64,27 @@ class ProductManager extends Controller{
         }
             
     }
+    function getAuctionTable(){
+        $tblResult = $this->model->auction();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    }
+
+    // get the data of the last row of suction(Latest updated row)
+    function getLastRowAuction(){
+        echo "getLastRowAuction";
+        $tblResult = $this->model->getLastRowAuction();
+        print_r($tblResult);
+        // -- $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        // -- echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    }
+
+    
     
     
 }
