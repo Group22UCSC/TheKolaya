@@ -6,6 +6,16 @@ class Supervisor_Model extends Model {
     {
         parent::__construct();
     }
+
+    function getStock() {
+        $query = "SELECT * FROM stock";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
     
     function editProfile() {
         $contact_number = $_SESSION['contact_number'];

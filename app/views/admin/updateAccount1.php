@@ -68,7 +68,7 @@
       
       <div class="last">
             <div class="a">
-       <a href="<?php echo URL?>admin/updateAccount"><input type="submit" value="Discard" class="btn"></a>
+       <a href="<?php echo URL?>admin/updateAccount1"><input type="submit" value="Discard" class="btn"></a>
       </div>
 
 

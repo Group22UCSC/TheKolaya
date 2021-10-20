@@ -168,8 +168,10 @@ justify-self: center ;
       flex-direction: row;
     }
   }
-
- 
+  .error {
+    color: red;
+    font-size: 14px;
+}
 /*  **** set button pop up ******** */
 
 *, *::after, *::before {
@@ -183,7 +185,7 @@ justify-self: center ;
   
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 3px solid rgb(182, 15, 15);
+  border: 3px solid rgb(8, 212, 134);
   border-radius: 10px;
   z-index: 10;
   background-color: white;
@@ -227,7 +229,7 @@ justify-self: center ;
   border: none;
   color: #f88a0d;
   font-size: 16px;
-  max-width: 200px;
+  max-width: 600px;
 }
 .modalInput:focus{
   
