@@ -3,7 +3,15 @@
 <div class="top-container">
     <p>Auction Details</p>
 </div>
+<!--  Search bar -->
 
+<div class="searchbar">
+    <form class="search-form" action="#">
+        <label for="lname">Date : </label>
+        <input type="date" id="searchDate"  name="searchDate">
+        <button type="submit">Search</button>
+    </form>
+</div>
 <!--  Table COntent -->
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/auctionDetails.css">
