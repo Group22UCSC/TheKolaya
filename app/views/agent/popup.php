@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/popup.css"> 
 <script src= "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -18,7 +19,7 @@
             </div>  
             <div class="mid-content">
                 <label>Initial Tea Weight</label>
-                <input type="text" class="inputpop" name="weight-popup" id="weight-pop" size="4"readonly>
+                <input type="text" class="inputpop" name="weight-popup" id="weight-pop" size="4" readonly required>
             </div>   
     </div>
     <div class="modal-footer">         

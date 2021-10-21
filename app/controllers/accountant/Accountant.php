@@ -52,7 +52,9 @@ class Accountant extends Controller{
     function landowners() {
         $this->view->showPage('accountant/landowners');
     }
-    
+    function pdf() {
+        $this->view->showPage('accountant/pdf');
+    }
     function landownersGraphpage() {
         $this->view->showPage('accountant/landownersGraphpage');
     }

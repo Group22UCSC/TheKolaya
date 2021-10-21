@@ -7,6 +7,9 @@
     <p>Update Products</p>
 </div>
 <!--  *** Update tea price box **** -->
+<div class="wrapperdiv">
+
+
 <div class="wrapperform">
     <!-- <div class="title">
            Emergency Message
@@ -38,6 +41,7 @@
             <input type="submit" value="Update" data-modal-target="#modal" class="btn">
         </div>
     </div>
+</div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
