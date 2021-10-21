@@ -14,7 +14,7 @@
     </form>
 </div> -->
 <div class="formSection">
-<form>
+<form action="<?php echo URL ?>/accountant/pdf" method="POST">
 		<!-- <h2>CSS Form</h2> -->
 		<div class="large-group">
 			<div class="small-group">
