@@ -50,7 +50,7 @@ class Agent_Model extends Model{
         if($row) {
             return $row;
         }else {
-            return false;
+            return 0;
         }
     }
 

@@ -41,7 +41,7 @@ class App {
 
     private function _loadController() {
         $file = null;
-        if($this->_url[0] == 'login' || $this->_url[0] == 'registration' || $this->_url[0] == 'OtpVerify') {
+        if($this->_url[0] == 'login' || $this->_url[0] == 'registration' || $this->_url[0] == 'OtpVerify' || $this->_url[0] == 'user') {
             $file = '../app/controllers/'. $this->_url[0] . '.php';
         }else if(isset($_SESSION['user_type'])){
             $file = '../app/controllers/'. $_SESSION['user_type'].'/'. $this->_url[0] . '.php';
@@ -54,7 +54,7 @@ class App {
         if(file_exists($file)) {
             require $file;
             $this->_controller = new $this->_url[0];
-            if($this->_url[0] == 'login' || $this->_url[0] == 'registration' || $this->_url[0] == 'OtpVerify') {
+            if($this->_url[0] == 'login' || $this->_url[0] == 'registration' || $this->_url[0] == 'OtpVerify' || $this->_url[0] == 'user') {
                 $this->_controller->loadModelUser($this->_url[0]);
             }else if(!empty($_SESSION['user_type'])) {
                 $this->_controller->loadModel($_SESSION['user_type'],$this->_url[0]);
