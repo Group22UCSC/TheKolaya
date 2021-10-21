@@ -1,4 +1,5 @@
 .deliverylist  {
+    display: block;
     position: relative;
     padding: 5px;
     margin-right: 20px;
@@ -10,8 +11,8 @@
     opacity: 0;
     flex-direction: row;
     z-index:-1;
-   overflow-x: auto;
-   overflow-y: auto;
+   /* overflow-x: auto;
+   overflow-y: auto; */
     
   }
 
@@ -22,7 +23,17 @@
       color: rgba(1, 131, 12,1);
   }
 
- 
+ .fertilizer_topic, .advance_topic{
+  background-color: rgba(1, 131, 12,1);
+  color:white;  
+  border-radius: 25px; 
+  text-align: center;         
+  padding:20px;
+  text-shadow: 2px 2px #888;
+  margin-left: 500px;
+  margin-right: 500px;
+
+ }
 
   table {
     border-collapse: collapse;
@@ -32,7 +43,8 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;  
+    /* height: 400px;   */
     
   }
  td {

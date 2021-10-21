@@ -39,8 +39,7 @@
   .notice {
     display: flex;
     flex-direction: row;
-    margin-left:10px;
-    margin-right:10px;
+    margin-left: auto;    
     margin-top: 50px;
     margin-bottom: 50px;
     flex:100%;        
@@ -66,7 +65,7 @@
     animation-fill-mode: forwards;
     transform: translateX(-100px);
     opacity: 0;
-    margin-left: 200px;
+    margin-left:auto
 
   }
 
@@ -75,15 +74,15 @@
     animation-fill-mode: forwards;
     transform: translateX(100px);
     opacity: 0;
-    margin-left: 200px;
+    margin-right: auto;
   }
 
-  .avanot, .delnot:hover{
+  /* .avanot, .delnot:hover{
     transform: scale(1.1);
     transition: 0.4s;    
     cursor: pointer;
   }
-  
+   */
 
   .maindiv{   
   position:relative;
@@ -280,7 +279,7 @@ h3{
   }
 
   .topic{
-    height: 100px;
+    height: 50px;
   }
 }
 
