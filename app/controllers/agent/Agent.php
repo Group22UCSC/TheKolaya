@@ -6,24 +6,16 @@ class Agent extends Controller{
         parent::__construct();
     }
 
-    function index() {
+    function index() {    
+        $this->view->showPage('Agent/zero_dashboard');
 
-      
-       $result = $this->model->availablelistTable();
-    //    print_r($result);
-       $this->view->render('Agent/Agent',$result);
     }
 
-    // function availableLandownerList(){
-    //     $this->view->showPage('Agent/AvailableList');
-    // }
-        // public $weight_data = [
-        //      'date' => '',
-        //     'lid' => '',
-        //     'initial_weight' => '',
-        //     'emp_id_agent' => ''
-        // ];
-
+    function availableLandownerList(){
+          $result = $this->model->availablelistTable();
+    // //    print_r($result);
+       $this->view->render('Agent/availableList',$result);
+    }      
 
     function updateTeaWeight(){  
         $weight_data = [
@@ -43,7 +35,7 @@ class Agent extends Controller{
             $this->model->updateWeight($this->weight_data);
             $result = $this->model->availablelistTable();
             //    print_r($result);
-               $this->view->render('Agent/Agent',$result);
+               $this->view->render('Agent/availableList',$result);
                //also add the set the tea availability of landowner to 0
         }
        

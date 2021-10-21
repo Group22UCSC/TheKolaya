@@ -65,7 +65,8 @@
     animation-fill-mode: forwards;
     transform: translateX(-100px);
     opacity: 0;
-    margin-left:auto
+    margin-left:auto;
+    margin-right: 50px;
 
   }
 
@@ -75,6 +76,7 @@
     transform: translateX(100px);
     opacity: 0;
     margin-right: auto;
+    margin-left: 50px;
   }
 
   /* .avanot, .delnot:hover{
