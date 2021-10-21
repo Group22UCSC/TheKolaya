@@ -1,0 +1,155 @@
+
+.topic{      
+        height: 70px;     
+        text-align: center;      
+        font-size: 40px;      
+        background-color: rgb(211, 243, 190);
+        color: rgba(1, 131, 12,1);
+      }
+      
+.main-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-box {
+    
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+    border:none;    
+    margin: 150px 100px;
+  }
+  
+  .flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-box:hover .flip-box-inner {
+    transform: rotateY(180deg);    
+  }
+  
+  .flip-box-front, .flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-box-front {
+    background-color: rgba(1, 131, 12,1);       
+    font-size: 25px;
+    color:white;  
+    border-radius: 25px; 
+    text-align: center;         
+    padding:20px;
+    text-shadow: 2px 2px #888;
+    cursor: pointer;
+  }
+  
+  .flip-box-back {
+    background-color: white;
+    color: rgba(1, 131, 12,1);
+    font-size: 25px;
+    border-radius: 25px; 
+    text-align: center;         
+    padding:25px;    
+    cursor: pointer;
+    transform: rotateY(180deg);
+  }
+
+  button{
+    border: none;
+    background-color: rgba(1, 131, 12,1);
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;   
+    border-radius: 12px;
+    transition-duration: 0.4s;
+  }
+
+  button:hover{
+      cursor: pointer;
+      background-color: #cdfed1;
+      color: #01830c;
+  }
+
+  #deliveryflipfront{    
+    animation: deltrans 500ms ease-in;
+    animation-fill-mode: forwards;
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  #availableflipfront{
+    animation: avatrans 500ms ease-in;
+    animation-fill-mode: forwards;
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  
+
+@keyframes avatrans {
+    0%{
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+  
+    100%{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes deltrans {
+    0%{
+      transform: translateX(100px);
+      opacity: 0;
+    }
+  
+    100%{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  @media(max-width:400px){
+    .main-content{
+      flex-direction: column;
+    }
+  
+    .flip-box{
+    width: 150px;
+    height: 150px;
+    border:none;    
+    margin: 40px auto;
+    }
+    .topic{
+      height:50px;
+      font-size: 25px;
+    }
+
+    .flip-box-front {
+        font-size: 20px;
+        padding:20px;
+    }
+
+    .flip-box-back {
+        font-size: 15px;
+    }
+
+    
+  }
+  

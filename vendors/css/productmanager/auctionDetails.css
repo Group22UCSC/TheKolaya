@@ -30,6 +30,37 @@
    color: white;
     
 }
+/* ************************************* search bar ***********************  */
+.search-form{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+ 
+}
+.search-form label{
+  margin: 5px 10px 5px 5px;
+}
+.search-form input{
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  /* border: 1px solid #ddd; */
+  border: none;
+  border-radius: 12px;
+}
+
+.search-form button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+}
+
+.search-form button:hover {
+  background-color: royalblue;
+}
+
 
 /*  ************  Table Section **************** */
 
