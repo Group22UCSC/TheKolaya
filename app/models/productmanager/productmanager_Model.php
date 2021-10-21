@@ -68,7 +68,7 @@ class productmanager_Model extends Model {
                 INNER JOIN product 
                 ON auction.product_id=product.product_id 
                 INNER JOIN buyer 
-                ON auction.buyer_id=buyer.buyer_id ORDER BY auction.date";
+                ON auction.buyer_id=buyer.buyer_id ORDER BY auction.date DESC";
         $row = $this->db->selectQuery($query);
         //echo gettype($row);
         //$var1 = json_encode($row, JSON_FORCE_OBJECT);

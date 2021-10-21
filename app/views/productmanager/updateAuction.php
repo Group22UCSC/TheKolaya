@@ -6,6 +6,9 @@
 <div class="top-container" >
     <p>Update Auction Details</p>
 </div>
+
+
+
 <!--  *** Update tea price box **** -->
 <div class="wrapperdiv">
 <div class="wrapperform">
@@ -73,6 +76,11 @@
         </form>
     </div>
 </div>
+</div>
+
+
+<div class="tableTopic" >
+    <p>Latest Auction Updates</p>
 </div>
 
 

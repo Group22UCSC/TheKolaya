@@ -17,6 +17,8 @@
 </div> -->
 
 <!-- ************* product item cards  -->
+<div class="outerContainer">
+
 
 <div class="container">
     <div class="card">
@@ -154,7 +156,7 @@
 
 </div>
 
-
+</div>
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
     <div class="table-section">
