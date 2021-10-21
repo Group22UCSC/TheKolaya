@@ -51,8 +51,10 @@ justify-self: center ;
       -o-animation: fadeIn 2s;
       -ms-animation: fadeIn 2s; */
 }
-.wrapperform {
-  
+.wrapperdiv{
+  background-image: url("../../images/productmanager/5.jpg");
+  padding: 40px;
+  background-size:100% 100%;
 }
 @keyframes fadeIn {
   0% {opacity:0;}
@@ -98,7 +100,7 @@ justify-self: center ;
 
 .wrapperform .form .inputfield label{
    width: 200px;
-   color: rgb(249, 255, 252);
+   color: rgb(0, 0, 0);
    margin-right: 10px;
   font-size: 14px;
 }

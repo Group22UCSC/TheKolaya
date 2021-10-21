@@ -76,6 +76,11 @@
 </div>
 
 
+<div class="tableTopic" >
+    <p>Latest Auction Updates</p>
+</div>
+
+
 <!-- **************   Table container   *********-->
 <div class="table-container">
     <div class="table-section">

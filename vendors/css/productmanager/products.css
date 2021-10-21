@@ -51,14 +51,22 @@
 
 
 /* ************* product item cards  ********* */
+.outerContainer {
+  background-image: url("../../images/productmanager/9.jpg");
+  background-size: 100%;
+  
+  /* z-index: 1; */
+}
 
 .container {
   display: flex;
   position: relative;
   padding:20px;
   padding-left: 40px;
+  z-index: 999;
   /* background-color: #3ab362; */
   /* background-image: url("../../images/productmanager/tea_plant.jpg"); */
+ 
 }
 .imgBx img{
  
