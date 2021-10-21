@@ -24,7 +24,7 @@ class Registration_Model extends Model {
         }
         
         if($user_type && $verify != 0) {
-            $query = "UPDATE user SET user_id='$user_id', name='$name', address='$address', verify='$verify', password='$password' WHERE contact_number='$contact_number'";
+            $query = "UPDATE user SET  name='$name', address='$address', verify='$verify', password='$password' WHERE contact_number='$contact_number'";
             switch($user_type) {
                 case 'accountant' :
                     $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
