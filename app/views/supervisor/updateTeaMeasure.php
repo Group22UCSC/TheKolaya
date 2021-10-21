@@ -4,14 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo TITLE ?></title>
-  <link rel="icon" href="<?php echo URL ?>vendors/images/thekolaya2.png" type="image/x-icon">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/updateTeaMeasure-style.css">
+  <?php include 'styles-titleIcon-included.php'?>
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table2-style.css">
-  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/updateTeaMeasure-style.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -75,24 +70,26 @@
     </div>
 
     <div class="table-container">
-      <div class="table_header"><?php echo date("Y/m/d"); ?> - Updated Tea-Weight</div>
-      <div class="table">
-        <div class="row tabel-header">
-          <div class="cell">Landowner ID</div>
-          <div class="cell">Reductions(kg)</div>
-          <div class="cell">Net-Weight(kg)</div>
-          <div class="cell">Tea Quality</div>
-        </div>
-        <?php
-        for ($i = 0; $i < 2; $i++) {
-          echo '<div class="row">
+      <div class="table-wrapper">
+        <div class="table_header"><?php echo date("Y/m/d"); ?> - Updated Tea-Weight</div>
+        <div class="table">
+          <div class="row tabel-header">
+            <div class="cell">Landowner ID</div>
+            <div class="cell">Reductions(kg)</div>
+            <div class="cell">Net-Weight(kg)</div>
+            <div class="cell">Tea Quality</div>
+          </div>
+          <?php
+          for ($i = 0; $i < 2; $i++) {
+            echo '<div class="row">
                     <div class="cell" data-title="Landowener_id">LAN-00' . $i . '</div>
-                    <div class="cell" data-title="Tea_weight">' . $i+3 . '</div>
+                    <div class="cell" data-title="Tea_weight">' . $i + 3 . '</div>
                     <div class="cell" data-title="Agent_id">5' . $i . '</div>
                     <div class="cell" data-title="Agent_id">Good</div>
                   </div>';
-        }
-        ?>
+          }
+          ?>
+        </div>
       </div>
     </div>
   </div>
