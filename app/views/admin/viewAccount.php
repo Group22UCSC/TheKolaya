@@ -29,7 +29,7 @@
                                <?php
                                $x=count($data);
                                for($i=0;$i<$x;$i++){
-                                 echo '<tr id="tea" data-href-tea=<a href="<?php echo URL?>admin/agent_land_account">
+                                 echo '<tr id="tea" data-href="https://www.facebook.com/">
                                            <td>'.$data[$i]['name'].'</td>
                                            <td>'.$data[$i]['user_id'].'</td>
                                            <td>'.$data[$i]['user_type'].'</td>
@@ -75,10 +75,17 @@
                                  <!-- script for view table -->
                                  <script>
                                    document.addEventListener("DOMContentLoaded",() => {
-                                     const rows = document.querySelectorAll("tr[data-href-tea]");
-                                     rows.forEach(row =>{
-                                         row.addEventListener("click", ()=>{
-                                          openteaform();
+                                 const rows = document.querySelectorAll("tr[data-href]");
+                                 rows.forEach(row =>{
+                                     row.addEventListener("click", ()=>{
+                                      // openteaform();
+                         window.location.href=row.dataset.href;
+
+                                     });
+                                 });
+                             });
+
+                                        
                                  
                                  </script>
 
