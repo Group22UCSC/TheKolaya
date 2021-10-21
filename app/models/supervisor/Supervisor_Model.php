@@ -6,6 +6,16 @@ class Supervisor_Model extends Model {
     {
         parent::__construct();
     }
+
+    function getStock() {
+        $query = "SELECT * FROM stock";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
     
     function editProfile() {
         $contact_number = $_SESSION['contact_number'];
@@ -43,7 +53,7 @@ class Supervisor_Model extends Model {
     }
 
     function manageRequests() {
-        $query = "SELECT request.request_id, request.lid, request.request_date, user.name, fertilizer_request.amount 
+        $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
                 FROM user 
                 INNER JOIN request 
                 ON user.user_id=request.lid 
@@ -88,12 +98,20 @@ class Supervisor_Model extends Model {
             $price_for_amount = $price_per_unit * $amount;
 
             $full_stock += $amount;
-            $query = "UPDATE stock SET type='$type', full_stock='$full_stock', emp_id='$emp_id'";
+            $query = "UPDATE stock SET full_stock='$full_stock', emp_id='$emp_id' WHERE type='$type'";
             $this->db->runQuery($query);
             $query = "INSERT INTO in_stock(type, price_per_unit, price_for_amount, in_quantity, emp_id) 
                     VALUES('$type', '$price_per_unit', '$price_for_amount' , '$amount', '$emp_id')";
             $this->db->runQuery($query);
         }else if($data['stock_type'] == 'out_stock') {
+            if($full_stock < $amount) {
+                $full_stock -= $full_stock;
+            }else {
+                $full_stock -= $amount;
+            }
+            $query = "UPDATE stock SET full_stock='$full_stock', emp_id='$emp_id' WHERE type='$type'";
+            $this->db->runQuery($query);
+
             $query = "INSERT INTO out_stock(type, out_quantity, emp_id) VALUES('$type', '$amount', '$emp_id')";
             $this->db->runQuery($query);
         }

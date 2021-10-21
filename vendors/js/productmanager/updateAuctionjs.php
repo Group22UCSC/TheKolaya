@@ -1,3 +1,4 @@
+<script>
 function validation(){
   // var errArray=[];
   // errArray['name']="Melka";
@@ -13,46 +14,7 @@ function validation(){
   // }
   return false;
 }
-// if(validation()){
-  const openModalButtons = document.querySelectorAll('[data-modal-target]')
-  const closeModalButtons = document.querySelectorAll('[data-close-button]')
-  const overlay = document.getElementById('overlay')
-  
-  openModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(button.dataset.modalTarget)
-      openModal(modal);
-      getDetails();
-      loadModalName2();
-    })
-  })
-  
-  overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
-    modals.forEach(modal => {
-      closeModal(modal)
-    })
-  })
-  
-  closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = button.closest('.modal')
-      closeModal(modal)
-    })
-  })
-  
-  function openModal(modal) {
-    if (modal == null) return
-    modal.classList.add('active')
-    overlay.classList.add('active')
-  }
-  
-  function closeModal(modal) {
-    if (modal == null) return
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
-  }
-  
+
   /// loading the pid for the first form
   
   function loadPid(){
@@ -114,8 +76,9 @@ function validation(){
   }
 // }
 
-// JQuery
+// *******  JQuery *******
 
+//  form submit - INSERT
 $(document).ready(function(){
   $('#updateBtn').click(function(event){
       event.preventDefault();
@@ -124,12 +87,14 @@ $(document).ready(function(){
       // form.push({name:'type', value: 'firewood'});
 
       $('.error').remove();
+      var productName=$('#productName option:selected').text();
+      var buyer=$('#buyer option:selected').text();
       var amount = $('#amount').val();
       var pid = $('#pid').val();
       var price = $('#price').val();
       var bid = $('#buyer').val();
       //console.log(amount+pid+price+bid);
-
+      var action='save';
       if(amount < 0) {
           // $('#amount').parent().after("<p class=\"error\">Amount cannot be negative</p>");
           $('#amount').parent().after("<p class=\"error\">*Amount cannot be negative</p>");
@@ -145,10 +110,17 @@ $(document).ready(function(){
       if(amount <= 0 || price <= 0) {
           return;
       }
+      var str="Product Name:  " +productName+ "\n" +
+              "Amount :   " +amount+ "\n" +
+              "Price:  " +price+ "\n" +
+              "Buyer:  " +buyer+ "\n" +
+              "\n";
       Swal.fire({
       title: 'Confirm Update ',
-      text: "Price Per Unit:  "+"Amount: "+"\n"+"Amount",
       icon: 'warning',
+    //   html:'<div>Line0<br />Line1<br /></div>',
+    html: '<pre>' + str + '</pre>',
+      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
       confirmButtonColor: '#4DD101',
       cancelButtonColor: '#FF2400',
       confirmButtonText: 'Confirm!',
@@ -156,22 +128,27 @@ $(document).ready(function(){
       }).then((result) => {
           if (result.isConfirmed) {
               $("#auctionForm").trigger("reset");
+              
               $.ajax({
                   type: "POST",
-                  url: "<?php echo URL?>productmanager/updateAuction",
-                  cache: false,
+                  url: "http://localhost/Thekolaya/productmanager/updateAuction",
+                  
                   data: {
+                    action:action,
                     amount:amount,
                     pid:pid,
                     price:price,
                     bid:bid,
                   },
                   success: function(data) {
+                      
                       Swal.fire(
                       'Updated!',
                       'Your file has been updated.',
                       'success'
                       )
+                      clearTable();
+                      getTable();
                   },
                   error : function (xhr, ajaxOptions, thrownError) {
                       Swal.fire({
@@ -186,3 +163,66 @@ $(document).ready(function(){
       })
   })
 })
+
+
+// * get auction table - SELECT
+<?php $dateToday=date("Y-m-d"); ?>
+function getTable(){
+    var url="http://localhost/Thekolaya/productmanager/getAuctionTable";
+    $.ajax({
+        url:url,
+        type:"GET",
+        dataType:"JSON",
+        success:function(data){
+            console.log(data);
+            var len=data.length;
+           //    $('#updateAuctionTable not(tbody)').empty();
+        //$("#updateAuctionTable").trigger("reset");
+       // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
+            for(var i=0;i<len;i++){
+               var date=data[i].date;
+                var str=
+                "<tr class='row'>"+
+                "<td>"+
+                    data[i].date+
+                "</td>"+
+                "<td>"+
+                    data[i].product_id+
+                "</td>"+
+                "<td>"+
+                    data[i].product_name+
+                "</td>"+
+                "<td>"+
+                    data[i].sold_amount+
+                "</td>"+
+                "<td>"+
+                    data[i].sold_price+
+                "</td>"+
+                "<td>"+
+                    data[i].name+
+                "</td>"+
+                "<td>"+
+                    data[i].sold_amount*data[i].sold_price+
+                "</td>"+
+                
+                "<td>"+
+                    // (date==date)? "Hi":"Bye";
+                "</td>"+
+                "</tr>";
+                $("#updateAuctionTable tbody").append(str);
+                // there in the table DO NOT DEFINE <tbody> MANULLY
+                //IF SO IT WILL SHOW THE RESULTS TWICE
+            }
+            
+        }
+    })
+
+}
+// last row of auction table
+
+function clearTable(){
+    // $("#updateAuctionTable tr").remove();
+    $('.row ').remove(); // removing the previus rows in the ui
+}
+
+</script>

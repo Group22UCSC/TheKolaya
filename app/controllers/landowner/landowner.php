@@ -18,24 +18,20 @@ class landowner extends Controller
 
             $result = $this->model->insertRequest();
             print_r($result);
-            // if ($result == true) {
-            //     // if there is a result which mean query is executed - > success pop up
-            //     echo "successfuly added";
-            // } else {
-            //     // un successfull pop up 
-            //     // first check using a alert ()
-            //     echo "failed to add";
-            // }
         } else {
-            //$result = $this->model->teaPriceTable();
-            // $this->view->render('landowner/Make_Requests', $result);
             $this->view->render('landowner/Make_Requests');
         }
     }
 
     function Update_Tea_Availability()
     {
-        $this->view->showPage('landowner/Update_Tea_Availability');
+        if (!empty($_POST)) {
+
+            $result = $this->model->insertRequest();
+            print_r($result);
+        } else {
+            $this->view->render('landowner/Test');
+        }
     }
 
     function Monthly_Income()
@@ -61,5 +57,19 @@ class landowner extends Controller
     public function editProfile()
     {
         $this->view->showPage('landowner/editProfile');
+    }
+
+
+
+    //test
+    public function Test()
+    {
+        if (!empty($_POST)) {
+
+            $result = $this->model->insertRequest();
+            print_r($result);
+        } else {
+            $this->view->render('landowner/Test');
+        }
     }
 }
