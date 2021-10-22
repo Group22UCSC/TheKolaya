@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo TITLE ?></title>
-  <?php include 'styles-titleIcon-included.php'?>
+  <?php include 'styles-titleIcon-included.php' ?>
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/supervisor-style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -35,7 +35,7 @@
 
     <div class="agent-tea-table">
       <div class="table-wrapper">
-        <div class="table_header">Users</div>
+        <div class="table_header">Today tea collection</div>
         <div class="table">
           <div class="row tabel-header">
             <div class="cell">Landowner ID</div>
@@ -66,10 +66,11 @@
           </div>
           <?php
           for ($i = 0; $i < 2; $i++) {
+            $name = ($i == 0) ? 'Kamal perera' : 'Nuwangi weerasekara';
             echo '<div class="row">
-                    <div class="cell" data-title="Landowener_id">LAN-00' . $i . '</div>
-                    <div class="cell" data-title="Tea_weight">5' . $i . '</div>
-                    <div class="cell" data-title="Agent_id">AGN-00' . $i . '</div>
+                    <div class="cell" data-title="Landowener_id">LAN-01' . $i . '</div>
+                    <div class="cell" data-title="Name">' . $name . '</div>
+                    <div class="cell" data-title="Amount">5' . $i . '</div>
                   </div>';
           }
           ?>
