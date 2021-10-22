@@ -13,101 +13,83 @@
 
      <div class="name1">
      
+            
+          
+   
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
-         <!-- <div class="wrap"> -->
-   <div class="search">
-      <input type="text" class="searchTerm" placeholder="Enter User Name or ID?">
-        <a href="<?php echo URL?>admin/deleteAccount1"><button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button></a>
-   </div>
-</div>
-
-         
-       
-     
-<div class="table">
-
-<div class="table-container">
-    <div class="table-section">
-        <table class="teapricetable">
-            <thead class="threadcls">
-                <tr class="trcls">
-                    <th class="thcls">Name</th>
-                    <th class="thcls">ID</th>
-                    <th class="thcls">User Type</th>
-                   
-                    <th class="thcls">Status</th>
-
-                </tr>
-            </thead>
-
-            <!-- <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                <td class="tdcls">January</td>
-                <td class="tdcls">98</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
-
-            </tr> -->
-
-            <tbody>
+                      <table id="myTable">
+                           <tr class="header">
+                                <th style="width:33.33%;">Name</th>
+                                <th style="width:33.33%;">ID</th>
+                                <th style="width:33.33%;">Type</th>
+   
+                            </tr>
+                       <div class="vertical">
+    
+                               <?php
+                               $x=count($data);
+                               for($i=0;$i<$x;$i++){
+                                 echo '<tr id="tea" data-href="'.URL.'/admin/deleteAccount1">
+                                           <td>'.$data[$i]['name'].'</td>
+                                           <td>'.$data[$i]['user_id'].'</td>
+                                           <td>'.$data[$i]['user_type'].'</td>
+                                           
+                                       </tr>';                
+                               }       
+                               ?>         
 
 
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">Kumud Perera</a></td>
-                    <td class="tdcls">001</td>
-                    <td class="tdcls">Landowner</td>
-                    <td class="tdcls">
-                        <p class="status status-paid">select</p>
-                    </td>
 
-                </tr>
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">Roneki Saranga</a></td>
-                    <td class="tdcls">002</td>
-                    <td class="tdcls">Landowner</td>
-                  
-                    <td class="tdcls">
-                        <p class="status status-paid">select</p>
-                    </td>
+                        </div>
+  
+                      </table>
 
-                </tr>
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">Pasindu Melaka</a></td>
-                    <td class="tdcls">003</td>
-                    <td class="tdcls">Accountant</td>
-                
-                    <td class="tdcls">
-                        <p class="status status-paid">select</p>
-                    </td>
 
-                </tr>
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">Pasindu Lakmal</a></td>
-                    <td class="tdcls">004</td>
-                    <td class="tdcls">Landowner</td>
-                    <td class="tdcls">
-                        <p class="status status-paid">select</p>
-                    </td>
-                   
-                </tr>
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">Sasindu Dias</a></td>
-                    <td class="tdcls">005</td>
-                    <td class="tdcls">Agent</td>
-                    <td class="tdcls">
-                        <p class="status status-paid">select</p>
-                    </td>
-                    
 
-                </tr>
-            </tbody>
+                                <!--  // script for filtering -->
+                                  <script>
+                                  function myFunction() {
+                                    var input, filter, table, tr, td, i, txtValue;
+                                    input = document.getElementById("myInput");
+                                    filter = input.value.toUpperCase();
+                                    table = document.getElementById("myTable");
+                                    tr = table.getElementsByTagName("tr");
+                                    for (i = 0; i < tr.length; i++) {
+                                      td = tr[i].getElementsByTagName("td")[0];
+                                      if (td) {
+                                        txtValue = td.textContent || td.innerText;
+                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                          tr[i].style.display = "";
+                                        } else {
+                                          tr[i].style.display = "none";
+                                        }
+                                      }       
+                                    }
+                                  }
+                                  
+                                  </script>
+                                  
 
-        </table>
-    </div>
-</div>
+
+
+                                 <!-- script for view table -->
+                                 <script>
+                                   document.addEventListener("DOMContentLoaded",() => {
+                                 const rows = document.querySelectorAll("tr[data-href]");
+                                 rows.forEach(row =>{
+                                     row.addEventListener("click", ()=>{
+                                      // openteaform();
+                         window.location.href=row.dataset.href;
+
+                                     });
+                                 });
+                             });
+
+                                        
+                                 
+                                 </script>
+
 
 
 
@@ -115,8 +97,5 @@
 
       
      </div>
-
-      
-    
   </div>
 <?php include 'bottom-container.php';?>
