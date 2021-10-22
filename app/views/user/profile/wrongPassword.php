@@ -16,7 +16,7 @@
             <h2 style="text-align: center; color: #089633;">Oops Your Password is wrong</h2><br>
             <h3 style="text-align: center; color: #089633;">Try Again!</h3>
         </p>
-        <!-- <a style="text-decoration:none;" href="<?php echo URL?>OtpVerify"><input type="button" value="Back to OTP" name="verify" class="btn"/></a> -->
+        <a style="text-decoration:none;" href="<?php echo URL.$_SESSION['user_type']?>/enterPassword"><input type="button" value="Back" name="verify" class="btn"/></a>
     </div>
     <script src="<?php echo URL?>vendors/js/otp/otp-js.js"></script>
 </body>
