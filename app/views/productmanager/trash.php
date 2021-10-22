@@ -19,3 +19,35 @@
                     
             }
           ?>
+
+
+
+
+
+<!--  fpdf -->
+<?php
+require "fpdf/fpdf.php";
+
+class myPDF extends FPDF{
+    function header(){
+        //$this->Image('fpdf/fpdf.php/thekolaya.png',10,6);
+        $this->SetFont('Arial','B',13);
+        $this->Cell(100,20,'තේ කොළය Invoice',1,0,'C');
+        $this->Ln();
+        $this->SetFont('Times','',12);
+        $this->Cell(100,20,'තේ කොළය Invoice',1,0,'C');
+        $this->Ln();
+    }
+}
+$pdf = new FPDF();
+$pdf->Image('fpdf/fpdf.php/thekolaya.png',10,6);
+        $pdf->SetFont('Arial','B',13);
+        $pdf->Cell(100,20,'තේ කොළය Invoice',1,0,'C');
+        $pdf->Ln();
+        $pdf->SetFont('Times','',12);
+        $pdf->Cell(100,20,'තේ කොළය Invoice',1,0,'C');
+        $pdf->Ln();
+$pdf->AliasNbPages();
+$pdf->AddPage('L','A4',0);
+$pdf->Output();
+?>  

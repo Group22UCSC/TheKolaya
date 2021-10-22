@@ -44,12 +44,10 @@ class OtpVerify extends Controller {
             }else if(isset($_POST['profile-verify'])) {
                 if($verifyOTP == $_SESSION['OTP']){
                     $verifyOTP = '';
-                    unset($_SESSION['OTP']);
                     $this->view->render('user/profile/changePassword');
                 }
                 else{
                     $verifyOTP = '';
-                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
             }

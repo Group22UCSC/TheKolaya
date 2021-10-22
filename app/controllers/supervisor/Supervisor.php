@@ -1,8 +1,7 @@
 <?php
 
 class Supervisor extends Controller{
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
     }
 
@@ -16,7 +15,7 @@ class Supervisor extends Controller{
     }
 
     function updateTeaMeasure() {
-        $this->view->showPage('Supervisor/updateTeaMeasure');
+        $this->view->render('Supervisor/updateTeaMeasure');
     }
 
     function manageRequests() {
@@ -103,87 +102,29 @@ class Supervisor extends Controller{
     }
 
     function fertilizerOutStock() {
-        $this->view->showPage('Supervisor/fertilizerOutstock');
+        $this->view->render('Supervisor/fertilizerOutstock');
     }
     
     function firewoodOutStock() {
-        $this->view->showPage('Supervisor/firewoodOutStock');
+        $this->view->render('Supervisor/firewoodOutStock');
     }
 
     function profile() {
-        $this->view->showPage('user/profile//profile');
+        $this->view->render('user/profile/profile');
     }
 
+    //Manage Profile
     function editProfile() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            if(isset($_POST['accept-btn'])) {
-                $data = [
-                    'contact_number' => trim($_POST['contact_number']),
-                    'name' => trim($_POST['name'])
-                ];
+        include '../app/controllers/User.php';
+        $user = new User();
+        $user->loadModelUser('user');
+        $user->editProfile();
+    }
+
+    function enterPassword() {
+        $this->view->render('user/profile/enterPassword');
+    }
+
     
-                $_SESSION['contact_number'] = $data['contact_number'];
-                $_SESSION['name'] = $data['name'];
-                $this->view->render('user/profile/enterPassword');
-            }else if(isset($_POST['enter_btn'])) {
-                $data = [
-                    'password' => $_POST['password']
-                ];
-                if($this->model->checkPassword($data)) {
-                    $this->model->editProfile();
-                    $this->view->render('user/profile/correctPassword');
-                }else {
-                    $this->view->render('user/profile/wrongPassword');
-                }
-            }
-            
-        }else{
-            $this->view->render('user/profile/editProfile');
-        }
-    }
-
-    function changePassword() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'password' => $_POST['password'],
-                'new_password' => $_POST['new_password'],
-                'confirm_password' => $_POST['confirm_password'],
-
-                'password_err' => '',
-                'new_password_err' => '',
-                'confirm_password_err' => ''
-            ];
-            if(empty($data['new_password'])) {
-                $data['password_err'] = "Please enter the old passoword";
-            }else if(!($this->model->checkPassword($data))) {
-                $data['password_err'] = "Wrong Password";
-            }
-
-            if(empty($data['new_password'])) {
-                $data['new_password_err'] = "Please enter a new passoword";
-            }
-
-            if(empty($data['confirm_password'])) {
-                $data['confirm_password_err'] = "Please confirm the password";
-            }else if($data['new_password'] != $data['confirm_password']) {
-                $data['confirm_password_err'] = "Doesn't match with password";
-            }
-
-            if(!empty($data['password']) || !empty($data['new_password']) || !empty($data['confirm_password'])) {
-                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
-                $this->model->changePassword($data);
-                unset($_SESSION['user_type']);
-                redirect('login');
-            }else {
-                $this->view->render('User/forgetPassword/changePassword', $data);
-            }
-        }else {
-            $_SESSION['controller'] = 'profile';
-            otpSend();
-            // $this->view->render('user/profile/');
-        }
-    }
 
 }
