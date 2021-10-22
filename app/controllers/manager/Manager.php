@@ -68,8 +68,20 @@
         $this->view->showPage('manager/profile');
         }
 
-        public function editProfile() {
-        $this->view->showPage('manager/editProfile');
+        // public function editProfile() {
+        // $this->view->showPage('manager/editProfile');
+        // }
+
+        //Manage Profile
+        function editProfile() {
+            include '../app/controllers/User.php';
+            $user = new User();
+            $user->loadModelUser('user');
+            $user->editProfile();
+        }
+    
+        function enterPassword() {
+            $this->view->render('user/profile/enterPassword');
         }
 
     }
