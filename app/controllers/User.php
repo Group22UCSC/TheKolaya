@@ -10,6 +10,36 @@ class User extends Controller {
         $this->view->showPage('user/home');
     }
 
+    function editProfile() {
+        
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            if(isset($_POST['accept-btn'])) {
+                $data = [
+                    'contact_number' => trim($_POST['contact_number']),
+                    'name' => trim($_POST['name'])
+                ];
+    
+                $_SESSION['contact_number'] = $data['contact_number'];
+                $_SESSION['name'] = $data['name'];
+                $this->view->render('user/profile/enterPassword');
+            }else if(isset($_POST['enter_btn'])) {
+                $data = [
+                    'password' => $_POST['password'],
+                ];
+                if($this->model->checkPassword($data['password'])) {
+                    $this->model->editProfile();
+                    $this->view->render('user/profile/correctPassword');
+                }else {
+                    $this->view->render('user/profile/wrongPassword');
+                }
+            }
+            
+        }else{
+            $this->view->render('user/profile/editProfile');
+        }
+    }
+
     function changePassword() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -24,7 +54,7 @@ class User extends Controller {
             ];
             if(empty($data['new_password'])) {
                 $data['password_err'] = "Please enter the old passoword";
-            }else if(!($this->model->checkPassword($data))) {
+            }else if(!($this->model->checkPassword($data['password']))) {
                 $data['password_err'] = "Wrong Password";
             }
 
@@ -38,7 +68,7 @@ class User extends Controller {
                 $data['confirm_password_err'] = "Doesn't match with password";
             }
 
-            if(!empty($data['password']) && !empty($data['new_password']) && !empty($data['confirm_password'])) {
+            if(empty($data['password_err']) && empty($data['new_password_err']) && empty($data['confirm_password_err'])) {
                 $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
                 $this->model->changePassword($data);
                 unset($_SESSION['user_type']);
