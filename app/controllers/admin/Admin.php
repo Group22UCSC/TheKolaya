@@ -104,9 +104,9 @@
         $this->view->showPage('admin/profile');
         }
 
-        public function editProfile() {
-        $this->view->showPage('admin/editProfile');
-        }
+        // public function editProfile() {
+        // $this->view->showPage('admin/editProfile');
+        // }
 
         //Create Accounts
 
@@ -222,7 +222,22 @@
             $data = $this->model->checkTable();
             $this->view->show('admin/tempAccount/create_tempAccount', $data, $this->user_data);
         }
-     
-    }
+
+
+
+        //Manage Profile
+        function editProfile() {
+            include '../app/controllers/User.php';
+            $user = new User();
+            $user->loadModelUser('user');
+            $user->editProfile();
+        }
+    
+        function enterPassword() {
+            $this->view->render('user/profile/enterPassword');
+        }
+    
+         
+        }
 
 ?>
