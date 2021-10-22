@@ -19,8 +19,16 @@
   <div class="main-content">
   <div class="flip-box">
   <div class="flip-box-inner" id="availableflip">
+  <?php
+  if($data1!=0)  {
+    $x = count($data1);
+  }
+  else{
+    $x = "0";
+  }
+  ?>
     <div class="flip-box-front" id = "availableflipfront">
-      <p>6 landowners to collect leaves!</p>
+      <p><?php echo $x?> landowners to collect leaves!</p>
     </div>
     <div class="flip-box-back">
     <p>Click the button to view list</p>
@@ -32,8 +40,26 @@
 </div>
 <div class="flip-box">
   <div class="flip-box-inner" id="deliveryflip">
+  <?php
+  if($data2!=0 && $data3!=0)  {
+    $f = count($data2);
+    $a = count($data3);
+    $tot = $f + $a;
+  }
+  else if ($data2!=0){
+    $tot = count($data2);
+  }
+  else if ($data3!=0){
+    $tot = count($data3);
+  }
+  else{
+    $tot = "0";
+  }
+  ?>
+   
+
     <div class="flip-box-front" id="deliveryflipfront" >
-      <p>6 landowners to deliver!</p>
+      <p><?php echo $tot?> landowners to deliver requests!</p>
     </div>
     <div class="flip-box-back">
     <p>Click the button to view list</p>

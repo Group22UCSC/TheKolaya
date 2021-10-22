@@ -6,8 +6,12 @@ class Agent extends Controller{
         parent::__construct();
     }
 
-    function index() {    
-        $this->view->showPage('Agent/zero_dashboard');
+    function index() {   
+        $available_res = $this->model->availablelistTable();        
+        $fert_res = $this->model->fertilizerdeliveryListTable();
+        $adv_res = $this->model->advancedeliveryListTable();
+
+        $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);
 
     }
 
@@ -71,7 +75,17 @@ class Agent extends Controller{
     }
 }
 
+//manage profile
+function editProfile() {
+    include '../app/controllers/User.php';
+    $user = new User();
+    $user->loadModelUser('user');
+    $user->editProfile();
+}
 
+function enterPassword() {
+    $this->view->render('user/profile/enterPassword');
+}
 
 
 ?>

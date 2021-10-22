@@ -76,7 +76,7 @@ class Agent_Model extends Model{
                   ON  request.request_id = fertilizer_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1  ";
+                AND request.response_status = 1 AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
@@ -84,7 +84,7 @@ class Agent_Model extends Model{
         if($row) {
             return $row;
         }else {
-            return false;
+            return 0;
         }
     }
 
@@ -96,7 +96,7 @@ class Agent_Model extends Model{
                   ON  request.request_id = advance_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1";
+                AND request.response_status = 1 AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
@@ -104,10 +104,11 @@ class Agent_Model extends Model{
         if($row) {
             return $row;
         }else {
-            return false;
+            return 0;
         }
     }
-   
+
+ 
 }
 
  // $query = "SELECT request_id, request_type, lid FROM request WHERE lid IN (SELECT user_id FROM landowner WHERE route_no = '$route_no')";
