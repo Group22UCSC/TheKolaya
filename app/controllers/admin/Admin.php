@@ -84,7 +84,11 @@
         }
 
         public function deleteAccount() {
-            $this->view->showPage('Admin/deleteAccount');
+            // $this->view->showPage('Admin/deleteAccount');
+
+               $result = $this->model->availablelistTable();
+               // print_r($result);
+                $this->view->render('Admin/deleteAccount',$result);
 
         }
 
