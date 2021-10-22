@@ -17,13 +17,13 @@ class Supervisor_Model extends Model {
         }
     }
     
-    function editProfile() {
-        $contact_number = $_SESSION['contact_number'];
-        $name = $_SESSION['name'];
-        $user_id = $_SESSION['user_id'];
-        $query = "UPDATE user SET contact_number='$contact_number', name='$name' WHERE user_id='$user_id'";
-        $this->db->runQuery($query);
-    }
+    // function editProfile() {
+    //     $contact_number = $_SESSION['contact_number'];
+    //     $name = $_SESSION['name'];
+    //     $user_id = $_SESSION['user_id'];
+    //     $query = "UPDATE user SET contact_number='$contact_number', name='$name' WHERE user_id='$user_id'";
+    //     $this->db->runQuery($query);
+    // }
 
     function manageRequests() {
         $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
