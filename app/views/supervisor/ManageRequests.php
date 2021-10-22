@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo TITLE ?></title>
-  <?php include 'styles-titleIcon-included.php'?>
+  <?php include 'styles-titleIcon-included.php' ?>
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/manageRequests.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -29,12 +29,22 @@
             <div class="cell">Amount(kg)</div>
           </div>
           <?php
+
           for ($i = 0; $i < count($data); $i++) {
             echo '<div class="row table_row">
                     <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
                     <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
                     <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
                     <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
+                  </div>';
+          }
+          for ($i = 0; $i < 2; $i++) {
+            $name = ($i == 0) ? 'Kamal perera' : 'Nuwangi weerasekara';
+            echo '<div class="row">
+		<div class="cell" data-title="Request_date">' . date("Y-m-d") . '</div>
+                    <div class="cell" data-title="Landowener_id">LAN-01' . $i . '</div>
+                    <div class="cell" data-title="Name">' . $name . '</div>
+                    <div class="cell" data-title="Amount">5' . $i . '</div>
                   </div>';
           }
           ?>
@@ -148,6 +158,6 @@
       </div>
     </div>
   </div>
-  <?php include 'script-included.php'?>
+  <?php include 'script-included.php' ?>
   <?php include 'js/supervisor/table2-js.php' ?>
   <?php include 'bottom-container.php'; ?>
