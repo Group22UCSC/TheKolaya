@@ -16,9 +16,33 @@ class Accountant extends Controller{
         $this->view->showPage('accountant/profile');
     }
 
-    public function editProfile()
-    {
-        $this->view->showPage('accountant/editProfile');
+    function editProfile() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            if(isset($_POST['accept-btn'])) {
+                $data = [
+                    'contact_number' => trim($_POST['contact_number']),
+                    'name' => trim($_POST['name'])
+                ];
+    
+                $_SESSION['contact_number'] = $data['contact_number'];
+                $_SESSION['name'] = $data['name'];
+                $this->view->render('user/profile/enterPassword');
+            }else if(isset($_POST['enter_btn'])) {
+                $data = [
+                    'password' => $_POST['password']
+                ];
+                if($this->model->checkPassword($data)) {
+                    $this->model->editProfile();
+                    $this->view->render('user/profile/correctPassword');
+                }else {
+                    $this->view->render('user/profile/wrongPassword');
+                }
+            }
+            
+        }else{
+            $this->view->render('user/profile/editProfile');
+        }
     }
 
 
