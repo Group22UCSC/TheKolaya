@@ -33,7 +33,7 @@
               </div>  
               
               <div class="inputfield">
-                <input type="submit" value="Submit" class="accept-btn" name="firewood_in" id="instock_submit_btn">
+                <input type="submit" value="Submit" class="accept-btn" id="instock_submit_btn" name="firewood_in">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">

@@ -71,7 +71,7 @@
 
     <div class="table-container">
       <div class="table-wrapper">
-        <div class="table_header"><?php echo date("Y/m/d"); ?> - Updated Tea-Weight</div>
+        <div class="table_header"><?php echo date("Y-M-d"); ?> - Updated Tea-Weight</div>
         <div class="table">
           <div class="row tabel-header">
             <div class="cell">Landowner ID</div>
