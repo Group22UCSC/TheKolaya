@@ -54,7 +54,11 @@
 .outerContainer {
   background-image: url("../../images/productmanager/9.jpg");
   background-size: 100%;
-  
+  animation: fadeIn 2.2s;
+  -webkit-animation: fadeIn 2.2s;
+  -moz-animation: fadeIn 2.2s;
+  -o-animation: fadeIn 2.2s;
+  -ms-animation: fadeIn 2.2s; 
   /* z-index: 1; */
 }
 

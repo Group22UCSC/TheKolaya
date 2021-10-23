@@ -14,7 +14,7 @@
     </form>
 </div> -->
 <div class="formSection">
-<form action="<?php echo URL ?>/accountant/pdf" method="POST">
+<form action="<?php echo URL ?>/accountant/pdf" method="POST" target="_blank">
 		<!-- <h2>CSS Form</h2> -->
 		<div class="large-group">
 			<div class="small-group">
@@ -60,7 +60,7 @@
 				<input id="advance" type="text" name="advance"/>
 			</div> -->
 			
-                <input id="submit" class="btn" type="submit" name="submit"/>
+                <input id="submitbtn" class="btn" type="submit" name="submit"/>
                 
 
 		</div>
@@ -170,5 +170,6 @@
     </div>
 </div>
 
-
+<?php include 'js/accountant/paymentsjs.php';?>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
