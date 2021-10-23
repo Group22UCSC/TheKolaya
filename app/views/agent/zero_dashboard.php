@@ -5,8 +5,7 @@
     <title><?php echo TITLE?></title>
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">    
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/zero_dashboard.css">      
     <script src="<?php echo URL?>vendors/js/agent/zero_dashboard.js"></script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
