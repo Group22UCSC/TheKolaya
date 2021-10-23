@@ -24,11 +24,16 @@
     <!-- <td class="th">Type</td> -->
     <td class="th">Amount</td>            
       </tr>
-     
       <?php
-      $y=count($data1);
+      if ($data1!=0){
+        $f = count($data1);
+      }
+      else{
+        $f="0";
+      }
+        
       // print_r($y);
-        for($i=0;$i<$y;$i++){
+        for($i=0;$i<$f;$i++){
           echo '<tr  id = "request" data-href-request="" >
                     <td>'.$data1[$i]['lid'].'</td>                   
                     <td>'.$data1[$i]['request_id'].'</td>
@@ -48,9 +53,14 @@
       </tr>
      
       <?php
-      $y=count($data2);
+      if ($data2!=0){
+        $a = count($data2);
+      }
+      else{
+        $a="0";
+      }
       // print_r($y);
-        for($i=0;$i<$y;$i++){
+        for($i=0;$i<$a;$i++){
           echo '<tr  id = "request" data-href-request="" >
           <td>'.$data2[$i]['lid'].'</td>                   
           <td>'.$data2[$i]['request_id'].'</td>
