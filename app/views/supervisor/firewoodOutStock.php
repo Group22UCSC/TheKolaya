@@ -62,7 +62,6 @@
         <div class="table">
           <div class="row tabel-header">
             <div class="cell">Date</div>
-            <div class="cell">Price Per Unit(Rs)</div>
             <div class="cell">Amount(kg)</div>
           </div>
           <?php
@@ -77,9 +76,8 @@
           // }
           for ($i = 0; $i < 3; $i++) {
             echo '<div class="row">
-                    <div class="cell" data-title="Landowener_id">' . date("Y/m/d") . '</div>
-                    <div class="cell" data-title="Agent_id">5' . $i . '</div>
-                    <div class="cell" data-title="Tea_weight">100' . $i . '</div>
+                    <div class="cell" data-title="Landowener_id">' . $data[$i]['out_date'] . '</div>
+                    <div class="cell" data-title="Agent_id">5' . $data[$i]['out_quantity'] . '</div>
                   </div>';
           }
           ?>

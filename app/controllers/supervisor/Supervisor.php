@@ -89,15 +89,15 @@ class Supervisor extends Controller{
             'type' => 'firewood',
             'date' => ''
         ];
-        if(isset($_GET['search_btn'])) {
-            $data['date'] = trim($_GET['date']);
-            $instock = $this->model->stock($data);
-            $searchResult = $this->model->searchByDate($data);
-            $this->view->show('Supervisor/firewoodInStock', $instock, $searchResult);
-        }else {
+        // if(isset($_GET['search_btn'])) {
+        //     $data['date'] = trim($_GET['date']);
+        //     $instock = $this->model->stock($data);
+        //     $searchResult = $this->model->searchByDate($data);
+        //     $this->view->show('Supervisor/firewoodInStock', $instock, $searchResult);
+        // }else {
             $instock = $this->model->stock($data);
             $this->view->show('Supervisor/firewoodInStock', $instock);
-        }
+        // }
         
     }
 
@@ -106,7 +106,12 @@ class Supervisor extends Controller{
     }
     
     function firewoodOutStock() {
-        $this->view->render('Supervisor/firewoodOutStock');
+        $data = [
+            'stock_type' => 'out_stock',
+            'type' => 'firewood',
+        ];
+        $outstock = $this->model->stock($data);
+        $this->view->render('Supervisor/firewoodOutStock', $outstock);
     }
 
     function profile() {

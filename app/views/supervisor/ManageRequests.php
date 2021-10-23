@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo TITLE ?></title>
-  <?php include 'styles-titleIcon-included.php'?>
+  <?php include 'styles-titleIcon-included.php' ?>
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/manageRequests.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -29,12 +29,22 @@
             <div class="cell">Amount(kg)</div>
           </div>
           <?php
+
           for ($i = 0; $i < count($data); $i++) {
             echo '<div class="row table_row">
                     <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
                     <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
                     <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
                     <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
+                  </div>';
+          }
+          for ($i = 0; $i < 2; $i++) {
+            $name = ($i == 0) ? 'Kamal perera' : 'Nuwangi weerasekara';
+            echo '<div class="row">
+		<div class="cell" data-title="Request_date">' . date("Y-m-d") . '</div>
+                    <div class="cell" data-title="Landowener_id">LAN-01' . $i . '</div>
+                    <div class="cell" data-title="Name">' . $name . '</div>
+                    <div class="cell" data-title="Amount">5' . $i . '</div>
                   </div>';
           }
           ?>
@@ -68,16 +78,16 @@
     </div>
     <div class="Landowner-details">
       <div class="table-wrapper">
-        <div class="table_header">Fertilizer Request</div>
+        <div class="table_header">Previous Fertilizer Request</div>
         <div class="table">
           <div class="row tabel-header">
-            <div class="cell">Landowner ID</div>
+            <div class="cell">Previous Request Date</div>
             <div class="cell">Monthly Tea Amount(kg)</div>
           </div>
           <?php
           for ($i = 0; $i < 2; $i++) {
             echo '<div class="row">
-                    <div class="cell" data-title="Tea_weight">LAN-00' . $i + 3 . '</div>
+                    <div class="cell" data-title="Tea_weight">2021-08-1'.$i.'</div>
                     <div class="cell" data-title="Agent_id">50' . $i . '</div>
                   </div>';
           }
@@ -87,7 +97,7 @@
     </div>
     <div class="landowner-rate-outside">
       <div class="landowner-rate">
-        <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Sasindu's Tea Quality</h2>
+        <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Pasindu's Tea Quality</h2>
         <div class="rating-row">
           <div class="side">
             <div>5 stars</div>
@@ -148,6 +158,6 @@
       </div>
     </div>
   </div>
-  <?php include 'script-included.php'?>
+  <?php include 'script-included.php' ?>
   <?php include 'js/supervisor/table2-js.php' ?>
   <?php include 'bottom-container.php'; ?>
