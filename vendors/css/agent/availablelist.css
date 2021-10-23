@@ -89,4 +89,22 @@
   }
   
   
+  @media(max-width:400px){
+    
+    .topic{
+      height:75px;
+      font-size: 25px;
+    }
 
+    .availablelist {
+      font-size: 15px;
+    }
+
+    .th{
+      font-size: 15px;
+    }
+    
+
+    
+  }
+  
