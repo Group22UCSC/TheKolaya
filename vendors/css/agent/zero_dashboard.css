@@ -1,3 +1,11 @@
+.home-section{
+  background-image: url("../../images/agent/dashboard.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 
 .topic{      
         height: 70px;     

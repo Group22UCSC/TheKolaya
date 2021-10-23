@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/availablelist.css"> 
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/searchbar.css">
     <script src="<?php echo URL?>vendors/js/agent/dashboard.js"></script>   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
     <!-- Boxicons CDN Link -->
@@ -27,6 +28,10 @@ else{
 }
 ?>
 <div class="topic">Tea Available Landowner List </div>
+<form class="searchform">    
+    <input type="text" id="search" placeholder="Enter Landowner ID.." onkeyup="searchTable()">
+    <!-- <input type="submit" value="search" id="submit"> -->
+</form>
 <div class="availablelist">       
     <div style="overflow:auto;">
     <table class = "availabletable" id="availabletable">      
@@ -65,5 +70,24 @@ else{
                           document.getElementById("lid").value = this.cells[0].innerHTML;                         
                      };
                  }
+
+  function searchTable() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("search");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("availabletable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";        
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+}
  </script>
  

@@ -46,7 +46,7 @@ margin-bottom: 15px;
 
 
  
- 
+/*  
   
   .searchform {
       background-color: #f6f6f6;
@@ -154,7 +154,7 @@ margin-bottom: 15px;
   
   .searchform #submit::-moz-focus-inner {
       border: 0;
-  }
+  } */
 
   @keyframes result-load {
     0%{
@@ -168,7 +168,7 @@ margin-bottom: 15px;
     }
   }
 
-  @keyframes search-load {
+  /* @keyframes search-load {
     0%{
       transform: translateX(100px);
       opacity: 0;
@@ -178,4 +178,4 @@ margin-bottom: 15px;
       transform: translateX(0px);
       opacity: 1;
     }
-  }
+  } */
