@@ -78,16 +78,16 @@
     </div>
     <div class="Landowner-details">
       <div class="table-wrapper">
-        <div class="table_header">Fertilizer Request</div>
+        <div class="table_header">Previous Fertilizer Request</div>
         <div class="table">
           <div class="row tabel-header">
-            <div class="cell">Landowner ID</div>
+            <div class="cell">Previous Request Date</div>
             <div class="cell">Monthly Tea Amount(kg)</div>
           </div>
           <?php
           for ($i = 0; $i < 2; $i++) {
             echo '<div class="row">
-                    <div class="cell" data-title="Tea_weight">LAN-00' . $i + 3 . '</div>
+                    <div class="cell" data-title="Tea_weight">2021-08-1'.$i.'</div>
                     <div class="cell" data-title="Agent_id">50' . $i . '</div>
                   </div>';
           }
@@ -97,7 +97,7 @@
     </div>
     <div class="landowner-rate-outside">
       <div class="landowner-rate">
-        <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Sasindu's Tea Quality</h2>
+        <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Pasindu's Tea Quality</h2>
         <div class="rating-row">
           <div class="side">
             <div>5 stars</div>
