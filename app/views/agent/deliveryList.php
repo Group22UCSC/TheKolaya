@@ -42,7 +42,7 @@
           echo '<tr  id = "request" data-href-request="" >
                     <td>'.$data1[$i]['lid'].'</td>                   
                     <td>'.$data1[$i]['request_id'].'</td>
-                    <td>'.$data1[$i]['amount_kg'].'</td> 
+                    <td>'.$data1[$i]['amount'].'</td> 
                 </tr>';                
         }
       ?>
