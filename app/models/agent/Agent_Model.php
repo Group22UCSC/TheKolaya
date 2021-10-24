@@ -108,8 +108,35 @@ class Agent_Model extends Model{
         }
     }
 
+    function updateFertilizerRequest($data = []){
+        $date = $data['date'];
+        $request_id = $data['rid'];        
+        $emp_id = $data['agent_id'];
+
+        $query1 = "UPDATE fertilizer_request SET date_delivered = '$date', agent_id = '$emp_id' WHERE request_id = '$request_id'";
+        $query2 = "UPDATE request SET complete_status = '1' WHERE request_id = '$request_id'";
+
+        $this->db->runQuery($query1);
+        $this->db->runQuery($query2);
+    }
+
+    function updateAdvanceRequest($data = []){
+        $date = $data['date'];
+        $request_id = $data['rid'];        
+        $emp_id = $data['agent_id'];
+
+        $query1 = "UPDATE advance_request SET payment_day = '$date', agent_id = '$emp_id' WHERE request_id = '$request_id'";
+        $query2 = "UPDATE request SET complete_status = '1' WHERE request_id = '$request_id'";
+
+        $this->db->runQuery($query1);
+        $this->db->runQuery($query2);
+
+    }
+
  
 }
+
+
 
  // $query = "SELECT request_id, request_type, lid FROM request WHERE lid IN (SELECT user_id FROM landowner WHERE route_no = '$route_no')";
 // advance_request.amount_rs 
