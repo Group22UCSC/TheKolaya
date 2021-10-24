@@ -1,5 +1,5 @@
 <?php include 'top-container.php'; ?>
-
+<body onload="getTable()"></body>
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
 
@@ -100,7 +100,7 @@
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
     <div class="table-section">
-        <table class="teapricetable">
+        <table class="teapricetable" id="teapricetable">
             <thead class="threadcls">
                 <tr class="trcls">
                     <th class="thcls">Year</th>
@@ -109,45 +109,6 @@
 
                 </tr>
             </thead>
-
-            <!-- <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                <td class="tdcls">January</td>
-                <td class="tdcls">98</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
-
-            </tr> -->
-
-            <?php 
-            $x=count($data);
-           // print_r($data);
-            // $year = date('Y', strtotime($data['date']));
-
-            // $month = date('F', strtotime($data['date']));
-            // $date = $data[0]['price'];
-            // echo  $date;
-
-            // $year = date('Y', strtotime($date));
-
-            // $month = date('F', strtotime($date));
-            // echo $year;
-            // echo $month;
-            
-            for($i=0;$i<$x;$i++){
-                $date=$data[$i]['date'];
-                $year = date('Y', strtotime($date));
-                $month = date('F', strtotime($date));
-            echo '
-            <tr>
-                <td class="tdcls">'.$year.'</td>
-                <td class="tdcls">'.$month.'</td>
-                <td class="tdcls">'.$data[$i]['price'].'</td>
-            </tr> ';
-            }
-            ?>
-            
 
         </table>
     </div>

@@ -28,33 +28,25 @@ $(document).ready(function(){
 
      
       $('.error').remove();
-      var productName=$('#productName option:selected').text();
-      var buyer=$('#buyer option:selected').text();
-      var amount = $('#amount').val();
-      var pid = $('#pid').val();
+      var Year=$('#year').val();
+      var Month = $('#month').val();
       var price = $('#price').val();
-      var bid = $('#buyer').val();
+      
       //console.log(amount+pid+price+bid);
       var action='save';
-      if(amount < 0) {
-          // $('#amount').parent().after("<p class=\"error\">Amount cannot be negative</p>");
-          $('#amount').parent().after("<p class=\"error\">*Amount cannot be negative</p>");
-      }else if(amount == 0) {
-          $('#amount').parent().after("<p class=\"error\">*Please insert a valid amount</p>")
-      }
+      
       if(price < 0) {
           $('#price').parent().after("<p class=\"error\">*Price cannot be negative</p>");
       }else if(price == 0) {
           $('#price').parent().after("<p class=\"error\">*Price cannot be zero</p>");
       }
 
-      if(amount <= 0 || price <= 0) {
+      if(price <= 0) {
           return;
       }
-      var str="Product Name:  " +productName+ "\n" +
-              "Amount :   " +amount+ "\n" +
+      var str="Year" +Year+ "\n" +
+              "Month :   " +Month+ "\n" +
               "Price:  " +price+ "\n" +
-              "Buyer:  " +buyer+ "\n" +
               "\n";
       Swal.fire({
       title: 'Confirm Update ',
@@ -68,18 +60,17 @@ $(document).ready(function(){
       showCancelButton: true
       }).then((result) => {
           if (result.isConfirmed) {
-              $("#auctionForm").trigger("reset");
+              $("#setTeaPriceForm").trigger("reset");
               
               $.ajax({
                   type: "POST",
-                  url: "http://localhost/Thekolaya/productmanager/updateAuction",
+                  url: "http://localhost/Thekolaya/accountant/setTeaPrice",
                   
                   data: {
                     action:action,
-                    amount:amount,
-                    pid:pid,
-                    price:price,
-                    bid:bid,
+                    year:Year,
+                    month:Month,
+                    teaPrice:price,
                   },
                   success: function(data) {
                       
@@ -109,7 +100,7 @@ $(document).ready(function(){
 // * get auction table - SELECT
 <?php $dateToday=date("Y-m-d"); ?>
 function getTable(){
-    var url="http://localhost/Thekolaya/productmanager/getAuctionTable";
+    var url="http://localhost/Thekolaya/accountant/getTeaPrice";
     $.ajax({
         url:url,
         type:"GET",
@@ -121,36 +112,19 @@ function getTable(){
         //$("#updateAuctionTable").trigger("reset");
        // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
             for(var i=0;i<10;i++){
-               var date=data[i].date;
+              // var date=data[i].date;
                 var str=
                 "<tr class='row'>"+
                 "<td>"+
-                    data[i].date+
+                    //data[i].date+
                 "</td>"+
-                "<td>"+
-                    data[i].product_id+
-                "</td>"+
-                "<td>"+
-                    data[i].product_name+
-                "</td>"+
-                "<td>"+
-                    data[i].sold_amount+
-                "</td>"+
-                "<td>"+
-                    data[i].sold_price+
-                "</td>"+
-                "<td>"+
-                    data[i].name+
-                "</td>"+
-                "<td>"+
-                    data[i].sold_amount*data[i].sold_price+
-                "</td>"+
+                
                 
                 "<td>"+
                     // (date==date)? "Hi":"Bye";
                 "</td>"+
                 "</tr>";
-                $("#updateAuctionTable tbody").append(str);
+                $("#teapricetable tbody").append(str);
                 // there in the table DO NOT DEFINE <tbody> MANULLY
                 //IF SO IT WILL SHOW THE RESULTS TWICE
             }
