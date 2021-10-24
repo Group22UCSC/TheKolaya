@@ -179,6 +179,9 @@ justify-self: center ;
     }
   }
 
+  .error{
+    color: red;
+  }
  
 /*  **** set button pop up ******** */
 

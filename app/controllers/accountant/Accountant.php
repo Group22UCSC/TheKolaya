@@ -43,8 +43,14 @@ class Accountant extends Controller{
         }else{
             $this->view->render('user/profile/editProfile');
         }
-    }
+    }   
 
+    function getTeaPrice(){
+        $result = $this->model->teaPriceTable();
+        $json_arr=json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
 
     function setTeaPrice() {
         if(!empty($_POST)){

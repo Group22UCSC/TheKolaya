@@ -1,9 +1,8 @@
 <?php include 'top-container.php'; ?>
-
+<body onload="getTable()"></body>
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
-<script defer src="<?php echo URL ?>vendors/js/accountant/setteaprice.js""></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="top-container">
     <p>Set Tea Price</p>
 </div>
@@ -16,6 +15,9 @@
            Emergency Message
         </div>         -->
     <div class="form" >
+    
+        <form action="<?php echo URL?>accountant/setTeaPrice" method="post" id="setTeaPriceForm">
+       
         <?php
             $dateToday=date("Y-m-d");
             $year = date('Y', strtotime($dateToday));
@@ -36,27 +38,28 @@
 
         <div class="inputfield">
             <label>Year</label>
-            <input type="text" class="input" value="<?php echo $year?>" readonly>
+            <input type="text" id="year" name="year" class="input" value="<?php echo $year?>" readonly>
         </div>
         <div class="inputfield">
             <label>Month</label>
-            <input type="text" class="input" value="<?php echo $month?>" readonly>
+            <input type="text" class="input" id="month" name="month" value="<?php echo $month?>" readonly>
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
-            <input type="text" id="priceid" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
+            <input type="text" id="price" name="teaPrice" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
         </div>
         <div class="inputfield">
-            <input type="button" value="Set Price" data-modal-target="#modal" class="btn" name="price" <?php if($isPriceSet){echo "disabled";} ?>>
+            <input type="submit" value="Set Price" class="btn" name="submit" id="setPriceBtn" <?php if($isPriceSet){echo "disabled";} ?>>
+                                 <!-- data-modal-target="#modal"  -->
         </div>
-        
+        </form>
 
     </div>
 </div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
-<form action="<?php echo URL?>accountant/setTeaPrice" method="post">
+<!-- <form action="<?php echo URL?>accountant/setTeaPrice" method="post">
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="title">Confirm Tea Price</div>
@@ -86,69 +89,18 @@
     </div>
   </div>
   <div id="overlay"></div>
-</form>
+</form> -->
 
 <!--  **********   view previous details   *** -->
 
 <div class="previousDetails">
     <button  onclick="previousPrices();scrollFunc();">Previous Tea Prices</button>
 </div>
-<script>
-    function openModel(){
-
-    }
-    function previousPrices() {
-        
-        var val = document.getElementById("pricetbl").style.display;
-        if (val == "none") {
-            var val = document.getElementById("pricetbl").style.display = "grid";
-            
-        } else {
-            var val = document.getElementById("pricetbl").style.display = "none";
-        }
-    }
-    function scrollFunc(){
-
-        window.scrollTo(0, 500);
-    }
-    // let scrollerID;
-    //         let paused = true;
-    //         let speed = 1; // 1 - Fast | 2 - Medium | 3 - Slow
-    //         let interval = speed * 5;
-
-    //         function startScroll() {
-    //             let id = setInterval(function() {
-    //                 window.scrollBy(0, 4);
-    //                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    //                     // Reached end of page
-    //                     stopScroll();
-    //                 }
-    //             }, interval);
-    //             return id;
-    //         }
-
-    //         function stopScroll() {
-    //             clearInterval(scrollerID);
-    //         }
-
-    //         // document.body.addEventListener('keypress', function(event) {
-    //         //     if (event.which == 13 || event.keyCode == 13) {
-    //                 // It's the 'Enter' key
-    //                 if (paused == true) {
-    //                     scrollerID = startScroll();
-    //                     paused = false;
-    //                 } else {
-    //                     stopScroll();
-    //                     paused = true;
-    //                 }
-                
-    //         true;
-</script>
 
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
     <div class="table-section">
-        <table class="teapricetable">
+        <table class="teapricetable" id="teapricetable">
             <thead class="threadcls">
                 <tr class="trcls">
                     <th class="thcls">Year</th>
@@ -157,45 +109,6 @@
 
                 </tr>
             </thead>
-
-            <!-- <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                <td class="tdcls">January</td>
-                <td class="tdcls">98</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
-
-            </tr> -->
-
-            <?php 
-            $x=count($data);
-           // print_r($data);
-            // $year = date('Y', strtotime($data['date']));
-
-            // $month = date('F', strtotime($data['date']));
-            // $date = $data[0]['price'];
-            // echo  $date;
-
-            // $year = date('Y', strtotime($date));
-
-            // $month = date('F', strtotime($date));
-            // echo $year;
-            // echo $month;
-            
-            for($i=0;$i<$x;$i++){
-                $date=$data[$i]['date'];
-                $year = date('Y', strtotime($date));
-                $month = date('F', strtotime($date));
-            echo '
-            <tr>
-                <td class="tdcls">'.$year.'</td>
-                <td class="tdcls">'.$month.'</td>
-                <td class="tdcls">'.$data[$i]['price'].'</td>
-            </tr> ';
-            }
-            ?>
-            
 
         </table>
     </div>
@@ -216,4 +129,7 @@
     </div>
 
 </div> -->
+<?php include 'js/accountant/setteapricejs.php"';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
