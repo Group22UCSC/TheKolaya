@@ -71,7 +71,7 @@ class Agent_Model extends Model{
     function fertilizerdeliveryListTable(){
         $route_no=$_SESSION['route'];        
         $query = "SELECT request.request_id, request.request_type, request.lid, 
-                 fertilizer_request.amount_kg FROM request 
+                 fertilizer_request.amount FROM request 
                   INNER JOIN fertilizer_request
                   ON  request.request_id = fertilizer_request.request_id                   
                  WHERE request.lid IN 
