@@ -30,7 +30,7 @@
                                <?php
                                $x=count($data);
                                for($i=0;$i<$x;$i++){
-                                 echo '<tr id="tea" data-href="'.URL.'/admin/deleteAccount1">
+                                 echo '<tr id="tea" data-href="">     
                                            <td>'.$data[$i]['name'].'</td>
                                            <td>'.$data[$i]['user_id'].'</td>
                                            <td>'.$data[$i]['user_type'].'</td>
@@ -91,11 +91,79 @@
                                  </script>
 
 
-
-
-
-
-      
+ 
      </div>
   </div>
+
+
+
+
+     <div class="middle1"> 
+     <a >DELETE ACCOUNTS</a> </div>
+  
+
+  <div class="k1">  
+
+<div class="wrapper1">
+    <div class="title">  Delete Form  </div>
+
+    <div class="form">
+      
+        <div class="inputfield">
+          <label> Name</label>
+          <input type="text" class="input">
+       </div> 
+
+        <div class="inputfield">
+          <label>ID</label>
+          <input type="text" class="input">
+       </div> 
+
+       <div class="inputfield">
+          <label>Address</label>
+          <textarea class="textarea"></textarea>
+       </div> 
+
+        <div class="inputfield">
+          <label>Type(Landowner/Employee)</label>
+          <input type="text" class="input">
+       </div>
+
+        <div class="inputfield">
+          <label>Phone number</label>
+          <input type="text" class="input">
+       </div>
+
+       <div class="inputfield">
+          <label>Password</label>
+          <input type="password" class="input">
+       </div>  
+
+       <div class="inputfield">
+          <a>If you want to delete the account</a>
+      
+       </div> 
+
+      
+      <div class="last">
+            <div class="a">
+       <a href="<?php echo URL?>admin/deleteAccount"><input type="submit" value="Discard" class="btn"></a>
+      </div>
+
+
+       <div class="b">
+        <input type="submit" value="Delete" class="btn">
+      </div>
+           
+
+      </div>
+
+     
+
+    </div>
+
+  </div> 
+</div>
+
+
 <?php include 'bottom-container.php';?>
