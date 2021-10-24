@@ -50,4 +50,28 @@ $pdf->Image('fpdf/fpdf.php/thekolaya.png',10,6);
 $pdf->AliasNbPages();
 $pdf->AddPage('L','A4',0);
 $pdf->Output();
+
+
+
+
+
+
+
+// $('.error').remove();
+//       var Year=$('#year').val();
+//       var Month = $('#month').val();
+//       var price = $('#price').val();
+     
+//       //console.log(amount+pid+price+bid);
+//       var action='save';
+//       if(price < 0) {
+//           // $('#amount').parent().after("<p class=\"error\">Amount cannot be negative</p>");
+//           $('#price').parent().after("<p class=\"error\">*Price cannot be negative</p>");
+//       }else if(amount == 0) {
+//           $('#price').parent().after("<p class=\"error\">*Please insert a valid price</p>")
+//       }
+      
+//       if(price <= 0) {
+//           return;
+//       }
 ?>  

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/searchbar.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/preupdates.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -19,7 +20,7 @@
 <form class="searchform">
     <input type="date" id="date" name="date"  required>
     <input type="text" id="search" placeholder="Enter Landowner ID.." required>
-    <input type="submit" value="go" id="submit">
+    <input type="submit" value="search" id="submit">
 </form>
 <form class="resultform">
   <div class="inputfield">
