@@ -1,7 +1,8 @@
 *{ margin: 0; padding: 0; }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
 
 
@@ -30,7 +31,7 @@
 
 
 .middle-conatiner {
-   /*background-image: url("../../images/admin/5.jpg");*/
+   background-image: url("../../images/admin/22.jpg");
    width: 90%;
     margin-left: 5%;
    background-repeat: no-repeat;
@@ -102,7 +103,7 @@
 .k1 {
  /* background: whitesmoke;*/
   margin-top: 15px;
-   background-image: url("../../images/admin/5.jpg");
+   background-image: url("../../images/admin/12.jpg");
  /* background-image: url("../../images/admin/10.jpg");*/
   background-repeat: no-repeat;
   background-size: 100% 100%;
