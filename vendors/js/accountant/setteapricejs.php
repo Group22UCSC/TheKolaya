@@ -1,4 +1,21 @@
 <script>
+//  previous tea price button js
+function previousPrices() {
+        
+        var val = document.getElementById("pricetbl").style.display;
+        if (val == "none") {
+            var val = document.getElementById("pricetbl").style.display = "grid";
+            
+        } else {
+            var val = document.getElementById("pricetbl").style.display = "none";
+        }
+    }
+    function scrollFunc(){
+
+        window.scrollTo(0, 500);
+    }
+
+
 // *******  JQuery *******
 
 //  form submit - INSERT
@@ -9,6 +26,7 @@ $(document).ready(function(){
       // form.push({name:'stock_type', value: 'in_stock'});
       // form.push({name:'type', value: 'firewood'});
 
+     
       $('.error').remove();
       var productName=$('#productName option:selected').text();
       var buyer=$('#buyer option:selected').text();

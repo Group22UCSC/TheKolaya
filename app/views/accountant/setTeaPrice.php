@@ -2,7 +2,6 @@
 
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
-<script defer src="<?php echo URL ?>vendors/js/accountant/setteapricejs.php"></script>
 
 <div class="top-container">
     <p>Set Tea Price</p>
@@ -16,8 +15,8 @@
            Emergency Message
         </div>         -->
     <div class="form" >
-        <form action="accountant/setTeaPrice" method="post" id="setTeaPriceForm">
-
+    
+        <form action="<?php echo URL?>accountant/setTeaPrice" method="post" id="setTeaPriceForm">
        
         <?php
             $dateToday=date("Y-m-d");
@@ -39,18 +38,18 @@
 
         <div class="inputfield">
             <label>Year</label>
-            <input type="text" class="input" value="<?php echo $year?>" readonly>
+            <input type="text" id="year" name="year" class="input" value="<?php echo $year?>" readonly>
         </div>
         <div class="inputfield">
             <label>Month</label>
-            <input type="text" class="input" value="<?php echo $month?>" readonly>
+            <input type="text" class="input" id="month" name="month" value="<?php echo $month?>" readonly>
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
-            <input type="text" id="priceid" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
+            <input type="text" id="price" name="teaPrice" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
         </div>
         <div class="inputfield">
-            <input type="button" value="Set Price" class="btn" name="price" id="setPriceBtn" <?php if($isPriceSet){echo "disabled";} ?>>
+            <input type="submit" value="Set Price" class="btn" name="submit" id="setPriceBtn" <?php if($isPriceSet){echo "disabled";} ?>>
                                  <!-- data-modal-target="#modal"  -->
         </div>
         </form>
@@ -60,7 +59,7 @@
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
-<form action="<?php echo URL?>accountant/setTeaPrice" method="post">
+<!-- <form action="<?php echo URL?>accountant/setTeaPrice" method="post">
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="title">Confirm Tea Price</div>
@@ -90,64 +89,13 @@
     </div>
   </div>
   <div id="overlay"></div>
-</form>
+</form> -->
 
 <!--  **********   view previous details   *** -->
 
 <div class="previousDetails">
     <button  onclick="previousPrices();scrollFunc();">Previous Tea Prices</button>
 </div>
-<script>
-    function openModel(){
-
-    }
-    function previousPrices() {
-        
-        var val = document.getElementById("pricetbl").style.display;
-        if (val == "none") {
-            var val = document.getElementById("pricetbl").style.display = "grid";
-            
-        } else {
-            var val = document.getElementById("pricetbl").style.display = "none";
-        }
-    }
-    function scrollFunc(){
-
-        window.scrollTo(0, 500);
-    }
-    // let scrollerID;
-    //         let paused = true;
-    //         let speed = 1; // 1 - Fast | 2 - Medium | 3 - Slow
-    //         let interval = speed * 5;
-
-    //         function startScroll() {
-    //             let id = setInterval(function() {
-    //                 window.scrollBy(0, 4);
-    //                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    //                     // Reached end of page
-    //                     stopScroll();
-    //                 }
-    //             }, interval);
-    //             return id;
-    //         }
-
-    //         function stopScroll() {
-    //             clearInterval(scrollerID);
-    //         }
-
-    //         // document.body.addEventListener('keypress', function(event) {
-    //         //     if (event.which == 13 || event.keyCode == 13) {
-    //                 // It's the 'Enter' key
-    //                 if (paused == true) {
-    //                     scrollerID = startScroll();
-    //                     paused = false;
-    //                 } else {
-    //                     stopScroll();
-    //                     paused = true;
-    //                 }
-                
-    //         true;
-</script>
 
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
@@ -220,6 +168,7 @@
     </div>
 
 </div> -->
+<?php include 'js/accountant/setteapricejs.php"';?>
 <script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
