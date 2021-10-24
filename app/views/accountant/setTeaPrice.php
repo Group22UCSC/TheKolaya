@@ -2,8 +2,8 @@
 
 <!-- Top container -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/setteaprice.css">
-<script defer src="<?php echo URL ?>vendors/js/accountant/setteaprice.js""></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="<?php echo URL ?>vendors/js/accountant/setteapricejs.php"></script>
+
 <div class="top-container">
     <p>Set Tea Price</p>
 </div>
@@ -16,6 +16,9 @@
            Emergency Message
         </div>         -->
     <div class="form" >
+        <form action="accountant/setTeaPrice" method="post" id="setTeaPriceForm">
+
+       
         <?php
             $dateToday=date("Y-m-d");
             $year = date('Y', strtotime($dateToday));
@@ -47,9 +50,10 @@
             <input type="text" id="priceid" class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> >
         </div>
         <div class="inputfield">
-            <input type="button" value="Set Price" data-modal-target="#modal" class="btn" name="price" <?php if($isPriceSet){echo "disabled";} ?>>
+            <input type="button" value="Set Price" class="btn" name="price" id="setPriceBtn" <?php if($isPriceSet){echo "disabled";} ?>>
+                                 <!-- data-modal-target="#modal"  -->
         </div>
-        
+        </form>
 
     </div>
 </div>
@@ -216,4 +220,6 @@
     </div>
 
 </div> -->
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
