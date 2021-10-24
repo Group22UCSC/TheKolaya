@@ -15,9 +15,9 @@
                 <label>Initial Tea Weight</label>
                 <input type="text" class="input" name="weight" id="weight" required>
             </div>        
-            <div class="inputfield">
+            <div class="inputfield" id="btnset">
             <button class="back" onclick="closeteaform()">Back</button>
-            <button class  = "btn" id="myBtn" onclick = "openpopup()"> Add Weight </button>
+            <button class  = "btn" id="myBtn" onclick = "openpopup()"> Add<span> Weight</span> </button>
             <!-- <input type="submit" value="Add Weight" class="btn" id="myBtn"  onclick="openpopup()" >             -->
             </div>
        

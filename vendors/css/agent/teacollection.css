@@ -110,14 +110,44 @@
 
 
   @media (max-width:420px) {
+    .page{
+      height:50%;
+      padding:20px;
+      width: 100%;
+    }
+
+    .page .title{
+      font-size: 18px;
+    }
+
     .page .form .inputfield{
       flex-direction: column;
       align-items: flex-start;
+      font-size: 12px;
+      width:100px;
+      height: 50px;
+      margin:20px auto;
     }
+
     .page .form .inputfield label{
       margin-bottom: 5px;
     }
+
     .page .form .inputfield.terms{
       flex-direction: row;
     }
+
+    .page .form #btnset{
+      /* background: #ffc2b3; */
+      flex-direction: row;
+      margin-left: 0px;
+      font-size: 15px;
+    }
+
+   
+
+    .page .form .inputfield .btn span{
+      display:none;
+    }
+
   }
