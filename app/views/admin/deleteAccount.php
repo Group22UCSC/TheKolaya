@@ -119,26 +119,16 @@
           <input type="text" class="input">
        </div> 
 
-       <div class="inputfield">
-          <label>Address</label>
-          <textarea class="textarea"></textarea>
-       </div> 
-
-        <div class="inputfield">
-          <label>Type(Landowner/Employee)</label>
-          <input type="text" class="input">
-       </div>
-
         <div class="inputfield">
           <label>Phone number</label>
           <input type="text" class="input">
        </div>
 
-       <div class="inputfield">
+      <!--  <div class="inputfield">
           <label>Password</label>
           <input type="password" class="input">
        </div>  
-
+ -->
        <div class="inputfield">
           <a>If you want to delete the account</a>
       
@@ -147,7 +137,7 @@
       
       <div class="last">
             <div class="a">
-       <a href="<?php echo URL?>admin/deleteAccount"><input type="submit" value="Discard" class="btn"></a>
+       <a href="<?php echo URL?>admin/admin"><input type="submit" value="Discard" class="btn"></a>
       </div>
 
 
@@ -163,7 +153,7 @@
     </div>
 
   </div> 
-</div>
+<!-- </div> -->
 
 
 <?php include 'bottom-container.php';?>
