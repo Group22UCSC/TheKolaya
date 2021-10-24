@@ -62,6 +62,40 @@ class Agent extends Controller{
         // $this->view->showPage('Agent/DeliveryList');
     }
 
+    function updateRequest(){
+        $request_data = [
+            'date' => '',
+           'lid' => '',
+           'rid'=>'',
+           'request_type' => '',
+           'amount'=>'',
+           'agent_id' => ''
+       ];      
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->request_data['date'] = date("Y-m-d");
+            $this->request_data['lid'] = trim($_POST['lid-popup']);
+            $this->request_data['rid'] = trim($_POST['rid-popup']);
+            $this->request_data['request_type'] = trim($_POST['rtype-popup']); 
+            $this->request_data['amount'] = trim($_POST['amount-popup']);            
+            $this->request_data['agent_id'] = $_SESSION['user_id'];
+            
+            if($this->request_data['request_type'] == "Fertilizer"){
+                $this->model->updateFertilizerRequest($this->request_data);               
+            }
+            else if ($this->request_data['request_type']== "Advance") {
+                $this->model->updateAdvanceRequest($this->request_data);
+            }            
+            $result1 = $this->model->fertilizerdeliveryListTable();
+            $result2 = $this->model->advancedeliveryListTable();
+            // print_r($result);
+            $this->view->render2('Agent/DeliveryList', $result1, $result2);
+            // $this->view->showPage('Agent/DeliveryList');
+               
+        }
+         
+    }
+
     function profile() {
         $this->view->showPage('Agent/agentProfile');
     }
