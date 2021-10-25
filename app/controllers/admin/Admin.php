@@ -173,23 +173,23 @@
                     
                     $this->model->userRegistration($this->user_data);
 
-                    if ($account_type == 'agentLandTemp' || $account_type == 'temp') {
-                    $OTPcode = rand(1000, 9999);
-                    $_SESSION['OTP'] = $OTPcode;
-                    // $data['OTP'] = $OTPcode;
-                    $contact_number = $this->user_data['mobile_number'];
-                    $user = "94701826475";
-                    $password = "7027";
-                    $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
-                    $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
-                    $to = "$contact_number";
+                //     if ($account_type == 'agentLandTemp' || $account_type == 'temp') {
+                //     $OTPcode = rand(1000, 9999);
+                //     $_SESSION['OTP'] = $OTPcode;
+                //     // $data['OTP'] = $OTPcode;
+                //     $contact_number = $this->user_data['mobile_number'];
+                //     $user = "94701826475";
+                //     $password = "7027";
+                //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
+                //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
+                //     $to = "$contact_number";
 
-                    $baseurl = "http://www.textit.biz/sendmsg";
-                    $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-                    $ret = file($url);
+                //     $baseurl = "http://www.textit.biz/sendmsg";
+                //     $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
+                //     $ret = file($url);
 
-                    $res = explode(":", $ret[0]);
-                }
+                //     $res = explode(":", $ret[0]);
+                // }
                     
                     if($this->user_data['reg_type'] == 'direct_landowner' || $this->user_data['reg_type'] == 'indirect_landowner' || $this->user_data['reg_type'] == 'agent'){
                         if($this->user_data['address'] != '') {

@@ -158,11 +158,11 @@
        <a href="<?php echo URL?>admin/updateAccount1"><input type="submit" value="Discard" class="btn"></a>
       </div>
 
-<!-- 
+
        <div class="b">
         <input type="submit" value="Update" class="btn">
       </div>
-            -->
+           
 
       </div>
 
