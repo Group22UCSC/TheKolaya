@@ -317,6 +317,24 @@ justify-self: center ;
 }
 
 /* **************** table container ********************** */
+
+/* edit button of the table */
+.actionCol button{ 
+  padding: 5px 10px;
+  background-color: rgb(255, 83, 16);
+  border: 5px solid ;
+  color: white;
+  border-radius: 12px;
+  width: 40%;
+  text-decoration: none;
+  cursor: pointer;
+}
+.actionCol button:hover{
+  
+  background-color:  rgb(133, 39, 3);
+
+  cursor: pointer;
+}
 #pricetbl{
     font-family: 'Poppins', sans-serif;
   display: none;
@@ -350,7 +368,9 @@ justify-self: center ;
       font-size: 0.7rem;
       font-weight: 900;
     }
-  
+    .teapricetable td{
+      text-align: center;
+    }
     .tdcls {
       padding: 1rem 2rem;
     }
@@ -385,10 +405,16 @@ justify-self: center ;
     .amount {
       text-align: right;
     }
-  
    
     tr:nth-child(even) {
       background-color: #f4f6fb;
+    }
+
+    #teapricetable tr:not(:first-child){
+      cursor: pointer; transition: all .25s ease-in-out;
+    }
+    #teapricetable tr:not(:first-child):hover{
+      background-color: #ddd;
     }
 
     /* ********** table section over ********** */
