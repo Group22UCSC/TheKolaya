@@ -55,27 +55,27 @@ $pdf->Cell(59 ,5,'The Kolaya Invoice',0,0);
 $pdf->Cell(59 ,30,'',0,1);
 
 $pdf->SetFont('Arial','B',15);
-$pdf->Cell(71 ,5,'WET',0,0);
+$pdf->Cell(71 ,5,'Samrin Tea Factory',0,0);
 $pdf->Cell(59 ,5,'',0,0);
 $pdf->Cell(59 ,5,'Details',0,1);
 
 $pdf->SetFont('Arial','',10);
 
-$pdf->Cell(130 ,5,'Near DAV',0,0);
-$pdf->Cell(25 ,5,'Customer ID:',0,0);
+$pdf->Cell(130 ,5,'No 218,',0,0);
+$pdf->Cell(25 ,5,'Landowner ID:',0,0);
 $pdf->Cell(34 ,5,'0012',0,1);
 
-$pdf->Cell(130 ,5,'Delhi, 751001',0,0);
+$pdf->Cell(130 ,5,'Nakiyadeniya,',0,0);
 $pdf->Cell(25 ,5,'Invoice Date:',0,0);
-$pdf->Cell(34 ,5,'12th Jan 2019',0,1);
+$pdf->Cell(34 ,5,'12th Oct 2021',0,1);
  
-$pdf->Cell(130 ,5,'',0,0);
+$pdf->Cell(130 ,5,'Sri Lanka.',0,0);
 $pdf->Cell(25 ,5,'Invoice No:',0,0);
-$pdf->Cell(34 ,5,'ORD001',0,1);
+$pdf->Cell(34 ,5,'INV001',0,1);
 
 
 $pdf->SetFont('Arial','B',15);
-$pdf->Cell(130 ,5,'Bill To',0,0);
+$pdf->Cell(130 ,5,'',0,0);
 $pdf->Cell(59 ,5,'',0,0);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(189 ,10,'',0,1);

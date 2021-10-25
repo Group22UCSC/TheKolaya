@@ -133,13 +133,23 @@
     
     .searchform{
       width: 150px;
-      margin:10px auto;      
+      margin:20px auto;      
     }
 
     .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #date{
       width:130px;
       font: 12px ;
     }
+   
+    ::-webkit-input-placeholder { /* Edge */      
+      font-size: 10px;
+    }
 
+    .searchform #submit{
+      font-size: 10px;
+      height: 21px;
+      width: 50px;
+    }
+    
  }
   

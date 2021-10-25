@@ -4,8 +4,8 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-  <!-- <form class="popup-content-form" action="<?php echo URL?>agent/updateTeaWeight"  method="POST" onsubmit="clearWeight()"> -->
-    <div class="modal-header">
+  <form class="deliverypopup-content-form" action="<?php echo URL?>agent/updateRequest" name = "requestUpdateForm" method="POST" onsubmit="">
+    <div class="modal-header">      
       <span class="close">&times;</span>
       <h2>Are You Sure?</h2>
     </div>
@@ -31,10 +31,12 @@
       <button class="yes" type="submit" onclick="closeformpopup()">Yes</button>
       <button class="no" onclick="closepopup()">No</button>      
     </div>
-    <!-- </form>      -->
+    </form>     
   </div>
 
 </div>
+
+
 
 
   
