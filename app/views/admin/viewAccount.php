@@ -29,7 +29,7 @@
                                <?php
                                $x=count($data);
                                for($i=0;$i<$x;$i++){
-                                 echo '<tr id="tea" data-href="https://www.facebook.com/">
+                                 echo '<tr id="tea" data-href="'.URL.'/admin/viewAccount1">
                                            <td>'.$data[$i]['name'].'</td>
                                            <td>'.$data[$i]['user_id'].'</td>
                                            <td>'.$data[$i]['user_type'].'</td>

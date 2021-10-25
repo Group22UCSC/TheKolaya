@@ -17,13 +17,13 @@ class Supervisor_Model extends Model {
         }
     }
     
-    function editProfile() {
-        $contact_number = $_SESSION['contact_number'];
-        $name = $_SESSION['name'];
-        $user_id = $_SESSION['user_id'];
-        $query = "UPDATE user SET contact_number='$contact_number', name='$name' WHERE user_id='$user_id'";
-        $this->db->runQuery($query);
-    }
+    // function editProfile() {
+    //     $contact_number = $_SESSION['contact_number'];
+    //     $name = $_SESSION['name'];
+    //     $user_id = $_SESSION['user_id'];
+    //     $query = "UPDATE user SET contact_number='$contact_number', name='$name' WHERE user_id='$user_id'";
+    //     $this->db->runQuery($query);
+    // }
 
     function manageRequests() {
         $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
@@ -43,10 +43,18 @@ class Supervisor_Model extends Model {
 
     function stock($data) {
         $type = $data['type'];
-        $query = "SELECT DATE(in_date) 
+        if($data['stock_type'] == 'out_stock') {
+            $query = "SELECT DATE(out_date) 
+                AS out_date, 
+                out_quantity, emp_id 
+                FROM ".$data['stock_type']." WHERE type='$type'";
+        }else if($data['stock_type'] == 'in_stock') {
+            $query = "SELECT DATE(in_date) 
                 AS in_date, 
                 price_per_unit, price_for_amount, in_quantity, emp_id 
                 FROM ".$data['stock_type']." WHERE type='$type'";
+        }
+        
         $row = $this->db->runQuery($query);
         if($row) {
             return $row;

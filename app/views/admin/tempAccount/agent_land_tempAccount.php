@@ -13,8 +13,8 @@
         <table class="teapricetable">
                 <tr class="trcls">
                     <th class="thcls">ID</th>
-                    <th class="thcls">Contact number</th>
                     <th class="thcls">User Type</th>
+                    <th class="thcls">Contact number</th>
                 </tr>
            
                 <?php
@@ -23,8 +23,8 @@
             
                  echo'<tr class="table-row">
                     <td class="tdcls">'.$data[$i]['user_id'].'</td>
-                    <td class="tdcls">'.$data[$i]['contact_number'].'</td>
                     <td class="tdcls">'.$data[$i]['user_type'].'</td>
+                    <td class="tdcls">'.$data[$i]['contact_number'].'</td>
                      </tr>';
                     
             }

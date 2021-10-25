@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">  
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/deliverylist.css">  
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/deliverylist.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/searchbar.css">  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>                
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,10 @@
 <div class="topic">Request  Delivery  List </div>
 <div class="deliverylist">
     <div class = fertilizer_topic> Fertilizer </div>
+    <form class="searchform">    
+    <input type="text" id="searchf" placeholder="Enter Landowner ID.." onkeyup="searchFertilizerTable()">
+    <!-- <input type="submit" value="search" id="submit"> -->
+</form>
     <table class="fertilizer_delivery_table" id="fertilizer_delivery_table">
     <tr>
     <td class="th">Landowner ID</td>
@@ -24,15 +29,20 @@
     <!-- <td class="th">Type</td> -->
     <td class="th">Amount</td>            
       </tr>
-     
       <?php
-      $y=count($data1);
+      if ($data1!=0){
+        $f = count($data1);
+      }
+      else{
+        $f="0";
+      }
+        
       // print_r($y);
-        for($i=0;$i<$y;$i++){
+        for($i=0;$i<$f;$i++){
           echo '<tr  id = "request" data-href-request="" >
                     <td>'.$data1[$i]['lid'].'</td>                   
                     <td>'.$data1[$i]['request_id'].'</td>
-                    <td>'.$data1[$i]['amount_kg'].'</td> 
+                    <td>'.$data1[$i]['amount'].'</td> 
                 </tr>';                
         }
       ?>
@@ -40,6 +50,10 @@
       </div>
       <div class="deliverylist">
       <div class = advance_topic> Advance </div>
+      <form class="searchform">    
+    <input type="text" id="searcha" placeholder="Enter Landowner ID.." onkeyup="searchAdvanceTable()">
+    <!-- <input type="submit" value="search" id="submit"> -->
+</form>
     <table class="advance_delivery_table" id="advance_delivery_table">
     <tr>
     <td class="th">Landowner ID</td>
@@ -48,9 +62,14 @@
       </tr>
      
       <?php
-      $y=count($data2);
+      if ($data2!=0){
+        $a = count($data2);
+      }
+      else{
+        $a="0";
+      }
       // print_r($y);
-        for($i=0;$i<$y;$i++){
+        for($i=0;$i<$a;$i++){
           echo '<tr  id = "request" data-href-request="" >
           <td>'.$data2[$i]['lid'].'</td>                   
           <td>'.$data2[$i]['request_id'].'</td>
@@ -170,6 +189,42 @@ function closeformpopup(){
 //     document.getElementById("weight").value=" ";
 //   }
 
+function searchAdvanceTable() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searcha");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("advance_delivery_table");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";        
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+}
 
+function searchFertilizerTable() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchf");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("fertilizer_delivery_table");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";        
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+}
 
 </script>

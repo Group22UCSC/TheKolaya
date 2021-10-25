@@ -20,18 +20,28 @@ class User_Model extends Model {
         }
     }
 
-    function checkPassword($data) {
+    function checkPassword($password) {
         $user_id = $_SESSION['user_id'];
-        $query = "SELECT * FROM user WHERE user_id='$user_id'";
-        
+
+        $query = "SELECT * FROM user WHERE user_id = '$user_id'";
+
         $row = $this->db->runQuery($query);
+        
         $hashed_password = $row[0]['password'];
 
-        if(password_verify($data['password'], $hashed_password)) {
+        if(password_verify($password, $hashed_password)) {
             return $row;
         }else {
             return false;
         }
+    }
+
+    function editProfile() {
+        $contact_number = $_SESSION['contact_number'];
+        $name = $_SESSION['name'];
+        $user_id = $_SESSION['user_id'];
+        $query = "UPDATE user SET contact_number='$contact_number', name='$name' WHERE user_id='$user_id'";
+        $this->db->runQuery($query);
     }
 
 }

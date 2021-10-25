@@ -24,7 +24,7 @@
           <form action="<?php echo URL?>Supervisor/manageFirewood" method="POST" id="form_instock">
             <div class="form">
               <div class="inputfield">
-                <label>Price per unit</label>
+                <label>Price per unit(Rs)</label>
                 <input type="number" class="input" name="price_per_unit" id="price_per_unit">
               </div>  
               <div class="inputfield">
@@ -33,7 +33,7 @@
               </div>  
               
               <div class="inputfield">
-                <input type="submit" value="Submit" class="accept-btn" name="firewood_in" id="instock_submit_btn">
+                <input type="submit" value="Submit" class="accept-btn" id="instock_submit_btn" name="firewood_in">
               </div>
               <a href="<?php echo URL?>Supervisor/firewoodInStock">
                 <div class="inputfield">

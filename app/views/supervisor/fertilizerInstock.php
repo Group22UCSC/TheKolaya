@@ -16,7 +16,7 @@
 <body>
   <?php include 'top-container.php'; ?>
   <div class="title-container">
-    <h2>Fertilizer buy details</h2>
+    <h2>Fertilizer Purchase details</h2>
   </div>
   <div class="middle-container">
     <div class="form-container">
