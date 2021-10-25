@@ -80,6 +80,14 @@ class Accountant extends Controller{
     function deleteSetTeaPriceRow(){
         if(($_SERVER['REQUEST_METHOD']=='POST')){
             $result = $this->model->deleteSetTeaPriceRow();
+            if($result==true){
+                
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
         }
         else{
             echo "Data was not passed to the controller";
