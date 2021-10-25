@@ -163,6 +163,32 @@ class Admin_Model extends Model {
     }
 
 
+
+
+   /////////////user updated/////////////////////////////////////////////////////////////////////////////////////////
+
+      function userUpdate($data = []) {
+        $name = $data['name'];
+        $user_id = $data['reg_id'];
+        $address = $data['address'];
+        $user_type = $data['reg_type'];
+        $contact_number = $data['mobile_number'];
+        $password = $data['password'];
+        $confirm_password = $data['confirm_password'];
+        $verify = 1;
+
+        $query = "UPDATE user SET name='$_POST[name]', user_id='$_POST[user_id]', address='$_POST[address]', user_type='$_POST[user_type]', contact_number='$_POST[contact_number]', password='$_POST[password]', confirm_password='$_POST[confirm_password]' ";
+
+            $this->db->runQuery($query);
+        
+        
+    }
+
+
+
+
+
+
     function availableListTable(){
         $query = "SELECT name,user_id,user_type FROM user WHERE verify=1";
         $row = $this->db->runQuery($query);

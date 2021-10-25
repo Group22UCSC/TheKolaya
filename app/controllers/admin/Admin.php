@@ -29,7 +29,7 @@
             
         }
 
-        //update form
+        ///////////////////////////////////////////////////update form/////////////////////////////////////////////////////
          public function updateAccount1() {
             // $this->view->showPage('Admin/updateAccount1');
 
@@ -37,10 +37,10 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data = [
                     'name' => trim($_POST['name']),
-                    'user_id' => trim($_POST['user_id']),
-                    'user_type' => trim($_POST['user_type']),
+                    'reg_id' => trim($_POST['user_id']),
                     'address' => trim($_POST['address']),
-                    'contact_number' => trim($_POST['contact_number']),
+                    'reg_type' => trim($_POST['user_type']),
+                    'mobile_number' => trim($_POST['contact_number']),
                     // 'route_number' => trim($_POST['route_number']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
@@ -53,13 +53,13 @@
                 if($data['password'] != $data['confirm_password']) {
                     $data['confirm_password_err'] = "confirmation not matching";
                 }
-                if($this->model->searchUserContact($data['contact_number'])) {
-                    $data['contact_number_err'] = "This mobile number is already Taken";
-                }
+                // if($this->model->searchUserContact($data['contact_number'])) {
+                //     $data['contact_number_err'] = "This mobile number is already Taken";
+                // }
 
                 if(empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    $this->model->userRegistration($data);
+                    $this->model->userUpdate($data);
                     $this->view->render('admin/updateAccount1', $data);
                 }else {
                     $this->view->render('admin/updateAccount1', $data);

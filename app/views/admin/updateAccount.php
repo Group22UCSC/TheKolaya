@@ -99,14 +99,11 @@
      <a >UPDATE ACCOUNTS</a> </div>
   
 
-  <div class="k1">  
-
-<div class="wrapper1">
-    <div class="title">  Update Form  </div>
-
+<div class="k1">  
+ <div class="wrapper1">
+  <div class="title">  Update Form  </div>
     
-      
-<form action="<?php echo URL?>admin/updateAccount1" method="POST">
+    <form action="<?php echo URL?>admin/updateAccount1" method="POST">
       <div class="form">
 
         <div class="inputfield">
@@ -161,11 +158,11 @@
        <a href="<?php echo URL?>admin/updateAccount1"><input type="submit" value="Discard" class="btn"></a>
       </div>
 
-
+<!-- 
        <div class="b">
         <input type="submit" value="Update" class="btn">
       </div>
-           
+            -->
 
       </div>
 
