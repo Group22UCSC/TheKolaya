@@ -92,6 +92,13 @@ class Accountant_Model extends Model {
                 return false;
             }
     }
+
+    function deleteSetTeaPriceRow(){
+        $date=$_POST['date'];
+        
+        $query = "DELETE FROM monthly_tea_price WHERE date='{$date}'";
+        echo $query;
+    }
     
 }
 ?>

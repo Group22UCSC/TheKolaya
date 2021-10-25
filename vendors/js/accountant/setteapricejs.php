@@ -81,6 +81,7 @@ $(document).ready(function(){
                       )
                       clearTable();
                       getTable();
+                      checkForm();
                   },
                   error : function (xhr, ajaxOptions, thrownError) {
                       Swal.fire({
@@ -108,20 +109,63 @@ function getTable(){
         success:function(data){
             console.log(data);
             var len=data.length;
+            var action="";
+            var todaysDate=new Date();
+            var thisYear=todaysDate.getFullYear();
+            var thisMonth=todaysDate.getMonth()+1;
+            var thisDate=todaysDate.getDate();
+            // console.log("Todays Date : "+todaysDate);
+            // console.log("This year :"+thisYear+"This month :"+thisMonth+"This date :"+thisDate);
+
+
            //    $('#updateAuctionTable not(tbody)').empty();
         //$("#updateAuctionTable").trigger("reset");
        // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
-            for(var i=0;i<10;i++){
-              // var date=data[i].date;
+            for(var i=0;i<len;i++){
+                var date=new Date(data[i].date);
+                var month=date.getMonth()+1;
+                var year=date.getFullYear();
+                var date2=date.getDate();
+
+                var deleteBtn=$("<button>Delete</button>");
+                //console.log("year :"+year+"month :"+month+"date :"+date2);
+
+
+               
+                // Check Date and Set DELETE BUTTONS TO THE TABLE
+                // if(thisYear==year && thisMonth==month && thisDate==date2){
+                //     deleteBtn.appendTo("#actionCol");
+                // }else{
+                //     $("#actionCol").append("<td>No Action</td>");
+                // }
+
+
+
+
+                // const month=data.getMonth()+1
+                // console.log(date);
                 var str=
                 "<tr class='row'>"+
                 "<td>"+
-                    //data[i].date+
-                "</td>"+
-                
-                
+                    data[i].date+
+                "</td>"+   
                 "<td>"+
-                    // (date==date)? "Hi":"Bye";
+                    year+
+                "</td>"+   
+                "<td>"+
+                    month+
+                "</td>"+
+              
+                "<td>"+
+                    data[i].price+
+                "</td>"+
+                "<td class='actionCol'>"+
+               // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
+                    
+               "<button type='button' id='editbutton' onclick='deleteRow()' >" +
+                 "Delete"+
+                "</button>" +
+
                 "</td>"+
                 "</tr>";
                 $("#teapricetable tbody").append(str);
@@ -130,10 +174,130 @@ function getTable(){
             }
             
         }
-    })
-
+    }) 
 }
-// last row of auction table
+
+function checkForm(){
+    var url="http://localhost/Thekolaya/accountant/getTeaPrice";
+    var todaysDate=new Date();        
+    var thisMonth=todaysDate.getMonth()+1;
+    var thisYear=todaysDate.getFullYear();
+    document.getElementById("year").value=thisYear;
+    document.getElementById("month").value=thisMonth;
+    var isPriceSet=0;
+    $.ajax({
+        url:url,
+        type:"GET",
+        dataType:"JSON",
+        success:function(data){
+            //console.log(data);
+            var len=data.length;
+         
+            for(var i=0;i<len;i++){
+                var date=new Date(data[i].date);
+                var month=date.getMonth()+1;
+                var year=date.getFullYear();
+                if(month==thisMonth && year==thisYear){
+                    isPriceSet=1;
+                }
+           }
+           if(isPriceSet==1){
+            document.getElementById("setPriceBtn").disabled = true;
+            document.getElementById("price").value = "Tea Price Already Set";
+            document.getElementById("price").readOnly = true;
+            document.getElementById("price").className = "input-set";
+            }
+            
+        }
+    }) 
+        //     var todaysDate=new Date();
+            
+        //     var thisMonth=todaysDate.getMonth()+1;
+        //     var thisYear=todaysDate.getFullYear();
+            
+        //     var isPriceSet=0;
+            
+        //     var len=data.length;
+        //     document.getElementById("year").value=thisYear;
+        //     document.getElementById("month").value=thisMonth;
+        //     for(var i=0;i<len;i++){
+        //         var date=new Date(data[i].date);
+        //         var month=date.getMonth()+1;
+        //         var year=date.getFullYear();
+        //         if(month==thisMonth && year==thisYear){
+        //             isPriceSet=1;
+        //         }
+        //    }
+        //    if(isPriceSet==1){
+        //     document.getElementById("setPriceBtn").disabled = true;
+        //     }
+}
+
+function deleteRow(){
+    // remobe the row from ui
+    $('#teapricetable tbody').on('click','#editbutton',function(){
+    // remobe the row from ui
+    //$(this).closest('tr').remove();
+
+
+    var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
+    $date = $row.find("td:nth-child(1)"); // ist column value
+
+    var date2=$date.text(); // date as a javascript variable
+    console.log(date2);
+    
+    var str="Delete tea price set on "+date2+" ?";
+    Swal.fire({
+      title: 'Are You Sure ?',
+      icon: 'warning',
+    //   html:'<div>Line0<br />Line1<br /></div>',
+    html: '<pre>' + str + '</pre>',
+      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
+      confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
+      confirmButtonText: 'Delete!',
+      showCancelButton: true
+      }).then((result) => {
+          if (result.isConfirmed) {
+              $("#setTeaPriceForm").trigger("reset");
+              
+              $.ajax({
+                  type: "POST",
+                  url: "http://localhost/Thekolaya/accountant/deleteSetTeaPriceRow",
+                  
+                  data: {
+                    date:date2,
+                  },
+                  success: function(data) {
+                      
+                      Swal.fire(
+                      'Deleted!',
+                      'Your Record Was Deleted Succesfully.',
+                      'success'
+                      )
+                      clearTable();
+                      getTable();
+                      checkForm();
+                  },
+                  error : function (xhr, ajaxOptions, thrownError) {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Oops...',
+                          text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                          // footer: '<a href="">Why do I have this issue?</a>'
+                      })
+                  }
+              })
+          }
+      })
+
+
+
+    });
+   
+}
+
+
 
 function clearTable(){
     // $("#updateAuctionTable tr").remove();

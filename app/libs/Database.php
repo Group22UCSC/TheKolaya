@@ -27,6 +27,12 @@ class Database extends PDO{
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function deleteQuery($query){
+        $stmt = $this->prepare($query);
+
+        return $stmt->execute();
+    }
 }
 
 ?>

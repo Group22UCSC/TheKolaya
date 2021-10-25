@@ -53,15 +53,15 @@ class Accountant extends Controller{
     }
 
     function setTeaPrice() {
-        if(!empty($_POST)){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
             
 
             $result = $this->model->insertTeaPrice();
             if($result==true){
                 // if there is a result which mean query is executed - > success pop up
                 $_POST['success']=1;
-                $result = $this->model->teaPriceTable();
-                $this->view->render('accountant/setTeaPrice',$result);
+                //$result = $this->model->teaPriceTable();
+                //$this->view->render('accountant/setTeaPrice',$result);
                 //echo "successfuly added";
             }
             else{
@@ -76,6 +76,17 @@ class Accountant extends Controller{
         }
         
     }
+    // function to delete tea prices of a row
+    function deleteSetTeaPriceRow(){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $result = $this->model->deleteSetTeaPriceRow();
+        }
+        else{
+            echo "Data was not passed to the controller";
+        }
+    }
+
+
     function payments() {
         $this->view->showPage('accountant/payments');
     }

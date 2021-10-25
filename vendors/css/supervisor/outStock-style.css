@@ -2,6 +2,17 @@
     grid-template-columns: 100%;
 }
 
+.search-wrapper {
+    padding: 10px;
+}
+
+.search-wrapper input{
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+}
+
 .middle-container .form-container form .form .inputfield {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
