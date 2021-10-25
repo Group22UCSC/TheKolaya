@@ -9,8 +9,8 @@
   <div class="modal-content">
   <form class="popup-content-form" action="<?php echo URL?>agent/updateTeaWeight" name = "teaUpdateForm" method="POST" onsubmit="return validateForm()">
     <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Are You Sure?</h2>
+      <!-- <span class="close">&times;</span> -->
+      <h2>Are You Sure ?</h2>
     </div>
     <div class="modal-body">    
              <div class="mid-content">      

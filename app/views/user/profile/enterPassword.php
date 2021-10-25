@@ -19,7 +19,7 @@
         <form action="<?php echo URL?>Supervisor/editProfile" method="POST">
             <div class="form">
               <div class="inputfield">
-                <input type="password" class="input" name="password">
+                <input type="password" class="input" name="password" required>
               </div>
               <div class="inputfield">
                 <input type="submit" value="Enter" class="btn" name="enter_btn">

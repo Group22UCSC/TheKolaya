@@ -1,8 +1,7 @@
 <?php
 
 class Supervisor extends Controller{
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
     }
 
@@ -16,7 +15,7 @@ class Supervisor extends Controller{
     }
 
     function updateTeaMeasure() {
-        $this->view->showPage('Supervisor/updateTeaMeasure');
+        $this->view->render('Supervisor/updateTeaMeasure');
     }
 
     function manageRequests() {
@@ -90,57 +89,45 @@ class Supervisor extends Controller{
             'type' => 'firewood',
             'date' => ''
         ];
-        if(isset($_GET['search_btn'])) {
-            $data['date'] = trim($_GET['date']);
-            $instock = $this->model->stock($data);
-            $searchResult = $this->model->searchByDate($data);
-            $this->view->show('Supervisor/firewoodInStock', $instock, $searchResult);
-        }else {
+        // if(isset($_GET['search_btn'])) {
+        //     $data['date'] = trim($_GET['date']);
+        //     $instock = $this->model->stock($data);
+        //     $searchResult = $this->model->searchByDate($data);
+        //     $this->view->show('Supervisor/firewoodInStock', $instock, $searchResult);
+        // }else {
             $instock = $this->model->stock($data);
             $this->view->show('Supervisor/firewoodInStock', $instock);
-        }
+        // }
         
     }
 
     function fertilizerOutStock() {
-        $this->view->showPage('Supervisor/fertilizerOutstock');
+        $this->view->render('Supervisor/fertilizerOutstock');
     }
     
     function firewoodOutStock() {
-        $this->view->showPage('Supervisor/firewoodOutStock');
+        $data = [
+            'stock_type' => 'out_stock',
+            'type' => 'firewood',
+        ];
+        $outstock = $this->model->stock($data);
+        $this->view->render('Supervisor/firewoodOutStock', $outstock);
     }
 
     function profile() {
-        $this->view->showPage('user/profile//profile');
+        $this->view->render('user/profile/profile');
     }
 
+    //Manage Profile
     function editProfile() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            if(isset($_POST['accept-btn'])) {
-                $data = [
-                    'contact_number' => trim($_POST['contact_number']),
-                    'name' => trim($_POST['name'])
-                ];
-    
-                $_SESSION['contact_number'] = $data['contact_number'];
-                $_SESSION['name'] = $data['name'];
-                $this->view->render('user/profile/enterPassword');
-            }else if(isset($_POST['enter_btn'])) {
-                $data = [
-                    'password' => $_POST['password']
-                ];
-                if($this->model->checkPassword($data)) {
-                    $this->model->editProfile();
-                    $this->view->render('user/profile/correctPassword');
-                }else {
-                    $this->view->render('user/profile/wrongPassword');
-                }
-            }
-            
-        }else{
-            $this->view->render('user/profile/editProfile');
-        }
+        include '../app/controllers/User.php';
+        $user = new User();
+        $user->loadModelUser('user');
+        $user->editProfile();
+    }
+
+    function enterPassword() {
+        $this->view->render('user/profile/enterPassword');
     }
 
     

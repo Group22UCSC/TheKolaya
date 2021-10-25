@@ -11,71 +11,80 @@
 
      <div class="name1">
      
-               
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
-<table id="myTable">
-  <tr class="header">
-    <th style="width:33.33%;">Name</th>
-    <th style="width:33.33%;">ID</th>
-    <th style="width:33.33%;">Type</th>
+                      <table id="myTable">
+                           <tr class="header">
+                                <th style="width:33.33%;">Name</th>
+                                <th style="width:33.33%;">ID</th>
+                                <th style="width:33.33%;">Type</th>
    
-  </tr>
+                            </tr>
+                       <div class="vertical">
+    
+                               <?php
+                               $x=count($data);
+                               for($i=0;$i<$x;$i++){
+                                 echo '<tr id="tea" data-href="'.URL.'/Manager/viewTeaQuality1">
+                                           <td>'.$data[$i]['name'].'</td>
+                                           <td>'.$data[$i]['user_id'].'</td>
+                                           <td>'.$data[$i]['user_type'].'</td>
+                                           
+                                       </tr>';                
+                               }       
+                               ?>         
 
-<?php
-        $x=count($data);
-        for($i=0;$i<$x;$i++){
-          echo '<tr id="tea" data-href-tea="">
-                    <td>'.$data[$i]['name'].'</td>
-                    <td>'.$data[$i]['user_id'].'</td>
-                    <td>'.$data[$i]['user_type'].'</td>
-                    
-                </tr>';                
-        }       
-      ?>         
 
 
+                        </div>
   
-</table>
-
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-
-</script>
-
-<script>
-
-//roneki gen gatta ewa//
-  document.addEventListener("DOMContentLoaded",() => {
-    const rows = document.querySelectorAll("tr[data-href-tea]");
-    rows.forEach(row =>{
-        row.addEventListener("click", ()=>{
-         openteaform();
-
-</script>
+                      </table>
 
 
 
+                                <!--  // script for filtering -->
+                                  <script>
+                                  function myFunction() {
+                                    var input, filter, table, tr, td, i, txtValue;
+                                    input = document.getElementById("myInput");
+                                    filter = input.value.toUpperCase();
+                                    table = document.getElementById("myTable");
+                                    tr = table.getElementsByTagName("tr");
+                                    for (i = 0; i < tr.length; i++) {
+                                      td = tr[i].getElementsByTagName("td")[0];
+                                      if (td) {
+                                        txtValue = td.textContent || td.innerText;
+                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                          tr[i].style.display = "";
+                                        } else {
+                                          tr[i].style.display = "none";
+                                        }
+                                      }       
+                                    }
+                                  }
+                                  
+                                  </script>
+                                  
 
 
-      
+
+                                 <!-- script for view table -->
+                                 <script>
+                                   document.addEventListener("DOMContentLoaded",() => {
+                                 const rows = document.querySelectorAll("tr[data-href]");
+                                 rows.forEach(row =>{
+                                     row.addEventListener("click", ()=>{
+                                      // openteaform();
+                         window.location.href=row.dataset.href;
+
+                                     });
+                                 });
+                             });
+
+                                        
+                                 
+                                 </script>
+
      </div>
 
 

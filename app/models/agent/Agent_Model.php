@@ -71,12 +71,12 @@ class Agent_Model extends Model{
     function fertilizerdeliveryListTable(){
         $route_no=$_SESSION['route'];        
         $query = "SELECT request.request_id, request.request_type, request.lid, 
-                 fertilizer_request.amount_kg FROM request 
+                 fertilizer_request.amount FROM request 
                   INNER JOIN fertilizer_request
                   ON  request.request_id = fertilizer_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1  ";
+                AND request.response_status = 1 AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
@@ -84,7 +84,7 @@ class Agent_Model extends Model{
         if($row) {
             return $row;
         }else {
-            return false;
+            return 0;
         }
     }
 
@@ -96,7 +96,7 @@ class Agent_Model extends Model{
                   ON  request.request_id = advance_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1";
+                AND request.response_status = 1 AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
@@ -104,11 +104,39 @@ class Agent_Model extends Model{
         if($row) {
             return $row;
         }else {
-            return false;
+            return 0;
         }
     }
-   
+
+    function updateFertilizerRequest($data = []){
+        $date = $data['date'];
+        $request_id = $data['rid'];        
+        $emp_id = $data['agent_id'];
+
+        $query1 = "UPDATE fertilizer_request SET date_delivered = '$date', agent_id = '$emp_id' WHERE request_id = '$request_id'";
+        $query2 = "UPDATE request SET complete_status = '1' WHERE request_id = '$request_id'";
+
+        $this->db->runQuery($query1);
+        $this->db->runQuery($query2);
+    }
+
+    function updateAdvanceRequest($data = []){
+        $date = $data['date'];
+        $request_id = $data['rid'];        
+        $emp_id = $data['agent_id'];
+
+        $query1 = "UPDATE advance_request SET payment_day = '$date', agent_id = '$emp_id' WHERE request_id = '$request_id'";
+        $query2 = "UPDATE request SET complete_status = '1' WHERE request_id = '$request_id'";
+
+        $this->db->runQuery($query1);
+        $this->db->runQuery($query2);
+
+    }
+
+ 
 }
+
+
 
  // $query = "SELECT request_id, request_type, lid FROM request WHERE lid IN (SELECT user_id FROM landowner WHERE route_no = '$route_no')";
 // advance_request.amount_rs 
