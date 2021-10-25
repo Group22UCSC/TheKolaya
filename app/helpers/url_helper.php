@@ -7,13 +7,14 @@ function redirect($page) {
 function otpSend() {
     $OTPcode = '1001';
     $_SESSION['OTP'] = $OTPcode;
-    // $data['OTP'] = $OTPcode;
-    $OTPcode = rand(1000, 9999);
-    // $contact_number = $_SESSION['contact_number'];
+
+    // $OTPcode = rand(1000, 9999);
     // $_SESSION['OTP'] = $OTPcode;
-    // $user = "94769372530";
-    // $password = "9208";
-    // $text = urlencode("Your තේ කොළය verificati on code is:".$OTPcode);
+    // // $data['OTP'] = $OTPcode;
+    // $contact_number = $_SESSION['contact_number'];
+    // $user = "94701826475";
+    // $password = "7027";
+    // $text = urlencode("Your තේ කොළය verification code is:".$OTPcode);
     // $to = "$contact_number";
 
     // $baseurl ="http://www.textit.biz/sendmsg";

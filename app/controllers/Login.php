@@ -108,7 +108,7 @@ class Login extends Controller {
             if($this->model->isRegisteredUser($data['contact_number'])) {
                 // $otp = new OtpVerify;
                 // $otp->otpSend($data);
-                $_SESSION['mobile_number'] = $data['contact_number'];
+                $_SESSION['contact_number'] = $data['contact_number'];
                 $_SESSION['controller'] = $data['controller'];
                 otpSend();
             }else {
