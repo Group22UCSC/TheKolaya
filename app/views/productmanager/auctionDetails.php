@@ -1,4 +1,8 @@
 <?php include 'top-container.php'; ?>
+<body onload="getTable()">
+    
+</body>
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/auctionDetails.css">
 <!-- Top content -->
 <div class="top-container">
     <p>Auction Details</p>
@@ -13,112 +17,31 @@
     </form>
 </div>
 <!--  Table COntent -->
-<div class="home-content">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/auctionDetails.css">
-  
- 
-  <div class="table-container">
+<!-- **************   Table container   *********-->
+<div class="table-container">
     <div class="table-section">
-        <table class="teapricetable">
-            
+        <table class="teapricetable" id="updateAuctionTable">
+                
                 <tr class="trcls">
                     <th class="thcls">Date</th>
-                    <th class="thcls">Product Id</th>
+                    <th class="thcls">PId</th>
                     <th class="thcls">Product Name</th>
                     <th class="thcls">Sold Amount(Kg)</th>
-                    <th class="thcls">Sold Price(Per 1Kg)</th>
+                    <th class="thcls">Sold Price(1Kg/Rs)</th>
                     <th class="thcls">Buyer</th>
-                    <th class="thcls">Total Income(Rs)</th>
-
+                    <th class="thcls">Income(Rs)</th>
+                    <th class="thcls">Action</th>
 
                 </tr>
-           
-                <tr>
-                <td class="tdcls">12/07/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-                <tr>
-                <td class="tdcls">12/07/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/08/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/08/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Akbhar Brothers Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/09/2021</td>
-                <td class="tdcls">P23</td>
-                <td class="tdcls">Green Tea</td>
-                <td class="tdcls">456</td>
-                <td class="tdcls">120</td>
-                <td class="tdcls">Gohn Keels Pvt</td>
-                <td class="tdcls">34,560</td>
-            </tr>
+                <!-- <tbody></tbody> -->
+               <!--  OLD TABLE IS IN THE TRASH FILE -> TRASH.PHP -->
+    
         </table>
     </div>
 
 
-</div>  
+</div>
+<?php include 'js/productmanager/auctionDetailsjs.php';?>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 
   <?php include 'bottom-container.php'; ?>
