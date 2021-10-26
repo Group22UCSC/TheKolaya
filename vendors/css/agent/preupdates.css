@@ -87,6 +87,11 @@ button{
 
 
   @media(max-width:400px){
+    .topic{
+      height:75px;
+      font-size: 26px;
+    }
+
     .update_buttons{
         flex-direction: column;
         margin:50px;

@@ -135,23 +135,27 @@
   @media(max-width:400px){
     
     .searchform{
-      width: 150px;
+      width: 200px;
       margin:20px auto;      
     }
 
-    .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #date{
-      width:130px;
+    .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #date,.searchform #dropdown{
+      width:160px;
       font: 12px ;
     }
    
     ::-webkit-input-placeholder { /* Edge */      
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .searchform #submit{
       font-size: 10px;
-      height: 21px;
-      width: 50px;
+      height: 22px;
+      width: 60px;
+    }
+
+    .searchform #dropdown span{
+      display:none;
     }
     
  }
