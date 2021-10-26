@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/teacollection.css">  
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/deliveryform.css">  
 
 <div class="page" id="requestpopup">
   <div class="title">
@@ -22,11 +22,11 @@
             </div>        
 
             <div class="inputfield">
-                <label>Requested Amount</label>
+                <label><span>Requested </span>Amount</label>
                 <input type="text" class="input" name="amount" id="amount" readonly>
             </div>        
             
-      <div class="inputfield">
+      <div class="inputfield" id="btnset">
       <button class="back" onclick="closerequestform()">Back</button> 
       <button class  = "btn" id="myBtn" onclick = "openpopup()"> Confirm </button>
          
