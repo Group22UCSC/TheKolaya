@@ -27,7 +27,7 @@
           <a href="<?php echo URL?>admin/create_account">Product Manager</a>
           <a href="<?php echo URL?>admin/create_account">Supervisor</a>
           <a href="<?php echo URL?>admin/create_account">Manager</a>
-          <a href="<?php echo URL?>admin/create_account">Admin</a>
+      
         </div>
         <div class="column">
           <h3>Create Temporary Accounts</h3>
@@ -38,7 +38,7 @@
           <a href="<?php echo URL?>admin/create_tempAccount">Product Manager</a>
           <a href="<?php echo URL?>admin/create_tempAccount">Supervisor</a>
           <a href="<?php echo URL?>admin/create_tempAccount">Manager</a>
-          <a href="<?php echo URL?>admin/create_tempAccount">Admin</a>
+         
         </div>
       </div>
     </div>
