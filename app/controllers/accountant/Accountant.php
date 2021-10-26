@@ -43,19 +43,25 @@ class Accountant extends Controller{
         }else{
             $this->view->render('user/profile/editProfile');
         }
+    }   
+
+    function getTeaPrice(){
+        $result = $this->model->teaPriceTable();
+        $json_arr=json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
     }
 
-
     function setTeaPrice() {
-        if(!empty($_POST)){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
             
 
             $result = $this->model->insertTeaPrice();
             if($result==true){
                 // if there is a result which mean query is executed - > success pop up
                 $_POST['success']=1;
-                $result = $this->model->teaPriceTable();
-                $this->view->render('accountant/setTeaPrice',$result);
+                //$result = $this->model->teaPriceTable();
+                //$this->view->render('accountant/setTeaPrice',$result);
                 //echo "successfuly added";
             }
             else{
@@ -70,6 +76,25 @@ class Accountant extends Controller{
         }
         
     }
+    // function to delete tea prices of a row
+    function deleteSetTeaPriceRow(){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $result = $this->model->deleteSetTeaPriceRow();
+            if($result==true){
+                
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        }
+        else{
+            echo "Data was not passed to the controller";
+        }
+    }
+
+
     function payments() {
         $this->view->showPage('accountant/payments');
     }

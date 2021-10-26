@@ -62,9 +62,9 @@
       <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
 
       <script>
-        var xValues = ["January", "February", "March", "April", "May"];
-        var yValues = [4500, 4900, 3400, 2400, 4500];
-        var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff"];
+        var xValues = ["January", "February", "March", "April", "May","June"];
+        var yValues = [4500, 4900, 3400, 2400, 4500,4200];
+        var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff","#3a5ec0"];
 
         new Chart("myChart1", {
           type: "bar",
@@ -81,7 +81,7 @@
             },
             title: {
               display: true,
-              text: "Monthly Profit(Rs)"
+              text: "Monthly Auction Income(Rs)"
             }
           }
         });

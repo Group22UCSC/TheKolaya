@@ -65,17 +65,18 @@ class Accountant_Model extends Model {
         }
     }
 
+    
+    function getEmpId(){
+        //$query="SELECT * FROM "
+    }
     function teaPriceTable(){
         $query = "SELECT * FROM monthly_tea_price";
-        $row = $this->db->runQuery($query);
+        $row = $this->db->selectQuery($query);
         if($row) {
             return $row;
         }else {
             return false;
         }
-    }
-    function getEmpId(){
-        //$query="SELECT * FROM "
     }
     function insertTeaPrice(){
             $date=date("Y-m-d");
@@ -90,6 +91,14 @@ class Accountant_Model extends Model {
             }else {
                 return false;
             }
+    }
+
+    function deleteSetTeaPriceRow(){
+        $date=$_POST['date'];
+        $query = " DELETE FROM `monthly_tea_price` WHERE date='{$date}'";
+        $row = $this->db->insertQuery($query);
+        $result=$this->db->deleteQuery($query);
+        echo $result;
     }
     
 }
