@@ -134,6 +134,7 @@ class Admin extends Controller
         'reg_id_err' => '',
         'mobile_number_err' => '',
     ];
+
     public function create_account()
     {
 
@@ -145,20 +146,18 @@ class Admin extends Controller
             $this->user_data['reg_type'] = trim($_POST['user_type']);
 
             $account_type = $_SESSION['account_type'];
-            switch ($account_type) {
-                case 'full':
-                    $this->user_data['address'] = trim($_POST['address']);
-                    $this->user_data['password'] = trim($_POST['password']);
-                    $this->user_data['confirm_password'] = trim($_POST['confirm_password']);
-                    break;
-                case 'agentLandFull':
-                    $this->user_data['address'] = trim($_POST['address']);
-                    $this->user_data['password'] = trim($_POST['password']);
-                    $this->user_data['confirm_password'] = trim($_POST['confirm_password']);
+
+            if ($account_type == 'full') {
+                $this->user_data['password'] = trim($_POST['password']);
+                $this->user_data['confirm_password'] = trim($_POST['confirm_password']);
+                $this->user_data['address'] = trim($_POST['address']);
+                if ($this->user_data['reg_type'] == 'Agent' || $this->user_data['reg_type'] == 'direct_landowner' || $this->user_data['reg_type'] == 'indirect_landowner') {
                     $this->user_data['route_number'] = trim($_POST['route_number']);
-                    break;
-                case 'agentLandTemp':
+                }
+            } else {
+                if ($this->user_data['reg_type'] == 'Agent' || $this->user_data['reg_type'] == 'direct_landowner' || $this->user_data['reg_type'] == 'indirect_landowner') {
                     $this->user_data['route_number'] = trim($_POST['route_number']);
+                }
             }
             if ($this->user_data['password'] != $this->user_data['confirm_password']) {
                 $this->user_data['confirm_password_err'] = "confirmation not matching";
@@ -171,91 +170,68 @@ class Admin extends Controller
             }
 
             if (empty($this->user_data['mobile_number_err']) && empty($this->user_data['confirm_password_err']) && empty($this->user_data['user_id_err'])) {
-                $this->user_data['password'] = password_hash($this->user_data['password'], PASSWORD_DEFAULT);
-
-                $this->model->userRegistration($this->user_data);
-                // if ($account_type == 'agentLandTemp' || $account_type == 'temp') {
-                //     $OTPcode = rand(1000, 9999);
-                //     $_SESSION['OTP'] = $OTPcode;
-                //     // $data['OTP'] = $OTPcode;
-                //     $contact_number = $this->user_data['mobile_number'];
-                //     $user = "94701826475";
-                //     $password = "7027";
-                //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
-                //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
-                //     $to = "$contact_number";
-
-                //     $baseurl = "http://www.textit.biz/sendmsg";
-                //     $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-                //     $ret = file($url);
-
-                //     $res = explode(":", $ret[0]);
-                // }
-                if ($this->user_data['reg_type'] == 'direct_landowner' || $this->user_data['reg_type'] == 'indirect_landowner' || $this->user_data['reg_type'] == 'agent') {
-                    if ($this->user_data['address'] != '') {
-                        $this->agent_land_account();
+                if($account_type == 'full') {
+                    if (strlen($this->user_data['password']) < 6) {
+                        $this->user_data['password_err'] = "Please enter at least 6 characters";
+                        $this->createAccount();
                     } else {
-                        $this->agent_land_tempAccount();
+                        $this->user_data['password'] = password_hash($this->user_data['password'], PASSWORD_DEFAULT);
+    
+                        $this->model->userRegistration($this->user_data);
+                        $this->createAccount();
                     }
-                } else {
-                    if ($this->user_data['address']) {
-                        $data = $this->model->checkTable();
-                        $this->view->show('admin/fullAccount/create_account', $data, $this->user_data);
-                    } else {
-                        $this->create_tempAccount();
-                    }
+                }else {
+                    $this->model->userRegistration($this->user_data);
+                        // if ($account_type == 'temp') {
+                        //     $contact_number = $this->user_data['mobile_number'];
+                        //     $user = "94701826475";
+                        //     $password = "7027";
+                        //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
+                        //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number);
+                        //     $to = "$contact_number";
+    
+                        //     $baseurl = "http://www.textit.biz/sendmsg";
+                        //     $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
+                        //     $ret = file($url);
+    
+                        //     $res = explode(":", $ret[0]);
+                        // }
+                    $this->createTempAccount();
                 }
+                
             } else {
-                if ($this->user_data['reg_type'] == 'direct_landowner' || $this->user_data['reg_type'] == 'indirect_landowner' || $this->user_data['reg_type'] == 'agent') {
-                    if ($this->user_data['address'] != '') {
-                        $this->agent_land_account();
-                    } else {
-                        $this->agent_land_tempAccount();
-                    }
-                } else {
-                    if ($this->user_data['address'] != '') {
-                        $data = $this->model->checkTable();
-                        $this->view->show('admin/fullAccount/create_account', $data, $this->user_data);
-                    } else {
-                        $data = $this->model->checkTable();
-                        $this->create_tempAccount();
-                    }
+                if($account_type == 'full') {
+                    $this->createAccount();
+                }else {
+                    $this->createTempAccount();
                 }
+                
             }
         } else {
-            $data = $this->model->checkTable();
-            $this->view->show('admin/fullAccount/create_account', $data, $this->user_data);
+            $this->createAccount();
         }
     }
 
 
-    public function agent_land_account()
+    public function createAccount()
     {
         $data = $this->model->checkTable();
-        $this->view->show('admin/fullAccount/agent_land_account', $data, $this->user_data);
+        $this->view->show('admin/fullAccount/create_account', $data, $this->user_data);
     }
 
 
-    public function agent_land_tempAccount()
-    {
-        $data = $this->model->checkTable();
-        $this->view->show('admin/tempAccount/agent_land_tempAccount', $data, $this->user_data);
-    }
-
-    public function create_tempAccount()
+    public function createTempAccount()
     {
         $data = $this->model->checkTable();
         $this->view->show('admin/tempAccount/create_tempAccount', $data, $this->user_data);
     }
-
-
 
     //Manage Profile
     function profile()
     {
         $this->view->render('user/profile/profile');
     }
-    
+
     function editProfile()
     {
         include '../app/controllers/User.php';

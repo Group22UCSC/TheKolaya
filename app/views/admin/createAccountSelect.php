@@ -6,9 +6,9 @@
  <div class="first">CREATE ACCOUNTS</div>
 <div class="middle">
         <div class="btn-list">
-          <a href="<?php echo URL?>manager/viewFertilizer"> <button class="btn btn-account"><i class="fas fa-luggage-cart"></i> CREATE FULL ACCOUNT</button></a>
+          <a href="<?php echo URL?>admin/createAccount"> <button class="btn btn-account"><i class="fas fa-luggage-cart"></i> CREATE FULL ACCOUNT</button></a>
 
-           <a href="<?php echo URL?>manager/viewFirewood"> <button class="btn btn-tea"><i class="fas fa-dumpster-fire"></i>CREATE TEMPORARY ACCOUNT</button></a>
+           <a href="<?php echo URL?>admin/createTempAccount"> <button class="btn btn-tea"><i class="fas fa-dumpster-fire"></i>CREATE TEMPORARY ACCOUNT</button></a>
 
         </div>
     </div>
