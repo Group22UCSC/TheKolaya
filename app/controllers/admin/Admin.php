@@ -112,15 +112,6 @@ class Admin extends Controller
         $this->view->showPage('Admin/setteaprice');
     }
 
-    public function profile()
-    {
-        $this->view->showPage('admin/profile');
-    }
-
-    // public function editProfile() {
-    // $this->view->showPage('admin/editProfile');
-    // }
-
     //Create Accounts
 
     public function createAccountSelect()
@@ -260,6 +251,11 @@ class Admin extends Controller
 
 
     //Manage Profile
+    function profile()
+    {
+        $this->view->render('user/profile/profile');
+    }
+    
     function editProfile()
     {
         include '../app/controllers/User.php';

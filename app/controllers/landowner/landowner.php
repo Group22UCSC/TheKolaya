@@ -49,18 +49,6 @@ class landowner extends Controller
         $this->view->showPage('landowner/Monthly_Tea_Price');
     }
 
-    public function profile()
-    {
-        $this->view->showPage('landowner/profile');
-    }
-
-    public function editProfile()
-    {
-        $this->view->showPage('landowner/editProfile');
-    }
-
-
-
     //test
     public function Test()
     {
@@ -71,5 +59,24 @@ class landowner extends Controller
         } else {
             $this->view->render('landowner/Test');
         }
+    }
+
+    //Manage Profile
+    function profile()
+    {
+        $this->view->render('user/profile/profile');
+    }
+    
+    function editProfile()
+    {
+        include '../app/controllers/User.php';
+        $user = new User();
+        $user->loadModelUser('user');
+        $user->editProfile();
+    }
+
+    function enterPassword()
+    {
+        $this->view->render('user/profile/enterPassword');
     }
 }
