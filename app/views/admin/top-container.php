@@ -102,27 +102,7 @@
               </div>
               
             </div>
-            <div class="profile">
-              <div class="icon_wrap" id="account-web">
-                <img src="<?php echo URL?>vendors/images/admin/profile.jpg" alt="profile_pic">
-                <span class="name">Sasindu <br>Wijegunasinghe</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-      
-              <div class="profile_dd">
-                <ul class="profile_ul">
-                  <li class="profile_li">
-                      <div class="icon_wrap" id="account">
-                        <img src="<?php echo URL?>vendors/images/admin/profile.jpg" alt="profile_pic">
-                        <span class="name">Sasidnu Wijegunasinghe</span>
-                      </div>
-                  </li>
-                  <li><a class="profile" href="<?php echo URL?>admin/profile"><span class="picon"><i class="fas fa-user-alt"></i></span>Profile</a></li>
-                  <li><a class="settings" href="<?php echo URL?>admin/editProfile"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
-                  <li><a class="logout" href="<?php echo URL?>login/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
-                </ul>
-              </div>
-            </div>
+            <?php include '../app/views/user/profile/navBarProfile.php';?>
           </div>
         </div>
         
