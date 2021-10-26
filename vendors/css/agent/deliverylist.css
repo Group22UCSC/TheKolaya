@@ -90,3 +90,40 @@
     }
   }
 
+  @media (max-width:420px) {
+    .topic{
+      height:50px;
+      font-size: 26px;
+    }
+
+    .deliverylist  {
+      margin: 0px auto;
+      font-size: 18px;
+  }
+
+  .fertilizer_topic, .advance_topic{
+      margin:5px auto;
+      width:60%;
+      height: 50%;
+      padding:10px;
+  }
+
+  table {
+    width:25%;
+    margin: auto;
+  }
+
+  td {
+    text-align: center;
+    padding: 5px;
+    font-size: 15px;
+  }
+  
+
+  .th{
+    font-size: 15px;
+  }
+  
+
+
+  }
