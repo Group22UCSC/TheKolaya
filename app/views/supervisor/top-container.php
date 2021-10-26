@@ -92,10 +92,11 @@
               </div>
               
             </div>
-            <div class="profile">
+            <?php include '../app/views/user/profile/navBarProfile.php';?>
+            <!-- <div class="profile">
               <div class="icon_wrap" id="account-web">
                 <img src="<?php echo URL?>vendors/images/supervisor/profile.jpg" alt="profile_pic">
-                <span class="name">Kumud Perera</span>
+                <span class="name"><?php echo $_SESSION['name']?></span>
                 <i class="fas fa-chevron-down"></i>
               </div>
       
@@ -104,7 +105,7 @@
                   <li class="profile_li">
                       <div class="icon_wrap" id="account">
                         <img src="<?php echo URL?>vendors/images/supervisor/profile.jpg" alt="profile_pic">
-                        <span class="name">Kumud Perera</span>
+                        <span class="name"><?php echo $_SESSION['name']?></span>
                       </div>
                   </li>
                   <li><a class="profile" href="<?php echo URL?>Supervisor/profile"><span class="picon"><i class="fas fa-user-alt"></i></span>Profile</a></li>
@@ -112,7 +113,7 @@
                   <li><a class="logout" href="<?php echo URL?>login/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
                 </ul>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         
