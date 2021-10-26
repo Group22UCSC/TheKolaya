@@ -42,7 +42,7 @@
             $name = ($i == 0) ? 'Kamal perera' : 'Nuwangi weerasekara';
             echo '<div class="row">
 		<div class="cell" data-title="Request_date">' . date("Y-m-d") . '</div>
-                    <div class="cell" data-title="Landowener_id">LAN-01' . $i . '</div>
+                    <div class="cell lid" data-title="Landowener_id">LAN-01' . $i . '</div>
                     <div class="cell" data-title="Name">' . $name . '</div>
                     <div class="cell" data-title="Amount">5' . $i . '</div>
                   </div>';
