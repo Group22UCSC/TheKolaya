@@ -13,7 +13,7 @@
         var str="<div style=\"display:flex; justify-content:center;\">"+ 
                 "<div style=\"text-align:left;\">"+
                     "<div>Price Per Unit: <span style=\"color:#4DD101;\"><b>Rs. " +pricePerUnit+ "</b></span></div>" +
-                    "<div>Amount :  <span style=\"color:#4DD101;\"><b>Rs. " +inAmount+ "</b></span></div>" +
+                    "<div>Amount :  <span style=\"color:#4DD101;\"><b> " +inAmount+ "kg</b></span></div>" +
                     "<div>Price For Amount:  <span style=\"color:#4DD101;\"><b>Rs. " +priceForAmount+ "</b></span></div>" +
                 "</div>" +
                 "</div>";
@@ -79,7 +79,7 @@
         var outAmount = $('#out_amount').val();
         var str="<div style=\"display:flex; justify-content:center;\">"+ 
                 "<div style=\"text-align:left;\">"+
-                    "<div>Amount :  <span style=\"color:#4DD101;\"><b>Rs. " +outAmount+ "</b></span></div>" +
+                    "<div>Amount :  <span style=\"color:#4DD101;\"><b>" +outAmount+ "kg</b></span></div>" +
                 "</div>" +
                 "</div>";
         if(outAmount < 0) {
