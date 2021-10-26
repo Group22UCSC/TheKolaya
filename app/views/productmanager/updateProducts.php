@@ -2,7 +2,7 @@
 <!-- Top container -->
 <body onload="loadPid();"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateProducts.css">
-<script defer src="<?php echo URL ?>vendors/js/productmanager/updateProducts.js"></script>
+
 <div class="top-container">
     <p>Update Products</p>
 </div>
@@ -15,6 +15,7 @@
            Emergency Message
         </div>         -->
     <div class="form">
+        <form action="<?php echo URL?>productmanager/updateProducts" id="productsForm">
         <div class="inputfield">
         <label for="productName">Product Name</label>
             <select id="productName" class="input" name="productName"  onchange="loadPid();loadModalName(this);" >
@@ -38,98 +39,12 @@
             <input type="text" class="input" id="amount">
         </div>
         <div class="inputfield">
-            <input type="submit" value="Update" data-modal-target="#modal" class="btn">
+            <input type="submit" value="Update" class="btn" id="updateBtn">
         </div>
+        </form>
     </div>
 </div>
 </div>
-<!--  **** Pop up section ***  -->
-<!-- <button data-modal-target="#modal">Open Modal</button> -->
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <div class="title">Update Confirmation</div>
-      <a data-close-button class="close-button"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
-    </div>
-    <div class="modal-body">
-    <div class="year">
-            <label>Product Name : </label> 
-            <input type="text" class="modalInput" id="modalName" required readonly>
-        </div>
-        <div class="year">
-            <label>Product Id :</label>
-            <input type="text" class="modalInput" id="modalPid"  readonly required name="pid">
-        </div>
-        <div class="price">
-            <label>Amount(Kg): 122</label>
-        </div>
-        <div class="buttonSection">
-        <a class="editbtn" data-close-button>Cancel</a>
-        
-        <input type="submit" value="Confirm" class="confirmbtn" >
-        
-        
-        
-        </div>
-    </div>
-  </div>
-  <div id="overlay"></div>
-
-<!--  **********   view prouduct stock   *** -->
-
-<!-- <div class="previousDetails">
-    <button  onclick="previousPrices();scrollFunc();">View Updated Product List</button>
-</div> -->
-<script>
-    function openModel(){
-
-    }
-    function previousPrices() {
-        
-        var val = document.getElementById("pricetbl").style.display;
-        if (val == "none") {
-            var val = document.getElementById("pricetbl").style.display = "grid";
-            
-        } else {
-            var val = document.getElementById("pricetbl").style.display = "none";
-        }
-    }
-    function scrollFunc(){
-
-        window.scrollTo(0, 500);
-    }
-    // let scrollerID;
-    //         let paused = true;
-    //         let speed = 1; // 1 - Fast | 2 - Medium | 3 - Slow
-    //         let interval = speed * 5;
-
-    //         function startScroll() {
-    //             let id = setInterval(function() {
-    //                 window.scrollBy(0, 4);
-    //                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    //                     // Reached end of page
-    //                     stopScroll();
-    //                 }
-    //             }, interval);
-    //             return id;
-    //         }
-
-    //         function stopScroll() {
-    //             clearInterval(scrollerID);
-    //         }
-
-    //         // document.body.addEventListener('keypress', function(event) {
-    //         //     if (event.which == 13 || event.keyCode == 13) {
-    //                 // It's the 'Enter' key
-    //                 if (paused == true) {
-    //                     scrollerID = startScroll();
-    //                     paused = false;
-    //                 } else {
-    //                     stopScroll();
-    //                     paused = true;
-    //                 }
-                
-    //         true;
-</script>
 
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
@@ -218,4 +133,9 @@
     </div>
 
 </div> -->
+
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+
+<?php include 'js/productmanager/updateProductsjs.php';?>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>

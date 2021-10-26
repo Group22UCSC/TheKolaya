@@ -51,14 +51,16 @@ class Accountant_Model extends Model {
     function auction(){
         
 
-        $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name
+        $query = "SELECT auction.date,product.product_id, product.product_name, auction.sold_amount, auction.sold_price,buyer.name,buyer.buyer_id
                 FROM auction 
                 INNER JOIN product 
                 ON auction.product_id=product.product_id 
                 INNER JOIN buyer 
-                ON auction.buyer_id=buyer.buyer_id";
-        $row = $this->db->runQuery($query);
-        if($row) {
+                ON auction.buyer_id=buyer.buyer_id ORDER BY auction.date ASC";
+        $row = $this->db->selectQuery($query);
+        //echo gettype($row);
+        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
+        if($row){
             return $row;
         }else {
             return false;
