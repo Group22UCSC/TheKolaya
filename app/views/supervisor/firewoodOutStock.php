@@ -24,24 +24,26 @@
     </div>
 
     <div class="table-container">
-      <div class="table-wrapper">
-        <div class="table" id="myTable">
-          <div class="row tabel-header">
-            <div class="cell">Date</div>
-            <div class="cell">Amount(kg)</div>
-          </div>
-          <?php
-          if (count($data) > 0) {
-            for ($i = 0; $i < count($data); $i++) {
-              echo '<div class="row table2-row">
-                      <div class="cell" data-title="Landowener_id">' . $data[$i]['out_date'] . '</div>
-                      <div class="cell" data-title="Agent_id">5' . $data[$i]['out_quantity'] . '</div>
-                    </div>';
-            }
-          } else {
-            echo '<p>Data not Found!</p>';
-          }
-          ?>
+          
+<?php
+
+if (!empty($data)) {
+  echo '<div class="table-wrapper">
+          <div class="table" id="myTable">
+            <div class="row tabel-header">
+              <div class="cell">Date</div>
+              <div class="cell">Amount(kg)</div>
+            </div>';
+  for ($i = 0; $i < count($data); $i++) {
+    echo '<div class="row table2-row">
+            <div class="cell" data-title="Landowener_id">' . $data[$i]['out_date'] . '</div>
+            <div class="cell" data-title="Agent_id">' . $data[$i]['out_quantity'] . '</div>
+          </div>';
+  }
+} else {
+  echo '<p style="color:red; text-align:center; padding: 30px; font-size: 26px;"><b>Opps...! No data found</b></p>';
+}
+?>
         </div>
       </div>
     </div>
