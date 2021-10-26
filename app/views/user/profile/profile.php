@@ -14,7 +14,15 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-<?php include '../app/views/'.$_SESSION["user_type"].'/top-container.php';?>
+<?php 
+$file = '../app/views/'.$_SESSION["user_type"].'/top-container.php';
+if(file_exists($file)) {
+    include $file;
+}else {
+    $file = '../app/views/'.$_SESSION["user_type"].'/topContainer.php';
+    include $file;
+}
+?>
     <div class="title-container">
         <h2>Profile</h2>
     </div>
@@ -40,4 +48,12 @@
             
         </div>
     </div>
-    <?php include '../app/views/'.$_SESSION["user_type"].'/bottom-container.php';?>
+    <?php 
+$file = '../app/views/'.$_SESSION["user_type"].'/bottom-container.php';
+if(file_exists($file)) {
+    include $file;
+}else {
+    $file = '../app/views/'.$_SESSION["user_type"].'/bottomContainer.php';
+    include $file;
+}
+?>

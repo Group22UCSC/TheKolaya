@@ -1,111 +1,104 @@
 <?php
 
-class Supervisor extends Controller{
-    function __construct(){
+class Supervisor extends Controller
+{
+    function __construct()
+    {
         parent::__construct();
     }
 
-    function index() {
-        if($this->model->getStock()) {
+    function index()
+    {
+        if ($this->model->getStock()) {
             $stock = $this->model->getStock();
             $this->view->render('Supervisor/Supervisor', $stock);
-        }else {
+        } else {
             $this->view->render('Supervisor/Supervisor');
         }
     }
 
-    function updateTeaMeasure() {
+    function updateTeaMeasure()
+    {
         $this->view->render('Supervisor/updateTeaMeasure');
     }
 
-    function manageRequests() {
+    function manageRequests()
+    {
         $request = $this->model->manageRequests();
         $this->view->render('Supervisor/manageRequests', $request);
     }
 
-    function manageFertilizer() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if(isset($_POST['fertlizer_in'])) {
-                $data = [
-                    'stock_type' => 'in_stock',
-                    'type' => 'fertilizer',
-                    'price_per_unit' => trim($_POST['price_per_unit']),
-                    'amount' => trim($_POST['amount'])
-                ];
-                $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFertilizer');
-            }else if(isset($_POST['fertilizer_out'])) {
-                $data = [
-                    'stock_type' => 'out_stock',
-                    'type' => 'fertilizer',
-                    'amount' => trim($_POST['amount'])
-                ];
-                $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFertilizer');
-            }
-            
-        }else {
-            $this->view->render('Supervisor/manageFertilizer');
-        }
-    }
-
-    function manageFirewood() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    function manageFertilizer()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'stock_type' => $_POST['stock_type'],
                 'type' => $_POST['type'],
                 'price_per_unit' => '',
                 'amount' => trim($_POST['amount'])
             ];
-            if($_POST['stock_type'] == 'in_stock') {
+            if ($_POST['stock_type'] == 'in_stock') {
                 $data['price_per_unit'] = trim($_POST['price_per_unit']);
             }
             
             $this->model->manageStock($data);
-            $this->view->render('Supervisor/manageFirewood');
-        }else {
+        } else {
+            $this->view->render('Supervisor/manageFertilizer');
+        }
+    }
+
+    function manageFirewood()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'stock_type' => $_POST['stock_type'],
+                'type' => $_POST['type'],
+                'price_per_unit' => '',
+                'amount' => trim($_POST['amount'])
+            ];
+            if ($_POST['stock_type'] == 'in_stock') {
+                $data['price_per_unit'] = trim($_POST['price_per_unit']);
+            }
+            
+            $this->model->manageStock($data);
+        } else {
             $this->view->render('Supervisor/manageFirewood');
         }
     }
 
-    function fertilizerInStock() {
+    function fertilizerInStock()
+    {
         $data = [
             'stock_type' => 'in_stock',
             'type' => 'fertilizer',
         ];
         $_SESSION['search'] = 0;
-        if(isset($_GET['search_btn'])) {
+        if (isset($_GET['search_btn'])) {
             $_SESSION['searchDate'] = trim($_GET['date']);
             $_SESSION['search'] = 1;
         }
         $instock = $this->model->stock($data);
         $this->view->render('Supervisor/fertilizerInStock', $instock);
-        
     }
 
-    function firewoodInStock() {
+    function firewoodInStock()
+    {
         $data = [
             'stock_type' => 'in_stock',
             'type' => 'firewood',
             'date' => ''
         ];
-        // if(isset($_GET['search_btn'])) {
-        //     $data['date'] = trim($_GET['date']);
-        //     $instock = $this->model->stock($data);
-        //     $searchResult = $this->model->searchByDate($data);
-        //     $this->view->show('Supervisor/firewoodInStock', $instock, $searchResult);
-        // }else {
-            $instock = $this->model->stock($data);
-            $this->view->show('Supervisor/firewoodInStock', $instock);
-        // }
-        
+        $instock = $this->model->stock($data);
+        $this->view->show('Supervisor/firewoodInStock', $instock);
     }
 
-    function fertilizerOutStock() {
+    function fertilizerOutStock()
+    {
         $this->view->render('Supervisor/fertilizerOutstock');
     }
-    
-    function firewoodOutStock() {
+
+    function firewoodOutStock()
+    {
         $data = [
             'stock_type' => 'out_stock',
             'type' => 'firewood',
@@ -114,22 +107,22 @@ class Supervisor extends Controller{
         $this->view->render('Supervisor/firewoodOutStock', $outstock);
     }
 
-    function profile() {
+    //Manage Profile
+    function profile()
+    {
         $this->view->render('user/profile/profile');
     }
-
-    //Manage Profile
-    function editProfile() {
+    
+    function editProfile()
+    {
         include '../app/controllers/User.php';
         $user = new User();
         $user->loadModelUser('user');
         $user->editProfile();
     }
 
-    function enterPassword() {
+    function enterPassword()
+    {
         $this->view->render('user/profile/enterPassword');
     }
-
-    
-
 }
