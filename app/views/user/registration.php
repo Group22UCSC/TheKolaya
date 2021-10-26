@@ -52,7 +52,7 @@
             <a href="<?php echo URL ?>/login/forgetPassword">Forget Password?</a>
           </div>
           <div style="text-align: center;" class="forget-password">
-            <span style="color: blue; cursor:context-menu">Not a member? </span> <a href="<?php echo URL ?>registration">Register From Here</a>
+            <span style="color: blue; cursor:context-menu">Not a member? </span> <a href="<?php echo URL ?>registration">Register Here</a>
           </div>
         </form>
 

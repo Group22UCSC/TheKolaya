@@ -108,7 +108,8 @@
             </div>
 
           </div>
-          <div class="profile">
+          <?php include '../app/views/user/profile/navBarProfile.php';?>
+          <!-- <div class="profile">
             <div class="icon_wrap" id="account-web">
               <img src="<?php echo URL ?>vendors/images/accountant/profile.jpg" alt="profile_pic">
               <span class="name">Accountant<br>Melaka</span>
@@ -128,7 +129,7 @@
                 <li><a class="logout" href="<?php echo URL ?>login/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
