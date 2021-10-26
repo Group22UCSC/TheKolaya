@@ -80,8 +80,6 @@ class productmanager_Model extends Model {
     }
 
 
-
-
     function getProductDetails(){
         $query = "SELECT product_id,product_name,amount FROM product";
         $row = $this->db->runQuery($query);
