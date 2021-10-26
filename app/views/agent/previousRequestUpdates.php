@@ -23,7 +23,7 @@
     <input type="date" id="date" name="date"  required>
     <input type="text" id="search" placeholder="Enter Landowner ID.." required>
     <select id="dropdown" required>
-        <option value="" disabled selected hidden>Choose Request Type..</option>
+        <option value="" disabled selected hidden><span>Choose </span>Request Type..</option>
         <option>Advance</option>
         <option>Fertilizer</option>
     </select>
