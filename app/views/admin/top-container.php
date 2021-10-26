@@ -59,13 +59,7 @@
        <span class="tooltip">View Account</span>
      </li>
 
-      <li>
-        <a href="<?php echo URL?>admin/setteaprice">
-       <i class="fa fa-dollar-sign fa-2x"></i>
-         <span class="links_name">Set Tea Price</span>
-       </a>
-       <span class="tooltip">Set Tea Price</span>
-     </li>
+       
     </ul>
   </div>
   <section class="home-section">

@@ -23,64 +23,29 @@
         <div class="title">
           Fertilizer Purchase
         </div>
-        <form action="<?php echo URL ?>Supervisor/manageFertilizer" method="POST">
+        <form action="<?php echo URL ?>Supervisor/manageFertilizer" method="POST" id="form_instock">
           <div class="form">
             <div class="inputfield">
-              <label>Price per unit</label>
-              <input type="number" class="input" name="price_per_unit" required>
+              <label>Price per unit(Rs)</label>
+              <input type="number" class="input" name="price_per_unit" id="price_per_unit">
             </div>
             <div class="inputfield">
               <label>Amount(kg)</label>
-              <input type="number" class="input" name="amount" required>
+              <input type="number" class="input" name="amount" id="in_amount">
             </div>
 
             <div class="inputfield">
-              <input type="submit" value="Submit" class="accept-btn" name="fertlizer_in">
+              <input type="submit" value="Submit" class="accept-btn" id="instock_submit_btn" name="Fertilizer_in">
             </div>
-            <a href="<?php echo URL ?>Supervisor/fertilizerInstock" style="text-decoration: none;">
+            <a href="<?php echo URL ?>Supervisor/FertilizerInStock" style="text-decoration: none;">
               <div class="inputfield">
                 <input type="button" value="Fertilizer Purchase Details" class="accept-btn">
               </div>
             </a>
-
           </div>
         </form>
       </div>
     </div>
-
-    <!-- <div class="form-outstock">
-      <div class="form-container">
-        <div class="title">
-          Fertilizer Out From the Factory
-        </div>
-        <form action="<?php echo URL ?>Supervisor/manageFertilizer" method="POST">
-          <div class="form">
-            <div class="inputfield">
-              <label>Amount(kg)</label>
-              <input type="number" class="input" name="amount" required>
-            </div>
-
-            <div class="inputfield">
-              <input type="submit" value="Submit" class="accept-btn" id="out-stock-submit" name="fertilizer_out">
-            </div>
-            <a href="<?php echo URL ?>Supervisor/fertilizerOutstock">
-              <div class="inputfield">
-                <input type="button" value="Fertilizer outStock" class="accept-btn">
-              </div>
-            </a>
-          </div>
-        </form>
-      </div>
-    </div> -->
-
-  </div>
-  <!-- <div class="title-container btn-container-outside">
-      <div class="btn-container">
-        <a href="<?php echo URL ?>Supervisor/fertilizerStock">
-          <div class="inputfield">
-            <input type="button" value="Fertilizer Stock" class="accept-btn">
-          </div>
-        </a>
-      </div>
-    </div> -->
+  <?php include 'script-included.php' ?>
+  <?php include 'js/supervisor/manageFertilizer-js.php'; ?>
   <?php include 'bottom-container.php'; ?>

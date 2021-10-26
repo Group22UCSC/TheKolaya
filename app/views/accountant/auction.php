@@ -27,8 +27,8 @@
 
 
     <form class="search-form" action="#">
-        <label for="pid">Product ID:</label>
-        <input type="text" id="pid" placeholder="Enter Product Id" name="pid">
+        <label for="date">Date :</label>
+        <input type="date" id="date" placeholder="Select a date" name="date">
         <button type="submit">Search</button>
         <!-- <label for="lname">Landowner's name:</label>
         <input type="text" id="lname" placeholder="Landowner's Name" name="lname">

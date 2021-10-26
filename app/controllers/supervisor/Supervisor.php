@@ -31,24 +31,17 @@ class Supervisor extends Controller
     function manageFertilizer()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['fertlizer_in'])) {
-                $data = [
-                    'stock_type' => 'in_stock',
-                    'type' => 'fertilizer',
-                    'price_per_unit' => trim($_POST['price_per_unit']),
-                    'amount' => trim($_POST['amount'])
-                ];
-                $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFertilizer');
-            } else if (isset($_POST['fertilizer_out'])) {
-                $data = [
-                    'stock_type' => 'out_stock',
-                    'type' => 'fertilizer',
-                    'amount' => trim($_POST['amount'])
-                ];
-                $this->model->manageStock($data);
-                $this->view->render('Supervisor/manageFertilizer');
+            $data = [
+                'stock_type' => $_POST['stock_type'],
+                'type' => $_POST['type'],
+                'price_per_unit' => '',
+                'amount' => trim($_POST['amount'])
+            ];
+            if ($_POST['stock_type'] == 'in_stock') {
+                $data['price_per_unit'] = trim($_POST['price_per_unit']);
             }
+            
+            $this->model->manageStock($data);
         } else {
             $this->view->render('Supervisor/manageFertilizer');
         }
