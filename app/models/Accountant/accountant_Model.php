@@ -95,9 +95,10 @@ class Accountant_Model extends Model {
 
     function deleteSetTeaPriceRow(){
         $date=$_POST['date'];
-        
-        $query = "DELETE FROM monthly_tea_price WHERE date='{$date}'";
-        echo $query;
+        $query = " DELETE FROM `monthly_tea_price` WHERE date='{$date}'";
+        $row = $this->db->insertQuery($query);
+        $result=$this->db->deleteQuery($query);
+        echo $result;
     }
     
 }

@@ -207,6 +207,11 @@ function checkForm(){
             document.getElementById("price").readOnly = true;
             document.getElementById("price").className = "input-set";
             }
+            if(isPriceSet==0){
+            document.getElementById("setPriceBtn").disabled = false;
+            document.getElementById("price").readOnly = false;
+            document.getElementById("price").className = "input";
+            }
             
         }
     }) 
@@ -246,6 +251,13 @@ function deleteRow(){
     var date2=$date.text(); // date as a javascript variable
     console.log(date2);
     
+    //check date and delete
+    var todaysDate=new Date();        
+    var thisMonth=todaysDate.getMonth()+1;
+    var thisYear=todaysDate.getFullYear();
+
+
+
     var str="Delete tea price set on "+date2+" ?";
     Swal.fire({
       title: 'Are You Sure ?',
@@ -269,7 +281,7 @@ function deleteRow(){
                     date:date2,
                   },
                   success: function(data) {
-                      
+                      console.log(data);
                       Swal.fire(
                       'Deleted!',
                       'Your Record Was Deleted Succesfully.',
