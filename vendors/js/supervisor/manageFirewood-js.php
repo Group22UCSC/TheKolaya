@@ -46,6 +46,7 @@
                         'Your file has been updated.',
                         'success'
                         )
+                        console.log(data);
                     },
                     error : function (xhr, ajaxOptions, thrownError) {
                         Swal.fire({
