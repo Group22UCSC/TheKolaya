@@ -25,7 +25,7 @@
   opacity: 0;
 }
 
-.searchform #search, .searchform #searchf,.searchform #searcha, .searchform #date {
+.searchform #search, .searchform #searchf,.searchform #searcha, .searchform #date, .searchform #dropdown {
     border: 1px solid #CCC;
     -webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
     -moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
@@ -43,7 +43,7 @@
     margin-bottom: 5px;
 }
 
-.searchform #search, .searchform #searchf,.searchform #searcha, .searchform #date {
+.searchform #search, .searchform #searchf,.searchform #searcha, .searchform #date, .searchform #dropdown {
     border-color: #aaa;
     -webkit-box-shadow: 0 1px 1px #bbb inset;
     -moz-box-shadow: 0 1px 1px #bbb inset;
@@ -62,7 +62,10 @@
 .searchform #searcha::-webkit-input-placeholder,
 .searchform #date:-moz-placeholder,
 .searchform #date:-ms-input-placeholder,
-.searchform #date::-webkit-input-placeholder {
+.searchform #date::-webkit-input-placeholder,
+.searchform #dropdown:-moz-placeholder,
+.searchform #dropdown:-ms-input-placeholder,
+.searchform #dropdown::-webkit-input-placeholder {
     color: #999;
     font-weight: normal;
 }

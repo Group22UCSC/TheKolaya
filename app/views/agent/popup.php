@@ -19,7 +19,7 @@
             </div>  
             <div class="mid-content">
                 <label>Initial Tea Weight</label>
-                <input type="text" class="inputpop" name="weight-popup" id="weight-pop" size="4" readonly required>
+                <input type="text" class="inputpop" name="weight-popup" id="weight-pop" size="8" readonly required>
             </div>   
     </div>
     <div class="modal-footer">         
