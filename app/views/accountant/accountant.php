@@ -10,7 +10,7 @@
     <div class="overview-boxes">
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Income (Rs)</div>
+          <div class="box-topic">Total Income(Rs)</div>
           <div class="number">40,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
@@ -21,7 +21,7 @@
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Expenses (Rs)</div>
+          <div class="box-topic">Total Expenses(Rs)</div>
           <div class="number">38,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
@@ -32,7 +32,7 @@
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Profit (Rs)</div>
+          <div class="box-topic">Total Profit(Rs)</div>
           <div class="number">12,876</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
@@ -43,7 +43,7 @@
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Sales (Kg)</div>
+          <div class="box-topic">Total Sales(Kg)</div>
           <div class="number">11,086</div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
