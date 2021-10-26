@@ -60,7 +60,7 @@
             <label>User Type</label>
             <select class="type" id="type" name="user_type" required>
                <option value="accountant">Accountant</option>
-               <option value="admin">Admin</option>
+              <!--  <option value="admin">Admin</option> -->
                <option value="manager">Manager</option>
                <option value="supervisor">Supervisor</option>
                <option value="product_manager">Product Manager</option>
