@@ -104,23 +104,26 @@ class Agent extends Controller{
          
     }
 
-    function profile() {
-        $this->view->showPage('Agent/agentProfile');
-    }
-
     function loadPopup(){
         $this->view->showPage('Agent/popup');
     }
 
     //manage profile
-    function editProfile() {
+    function profile()
+    {
+        $this->view->render('user/profile/profile');
+    }
+    
+    function editProfile()
+    {
         include '../app/controllers/User.php';
         $user = new User();
         $user->loadModelUser('user');
         $user->editProfile();
     }
 
-    function enterPassword() {
+    function enterPassword()
+    {
         $this->view->render('user/profile/enterPassword');
     }
 }

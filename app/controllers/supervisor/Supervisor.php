@@ -114,12 +114,12 @@ class Supervisor extends Controller
         $this->view->render('Supervisor/firewoodOutStock', $outstock);
     }
 
+    //Manage Profile
     function profile()
     {
         $this->view->render('user/profile/profile');
     }
-
-    //Manage Profile
+    
     function editProfile()
     {
         include '../app/controllers/User.php';
