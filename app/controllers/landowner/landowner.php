@@ -27,15 +27,15 @@ class landowner extends Controller
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($_POST['availability'] == 'on') {
-                $_POST['availability'] = 1;
+                $data = [
+                    'tea_availability' => 1,
+                    'no_of_estimated_containers' => ''
+                ];
             }
-            $data = [
-                'tea_availability' => $_POST['availability'],
-                'no_of_estimated_containers' => ''
-            ];
             if($_POST['containers']) {
                 $data['no_of_estimated_containers'] = $_POST['containers'];
             }
+            echo $_POST['containers'];
             $this->model->Update_Tea_Availability($data);
         }else {
             $availability = $this->model->getAvailability();
