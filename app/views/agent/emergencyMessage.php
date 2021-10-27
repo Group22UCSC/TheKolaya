@@ -44,7 +44,10 @@
 				title: "Are you sure ?", 
 				type: "warning",
 				confirmButtonText: "Yes",
-				showCancelButton: true
+				showCancelButton: true,
+        confirmButtonColor:'#4DD101',
+        cancelButtonColor:'#FF2400',
+        confirmButtonText: 'Yes, Send it!'
 		    })
 		    	.then((result) => {
 					if (result.value) {

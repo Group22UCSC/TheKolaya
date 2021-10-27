@@ -6,8 +6,8 @@
   <div class="modal-content">
   <form class="deliverypopup-content-form" action="<?php echo URL?>agent/updateRequest" name = "requestUpdateForm" method="POST" onsubmit="">
     <div class="modal-header">      
-      <span class="close">&times;</span>
-      <h2>Are You Sure?</h2>
+      <!-- <span class="close">&times;</span> -->
+      <h2>Are You Sure ?</h2>
     </div>
     <div class="modal-body"> 
             <div class="mid-content">      
@@ -23,7 +23,7 @@
                 <input type="text" class="inputpop" id="rtype-pop"  name="rtype-popup" size="8"readonly>
             </div>  
             <div class="mid-content">
-                <label>Request Amount</label>
+                <label>Amount</label>
                 <input type="text" class="inputpop" id="amount-pop"  name="amount-popup" size="8"readonly>
             </div>  
     </div>

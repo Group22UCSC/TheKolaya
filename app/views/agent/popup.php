@@ -7,7 +7,7 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-  <form class="popup-content-form" action="<?php echo URL?>agent/updateTeaWeight" name = "teaUpdateForm" method="POST" onsubmit="return validateForm()">
+  <form class="popup-content-form" action="<?php echo URL?>agent/updateTeaWeight" name = "teaUpdateForm" method="POST" id="form_update" onclick="return validateForm()">
     <div class="modal-header">
       <!-- <span class="close">&times;</span> -->
       <h2>Are You Sure ?</h2>
@@ -23,7 +23,7 @@
             </div>   
     </div>
     <div class="modal-footer">         
-      <button class="yes" type="submit" onclick="closeformpopup()">Yes</button>
+      <button class="yes" type="submit" id = "yes_submit" onclick="closeformpopup()">Yes</button>
       <button type="button" class="no" onclick="closepopup()">No</button>      
     </div>
     </form>     
