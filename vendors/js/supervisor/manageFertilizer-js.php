@@ -4,7 +4,7 @@
         event.preventDefault();
         var form = $('#form_instock').serializeArray();
         form.push({name:'stock_type', value: 'in_stock'});
-        form.push({name:'type', value: 'firewood'});
+        form.push({name:'type', value: 'fetilizer'});
         console.log(form);
         $('.error').remove();
         var inAmount = $('#in_amount').val();
@@ -45,7 +45,7 @@
                 $("#form_instock").trigger("reset");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo URL?>Supervisor/manageFirewood",
+                    url: "<?php echo URL?>Supervisor/manageFetilizer",
                     cache: false,
                     data: form,
                     success: function(data) {
