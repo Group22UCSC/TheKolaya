@@ -101,7 +101,7 @@ class Admin_Model extends Model {
         $user_id = $data['reg_id'];
         $user_type = $data['reg_type'];
         $verify = 0;
-        if($_SESSION['account_type'] == 'full' || $_SESSION['account_type'] == 'agentLandFull') {
+        if($_SESSION['account_type'] == 'full') {
             $address = $data['address'];
             $password = $data['password'];
             $verify = 1;
@@ -112,31 +112,34 @@ class Admin_Model extends Model {
             $user_type = 'Land_Owner';
             $landowner_type = $data['reg_type'];
             $route_number = $data['route_number'];
-        }else if ($data['reg_type'] == 'agent') {
+        }else if ($data['reg_type'] == 'Agent') {
             $route_number = $data['route_number'];
         }
 
-        if($_SESSION['account_type'] == 'full' || $_SESSION['account_type'] == 'agentLandFull' || $_SESSION['account_type'] == 'agentLandTemp') {
-            if($_SESSION['account_type'] = 'agentLandTemp') {
-                $query = "INSERT INTO user(user_id, name, contact_number, user_type, verify) values('$user_id', '$name', '$contact_number', '$user_type', '$verify')";
-            }else {
+        if($_SESSION['account_type'] == 'full' || $user_type == 'Land_Owner' || $user_type == 'Agent') {
+            if($_SESSION['account_type'] == 'full') {
                 $query = "INSERT INTO user(user_id, name, address, contact_number, user_type, password, verify) values('$user_id', '$name', '$address', '$contact_number', '$user_type', '$password', '$verify')";
+            }else {
+                $query = "INSERT INTO user(user_id, name, contact_number, user_type, verify) values('$user_id', '$name', '$contact_number', '$user_type', '$verify')";
             }
             $queryUser = null;
             switch($user_type) {
-                case 'accountant' :
+                case 'Accountant' :
                     $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
                     break;
                 
-                case 'admin' :
+                case 'Admin' :
                     $queryUser = "INSERT INTO admin(emp_id) values('$user_id')";
                     break;
                 
-                case 'agent' :
-                    $queryUser = "INSERT INTO agent(emp_id, route_no, availability) values('$user_id', '$route_number', 1)";
+                case 'Agent' :
+                    if($_SESSION['account_type'] == 'full')
+                        $queryUser = "INSERT INTO agent(emp_id, route_no, availability) values('$user_id', '$route_number', 1)";
+                    else
+                        $queryUser = "INSERT INTO agent(emp_id, route_no, availability) values('$user_id', '$route_number', 0)";
                     break;
                 
-                case 'manager' :
+                case 'Manager' :
                     $queryUser = "INSERT INTO manager(emp_id) values('$user_id')";
                     break;
 
@@ -144,11 +147,11 @@ class Admin_Model extends Model {
                     $queryUser = "INSERT INTO landowner(user_id, contact_number, landowner_type, route_no) values('$user_id', '$contact_number', '$landowner_type', '$route_number')";
                     break;
 
-                case 'product_manager' :
+                case 'Product_Manager' :
                     $queryUser = "INSERT INTO product_manager(emp_id) values('$user_id')";
                     break;
 
-                case 'supervisor' :
+                case 'Supervisor' :
                     $queryUser = "INSERT INTO supervisor(emp_id) values('$user_id')";
                     break;
             }
