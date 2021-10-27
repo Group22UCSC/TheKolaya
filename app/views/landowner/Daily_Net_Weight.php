@@ -69,7 +69,7 @@
                 <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
             </div>
 
-
+            1234567
             <script>
                 var xValues = ["Monday", "Tuesday,", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
                 var yValues = [50, 25, 35, 44, 37, 80, 77];

@@ -30,7 +30,7 @@ class landowner extends Controller
             $result = $this->model->insertRequest();
             print_r($result);
         } else {
-            $this->view->render('landowner/Test');
+            $this->view->render('landowner/Update_Tea_Availability');
         }
     }
 
