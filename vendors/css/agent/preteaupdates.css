@@ -98,7 +98,11 @@ button:hover{
     }
 
     .resultform input{
-      font-size: 12px;
+      font-size: 12px;     
+    }
+
+    .resultform #cdate, .resultform #rdate, .resultform #date{
+      background: #fff;
     }
 
     button{
