@@ -25,19 +25,19 @@ class landowner extends Controller
 
     function Update_Tea_Availability()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if($_POST['availability'] == 'on') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($_POST['availability'] == 'on') {
                 $data = [
                     'tea_availability' => 1,
                     'no_of_estimated_containers' => ''
                 ];
             }
-            if($_POST['containers']) {
+            if ($_POST['containers']) {
                 $data['no_of_estimated_containers'] = $_POST['containers'];
             }
             echo $_POST['containers'];
             $this->model->Update_Tea_Availability($data);
-        }else {
+        } else {
             $availability = $this->model->getAvailability();
             // print_r($availability);
             $this->view->render('landowner/Update_Tea_Availability', $availability);
@@ -76,7 +76,7 @@ class landowner extends Controller
     {
         $this->view->render('user/profile/profile');
     }
-    
+
     function editProfile()
     {
         include '../app/controllers/User.php';
@@ -88,5 +88,15 @@ class landowner extends Controller
     function enterPassword()
     {
         $this->view->render('user/profile/enterPassword');
+    }
+
+    //monthly tea price
+
+    function getTeaPrice()
+    {
+        $result = $this->model->teaPriceTable();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
     }
 }
