@@ -32,8 +32,7 @@ else{
     <input type="text" id="search" placeholder="Enter Landowner ID.." onkeyup="searchTable()">
     <!-- <input type="submit" value="search" id="submit"> -->
 </form>
-<div class="availablelist">       
-    <div style="overflow:auto;">
+<div class="availablelist">           
     <table class = "availabletable" id="availabletable">      
       <tr>
         <td class="th">Landowner ID</td>
@@ -51,7 +50,7 @@ else{
       ?>         
     </table>
   </div>   
-</div>
+
 
 <?php include 'bottomContainer.php';?>
 <div class="forms">   

@@ -9,7 +9,7 @@
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="top-container">
-    <p>Make Requests</p>
+    <p>Make </p>
 </div>
 <!--  *** Update tea price box **** -->
 <div class="wrapperdiv">

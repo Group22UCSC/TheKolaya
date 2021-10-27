@@ -11,8 +11,8 @@ class ProductManager extends Controller{
     }
     
     function products() {
-
-        $this->view->showPage('Productmanager/products');
+        $productResults = $this->model->getProductDetails();
+        $this->view->render('Productmanager/products',$productResults);
     }
     function auctionDetails() {
         $tblResult = $this->model->auction();

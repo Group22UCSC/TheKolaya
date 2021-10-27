@@ -29,7 +29,7 @@
     </div>
     <div class="modal-footer">         
       <button class="yes" type="submit" onclick="closeformpopup()">Yes</button>
-      <button class="no" onclick="closepopup()">No</button>      
+      <button type="button" class="no" onclick="closepopup()">No</button>      
     </div>
     </form>     
   </div>
