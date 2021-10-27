@@ -61,6 +61,7 @@
 }
 
 #myTable {
+  background-color: white;
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #ddd;

@@ -9,41 +9,7 @@ class Accountant extends Controller{
     function index() {
 
         $this->view->showPage('accountant/accountant');
-    }
-
-    public function profile()
-    {
-        $this->view->showPage('accountant/profile');
-    }
-
-    function editProfile() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            if(isset($_POST['accept-btn'])) {
-                $data = [
-                    'contact_number' => trim($_POST['contact_number']),
-                    'name' => trim($_POST['name'])
-                ];
-    
-                $_SESSION['contact_number'] = $data['contact_number'];
-                $_SESSION['name'] = $data['name'];
-                $this->view->render('user/profile/enterPassword');
-            }else if(isset($_POST['enter_btn'])) {
-                $data = [
-                    'password' => $_POST['password']
-                ];
-                if($this->model->checkPassword($data)) {
-                    $this->model->editProfile();
-                    $this->view->render('user/profile/correctPassword');
-                }else {
-                    $this->view->render('user/profile/wrongPassword');
-                }
-            }
-            
-        }else{
-            $this->view->render('user/profile/editProfile');
-        }
-    }   
+    }  
 
     function getTeaPrice(){
         $result = $this->model->teaPriceTable();
@@ -121,6 +87,25 @@ class Accountant extends Controller{
        // print_r($result);
         $this->view->render('accountant/auction', $result);
         //$this->view->showPage('accountant/auction');
+    }
+
+    //Manage Profile
+    function profile()
+    {
+        $this->view->render('user/profile/profile');
+    }
+    
+    function editProfile()
+    {
+        include '../app/controllers/User.php';
+        $user = new User();
+        $user->loadModelUser('user');
+        $user->editProfile();
+    }
+
+    function enterPassword()
+    {
+        $this->view->render('user/profile/enterPassword');
     }
 }
 

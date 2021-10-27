@@ -5,15 +5,6 @@ class ProductManager extends Controller{
     {
         parent::__construct();
     }
-    public function profile()
-    {
-        $this->view->showPage('Productmanager/profile');
-    }
-
-    public function editProfile()
-    {
-        $this->view->showPage('Productmanager/editProfile');
-    }
     function index() {
 
         $this->view->showPage('Productmanager/Productmanager');
@@ -24,8 +15,8 @@ class ProductManager extends Controller{
         $this->view->showPage('Productmanager/products');
     }
     function auctionDetails() {
-
-        $this->view->showPage('Productmanager/auctionDetails');
+        $tblResult = $this->model->auction();
+        $this->view->render('Productmanager/auctionDetails',$tblResult);
     }
     function updateProducts() {
         $productResults = $this->model->getProductDetails();
@@ -84,7 +75,24 @@ class ProductManager extends Controller{
         
     }
 
+    //Manage Profile
+    function profile()
+    {
+        $this->view->render('user/profile/profile');
+    }
     
+    function editProfile()
+    {
+        include '../app/controllers/User.php';
+        $user = new User();
+        $user->loadModelUser('user');
+        $user->editProfile();
+    }
+
+    function enterPassword()
+    {
+        $this->view->render('user/profile/enterPassword');
+    }
     
     
 }

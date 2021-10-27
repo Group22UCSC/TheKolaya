@@ -9,16 +9,23 @@
         $('.error').remove();
         var inAmount = $('#in_amount').val();
         var pricePerUnit = $('#price_per_unit').val();
-
-        if(inAmount < 0) {
-            $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        }else if(inAmount == 0) {
+        var priceForAmount = pricePerUnit*inAmount;
+        var str="<div style=\"display:flex; justify-content:center;\">"+ 
+                "<div style=\"text-align:left;\">"+
+                    "<div>Price Per Unit: <span style=\"color:#4DD101;\"><b>Rs. " +pricePerUnit+ "</b></span></div>" +
+                    "<div>Amount :  <span style=\"color:#4DD101;\"><b> " +inAmount+ "kg</b></span></div>" +
+                    "<div>Price For Amount:  <span style=\"color:#4DD101;\"><b>Rs. " +priceForAmount+ "</b></span></div>" +
+                "</div>" +
+                "</div>";
+        if(inAmount == 0) {
             $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
-        }
+        }else if(inAmount < 0) {
+            $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+        } 
         if(pricePerUnit < 0) {
             $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
         }else if(pricePerUnit == 0) {
-            $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+            $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
         }
 
         if(pricePerUnit <= 0 || inAmount <= 0) {
@@ -26,7 +33,8 @@
         }
         Swal.fire({
         title: 'Are you sure?',
-        text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value'],
+        html: '<div>' + str + '</div>',
+        // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#4DD101',
@@ -69,6 +77,11 @@
         console.log(form);
         $('.error').remove();
         var outAmount = $('#out_amount').val();
+        var str="<div style=\"display:flex; justify-content:center;\">"+ 
+                "<div style=\"text-align:left;\">"+
+                    "<div>Amount :  <span style=\"color:#4DD101;\"><b>" +outAmount+ "kg</b></span></div>" +
+                "</div>" +
+                "</div>";
         if(outAmount < 0) {
             $('#out_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
             return;
@@ -79,7 +92,8 @@
 
         Swal.fire({
         title: 'Are you sure?',
-        text: "Amount: "+form[0]['value'],
+        html: '<div>' + str + '</div>',
+        // text: "Amount: "+form[0]['value'],
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#4DD101',

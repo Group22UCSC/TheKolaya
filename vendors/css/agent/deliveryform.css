@@ -1,26 +1,15 @@
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-.topic{      
-      text-align: center;      
-      font-size: 30px;      
-      background-color: rgb(211, 243, 190);
-      color: rgba(1, 131, 12,1);
-}
-
-.page{
-  max-width: 100%;
+.page{ 
   width: 50%;
   background: white;
-  margin:100px auto;
-  border-radius: 25px;
+  margin: 50px;
+ border-radius: 25px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
   padding: 50px;
-  animation: emergency-load 500ms ease-in;
-    animation-fill-mode: forwards;
-    transform: translateX(-100px);
-    opacity: 0;
-    
+  
+ 
   
 }
 
@@ -46,8 +35,9 @@
    width: 200px;
    color: #01830c;
    margin-right: 10px;
-  font-size: 20px;
+  font-size: 14px;
 }
+
 
 .page .form .inputfield .input,
 .page .form .inputfield .textarea{
@@ -116,45 +106,58 @@
   margin-bottom: 0;
 }
 
-@keyframes emergency-load {
-  0%{
-    transform: translateX(-100px);
-    opacity: 0;
-  }
 
-  100%{
-    transform: translateX(0px);
-    opacity: 1;
-  }
-}
 
   @media (max-width:420px) {
-    .topic{
-      height:75px;
-      font-size: 26px;
-    }
-
     .page{
-      margin:30px auto;
-      width: 90%;
+      height:75%;
       padding:20px;
-      height:90%;
+      width: 70%;     
+     
     }
 
+    
     .page .title{
-      font-size: 22px;
+      font-size: 18px;
     }
-
 
     .page .form .inputfield{
       flex-direction: column;
       align-items: flex-start;
+      font-size: 12px;
+      width:100px;
+      height: 50px;
+      margin:20px auto;
     }
+
     .page .form .inputfield label{
       margin-bottom: 5px;
     }
+
     .page .form .inputfield.terms{
       flex-direction: row;
     }
-    
+
+    .page .form #btnset{
+      /* background: #ffc2b3; */
+      flex-direction: row;      
+      font-size: 15px; 
+      margin-left: 0px; 
+      margin-right: 0px;    
+    }
+     
+    .page .form #myBtn{
+        width:90%;  
+        margin-left: 30px;     
+    }
+
+    .page .form .inputfield span{
+      display:none;
+    }
+
+    .back{
+        width: 100%;
+        margin-left: 10px;
+    }
+
   }

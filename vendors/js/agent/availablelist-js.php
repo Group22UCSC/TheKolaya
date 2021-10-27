@@ -1,34 +1,27 @@
 <script>
     $(document).ready(function(){
-    $('#instock_submit_btn').click(function(event){
+    $('#myBtn').click(function(event){
         event.preventDefault();
-        var form = $('#form_instock').serializeArray();
-        form.push({name:'stock_type', value: 'in_stock'});
-        form.push({name:'type', value: 'fertilizer'});
+        var form = $('#form_update').serializeArray();
+        // form.push({name:'stock_type', value: 'in_stock'});
+        // form.push({name:'type', value: 'firewood'});
         console.log(form);
         $('.error').remove();
-        var inAmount = $('#in_amount').val();
-        var pricePerUnit = $('#price_per_unit').val();
-        var priceForAmount = pricePerUnit*inAmount;
+        var lid = $('#lid').val();
+        var weight = $('#weight').val();        
         var str="<div style=\"display:flex; justify-content:center;\">"+ 
                 "<div style=\"text-align:left;\">"+
-                    "<div>Price Per Unit: <span style=\"color:#4DD101;\"><b>Rs. " +pricePerUnit+ "</b></span></div>" +
-                    "<div>Amount :  <span style=\"color:#4DD101;\"><b> " +inAmount+ "kg</b></span></div>" +
-                    "<div>Price For Amount:  <span style=\"color:#4DD101;\"><b>Rs. " +priceForAmount+ "</b></span></div>" +
+                    "<div>Price Per Unit: <span style=\"color:#4DD101;\"><b>Rs. " +weight+ "</b></span></div>" +
+                    "<div>Amount :  <span style=\"color:#4DD101;\"><b>Rs. " +lid+ "</b></span></div>" +
                 "</div>" +
                 "</div>";
-        if(inAmount == 0) {
-            $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
-        }else if(inAmount < 0) {
-            $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+        if(weight == 0) {
+            $('#weight').parent().after("<p class=\"error\">Please Enter weight</p>")
+        }else if(weight< 0) {
+            $('#weight').parent().after("<p class=\"error\">Weight Cannot Be Negative</p>");
         } 
-        if(pricePerUnit < 0) {
-            $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        }else if(pricePerUnit == 0) {
-            $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
-        }
-
-        if(pricePerUnit <= 0 || inAmount <= 0) {
+        
+        if(weight <= 0) {
             return;
         }
         Swal.fire({
@@ -42,10 +35,10 @@
         confirmButtonText: 'Yes, Update it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                $("#form_instock").trigger("reset");
+                $("#form_update").trigger("reset");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo URL?>Supervisor/manageFertilizer",
+                    url: "<?php echo URL?>agent/updateTeaWeight",
                     cache: false,
                     data: form,
                     success: function(data) {
