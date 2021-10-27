@@ -4,11 +4,20 @@ document.querySelector('.teapricetable').addEventListener('click', function(even
    var route = document.getElementById("route-number");
    var landOwnerType = document.getElementById("landowner-id");
    var userId = document.getElementById("user-id");
-   var userType = document.querySelector("#user-type input");
-
+   var userTypeInput = document.querySelector("#user-type input");
+   var userType = document.getElementById("user-type");
+   var landownerId = document.getElementById('landowner-id');
+   var html = '<div class="inputfield" id="landowner-id">'+
+               '<label>Landowner Type</label>' +
+               '<select class="type" id="type" name="user_type" required>' +
+                  '<option value="direct_landowner">Direct Landowner</option>' +
+                  '<option value="indirect_landowner">Indirect Landowner</option>' +
+               '</select>'+
+               '</div>'
+               
    if(tableRow.className = "table-row") {
-      var user_id = td[0].innerHTML;
-      var user_type = td[1].innerHTML;
+      var user_id = td[1].innerHTML;
+      var user_type = td[0].innerHTML;
    }
    var userIdBegin = '';
       for (var i = 0; i < user_id.length; i++) {
@@ -24,20 +33,25 @@ document.querySelector('.teapricetable').addEventListener('click', function(even
    }
    switch(user_type) {
       case "Land_Owner":
+         if(landownerId == null)
+            userType.insertAdjacentHTML("afterend", html)
          route.style.display = "flex"
-         landOwnerType.style.display = "flex"
          break;
       case "Agent":
+         if(landownerId)
+            landownerId.remove()
+         // landOwnerType.style.display = "none"
          route.style.display = "flex"
-         landOwnerType.style.display = "none"
          break;
       default:
          route.style.display = "none"
-         landOwnerType.style.display = "none"
+         if(landownerId)
+            landownerId.remove()
+         // landOwnerType.style.display = "none"
          break;
    }
    user_id = userIdBegin + "-" + UserIdEnd;
    console
    userId.value = user_id;
-   userType.value = user_type;
+   userTypeInput.value = user_type;
  });

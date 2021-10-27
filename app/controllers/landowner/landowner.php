@@ -25,12 +25,22 @@ class landowner extends Controller
 
     function Update_Tea_Availability()
     {
-        if (!empty($_POST)) {
-
-            $result = $this->model->insertRequest();
-            print_r($result);
-        } else {
-            $this->view->render('landowner/Test');
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($_POST['availability'] == 'on') {
+                $_POST['availability'] = 1;
+            }
+            $data = [
+                'tea_availability' => $_POST['availability'],
+                'no_of_estimated_containers' => ''
+            ];
+            if($_POST['containers']) {
+                $data['no_of_estimated_containers'] = $_POST['containers'];
+            }
+            $this->model->Update_Tea_Availability($data);
+        }else {
+            $availability = $this->model->getAvailability();
+            // print_r($availability);
+            $this->view->render('landowner/Update_Tea_Availability', $availability);
         }
     }
 

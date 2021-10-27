@@ -1,3 +1,55 @@
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  /* .table {
+    animation: fadeIn 1.8s;
+    -webkit-animation: fadeIn 1.8s;
+    -moz-animation: fadeIn 1.8s;
+    -o-animation: fadeIn 1.8s;
+    -ms-animation: fadeIn 1.8s;
+  } */
+
 .error {
     color: red;
     font-size: 14px;
@@ -8,6 +60,11 @@
     width: 100%;
     margin: 20px auto;
     padding: 30px;
+    animation: fadeIn 1.8s;
+    -webkit-animation: fadeIn 1.8s;
+    -moz-animation: fadeIn 1.8s;
+    -o-animation: fadeIn 1.8s;
+    -ms-animation: fadeIn 1.8s;
 }
 
 .form-container .title{

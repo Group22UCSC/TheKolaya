@@ -46,6 +46,11 @@
       -o-animation: fadeIn 2s;
       -ms-animation: fadeIn 2s; */
 }
+.wrapperdiv {
+  background-image: url("../../images/landowner/Make_Requests.jpg");
+  padding: 100px;
+  background-size: 100% 100%;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -106,6 +111,7 @@
   margin-bottom: 15px;
   display: flex;
   align-items: center;
+  margin-left: 15p;
 }
 
 .wrapperform .form .inputfield label {
@@ -127,6 +133,13 @@
   border-radius: 3px;
   transition: all 0.3s ease;
 }
+#Advance {
+  display: none;
+}
+#Fertilizer {
+  display: none;
+}
+
 .input-set {
   width: 100%;
   outline: none;
