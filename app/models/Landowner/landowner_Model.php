@@ -122,4 +122,24 @@ class landowner_Model extends Model
         //     return false;
         // }
     }
+    //test end
+
+    //monthly tea price
+
+    function teaPriceTable()
+    {
+        $query = "SELECT * FROM monthly_tea_price";
+        $row = $this->db->selectQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+    //monthly tea price end 
+
 }
