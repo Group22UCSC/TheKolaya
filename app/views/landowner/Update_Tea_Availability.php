@@ -10,26 +10,9 @@
 
 <div class="wrapperdiv">
   <div class="wrapperform">
-    <!-- <div class="title">
-    Emergency Message
-  </div> -->
 
     <?php
     date_default_timezone_set("Asia/colombo");
-    // $dateToday = date("Y-m-d");
-    // $year = date('Y', strtotime($dateToday));
-    // $month = date('F', strtotime($dateToday));
-    // //print_r($data);
-    // $y = count($data);
-    // $isPriceSet = 0;
-    // for ($j = 0; $j < $y; $j++) {
-    //   $dbdate = $data[$j]['date'];
-    //   $dbyear = date('Y', strtotime($dbdate));
-    //   $dbmonth = date('F', strtotime($dbdate));
-    //   if ($year == $dbyear and $month == $dbmonth) {
-    //     $isPriceSet = 1;
-    //   }
-    // }
 
     ?>
     <form action="" method="POST" id="update_availability_form">
@@ -50,7 +33,7 @@
 
         <div class="inputfield">
           <label>Update Availability</label>
-          <input type="checkbox" class="input" class="btn" id="update_availability" name="availability">
+          <input type="checkbox" class="input" class="btn" id="update_availability" name="availability" <?php if($data[0]["tea_availability"] == 1 && ($data[0]["no_of_estimated_containers"] != 0 || $data[0]["no_of_estimated_containers"] != null)){echo 'checked disabled';}?> >
         </div>
       </div>
     </form>
@@ -60,12 +43,11 @@
 
 <script src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
 <script>
-  <?php if($data[0]["tea_availability"] == 0){
-    echo "$(document).ready(function() {
+  $(document).ready(function() {
       $('#update_availability').click(function(event) {
         var form = $('#update_availability_form').serializeArray();
-  
         // console.log($(this).val());
+        
           Swal.fire({
             title: 'Are you sure?',
             text: 'You won\'t be able to revert this!',
@@ -88,7 +70,7 @@
                     'Your file has been updated.',
                     'success'
                   )
-                  // console.log(data);
+                  console.log(data);
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                   Swal.fire({
@@ -98,12 +80,12 @@
                   })
                 }
               })
+            }else {
+              $('#update_availability_form').trigger('reset');
             }
           })
       })
-    })";
-  }?>
-  
+    })
 </script>
 
 
