@@ -34,6 +34,11 @@
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
   padding: 40px;
 }
+.wrapperdiv {
+  background-image: url("../../images/landowner/Update_Tea_Availability.jpg");
+  padding: 150px;
+  background-size: 100% 100%;
+}
 
 @keyframes fadeIn {
   0% {

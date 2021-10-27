@@ -49,3 +49,23 @@ function reqType(){
   document.getElementById('rtype').value=price;
 }
 
+function changeFormBody(){
+  var e = document.getElementById("RequestType");
+  var val= e.options[e.selectedIndex].value;
+  //document.getElementById('pid').value=val;
+  if(val=="Advance"){
+    var e = document.getElementById("Advance");
+    e.style.display="flex";
+    var e = document.getElementById("Fertilizer");
+    e.style.display="none";
+    console.log("A");
+  }
+  else if(val=="Fertilizer"){
+    var e = document.getElementById("Fertilizer");
+    e.style.display="flex";
+    var e = document.getElementById("Advance");
+    e.style.display="none";
+    console.log("F");
+  }
+}
+
