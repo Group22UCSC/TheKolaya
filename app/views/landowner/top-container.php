@@ -51,13 +51,13 @@
         <span class="tooltip">Monthly Income</span>
       </li>
       <!-- Daily Net Weight -->
-      <!-- <li>
+      <li>
         <a href="<?php echo URL ?>landowner/Daily_Net_Weight">
           <i class="fas fa-balance-scale fa-2x"></i>
           <span class="links_name">Daily Net Weight</span>
         </a>
         <span class="tooltip">Daily Net Weight</span>
-      </li> -->
+      </li>
       <!-- Monthly Tea Price -->
       <li>
         <a href="<?php echo URL ?>landowner/Monthly_Tea_Price">
