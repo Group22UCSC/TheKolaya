@@ -30,18 +30,24 @@
           </div>
           <?php
 
-          for ($i = 0; $i < count($data); $i++) {
-            echo '<div class="row table_row">
-                    <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
-                    <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
-                    <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
-                    <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
-                  </div>';
-          }
-          for ($i = 0; $i < 2; $i++) {
+          // for ($i = 0; $i < count($data); $i++) {
+          //   echo '<div class="row table_row">
+          //           <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
+          //           <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
+          //           <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
+          //           <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
+          //         </div>';
+          // }
+          for ($i = 0; $i < 3; $i++) {
             $name = ($i == 0) ? 'Kamal perera' : 'Nuwangi weerasekara';
+            if($i == 2) {
+              $name = "Sandaru gamage";
+              $date = '2021-10-27';
+            }else {
+              $date = date("Y-m-d");
+            }
             echo '<div class="row">
-		<div class="cell" data-title="Request_date">' . date("Y-m-d") . '</div>
+		<div class="cell" data-title="Request_date">' . $date . '</div>
                     <div class="cell lid" data-title="Landowener_id">LAN-01' . $i . '</div>
                     <div class="cell" data-title="Name">' . $name . '</div>
                     <div class="cell" data-title="Amount">5' . $i . '</div>
