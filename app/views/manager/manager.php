@@ -1,6 +1,6 @@
 <?php include 'top-container.php';?>
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-style.css">
-<div class="text">Dashboard</div>
+<div class="text"></div>
 
 
 

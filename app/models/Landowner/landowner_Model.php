@@ -72,24 +72,41 @@ class landowner_Model extends Model
     }
 
 
-    function Update_Tea_Availability()
+    function Update_Tea_Availability($data = [])
     {
-        $date = date("Y-m-d");
-        $requests_type = $_POST['rtype'];
-        // HAS TO CHANGE THIS
-        // $lid = 'LAN-000';
-        // $qty = $_POST['qty'];
-        // $query = "INSERT INTO request (requests_date,response_status,requests_type,lid) VALUES ('{$date}','0','{$requests_type}',{$lid})";
+        $containers = $data['no_of_estimated_containers'];
+        $availability = $data['tea_availability'];
+        $user_id = $_SESSION['user_id'];
 
-        // $row = $this->db->insertQuery($query);
-        // print_r($row);
-        // if ($row) {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
+        if ($containers != '') {
+            $query = "UPDATE landowner 
+                SET tea_availability=" . $availability . ", no_of_estimated_containers=" . $containers . " 
+                WHERE user_id='$user_id'";
+        }else {
+            $row = $this->getAvailability();
+            if($row[0]['no_of_estimated_containers'] == null) {
+                $query = "UPDATE landowner 
+                SET tea_availability=" . $availability . ", no_of_estimated_containers=NULL 
+                WHERE user_id='$user_id'";
+            }
+            
+        }
+
+        $this->db->runQuery($query);
     }
 
+    public function getAvailability()
+    {
+        $user_id = $_SESSION['user_id'];
+        $query = "SELECT * FROM landowner WHERE user_id='$user_id'";
+        $row = $this->db->runQuery($query);
+
+        if (!empty($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 
     //test
     function Test()
