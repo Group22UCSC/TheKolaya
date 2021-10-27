@@ -69,7 +69,7 @@
   <!-- chart hedding -->
 
   <div class="chart-head">
-    <h1>TEA SUPPLY DURING LAST WEEK</h1>
+    <h1>TEA SUPPLY DURING LAST 7 DAYS</h1>
   </div>
 
   <!-- chart -->
@@ -80,7 +80,7 @@
       <canvas id="myChart1" style="width:100%;max-width:1000px"></canvas>
     </div>
     <script>
-      var xValues = ["Monday", "Tuesday,", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+      var xValues = ["10/01", "10/03", "10/10", "10/06", "10/12", "10/16", "10/20"];
       var yValues = [50, 25, 35, 44, 37, 80, 77];
       var barColors = ['rgba(255, 99, 132, 0.8)',
         'rgba(255, 159, 64, 0.2)',
