@@ -71,9 +71,8 @@
 
             <div class="inputfield">
                <label>Contact Number</label>
-               <input type="tel" class="input" name="contact_number" placeholder="<?php (!empty($user_data['mobile_number_err'])) ? print $user_data['mobile_number_err'] : print ''; ?>" required>
+               <input type="tel" class="input" name="contact_number" placeholder="<?php (!empty($user_data['mobile_number_err'])) ? print '*'.$user_data['mobile_number_err'] : print ''; ?>" required>
             </div>
-
             <div class="inputfield" id="route-number" style="display: none;">
                <label>Route number</label>
                <input type="number" class="input" name="route_number">
