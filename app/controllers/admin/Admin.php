@@ -168,44 +168,42 @@ class Admin extends Controller
             if ($this->model->searchUserId($this->user_data['reg_id'])) {
                 $this->user_data['user_id_err'] = "This user_id is already Taken";
             }
+            if ($account_type == 'full') {
+                if (strlen($this->user_data['password']) < 6) {
+                    $this->user_data['password_err'] = "Please enter at least 6 characters";
+                }
+            }
 
-            if (empty($this->user_data['mobile_number_err']) && empty($this->user_data['confirm_password_err']) && empty($this->user_data['user_id_err'])) {
-                if($account_type == 'full') {
-                    if (strlen($this->user_data['password']) < 6) {
-                        $this->user_data['password_err'] = "Please enter at least 6 characters";
-                        $this->createAccount();
-                    } else {
-                        $this->user_data['password'] = password_hash($this->user_data['password'], PASSWORD_DEFAULT);
-    
-                        $this->model->userRegistration($this->user_data);
-                        $this->createAccount();
-                    }
-                }else {
+            if (empty($this->user_data['mobile_number_err']) && empty($this->user_data['confirm_password_err']) && empty($this->user_data['user_id_err']) && empty($this->user_data['password_err'])) {
+                if ($account_type == 'full') {
+                    $this->user_data['password'] = password_hash($this->user_data['password'], PASSWORD_DEFAULT);
+
                     $this->model->userRegistration($this->user_data);
-                        // if ($account_type == 'temp') {
-                        //     $contact_number = $this->user_data['mobile_number'];
-                        //     $user = "94701826475";
-                        //     $password = "7027";
-                        //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
-                        //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number);
-                        //     $to = "$contact_number";
-    
-                        //     $baseurl = "http://www.textit.biz/sendmsg";
-                        //     $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-                        //     $ret = file($url);
-    
-                        //     $res = explode(":", $ret[0]);
-                        // }
-                    $this->createTempAccount();
-                }
-                
-            } else {
-                if($account_type == 'full') {
                     $this->createAccount();
-                }else {
+                } else {
+                    $this->model->userRegistration($this->user_data);
+                    // if ($account_type == 'temp') {
+                    //     $contact_number = $this->user_data['mobile_number'];
+                    //     $user = "94701826475";
+                    //     $password = "7027";
+                    //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
+                    //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number);
+                    //     $to = "$contact_number";
+
+                    //     $baseurl = "http://www.textit.biz/sendmsg";
+                    //     $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
+                    //     $ret = file($url);
+
+                    //     $res = explode(":", $ret[0]);
+                    // }
                     $this->createTempAccount();
                 }
-                
+            } else {
+                if ($account_type == 'full') {
+                    $this->createAccount();
+                } else {
+                    $this->createTempAccount();
+                }
             }
         } else {
             $this->createAccount();

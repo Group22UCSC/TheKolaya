@@ -10,8 +10,8 @@
    <div class="table-section">
       <table class="teapricetable">
          <tr class="trcls">
-            <th class="thcls">ID</th>
             <th class="thcls">User Type</th>
+            <th class="thcls">ID</th>
             <th class="thcls">Contact number</th>
          </tr>
 
@@ -19,10 +19,10 @@
          $x = count($data);
          for ($i = 0; $i < $x; $i++) {
             echo '<tr class="table-row">
-                           <td class="tdcls">' . $data[$i]['user_id'] . '</td>
-                            <td class="tdcls">' . $data[$i]['user_type'] . '</td>
-                           <td class="tdcls">' . $data[$i]['contact_number'] . '</td>
-                        </tr>';
+                     <td class="tdcls">' . $data[$i]['user_type'] . '</td>
+                     <td class="tdcls">' . $data[$i]['user_id'] . '</td>
+                     <td class="tdcls">' . $data[$i]['contact_number'] . '</td>
+                  </tr>';
          }
          ?>
 
@@ -33,6 +33,12 @@
 
 </div>
 
+<style>
+   ::placeholder {
+      color: red;
+   }
+</style>
+
 <?php $_SESSION['account_type'] = 'full' ?>
 <div class="k1">
    <div class="wrapper11">
@@ -41,17 +47,17 @@
       </div>
       <form action="<?php echo URL ?>admin/create_account" method="POST">
          <div class="form">
-            <div class="inputfield" id="user-type" >
+            <div class="inputfield" id="user-type">
                <label> User Type</label>
                <input type="text" class="input" name="user_type" required readonly>
             </div>
-            <div class="inputfield" id="landowner-id" style="display: none;">
-               <!-- <label>Landowner Type</label>
+            <!-- <div class="inputfield" id="landowner-id" style="display: none;">
+               <label>Landowner Type</label>
                <select class="type" id="type" name="user_type" required>
                   <option value="direct_landowner">Direct Landowner</option>
                   <option value="indirect_landowner">Indirect Landowner</option>
-               </select> -->
-            </div>
+               </select>
+            </div> -->
 
             <div class="inputfield">
                <label> Name</label>
@@ -75,17 +81,16 @@
 
             <div class="inputfield" id="route-number" style="display: none;">
                <label>Route number</label>
-               <input type="number" class="input" name="route_number" required>
+               <input type="number" class="input" name="route_number">
             </div>
 
             <div class="inputfield">
                <label>Password</label>
-               <input type="password" class="input" name="password" required>
+               <input type="password" class="input" name="password" placeholder="<?php (!empty($user_data['password_err'])) ? print $user_data['password_err'] : print ''; ?>" required>
             </div>
 
             <div class="inputfield">
                <label>Confirm Password</label>
-               <?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>
                <input type="password" class="input" name="confirm_password" placeholder="<?php (!empty($user_data['confirm_password_err'])) ? print $user_data['confirm_password_err'] : print ''; ?>" required>
             </div>
 

@@ -5,16 +5,19 @@ document.querySelector('.teapricetable').addEventListener('click', function(even
    var landOwnerType = document.getElementById("landowner-id");
    var userId = document.getElementById("user-id");
    var userTypeInput = document.querySelector("#user-type input");
-   var userType = document.querySelector("#user-type");
+   var userType = document.getElementById("user-type");
    var landownerId = document.getElementById('landowner-id');
-   var html = '<label>Landowner Type</label>' +
+   var html = '<div class="inputfield" id="landowner-id">'+
+               '<label>Landowner Type</label>' +
                '<select class="type" id="type" name="user_type" required>' +
                   '<option value="direct_landowner">Direct Landowner</option>' +
                   '<option value="indirect_landowner">Indirect Landowner</option>' +
-               '</select>'
+               '</select>'+
+               '</div>'
+               
    if(tableRow.className = "table-row") {
-      var user_id = td[0].innerHTML;
-      var user_type = td[1].innerHTML;
+      var user_id = td[1].innerHTML;
+      var user_type = td[0].innerHTML;
    }
    var userIdBegin = '';
       for (var i = 0; i < user_id.length; i++) {
@@ -30,18 +33,20 @@ document.querySelector('.teapricetable').addEventListener('click', function(even
    }
    switch(user_type) {
       case "Land_Owner":
-         landOwnerType.style.display = "flex"
-         landownerId.insertAdjacentHTML("afterbegin", html)
+         if(landownerId == null)
+            userType.insertAdjacentHTML("afterend", html)
          route.style.display = "flex"
          break;
       case "Agent":
-         route.style.display = "flex"
-         landownerId.remove()
+         if(landownerId)
+            landownerId.remove()
          // landOwnerType.style.display = "none"
+         route.style.display = "flex"
          break;
       default:
          route.style.display = "none"
-         landownerId.remove()
+         if(landownerId)
+            landownerId.remove()
          // landOwnerType.style.display = "none"
          break;
    }
