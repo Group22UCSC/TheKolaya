@@ -5,8 +5,7 @@
 
 </body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Make_Requests.css">
-<script defer src="<?php echo URL ?>vendors/js/landowner/Make_Requests.js""></script>
-<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <div class="top-container">
     <p>Make Requests</p>
@@ -61,7 +60,7 @@
                 <input type="text" id="amount" class="input">
             </div>
             <div class="inputfield">
-                <input type="button" value="Confirm Requests" data-modal-target="#modal" class="btn" name="update">
+                <input type="submit" value="Confirm Request" class="btn" name="confirmReq" id="confirmReq">
             </div>
 
 
@@ -108,6 +107,8 @@
 
 <!--  **********   view previous details   *** -->
 
-
+<?php include 'js/landowner/Make_Requestsjs.php"';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 
 <?php include 'bottom-container.php'; ?>

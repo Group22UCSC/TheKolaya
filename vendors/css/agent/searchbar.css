@@ -157,6 +157,14 @@
     .searchform #dropdown span{
       display:none;
     }
+
+    .searchform option{     
+      font-size:12px ;
+    }
+
+    .searchform #date, .searchform #dropdown {
+      background: #fff;
+    }
     
  }
   
