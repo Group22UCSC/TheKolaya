@@ -103,7 +103,7 @@
     </div>
     <div class="landowner-rate-outside">
       <div class="landowner-rate">
-        <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Pasindu's Tea Quality</h2>
+        <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Kamal's Tea Quality</h2>
         <div class="rating-row">
           <div class="side">
             <div>5 stars</div>
