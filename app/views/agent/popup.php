@@ -35,10 +35,20 @@
     let x = document.forms["teaUpdateForm"]["weight-popup"].value;
     console.log("ValidateForm");
     if(x==""){
-      alert("Weight must be filled out");     
+      // alert("Weight must be filled out");  
+      swal(
+				      '<b style="color:red;"> Weight Not Entered',
+				      'Please enter a weight',
+			      	'warning'
+			) 
       return false;
     }
     else{
+      swal(
+				      '<b style="color:green;">Successfully Updated!',
+				      '',
+			      	'success'
+			);
       clearWeight();
       return true;
     }    
@@ -47,6 +57,34 @@
   function clearWeight(){   
     document.getElementById("weight").value=" ";
   }
+
+  // $(document).on('click', '#yes_submit', function(e) {
+	// 	    swal({
+	// 			title: "Successfully Updated", 
+	// 			type: "warning",
+	// 			confirmButtonText: "Yes",
+	// 			showCancelButton: true,
+  //       confirmButtonColor:'#4DD101',
+  //       cancelButtonColor:'#FF2400',
+  //       confirmButtonText: 'Yes, Send it!'
+	// 	    })
+	// 	    	.then((result) => {
+	// 				if (result.value) {
+  //           swal(
+	// 			      '<b style="color:green;"> Message Sent',
+	// 			      'You clicked the <b style="color:green;">Success</b> button!',
+	// 		      	'success'
+	// 		)
+	// 				} else if (result.dismiss === 'cancel') {
+	// 				    swal(
+	// 				      'Cancelled',
+	// 				      'Type another message',
+	// 				      'error'
+	// 				    )
+	// 				}
+	// 			})
+	// 	});
+    
 
   </script>
 

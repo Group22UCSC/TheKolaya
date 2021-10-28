@@ -82,14 +82,10 @@ class landowner_Model extends Model
             $query = "UPDATE landowner 
                 SET tea_availability=" . $availability . ", no_of_estimated_containers=" . $containers . " 
                 WHERE user_id='$user_id'";
-        }else {
-            $row = $this->getAvailability();
-            if($row[0]['no_of_estimated_containers'] == null) {
-                $query = "UPDATE landowner 
-                SET tea_availability=" . $availability . ", no_of_estimated_containers=NULL 
+        } else {
+            $query = "UPDATE landowner 
+                SET tea_availability=" . $availability . ", no_of_estimated_containers=0 
                 WHERE user_id='$user_id'";
-            }
-            
         }
 
         $this->db->runQuery($query);
@@ -126,4 +122,24 @@ class landowner_Model extends Model
         //     return false;
         // }
     }
+    //test end
+
+    //monthly tea price
+
+    function teaPriceTable()
+    {
+        $query = "SELECT * FROM monthly_tea_price";
+        $row = $this->db->selectQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+    //monthly tea price end 
+
 }

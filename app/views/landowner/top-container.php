@@ -74,21 +74,15 @@
         </a>
         <span class="tooltip">Make Requests</span>
       </li>
-      <li>
+      <!-- <li>
         <a href="<?php echo URL ?>landowner/test">
           <i class="fas fa-vial fa-2x"></i>
           <span class="links_name">Test</span>
         </a>
         <span class="tooltip">Test</span>
-      </li>
+      </li> -->
 
-      <li>
-        <a href="<?php echo URL ?>login/logout">
-          <i class="fas fa-sign-out-alt"></i>
-          <span class="links_name">Logout</span>
-        </a>
-        <span class="tooltip">Logout</span>
-      </li>
+
       <!-- <li class="profile">
          <div class="profile-details">
            <img src="profile.jpg" alt="profileImg">
@@ -142,23 +136,23 @@
             </div>
 
           </div>
-          <?php include '../app/views/user/profile/navBarProfile.php';?>
-          </div>
+          <?php include '../app/views/user/profile/navBarProfile.php'; ?>
         </div>
       </div>
+    </div>
 
-      <div class="popup">
-        <div class="shadow"></div>
-        <div class="inner_popup">
-          <div class="notification_dd">
-            <ul class="notification_ul">
-              <li class="title">
-                <p>All Notifications</p>
-                <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
-              </li>
-              <?php
-              for ($i = 0; $i < 6; $i++) {
-                echo '<li class="starbucks success">
+    <div class="popup">
+      <div class="shadow"></div>
+      <div class="inner_popup">
+        <div class="notification_dd">
+          <ul class="notification_ul">
+            <li class="title">
+              <p>All Notifications</p>
+              <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
+            </li>
+            <?php
+            for ($i = 0; $i < 6; $i++) {
+              echo '<li class="starbucks success">
                                   <div class="notify_icon">
                                     <span class="icon"><i class="fas fa-bell"></i></span>  
                                   </div>
@@ -174,11 +168,11 @@
                                       <p>Success</p>  
                                   </div>
                                 </li>';
-              }
-              ?>
-            </ul>
-          </div>
+            }
+            ?>
+          </ul>
         </div>
       </div>
+    </div>
 
     </div>
