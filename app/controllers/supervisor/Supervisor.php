@@ -9,12 +9,11 @@ class Supervisor extends Controller
 
     function index()
     {
-        if ($this->model->getStock()) {
-            $stock = $this->model->getStock();
-            $this->view->render('Supervisor/Supervisor', $stock);
-        } else {
-            $this->view->render('Supervisor/Supervisor');
-        }
+        $stock = $this->model->getStock();
+        $teaCollection = $this->model->getTeaCollection();
+        $todayRequests = $this->model->getTodayFertilizerRequest();
+
+        $this->view->render('Supervisor/Supervisor', $stock, $teaCollection, $todayRequests);
     }
 
     function updateTeaMeasure()

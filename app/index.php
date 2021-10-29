@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("Asia/colombo");
+
 require 'config/DatabaseConfig.php';
 require 'config/Config.php';
 require 'libs/App.php';

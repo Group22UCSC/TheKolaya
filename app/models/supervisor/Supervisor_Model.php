@@ -8,6 +8,40 @@ class Supervisor_Model extends Model
         parent::__construct();
     }
 
+    
+    function getTeaCollection() {
+        // $date = date("Y-m-d");
+        $date = '2021-10-29';
+        $query = "SELECT lid, initial_weight_agent, agent_id FROM tea WHERE date='$date'";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function getTodayFertilizerRequest() {
+        $date = '2021-10-20';
+        $query = "SELECT user.name, landowner.user_id, request.request_id, request.request_type, 
+                DATE(request.request_date) AS request_date, fertilizer_request.amount 
+                FROM user 
+                INNER JOIN landowner 
+                ON landowner.user_id=user.user_id 
+                INNER JOIN request 
+                ON request.lid=landowner.user_id
+                INNER JOIN fertilizer_request 
+                ON request.request_id=fertilizer_request.request_id
+                WHERE DATE(request.request_date)='$date' AND request.response_status=0";
+        $row = $this->db->runQuery($query);
+
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
     function getStock()
     {
         $query = "SELECT * FROM stock";
