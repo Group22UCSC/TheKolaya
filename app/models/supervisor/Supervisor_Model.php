@@ -8,20 +8,22 @@ class Supervisor_Model extends Model
         parent::__construct();
     }
 
-    
-    function getTeaCollection() {
+
+    function getTeaCollection()
+    {
         // $date = date("Y-m-d");
         $date = '2021-10-29';
         $query = "SELECT lid, initial_weight_agent, agent_id FROM tea WHERE date='$date'";
         $row = $this->db->runQuery($query);
-        if(count($row)) {
+        if (count($row)) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
 
-    function getTodayFertilizerRequest() {
+    function getTodayFertilizerRequest()
+    {
         $date = '2021-10-20';
         $query = "SELECT user.name, landowner.user_id, request.request_id, request.request_type, 
                 DATE(request.request_date) AS request_date, fertilizer_request.amount 
@@ -35,9 +37,9 @@ class Supervisor_Model extends Model
                 WHERE DATE(request.request_date)='$date' AND request.response_status=0";
         $row = $this->db->runQuery($query);
 
-        if(count($row)) {
+        if (count($row)) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
@@ -45,6 +47,23 @@ class Supervisor_Model extends Model
     function getStock()
     {
         $query = "SELECT * FROM stock";
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function updateTeaMeasure($data = [])
+    {
+        $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
+        VALUES(".$data['landowner_id'].", ".$data['weight'].", ".$data['water'].", ".$data['container'].", ".$data['mature_leaves'].", ".$data['net_weight'].", ".$_SESSION['user_id'].", ".$data['rate'].")";
+        $this->db->runQuery($query);
+    }
+
+    function getUpdateTeaMeasure(){
+        $query = "SELECT * FROM tea";
         $row = $this->db->runQuery($query);
         if (count($row)) {
             return $row;
@@ -102,10 +121,10 @@ class Supervisor_Model extends Model
 
         $query = "SELECT * FROM stock WHERE type='$type'";
         $row = $this->db->runQuery($query);
-        if(empty($row)) {
+        if (empty($row)) {
             $query = "INSERT INTO stock(type, full_stock, emp_id) VALUES('$type', '$amount', '$emp_id')";
             $this->db->runQuery($query);
-        }else {
+        } else {
             $full_stock = $row[0]['full_stock'];
         }
 
