@@ -36,6 +36,7 @@ class Supervisor extends Controller
             $this->model->updateTeaMeasure($data);
             $updateTable = $this->model->getUpdateTeaMeasure();
             if (!empty($updateTable)) {
+                if(count($updateTable) == 1)
                 echo '<div class="row tabel-header">
                       <div class="cell">Landowner ID</div>
                       <div class="cell">Reductions(kg)</div>
