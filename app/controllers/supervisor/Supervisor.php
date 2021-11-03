@@ -20,7 +20,7 @@ class Supervisor extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
-                'landonwer_id' => $_POST['landonwer_id'],
+                'landowner_id' => $_POST['landowner_id'],
                 'weight' => $_POST['weight'],
                 'water' => $_POST['water'],
                 'mature_leaves' => $_POST['mature_leaves'],

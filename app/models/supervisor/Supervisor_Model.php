@@ -55,14 +55,25 @@ class Supervisor_Model extends Model
         }
     }
 
-    function updateTeaMeasure($data = [])
+    function updateTeaMeasure($data)
     {
+        $lanowner_id = $data['landowner_id'];
+        $weight = $data['weight'];
+        $water = $data['water'];
+        $container = $data['container'];
+        $mature_leaves = $data['mature_leaves'];
+        $net_weight = $data['net_weight'];
+        $user_id = $_SESSION['user_id'];
+        $rate = $data['rate'];
+        // $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
+        // VALUES(" . $data['landowner_id'] . ", " . $data['weight'] . ", " . $data['water'] . ", " . $data['container'] . ", " . $data['mature_leaves'] . ", " . $data['net_weight'] . ", " . $_SESSION['user_id'] . ", " . $data['rate'] . ")";
         $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
-        VALUES(".$data['landowner_id'].", ".$data['weight'].", ".$data['water'].", ".$data['container'].", ".$data['mature_leaves'].", ".$data['net_weight'].", ".$_SESSION['user_id'].", ".$data['rate'].")";
+        VALUES('$lanowner_id', '$weight','$water', '$container','$mature_leaves','$net_weight','$user_id','$rate'";
         $this->db->runQuery($query);
     }
 
-    function getUpdateTeaMeasure(){
+    function getUpdateTeaMeasure()
+    {
         $query = "SELECT * FROM tea";
         $row = $this->db->runQuery($query);
         if (count($row)) {
