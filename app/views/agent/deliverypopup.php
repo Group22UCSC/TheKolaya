@@ -1,10 +1,13 @@
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/deliverypopup.css">  
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/deliverypopup.css"> 
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script> 
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-  <form class="deliverypopup-content-form" action="<?php echo URL?>agent/updateRequest" name = "requestUpdateForm" method="POST" onsubmit="">
+  <form class="deliverypopup-content-form" action="<?php echo URL?>agent/updateRequest" name = "requestUpdateForm" method="POST" onsubmit="return validateForm()">
     <div class="modal-header">      
       <!-- <span class="close">&times;</span> -->
       <h2>Are You Sure ?</h2>
@@ -35,6 +38,22 @@
   </div>
 
 </div>
+<script>
+  function validateForm(){
+    console.log("deliveryvali");
+      swal(
+				      '<b style="color:green;">Successfully Updated!',
+				      '',
+			      	'success'
+			);
+     return true;
+     
+    }    
+  
+
+    
+
+  </script>
 
 
 
