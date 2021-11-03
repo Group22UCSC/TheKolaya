@@ -72,10 +72,10 @@
     <div class="table-container">
       <div class="table-wrapper">
         <div class="table_header"><?php echo date("Y-M-d"); ?> - Updated Tea-Weight</div>
-        <div class="table">
+        <div class="table" id="update_tea_table">
 
           <?php
-          if (!empty($data)) {
+          if (!empty($data) && $data[0]['sup_id']) {
             echo '<div class="row tabel-header">
                   <div class="cell">Landowner ID</div>
                   <div class="cell">Reductions(kg)</div>
@@ -95,6 +95,7 @@
                 $teaQuality = 'Excellent';
               }
               $reductions = $data[$i]['water_precentage'] + $data[$i]['container_precentage'] + $data[$i]['matured_precentage'];
+              if($data[$i]['sup_id'])
               echo '<div class="row">
                           <div class="cell" data-title="Landowener Id">' . $data[$i]['lid'] . '</div>
                           <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
@@ -102,12 +103,12 @@
                           <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
                         </div>';
             }
-          } else {
-            echo '<div style="border-radius: 0px; margin-top:10px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
+          } 
+          else {
+            echo '<div id="not_display_yet" style="border-radius: 0px; margin-top:10px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
           }
 
           ?>
-          <div class="row"  id="update_tea_table"></div>
         </div>
       </div>
     </div>
@@ -121,31 +122,7 @@
         event.preventDefault();
         var form = $('#update_tea_form').serializeArray();
         console.log(form);
-        // $('.error').remove();
-        // var inAmount = $('#in_amount').val();
-        // var pricePerUnit = $('#price_per_unit').val();
-        // var priceForAmount = pricePerUnit * inAmount;
-        // var str = "<div style=\"display:flex; justify-content:center;\">" +
-        //   "<div style=\"text-align:left;\">" +
-        //   "<div>Price Per Unit: <span style=\"color:#4DD101;\"><b>Rs. " + pricePerUnit + "</b></span></div>" +
-        //   "<div>Amount :  <span style=\"color:#4DD101;\"><b> " + inAmount + "kg</b></span></div>" +
-        //   "<div>Price For Amount:  <span style=\"color:#4DD101;\"><b>Rs. " + priceForAmount + "</b></span></div>" +
-        //   "</div>" +
-        //   "</div>";
-        // if (inAmount == 0) {
-        //   $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
-        // } else if (inAmount < 0) {
-        //   $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        // }
-        // if (pricePerUnit < 0) {
-        //   $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        // } else if (pricePerUnit == 0) {
-        //   $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
-        // }
-
-        // if (pricePerUnit <= 0 || inAmount <= 0) {
-        //   return;
-        // }
+        
         Swal.fire({
           title: 'Are you sure?',
           // html: '<div>' + str + '</div>',
@@ -170,6 +147,7 @@
                   'Your file has been updated.',
                   'success'
                 )
+                $('#not_display_yet').hide();
                 $('#update_tea_table').html(data);
                 console.log(data);
               },
