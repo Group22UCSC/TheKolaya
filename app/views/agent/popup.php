@@ -58,32 +58,7 @@
     document.getElementById("weight").value=" ";
   }
 
-  // $(document).on('click', '#yes_submit', function(e) {
-	// 	    swal({
-	// 			title: "Successfully Updated", 
-	// 			type: "warning",
-	// 			confirmButtonText: "Yes",
-	// 			showCancelButton: true,
-  //       confirmButtonColor:'#4DD101',
-  //       cancelButtonColor:'#FF2400',
-  //       confirmButtonText: 'Yes, Send it!'
-	// 	    })
-	// 	    	.then((result) => {
-	// 				if (result.value) {
-  //           swal(
-	// 			      '<b style="color:green;"> Message Sent',
-	// 			      'You clicked the <b style="color:green;">Success</b> button!',
-	// 		      	'success'
-	// 		)
-	// 				} else if (result.dismiss === 'cancel') {
-	// 				    swal(
-	// 				      'Cancelled',
-	// 				      'Type another message',
-	// 				      'error'
-	// 				    )
-	// 				}
-	// 			})
-	// 	});
+  
     
 
   </script>

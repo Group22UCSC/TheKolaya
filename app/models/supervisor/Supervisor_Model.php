@@ -11,8 +11,8 @@ class Supervisor_Model extends Model
 
     function getTeaCollection()
     {
-        // $date = date("Y-m-d");
-        $date = '2021-10-29';
+        $date = date("Y-m-d");
+        // $date = '2021-10-29';
         $query = "SELECT lid, initial_weight_agent, agent_id FROM tea WHERE date='$date'";
         $row = $this->db->runQuery($query);
         if (count($row)) {
@@ -24,7 +24,8 @@ class Supervisor_Model extends Model
 
     function getTodayFertilizerRequest()
     {
-        $date = '2021-10-20';
+        // $date = '2021-10-20';
+        $date = date("Y-m-d");
         $query = "SELECT user.name, landowner.user_id, request.request_id, request.request_type, 
                 DATE(request.request_date) AS request_date, fertilizer_request.amount 
                 FROM user 
