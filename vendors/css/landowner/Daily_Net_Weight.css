@@ -17,17 +17,26 @@
   justify-self: center;
 }
 
-.middle {
-  align-self: center;
-  justify-self: center;
-  border-radius: 50px;
-  color: white;
+/* **** grid ***** */
+.container {
+  display: grid;
+  grid-template-rows: 0.5fr 4.5fr;
+  grid-auto-columns: 1fr;
+  gap: 10px 10px;
+  grid-auto-flow: row;
 }
-/* ************************************* search bar ***********************  */
+
+.search-container {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.table-container {
+  grid-area: 2 / 1 / 3 / 2;
+}
+/* **** search ***** */
 .searchbar {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 .search-form {
   display: flex;
@@ -41,7 +50,6 @@
   margin: 5px 10px 5px 0;
   padding: 10px;
   background-color: #fff;
-  /* border: 1px solid #ddd; */
   border: none;
   border-radius: 12px;
 }
@@ -57,16 +65,20 @@
 .search-form button:hover {
   background-color: royalblue;
 }
+/* **** background ***** */
+.wrapperdiv {
+  background-image: url("../../images/landowner/Daily_Net_Weight.jpg");
+  padding: 100px;
+  background-size: 100% 100%;
+}
 
-/*  ************  Table Section **************** */
+/* **** Table ***** */
 
 .table-section {
   font-family: "Poppins", sans-serif;
-  display: grid;
-  /* grid-template-columns: 1fr 1fr; */
-  padding: 40px;
+  display: flex;
   color: #4f546c;
-  font-size: 0.9rem;
+  font-size: 0.2rem;
   background-color: #f9fbff;
   animation: fadeIn 2.5s;
   -webkit-animation: fadeIn 2.5s;
@@ -74,14 +86,21 @@
   -o-animation: fadeIn 2.5s;
   -ms-animation: fadeIn 2.5s;
 }
-.teapricetable {
+.table-container {
   display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* height: 100vh; */
+  background-size: 100% 100%;
+}
+.teapricetable {
   border-collapse: collapse;
   box-shadow: 0 5px 10px #e1e5ee;
   background-color: white;
   text-align: left;
   overflow: hidden;
   width: 50%;
+  height: 50%;
 }
 .threadcls {
   box-shadow: 0 5px 10px #e1e5ee;
@@ -114,35 +133,13 @@
 .tdcls .tblbutton:hover {
   background-color: rgb(221, 119, 51);
 }
-/* .status {
-    border-radius:  0.2rem;
-    background-color: red;
-    padding: 0.2rem 1rem;
-    text-align: center;
-}
-   .status-pending {
-      background-color: #fff0c2;
-      color: #a68b00;
-    }
-
-     .status-paid {
-      background-color: #c8e6c9;
-      color:  #388e3c;
-    }
-
-      .status-notupdated {
-      background-color: #ffcdd2;
-      color: #c62828;
-    } */
-
-.amount {
-  text-align: right;
-}
 
 tr:nth-child(even) {
   background-color: #f4f6fb;
 }
+
 /*  Changin color when mouse over rows */
+
 table tr:not(:first-child) {
   cursor: pointer;
   transition: all 0.25s ease-in-out;
