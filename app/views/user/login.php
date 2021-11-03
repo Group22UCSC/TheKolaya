@@ -33,7 +33,7 @@
     <div class="forms-container">
       <div class="signin-signup">
 
-        <form action="<?php echo URL ?>login" class="sign-in-form" method="POST">
+        <form action="<?php echo URL ?>Login" class="sign-in-form" method="POST">
           <div class="logo">
             <img src="<?php echo URL ?>vendors/images/login/logo.png" alt="">
           </div>
@@ -53,10 +53,10 @@
 
         </form>
         <div style="text-align: center;" class="forget-password">
-          <a href="<?php echo URL ?>login/forgetPassword">Forget Password?</a>
+          <a href="<?php echo URL ?>Login/forgetPassword">Forget Password?</a>
         </div>
         <div style="text-align: center;" class="forget-password">
-          <span style="color: blue; cursor:context-menu">Not a member? </span> <a href="<?php echo URL ?>registration">Register Here</a>
+          <span style="color: blue; cursor:context-menu">Not a member? </span> <a href="<?php echo URL ?>Registration">Register Here</a>
         </div>
       </div>
     </div>

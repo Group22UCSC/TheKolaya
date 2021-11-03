@@ -16,13 +16,13 @@
                 <img src="<?php echo URL?>vendors/images/thekolaya.png" class="logo">
                 <img src="<?php echo URL?>vendors/images/thekolaya.png" class="logo-black">
                 <div class="main-nav">
-                    <a href="<?php echo URL?>login">LOG IN</a>
+                    <a href="<?php echo URL?>Login">LOG IN</a>
                 </div>
             </div>
         </nav>
         <div class="hero-text-box">
             <h1>WELCOME TO<br><b>තේ කොළය.</b></h1>
-            <a class="btn btn-full js--scroll-to-plans" href="<?php echo URL?>registration">REGISTER NOW</a>
+            <a class="btn btn-full js--scroll-to-plans" href="<?php echo URL?>Registration">REGISTER NOW</a>
         </div>
     </header>
     
