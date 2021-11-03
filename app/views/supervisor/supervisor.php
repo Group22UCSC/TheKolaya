@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/supervisor-style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -27,35 +27,32 @@
       </div>
       <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
       <?php include 'js/supervisor/dashboard-chart.php' ?>
-      <div class="table-row">
-        <!-- <div class="fertilizer-btn"><a href="<?php echo URL ?>Supervisor/fertilizerStock"><button class="table-btn">fertilizer Stock</button></a></div>
-          <div class="firewood-btn"><a href="<?php echo URL ?>Supervisor/firewoodStock"><button class="table-btn">firewood stock</button></a></div> -->
-      </div>
     </div>
+    <?php
+    if (!empty($data1)) {
+      echo '<div class="agent-tea-table">
 
-    <div class="agent-tea-table">
-      <div class="table-wrapper">
-        <div class="table_header">Today tea collection</div>
-        <div class="table">
-          <div class="row tabel-header">
-            <div class="cell">Landowner ID</div>
-            <div class="cell">Tea Weight(kg)</div>
-            <div class="cell">Agent ID</div>
-          </div>
-          <?php
-          for ($i = 0; $i < 10; $i++) {
-            echo '<div class="row">
-                    <div class="cell" data-title="Landowener_id">LAN-00' . $i . '</div>
-                    <div class="cell" data-title="Tea_weight">5' . $i . '</div>
-                    <div class="cell" data-title="Agent_id">AGN-00' . $i . '</div>
+              <div class="table-wrapper">
+                <div class="table_header">Today tea collection</div>
+                <div class="table">
+                  <div class="row tabel-header">
+                    <div class="cell">Landowner ID</div>
+                    <div class="cell">Tea Weight(kg)</div>
+                    <div class="cell">Agent ID</div>
                   </div>';
-          }
-          ?>
-        </div>
-      </div>
-
-    </div>
-    <div class="request-table">
+            for ($i = 0; $i < count($data1); $i++) {
+              echo '<div class="row">
+                      <div class="cell" data-title="Landowener_id">' . $data1[$i]['lid'] . '</div>
+                      <div class="cell" data-title="Tea_weight">' . $data1[$i]['initial_weight_agent'] . '</div>
+                      <div class="cell" data-title="Agent_id">' . $data1[$i]['agent_id'] . '</div>
+                    </div>';
+            }
+            echo '</div>
+                </div>
+            </div>';
+    }
+    if(!empty($data2)) {
+      echo '<div class="request-table">
       <div class="table-wrapper">
         <div class="table_header">Today Fertilizer Requests</div>
         <div class="table">
@@ -63,23 +60,37 @@
             <div class="cell">Landowner ID</div>
             <div class="cell">Name</div>
             <div class="cell">Reqeust Amount</div>
-          </div>
-          <?php
-          for ($i = 0; $i < 2; $i++) {
-            $name = ($i == 0) ? 'Kamal perera' : 'Nuwangi weerasekara';
+          </div>';
+          for ($i = 0; $i < count($data2); $i++) {
             echo '<div class="row">
-                    <div class="cell" data-title="Landowener_id">LAN-01' . $i . '</div>
-                    <div class="cell" data-title="Name">' . $name . '</div>
-                    <div class="cell" data-title="Amount">5' . $i . '</div>
+                    <div class="cell" data-title="Landowener_id">' . $data2[$i]['user_id'] . '</div>
+                    <div class="cell" data-title="Name">' . $data2[$i]['name'] . '</div>
+                    <div class="cell" data-title="Amount">' . $data2[$i]['amount'] . '</div>
                   </div>';
           }
-          ?>
-        </div>
-      </div>
-
-      <div class="table-row">
-        <a href="<?php echo URL ?>Supervisor/manageRequests"><button class="table-btn">Go to confirm</button></a>
-      </div>
-    </div>
+          echo '</div>
+          </div>
+          <div class="table-row">
+            <a href="<?php echo URL ?>Supervisor/manageRequests"><button class="table-btn">Go to confirm</button></a>
+          </div>
+        </div>';
+    }
+    ?>
+        
   </div>
+  <script>
+    $(document).ready(function() {
+      $('.agent-tea-table').click(function(event) {
+        console.log(event);
+        $.ajax({
+          url: '<?php echo URL ?>Supervisor',
+          type: 'GET',
+          dataType: "html",
+          success: function(response) {
+            $("#table-container").html(data);
+          }
+        });
+      });
+    });
+  </script>
   <?php include 'bottom-container.php'; ?>

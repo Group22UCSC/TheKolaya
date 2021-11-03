@@ -1,25 +1,29 @@
 <?php include 'top-container.php'; ?>
-<!-- Top content -->
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Daily_net_Weight.css">
+
+<!-- Title -->
+
 <div class="top-container">
     <p>Daily Net Weight</p>
 </div>
-<!--  Search bar -->
-
-<div class="searchbar">
-
-    <form class="search-form" action="#">
-        <label for="lname">Date : </label>
-        <input type="date" id="searchDate" name="searchDate" value="<?php echo date('Y-m-d'); ?>">
-        <button type="submit">Search</button>
-    </form>
-</div>
-<!--  Table COntent -->
-<div class="home-content">
-    <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Daily_Net_Weight.css">
 
 
-    <div class="table-container">
-        <div class="table-section">
+<!-- grid -->
+<div class="wrapperdiv">
+    <div class="container">
+
+        <div class="search-container">
+            <div class="searchbar">
+                <form class="search-form" action="#">
+                    <label for="lname">Date : </label>
+                    <input type="date" id="searchDate" name="searchDate" value="<?php echo date('Y-m-d'); ?>">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-container">
+
             <table class="teapricetable">
 
                 <tr>
@@ -29,32 +33,40 @@
 
                 <tr>
                     <th class="thcls">Initial Weight</th>
-                    <td class="tdcls">P23</td>
+                    <td class="tdcls">145 kg</td>
                 </tr>
                 <tr>
-                    <th class="thcls">Water Reduce Weight</th>
-                    <td class="tdcls">P23</td>
+                    <th class="thcls">Container Count</th>
+                    <td class="tdcls">4</td>
                 </tr>
                 <tr>
                     <th class="thcls">Container Reduced Weight</th>
-                    <td class="tdcls">P23</td>
+                    <td class="tdcls">12 kg</td>
                 </tr>
                 <tr>
+                    <th class="thcls">Water Reduce Weight</th>
+                    <td class="tdcls">10 kg</td>
+                </tr>
+
+                <tr>
                     <th class="thcls">Mature Reduced Weight</th>
-                    <td class="tdcls">P23</td>
+                    <td class="tdcls">6 kg</td>
                 </tr>
                 <tr>
                     <th class="thcls">Net Weight</th>
-                    <td class="tdcls">P23</td>
+                    <td class="tdcls">117 kg</td>
                 </tr>
 
 
 
             </table>
+
         </div>
 
-
     </div>
+</div>
 
 
-    <?php include 'bottom-container.php'; ?>
+
+
+<?php include 'bottom-container.php'; ?>

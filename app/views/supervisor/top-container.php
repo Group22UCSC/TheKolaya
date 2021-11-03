@@ -64,10 +64,10 @@
               <div id="bell" class="icon_wrap"><i class="far fa-bell"></i></div>
               
               <div class="notification_dd">
-                  <ul class="notification_ul">
+                  <ul class="notification_ul" id="notification_nav">
                       <?php
                         for($i = 0; $i < 4; $i++) {
-                          echo '<li class="starbucks success">
+                          echo '<li class="starbucks">
                                   <div class="notify_icon">
                                     <span class="icon"><i class="fas fa-bell"></i></span>  
                                   </div>
@@ -79,9 +79,7 @@
                                         Lorem ipsum dolor sit amet consectetur.
                                     </div>
                                   </div>
-                                  <div class="notify_status">
-                                      <p>Success</p>  
-                                  </div>
+                                  
                                 </li>';
                         }
                       ?> 
@@ -93,27 +91,6 @@
               
             </div>
             <?php include '../app/views/user/profile/navBarProfile.php';?>
-            <!-- <div class="profile">
-              <div class="icon_wrap" id="account-web">
-                <img src="<?php echo URL?>vendors/images/supervisor/profile.jpg" alt="profile_pic">
-                <span class="name"><?php echo $_SESSION['name']?></span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-      
-              <div class="profile_dd">
-                <ul class="profile_ul">
-                  <li class="profile_li">
-                      <div class="icon_wrap" id="account">
-                        <img src="<?php echo URL?>vendors/images/supervisor/profile.jpg" alt="profile_pic">
-                        <span class="name"><?php echo $_SESSION['name']?></span>
-                      </div>
-                  </li>
-                  <li><a class="profile" href="<?php echo URL?>Supervisor/profile"><span class="picon"><i class="fas fa-user-alt"></i></span>Profile</a></li>
-                  <li><a class="settings" href="<?php echo URL?>Supervisor/editProfile"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
-                  <li><a class="logout" href="<?php echo URL?>login/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
-                </ul>
-              </div>
-            </div> -->
           </div>
         </div>
         
@@ -121,7 +98,7 @@
           <div class="shadow"></div>
           <div class="inner_popup">
               <div class="notification_dd">
-                  <ul class="notification_ul">
+                  <ul class="notification_ul" id="notification_pop">
                       <li class="title">
                           <p>All Notifications</p>
                           <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
@@ -152,3 +129,4 @@
         </div>
         
       </div>
+      

@@ -5,7 +5,7 @@
         var form = $('#form_instock').serializeArray();
         form.push({name:'stock_type', value: 'in_stock'});
         form.push({name:'type', value: 'fertilizer'});
-        console.log(form);
+        // console.log(form);
         $('.error').remove();
         var inAmount = $('#in_amount').val();
         var pricePerUnit = $('#price_per_unit').val();
@@ -54,7 +54,7 @@
                         'Your file has been updated.',
                         'success'
                         )
-                        console.log(data);
+                        // console.log(data);
                     },
                     error : function (xhr, ajaxOptions, thrownError) {
                         Swal.fire({
