@@ -71,7 +71,7 @@
 
     <div class="table-container">
       <div class="table-wrapper">
-        <div class="table_header"><?php echo date("Y-M-d"); ?> - Updated Tea-Weight</div>
+        <div class="table_header">Today Updated Tea-Weight</div>
         <div class="table" id="update_tea_table">
 
           <?php
