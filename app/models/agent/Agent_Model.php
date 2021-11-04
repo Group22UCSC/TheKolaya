@@ -55,7 +55,6 @@ class Agent_Model extends Model{
     }
 
     function updateWeight($data = []){
-        $date = $data['date'];
         $landowner_id = $data['lid'];
         $weight = $data['initial_weight'];
         $emp_id = $data['agent_id'];

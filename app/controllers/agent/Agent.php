@@ -33,9 +33,8 @@ class Agent extends Controller
         ];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->weight_data['date'] = date("Y-m-d");
-            $this->weight_data['lid'] = trim($_POST['lid-popup']);
-            $this->weight_data['initial_weight'] = trim($_POST['weight-popup']);
+            $this->weight_data['lid'] = trim($_POST['lid']);
+            $this->weight_data['initial_weight'] = trim($_POST['weight']);
             $this->weight_data['agent_id'] = $_SESSION['user_id'];
             // print_r($_SESSION['user_id']);
             // print_r($this->weight_data);
@@ -57,7 +56,7 @@ class Agent extends Controller
             $data['message'] = 'hello world';
             $pusher->trigger('my-channel', 'my-event', $data);
             // print_r($result);
-            $this->view->render('Agent/availableList', $result);
+            // $this->view->render('Agent/availableList', $result);
             //also add the set the tea availability of landowner to 0
         }
     }
