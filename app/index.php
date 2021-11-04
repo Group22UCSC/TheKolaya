@@ -9,7 +9,7 @@ require 'libs/Controller.php';
 require 'libs/Model.php';
 require 'libs/View.php';
 require 'libs/Database.php';
-
+require 'libs/vendor/autoload.php';
 
 require 'helpers/url_helper.php';
 require 'helpers/session_helper.php';

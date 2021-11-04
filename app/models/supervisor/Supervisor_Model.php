@@ -58,19 +58,27 @@ class Supervisor_Model extends Model
 
     function updateTeaMeasure($data)
     {
-        $lanowner_id = $data['landowner_id'];
+        $landowner_id = $data['landowner_id'];
         $weight = $data['weight'];
         $water = $data['water'];
         $container = $data['container'];
         $mature_leaves = $data['mature_leaves'];
         $net_weight = $data['net_weight'];
-        $user_id = $_SESSION['user_id'];
+        $supervisor_id = $_SESSION['user_id'];
         $rate = $data['rate'];
         // $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
         // VALUES(" . $data['landowner_id'] . ", " . $data['weight'] . ", " . $data['water'] . ", " . $data['container'] . ", " . $data['mature_leaves'] . ", " . $data['net_weight'] . ", " . $_SESSION['user_id'] . ", " . $data['rate'] . ")";
-        $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
-        VALUES('$lanowner_id', '$weight','$water', '$container','$mature_leaves','$net_weight','$user_id','$rate'";
+        $query = "UPDATE tea SET 
+        initial_weight_sup = '$weight', 
+        water_precentage = '$water', 
+        container_precentage = '$container', 
+        matured_precentage = '$mature_leaves', 
+        net_weight = '$net_weight', 
+        sup_id = '$supervisor_id', 
+        quality = '$rate' 
+        WHERE lid = '$landowner_id'";
         $this->db->runQuery($query);
+        return true;
     }
 
     function getUpdateTeaMeasure()
@@ -84,6 +92,16 @@ class Supervisor_Model extends Model
         }
     }
 
+    function getUpdateTeaMeasureByTable($landowner_id) {
+        $query = "SELECT * FROM tea WHERE lid='$landowner_id'";
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    
     function manageRequests()
     {
         $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
