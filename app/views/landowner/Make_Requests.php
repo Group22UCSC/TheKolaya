@@ -34,81 +34,126 @@
             }
 
             ?>
+            <form action="<?php echo URL ?>Landowner/Make_Requests" method="POST" id="makeRequestForm">
+                <div class="inputfield">
+                    <label>Date</label>
+                    <input type="text" class="input" value="<?php echo date("Y-m-d") ?>" readonly>
+                </div>
+                <div class="inputfield">
+                    <label>Time</label>
+                    <input type="text" class="input" value="<?php echo date("h : i : s a") ?>" readonly>
+                </div>
+                <div class="inputfield">
+                    <label>Request Type</label>
+                    <select id="RequestType" name="rtype" onchange="changeFormBody()">
+                        <option value="Fertilizer">Fertilizer</option>
+                        <option value="Advance">Advance</option>
+                    </select>
+                </div>
 
-            <div class="inputfield">
-                <label>Date</label>
-                <input type="text" class="input" value="<?php echo date("Y-m-d") ?>" readonly>
-            </div>
-            <div class="inputfield">
-                <label>Time</label>
-                <input type="text" class="input" value="<?php echo date("h : i : s a") ?>" readonly>
-            </div>
-            <div class="inputfield">
-                <label>Request Type</label>
-                <select id="RequestType" name="RequestType" onchange="changeFormBody()">
-                    <option value="Fertilizer">Fertilizer</option>
-                    <option value="Advance">Advance</option>
-                </select>
-            </div>
-
-            <div class="inputfield" id="Fertilizer">
-                <label for="qnty">Quantity</label>
-                <input type="text" id="qnty" class="input">
-            </div>
-            <div class="inputfield" id="Advance">
-                <label for="amount">Amount(Rs)</label>
-                <input type="text" id="amount" class="input">
-            </div>
-            <div class="inputfield">
-                <input type="submit" value="Confirm Request" class="btn" name="confirmReq" id="confirmReq">
-            </div>
-
+                <div class="inputfield" id="Fertilizer">
+                    <label for="qnty">Quantity(kg)</label>
+                    <input type="text" id="qnty" class="input" name="fertilizer_amount">
+                </div>
+                <div class="inputfield" id="Advance">
+                    <label for="amount">Amount(Rs)</label>
+                    <input type="text" id="amount" class="input" name="advance_amount">
+                </div>
+                <div class="inputfield">
+                    <input type="submit" value="Request" class="btn" name="confirmReq" id="requestBtn">
+                </div>
+            </form>
 
         </div>
     </div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
-<form action="<?php echo URL ?>landowner/Make_Requests" method="post">
-    <div class="modal" id="modal">
-        <div class="modal-header">
-            <div class="title">Confirm Request</div>
-            <button data-close-button class="close-button">&times;</button>
-        </div>
-        <div class="modal-body">
-            <div class="year">
-                <label>Date : </label>
-                <input type="text" name="date" class="model-input" value="<?php echo date("Y-m-d") ?>" readonly>
-            </div>
-            <div class="month">
-                <label>Time : </label>
-                <input type="text" name="time" class="model-input" value="<?php echo date("h : i : s a") ?>" readonly>
-            </div>
-            <div class="month">
-                <label>Request Type : </label>
-                <input type="text" id="rtype" name="rtype" class="model-input" readonly>
-            </div>
-            <div class="price">
-                <label>Quantity : </label>
-                <input type="text" id="priceInput" class="model-input" name="qty" readonly>
-            </div>
-            <div class="buttonSection">
-                <a class="editbtn" data-close-button>Edit</a>
-
-                <input type="submit" value="Submit" class="confirmbtn" name="teaPriceConfirm">
-
-
-
-            </div>
-        </div>
-    </div>
-    <div id="overlay"></div>
-</form>
 
 <!--  **********   view previous details   *** -->
 
-<?php include 'js/landowner/Make_Requestsjs.php"';?>
-<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
-<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
+<?php include 'js/landowner/Make_Requestsjs.php"'; ?>
+<script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
+<script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#requestBtn').click(function(event) {
+            event.preventDefault();
+            var form = $('#makeRequestForm').serializeArray();
+
+            // $('.error').remove();
+            // var inAmount = $('#in_amount').val();
+            // var pricePerUnit = $('#price_per_unit').val();
+            // var priceForAmount = pricePerUnit * inAmount;
+            console.log(form);
+            if (form[0]['value'] == 'Fertilizer') {
+                var str = "<div style=\"display:flex; justify-content:center;\">" +
+                    "<div style=\"text-align:left;\">" +
+                    "<div>Request Type: <span style=\"color:#4DD101;\"><b> Fertilizer</b></span></div>" +
+                    "<div>Amount :  <span style=\"color:#4DD101;\"><b> " + form[1]['value'] + "kg</b></span></div>" +
+                    "</div>" +
+                    "</div>";
+            }else if(form[0]['value'] == 'Advance') {
+                var str = "<div style=\"display:flex; justify-content:center;\">" +
+                    "<div style=\"text-align:left;\">" +
+                    "<div>Request Type: <span style=\"color:#4DD101;\"><b> Advance</b></span></div>" +
+                    "<div>Amount :  <span style=\"color:#4DD101;\"><b> Rs." + form[2]['value'] + "</b></span></div>" +
+                    "</div>" +
+                    "</div>";
+            }
+
+            // if (inAmount == 0) {
+            //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
+            // } else if (inAmount < 0) {
+            //     $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+            // }
+            // if (pricePerUnit < 0) {
+            //     $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+            // } else if (pricePerUnit == 0) {
+            //     $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
+            // }
+
+            // if (pricePerUnit <= 0 || inAmount <= 0) {
+            //     return;
+            // }
+            Swal.fire({
+                title: 'Are you sure?',
+                html: '<div>' + str + '</div>',
+                // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4DD101',
+                cancelButtonColor: '#FF2400',
+                confirmButtonText: 'Yes, Update it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#makeRequestForm").trigger("reset");
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo URL ?>Landowner/Make_Requests",
+                        cache: false,
+                        data: form,
+                        success: function(data) {
+                            Swal.fire(
+                                'Updated!',
+                                'Your file has been updated.',
+                                'success'
+                            )
+                            // console.log(data);
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                                // footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        }
+                    })
+                }
+            })
+        })
+    })
+</script>
 
 <?php include 'bottom-container.php'; ?>
