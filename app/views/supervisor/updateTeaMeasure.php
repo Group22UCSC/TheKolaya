@@ -71,17 +71,17 @@
 
     <div class="table-container">
       <div class="table-wrapper">
-        <div class="table_header"><?php echo date("Y-M-d"); ?> - Updated Tea-Weight</div>
+        <div class="table_header">Today Updated Tea-Weight</div>
         <div class="table" id="update_tea_table">
-
+          <div class="row tabel-header">
+            <div class="cell">Landowner ID</div>
+            <div class="cell">Reductions(kg)</div>
+            <div class="cell">Net-Weight(kg)</div>
+            <div class="cell">Tea Quality</div>
+          </div>
           <?php
-          if (!empty($data) && $data[0]['sup_id']) {
-            echo '<div class="row tabel-header">
-                  <div class="cell">Landowner ID</div>
-                  <div class="cell">Reductions(kg)</div>
-                  <div class="cell">Net-Weight(kg)</div>
-                  <div class="cell">Tea Quality</div>
-                </div>';
+          if (!empty($data)) {
+
             for ($i = 0; $i < count($data); $i++) {
               if ($data[$i]['quality'] <= 20) {
                 $teaQuality = 'Too Bad';
@@ -95,22 +95,24 @@
                 $teaQuality = 'Excellent';
               }
               $reductions = $data[$i]['water_precentage'] + $data[$i]['container_precentage'] + $data[$i]['matured_precentage'];
-              if($data[$i]['sup_id'])
-              echo '<div class="row">
+              if ($data[$i]['sup_id'])
+                echo '<div class="row">
                           <div class="cell" data-title="Landowener Id">' . $data[$i]['lid'] . '</div>
                           <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
-                          <div class="cell" data-title="Net-Weight(kg)">5' . $data[$i]['net_weight'] . '</div>
+                          <div class="cell" data-title="Net-Weight(kg)">' . $data[$i]['net_weight'] . '</div>
                           <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
                         </div>';
             }
-          } 
-          else {
-            echo '<div id="not_display_yet" style="border-radius: 0px; margin-top:10px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
           }
 
           ?>
         </div>
       </div>
+      <?php
+      if (empty($data)) {
+        echo '<div id="not_display_yet" style="border-radius: 0px; margin-top:10px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
+      }
+      ?>
     </div>
   </div>
   </div>
@@ -122,7 +124,7 @@
         event.preventDefault();
         var form = $('#update_tea_form').serializeArray();
         console.log(form);
-        
+
         Swal.fire({
           title: 'Are you sure?',
           // html: '<div>' + str + '</div>',
@@ -135,7 +137,7 @@
           confirmButtonText: 'Yes, Update it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            // $("#update_tea_form").trigger("reset");
+            $("#update_tea_form").trigger("reset");
             $.ajax({
               type: "POST",
               url: "<?php echo URL ?>Supervisor/updateTeaMeasure",
@@ -148,7 +150,7 @@
                   'success'
                 )
                 $('#not_display_yet').hide();
-                $('#update_tea_table').html(data);
+                $('#update_tea_table').append(data);
                 console.log(data);
               },
               error: function(xhr, ajaxOptions, thrownError) {

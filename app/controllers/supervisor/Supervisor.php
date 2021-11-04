@@ -16,6 +16,19 @@ class Supervisor extends Controller
         $this->view->render('Supervisor/Supervisor', $stock, $teaCollection, $todayRequests);
     }
 
+    function getAgentTeaCollection()
+    {
+        $teaCollection = $this->model->getTeaCollection();
+        if (!empty($teaCollection)) {
+            $countData = count($teaCollection) - 1;
+            echo '<div class="row">
+                    <div class="cell" data-title="Landowener_id">' . $teaCollection[$countData]['lid'] . '</div>
+                    <div class="cell" data-title="Tea_weight">' . $teaCollection[$countData]['initial_weight_agent'] . '</div>
+                    <div class="cell" data-title="Agent_id">' . $teaCollection[$countData]['agent_id'] . '</div>
+                </div>';
+        }
+    }
+
     function updateTeaMeasure()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,34 +46,28 @@ class Supervisor extends Controller
             $data['net_weight'] = $data['weight'] - $reduction;
             $data['rate'] = ($data['rate']) * 20;
 
-            $this->model->updateTeaMeasure($data);
-            $updateTable = $this->model->getUpdateTeaMeasure();
+            if($this->model->updateTeaMeasure($data))
+                $updateTable = $this->model->getUpdateTeaMeasureByTable($data['landowner_id']);
+
             if (!empty($updateTable)) {
-                if(count($updateTable) == 1)
-                echo '<div class="row tabel-header">
-                      <div class="cell">Landowner ID</div>
-                      <div class="cell">Reductions(kg)</div>
-                      <div class="cell">Net-Weight(kg)</div>
-                      <div class="cell">Tea Quality</div>
-                    </div>';
                 $countData = count($updateTable) - 1;
-                if($updateTable[$countData]['quality'] <= 20) {
+                if ($updateTable[$countData]['quality'] <= 20) {
                     $teaQuality = 'Too Bad';
-                }else if($updateTable[$countData]['quality'] > 20 && $updateTable[$countData]['quality'] <= 40) {
+                } else if ($updateTable[$countData]['quality'] > 20 && $updateTable[$countData]['quality'] <= 40) {
                     $teaQuality = 'Bad';
-                }else if($updateTable[$countData]['quality'] > 40 && $updateTable[$countData]['quality'] <= 60) {
+                } else if ($updateTable[$countData]['quality'] > 40 && $updateTable[$countData]['quality'] <= 60) {
                     $teaQuality = 'Average';
-                }else if($updateTable[$countData]['quality'] > 60 && $updateTable[$countData]['quality'] <= 80) {
+                } else if ($updateTable[$countData]['quality'] > 60 && $updateTable[$countData]['quality'] <= 80) {
                     $teaQuality = 'Good';
-                }else if($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
+                } else if ($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
                     $teaQuality = 'Excellent';
                 }
                 $reductions = $updateTable[$countData]['water_precentage'] + $updateTable[$countData]['container_precentage'] + $updateTable[$countData]['matured_precentage'];
                 echo '<div class="row">
                           <div class="cell" data-title="Landowener Id">' . $updateTable[$countData]['lid'] . '</div>
                           <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
-                          <div class="cell" data-title="Net-Weight(kg)">5' . $updateTable[$countData]['net_weight'] . '</div>
-                          <div class="cell" data-title="Tea Quality">'. $teaQuality .'</div>
+                          <div class="cell" data-title="Net-Weight(kg)">' . $updateTable[$countData]['net_weight'] . '</div>
+                          <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
                         </div>';
             }
         } else {

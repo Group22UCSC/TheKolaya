@@ -78,6 +78,7 @@ class Supervisor_Model extends Model
         quality = '$rate' 
         WHERE lid = '$landowner_id'";
         $this->db->runQuery($query);
+        return true;
     }
 
     function getUpdateTeaMeasure()
@@ -91,6 +92,16 @@ class Supervisor_Model extends Model
         }
     }
 
+    function getUpdateTeaMeasureByTable($landowner_id) {
+        $query = "SELECT * FROM tea WHERE lid='$landowner_id'";
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    
     function manageRequests()
     {
         $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
