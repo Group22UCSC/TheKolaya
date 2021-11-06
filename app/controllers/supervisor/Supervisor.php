@@ -29,6 +29,18 @@ class Supervisor extends Controller
         }
     }
 
+    function getLandownerRequest() {
+        $todayRequests = $this->model->getTodayFertilizerRequest();
+        if (!empty($todayRequests)) {
+            $countData = count($todayRequests) - 1;
+            echo '<div class="row">
+                    <div class="cell" data-title="Landowener ID">' . $todayRequests[$countData]['user_id'] . '</div>
+                    <div class="cell" data-title="Name">' . $todayRequests[$countData]['name'] . '</div>
+                    <div class="cell" data-title="Request Amount">' . $todayRequests[$countData]['amount'] . '</div>
+                </div>';
+        }
+    }
+
     function updateTeaMeasure()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
