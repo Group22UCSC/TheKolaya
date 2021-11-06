@@ -26,6 +26,7 @@ class Supervisor_Model extends Model
     {
         // $date = '2021-10-20';
         $date = date("Y-m-d");
+        // echo $date;
         $query = "SELECT user.name, landowner.user_id, request.request_id, request.request_type, 
                 DATE(request.request_date) AS request_date, fertilizer_request.amount 
                 FROM user 
@@ -37,7 +38,7 @@ class Supervisor_Model extends Model
                 ON request.request_id=fertilizer_request.request_id
                 WHERE DATE(request.request_date)='$date' AND request.response_status=0";
         $row = $this->db->runQuery($query);
-
+        // print_r($row);
         if (count($row)) {
             return $row;
         } else {

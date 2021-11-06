@@ -16,6 +16,7 @@ class landowner extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->model->insertRequest($_POST);
+            
             // $this->view->render('landowner/Make_Requests');
             // print_r($result);
         } else {
