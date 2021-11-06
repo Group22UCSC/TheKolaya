@@ -40,7 +40,7 @@ class Agent extends Controller
             // print_r($this->weight_data);
             $this->model->updateWeight($this->weight_data);
             $result = $this->model->availablelistTable();
-            
+
             //Pusher API
             $options = array(
                 'cluster' => 'ap1',
@@ -54,7 +54,7 @@ class Agent extends Controller
             );
 
             $data['message'] = 'hello world';
-            $pusher->trigger('my-channel', 'my-event', $data);
+            $pusher->trigger('my-channel', 'today_collection_table', $data);
             // print_r($result);
             // $this->view->render('Agent/availableList', $result);
             //also add the set the tea availability of landowner to 0

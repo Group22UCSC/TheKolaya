@@ -26,6 +26,7 @@ class Supervisor_Model extends Model
     {
         // $date = '2021-10-20';
         $date = date("Y-m-d");
+        // echo $date;
         $query = "SELECT user.name, landowner.user_id, request.request_id, request.request_type, 
                 DATE(request.request_date) AS request_date, fertilizer_request.amount 
                 FROM user 
@@ -35,9 +36,9 @@ class Supervisor_Model extends Model
                 ON request.lid=landowner.user_id
                 INNER JOIN fertilizer_request 
                 ON request.request_id=fertilizer_request.request_id
-                WHERE DATE(request.request_date)='$date' AND request.response_status=0";
+                WHERE DATE(request.request_date)='$date' AND request.response_status='recive'";
         $row = $this->db->runQuery($query);
-
+        // print_r($row);
         if (count($row)) {
             return $row;
         } else {
@@ -102,14 +103,15 @@ class Supervisor_Model extends Model
         }
     }
     
-    function manageRequests()
+    function getRequests()
     {
         $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
                 FROM user 
                 INNER JOIN request 
                 ON user.user_id=request.lid 
                 INNER JOIN fertilizer_request 
-                ON fertilizer_request.request_id=request.request_id";
+                ON fertilizer_request.request_id=request.request_id 
+                WHERE request.response_status='recive'";
         $row = $this->db->runQuery($query);
 
         if ($row) {
@@ -117,6 +119,14 @@ class Supervisor_Model extends Model
         } else {
             return false;
         }
+    }
+
+    function manageRequests($data) {
+        $request_id = $data['request_id'];
+        $response_status = $data['response_status'];
+        $query = "UPDATE request SET response_status='$response_status' WHERE request_id='$request_id'";
+
+        $this->db->runQuery($query);
     }
 
     function stock($data)

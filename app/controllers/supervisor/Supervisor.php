@@ -29,6 +29,19 @@ class Supervisor extends Controller
         }
     }
 
+    function getLandownerRequest()
+    {
+        $todayRequests = $this->model->getTodayFertilizerRequest();
+        if (!empty($todayRequests)) {
+            $countData = count($todayRequests) - 1;
+            echo '<div class="row">
+                    <div class="cell" data-title="Landowener ID">' . $todayRequests[$countData]['user_id'] . '</div>
+                    <div class="cell" data-title="Name">' . $todayRequests[$countData]['name'] . '</div>
+                    <div class="cell" data-title="Request Amount">' . $todayRequests[$countData]['amount'] . '</div>
+                </div>';
+        }
+    }
+
     function updateTeaMeasure()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,7 +59,7 @@ class Supervisor extends Controller
             $data['net_weight'] = $data['weight'] - $reduction;
             $data['rate'] = ($data['rate']) * 20;
 
-            if($this->model->updateTeaMeasure($data))
+            if ($this->model->updateTeaMeasure($data))
                 $updateTable = $this->model->getUpdateTeaMeasureByTable($data['landowner_id']);
 
             if (!empty($updateTable)) {
@@ -78,8 +91,12 @@ class Supervisor extends Controller
 
     function manageRequests()
     {
-        $request = $this->model->manageRequests();
-        $this->view->render('Supervisor/manageRequests', $request);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->model->manageRequests($_POST);
+        } else {
+            $request = $this->model->getRequests();
+            $this->view->render('Supervisor/manageRequests', $request);
+        }
     }
 
     function manageFertilizer()

@@ -71,9 +71,9 @@
           if (!empty($data2)) {
             for ($i = 0; $i < count($data2); $i++) {
               echo '<div class="row">
-                    <div class="cell" data-title="Landowener_id">' . $data2[$i]['user_id'] . '</div>
+                    <div class="cell" data-title="Landowener ID">' . $data2[$i]['user_id'] . '</div>
                     <div class="cell" data-title="Name">' . $data2[$i]['name'] . '</div>
-                    <div class="cell" data-title="Amount">' . $data2[$i]['amount'] . '</div>
+                    <div class="cell" data-title="Request Amount">' . $data2[$i]['amount'] . '</div>
                   </div>';
             }
           }
@@ -95,20 +95,38 @@
   <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
   <script>
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
 
     var pusher = new Pusher('ef64da0120ca27fe19a3', {
       cluster: 'ap1'
     });
 
     var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
+    channel.bind('today_collection_table', function(data) {
       // alert(JSON.stringify(data));
       $.ajax({
         url: "<?php echo URL ?>Supervisor/getAgentTeaCollection",
         success: function(result) {
           $('#not_display_collection_yet').hide();
           $('#today_collection_table').append(result);
+        }
+      });
+
+
+    });
+
+    // var pusher = new Pusher('c7c144fc44f37db2f0c7', {
+    //   cluster: 'ap1'
+    // });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('today_request_table', function(data) {
+      // alert(JSON.stringify(data));
+      $.ajax({
+        url: "<?php echo URL ?>Supervisor/getLandownerRequest",
+        success: function(result) {
+          $('#not_display_request_yet').hide();
+          $('#today_request_table').append(result);
         }
       });
     });
