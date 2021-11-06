@@ -68,7 +68,7 @@ class landowner_Model extends Model
 
 
         $lid = $_SESSION['user_id'];
-        $query = "INSERT INTO request(request_type, lid, response_status) VALUES('$requests_type', '$lid', 0)";
+        $query = "INSERT INTO request(request_type, lid, response_status) VALUES('$requests_type', '$lid', 'recive')";
         $this->db->insertQuery($query);
         if ($requests_type == 'fertilizer')
             $query = "INSERT INTO fertilizer_request(request_id, amount) VALUES(LAST_INSERT_ID(), '$request_amount')";

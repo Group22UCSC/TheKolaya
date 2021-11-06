@@ -18,7 +18,7 @@
   </div>
   <!-- .middle-container .request-table .get-id .table-element -->
   <div class="middle-container">
-    <div class="request-table">
+    <div class="request-table" id="allRequest">
       <div class="table-wrapper">
         <div class="table_header">Fertilizer Request</div>
         <div class="table">
@@ -29,54 +29,47 @@
             <div class="cell">Amount(kg)</div>
           </div>
           <?php
-
-          // for ($i = 0; $i < count($data); $i++) {
-          //   echo '<div class="row table_row">
-          //           <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
-          //           <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
-          //           <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
-          //           <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
-          //         </div>';
-          // }
-          for ($i = 0; $i < 3; $i++) {
-            $name = ($i == 0) ? 'Kamal perera' : 'Nuwangi weerasekara';
-            if($i == 2) {
-              $name = "Sandaru gamage";
-              $date = '2021-10-27';
-            }else {
-              $date = date("Y-m-d");
+          if (!empty($data)) {
+            for ($i = 0; $i < count($data); $i++) {
+              echo '<div class="row table_row" id="' . $data[$i]['request_id'] . '">
+                      <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
+                      <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
+                      <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
+                      <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
+                    </div>';
             }
-            echo '<div class="row">
-		<div class="cell" data-title="Request_date">' . $date . '</div>
-                    <div class="cell lid" data-title="Landowener_id">LAN-01' . $i . '</div>
-                    <div class="cell" data-title="Name">' . $name . '</div>
-                    <div class="cell" data-title="Amount">5' . $i . '</div>
-                  </div>';
           }
           ?>
         </div>
       </div>
+      <?php
+      if (empty($data)) {
+        echo '<div id="not_display_request_yet" style="border-radius: 0px; color:red; background-color: white;" class="table_header" >There is no Request to update</div>';
+      }
+
+      ?>
+
 
     </div>
 
     <div class="from-container-outside">
       <div class="form-container">
         <div class="title">Request Confirmation Form</div>
-        <form action="#">
+        <form action="#" id="request_confirm_form">
           <div class="form">
             <div class="inputfield">
               <label>Landowner ID</label>
-              <input type="text" class="input" id="landowner-id">
+              <input type="text" class="input" id="landowner-id" name="landowner_id">
             </div>
             <div class="inputfield">
               <label>Comment</label>
-              <textarea class="textarea"></textarea>
+              <textarea class="textarea" name="comment"></textarea>
             </div>
             <div class="inputfield">
-              <input type="submit" value="Accept" class="accept-btn" name="accept-btn">
+              <input type="submit" value="Accept" class="accept-btn confirmBtn" name="accept_btn" id="request_accept_btn">
             </div>
             <div class="inputfield">
-              <input type="submit" value="Decline" class="decline-btn" name="decline-btn">
+              <input type="submit" value="Decline" class="decline-btn confirmBtn" name="decline_btn" id="request_decline_btn">
             </div>
           </div>
         </form>
@@ -93,7 +86,7 @@
           <?php
           for ($i = 0; $i < 2; $i++) {
             echo '<div class="row">
-                    <div class="cell" data-title="Tea_weight">2021-08-1'.$i.'</div>
+                    <div class="cell" data-title="Tea_weight">2021-08-1' . $i . '</div>
                     <div class="cell" data-title="Agent_id">50' . $i . '</div>
                   </div>';
           }
@@ -165,5 +158,16 @@
     </div>
   </div>
   <?php include 'script-included.php' ?>
+  <!-- <script>
+    document.querySelector('.request-table .table').addEventListener('click', function(event) {
+      // if (event.target.classList.contains("lid")) {
+      //   var getId = event.target.innerHTML;
+      //   document.getElementById('landowner-id').value = getId;
+      // }
+      console.log(event.target.classList);
+    });
+  </script> -->
+  
+  <?php include 'js/supervisor/manageRequestJs.php' ?>
   <?php include 'js/supervisor/table2-js.php' ?>
   <?php include 'bottom-container.php'; ?>
