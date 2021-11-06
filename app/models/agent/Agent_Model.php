@@ -75,7 +75,7 @@ class Agent_Model extends Model{
                   ON  request.request_id = fertilizer_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1 AND request.complete_status = 0 ";
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
@@ -95,7 +95,7 @@ class Agent_Model extends Model{
                   ON  request.request_id = advance_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1 AND request.complete_status = 0 ";
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
