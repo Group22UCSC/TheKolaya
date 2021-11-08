@@ -60,7 +60,7 @@ class Supervisor extends Controller
             $data['rate'] = ($data['rate']) * 20;
 
             if ($this->model->updateTeaMeasure($data))
-                $updateTable = $this->model->getUpdateTeaMeasureByTable($data['landowner_id']);
+                $updateTable = $this->model->getUpdateTeaMeasureById($data['landowner_id']);
 
             if (!empty($updateTable)) {
                 $countData = count($updateTable) - 1;
