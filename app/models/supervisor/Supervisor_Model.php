@@ -67,6 +67,7 @@ class Supervisor_Model extends Model
         $net_weight = $data['net_weight'];
         $supervisor_id = $_SESSION['user_id'];
         $rate = $data['rate'];
+        $date = date('Y-m-d');
         // $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
         // VALUES(" . $data['landowner_id'] . ", " . $data['weight'] . ", " . $data['water'] . ", " . $data['container'] . ", " . $data['mature_leaves'] . ", " . $data['net_weight'] . ", " . $_SESSION['user_id'] . ", " . $data['rate'] . ")";
         $query = "UPDATE tea SET 
@@ -77,14 +78,16 @@ class Supervisor_Model extends Model
         net_weight = '$net_weight', 
         sup_id = '$supervisor_id', 
         quality = '$rate' 
-        WHERE lid = '$landowner_id'";
+        WHERE lid = '$landowner_id' AND date='$date'";
         $this->db->runQuery($query);
         return true;
     }
 
     function getUpdateTeaMeasure()
     {
-        $query = "SELECT * FROM tea";
+        $date = date('Y-m-d');
+        $supervisor_id = $_SESSION['user_id'];
+        $query = "SELECT * FROM tea WHERE date='$date' AND sup_id='$supervisor_id'";
         $row = $this->db->runQuery($query);
         if (count($row)) {
             return $row;
@@ -93,7 +96,7 @@ class Supervisor_Model extends Model
         }
     }
 
-    function getUpdateTeaMeasureByTable($landowner_id) {
+    function getUpdateTeaMeasureById($landowner_id) {
         $query = "SELECT * FROM tea WHERE lid='$landowner_id'";
         $row = $this->db->runQuery($query);
         if (count($row)) {
