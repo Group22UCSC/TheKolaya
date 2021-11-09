@@ -42,16 +42,51 @@ class Supervisor extends Controller
         }
     }
 
-    function landownerDetails() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    function landownerDetails()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $month = date('m') - 1;
-            $landowner_details = $this->model->getLastRequestDate($_POST);
-            if($landowner_details) {
-                for($i = 0; $i < count($landowner_details); $i++) {
-                    echo '<div class="cell" data-title="Previous Request Date">' . $landowner_details[$i]['request_date'] . '</div>
-                        <div class="cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month, $_POST['landowner_id']) . '</div>';
+            $landowner_details = $this->model->getLastRequestDate($_POST['landowner_id']);
+            $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
+            if ($landowner_details) {
+                echo '<div id="previous_details">';
+                for ($i = 0; $i < count($landowner_details); $i++) {
+                    echo '<div class="row">
+                            <div class="cell" data-title="Previous Request Date">' . $landowner_details[$i]['request_date'] . '</div>
+                            <div class="cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
+                        </div>';
                 }
-                
+                echo '</div>';
+            }
+
+            if ($teaQuality) {
+                $quality = [
+                    '1_star' => 0,
+                    '2_star' => 0,
+                    '3_star' => 0,
+                    '4_star' => 0,
+                    '5_star' => 0,
+                ];
+                for($i = 0; $i < count($teaQuality); $i++) {
+                    // if($teaQuality[$i]['quality'] != '') {
+                    //     echo $teaQuality[$i]['quality'];
+                    // }
+                    $tempQuality = $teaQuality[$i]['quality']/20;
+                    switch($tempQuality) {
+                        case 1 : $quality['1_star'] += 1;
+                        break;
+                        case 2 : $quality['2_star'] += 1;
+                        break;
+                        case 3 : $quality['3_star'] += 1;
+                        break;
+                        case 4 : $quality['4_star'] += 1;
+                        break;
+                        case 5 : $quality['5_star'] += 1;
+                        break;
+                    }
+                }
+                // print_r($quality);
+                $this->view->render('supervisor/teaQuality', $quality);
             }
         }
     }

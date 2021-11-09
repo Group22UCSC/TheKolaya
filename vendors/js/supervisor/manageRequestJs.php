@@ -38,8 +38,16 @@
         url: "<?php echo URL ?>Supervisor/landownerDetails",
         cache: false,
         data: "landowner_id=" + requestDetails.landownerId,
-        success: function(data) {
-          $('#landowner_details').replaceWith(data);
+        success: function(responseText) {
+          var parser = new DOMParser();
+          var xmlDoc = parser.parseFromString(responseText, "text/html");
+          var myHtml = xmlDoc.getElementById("previous_details").innerHTML;
+          // var myHtml = $(responseText).find('#previous_details').html();
+          $('#landowner_details').replaceWith(myHtml);
+          console.log(myHtml);
+          myHtml = xmlDoc.getElementById("get_tea_rate").innerHTML;
+          $('#tea-rate').replaceWith(myHtml);
+          console.log(myHtml);
         },
         // error: function(xhr, ajaxOptions, thrownError) {
         //   Swal.fire({

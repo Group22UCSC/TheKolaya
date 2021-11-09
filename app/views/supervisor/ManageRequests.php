@@ -55,7 +55,7 @@
     <div class="modal">
       <div class="modal-content">
         <span class="close-button">×</span>
-        <div class="Landowner-details"  style="margin-top:70px;">
+        <div class="Landowner-details" style="margin-top:70px;">
           <div class="table-wrapper">
             <div class="table_header">Previous Fertilizer Request</div>
             <div class="table" id="lanowner_details_table">
@@ -63,17 +63,10 @@
                 <div class="cell">Previous Request Date</div>
                 <div class="cell">Monthly Tea Amount(kg)</div>
               </div>
-              <div class="row" id="landowner_details">
-
+              <div id="landowner_details">
+                
               </div>
-              <?php
-              // for ($i = 0; $i < 2; $i++) {
-              //   echo '<div class="row">
-              //       <div class="cell" data-title="Previous Request Date">2021-08-1' . $i . '</div>
-              //       <div class="cell" data-title="Mounthly Amount">50' . $i . '</div>
-              //     </div>';
-              // }
-              ?>
+              
             </div>
           </div>
           <div class="modal-btn-container">
@@ -84,65 +77,8 @@
         </div>
 
         <div class="landowner-rate-outside" style="display: none; margin-top:100px;">
-          <div class="landowner-rate">
-            <h2 style="color: #4DD101; text-align:center; margin-bottom:10px;">Kamal's Tea Quality</h2>
-            <div class="rating-row">
-              <div class="side">
-                <div>5 stars</div>
-              </div>
-              <div class="middle">
-                <div class="bar-container">
-                  <div class="bar-5"></div>
-                </div>
-              </div>
-              <div class="side right">
-                <div>150</div>
-              </div>
-              <div class="side">
-                <div>4 stars</div>
-              </div>
-              <div class="middle">
-                <div class="bar-container">
-                  <div class="bar-4"></div>
-                </div>
-              </div>
-              <div class="side right">
-                <div>63</div>
-              </div>
-              <div class="side">
-                <div>3 stars</div>
-              </div>
-              <div class="middle">
-                <div class="bar-container">
-                  <div class="bar-3"></div>
-                </div>
-              </div>
-              <div class="side right">
-                <div>15</div>
-              </div>
-              <div class="side">
-                <div>2 stars</div>
-              </div>
-              <div class="middle">
-                <div class="bar-container">
-                  <div class="bar-2"></div>
-                </div>
-              </div>
-              <div class="side right">
-                <div>6</div>
-              </div>
-              <div class="side">
-                <div>1 star</div>
-              </div>
-              <div class="middle">
-                <div class="bar-container">
-                  <div class="bar-1"></div>
-                </div>
-              </div>
-              <div class="side right">
-                <div>20</div>
-              </div>
-            </div>
+          <div class="landowner-rate" id="tea-rate">
+            
           </div>
           <div class="modal-btn-container">
             <button class="previous_requests">Previous Requests</button>
@@ -209,7 +145,7 @@
   </div>
   <?php include 'script-included.php' ?>
   <script>
-    
+
   </script>
   <script>
     $('.landowner_tea_rate').click(function() {
