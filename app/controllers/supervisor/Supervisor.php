@@ -42,6 +42,20 @@ class Supervisor extends Controller
         }
     }
 
+    function landownerDetails() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $month = date('m') - 1;
+            $landowner_details = $this->model->getLastRequestDate($_POST);
+            if($landowner_details) {
+                for($i = 0; $i < count($landowner_details); $i++) {
+                    echo '<div class="cell" data-title="Previous Request Date">' . $landowner_details[$i]['request_date'] . '</div>
+                        <div class="cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month, $_POST['landowner_id']) . '</div>';
+                }
+                
+            }
+        }
+    }
+
     function updateTeaMeasure()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

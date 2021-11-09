@@ -58,18 +58,21 @@
         <div class="Landowner-details"  style="margin-top:70px;">
           <div class="table-wrapper">
             <div class="table_header">Previous Fertilizer Request</div>
-            <div class="table">
+            <div class="table" id="lanowner_details_table">
               <div class="row tabel-header">
                 <div class="cell">Previous Request Date</div>
                 <div class="cell">Monthly Tea Amount(kg)</div>
               </div>
+              <div class="row" id="landowner_details">
+
+              </div>
               <?php
-              for ($i = 0; $i < 2; $i++) {
-                echo '<div class="row">
-                    <div class="cell" data-title="Previous Request Date">2021-08-1' . $i . '</div>
-                    <div class="cell" data-title="Mounthly Amount">50' . $i . '</div>
-                  </div>';
-              }
+              // for ($i = 0; $i < 2; $i++) {
+              //   echo '<div class="row">
+              //       <div class="cell" data-title="Previous Request Date">2021-08-1' . $i . '</div>
+              //       <div class="cell" data-title="Mounthly Amount">50' . $i . '</div>
+              //     </div>';
+              // }
               ?>
             </div>
           </div>
@@ -206,23 +209,7 @@
   </div>
   <?php include 'script-included.php' ?>
   <script>
-    var modal = document.querySelector(".modal");
-    var trigger = document.querySelector(".hello");
-    var closeButton = document.querySelector(".close-button");
-
-    function toggleModal() {
-      modal.classList.toggle("show-modal");
-    }
-
-    function windowOnClick(event) {
-      if (event.target === modal) {
-        toggleModal();
-      }
-    }
-
-    trigger.addEventListener("click", toggleModal);
-    closeButton.addEventListener("click", toggleModal);
-    window.addEventListener("click", windowOnClick);
+    
   </script>
   <script>
     $('.landowner_tea_rate').click(function() {
