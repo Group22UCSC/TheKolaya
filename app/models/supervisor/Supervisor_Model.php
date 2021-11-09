@@ -46,6 +46,45 @@ class Supervisor_Model extends Model
         }
     }
 
+    function getLastRequestDate($landowner_id) {
+        $query = "SELECT DATE(request_date) As request_date FROM request 
+                WHERE lid = '$landowner_id' 
+                AND request_type = 'fertilizer' 
+                AND response_status = 'accept'";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function getMonthTeaWeight($month, $landowner_id) {
+        $monthlyTeaAmount = 0;
+        $query = "SELECT * FROM tea WHERE MONTH(date) = '$month' AND lid='$landowner_id'";
+        $row = $this->db->runQuery($query);
+
+        if(count($row)) {
+            for($i = 0; $i < count($row); $i++) {
+                $monthlyTeaAmount += $row[$i]['net_weight'];
+            }
+            return $monthlyTeaAmount/count($row);
+        }else {
+            return '<b style="color:red;">No data found for '.date('F', strtotime("2001-$month-1")). '</b>';
+        }
+    }
+
+    function getTeaQuality($landowner_id) {
+        $query = "SELECT quality FROM tea WHERE lid='$landowner_id'";
+        $row = $this->db->runQuery($query);
+
+        if(count($row)) {
+            return $row;
+        }else {
+            false;
+        }
+    }
+
     function getStock()
     {
         $query = "SELECT * FROM stock";
@@ -83,6 +122,7 @@ class Supervisor_Model extends Model
         return true;
     }
 
+    
     function getUpdateTeaMeasure()
     {
         $date = date('Y-m-d');
@@ -105,6 +145,7 @@ class Supervisor_Model extends Model
             return false;
         }
     }
+    
     
     function getRequests()
     {
