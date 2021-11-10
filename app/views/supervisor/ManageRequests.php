@@ -59,26 +59,23 @@
           <div class="table-wrapper">
             <div class="table_header">Previous Fertilizer Request</div>
             <div class="table" id="lanowner_details_table">
-              <div class="row tabel-header">
+              <!-- <div class="row tabel-header">
                 <div class="cell">Previous Request Date</div>
                 <div class="cell">Monthly Tea Amount(kg)</div>
               </div>
               <div id="landowner_details">
-                
-              </div>
-              
+              </div> -->
             </div>
           </div>
           <div class="modal-btn-container">
             <button class="landowner_tea_rate">Lanadowner's Tea Rate</button>
             <button class="confirm_form">Confirm Request</button>
           </div>
-
         </div>
 
         <div class="landowner-rate-outside" style="display: none; margin-top:100px;">
           <div class="landowner-rate" id="tea-rate">
-            
+            <!-- here replace the data comes form ajax -->
           </div>
           <div class="modal-btn-container">
             <button class="previous_requests">Previous Requests</button>

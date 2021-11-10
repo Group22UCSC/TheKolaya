@@ -43,18 +43,6 @@
   border-radius: 0.5rem;
 }
 
-/* .modal-content > div{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 1rem 1.5rem;
-  width: 600px;
-  height: 523.6px;
-  border-radius: 0.5rem;
-} */
-
 .modal-btn-container {
   position: absolute;
   bottom: 5%;
@@ -162,27 +150,27 @@
 
 /* Individual bars */
 .bar-5 {
-  width: 60%;
+  /* width: 60%; */
   height: 18px;
   background-color: #78ff78;
 }
 .bar-4 {
-  width: 30%;
+  /* width: 30%; */
   height: 18px;
   background-color: #3ff73f;
 }
 .bar-3 {
-  width: 10%;
+  /* width: 10%; */
   height: 18px;
   background-color: #00e000;
 }
 .bar-2 {
-  width: 4%;
+  /* width: 4%; */
   height: 18px;
   background-color: #0db60d;
 }
 .bar-1 {
-  width: 15%;
+  /* width: 15%; */
   height: 18px;
   background-color: #00a300;
 }
