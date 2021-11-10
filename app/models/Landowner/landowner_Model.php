@@ -53,21 +53,44 @@ class landowner_Model extends Model
         return $this->db->runQuery($query);
     }
 
-    function insertRequest()
+    function insertRequest($data = [])
     {
-        $date = date("Y-m-d");
-        $requests_type = $_POST['rtype'];
-        // HAS TO CHANGE THIS
-        $lid = 'LAN-000';
-        $qty = $_POST['qty'];
-        $query = "INSERT INTO request (requests_date,response_status,requests_type,lid) VALUES ('{$date}','0','{$requests_type}',{$lid})";
+        $requests_type = $data['rtype'];
+        $request_amount = null;
+        $request_amount = $data['fertilizer_amount'];
+        if ($data['rtype'] == 'Fertilizer') {
+            $requests_type = 'fertilizer';
+            $request_amount = $data['fertilizer_amount'];
+        } else if ($data['rtype'] == 'Advance') {
+            $requests_type = 'advance';
+            $request_amount = $data['advance_amount'];
+        }
 
-        $row = $this->db->insertQuery($query);
-        print_r($row);
-        if ($row) {
-            return true;
-        } else {
-            return false;
+
+        $lid = $_SESSION['user_id'];
+        $query = "INSERT INTO request(request_type, lid, response_status) VALUES('$requests_type', '$lid', 'recive')";
+        $this->db->insertQuery($query);
+        if ($requests_type == 'fertilizer')
+            $query = "INSERT INTO fertilizer_request(request_id, amount) VALUES(LAST_INSERT_ID(), '$request_amount')";
+        else if ($requests_type == 'advance')
+            $query = "INSERT INTO advance_request(request_id, amount_rs) VALUES(LAST_INSERT_ID(), '$request_amount')";
+
+        $this->db->insertQuery($query);
+        if ($requests_type == 'fertilizer') {
+            //Pusher API
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $data['message'] = 'hello world';
+            $pusher->trigger('my-channel', 'today_request_table', $data);
         }
     }
 

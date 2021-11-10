@@ -41,20 +41,21 @@ class App {
 
     private function _loadController() {
         $file = null;
-        if($this->_url[0] == 'login' || $this->_url[0] == 'registration' || $this->_url[0] == 'OtpVerify' || $this->_url[0] == 'user') {
+        $this->_url[0] = ucfirst($this->_url[0]);
+        if($this->_url[0] == 'Login' || $this->_url[0] == 'Registration' || $this->_url[0] == 'OtpVerify' || $this->_url[0] == 'User') {
             $file = '../app/controllers/'. $this->_url[0] . '.php';
         }else if(isset($_SESSION['user_type'])){
             $file = '../app/controllers/'. $_SESSION['user_type'].'/'. $this->_url[0] . '.php';
         }else {
             $this->_url = [];
-            $this->_url[0] = 'login';
+            $this->_url[0] = 'Login';
             $file = '../app/controllers/'.$this->_url[0].'.php';
         }
 
         if(file_exists($file)) {
-            require $file;
+            require_once $file;
             $this->_controller = new $this->_url[0];
-            if($this->_url[0] == 'login' || $this->_url[0] == 'registration' || $this->_url[0] == 'OtpVerify' || $this->_url[0] == 'user') {
+            if($this->_url[0] == 'Login' || $this->_url[0] == 'Registration' || $this->_url[0] == 'OtpVerify' || $this->_url[0] == 'User') {
                 $this->_controller->loadModelUser($this->_url[0]);
             }else if(!empty($_SESSION['user_type'])) {
                 $this->_controller->loadModel($_SESSION['user_type'],$this->_url[0]);
@@ -62,6 +63,7 @@ class App {
             return true;
         }
         else {
+
             require '../app/controllers/Errors.php';
             $this->_controller = new Errors();
 
