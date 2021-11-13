@@ -81,7 +81,7 @@ class productmanager_Model extends Model {
 
 
     function getProductDetails(){
-        $query = "SELECT product_id,product_name,amount FROM product";
+        $query = "SELECT product_id,product_name,stock FROM product";
         $row = $this->db->runQuery($query);
         if($row) {
             return $row;
