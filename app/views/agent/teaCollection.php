@@ -16,8 +16,9 @@
                 <input type="text" class="input" name="weight" id="weight" required>
             </div>
             <div class="inputfield" id="btnset">
-                <button class="back" onclick="closeteaform()">Back</button>
                 <button class="btn" id="myBtn"> Add<span> Weight</span> </button>
+                <button class="back" onclick="closeteaform()">Back</button>
+               
                 <!-- <input type="submit" value="Add Weight" class="btn" id="myBtn"  onclick="openpopup()" >             -->
             </div>
         </form>
