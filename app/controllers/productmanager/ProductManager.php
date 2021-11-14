@@ -19,8 +19,29 @@ class ProductManager extends Controller{
         $this->view->render('Productmanager/auctionDetails',$tblResult);
     }
     function updateProducts() {
-        $productResults = $this->model->getProductDetails();
-        $this->view->render('Productmanager/updateProducts',$productResults);
+
+
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+                
+            $result = $this->model->insertAution();
+            if($result==true){
+            //     $buyers=$this->model->getBuyersDetails();
+            // $tblResult = $this->model->auction();
+            // $productResults = $this->model->getProductDetails();
+            
+           // print_r($result);
+            //$this->view->render3('Productmanager/updateAuction', $tblResult,$productResults,$buyers);
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        }
+        else{
+            $productResults = $this->model->getProductDetails();
+            $this->view->render('Productmanager/updateProducts',$productResults);   
+        }
     }
 
     function loadProductNames(){

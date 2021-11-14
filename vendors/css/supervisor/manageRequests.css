@@ -1,30 +1,111 @@
-
 .middle-container {
-    grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
-/* .middle-container > div {
-    background: #E4F9F5;
-} */
+#allRequest {
+  background: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.trigger {
+  text-align: center;
+  padding: 7px 13px;
+  background: #3e3e3e;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: cursive;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 600px;
+  height: 523.6px;
+  border-radius: 0.5rem;
+}
+
+.modal-btn-container {
+  position: absolute;
+  bottom: 5%;
+  transform: translate(25%);
+}
+
+.modal-btn-container button {
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 0px;
+  width: 180px;
+  background-color: #4DD101;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.modal-btn-container button:hover {
+  background-color: #089633;
+}
+
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+.close-button:hover {
+  background-color: darkgray;
+}
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
 
 .table-row {
-    grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .table-row-2 {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .table-head > div {
-    background-color: #8ff058;
+  background-color: #8ff058;
 }
 
 .table-name {
-    background-color: yellow;
-    grid-column: 1/5;
+  background-color: yellow;
+  grid-column: 1/5;
 }
-
-
 
 .landowner-rate {
   margin: 10px;
@@ -68,15 +149,36 @@
 }
 
 /* Individual bars */
-.bar-5 {width: 60%; height: 18px; background-color: #78ff78;}
-.bar-4 {width: 30%; height: 18px; background-color: #3ff73f;}
-.bar-3 {width: 10%; height: 18px; background-color: #00e000;}
-.bar-2 {width: 4%; height: 18px; background-color: #0db60d;}
-.bar-1 {width: 15%; height: 18px; background-color: #00a300;}
+.bar-5 {
+  /* width: 60%; */
+  height: 18px;
+  background-color: #78ff78;
+}
+.bar-4 {
+  /* width: 30%; */
+  height: 18px;
+  background-color: #3ff73f;
+}
+.bar-3 {
+  /* width: 10%; */
+  height: 18px;
+  background-color: #00e000;
+}
+.bar-2 {
+  /* width: 4%; */
+  height: 18px;
+  background-color: #0db60d;
+}
+.bar-1 {
+  /* width: 15%; */
+  height: 18px;
+  background-color: #00a300;
+}
 
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */
 @media (max-width: 400px) {
-  .side, .middle {
+  .side,
+  .middle {
     width: 100%;
   }
   /* Hide the right column on small screens */
@@ -87,16 +189,15 @@
 
 /*------------------Form Container-----------------*/
 
-
-@media (max-width:720px) {
-  .form-container .form .inputfield{
+@media (max-width: 720px) {
+  .form-container .form .inputfield {
     flex-direction: column;
     align-items: flex-start;
   }
-  .form-container .form .inputfield label{
+  .form-container .form .inputfield label {
     margin-bottom: 5px;
   }
-  .form-container .form .inputfield.terms{
+  .form-container .form .inputfield.terms {
     flex-direction: row;
   }
 }

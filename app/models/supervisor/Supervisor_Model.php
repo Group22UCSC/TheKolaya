@@ -46,6 +46,45 @@ class Supervisor_Model extends Model
         }
     }
 
+    function getLastRequestDate($landowner_id) {
+        $query = "SELECT DATE(request_date) As request_date FROM request 
+                WHERE lid = '$landowner_id' 
+                AND request_type = 'fertilizer' 
+                AND response_status = 'accept'";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function getMonthTeaWeight($month, $landowner_id) {
+        $monthlyTeaAmount = 0;
+        $query = "SELECT * FROM tea WHERE MONTH(date) = '$month' AND lid='$landowner_id'";
+        $row = $this->db->runQuery($query);
+
+        if(count($row)) {
+            for($i = 0; $i < count($row); $i++) {
+                $monthlyTeaAmount += $row[$i]['net_weight'];
+            }
+            return $monthlyTeaAmount/count($row);
+        }else {
+            return '<b style="color:red;">No data found for '.date('F', strtotime("2001-$month-1")). '</b>';
+        }
+    }
+
+    function getTeaQuality($landowner_id) {
+        $query = "SELECT quality FROM tea WHERE lid='$landowner_id'";
+        $row = $this->db->runQuery($query);
+
+        if(count($row)) {
+            return $row;
+        }else {
+            false;
+        }
+    }
+
     function getStock()
     {
         $query = "SELECT * FROM stock";
@@ -67,6 +106,7 @@ class Supervisor_Model extends Model
         $net_weight = $data['net_weight'];
         $supervisor_id = $_SESSION['user_id'];
         $rate = $data['rate'];
+        $date = date('Y-m-d');
         // $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
         // VALUES(" . $data['landowner_id'] . ", " . $data['weight'] . ", " . $data['water'] . ", " . $data['container'] . ", " . $data['mature_leaves'] . ", " . $data['net_weight'] . ", " . $_SESSION['user_id'] . ", " . $data['rate'] . ")";
         $query = "UPDATE tea SET 
@@ -77,14 +117,17 @@ class Supervisor_Model extends Model
         net_weight = '$net_weight', 
         sup_id = '$supervisor_id', 
         quality = '$rate' 
-        WHERE lid = '$landowner_id'";
+        WHERE lid = '$landowner_id' AND date='$date'";
         $this->db->runQuery($query);
         return true;
     }
 
+    
     function getUpdateTeaMeasure()
     {
-        $query = "SELECT * FROM tea";
+        $date = date('Y-m-d');
+        $supervisor_id = $_SESSION['user_id'];
+        $query = "SELECT * FROM tea WHERE date='$date' AND sup_id='$supervisor_id'";
         $row = $this->db->runQuery($query);
         if (count($row)) {
             return $row;
@@ -93,7 +136,7 @@ class Supervisor_Model extends Model
         }
     }
 
-    function getUpdateTeaMeasureByTable($landowner_id) {
+    function getUpdateTeaMeasureById($landowner_id) {
         $query = "SELECT * FROM tea WHERE lid='$landowner_id'";
         $row = $this->db->runQuery($query);
         if (count($row)) {
@@ -102,6 +145,7 @@ class Supervisor_Model extends Model
             return false;
         }
     }
+    
     
     function getRequests()
     {

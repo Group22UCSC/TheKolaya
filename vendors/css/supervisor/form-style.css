@@ -159,8 +159,7 @@
     padding: 0 10px;
 }
 .form-container .form .inputfield .rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+    display: none;
 }
 .form-container .form .inputfield .rate:not(:checked) > label {
     float:right;
