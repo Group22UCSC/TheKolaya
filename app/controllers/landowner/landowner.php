@@ -36,7 +36,7 @@ class landowner extends Controller
             if ($_POST['containers']) {
                 $data['no_of_estimated_containers'] = $_POST['containers'];
             }
-            echo $_POST['containers'];
+            // echo $_POST['containers'];
             $this->model->Update_Tea_Availability($data);
         } else {
             $availability = $this->model->getAvailability();

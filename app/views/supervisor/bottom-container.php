@@ -1,7 +1,8 @@
 </section>
 
 <script src="<?php echo URL ?>vendors/js/app.js"></script>
-<script src="<?php echo URL ?>vendors/js/nav.js"></script>
+<!-- <script src="<?php echo URL ?>vendors/js/nav.js"></script> -->
+<?php include 'js/navJs.php'?>
 <!-- <script>
   $(document).ready(function() {
     $('#notification_nav').click(function(event) {

@@ -238,6 +238,10 @@
     display: none;
 }
 
+.popup.active {
+  display: block;
+}
+
 .popup .shadow {
     width: 100%;
     height: 100%;
