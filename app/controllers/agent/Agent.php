@@ -57,7 +57,7 @@ class Agent extends Controller
             $pusher->trigger('my-channel', 'today_collection_table', $data);
             // print_r($result);
             // $this->view->render('Agent/availableList', $result);
-            //also add the set the tea availability of landowner to 0
+            
         }
     }
 

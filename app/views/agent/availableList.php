@@ -69,8 +69,8 @@
         // var priceForAmount = pricePerUnit*inAmount;
         var str = "<div style=\"display:flex; justify-content:center;\">" +
           "<div style=\"text-align:left;\">" +
-          "<div>Landowner ID: <span style=\"color:#4DD101;\"><b>" + landownerId + "</b></span></div>" +
-          "<div>Intial Tea Weight :  <span style=\"color:#4DD101;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
+          "<div>Landowner ID: <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
+          "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
           "</div>" +
           "</div>";
         // if(inAmount == 0) {
@@ -93,9 +93,9 @@
           // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#4DD101',
-          cancelButtonColor: '#FF2400',
-          confirmButtonText: 'Yes, Update it!'
+          confirmButtonColor: '#01830c',
+          cancelButtonColor: '#ff3300',
+          confirmButtonText: 'Yes, Update!'
         }).then((result) => {
           if (result.isConfirmed) {
             $("#teaUpdateForm").trigger("reset");
@@ -130,7 +130,7 @@
   </script>
   <?php include 'bottomContainer.php'; ?>
 
-  <!-- <?php include 'popup.php'; ?> -->
+   <!-- include 'popup.php';  -->
 
   <script>
     var table = document.getElementById('availabletable');

@@ -48,7 +48,10 @@ class Registration_Model extends Model {
                     
             }
             $this->db->runQuery($query);
-            $this->db->runQuery($queryUser);
+            if(!($user_type=='agent' || $user_type=='Land_Owner')){
+                $this->db->runQuery($queryUser);
+            }
+            
         }
     }
 
