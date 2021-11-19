@@ -73,7 +73,13 @@ class Login extends Controller {
         $_SESSION['name'] = $user[0]['name'];
         $_SESSION['address'] = $user[0]['address'];
         
+        // switch($_SESSION['user_type']) {
+        //     case 'LandOwner' : $_SESSION['user_type'] = 
+        // }
         if($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'LandOwner') {
+            if($_SESSION['user_type'] == 'LandOwner') {
+                $_SESSION['user_type'] = 'Landowner';
+            }
             $this->model->getRoute($_SESSION['user_type']);
         }
         redirect($_SESSION['user_type']);
@@ -87,7 +93,7 @@ class Login extends Controller {
         unset($_SESSION['address']);
             
         session_destroy();
-        redirect('login');
+        redirect('Login');
     }
 
     function isLoggedIn() {
@@ -146,7 +152,7 @@ class Login extends Controller {
             if(!empty($data['new_password']) || !empty($data['confirm_password'])) {
                 $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
                 $this->model->changePassword($data);
-                redirect('login');
+                redirect('Login');
             }else {
                 $this->view->render('User/forgetPassword/changePassword', $data);
             }

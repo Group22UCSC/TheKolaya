@@ -14,10 +14,11 @@ class landowner extends Controller
 
     function Make_Requests()
     {
-        if (!empty($_POST)) {
-
-            $result = $this->model->insertRequest();
-            print_r($result);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->model->insertRequest($_POST);
+            
+            // $this->view->render('landowner/Make_Requests');
+            // print_r($result);
         } else {
             $this->view->render('landowner/Make_Requests');
         }
@@ -35,7 +36,7 @@ class landowner extends Controller
             if ($_POST['containers']) {
                 $data['no_of_estimated_containers'] = $_POST['containers'];
             }
-            echo $_POST['containers'];
+            // echo $_POST['containers'];
             $this->model->Update_Tea_Availability($data);
         } else {
             $availability = $this->model->getAvailability();

@@ -21,8 +21,8 @@ class OtpVerify extends Controller {
                     $verifyOTP = '';
                     $_SESSION['verify'] = 1;
                     require_once '../app/controllers/Registration.php';
-                    $otpCorrect = new registration();
-                    $otpCorrect->loadModelUser('registration');
+                    $otpCorrect = new Registration();
+                    $otpCorrect->loadModelUser('Registration');
                     $otpCorrect->updateVerifiedUser();
                     $this->view->render('otp/correctOTP');
                 }
@@ -35,7 +35,7 @@ class OtpVerify extends Controller {
             else if(isset($_POST['login-verify'])) {
                 if($verifyOTP == $_SESSION['OTP']){
                     $verifyOTP = '';
-                    redirect('login/changePassword');
+                    redirect('Login/changePassword');
                 }
                 else{
                     $verifyOTP = '';

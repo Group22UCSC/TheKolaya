@@ -55,13 +55,12 @@ class Agent_Model extends Model{
     }
 
     function updateWeight($data = []){
-        $date = $data['date'];
         $landowner_id = $data['lid'];
         $weight = $data['initial_weight'];
         $emp_id = $data['agent_id'];
         
-        $query = "INSERT INTO tea(date, lid, initial_weight_agent, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, agent_id, quality)         
-                    VALUES ('$date', '$landowner_id', '$weight', '0', '0', '0', '0','0', 'SUP-000','$emp_id', '0')";
+        $query = "INSERT INTO tea(lid, initial_weight_agent, agent_id)         
+                    VALUES ('$landowner_id', '$weight','$emp_id')";
         $next_query = "UPDATE landowner SET tea_availability = '0' WHERE user_id = '$landowner_id'";
         $this->db->runQuery($query);
         $this->db->runQuery($next_query);
@@ -76,7 +75,7 @@ class Agent_Model extends Model{
                   ON  request.request_id = fertilizer_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1 AND request.complete_status = 0 ";
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
@@ -96,7 +95,7 @@ class Agent_Model extends Model{
                   ON  request.request_id = advance_request.request_id                   
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
-                AND request.response_status = 1 AND request.complete_status = 0 ";
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
                 
         $row = $this->db->runQuery($query);
         // return $row;
