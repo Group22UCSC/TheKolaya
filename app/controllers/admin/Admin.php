@@ -97,10 +97,10 @@ class Admin extends Controller
         $this->view->render('Admin/deleteAccount', $result);
     }
 
-    public function deleteAccount1()
-    {
-        $this->view->showPage('Admin/deleteAccount1');
-    }
+    // public function deleteAccount1()
+    // {
+    //     $this->view->showPage('Admin/deleteAccount1');
+    // }
 
     public function admin()
     {
