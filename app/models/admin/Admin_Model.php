@@ -198,16 +198,16 @@ class Admin_Model extends Model {
         // $route_number = null;
         
        
-        $query= "UPDATE user SET user_id='$_POST[user_id]', user_type='$_POST[user_type]',name='$_POST[name]',contact_number='$_POST[contact_number]',address='$_POST[address]',password='$_POST[password]'";
+        $query= "UPDATE user SET user_type='$_POST[user_type]',name='$_POST[name]',contact_number='$_POST[contact_number]',address='$_POST[address]',password='$_POST[password]' WHERE user_id='$_POST[user_id]'";
 
 
             $this->db->runQuery($query);
             // $this->db->runQuery($queryUser);
-            $this->db->insertQuery($query);
+            // $this->db->insertQuery($query);
        
         
     }
-
+ 
 
 
 }

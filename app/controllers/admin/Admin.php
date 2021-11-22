@@ -27,18 +27,12 @@ class Admin extends Controller
 
     public function updateAccount()
     {
-        // $this->view->showPage('Manager/viewAccount');
+        
         $result = $this->model->availablelistTable();
-        // print_r($result);
         $this->view->render('Admin/updateAccount', $result);
-    }
 
-    //update form
-    public function updateAccount1()
-    {
-        // $this->view->showPage('Admin/updateAccount1');
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+           if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'name' => trim($_POST['name']),
@@ -65,9 +59,9 @@ class Admin extends Controller
             if (empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $this->model->userUpdate($data);
-                $this->view->render('admin/updateAccount1', $data);
+                $this->view->render('admin/updateAccount', $data);
             } else {
-                $this->view->render('admin/updateAccount1', $data);
+                $this->view->render('admin/updateAccount', $data);
             }
         } else {
             $data = [
@@ -84,9 +78,23 @@ class Admin extends Controller
                 'contact_number_err' => '',
                 'confirm_password_err' => ''
             ];
-            $this->view->render('admin/updateAccount1', $data);
+            // $this->view->render('admin/updateAccount', $data);
         }
+        
+
+
     }
+
+
+
+
+    //update form
+    // public function updateAccount1()
+    // {
+    //     // $this->view->showPage('Admin/updateAccount1');
+
+       
+    // }
 
     public function deleteAccount()
     {
@@ -97,10 +105,10 @@ class Admin extends Controller
         $this->view->render('Admin/deleteAccount', $result);
     }
 
-    public function deleteAccount1()
-    {
-        $this->view->showPage('Admin/deleteAccount1');
-    }
+    // public function deleteAccount1()
+    // {
+    //     $this->view->showPage('Admin/deleteAccount1');
+    // }
 
     public function admin()
     {
