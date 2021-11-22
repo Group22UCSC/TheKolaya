@@ -103,7 +103,7 @@
  <div class="wrapper1">
   <div class="title">  Update Form  </div>
     
-    <form action="<?php echo URL?>admin/updateAccount1" method="POST">
+    <form action="<?php echo URL?>admin/updateAccount" method="POST">
       <div class="form">
 
         <div class="inputfield">
@@ -155,7 +155,7 @@
       
       <div class="last">
             <div class="a">
-       <a href="<?php echo URL?>admin/updateAccount1"><input type="submit" value="Update" class="btn"></a>
+       <input type="submit" value="Update" class="btn">
       </div>
 
 
