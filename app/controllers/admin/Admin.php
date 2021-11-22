@@ -27,9 +27,8 @@ class Admin extends Controller
 
     public function updateAccount()
     {
-        // $this->view->showPage('Manager/viewAccount');
+        
         $result = $this->model->availablelistTable();
-        // print_r($result);
         $this->view->render('Admin/updateAccount', $result);
 
 
@@ -79,7 +78,7 @@ class Admin extends Controller
                 'contact_number_err' => '',
                 'confirm_password_err' => ''
             ];
-            $this->view->render('admin/updateAccount', $data);
+            // $this->view->render('admin/updateAccount', $data);
         }
         
 
