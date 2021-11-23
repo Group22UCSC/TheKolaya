@@ -253,9 +253,45 @@ class Supervisor_Model extends Model
                 FROM '$stock_type' WHERE type='$type' WHERE in_date='$search_date'";
 
         $row = $this->db->runQuery($query);
-        if ($row) {
+        if (count($row)) {
             return $row;
         } else {
+            return false;
+        }
+    }
+
+    //Get Notification
+    function getNotSeenNotification() {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='Supervisor' AND seen_not_seen=0 
+        ORDER BY notification_id DESC";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function getNotReadedNotification() {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='Supervisor' AND read_unread=0 
+        ORDER BY notification_id DESC";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function getAllNotification() {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='Supervisor' ORDER BY notification_id DESC";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
             return false;
         }
     }

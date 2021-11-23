@@ -177,9 +177,6 @@ class Admin_Model extends Model {
         }
     }
 
-
-
-
 ////////////////////// update accounts/////////////////////////////
 
         function userUpdate($data = []) {
@@ -187,28 +184,21 @@ class Admin_Model extends Model {
         $contact_number = $data['mobile_number'];
         $user_id = $data['reg_id'];
         $user_type = $data['reg_type'];
-        // $verify = 0;
-        // if($_SESSION['account_type'] == 'full') {
-        //     $address = $data['address'];
-        //     $password = $data['password'];
-        //     $verify = 1;
-        // }
+
         $address = $data['address'];
         $password = $data['password'];
         // $route_number = null;
         
        
-        $query= "UPDATE user SET user_id='$_POST[user_id]', user_type='$_POST[user_type]',name='$_POST[name]',contact_number='$_POST[contact_number]',address='$_POST[address]',password='$_POST[password]'";
+        $query= "UPDATE user 
+        SET user_type='$user_type',name='$name',contact_number='$contact_number',
+        address='$address',password='$password' 
+        WHERE user_id='$user_id'";
 
 
-            $this->db->runQuery($query);
-            // $this->db->runQuery($queryUser);
-            $this->db->insertQuery($query);
-       
-        
+        $this->db->runQuery($query);        
     }
-
+ 
 
 
 }
-?>

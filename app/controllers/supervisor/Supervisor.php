@@ -49,7 +49,7 @@ class Supervisor extends Controller
             $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
             $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
             if (!empty($lastRequests)) {
-                
+
                 echo '<div id="previous_details">';
                 echo '<div class="row tabel-header">
                         <div class="cell">Previous Request Date</div>
@@ -270,5 +270,62 @@ class Supervisor extends Controller
     function enterPassword()
     {
         $this->view->render('user/profile/enterPassword');
+    }
+
+    //Get Notification
+    function setNotification($notification)
+    {
+        $title = '';
+        if (!empty($notification)) {
+            for ($i = 0; $i < count($notification); $i++) {
+                if (strpos($notification[$i]['message'], 'Request') !== false)
+                    $title = 'Fertilizer Request';
+                else if (strpos($notification[$i]['message'], 'Fertilzer Stock') !== false)
+                    $title = 'Fertilizer Stock Limit Warning';
+                else if (strpos($notification[$i]['message'], 'Firewood Stock') !== false)
+                    $title = 'Firewood Stock Limit Warning';
+                echo '<li id="n-' . $notification[$i]['notification_id'] . '"class="starbucks success">
+                                <div class="notify_icon">
+                                  <span class="icon"><i class="fas fa-bell"></i></span>  
+                                </div>
+                                <div class="notify_data">
+                                    <div class="title">
+                                        ' . $title . '  
+                                    </div>
+                                    <div class="sub_title">
+                                      ' . $notification[$i]['message'] . '
+                                  </div>
+                                </div>
+                              </li>';
+            }
+        }
+    }
+
+    function getNotificationCount()
+    {
+        $notification = $this->model->getNotSeenNotification();
+        $notification_count = count($notification);
+        return $notification_count;
+    }
+
+    function getNotification()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($_POST['notification_type'] == 'half') {
+                $notification = $this->model->getNotReadedNotification();
+                $this->setNotification($notification);
+            } else if ($_POST['notification_type'] == 'all') {
+                $notification = $this->model->getAllNotification();
+                $this->setNotification($notification);
+            } else {
+                $notification = $this->model->getNotSeenNotification();
+                $notification_count = count($notification);
+                echo $notification_count;
+            }
+        } else {
+            $notification = $this->model->getAllNotification();
+            $this->setNotification($notification);
+            $this->view->render('supervisor/top-container', $notification);
+        }
     }
 }
