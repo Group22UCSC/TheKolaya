@@ -63,7 +63,13 @@
           <!-- This must have to change in everyones code -->
           <button type="button" class="icon-button">
             <span class="material-icons"><i style="font-size: 20px;" class="fas fa-bell"></i></span>
-            <span class="icon-button__badge"></span>
+            <?php
+              $notificationCount = 0;
+              if(!empty($data3)) {
+                $notificationCount = count($data3);
+              }
+            ?>
+            <span class="icon-button__badge <?php ($notificationCount == 0) ? print('hide') : print('');?>"><?php echo $notificationCount?></span>
           </button>
           <!-- ---------------------- -->
 
