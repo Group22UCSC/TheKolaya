@@ -27,12 +27,9 @@ class Admin extends Controller
 
     public function updateAccount()
     {
-        
         $result = $this->model->availablelistTable();
-        $this->view->render('Admin/updateAccount', $result);
 
-
-           if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'name' => trim($_POST['name']),
@@ -57,12 +54,11 @@ class Admin extends Controller
             // }
 
             if (empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
-               
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $this->model->userUpdate($data);
-                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                $this->view->render('admin/updateAccount', $data);
+                $this->view->render('admin/updateAccount', $result, $data);
             } else {
-                $this->view->render('admin/updateAccount', $data);
+                $this->view->render('admin/updateAccount', $result, $data);
             }
         } else {
             $data = [
@@ -79,11 +75,10 @@ class Admin extends Controller
                 'contact_number_err' => '',
                 'confirm_password_err' => ''
             ];
+            $this->view->render('Admin/updateAccount', $result);
+
             // $this->view->render('admin/updateAccount', $data);
         }
-        
-
-
     }
 
 
@@ -94,7 +89,7 @@ class Admin extends Controller
     // {
     //     // $this->view->showPage('Admin/updateAccount1');
 
-       
+
     // }
 
     public function deleteAccount()
