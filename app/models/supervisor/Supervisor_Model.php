@@ -107,16 +107,10 @@ class Supervisor_Model extends Model
         $supervisor_id = $_SESSION['user_id'];
         $rate = $data['rate'];
         $date = date('Y-m-d');
-        // $query = "INSERT INTO tea(lid, initial_weight_sup, water_precentage, container_precentage, matured_precentage, net_weight, sup_id, quality) 
-        // VALUES(" . $data['landowner_id'] . ", " . $data['weight'] . ", " . $data['water'] . ", " . $data['container'] . ", " . $data['mature_leaves'] . ", " . $data['net_weight'] . ", " . $_SESSION['user_id'] . ", " . $data['rate'] . ")";
-        $query = "UPDATE tea SET 
-        initial_weight_sup = '$weight', 
-        water_precentage = '$water', 
-        container_precentage = '$container', 
-        matured_precentage = '$mature_leaves', 
-        net_weight = '$net_weight', 
-        sup_id = '$supervisor_id', 
-        quality = '$rate' 
+
+        $query = "UPDATE tea SET initial_weight_sup = '$weight', water_precentage = '$water', 
+        container_precentage = '$container', matured_precentage = '$mature_leaves', 
+        net_weight = '$net_weight', sup_id = '$supervisor_id', quality = '$rate' 
         WHERE lid = '$landowner_id' AND date='$date'";
         $this->db->runQuery($query);
         return true;
@@ -196,6 +190,7 @@ class Supervisor_Model extends Model
         }
     }
 
+    //Manage Stock
     function manageStock($data)
     {
         $type = $data['type'];
@@ -239,6 +234,15 @@ class Supervisor_Model extends Model
             $query = "INSERT INTO out_stock(type, out_quantity, emp_id) VALUES('$type', '$amount', '$emp_id')";
             $this->db->runQuery($query);
         }
+        return true;
+    }
+
+    //Insert Notification about stock limit
+    function stockGetLimit($stock_type) {
+        $message = $stock_type . " is Getting bellow Stock Limit";
+        $query = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, sender_id) 
+        VALUES(0, 0, '$message', 'Supervisor', '".$_SESSION['user_id']."')";
+        $this->db->runQuery($query);
     }
 
     function searchByDate($data)
