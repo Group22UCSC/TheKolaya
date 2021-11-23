@@ -28,7 +28,7 @@
 
             <h2>B-100 Black Tea</h2>
             <!-- <input type="text" value="345Kg" readonly> -->
-            <label for="" id="B-100_Black_Tea"><?php echo $data[2]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[2]['stock']?> Kg</label>
             
         </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="contentBx">
 
             <h2>N Black Tea</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[3]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[3]['stock']?> Kg</label>
         </div>
     </div>
 
@@ -54,7 +54,7 @@
         <div class="contentBx">
 
             <h2>Early Grey</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[4]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[4]['stock']?> Kg</label>
         </div>
     </div>
 
@@ -67,7 +67,7 @@
         <div class="contentBx">
 
             <h2>Green Tea</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[0]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[0]['stock']?> Kg</label>
         </div>
     </div>
 
@@ -80,7 +80,7 @@
         <div class="contentBx">
 
             <h2>Masala Chai</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[5]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[5]['stock']?> Kg</label>
         </div>
     </div>  
 
@@ -99,7 +99,7 @@
         <div class="contentBx">
 
             <h2>Matcha Tea</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[6]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[6]['stock']?> Kg</label>
         </div>
     </div>
 
@@ -111,7 +111,7 @@
         <div class="contentBx">
 
             <h2>White Tea</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[1]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[1]['stock']?> Kg</label>
         </div>
     </div>
 
@@ -124,7 +124,7 @@
         <div class="contentBx">
 
             <h2>Oolang Tea</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[7]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[7]['stock']?> Kg</label>
         </div>
     </div>
 
@@ -137,7 +137,7 @@
         <div class="contentBx">
 
             <h2>Sencha Tea</h2>
-            <label for="" id="B-100_Black_Tea"><?php echo $data[8]['amount']?> Kg</label>
+            <label for="" id="B-100_Black_Tea"><?php echo $data[8]['stock']?> Kg</label>
         </div>
     </div>
 
