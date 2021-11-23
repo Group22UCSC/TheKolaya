@@ -225,4 +225,8 @@ function clearTable(){
     $('.row ').remove(); // removing the previus rows in the ui
 }
 
+// check whether the entered amount of product is available in the stock
+function validateAmount(){
+    console.log("dds");
+}
 </script>
