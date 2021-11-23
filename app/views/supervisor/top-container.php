@@ -65,8 +65,8 @@
             <span class="material-icons"><i style="font-size: 20px;" class="fas fa-bell"></i></span>
             <?php
               $notificationCount = 0;
-              if(!empty($data3)) {
-                $notificationCount = count($data3);
+              if($_SESSION['NotSeenCount']) {
+                $notificationCount = $_SESSION['NotSeenCount'];
               }
             ?>
             <span class="icon-button__badge <?php ($notificationCount == 0) ? print('hide') : print('');?>"><?php echo $notificationCount?></span>
