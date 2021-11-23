@@ -261,10 +261,22 @@ class Supervisor_Model extends Model
     }
 
     //Get Notification
+    function getNotSeenNotification() {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='Supervisor' AND seen_not_seen=0 
+        ORDER BY notification_id DESC";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
     function getNotReadedNotification() {
         $query = "SELECT * FROM notification 
         WHERE receiver_type='Supervisor' AND read_unread=0 
-        ORDER BY notification_id ASC";
+        ORDER BY notification_id DESC";
         $row = $this->db->runQuery($query);
         if(count($row)) {
             return $row;
@@ -275,7 +287,7 @@ class Supervisor_Model extends Model
 
     function getAllNotification() {
         $query = "SELECT * FROM notification 
-        WHERE receiver_type='Supervisor' ORDER BY notification_id ASC";
+        WHERE receiver_type='Supervisor' ORDER BY notification_id DESC";
         $row = $this->db->runQuery($query);
         if(count($row)) {
             return $row;

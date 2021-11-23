@@ -284,7 +284,7 @@ class Supervisor extends Controller
                     $title = 'Fertilizer Stock Limit Warning';
                 else if (strpos($notification[$i]['message'], 'Firewood Stock') !== false)
                     $title = 'Firewood Stock Limit Warning';
-                echo '<li id="n-'.$notification[$i]['notification_id'].'"class="starbucks success">
+                echo '<li id="n-' . $notification[$i]['notification_id'] . '"class="starbucks success">
                                 <div class="notify_icon">
                                   <span class="icon"><i class="fas fa-bell"></i></span>  
                                 </div>
@@ -300,6 +300,14 @@ class Supervisor extends Controller
             }
         }
     }
+
+    function getNotificationCount()
+    {
+        $notification = $this->model->getNotSeenNotification();
+        $notification_count = count($notification);
+        return $notification_count;
+    }
+
     function getNotification()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -309,6 +317,10 @@ class Supervisor extends Controller
             } else if ($_POST['notification_type'] == 'all') {
                 $notification = $this->model->getAllNotification();
                 $this->setNotification($notification);
+            } else {
+                $notification = $this->model->getNotSeenNotification();
+                $notification_count = count($notification);
+                echo $notification_count;
             }
         } else {
             $notification = $this->model->getAllNotification();
