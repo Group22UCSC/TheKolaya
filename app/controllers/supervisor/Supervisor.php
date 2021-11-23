@@ -6,14 +6,13 @@ class Supervisor extends Controller
     {
         parent::__construct();
     }
-
     function index()
     {
         $stock = $this->model->getStock();
         $teaCollection = $this->model->getTeaCollection();
         $todayRequests = $this->model->getTodayFertilizerRequest();
 
-        $this->view->render('Supervisor/Supervisor', $stock, $teaCollection, $todayRequests);
+        $this->view->render('Supervisor/Supervisor', $stock, $teaCollection, $todayRequests, $this->getNotificationCount());
     }
 
     function getAgentTeaCollection()
@@ -44,6 +43,7 @@ class Supervisor extends Controller
 
     function landownerDetails()
     {
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $month = date('m') - 1;
             $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
@@ -112,7 +112,7 @@ class Supervisor extends Controller
                 $allStars = 0;
                 for ($i = 1; $i <= 5; $i++)
                     $allStars += $quality[$i . '_star'];
-                $this->view->render('supervisor/teaQuality', $quality, $allStars);
+                $this->view->render('supervisor/teaQuality', $quality, $allStars, 0, $this->getNotificationCount());
             }
         }
     }
@@ -160,22 +160,24 @@ class Supervisor extends Controller
             }
         } else {
             $updateTable = $this->model->getUpdateTeaMeasure();
-            $this->view->render('Supervisor/updateTeaMeasure', $updateTable);
+            $this->view->render('Supervisor/updateTeaMeasure', $updateTable, 0, 0, $this->getNotificationCount());
         }
     }
 
     function manageRequests()
     {
+        $notificationCount = $this->getNotificationCount();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->model->manageRequests($_POST);
         } else {
             $request = $this->model->getRequests();
-            $this->view->render('Supervisor/manageRequests', $request);
+            $this->view->render('Supervisor/manageRequests', $request, 0, 0, $this->getNotificationCount());
         }
     }
 
     function manageFertilizer()
     {
+        $notificationCount = $this->getNotificationCount();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'stock_type' => $_POST['stock_type'],
@@ -189,7 +191,7 @@ class Supervisor extends Controller
 
             $this->model->manageStock($data);
         } else {
-            $this->view->render('Supervisor/manageFertilizer');
+            $this->view->render('Supervisor/manageFertilizer', 0, 0, 0, $this->getNotificationCount());
         }
     }
 
@@ -208,7 +210,7 @@ class Supervisor extends Controller
 
             $this->model->manageStock($data);
         } else {
-            $this->view->render('Supervisor/manageFirewood');
+            $this->view->render('Supervisor/manageFirewood', 0, 0, 0, $this->getNotificationCount());
         }
     }
 
@@ -224,7 +226,7 @@ class Supervisor extends Controller
             $_SESSION['search'] = 1;
         }
         $instock = $this->model->stock($data);
-        $this->view->render('Supervisor/fertilizerInStock', $instock);
+        $this->view->render('Supervisor/fertilizerInStock', $instock, 0, 0, $this->getNotificationCount());
     }
 
     function firewoodInStock()
@@ -235,12 +237,12 @@ class Supervisor extends Controller
             'date' => ''
         ];
         $instock = $this->model->stock($data);
-        $this->view->show('Supervisor/firewoodInStock', $instock);
+        $this->view->render('Supervisor/firewoodInStock', $instock, 0, 0, $this->getNotificationCount());
     }
 
     function fertilizerOutStock()
     {
-        $this->view->render('Supervisor/fertilizerOutstock');
+        $this->view->render('Supervisor/fertilizerOutstock', 0, 0, 0, $this->getNotificationCount());
     }
 
     function firewoodOutStock()
@@ -250,13 +252,13 @@ class Supervisor extends Controller
             'type' => 'firewood',
         ];
         $outstock = $this->model->stock($data);
-        $this->view->render('Supervisor/firewoodOutStock', $outstock);
+        $this->view->render('Supervisor/firewoodOutStock', $outstock, 0, 0, $this->getNotificationCount());
     }
 
     //Manage Profile
     function profile()
     {
-        $this->view->render('user/profile/profile');
+        $this->view->render('user/profile/profile', 0, 0, 0, $this->getNotificationCount());
     }
 
     function editProfile()
@@ -269,7 +271,7 @@ class Supervisor extends Controller
 
     function enterPassword()
     {
-        $this->view->render('user/profile/enterPassword');
+        $this->view->render('user/profile/enterPassword', 0, 0, 0, $this->getNotificationCount());
     }
 
     //Get Notification
@@ -285,27 +287,26 @@ class Supervisor extends Controller
                 else if (strpos($notification[$i]['message'], 'Firewood Stock') !== false)
                     $title = 'Firewood Stock Limit Warning';
                 echo '<li id="n-' . $notification[$i]['notification_id'] . '"class="starbucks success">
-                                <div class="notify_icon">
-                                  <span class="icon"><i class="fas fa-bell"></i></span>  
+                            <div class="notify_icon">
+                                <span class="icon"><i class="fas fa-bell"></i></span>  
+                            </div>
+                            <div class="notify_data">
+                                <div class="title">
+                                    ' . $title . '  
                                 </div>
-                                <div class="notify_data">
-                                    <div class="title">
-                                        ' . $title . '  
-                                    </div>
-                                    <div class="sub_title">
-                                      ' . $notification[$i]['message'] . '
-                                  </div>
+                                <div class="sub_title">
+                                    ' . $notification[$i]['message'] . '
                                 </div>
-                              </li>';
+                            </div>
+                        </li>';
             }
         }
     }
 
-    function getNotificationCount()
+    public function getNotificationCount()
     {
         $notification = $this->model->getNotSeenNotification();
-        $notification_count = count($notification);
-        return $notification_count;
+        return $notification;
     }
 
     function getNotification()
@@ -325,7 +326,7 @@ class Supervisor extends Controller
         } else {
             $notification = $this->model->getAllNotification();
             $this->setNotification($notification);
-            $this->view->render('supervisor/top-container', $notification);
+            $this->view->render('supervisor/top-container', $notification, 0, 0, $this->getNotificationCount());
         }
     }
 }
