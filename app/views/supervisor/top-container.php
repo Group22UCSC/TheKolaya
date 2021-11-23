@@ -60,7 +60,12 @@
 
       <div class="navbar_right">
         <div class="notifications">
-          <div id="bell" class="icon_wrap"><i class="far fa-bell"></i></div>
+          <!-- This must have to change in everyones code -->
+          <button type="button" class="icon-button">
+            <span class="material-icons"><i style="font-size: 20px;" class="fas fa-bell"></i></span>
+            <span class="icon-button__badge"></span>
+          </button>
+          <!-- ---------------------- -->
 
           <div class="notification_dd">
             <ul class="notification_ul" id="notification_nav">
@@ -90,7 +95,7 @@
             <div id="get_all_nofication">
               <!-- Get Notification to here -->
             </div>
-            
+
           </ul>
         </div>
       </div>
