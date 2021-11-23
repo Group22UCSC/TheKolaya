@@ -15,8 +15,6 @@
           $('#today_collection_table').append(result);
         }
       });
-
-
     });
 
     var channel = pusher.subscribe('my-channel');
