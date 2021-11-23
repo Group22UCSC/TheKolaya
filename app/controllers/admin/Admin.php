@@ -57,8 +57,9 @@ class Admin extends Controller
             // }
 
             if (empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+               
                 $this->model->userUpdate($data);
+                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $this->view->render('admin/updateAccount', $data);
             } else {
                 $this->view->render('admin/updateAccount', $data);
