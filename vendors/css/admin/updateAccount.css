@@ -25,7 +25,9 @@
   padding-left: 20%;
 }
 
-
+#hide{
+  display: none;
+}
 
 
 .middle-conatiner {

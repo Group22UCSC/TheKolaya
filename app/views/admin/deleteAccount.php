@@ -125,17 +125,17 @@
        <div class="form">
                <div class="inputfield">
                  <label> Name</label>
-                 <input type="text" name="fname" id="fname" class="input">
+                 <input type="text" name="name" id="fname" class="input">
                </div> 
 
                <div class="inputfield">
                  <label>ID</label>
-                 <input type="text" name="id" id="id" class="input">
+                 <input type="text" name="user_id" id="id" class="input">
                </div> 
 
                <div class="inputfield">
                  <label>Phone number</label>
-                 <input type="text" name="phone" id="Phone" class="input">
+                 <input type="text" name="contact_number" id="Phone" class="input">
                </div>
 
 
