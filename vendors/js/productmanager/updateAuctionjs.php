@@ -80,12 +80,16 @@
     // }
 
     // *******  JQuery *******
-    var check = 0;
+    var check = 0; // checking varible whether the amount is less than the available stock of the product
     //  form submit - INSERT
     $(document).ready(function() {
         $('#updateBtn').click(function(event) {
+            // validateAmount();
             event.preventDefault();
+            //validateAmount();
             validateAmount();
+            
+            console.log("update click");
             var form = $('#auctionForm').serializeArray();
             // form.push({name:'stock_type', value: 'in_stock'});
             // form.push({name:'type', value: 'firewood'});
@@ -270,23 +274,6 @@
 
     // check whether the entered amount of product is available in the stock
     // Not in use
-    function checkAmount(data) {
-        var pid = $('#pid').val();
-        var amount = $('#amount').val();
-        var availableStock = 0;
-        availableStock = data[0].stock;
-        console.log("amoubt check:" + amount);
-        console.log("availableStock check:" + availableStock);
-        if (amount > availableStock) {
-            console.log("if");
-            $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
-            check = 0;
-        } else {
-            console.log("else");
-            check = 1;
-        }
-        console.log(data[0].stock);
-    }
 
     // function validateAmount(){
     //     var pid = $('#pid').val();
@@ -319,54 +306,84 @@
     // }
 
 
-    function getData(ajaxurl) {
+    // function getData(ajaxurl) {
+    //     var pid = $('#pid').val();
+    //     var amount = $('#amount').val();
+
+    //     var availableStock = 0;
+    //     return $.ajax({
+    //         url: ajaxurl,
+    //         type: "GET",
+    //         dataType: "JSON",
+    //         // pass the pid to the controller and get the available stock for that product pid
+    //         data: {
+    //             pid: pid
+    //         },
+    //         // success: function(data) {
+    //         //     availableStock=data[0].stock;
+    //         //     console.log("amount A:"+amount);
+    //         //     console.log("availableStock A:"+availableStock);
+    //         //     if(amount>availableStock){
+    //         //         console.log("if");
+    //         //         $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
+    //         //         check=0;
+    //         //     }else{
+    //         //         console.log("else");
+    //         //         check=1;
+    //         //     }
+    //         //     console.log(data[0].stock);
+    //         // }
+    //     });
+    // };
+    // async function validateAmount() {
+    //     var amount = $('#amount').val();
+    //     var availableStock = 0;
+
+    //         //var url="http://localhost/Thekolaya/productmanager/getProductStock";
+    //         const data = await getData('http://localhost/Thekolaya/productmanager/getProductStock')
+    //         console.log(data[0].stock);
+
+    //         availableStock = parseInt(data[0].stock);
+    //         console.log("amount A:" + amount);
+    //         console.log("availableStock A:" + availableStock);
+    //         if (amount > availableStock) {
+    //             console.log("if");
+    //             $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
+    //             check = 0;
+    //         } else {
+    //             console.log("else");
+    //             check = 1;
+    //         }
+
+    // }
+    function validateAmount() {
         var pid = $('#pid').val();
         var amount = $('#amount').val();
-
         var availableStock = 0;
-        return $.ajax({
-            url: ajaxurl,
+        var url = "http://localhost/Thekolaya/productmanager/getProductStock";
+        $.ajax({
+            url: url,
             type: "GET",
             dataType: "JSON",
             // pass the pid to the controller and get the available stock for that product pid
             data: {
                 pid: pid
             },
-            // success: function(data) {
-            //     availableStock=data[0].stock;
-            //     console.log("amount A:"+amount);
-            //     console.log("availableStock A:"+availableStock);
-            //     if(amount>availableStock){
-            //         console.log("if");
-            //         $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
-            //         check=0;
-            //     }else{
-            //         console.log("else");
-            //         check=1;
-            //     }
-            //     console.log(data[0].stock);
-            // }
-        });
-    };
-    async function validateAmount() {
-        var amount = $('#amount').val();
-        var availableStock = 0;
-        
-            //var url="http://localhost/Thekolaya/productmanager/getProductStock";
-            const data = await getData('http://localhost/Thekolaya/productmanager/getProductStock')
-            console.log(data[0].stock);
-
-            availableStock = parseInt(data[0].stock);
-            console.log("amount A:" + amount);
-            console.log("availableStock A:" + availableStock);
-            if (amount > availableStock) {
-                console.log("if");
-                $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
-                check = 0;
-            } else {
-                console.log("else");
-                check = 1;
+            success: function(data) {
+                availableStock = parseInt(data[0].stock); // from JSON object we get the
+                // availableStock as a string. So we need to convert it an int
+                console.log("amount A:" + amount);
+                console.log("availableStock A:" + availableStock);
+                if (amount > availableStock) {
+                    console.log("if");
+                    $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
+                    check = 0;
+                } else {
+                    console.log("else");
+                    check = 1;
+                }
+                console.log("FUNCTION" + data[0].stock);
             }
-        
+        })
     }
 </script>
