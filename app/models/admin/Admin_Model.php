@@ -177,6 +177,17 @@ class Admin_Model extends Model {
         }
     }
 
+      function deleteTable(){
+        $query = "SELECT name,user_id,contact_number FROM user WHERE verify=1";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
 ////////////////////// update accounts/////////////////////////////
 
         function userUpdate($data = []) {
@@ -199,6 +210,24 @@ class Admin_Model extends Model {
         $this->db->runQuery($query);        
     }
  
+
+
+ ///////////////////userDelete///////////////////
+
+    function userDelete($data = []) {
+        $name = $data['name'];
+        $contact_number = $data['mobile_number'];
+        $user_id = $data['reg_id'];
+        $user_type = $data['reg_type'];
+
+        $address = $data['address'];
+        $password = $data['password'];
+        // $route_number = null;
+        
+       
+        $query= "DELETE FROM user WHERE user_id='$user_id'";
+        $this->db->runQuery($query);        
+    }
 
 
 }
