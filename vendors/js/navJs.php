@@ -9,11 +9,10 @@
         var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotificationCount";
         $.ajax({
             url: url,
-            type: 'POST',
-            dataType: 'json',
-            data: "notification_type=none",
+            type: 'GET',
+            data: "getCount=byAjax",
             success: function(data) {
-                var myHtml = "<p><?php echo $_SESSION['NotSeenCount']?></p>";
+                var myHtml = "<p>"+data+"</p>";
                 $('#notification_count').html(myHtml);
                 console.log(data);
             }
