@@ -57,55 +57,36 @@
       <div class="navbar_left">
         <div class="thekolya-logo"><img src="<?php echo URL ?>vendors/images/thekolaya.png" alt=""></div>
       </div>
-
       <div class="navbar_right">
-        <div class="notifications">
-          <!-- This must have to change in everyones code -->
-          <button type="button" class="icon-button">
-            <span class="material-icons"><i style="font-size: 20px;" class="fas fa-bell"></i></span>
-            <?php
-              $notificationCount = 0;
-              if($_SESSION['NotSeenCount']) {
+      <div class="icons">
+      <div class="notification">
+        <div class="notBtn">
+          <?php
+              $notificationCount = '';
+              if($_SESSION['NotSeenCount'] >= 100) {
+                $notificationCount = 99;
+              }else if($_SESSION['NotSeenCount']) {
                 $notificationCount = $_SESSION['NotSeenCount'];
               }
             ?>
-            <span class="icon-button__badge <?php ($notificationCount == 0) ? print('hide') : print('');?>"><?php echo $notificationCount?></span>
-          </button>
-          <!-- ---------------------- -->
-
-          <div class="notification_dd">
-            <ul class="notification_ul" id="notification_nav">
-              <div id="get_nofication">
+          <div class="number" id="notification_count">10</div>
+          <i class="fas fa-bell notification_bell"></i>
+          <div class="box">
+            <div class="display">
+              <div class="nothing">
+                <i class="fas fa-child stick"></i>
+                <div class="cent">Looks Like your all caught up!</div>
+              </div>
+              <div class="cont" id="get_nofication">
                 <!-- Get Notification to here -->
               </div>
-              <li class="show_all">
-                <p class="link">Show All Activities</p>
-              </li>
-            </ul>
+            </div>
           </div>
-
         </div>
+      </div>
+    </div>
         <?php include '../app/views/user/profile/navBarProfile.php'; ?>
       </div>
     </div>
-
-    <div class="popup">
-      <div class="shadow"></div>
-      <div class="inner_popup">
-        <div class="notification_dd">
-          <ul class="notification_ul" id="notification_pop">
-            <li class="title">
-              <p>All Notifications</p>
-              <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
-            </li>
-            <div id="get_all_nofication">
-              <!-- Get Notification to here -->
-            </div>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-
   </div>
   <?php include 'js/notificationJs.php' ?>

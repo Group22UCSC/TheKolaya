@@ -287,29 +287,28 @@ class Supervisor extends Controller
     //Get Notification
     function setNotification($notification)
     {
-        $title = '';
         if (!empty($notification)) {
+            echo '<div id="all_notifications">';
             for ($i = 0; $i < count($notification); $i++) {
-                if (strpos($notification[$i]['message'], 'Request') !== false)
-                    $title = 'Fertilizer Request';
-                else if (strpos($notification[$i]['message'], 'Fertilzer Stock') !== false)
-                    $title = 'Fertilizer Stock Limit Warning';
-                else if (strpos($notification[$i]['message'], 'Firewood Stock') !== false)
-                    $title = 'Firewood Stock Limit Warning';
-                echo '<li id="n-' . $notification[$i]['notification_id'] . '"class="starbucks success">
-                            <div class="notify_icon">
-                                <span class="icon"><i class="fas fa-bell"></i></span>  
-                            </div>
-                            <div class="notify_data">
-                                <div class="title">
-                                    ' . $title . '  
-                                </div>
-                                <div class="sub_title">
-                                    ' . $notification[$i]['message'] . '
-                                </div>
-                            </div>
-                        </li>';
+                switch($notification[$i]['notification_type']) {
+                    case 'warning':
+                        $imgPath = URL.'/vendors/images/notifications/warning.jpg';
+                        break;
+                    case 'request':
+                        $imgPath = URL.'/vendors/images/notifications/request.jpg';
+                        break;
+                }
+                $dateTime = $notification[$i]['receive_datetime'];
+                echo 
+                    '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
+                        <div class = "profCont">
+                            <img class = "notification_profile" src = "'. $imgPath .'">
+                        </div>
+                        <div class="txt '. $notification[$i]['notification_type'] .'">'. $notification[$i]['message'] .'</div>
+                        <div class="txt sub">'.$dateTime.'</div>
+                    </div>';                    
             }
+            echo '</div>';
         }
     }
 
@@ -333,10 +332,6 @@ class Supervisor extends Controller
                 $notification_count = count($notification);
                 echo $notification_count;
             }
-        } else {
-            $notification = $this->model->getAllNotification();
-            $this->setNotification($notification);
-            $this->view->render('supervisor/top-container', $notification);
         }
     }
 }
