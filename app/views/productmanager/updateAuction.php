@@ -46,7 +46,7 @@
         
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
-            <input type="text" class="input" id="amount" required name="amount" onfocusout="validateAmount();">
+            <input type="text" class="input" id="amount" required name="amount">
         </div>
         <div class="inputfield">
             <label for="price" >Price Per Kilo(Rs)</label>
