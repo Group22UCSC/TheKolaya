@@ -56,6 +56,7 @@
                     document.getElementById("fname").value=this.cells[0].innerHTML;
                      document.getElementById("id").value=this.cells[1].innerHTML;
                       document.getElementById("Phone").value=this.cells[2].innerHTML;
+                      
                    };
                  }
 
