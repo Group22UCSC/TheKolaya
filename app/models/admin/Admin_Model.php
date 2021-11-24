@@ -215,16 +215,9 @@ class Admin_Model extends Model {
  ///////////////////userDelete///////////////////
 
     function userDelete($data = []) {
-        $name = $data['name'];
-        $contact_number = $data['mobile_number'];
-        $user_id = $data['reg_id'];
-        $user_type = $data['reg_type'];
 
-        $address = $data['address'];
-        $password = $data['password'];
-        // $route_number = null;
-        
-       
+        $user_id = $data['reg_id'];
+
         $query= "DELETE FROM user WHERE user_id='$user_id'";
         $this->db->runQuery($query);        
     }
