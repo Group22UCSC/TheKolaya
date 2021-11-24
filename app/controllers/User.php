@@ -36,7 +36,7 @@ class User extends Controller {
             }
             
         }else{
-            $this->view->render('user/profile/editProfile');
+            $this->view->render('user/profile/editProfile', 0, 0, 0, $this->getNotificationCount());
         }
     }
 
@@ -81,6 +81,12 @@ class User extends Controller {
             otpSend();
             // $this->view->render('user/profile/');
         }
+    }
+
+    public function getNotificationCount()
+    {
+        $notification = $this->model->getNotSeenNotification();
+        return $notification;
     }
     
 }

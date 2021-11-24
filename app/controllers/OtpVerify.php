@@ -6,7 +6,11 @@ class OtpVerify extends Controller {
     }
 
     function index() {
-        $this->view->showPage('otp/OtpVerify');
+        if(!empty($_SESSION) && empty($_SESSION['user_type']))
+            $this->view->render('otp/OtpVerify');
+        else {
+            $this->view->render('Errors/Errors');
+        }
     }
 
     function checkOtp() {

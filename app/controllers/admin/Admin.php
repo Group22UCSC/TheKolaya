@@ -27,9 +27,12 @@ class Admin extends Controller
 
     public function updateAccount()
     {
+        
         $result = $this->model->availablelistTable();
+        $this->view->render('Admin/updateAccount', $result);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+           if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'name' => trim($_POST['name']),
@@ -56,9 +59,9 @@ class Admin extends Controller
             if (empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $this->model->userUpdate($data);
-                $this->view->render('admin/updateAccount', $result, $data);
+                $this->view->render('admin/updateAccount', $data);
             } else {
-                $this->view->render('admin/updateAccount', $result, $data);
+                $this->view->render('admin/updateAccount', $data);
             }
         } else {
             $data = [
@@ -75,36 +78,77 @@ class Admin extends Controller
                 'contact_number_err' => '',
                 'confirm_password_err' => ''
             ];
-            $this->view->render('Admin/updateAccount', $result);
-
             // $this->view->render('admin/updateAccount', $data);
         }
+        
+
+
     }
 
 
 
 
-    //update form
-    // public function updateAccount1()
+
+    // public function deleteAccount()
     // {
-    //     // $this->view->showPage('Admin/updateAccount1');
+    //     // $this->view->showPage('Admin/deleteAccount');
 
-
+    //     $result = $this->model->availablelistTable();
+    //     // print_r($result);
+    //     $this->view->render('Admin/deleteAccount', $result);
     // }
 
-    public function deleteAccount()
+
+ public $data = [
+        'name' => '',
+        'reg_id' => '',
+        'reg_type' => '',
+        'address' => '',
+        'mobile_number' => '',
+        'route_number' => '',
+        'password' => '',
+        'confirm_password' => '',
+
+        'confirm_password_err' => '',
+        'reg_id_err' => '',
+        'mobile_number_err' => '',
+    ];
+
+
+  public function deleteAccount()
     {
-        // $this->view->showPage('Admin/deleteAccount');
-
-        $result = $this->model->availablelistTable();
-        // print_r($result);
+        
+        $result = $this->model->deleteTable();
         $this->view->render('Admin/deleteAccount', $result);
-    }
 
-    // public function deleteAccount1()
-    // {
-    //     $this->view->showPage('Admin/deleteAccount1');
-    // }
+
+           if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+             $this->data['name'] = trim($_POST['name']);
+            $this->data['reg_id'] = trim($_POST['user_id']);
+            $this->data['mobile_number'] = trim($_POST['contact_number']);
+
+                $this->model->userDelete($this->data);
+                // $this->view->render('admin/deleteAccount', $data);
+
+        } else {
+            $data = [
+                 'name' => '',
+                'reg_id' => '',
+                'reg_type' => '',
+                'address' => '',
+                'mobile_number' => '',
+                'route_number' => '',
+                'password' => '',
+
+                 'contact_number_err' => '',
+                'confirm_password_err' => ''
+            ];
+            $this->view->render('admin/deleteTable', $data);
+        }
+
+    }
+    
 
     public function admin()
     {
