@@ -19,12 +19,12 @@
   </div>
   <div class="middle-container">
     <div class="graph-container">
-      <div class="left-div div">
+      <!-- <div class="left-div div">
         <div class="dark green"></div> <span>Fertilizer Stock</span>
       </div>
       <div class="right-div div">
         <div class="light green"></div> <span>Firewood Stock</span>
-      </div>
+      </div> -->
       <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
       <?php include 'js/supervisor/dashboard-chart.php' ?>
     </div>
