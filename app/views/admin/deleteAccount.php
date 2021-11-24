@@ -45,7 +45,7 @@
   
                       </table>
 
-            //table data get auto filled form
+            <!-- table data get auto filled form -->
             <script>
 
               var table=document.getElementById('myTable'),rIndex;
@@ -112,62 +112,53 @@
 
 
 
-     <div class="middle1"> 
-     <a >DELETE ACCOUNTS</a> </div>
+    <div class="middle1"> 
+     <a >DELETE ACCOUNTS</a> 
+   </div>
   
 
-  <div class="k1">  
-
+<div class="k1">  
 <div class="wrapper1">
     <div class="title">  Delete Form  </div>
       <form action="<?php echo URL?>admin/deleteAccount" method="POST">
-    <div class="form">
-      
-        <div class="inputfield">
-          <label> Name</label>
-          <input type="text" name="fname" id="fname" class="input">
-       </div> 
+       <div class="form">
+               <div class="inputfield">
+                 <label> Name</label>
+                 <input type="text" name="fname" id="fname" class="input">
+               </div> 
 
-        <div class="inputfield">
-          <label>ID</label>
-          <input type="text" name="id" id="id" class="input">
-       </div> 
+               <div class="inputfield">
+                 <label>ID</label>
+                 <input type="text" name="id" id="id" class="input">
+               </div> 
 
-        <div class="inputfield">
-          <label>Phone number</label>
-          <input type="text" name="phone" id="Phone" class="input">
-       </div>
+               <div class="inputfield">
+                 <label>Phone number</label>
+                 <input type="text" name="phone" id="Phone" class="input">
+               </div>
 
-      <!--  <div class="inputfield">
-          <label>Password</label>
-          <input type="password" class="input">
-       </div>  
- -->
-       <div class="inputfield">
-          <a>If you want to delete the account</a>
-      
-       </div> 
+
+               <div class="inputfield">
+                  <a>If you want to delete the account</a>
+               </div> 
 
       
-      <div class="last">
-            <div class="a">
-       <a href="<?php echo URL?>admin/admin"><input type="submit" value="Discard" class="btn"></a>
-      </div>
-
-
-       <div class="b">
-        <input type="submit" value="Delete" class="btn">
-      </div>
+               <div class="last">
+                  <div class="b">
+                  <input type="submit" value="Delete" class="btn">
+                  </div>
            
 
-      </div>
+                  <div class="a">
+                    <a href="<?php echo URL?>admin/admin"><input type="submit" value="Discard" class="btn"></a>
+                  </div>
 
-     
+              </div>
 
+     </form>
     </div>
-
   </div> 
-<!-- </div> -->
+</div>
 
 
 <?php include 'bottom-container.php';?>
