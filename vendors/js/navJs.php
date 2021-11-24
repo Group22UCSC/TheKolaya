@@ -25,13 +25,17 @@
     //Notification pannel
     $(document).ready(function() {
         $(".profile .icon_wrap").click(function() {
-            $(this).parent().toggleClass("active");
-            $(".notifications").removeClass("active");
+            // $(this).parent().toggleClass("active");
+            $('.profile_dd').slideToggle();
+            $('.box').hide();
         });
 
-        $(".icon-button").click(function() {
-            $(this).parent().toggleClass("active");
-            $(".profile").removeClass("active");
+        $(".notification_bell").click(function() {
+            console.log('hi')
+            // $('.box').toggleClass("active");
+            $('.box').slideToggle();
+            $('.box').addClass('active')
+            $(".profile_dd").hide();
             var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotification";
             $.ajax({
                 url: url,

@@ -22,17 +22,17 @@
 
 .navbar .navbar_right{
   display: flex;
-  color: #7f8db0;
+  color: black;
 }
 
 .navbar .navbar_right a{
-  color: #7f8db0;
+  color: black;
   text-decoration: none;
 }
 
-.navbar .navbar_right img{
+/* .navbar .navbar_right img{
   width: 35px;
-}
+} */
 
 .navbar .navbar_right .icon_wrap{
   cursor: pointer;
@@ -57,12 +57,12 @@
   top: 48px;
   right: -15px;
   user-select: none;
-  background: #fff;
+  background: #f4f4f4;
   border: 1px solid #c7d8e2;
   width: 350px;
   height: auto;
   display: none;
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 10px 10px 35px rgba(0,0,0,0.125),
               -10px -10px 35px rgba(0,0,0,0.125);
   z-index: 100;
@@ -111,15 +111,15 @@
 /* ----------------- */
 
 
-.navbar .profile .profile_dd:before,
-.notification_dd:before{
+/* .navbar .profile .profile_dd:before,
+.box:before{
     content: "";
     position: absolute;
     top: -20px;
     right: 15px;
     border: 10px solid;
     border-color: transparent transparent #fff transparent;
-}
+} */
 
 .notification_dd li {
     border-bottom: 1px solid #f1f2f4;
@@ -224,7 +224,7 @@
 .navbar .navbar_right .icon_wrap:hover,
 .navbar .navbar_right .profile.active .icon_wrap,
 .navbar .navbar_right .notifications.active .icon_wrap{
-  color: #4DD101;
+  color: #27ae60;
 }
  
 .navbar .profile .profile_dd{
@@ -254,17 +254,18 @@
 }
 
 .navbar .profile .profile_dd ul li  a:hover{
-  color: #4DD101;
-  background: #f0f5ff;
+  color: #fff;
+  transition: 0.5s;
+  background-color: #bfbfbf;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.navbar .profile .profile_dd ul li.profile_li a:hover {
+/* .navbar .profile .profile_dd ul li.profile_li a:hover {
     background: transparent;
     cursor: default;
     color: #7f8db0;
-}
+} */
 
 .navbar .profile.active .profile_dd,
 .navbar .notifications.active .notification_dd{
@@ -313,13 +314,13 @@
    display: none;
 }
 
-.popup .notification_dd li.title{
+/* .popup .notification_dd li.title{
   font-weight: 700;
   color: #4DD101;
   display: flex;
   justify-content: center;
   position: relative;
-}
+} */
 
 .popup .notification_dd li.title .close{
   position: absolute;
@@ -329,9 +330,9 @@
   cursor: pointer;
 }
 
-.popup .notification_dd li.title .close:hover{
+/* .popup .notification_dd li.title .close:hover{
   opacity: 0.5;
-}
+} */
 
 #account {
   display: none;
