@@ -296,7 +296,8 @@ class Supervisor_Model extends Model
 
         if (count($row)) {
             $_SESSION['NotSeenCount'] = count($row);
-            json_encode($_SESSION['NotSeenCount']);
+            if(isset($_GET['getCount']))
+                echo $_SESSION['NotSeenCount'];
         }else {
             $_SESSION['NotSeenCount'] = 0;
         }

@@ -321,8 +321,8 @@ class Supervisor extends Controller
 
     public function getNotificationCount()
     {
-        $notification = $this->model->getNotificationCount();
-        return $notification;
+        $notificationCount = $this->model->getNotificationCount($_GET);
+        return $notificationCount;
     }
 
     function getNotification()
