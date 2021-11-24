@@ -12,7 +12,7 @@
   top: 0;
   height: 100%;
   width: 78px;
-  background: #367413;
+  background: #198d49;
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
@@ -138,7 +138,7 @@
   align-items: center;
   text-decoration: none;
   transition: all 0.4s ease;
-  background: #367413;
+  background: #198d49;
 }
 .sidebar li a:hover {
   background: #d4f5df;
@@ -257,9 +257,10 @@
 }
 
 .header li i:hover {
-  color: #367413;
+  color: #198d49;
 }
 
+/* this can changed */
 .header .bell-notification {
   margin-top: 5px;
   display: flex;
@@ -272,6 +273,7 @@
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   cursor: pointer;
 }
+/* --------------------------------- */
 
 .header li.profile .name {
   font-size: 15px;
@@ -281,7 +283,7 @@
 }
 
 .header li.profile .name:hover {
-  color: #367413;
+  color: #198d49;
 }
 
 .header li.profile .name span {

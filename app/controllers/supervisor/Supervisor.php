@@ -6,10 +6,11 @@ class Supervisor extends Controller
     {
         parent::__construct();
     }
-
     function index()
     {
         $stock = $this->model->getStock();
+        $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
+        $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
         $teaCollection = $this->model->getTeaCollection();
         $todayRequests = $this->model->getTodayFertilizerRequest();
 
@@ -44,12 +45,13 @@ class Supervisor extends Controller
 
     function landownerDetails()
     {
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $month = date('m') - 1;
             $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
             $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
             if (!empty($lastRequests)) {
-                
+
                 echo '<div id="previous_details">';
                 echo '<div class="row tabel-header">
                         <div class="cell">Previous Request Date</div>
@@ -186,8 +188,13 @@ class Supervisor extends Controller
             if ($_POST['stock_type'] == 'in_stock') {
                 $data['price_per_unit'] = trim($_POST['price_per_unit']);
             }
-
+            
             $this->model->manageStock($data);
+            $stock = $this->model->getStock();
+            $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
+            if($_SESSION['fertilizer_stock'] <= 500) {
+                $this->model->stockGetLimit("Fertilzer Stock");
+            }
         } else {
             $this->view->render('Supervisor/manageFertilizer');
         }
@@ -207,6 +214,11 @@ class Supervisor extends Controller
             }
 
             $this->model->manageStock($data);
+            $stock = $this->model->getStock();
+            $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
+            if($_SESSION['firewood_stock'] <= 500) {
+                $this->model->stockGetLimit("Firewood Stock");
+            }
         } else {
             $this->view->render('Supervisor/manageFirewood');
         }
@@ -235,7 +247,7 @@ class Supervisor extends Controller
             'date' => ''
         ];
         $instock = $this->model->stock($data);
-        $this->view->show('Supervisor/firewoodInStock', $instock);
+        $this->view->render('Supervisor/firewoodInStock', $instock);
     }
 
     function fertilizerOutStock()
@@ -250,7 +262,7 @@ class Supervisor extends Controller
             'type' => 'firewood',
         ];
         $outstock = $this->model->stock($data);
-        $this->view->render('Supervisor/firewoodOutStock', $outstock);
+        $this->view->render('Supervisor/firewoodOutStock');
     }
 
     //Manage Profile
@@ -270,5 +282,59 @@ class Supervisor extends Controller
     function enterPassword()
     {
         $this->view->render('user/profile/enterPassword');
+    }
+
+    //Get Notification
+    function setNotification($notification)
+    {
+        if (!empty($notification)) {
+            for ($i = 0; $i < count($notification); $i++) {
+                switch($notification[$i]['notification_type']) {
+                    case 'warning':
+                        $imgPath = URL.'/vendors/images/notifications/warning.jpg';
+                        break;
+                    case 'request':
+                        $imgPath = URL.'/vendors/images/notifications/request.jpg';
+                        break;
+                    
+                }
+                $dateTime = $notification[$i]['receive_datetime'];
+                echo '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
+                        <div class = "profCont">
+                            <img class = "notification_profile" src = "'. $imgPath .'">
+                        </div>
+                        <div class="txt '. $notification[$i]['notification_type'] .'">'. $notification[$i]['message'] .'</div>
+                        <div class="txt sub">'.$dateTime.'</div>
+                    </div>';
+                    
+            }
+        }
+    }
+
+    public function getNotificationCount()
+    {
+        $notification = $this->model->getNotSeenNotification();
+        return $notification;
+    }
+
+    function getNotification()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($_POST['notification_type'] == 'half') {
+                $notification = $this->model->getNotReadedNotification();
+                $this->setNotification($notification);
+            } else if ($_POST['notification_type'] == 'all') {
+                $notification = $this->model->getAllNotification();
+                $this->setNotification($notification);
+            } else {
+                $notification = $this->model->getNotSeenNotification();
+                $notification_count = count($notification);
+                echo $notification_count;
+            }
+        } else {
+            $notification = $this->model->getAllNotification();
+            $this->setNotification($notification);
+            $this->view->render('supervisor/top-container', $notification);
+        }
     }
 }

@@ -103,11 +103,11 @@
  <div class="wrapper1">
   <div class="title">  Update Form  </div>
     
-    <form action="<?php echo URL?>admin/updateAccount1" method="POST">
+    <form action="<?php echo URL?>admin/updateAccount" method="POST">
       <div class="form">
 
         <div class="inputfield">
-          <label> Name</label>
+           <label> Name</label>
            <input type="text" class="input" name="name" required>
        </div> 
 
@@ -122,15 +122,17 @@
        </div> 
 
        <div class="inputfield">
-            <label>User Type</label>
-           <select class="type" id="type" name="user_type" required>
+          <label>User Type</label>
+          <select class="type" id="type" name="user_type" required>
                <option value="accountant">Accountant</option>
                <option value="admin">Admin</option>
                <option value="manager">Manager</option>
                <option value="supervisor">Supervisor</option>
                <option value="product_manager">Product Manager</option>
-            </select>
-         </div>
+               <option value="Land_Owner">Land_Owner</option>
+               <option value="agent">Agent</option>
+          </select>
+       </div>
 
         <div class="inputfield">
           <label>Contact Number</label>
@@ -155,12 +157,12 @@
       
       <div class="last">
             <div class="a">
-       <a href="<?php echo URL?>admin/updateAccount1"><input type="submit" value="Update" class="btn"></a>
+       <input type="submit" value="Update" class="btn">
       </div>
 
 
        <div class="b">
-        <input type="submit" value="Discard" class="btn">
+         <a href="<?php echo URL?>admin/admin"><input type="submit" value="Discard" class="btn"></a>
       </div>
            
 

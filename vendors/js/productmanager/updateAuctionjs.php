@@ -174,7 +174,7 @@ function getTable(){
         type:"GET",
         dataType:"JSON",
         success:function(data){
-            console.log(data);
+           console.log(data);
             var len=data.length;
            //    $('#updateAuctionTable not(tbody)').empty();
         //$("#updateAuctionTable").trigger("reset");

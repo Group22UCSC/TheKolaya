@@ -83,5 +83,13 @@ class Login_Model extends Model {
         $row = $this->db->runQuery($query);
         $_SESSION['route'] = $row[0]['route_no'];
     }
+
+    function getNotSeenNotificationCount($user_type) {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='$user_type' AND seen_not_seen=0 
+        ORDER BY notification_id DESC";
+        $row = $this->db->runQuery($query);
+        return count($row);
+    }
 }
 ?>

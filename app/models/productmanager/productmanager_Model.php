@@ -81,7 +81,7 @@ class productmanager_Model extends Model {
 
 
     function getProductDetails(){
-        $query = "SELECT product_id,product_name,amount FROM product";
+        $query = "SELECT product_id,product_name,stock FROM product";
         $row = $this->db->runQuery($query);
         if($row) {
             return $row;
@@ -90,21 +90,50 @@ class productmanager_Model extends Model {
         }
     }
     function insertAution(){
+            
             date_default_timezone_set('Asia/Colombo');
-            $date=date("Y-m-d h:i:s a");
+            $date=date("Y-m-d H:i:s");
             $pid=$_POST['pid'];
             $amount=$_POST['amount'];
             $price=$_POST['price'];
             $bid=$_POST['bid'];
             $emp_id=$_SESSION['user_id'];
+            // get the details of the products(The current stock);
+
+            $getCurrentStockQuery="SELECT stock FROM product WHERE product_id='{$pid}'";
+            $rslt=$this->db->runQuery($getCurrentStockQuery);
+            $currentStock=$rslt[0]['stock'];
+            //echo "Hello";
+            // $_SESSION['newstck']="d";
+            //return($currentStock);
+            
+            
+
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $query = "INSERT INTO auction (date,product_id,buyer_id,sold_price,sold_amount,emp_id) VALUES ('{$date}','{$pid}','{$bid}','{$price}','{$amount}','{$emp_id}')";
+            $newStock=$currentStock-$amount;
+            //$newStock=1999;
+            $query2="UPDATE product SET stock='{$newStock}' WHERE product_id='{$pid}'";
+            // $newstckrslt=$this->db->runQuery($query2);
+
+           // $_SESSION['newstck']=$newStock;
+            //$query2="UPDATE"
+        try{ 
+            $this->db->beginTransaction();
             $row = $this->db->insertQuery($query);
+            $row2 = $this->db->insertQuery($query2);
             //print_r($row);
+            $this->db->commit();
             if($row){
                 return true;
             }else {
                 return false;
             }
+        }
+        catch( PDOException $e){
+            $this->db->rollback();
+            throw $e;
+        }
     }
     
 }

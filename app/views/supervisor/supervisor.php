@@ -19,12 +19,12 @@
   </div>
   <div class="middle-container">
     <div class="graph-container">
-      <div class="left-div div">
+      <!-- <div class="left-div div">
         <div class="dark green"></div> <span>Fertilizer Stock</span>
       </div>
       <div class="right-div div">
         <div class="light green"></div> <span>Firewood Stock</span>
-      </div>
+      </div> -->
       <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
       <?php include 'js/supervisor/dashboard-chart.php' ?>
     </div>
@@ -93,42 +93,5 @@
   </div>
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-  <script>
-    // Enable pusher logging - don't include this in production
-    // Pusher.logToConsole = true;
-
-    var pusher = new Pusher('ef64da0120ca27fe19a3', {
-      cluster: 'ap1'
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('today_collection_table', function(data) {
-      // alert(JSON.stringify(data));
-      $.ajax({
-        url: "<?php echo URL ?>Supervisor/getAgentTeaCollection",
-        success: function(result) {
-          $('#not_display_collection_yet').hide();
-          $('#today_collection_table').append(result);
-        }
-      });
-
-
-    });
-
-    // var pusher = new Pusher('c7c144fc44f37db2f0c7', {
-    //   cluster: 'ap1'
-    // });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('today_request_table', function(data) {
-      // alert(JSON.stringify(data));
-      $.ajax({
-        url: "<?php echo URL ?>Supervisor/getLandownerRequest",
-        success: function(result) {
-          $('#not_display_request_yet').hide();
-          $('#today_request_table').append(result);
-        }
-      });
-    });
-  </script>
+  <?php include 'js/supervisor/supervisorJs.php' ?>
   <?php include 'bottom-container.php'; ?>
