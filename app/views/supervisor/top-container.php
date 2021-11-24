@@ -57,21 +57,19 @@
       <div class="navbar_left">
         <div class="thekolya-logo"><img src="<?php echo URL ?>vendors/images/thekolaya.png" alt=""></div>
       </div>
-
       <div class="navbar_right">
       <div class="icons">
       <div class="notification">
-        <div class="notBtn" href="#">
-          <!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
+        <div class="notBtn">
           <?php
-              $notificationCount = 0;
+              $notificationCount = '';
               if($_SESSION['NotSeenCount'] >= 100) {
                 $notificationCount = 99;
               }else if($_SESSION['NotSeenCount']) {
                 $notificationCount = $_SESSION['NotSeenCount'];
               }
             ?>
-          <div class="number"><?php echo $notificationCount?></div>
+          <div class="number" id="notification_count">10</div>
           <i class="fas fa-bell notification_bell"></i>
           <div class="box">
             <div class="display">
@@ -80,18 +78,7 @@
                 <div class="cent">Looks Like your all caught up!</div>
               </div>
               <div class="cont" id="get_nofication">
-                <!-- <div class="sec new">
-                    <div class="profCont">
-                      <div class="profile">
-                        <i class="fab fa-facebook-f"></i>
-                      </div>
-                    </div>
-                    <div class="txt">
-                      James liked your post: "Pure css notification box"
-                    </div>
-                    <div class="txt sub">11/7 - 2:30 pm</div>
-                  </a>
-                </div> -->
+                <!-- Get Notification to here -->
               </div>
             </div>
           </div>
@@ -101,24 +88,5 @@
         <?php include '../app/views/user/profile/navBarProfile.php'; ?>
       </div>
     </div>
-
-    <!-- <div class="popup">
-      <div class="shadow"></div>
-      <div class="inner_popup">
-        <div class="notification_dd">
-          <ul class="notification_ul" id="notification_pop">
-            <li class="title">
-              <p>All Notifications</p>
-              <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
-            </li>
-            <div id="get_all_nofication">
-              Get Notification to here
-            </div>
-
-          </ul>
-        </div>
-      </div>
-    </div> -->
-
   </div>
   <?php include 'js/notificationJs.php' ?>

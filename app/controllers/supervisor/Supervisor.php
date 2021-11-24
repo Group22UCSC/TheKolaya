@@ -288,6 +288,7 @@ class Supervisor extends Controller
     function setNotification($notification)
     {
         if (!empty($notification)) {
+            echo '<div id="all_notifications">';
             for ($i = 0; $i < count($notification); $i++) {
                 switch($notification[$i]['notification_type']) {
                     case 'warning':
@@ -296,18 +297,18 @@ class Supervisor extends Controller
                     case 'request':
                         $imgPath = URL.'/vendors/images/notifications/request.jpg';
                         break;
-                    
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
-                echo '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
+                echo 
+                    '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
                         <div class = "profCont">
                             <img class = "notification_profile" src = "'. $imgPath .'">
                         </div>
                         <div class="txt '. $notification[$i]['notification_type'] .'">'. $notification[$i]['message'] .'</div>
                         <div class="txt sub">'.$dateTime.'</div>
-                    </div>';
-                    
+                    </div>';                    
             }
+            echo '</div>';
         }
     }
 
@@ -331,10 +332,6 @@ class Supervisor extends Controller
                 $notification_count = count($notification);
                 echo $notification_count;
             }
-        } else {
-            $notification = $this->model->getAllNotification();
-            $this->setNotification($notification);
-            $this->view->render('supervisor/top-container', $notification);
         }
     }
 }
