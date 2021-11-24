@@ -74,7 +74,8 @@ class landowner_Model extends Model
             $query = "INSERT INTO fertilizer_request(request_id, amount) VALUES(LAST_INSERT_ID(), '$request_amount')";
             
             $message = $_SESSION['name']. " Request fertilizer ". $request_amount . "kg";
-            $notificationQuery = "INSERT INTO notification(read_unread, message, receiver_type, sender_id) VALUES(0, '$message', 'Supervisor', '".$_SESSION['user_id']."')";
+            $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, sender_id) 
+            VALUES(0, 0, '$message', 'Supervisor', '".$_SESSION['user_id']."')";
             $this->db->insertQuery($notificationQuery);
             //Pusher API
             $options = array(
