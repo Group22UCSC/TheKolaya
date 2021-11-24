@@ -135,6 +135,16 @@ class productmanager_Model extends Model {
             throw $e;
         }
     }
-    
+    function getProductStock(){ // to check whether there is enough stock to sell in the auction
+        //we check the available amount of stock from the related product(product_id)
+        $pid=$_GET['pid'];
+        $query = "SELECT stock FROM product WHERE product_id='{$pid}'";
+        $row = $this->db->runQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
 }
 ?>
