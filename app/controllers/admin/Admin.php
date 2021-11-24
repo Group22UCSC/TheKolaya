@@ -117,13 +117,26 @@ class Admin extends Controller
                 'reg_type' => trim($_POST['user_type']),
                 'address' => trim($_POST['address']),
                 'mobile_number' => trim($_POST['contact_number']),
-                // 'route_number' => trim($_POST['route_number']),
+                'route_number' => trim($_POST['route_number']),
                 'password' => trim($_POST['password']),
+
+                 'contact_number_err' => '',
+                'confirm_password_err' => ''
             ];
 
-             $this->model->userDelete($data);
+               if (empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $this->model->userDelete($data);
                 $this->view->render('admin/deleteAccount', $data);
 
+            } else {
+                $this->view->render('admin/deleteAccount', $data);
+            }
+
+
+
+
+           
         } else {
             $data = [
                  'name' => '',
@@ -131,8 +144,11 @@ class Admin extends Controller
                 'reg_type' => '',
                 'address' => '',
                 'mobile_number' => '',
-                // 'route_number' => '',
+                'route_number' => '',
                 'password' => '',
+
+                 'contact_number_err' => '',
+                'confirm_password_err' => ''
             ];
             // $this->view->render('admin/deleteTable', $data);
         }
