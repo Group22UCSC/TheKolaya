@@ -24,10 +24,10 @@ $(document).ready(function() {
             // validateAmount();
             event.preventDefault();
             
-            // var form = $('#auctionForm').serializeArray();
+            var form = $('#auctionForm').serializeArray();
             
 
-            // $('.error').remove();
+            $('.error').remove();
             var productName = $('#productName option:selected').text();
             var amount = $('#amount').val();
             var pid = $('#pid').val();
