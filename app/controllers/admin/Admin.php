@@ -48,11 +48,16 @@ class Admin extends Controller
                 'confirm_password_err' => ''
             ];
 
+
+             if (strlen($data['password']) < 6) {
+                    $data['password_err'] = "Please enter at least 6 characters";
+                }
+
             if ($data['password'] != $data['confirm_password']) {
                 $data['confirm_password_err'] = "confirmation not matching";
             }
-           
-            if (empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
+
+            if (empty($data['password_err']) && empty($data['confirm_password_err'])) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $this->model->userUpdate($data);
                 // $this->view->render('admin/updateAccount', $data);
@@ -81,17 +86,7 @@ class Admin extends Controller
 
 
 
-
-
-    // public function deleteAccount()
-    // {
-    //     // $this->view->showPage('Admin/deleteAccount');
-
-    //     $result = $this->model->availablelistTable();
-    //     // print_r($result);
-    //     $this->view->render('Admin/deleteAccount', $result);
-    // }
-
+// delete account
 
  public $data = [
         'name' => '',
@@ -161,7 +156,7 @@ class Admin extends Controller
         $this->view->showPage('Admin/createAccountSelect');
     }
 
-    //111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+  
     public $user_data = [
         'name' => '',
         'reg_id' => '',
