@@ -173,7 +173,10 @@ justify-self: center ;
     }
   }
 
- 
+ .error{
+    color: red;
+    font-size: 14px;
+ }
 /*  **** set button pop up ******** */
 
 *, *::after, *::before {

@@ -71,15 +71,19 @@
               }
               ?>
               <!-- Using AJAX Update notification_count -->
-              <div class="number" id="notification_count"><?php echo $notificationCount;?></div>
+              <div class="number" id="notification_count"><?php echo $notificationCount; ?></div>
 
               <i class="fas fa-bell notification_bell"></i>
               <div class="box">
+                <!-- <div style="padding: 15px 0 15px 30px; font-size: 1.5rem; font-weight:bold; background-color:#27ae60;">
+                  Notifications
+                </div> -->
+                <div class="notification_header">
+                  <div class="notification_top">Notifications</div>
+                  <button id="notification_all_btn">All</button>
+                  <button id="notification_unread_btn">Unread</button>
+                </div>
                 <div class="display">
-                  <div class="nothing">
-                    <i class="fas fa-child stick"></i>
-                    <div class="cent">Looks Like your all caught up!</div>
-                  </div>
                   <div class="cont" id="get_nofication">
                     <!-- Get Notification to here Using AJAX-->
                   </div>
