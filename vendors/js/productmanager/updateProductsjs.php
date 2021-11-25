@@ -23,25 +23,18 @@ $(document).ready(function() {
         $('#updateBtn').click(function(event) {
             // validateAmount();
             event.preventDefault();
-            //validateAmount();
-            validateAmount();
             
-            console.log("update click");
             var form = $('#auctionForm').serializeArray();
-            // form.push({name:'stock_type', value: 'in_stock'});
-            // form.push({name:'type', value: 'firewood'});
+            
 
-            $('.error').remove();
+            $('.error').remove(); // remove the previos error messages displayed
+            // after clicking the update again the same error may appear so have to remove previous errors
             var productName = $('#productName option:selected').text();
-            var buyer = $('#buyer option:selected').text();
             var amount = $('#amount').val();
             var pid = $('#pid').val();
-            var price = $('#price').val();
-            var bid = $('#buyer').val();
-
-            //console.log(amount+pid+price+bid);
+            console.log(amount+pid);
             var action = 'save';
-            console.log("validateAMount:" + check);
+            
             //////////////////////////////////
 
             //var pid = $('#pid').val();
@@ -84,20 +77,14 @@ $(document).ready(function() {
             } else if (amount == 0) {
                 $('#amount').parent().after("<p class=\"error\">*Please insert a valid amount</p>")
             }
-            if (price < 0) {
-                $('#price').parent().after("<p class=\"error\">*Price cannot be negative</p>");
-            } else if (price == 0) {
-                $('#price').parent().after("<p class=\"error\">*Price cannot be zero</p>");
-            }
+            
 
-            if (amount <= 0 || price <= 0 || check == 0) {
+            if (amount <= 0) {
                 return;
             }
             var str = "Product Name:  " + productName + "\n" +
                 "Amount :   " + amount + "\n" +
-                "Price:  " + price + "\n" +
-                "Buyer:  " + buyer + "\n" +
-                "\n";
+                "Pid :"+pid+"\n";
             Swal.fire({
                 title: 'Confirm Update ',
                 icon: 'warning',
@@ -120,8 +107,7 @@ $(document).ready(function() {
                             action: action,
                             amount: amount,
                             pid: pid,
-                            price: price,
-                            bid: bid,
+                            
                         },
                         success: function(data) {
 
