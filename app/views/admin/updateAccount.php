@@ -23,7 +23,7 @@
                                 <th style="width:16.66%;">Type</th>
                                 <th style="width:16.66%;" id="hide">Address</th>
                                 <th style="width:16.66%;" id="hide">Contact number</th>
-                                <th style="width:16.66%;" id="hide">Password</th>
+                                <!-- <th style="width:16.66%;" id="hide">Password</th> -->
                                <!--  <th style="width:33.33%;" id="hide">Confirm Password</th> -->
                               
                             </tr>
@@ -38,7 +38,7 @@
                                            <td>'.$data[$i]['user_type'].'</td>
                                            <td style id="hide">'.$data[$i]['address'].'</td>
                                            <td style id="hide">'.$data[$i]['contact_number'].'</td>
-                                           <td style id="hide">'.$data[$i]['password'].'</td>
+                                           // <td style id="hide">'.$data[$i]['password'].'</td>
                                            
                                            
                                        </tr>';                
@@ -65,8 +65,8 @@
                       document.getElementById("id").value=this.cells[1].innerHTML;
                       document.getElementById("user_type").value=this.cells[2].innerHTML;
                       document.getElementById("address").value=this.cells[3].innerHTML;
-                      document.getElementById("phone").value=this.cells[4].innerHTML;
-                      document.getElementById("password").value=this.cells[5].innerHTML;
+                      document.getElementById("contact_number").value=this.cells[4].innerHTML;
+                      // document.getElementById("password").value=this.cells[5].innerHTML;
                    
                  
                    };
@@ -146,7 +146,7 @@
 
         <div class="inputfield">
           <label>Contact Number</label>
-            <input type="tel" class="input" name="contact_number" id="phone" required>
+            <input type="tel" class="input" name="contact_number" id="contact_number" required>
        </div>
 
        <div class="inputfield">

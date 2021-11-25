@@ -40,7 +40,6 @@ class Admin extends Controller
                 'reg_type' => trim($_POST['user_type']),
                 'address' => trim($_POST['address']),
                 'mobile_number' => trim($_POST['contact_number']),
-                // 'route_number' => trim($_POST['route_number']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
 
@@ -52,16 +51,11 @@ class Admin extends Controller
             if ($data['password'] != $data['confirm_password']) {
                 $data['confirm_password_err'] = "confirmation not matching";
             }
-            // if ($this->model->searchUserContact($data['contact_number'])) {
-            //     $data['contact_number_err'] = "This mobile number is already Taken";
-            // }
-
+           
             if (empty($data['contact_number_err']) && empty($data['confirm_password_err'])) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $this->model->userUpdate($data);
-                $this->view->render('admin/updateAccount', $data);
-            } else {
-                $this->view->render('admin/updateAccount', $data);
+                // $this->view->render('admin/updateAccount', $data);
             }
         } else {
             $data = [
