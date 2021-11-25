@@ -23,8 +23,8 @@
                                 <th style="width:16.66%;">Type</th>
                                 <th style="width:16.66%;" id="hide">Address</th>
                                 <th style="width:16.66%;" id="hide">Contact number</th>
-                                <!-- <th style="width:16.66%;" id="hide">Password</th> -->
-                               <!--  <th style="width:33.33%;" id="hide">Confirm Password</th> -->
+                                <th style="width:16.66%;" id="hide">Password</th>
+                               
                               
                             </tr>
                        <div class="vertical">
@@ -38,7 +38,7 @@
                                            <td>'.$data[$i]['user_type'].'</td>
                                            <td style id="hide">'.$data[$i]['address'].'</td>
                                            <td style id="hide">'.$data[$i]['contact_number'].'</td>
-                                           // <td style id="hide">'.$data[$i]['password'].'</td>
+                                           <td style id="hide">'.$data[$i]['password'].'</td>
                                            
                                            
                                        </tr>';                
@@ -130,7 +130,7 @@
 
         <div class="inputfield">
           <label>ID</label>
-          <input type="text" class="input" name="user_id" id="id" required>
+          <input type="text" class="input" name="user_id" id="id" required readonly>
        </div> 
 
        <div class="inputfield">
@@ -151,12 +151,12 @@
 
        <div class="inputfield">
           <label>Password</label>
-          <input type="password" class="input" name="password" id="password" required>
+          <input type="password" class="input" name="password" id="password" placeholder="<?php (!empty($data['password_err'])) ? print $data['password_err'] : print ''; ?>" required>
        </div>  
 
        <div class="inputfield">
             <label>Confirm Password</label>
-            <input type="password" class="input" name="confirm_password" id="confirm_password" required>
+            <input type="password" class="input" name="confirm_password" id="confirm_password"  placeholder="<?php (!empty($data['confirm_password_err'])) ? print $data['confirm_password_err'] : print ''; ?>" required>
          </div>
 
        <div class="inputfield">
