@@ -46,11 +46,11 @@
         
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
-            <input type="text" class="input" id="amount" required name="amount">
+            <input type="number" class="input" id="amount" required name="amount">
         </div>
         <div class="inputfield">
             <label for="price" >Price Per Kilo(Rs)</label>
-            <input type="text" class="input" id="price" required name="price">
+            <input type="number" class="input" id="price" required name="price">
         </div>
         <div class="inputfield">
             <label for="buyer">Buyer</label>

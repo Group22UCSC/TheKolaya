@@ -36,7 +36,7 @@
         </div>
         <div class="inputfield">
             <label for="amount" >Amount(Kg)</label>
-            <input type="text" class="input" id="amount">
+            <input type="number" class="input" id="amount">
         </div>
         <div class="inputfield">
             <input type="submit" value="Update" class="btn" id="updateBtn">
