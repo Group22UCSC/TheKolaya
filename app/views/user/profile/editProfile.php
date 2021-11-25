@@ -6,8 +6,8 @@
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style2.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/editProfile-style.css">
-    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
