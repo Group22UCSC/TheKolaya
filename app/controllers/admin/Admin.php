@@ -20,11 +20,7 @@ class Admin extends Controller
         $this->view->render('Admin/viewAccount', $result);
     }
 
-    public function viewAccount1()
-    {
-        $this->view->showPage('Admin/viewAccount1');
-    }
-
+   
     public function updateAccount()
     {
         
