@@ -311,12 +311,12 @@ class Supervisor extends Controller
                         $notificationStatus = "unread";
                         break;
                     case 1:
-                        $noficataionStatus = "read";
+                        $notificationStatus = "read";
                         break;
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
                 echo
-                '<div class="sec new ' . $notification[$i]['notification_type'] . '" id="n-' . $notification[$i]['notification_id'] . '">
+                '<div class="sec new ' . $notification[$i]['notification_type'] . ' '. $notificationStatus .'" id="n-' . $notification[$i]['notification_id'] . '">
                         <div class = "profCont">
                             <img class = "notification_profile" src = "' . $imgPath . '">
                         </div>
@@ -345,8 +345,10 @@ class Supervisor extends Controller
     function getNotification()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $notification = $this->model->getNotification($_POST['notification_type']);
-            $this->setNotification($notification);
+            if (isset($_POST['notification_type'])) {
+                $notification = $this->model->getNotification($_POST);
+                $this->setNotification($notification);
+            }
         }
     }
 }
