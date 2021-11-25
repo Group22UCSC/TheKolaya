@@ -116,7 +116,17 @@ class ProductManager extends Controller{
         $this->view->render('user/profile/enterPassword');
     }
     
-    
+    function getProductStock(){
+        // $pid=$this->input->get('pid');
+        $pid=$_GET['pid'];
+        $result = $this->model->getProductStock();
+        // print_r($tblResult);
+        $json_arr=json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+       //echo $pid;
+       //return $pid;
+    }
 }
 
 ?>

@@ -6,14 +6,14 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('request_notification', function(data) {
-        var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotification";
+        var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotificationCount";
         $.ajax({
             url: url,
-            type: 'POST',
-            data: "notification_type=none",
+            type: 'GET',
+            data: "getCount=byAjax",
             success: function(data) {
-                $('.icon-button__badge').css("display", "block");
-                $('.icon-button__badge').html(data);
+                var myHtml = "<p>"+data+"</p>";
+                $('#notification_count').html(myHtml);
                 console.log(data);
             }
         });
@@ -24,25 +24,36 @@
 <script>
     //Notification pannel
     $(document).ready(function() {
+        var x = 0;
         $(".profile .icon_wrap").click(function() {
-            // $(this).parent().toggleClass("active");
             $('.profile_dd').slideToggle();
             $('.box').hide();
         });
 
         $(".notification_bell").click(function() {
-            console.log('hi')
-            // $('.box').toggleClass("active");
+            if ($('.box').css("display") == 'none') {
+                x = 0;
+            } else {
+                x = 1;
+            }
             $('.box').slideToggle();
-            $('.box').addClass('active')
             $(".profile_dd").hide();
             var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotification";
             $.ajax({
                 url: url,
                 type: 'POST',
                 data: "notification_type=half",
-                success: function(data) {
-                    $('#get_nofication').html(data);
+                success: function(responseText) {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(responseText, "text/html");
+                    var myHtml = xmlDoc.getElementById("all_notifications").innerHTML;
+                    $('#get_nofication').html(myHtml);
+                    myHtml = xmlDoc.querySelector("p").innerHTML;
+                    if (x == 1) {
+                        $('#notification_count').html(myHtml);
+                        x = 0;
+                    }
+                    // console.log(responseText);
                 }
             });
         });

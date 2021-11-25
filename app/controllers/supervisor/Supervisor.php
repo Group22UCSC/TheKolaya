@@ -14,6 +14,7 @@ class Supervisor extends Controller
         $teaCollection = $this->model->getTeaCollection();
         $todayRequests = $this->model->getTodayFertilizerRequest();
 
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->render('Supervisor/Supervisor', $stock, $teaCollection, $todayRequests);
     }
 
@@ -45,7 +46,6 @@ class Supervisor extends Controller
 
     function landownerDetails()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $month = date('m') - 1;
             $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
@@ -121,6 +121,7 @@ class Supervisor extends Controller
 
     function updateTeaMeasure()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'landowner_id' => $_POST['landowner_id'],
@@ -168,6 +169,7 @@ class Supervisor extends Controller
 
     function manageRequests()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->model->manageRequests($_POST);
         } else {
@@ -178,6 +180,7 @@ class Supervisor extends Controller
 
     function manageFertilizer()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'stock_type' => $_POST['stock_type'],
@@ -202,6 +205,7 @@ class Supervisor extends Controller
 
     function manageFirewood()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'stock_type' => $_POST['stock_type'],
@@ -226,6 +230,7 @@ class Supervisor extends Controller
 
     function fertilizerInStock()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $data = [
             'stock_type' => 'in_stock',
             'type' => 'fertilizer',
@@ -241,6 +246,7 @@ class Supervisor extends Controller
 
     function firewoodInStock()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $data = [
             'stock_type' => 'in_stock',
             'type' => 'firewood',
@@ -257,12 +263,13 @@ class Supervisor extends Controller
 
     function firewoodOutStock()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $data = [
             'stock_type' => 'out_stock',
             'type' => 'firewood',
         ];
         $outstock = $this->model->stock($data);
-        $this->view->render('Supervisor/firewoodOutStock');
+        $this->view->render('Supervisor/firewoodOutStock', $outstock);
     }
 
     //Manage Profile
@@ -288,6 +295,7 @@ class Supervisor extends Controller
     function setNotification($notification)
     {
         if (!empty($notification)) {
+            echo '<div id="all_notifications">';
             for ($i = 0; $i < count($notification); $i++) {
                 switch($notification[$i]['notification_type']) {
                     case 'warning':
@@ -296,25 +304,25 @@ class Supervisor extends Controller
                     case 'request':
                         $imgPath = URL.'/vendors/images/notifications/request.jpg';
                         break;
-                    
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
-                echo '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
+                echo 
+                    '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
                         <div class = "profCont">
                             <img class = "notification_profile" src = "'. $imgPath .'">
                         </div>
                         <div class="txt '. $notification[$i]['notification_type'] .'">'. $notification[$i]['message'] .'</div>
                         <div class="txt sub">'.$dateTime.'</div>
-                    </div>';
-                    
+                    </div>';                    
             }
+            echo '</div>';
         }
     }
 
     public function getNotificationCount()
     {
-        $notification = $this->model->getNotSeenNotification();
-        return $notification;
+        $notificationCount = $this->model->getNotificationCount($_GET);
+        return $notificationCount;
     }
 
     function getNotification()
@@ -331,10 +339,6 @@ class Supervisor extends Controller
                 $notification_count = count($notification);
                 echo $notification_count;
             }
-        } else {
-            $notification = $this->model->getAllNotification();
-            $this->setNotification($notification);
-            $this->view->render('supervisor/top-container', $notification);
         }
     }
 }

@@ -36,7 +36,7 @@ class Supervisor_Model extends Model
                 ON request.lid=landowner.user_id
                 INNER JOIN fertilizer_request 
                 ON request.request_id=fertilizer_request.request_id
-                WHERE DATE(request.request_date)='$date' AND request.response_status='recive'";
+                WHERE DATE(request.request_date)='$date' AND request.response_status='receive'";
         $row = $this->db->runQuery($query);
         // print_r($row);
         if (count($row)) {
@@ -46,41 +46,44 @@ class Supervisor_Model extends Model
         }
     }
 
-    function getLastRequestDate($landowner_id) {
+    function getLastRequestDate($landowner_id)
+    {
         $query = "SELECT DATE(request_date) As request_date FROM request 
                 WHERE lid = '$landowner_id' 
                 AND request_type = 'fertilizer' 
                 AND response_status = 'accept'";
         $row = $this->db->runQuery($query);
-        if(count($row)) {
+        if (count($row)) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
 
-    function getMonthTeaWeight($month, $landowner_id) {
+    function getMonthTeaWeight($month, $landowner_id)
+    {
         $monthlyTeaAmount = 0;
         $query = "SELECT * FROM tea WHERE MONTH(date) = '$month' AND lid='$landowner_id'";
         $row = $this->db->runQuery($query);
 
-        if(count($row)) {
-            for($i = 0; $i < count($row); $i++) {
+        if (count($row)) {
+            for ($i = 0; $i < count($row); $i++) {
                 $monthlyTeaAmount += $row[$i]['net_weight'];
             }
-            return $monthlyTeaAmount/count($row);
-        }else {
-            return '<b style="color:red;">No data found for '.date('F', strtotime("2001-$month-1")). '</b>';
+            return $monthlyTeaAmount / count($row);
+        } else {
+            return '<b style="color:red;">No data found for ' . date('F', strtotime("2001-$month-1")) . '</b>';
         }
     }
 
-    function getTeaQuality($landowner_id) {
+    function getTeaQuality($landowner_id)
+    {
         $query = "SELECT quality FROM tea WHERE lid='$landowner_id'";
         $row = $this->db->runQuery($query);
 
-        if(count($row)) {
+        if (count($row)) {
             return $row;
-        }else {
+        } else {
             false;
         }
     }
@@ -116,7 +119,7 @@ class Supervisor_Model extends Model
         return true;
     }
 
-    
+
     function getUpdateTeaMeasure()
     {
         $date = date('Y-m-d');
@@ -130,7 +133,8 @@ class Supervisor_Model extends Model
         }
     }
 
-    function getUpdateTeaMeasureById($landowner_id) {
+    function getUpdateTeaMeasureById($landowner_id)
+    {
         $query = "SELECT * FROM tea WHERE lid='$landowner_id'";
         $row = $this->db->runQuery($query);
         if (count($row)) {
@@ -139,8 +143,8 @@ class Supervisor_Model extends Model
             return false;
         }
     }
-    
-    
+
+
     function getRequests()
     {
         $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
@@ -149,7 +153,7 @@ class Supervisor_Model extends Model
                 ON user.user_id=request.lid 
                 INNER JOIN fertilizer_request 
                 ON fertilizer_request.request_id=request.request_id 
-                WHERE request.response_status='recive'";
+                WHERE request.response_status='receive'";
         $row = $this->db->runQuery($query);
 
         if ($row) {
@@ -159,7 +163,8 @@ class Supervisor_Model extends Model
         }
     }
 
-    function manageRequests($data) {
+    function manageRequests($data)
+    {
         $request_id = $data['request_id'];
         $response_status = $data['response_status'];
         $query = "UPDATE request SET response_status='$response_status' WHERE request_id='$request_id'";
@@ -238,10 +243,11 @@ class Supervisor_Model extends Model
     }
 
     //Insert Notification about stock limit
-    function stockGetLimit($stock_type) {
+    function stockGetLimit($stock_type)
+    {
         $message = $stock_type . " is Getting bellow Stock Limit";
         $query = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, sender_id) 
-        VALUES(0, 0, '$message', 'Supervisor', '".$_SESSION['user_id']."')";
+        VALUES(0, 0, '$message', 'Supervisor', '" . $_SESSION['user_id'] . "')";
         $this->db->runQuery($query);
     }
 
@@ -265,38 +271,35 @@ class Supervisor_Model extends Model
     }
 
     //Get Notification
-    function getNotSeenNotification() {
+    function getNotReadedNotification()
+    {
         $query = "SELECT * FROM notification 
-        WHERE receiver_type='Supervisor' AND seen_not_seen=0 
-        ORDER BY notification_id DESC";
+        WHERE receiver_type='Supervisor' ORDER BY notification_id DESC, read_unread ASC";
         $row = $this->db->runQuery($query);
-        if(count($row)) {
+        $query = "UPDATE notification
+                SET seen_not_seen=1 WHERE seen_not_seen=0";
+        $this->db->runQuery($query);
+        $_SESSION['NotSeenCount'] = '';
+        echo '<p>' . $_SESSION["NotSeenCount"] . '</p>';
+        if (count($row)) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
 
-    // function getNotReadedNotification() {
-    //     $query = "SELECT * FROM notification 
-    //     WHERE receiver_type='Supervisor' AND read_unread=0 
-    //     ORDER BY notification_id DESC";
-    //     $row = $this->db->runQuery($query);
-    //     if(count($row)) {
-    //         return $row;
-    //     }else {
-    //         return false;
-    //     }
-    // }
-
-    function getNotReadedNotification() {
+    function getNotificationCount()
+    {
         $query = "SELECT * FROM notification 
-        WHERE receiver_type='Supervisor' ORDER BY notification_id DESC, read_unread ASC";
+        WHERE receiver_type='Supervisor' AND seen_not_seen=0";
         $row = $this->db->runQuery($query);
-        if(count($row)) {
-            return $row;
+
+        if (count($row)) {
+            $_SESSION['NotSeenCount'] = count($row);
+            if(isset($_GET['getCount']))
+                echo $_SESSION['NotSeenCount'];
         }else {
-            return false;
+            $_SESSION['NotSeenCount'] = 0;
         }
     }
 }

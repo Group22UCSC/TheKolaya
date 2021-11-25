@@ -18,10 +18,14 @@
 
                       <table id="myTable">
                            <tr class="header">
-                                <th style="width:33.33%;">Name</th>
-                                <th style="width:33.33%;">ID</th>
-                                <th style="width:33.33%;">Type</th>
-   
+                                <th style="width:16.66%;">Name</th>
+                                <th style="width:16.66%;">ID</th>
+                                <th style="width:16.66%;">Type</th>
+                                <th style="width:16.66%;" id="hide">Address</th>
+                                <th style="width:16.66%;" id="hide">Contact number</th>
+                                <th style="width:16.66%;" id="hide">Password</th>
+                               
+                              
                             </tr>
                        <div class="vertical">
     
@@ -32,6 +36,10 @@
                                            <td>'.$data[$i]['name'].'</td>
                                            <td>'.$data[$i]['user_id'].'</td>
                                            <td>'.$data[$i]['user_type'].'</td>
+                                           <td style id="hide">'.$data[$i]['address'].'</td>
+                                           <td style id="hide">'.$data[$i]['contact_number'].'</td>
+                                           <td style id="hide">'.$data[$i]['password'].'</td>
+                                           
                                            
                                        </tr>';                
                                }       
@@ -44,49 +52,58 @@
                       </table>
 
 
+                            
+            <!-- table data get auto filled form -->
+            <script>
 
-                                <!--  // script for filtering -->
-                                  <script>
-                                  function myFunction() {
-                                    var input, filter, table, tr, td, i, txtValue;
-                                    input = document.getElementById("myInput");
-                                    filter = input.value.toUpperCase();
-                                    table = document.getElementById("myTable");
-                                    tr = table.getElementsByTagName("tr");
-                                    for (i = 0; i < tr.length; i++) {
-                                      td = tr[i].getElementsByTagName("td")[0];
-                                      if (td) {
-                                        txtValue = td.textContent || td.innerText;
-                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                          tr[i].style.display = "";
-                                        } else {
-                                          tr[i].style.display = "none";
-                                        }
-                                      }       
-                                    }
-                                  }
+              var table=document.getElementById('myTable'),rIndex;
+              for (var i = 1; i < table.rows.length; i++) {
+                   table.rows[i].onclick=function()
+                   {
+                    //rIndex=this.rowIndex;
+                      document.getElementById("name").value=this.cells[0].innerHTML;
+                      document.getElementById("id").value=this.cells[1].innerHTML;
+                      document.getElementById("user_type").value=this.cells[2].innerHTML;
+                      document.getElementById("address").value=this.cells[3].innerHTML;
+                      document.getElementById("contact_number").value=this.cells[4].innerHTML;
+                      // document.getElementById("password").value=this.cells[5].innerHTML;
+                   
+                 
+                   };
+                 }
+
+
+            </script>       
+
+
+
+
+
+            <!--  // script for filtering -->
+              <script>
+              function myFunction() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+               tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                  td = tr[i].getElementsByTagName("td")[0];
+                  if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                    } else {
+                      tr[i].style.display = "none";
+                    }
+                  }       
+                }
+              }
+              
+              </script>
                                   
-                                  </script>
-                                  
 
 
-
-                                 <!-- script for view table -->
-                                 <script>
-                                   document.addEventListener("DOMContentLoaded",() => {
-                                 const rows = document.querySelectorAll("tr[data-href]");
-                                 rows.forEach(row =>{
-                                     row.addEventListener("click", ()=>{
-                                      // openteaform();
-                         window.location.href=row.dataset.href;
-
-                                     });
-                                 });
-                             });
-
-                                        
-                                 
-                                 </script>
 
 
     </div>
@@ -108,45 +125,38 @@
 
         <div class="inputfield">
            <label> Name</label>
-           <input type="text" class="input" name="name" required>
+           <input type="text" class="input" name="name" id="name" required>
        </div> 
 
         <div class="inputfield">
           <label>ID</label>
-          <input type="text" class="input" name="user_id" required>
-       </div> 
-
-       <div class="inputfield">
-          <label>Address</label>
-          <textarea class="textarea" name="address" required></textarea>
+          <input type="text" class="input" name="user_id" id="id" required readonly>
        </div> 
 
        <div class="inputfield">
           <label>User Type</label>
-          <select class="type" id="type" name="user_type" required>
-               <option value="accountant">Accountant</option>
-               <option value="admin">Admin</option>
-               <option value="manager">Manager</option>
-               <option value="supervisor">Supervisor</option>
-               <option value="product_manager">Product Manager</option>
-               <option value="Land_Owner">Land_Owner</option>
-               <option value="agent">Agent</option>
-          </select>
+               <input type="text" class="input" name="user_type" id="user_type" required>  
        </div>
+
+       <div class="inputfield">
+          <label>Address</label>
+          <textarea class="textarea" name="address" id="address" required></textarea>
+       </div> 
+
 
         <div class="inputfield">
           <label>Contact Number</label>
-            <input type="tel" class="input" name="contact_number" required>
+            <input type="tel" class="input" name="contact_number" id="contact_number" required>
        </div>
 
        <div class="inputfield">
           <label>Password</label>
-          <input type="password" class="input" name="password" required>
+          <input type="password" class="input" name="password" id="password" placeholder="<?php (!empty($data['password_err'])) ? print $data['password_err'] : print ''; ?>" required>
        </div>  
 
        <div class="inputfield">
             <label>Confirm Password</label>
-            <input type="password" class="input" name="confirm_password" required>
+            <input type="password" class="input" name="confirm_password" id="confirm_password"  placeholder="<?php (!empty($data['confirm_password_err'])) ? print $data['confirm_password_err'] : print ''; ?>" required>
          </div>
 
        <div class="inputfield">
