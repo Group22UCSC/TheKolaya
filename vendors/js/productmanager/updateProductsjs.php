@@ -27,7 +27,8 @@ $(document).ready(function() {
             var form = $('#auctionForm').serializeArray();
             
 
-            $('.error').remove();
+            $('.error').remove(); // remove the previos error messages displayed
+            // after clicking the update again the same error may appear so have to remove previous errors
             var productName = $('#productName option:selected').text();
             var amount = $('#amount').val();
             var pid = $('#pid').val();
