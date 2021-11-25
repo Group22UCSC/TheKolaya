@@ -24,21 +24,57 @@
 <script>
     //Notification pannel
     $(document).ready(function() {
+        var x = 0;
         $(".profile .icon_wrap").click(function() {
-            $(this).parent().toggleClass("active");
-            $(".notifications").removeClass("active");
-        });
-
-        $(".icon-button").click(function() {
-            $(this).parent().toggleClass("active");
-            $(".profile").removeClass("active");
+            
+            if ($('.box').css("display") == 'none') {
+                x = 0;
+            } else {
+                x = 1;
+            }
+            $('.profile_dd').slideToggle();
+            $('.box').hide();
             var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotification";
             $.ajax({
                 url: url,
                 type: 'POST',
                 data: "notification_type=half",
-                success: function(data) {
-                    $('#get_nofication').html(data);
+                success: function(responseText) {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(responseText, "text/html");
+                    var myHtml = xmlDoc.querySelector("p").innerHTML;;
+                    if (x == 1) {
+                        $('#notification_count').html(myHtml);
+                        x = 0;
+                    }
+                }
+            });
+        });
+
+        $(".notification_bell").click(function() {
+            if ($('.box').css("display") == 'none') {
+                x = 0;
+            } else {
+                x = 1;
+            }
+            $('.box').slideToggle();
+            $(".profile_dd").hide();
+            var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotification";
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: "notification_type=half",
+                success: function(responseText) {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(responseText, "text/html");
+                    var myHtml = xmlDoc.getElementById("all_notifications").innerHTML;
+                    $('#get_nofication').html(myHtml);
+                    myHtml = xmlDoc.querySelector("p").innerHTML;
+                    if (x == 1) {
+                        $('#notification_count').html(myHtml);
+                        x = 0;
+                    }
+                    // console.log(responseText);
                 }
             });
         });

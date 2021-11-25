@@ -5,7 +5,7 @@ class View {
 
     }
 
-    public function render($viewName, $data = [], $data1 = [], $data2 = []) {
+    public function render($viewName, $data = [], $data1 = [], $data2 = [], $data3 = []) {
         if(file_exists('../app/views/' .$viewName. '.php')){
             require '../app/views/' .$viewName. '.php';
         } else {

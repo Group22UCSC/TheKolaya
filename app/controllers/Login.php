@@ -82,6 +82,7 @@ class Login extends Controller {
             }
             $this->model->getRoute($_SESSION['user_type']);
         }
+        $_SESSION['NotSeenCount'] = $this->model->getNotSeenNotificationCount($_SESSION['user_type']);
         redirect($_SESSION['user_type']);
     }
 

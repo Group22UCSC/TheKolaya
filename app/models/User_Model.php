@@ -44,5 +44,18 @@ class User_Model extends Model {
         $this->db->runQuery($query);
     }
 
+    function getNotSeenNotification() {
+        $user_type = $_SESSION['user_type'];
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='$user_type' AND seen_not_seen=0 
+        ORDER BY notification_id DESC";
+        $row = $this->db->runQuery($query);
+        if(count($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
 }
 ?>
