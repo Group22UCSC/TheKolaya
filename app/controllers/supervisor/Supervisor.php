@@ -14,6 +14,7 @@ class Supervisor extends Controller
         $teaCollection = $this->model->getTeaCollection();
         $todayRequests = $this->model->getTodayFertilizerRequest();
 
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->render('Supervisor/Supervisor', $stock, $teaCollection, $todayRequests);
     }
 
@@ -45,7 +46,6 @@ class Supervisor extends Controller
 
     function landownerDetails()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $month = date('m') - 1;
             $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
@@ -121,6 +121,7 @@ class Supervisor extends Controller
 
     function updateTeaMeasure()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'landowner_id' => $_POST['landowner_id'],
@@ -168,6 +169,7 @@ class Supervisor extends Controller
 
     function manageRequests()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->model->manageRequests($_POST);
         } else {
@@ -178,6 +180,7 @@ class Supervisor extends Controller
 
     function manageFertilizer()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'stock_type' => $_POST['stock_type'],
@@ -188,11 +191,11 @@ class Supervisor extends Controller
             if ($_POST['stock_type'] == 'in_stock') {
                 $data['price_per_unit'] = trim($_POST['price_per_unit']);
             }
-            
+
             $this->model->manageStock($data);
             $stock = $this->model->getStock();
             $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
-            if($_SESSION['fertilizer_stock'] <= 500) {
+            if ($_SESSION['fertilizer_stock'] <= 500) {
                 $this->model->stockGetLimit("Fertilzer Stock");
             }
         } else {
@@ -202,6 +205,7 @@ class Supervisor extends Controller
 
     function manageFirewood()
     {
+        $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'stock_type' => $_POST['stock_type'],
@@ -216,7 +220,7 @@ class Supervisor extends Controller
             $this->model->manageStock($data);
             $stock = $this->model->getStock();
             $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
-            if($_SESSION['firewood_stock'] <= 500) {
+            if ($_SESSION['firewood_stock'] <= 500) {
                 $this->model->stockGetLimit("Firewood Stock");
             }
         } else {
@@ -226,6 +230,7 @@ class Supervisor extends Controller
 
     function fertilizerInStock()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $data = [
             'stock_type' => 'in_stock',
             'type' => 'fertilizer',
@@ -241,6 +246,7 @@ class Supervisor extends Controller
 
     function firewoodInStock()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $data = [
             'stock_type' => 'in_stock',
             'type' => 'firewood',
@@ -257,12 +263,13 @@ class Supervisor extends Controller
 
     function firewoodOutStock()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $data = [
             'stock_type' => 'out_stock',
             'type' => 'firewood',
         ];
         $outstock = $this->model->stock($data);
-        $this->view->render('Supervisor/firewoodOutStock');
+        $this->view->render('Supervisor/firewoodOutStock', $outstock);
     }
 
     //Manage Profile
@@ -290,48 +297,56 @@ class Supervisor extends Controller
         if (!empty($notification)) {
             echo '<div id="all_notifications">';
             for ($i = 0; $i < count($notification); $i++) {
-                switch($notification[$i]['notification_type']) {
+                switch ($notification[$i]['notification_type']) {
                     case 'warning':
-                        $imgPath = URL.'/vendors/images/notifications/warning.jpg';
+                        $imgPath = URL . '/vendors/images/notifications/warning.jpg';
                         break;
                     case 'request':
-                        $imgPath = URL.'/vendors/images/notifications/request.jpg';
+                        $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                        break;
+                }
+
+                switch ($notification[$i]['read_unread']) {
+                    case 0:
+                        $notificationStatus = "unread";
+                        break;
+                    case 1:
+                        $noficataionStatus = "read";
                         break;
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
-                echo 
-                    '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
+                echo
+                '<div class="sec new ' . $notification[$i]['notification_type'] . '" id="n-' . $notification[$i]['notification_id'] . '">
                         <div class = "profCont">
-                            <img class = "notification_profile" src = "'. $imgPath .'">
+                            <img class = "notification_profile" src = "' . $imgPath . '">
                         </div>
-                        <div class="txt '. $notification[$i]['notification_type'] .'">'. $notification[$i]['message'] .'</div>
-                        <div class="txt sub">'.$dateTime.'</div>
-                    </div>';                    
+                        <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                        <div class="txt sub">' . $dateTime . '</div>
+                    </div>';
             }
             echo '</div>';
+        } else {
+            echo
+            '<div id="all_notifications">
+                <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                </div>
+            </div>';
         }
     }
 
     public function getNotificationCount()
     {
-        $notification = $this->model->getNotSeenNotification();
-        return $notification;
+        $notificationCount = $this->model->getNotificationCount($_GET);
+        return $notificationCount;
     }
 
     function getNotification()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if ($_POST['notification_type'] == 'half') {
-                $notification = $this->model->getNotReadedNotification();
-                $this->setNotification($notification);
-            } else if ($_POST['notification_type'] == 'all') {
-                $notification = $this->model->getAllNotification();
-                $this->setNotification($notification);
-            } else {
-                $notification = $this->model->getNotSeenNotification();
-                $notification_count = count($notification);
-                echo $notification_count;
-            }
+            $notification = $this->model->getNotification($_POST['notification_type']);
+            $this->setNotification($notification);
         }
     }
 }

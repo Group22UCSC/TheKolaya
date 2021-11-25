@@ -66,38 +66,14 @@ class landowner_Model extends Model
             $request_amount = $data['advance_amount'];
         }
 
-
         $lid = $_SESSION['user_id'];
-        $query = "INSERT INTO request(request_type, lid, response_status) VALUES('$requests_type', '$lid', 'recive')";
-        $this->db->insertQuery($query);
+        $query = "INSERT INTO request(request_type, lid, response_status) VALUES('$requests_type', '$lid', 'receive')";
+        $this->db->runQuery($query);
         if ($requests_type == 'fertilizer') {
             $query = "INSERT INTO fertilizer_request(request_id, amount) VALUES(LAST_INSERT_ID(), '$request_amount')";
-            
-            $message = $_SESSION['name']. " Request fertilizer ". $request_amount . "kg";
-            $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, sender_id) 
-            VALUES(0, 0, '$message', 'Supervisor', '".$_SESSION['user_id']."')";
-            $this->db->insertQuery($notificationQuery);
-            //Pusher API
-            $options = array(
-                'cluster' => 'ap1',
-                'useTLS' => true
-            );
-            $pusher = new Pusher\Pusher(
-                'ef64da0120ca27fe19a3',
-                'd5033393ff3b228540f7',
-                '1290222',
-                $options
-            );
+            $this->db->runQuery($query);
 
-            $data['message'] = 'hello world';
-            $pusher->trigger('my-channel', 'request_notification', $data);
-        } else if ($requests_type == 'advance') {
-            $query = "INSERT INTO advance_request(request_id, amount_rs) VALUES(LAST_INSERT_ID(), '$request_amount')";
-        }
-
-        $this->db->insertQuery($query);
-        if ($requests_type == 'fertilizer') {
-            //Pusher API
+            //-------------Pusher API--------------//
             $options = array(
                 'cluster' => 'ap1',
                 'useTLS' => true
@@ -111,6 +87,32 @@ class landowner_Model extends Model
 
             $data['message'] = 'hello world';
             $pusher->trigger('my-channel', 'today_request_table', $data);
+            //--------------------------------------//
+
+
+            $message = $_SESSION['name'] . " Request fertilizer " . $request_amount . "kg";
+            $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
+            VALUES(0, 0, '$message', 'Supervisor', 'request', '" . $_SESSION['user_id'] . "')";
+            $this->db->runQuery($notificationQuery);
+            
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $data['message'] = 'hello world';
+            $pusher->trigger('my-channel', 'request_notification', $data);
+            //-------------------------------------------//
+        } else if ($requests_type == 'advance') {
+            $query = "INSERT INTO advance_request(request_id, amount_rs) VALUES(LAST_INSERT_ID(), '$request_amount')";
+            $this->db->runQuery($query);
         }
     }
 
