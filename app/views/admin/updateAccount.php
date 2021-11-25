@@ -24,7 +24,7 @@
                                 <th style="width:16.66%;" id="hide">Address</th>
                                 <th style="width:16.66%;" id="hide">Contact number</th>
                                 <th style="width:16.66%;" id="hide">Password</th>
-                               <!--  <th style="width:33.33%;" id="hide">Confirm Password</th> -->
+                               
                               
                             </tr>
                        <div class="vertical">
@@ -65,8 +65,8 @@
                       document.getElementById("id").value=this.cells[1].innerHTML;
                       document.getElementById("user_type").value=this.cells[2].innerHTML;
                       document.getElementById("address").value=this.cells[3].innerHTML;
-                      document.getElementById("phone").value=this.cells[4].innerHTML;
-                      document.getElementById("password").value=this.cells[5].innerHTML;
+                      document.getElementById("contact_number").value=this.cells[4].innerHTML;
+                      // document.getElementById("password").value=this.cells[5].innerHTML;
                    
                  
                    };
@@ -130,7 +130,7 @@
 
         <div class="inputfield">
           <label>ID</label>
-          <input type="text" class="input" name="user_id" id="id" required>
+          <input type="text" class="input" name="user_id" id="id" required readonly>
        </div> 
 
        <div class="inputfield">
@@ -146,17 +146,17 @@
 
         <div class="inputfield">
           <label>Contact Number</label>
-            <input type="tel" class="input" name="contact_number" id="phone" required>
+            <input type="tel" class="input" name="contact_number" id="contact_number" required>
        </div>
 
        <div class="inputfield">
           <label>Password</label>
-          <input type="password" class="input" name="password" id="password" required>
+          <input type="password" class="input" name="password" id="password" placeholder="<?php (!empty($data['password_err'])) ? print $data['password_err'] : print ''; ?>" required>
        </div>  
 
        <div class="inputfield">
             <label>Confirm Password</label>
-            <input type="password" class="input" name="confirm_password" id="confirm_password" required>
+            <input type="password" class="input" name="confirm_password" id="confirm_password"  placeholder="<?php (!empty($data['confirm_password_err'])) ? print $data['confirm_password_err'] : print ''; ?>" required>
          </div>
 
        <div class="inputfield">
