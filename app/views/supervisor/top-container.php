@@ -58,33 +58,37 @@
         <div class="thekolya-logo"><img src="<?php echo URL ?>vendors/images/thekolaya.png" alt=""></div>
       </div>
       <div class="navbar_right">
-      <div class="icons">
-      <div class="notification">
-        <div class="notBtn">
-          <?php
+        <!-- Newly added -->
+        <div class="icons">
+          <div class="notification">
+            <div class="notBtn">
+              <?php
               $notificationCount = '';
-              if($_SESSION['NotSeenCount'] >= 100) {
+              if ($_SESSION['NotSeenCount'] >= 100) {
                 $notificationCount = 99;
-              }else if($_SESSION['NotSeenCount']) {
+              } else if ($_SESSION['NotSeenCount']) {
                 $notificationCount = $_SESSION['NotSeenCount'];
               }
-            ?>
-          <div class="number" id="notification_count">10</div>
-          <i class="fas fa-bell notification_bell"></i>
-          <div class="box">
-            <div class="display">
-              <div class="nothing">
-                <i class="fas fa-child stick"></i>
-                <div class="cent">Looks Like your all caught up!</div>
-              </div>
-              <div class="cont" id="get_nofication">
-                <!-- Get Notification to here -->
+              ?>
+              <!-- Using AJAX Update notification_count -->
+              <div class="number" id="notification_count"><?php echo $notificationCount;?></div>
+
+              <i class="fas fa-bell notification_bell"></i>
+              <div class="box">
+                <div class="display">
+                  <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                  </div>
+                  <div class="cont" id="get_nofication">
+                    <!-- Get Notification to here Using AJAX-->
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        <!-- ------------------------------ -->
         <?php include '../app/views/user/profile/navBarProfile.php'; ?>
       </div>
     </div>
