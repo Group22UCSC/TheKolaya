@@ -23,7 +23,7 @@ class ProductManager extends Controller{
 
         if($_SERVER['REQUEST_METHOD']=='POST'){
                 
-            $result = $this->model->insertAution();
+            $result = $this->model->insertProduct();
             if($result==true){
             //     $buyers=$this->model->getBuyersDetails();
             // $tblResult = $this->model->auction();

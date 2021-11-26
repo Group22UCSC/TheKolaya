@@ -101,7 +101,7 @@ $(document).ready(function() {
 
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost/Thekolaya/productmanager/updateAuction",
+                        url: "http://localhost/Thekolaya/productmanager/updateProducts",
 
                         data: {
                             action: action,
@@ -110,7 +110,7 @@ $(document).ready(function() {
                             
                         },
                         success: function(data) {
-
+                            console.log(data);
                             Swal.fire(
                                 'Updated!',
                                 'Your file has been updated.',
