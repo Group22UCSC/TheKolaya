@@ -1,6 +1,6 @@
 <?php
 
-class OtpVerify extends Controller {
+class Otpverify extends Controller {
     function __construct(){
         parent::__construct();
     }

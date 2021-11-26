@@ -2,7 +2,7 @@
 
 use function PHPSTORM_META\type;
 
-class productmanager_Model extends Model {
+class Productmanager_Model extends Model {
 
     function __construct()
     {
