@@ -64,7 +64,7 @@ class Manager_Model extends Model {
     }
 
      function availableListTable_landowners(){
-        $query = "SELECT name,user_id,user_type FROM user WHERE user_type='Land_Owner' AND verify=1";
+        $query = "SELECT * FROM user WHERE user_type='Land_Owner' AND verify=1";
         $row = $this->db->runQuery($query);
         
         if($row) {
@@ -84,4 +84,34 @@ class Manager_Model extends Model {
             return false;
         }
     }
+
+
+
+    function getRequests()
+    {
+        $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
+                FROM user 
+                INNER JOIN request 
+                ON user.user_id=request.lid 
+                INNER JOIN fertilizer_request 
+                ON fertilizer_request.request_id=request.request_id 
+                WHERE request.response_status='receive'";
+        $row = $this->db->runQuery($query);
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function manageRequests($data)
+    {
+        $request_id = $data['request_id'];
+        $response_status = $data['response_status'];
+        $query = "UPDATE request SET response_status='$response_status' WHERE request_id='$request_id'";
+
+        $this->db->runQuery($query);
+    }
+
 }
