@@ -76,10 +76,8 @@ class Login extends Controller {
         // switch($_SESSION['user_type']) {
         //     case 'LandOwner' : $_SESSION['user_type'] = 
         // }
-        if($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'LandOwner') {
-            if($_SESSION['user_type'] == 'LandOwner') {
-                $_SESSION['user_type'] = 'Landowner';
-            }
+        $_SESSION['user_type'] = ucwords(strtolower($_SESSION['user_type']));
+        if($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'Landowner') {
             $this->model->getRoute($_SESSION['user_type']);
         }
         $_SESSION['NotSeenCount'] = $this->model->getNotSeenNotificationCount($_SESSION['user_type']);
