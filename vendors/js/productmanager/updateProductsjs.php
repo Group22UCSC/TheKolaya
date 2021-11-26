@@ -152,7 +152,7 @@ $(document).ready(function() {
                 //    $('#updateAuctionTable not(tbody)').empty();
                 //$("#updateAuctionTable").trigger("reset");
                 // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < len; i++) {
                     var date = data[i].date;
                     var str =
                         "<tr class='row'>" +
