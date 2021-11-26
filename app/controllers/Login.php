@@ -97,13 +97,13 @@ class Login extends Controller {
         redirect('Login');
     }
 
-    function isLoggedIn() {
-        if(isset($_SESSION['user_id'])) {
-            return true;
-        }else {
-            return false;
-        }
-    }
+    // function isLoggedIn() {
+    //     if(isset($_SESSION['user_id'])) {
+    //         return true;
+    //     }else {
+    //         return false;
+    //     }
+    // }
 
     function forgetPassword() {
         if(isset($_POST['enter_btn'])) {
