@@ -46,11 +46,14 @@
 </div>
 </div>
 
+<div class="tableTopic" >
+    <p>Product Updates</p>
+</div>
 <!-- **************   Table container   *********-->
-<div class="table-container" id="pricetbl">
+<div class="table-container" >
     <div class="table-section">
         <table class="teapricetable" id="updateProductsTable">
-    
+   
                 <tr class="trcls">
                     <th class="thcls">Updated Date</th>
                     <th class="thcls">Pid</th>
@@ -59,35 +62,15 @@
 
                 </tr>
             
-
-<!--         
-            <tr>
-                <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-
-            </tr> -->
             
         </table>
     </div>
 </div>
-<!-- <div id="priceForm" class="form-container">
 
-    <div class="middleform">
-        <form class="form-inline" action="#">
-            <label for="year">Year:</label>
-            <input type="text" id="year" placeholder="Year" name="year">
-            <label for="month">Month:</label>
-            <input type="text" id="month" placeholder="Month" name="month">
-            <label for="price">Price:</label>
-            <input type="text" id="price" placeholder="Price" name="price">
 
-            <button type="submit">Submit</button>
-        </form>
-    </div>
 
-</div> -->
+</div>
+
 
 <script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 
