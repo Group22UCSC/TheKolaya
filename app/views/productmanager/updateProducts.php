@@ -1,6 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
-<body onload="loadPid();"></body>
+<body onload="loadPid();getTable();"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/productmanager/updateProducts.css">
 
 <div class="top-container">
@@ -49,8 +49,8 @@
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
     <div class="table-section">
-        <table class="teapricetable">
-            <thead class="threadcls">
+        <table class="teapricetable" id="updateProductsTable">
+    
                 <tr class="trcls">
                     <th class="thcls">Updated Date</th>
                     <th class="thcls">Pid</th>
@@ -58,62 +58,17 @@
                     <th class="thcls">Amount(Kg)</th>
 
                 </tr>
-            </thead>
+            
 
-            <!-- <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                <td class="tdcls">January</td>
-                <td class="tdcls">98</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
-
-            </tr> -->
-
-
+<!--         
             <tr>
-                <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-
-            </tr>
-            <!-- <tr>
                 <td class="tdcls">12/10/2021</td>
                 <td class="tdcls">P001</td>
                 <td class="tdcls">B-345-Black-Tea</td>
                 <td class="tdcls">234</td>
 
             </tr> -->
-            <tr>
-                 <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-
-            </tr>
-            <tr>
-                 <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
             
-            </tr>
-            <tr>
-                 <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-            </tr>
-            <tr>
-                <td class="tdcls">12/10/2021</td>
-                <td class="tdcls">P001</td>
-                <td class="tdcls">B-345-Black-Tea</td>
-                <td class="tdcls">234</td>
-            </tr>
-            
-            
-
         </table>
     </div>
 </div>

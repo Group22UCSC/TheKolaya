@@ -183,5 +183,24 @@ class productmanager_Model extends Model {
             throw $e;
         }
     }
+
+    function getProductsINTable(){
+        $query1 = "SELECT products_in.date,products_in.products_id, product.product_name, products_in.amount
+                FROM products_in 
+                INNER JOIN product 
+                ON products_in.products_id=product.product_id 
+                ORDER BY products_in.date DESC";
+        $query="SELECT * FROM products_in";
+        $row = $this->db->selectQuery($query1);
+        //echo gettype($row);
+        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+
 }
 ?>
