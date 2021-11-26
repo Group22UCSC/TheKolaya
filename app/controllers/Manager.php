@@ -20,10 +20,7 @@ class Manager extends Controller
         $this->view->render('Manager/viewAccount', $result);
     }
 
-    public function viewAccount1()
-    {
-        $this->view->showPage('Manager/viewAccount1');
-    }
+
 
     public function viewTeaQuality()
     {
@@ -95,4 +92,16 @@ class Manager extends Controller
     {
         $this->view->render('user/profile/enterPassword');
     }
+
+     function manageRequests()
+    {
+        $this->getNotificationCount(); //This for get Notification count
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->model->manageRequests($_POST);
+        } else {
+            $request = $this->model->getRequests();
+            $this->view->render('Supervisor/manageRequests', $request);
+        }
+    }
+
 }

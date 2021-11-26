@@ -81,8 +81,6 @@ class Login extends Controller {
                 $_SESSION['user_type'] = 'Landowner';
             }
             $this->model->getRoute($_SESSION['user_type']);
-        }else if($_SESSION['user_type'] == 'ProductManager') {
-            $_SESSION['user_type'] == 'Productmanager';
         }
         $_SESSION['NotSeenCount'] = $this->model->getNotSeenNotificationCount($_SESSION['user_type']);
         redirect($_SESSION['user_type']);
@@ -99,13 +97,13 @@ class Login extends Controller {
         redirect('Login');
     }
 
-    // function isLoggedIn() {
-    //     if(isset($_SESSION['user_id'])) {
-    //         return true;
-    //     }else {
-    //         return false;
-    //     }
-    // }
+    function isLoggedIn() {
+        if(isset($_SESSION['user_id'])) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     function forgetPassword() {
         if(isset($_POST['enter_btn'])) {
