@@ -315,10 +315,12 @@ justify-self: center ;
       -ms-animation: fadeIn 1.6s;
 }
 .teapricetable {
+  overflow-y:scroll ;
+  height: 300px;
     border-collapse: collapse;
     box-shadow: 0 5px 10px #e1e5ee;
     background-color: white;
-    text-align: left;
+    text-align: center; 
     overflow: hidden;
     width: 100%;
   }

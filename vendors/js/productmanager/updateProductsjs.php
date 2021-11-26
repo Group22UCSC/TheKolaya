@@ -101,7 +101,7 @@ $(document).ready(function() {
 
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost/Thekolaya/productmanager/updateAuction",
+                        url: "http://localhost/Thekolaya/productmanager/updateProducts",
 
                         data: {
                             action: action,
@@ -110,7 +110,8 @@ $(document).ready(function() {
                             
                         },
                         success: function(data) {
-
+                            
+                            console.log(data);
                             Swal.fire(
                                 'Updated!',
                                 'Your file has been updated.',
@@ -132,4 +133,61 @@ $(document).ready(function() {
             })
         })
     })
+
+    // ======= get auction table - SELECT ========
+    <?php $dateToday = date("Y-m-d"); ?>
+
+    function getTable() {
+        //alert("d");
+        var url = "http://localhost/Thekolaya/productmanager/getProductsINTable";
+        
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data) {
+               // console.log("succ");
+                console.log(data);
+                var len = data.length;
+                //    $('#updateAuctionTable not(tbody)').empty();
+                //$("#updateAuctionTable").trigger("reset");
+                // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
+                for (var i = 0; i < 10; i++) {
+                    var date = data[i].date;
+                    var str =
+                        "<tr class='row'>" +
+                        "<td>" +
+                        data[i].date +
+                        "</td>" +
+                        "<td>" +
+                        data[i].products_id +
+                        "</td>" +
+                        "<td>" +
+                        data[i].product_name +
+                        "</td>" +
+                        "<td>" +
+                        data[i].amount +
+                        "</td>" +
+                    
+                        "<td>" +
+                        // (date==date)? "Hi":"Bye";
+                        "</td>" +
+                        "</tr>";
+                    $("#updateProductsTable tbody").append(str);
+                    // there in the table DO NOT DEFINE <tbody> MANULLY
+                    //IF SO IT WILL SHOW THE RESULTS TWICE
+                }
+
+            }
+        })
+
+    }
+
+
+    //=======clear the excisting values of the table=========
+
+    function clearTable() {
+        // $("#updateAuctionTable tr").remove();
+        $('.row ').remove(); // removing the previus rows in the ui
+    }
 </script>
