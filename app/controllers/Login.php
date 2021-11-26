@@ -81,6 +81,8 @@ class Login extends Controller {
                 $_SESSION['user_type'] = 'Landowner';
             }
             $this->model->getRoute($_SESSION['user_type']);
+        }else if($_SESSION['user_type'] == 'ProductManager') {
+            $_SESSION['user_type'] == 'Productmanager';
         }
         $_SESSION['NotSeenCount'] = $this->model->getNotSeenNotificationCount($_SESSION['user_type']);
         redirect($_SESSION['user_type']);

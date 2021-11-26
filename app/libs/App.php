@@ -16,12 +16,14 @@ class App
     //print_r($this->getUrl());
 
     $url = $this->getUrl();
-
     // Look in controllers for first value
     if (!empty($url)) {
       if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
         // If exists, set as controller
-        if (ucwords($url[0]) == 'Supervisor') {
+        $users = array('Accountant', 'Admin', 'Agent', 'Landowner', 'Manager', 'Productmanager', 'Supervisor');
+
+        $controller = ucwords($url[0]);
+        if ($controller == $users[0] || $controller == $users[1] || $controller == $users[2] || $controller == $users[3] || $controller == $users[4] || $controller == $users[5] || $controller == $users[6]) {
           if (isLoggedIn()) {
             $this->currentController = ucwords($url[0]);
           }else {
