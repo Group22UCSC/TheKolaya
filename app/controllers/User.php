@@ -74,7 +74,7 @@ class User extends Controller {
                 unset($_SESSION['user_type']);
                 redirect('login');
             }else {
-                $this->view->render('User/profile/changePassword', $data);
+                $this->view->render('user/profile/changePassword', $data);
             }
         }else {
             $_SESSION['controller'] = 'profile';
