@@ -12,17 +12,19 @@
 </head>
 <body>
     <div class="container">
-        <h3 class="title">Verify The Mobile Number</h3>
+        <h3 class="title">Your Mobile Number is Verified</h3>
         <p class="sub-title">
-          Enter Your Registered Mobile Number To Check Your Registration
+          You Can Change Password In Here
         </p>
-        <form action="<?php echo URL?>login/changePassword" method="POST">
+        <form action="<?php echo URL?>Login/changePassword" method="POST">
             <div class="form">
                 <div class="inputfield">
                     <label for="new-password">new password</label>
+                    <p style="color: red;"><?php (empty($data['new_password_err'])) ? print '' : print '*' . $data['new_password_err'] ?></p>
                     <input type="password" class="input" name="new_password">
 
                     <label for="confirm-password">Confirm password</label>
+                    <p style="color: red;"><?php (empty($data['confirm_password_err'])) ? print '' : print '*' . $data['confirm_password_err'] ?></p>
                     <input type="password" class="input" name="confirm_password">
                 </div>
               <div class="inputfield">

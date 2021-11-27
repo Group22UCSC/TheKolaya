@@ -117,17 +117,16 @@ class Login extends Controller {
                 $_SESSION['controller'] = $data['controller'];
                 otpSend();
             }else {
-                $this->view->render('User/forgetPassword/wrongNumber', $data);
+                $this->view->render('user/forgetPassword/wrongNumber', $data);
             }
-        }
-        
-        else {
-            $this->view->render('User/forgetPassword/forgetPassword');
+        }else {
+            $this->view->render('user/forgetPassword/forgetPassword');
         }
     }
 
-    public function changePassword() {
+    function changePassword() {
         if(isset($_POST['change_pw_btn'])) {
+            unset($_SESSION['changePassword']);
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'new_password' => $_POST['new_password'],
@@ -137,7 +136,7 @@ class Login extends Controller {
                 'new_password_err' => '',
                 'confirm_password_err' => ''
             ];
-            unset($_SESSION['contact_number']);
+            // unset($_SESSION['contact_number']);
             if(empty($data['new_password'])) {
                 $data['new_password_err'] = "Please enter a new passoword";
             }
@@ -148,15 +147,17 @@ class Login extends Controller {
                 $data['confirm_password_err'] = "Doesn't match with password";
             }
 
-            if(!empty($data['new_password']) || !empty($data['confirm_password'])) {
+            if(empty($data['new_password_err']) && empty($data['confirm_password_err'])) {
                 $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
                 $this->model->changePassword($data);
                 redirect('Login');
             }else {
-                $this->view->render('User/forgetPassword/changePassword', $data);
+                $this->view->render('user/forgetPassword/changePassword', $data);
             }
+        }else if(isset($_SESSION['changePassword'])){
+            $this->view->render('user/forgetPassword/changePassword');
         }else {
-            $this->view->render('User/forgetPassword/changePassword');
+            $this->view->render('Errors/Errors');
         }
     }
 }

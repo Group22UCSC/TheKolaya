@@ -280,10 +280,12 @@ class Supervisor extends Controller
 
     function editProfile()
     {
-        include '../app/controllers/User.php';
-        $user = new User();
-        $user->loadModelUser('User');
-        $user->editProfile();
+        // if (isLoggedIn()) {
+            include '../app/controllers/User.php';
+            $user = new User();
+            $user->loadModelUser('User');
+            $user->editProfile();
+        // }
     }
 
     function enterPassword()
@@ -316,7 +318,7 @@ class Supervisor extends Controller
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
                 echo
-                '<div class="sec new ' . $notification[$i]['notification_type'] . ' '. $notificationStatus .'" id="n-' . $notification[$i]['notification_id'] . '">
+                '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
                         <div class = "profCont">
                             <img class = "notification_profile" src = "' . $imgPath . '">
                         </div>

@@ -16,7 +16,7 @@
           Enter the OTP you received to
           <span class="phone-number"><?php echo $_SESSION['contact_number']?></span>
         </p>
-        <form action="<?php echo URL?>OtpVerify/checkOtp" method="POST">
+        <form action="<?php echo URL?>OtpVerify/checkOtp" method="GET">
             <div class="wrapper">
             <input type="text" class="field 1" name="n-1">
             <input type="text" class="field 2" name="n-2">
