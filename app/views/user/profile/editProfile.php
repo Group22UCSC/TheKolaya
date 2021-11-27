@@ -42,7 +42,7 @@ if(file_exists($file)) {
                 <input type="number" class="input" id="Mobile-number" value="<?php echo  $_SESSION['contact_number']?>" name="contact_number">
               </div>
                 <div class="inputfield" id="left-btn">
-                    <a href="<?php echo URL?>user/changePassword"><input type="button" value="Change Password" class="accept-btn change"></a>
+                    <a href="<?php echo URL?>User/changePassword"><input type="button" value="Change Password" class="accept-btn change"></a>
                 </div>
                 <div class="inputfield" id="right-btn">
                     <input type="submit" value="Accept" class="accept-btn"name="accept-btn">
