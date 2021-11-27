@@ -203,6 +203,7 @@ class Productmanager_Model extends Model {
 
     //get the auction income of the last 30 days
     function AuctionIncome30(){
+        
         $dateToday=date('Y-m-d'); // todays date
         $dateBack30 = date('Y-m-d', strtotime('-30 days')); // 30 days ago
         $query="SELECT `date`, `sold_amount`,`sold_price` FROM `auction` WHERE date BETWEEN '{$dateBack30}' AND '{$dateToday}'";

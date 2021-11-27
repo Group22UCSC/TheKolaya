@@ -1,6 +1,6 @@
 <?php
 
-class Productmanager extends Controller{
+class ProductManager extends Controller{
     function __construct()
     {
         parent::__construct();
