@@ -138,6 +138,14 @@ class ProductManager extends Controller{
        //echo $pid;
        //return $pid;
     }
+    function AuctionIncome30(){
+        $tblResult = $this->model->getProductsINTable();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    }
 }
 
 ?>
