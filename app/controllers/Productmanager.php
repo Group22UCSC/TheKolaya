@@ -85,6 +85,7 @@ class Productmanager extends Controller{
         //print_r($json_arr);
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
+        
     }
     // get details of the products_in table
     function getProductsINTable(){
@@ -138,6 +139,16 @@ class Productmanager extends Controller{
        //echo $pid;
        //return $pid;
     }
+    function AuctionIncome30(){
+        $tblResult = $this->model->AuctionIncome30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    }
+
+
 }
 
 ?>
