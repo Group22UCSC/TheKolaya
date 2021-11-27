@@ -16,11 +16,11 @@
    </head>
 <body>
 <?php
-$file = '../app/views/'.$_SESSION["user_type"].'/top-container.php';
+$file = '../app/views/'.strtolower($_SESSION["user_type"]).'/top-container.php';
 if(file_exists($file)) {
   include $file;
 }else {
-  $file = '../app/views/'.$_SESSION["user_type"].'/topContainer.php';
+  $file = '../app/views/'.strtolower($_SESSION["user_type"]).'/topContainer.php';
   include $file;
 }
 ?>
@@ -56,10 +56,10 @@ if(file_exists($file)) {
 <script src="<?php echo URL?>vendors/js/editProfile.js"></script>
 
 <?php 
-$file = '../app/views/'.$_SESSION["user_type"].'/bottom-container.php';
+$file = '../app/views/'.strtolower($_SESSION["user_type"]).'/bottom-container.php';
 if(file_exists($file)) {
   include $file;
 }else {
-  $file = '../app/views/'.$_SESSION["user_type"].'/bottomContainer.php';
+  $file = '../app/views/'.strtolower($_SESSION["user_type"]).'/bottomContainer.php';
   include $file;
 }
