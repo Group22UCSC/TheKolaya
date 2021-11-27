@@ -72,14 +72,15 @@ class User extends Controller {
                 $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
                 $this->model->changePassword($data);
                 unset($_SESSION['user_type']);
-                redirect('login');
+                session_destroy();
+                redirect('Login');
             }else {
                 $this->view->render('user/profile/changePassword', $data);
             }
         }else {
             $_SESSION['controller'] = 'profile';
             otpSend();
-            // $this->view->render('user/profile/');
+            $this->view->render('user/profile');
         }
     }
 
