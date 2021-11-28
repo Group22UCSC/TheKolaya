@@ -12,7 +12,11 @@ class Otpverify extends Controller
         if (!empty($_SESSION['OTP'])) {
             $this->view->render('otp/OTPverify');
         } else {
-            $this->view->render('Errors/Errors');
+            if(isset($_SESSION['flash_message'])) {
+                $this->view->render('Errors/Errors');
+            }else {
+                $this->view->render('Errors/Errors');
+            }
         }
     }
 
@@ -29,6 +33,7 @@ class Otpverify extends Controller
     function checkOtp()
     {
         if (!empty($_SESSION['OTP'])) {
+            flash('OTP');
             if (isset($_GET['registration-verify'])) {
                 $verifyOTP = $this->validateOtp($_GET);
                 if ($verifyOTP == $_SESSION['OTP']) {
