@@ -207,7 +207,9 @@ class Productmanager_Model extends Model {
         $dateToday=date('Y-m-d'); // todays date
         $dateBack30 = date('Y-m-d', strtotime('-30 days')); // 30 days ago
         $query="SELECT `date`, `sold_amount`,`sold_price` FROM `auction` WHERE date BETWEEN '{$dateBack30}' AND '{$dateToday}'";
+        //details are not coming for 30 days
         $row = $this->db->selectQuery($query);
+        //$d=gettype($dateBack30);
         //echo gettype($row);
         //$var1 = json_encode($row, JSON_FORCE_OBJECT);
         if($row){
