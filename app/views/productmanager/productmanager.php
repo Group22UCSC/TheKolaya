@@ -4,7 +4,7 @@
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-queries.css">
-
+   
   <!-- toop button container -->
   <div class="home-content">
     <div class="overview-boxes">

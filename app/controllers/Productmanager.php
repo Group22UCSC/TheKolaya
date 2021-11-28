@@ -145,7 +145,7 @@ class ProductManager extends Controller{
         //print_r($json_arr);
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
-    }
+    } 
 }
 
 ?>

@@ -18,6 +18,7 @@
                     tot=tot+(data[i].sold_amount*data[i].sold_price)
                     
                 }
+                
                 //auctionDash
                 var s=document.getElementById("auctionDash").innerHTML=tot;
                 console.log(tot);
