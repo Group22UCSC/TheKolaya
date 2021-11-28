@@ -14,15 +14,14 @@
             
             success: function(data) {
                 var len = data.length;
-                //    $('#updateAuctionTable not(tbody)').empty();
-                //$("#updateAuctionTable").trigger("reset");
-                // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
                 for (var i = 0; i < len; i++) {
                     tot=tot+(data[i].sold_amount*data[i].sold_price)
                     
                 }
+                //auctionDash
+                var s=document.getElementById("auctionDash").innerHTML=tot;
                 console.log(tot);
-                console.log(data);
+                //console.log(s);
             }
         })
     }

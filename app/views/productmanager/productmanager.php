@@ -11,7 +11,7 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Auction Income (Rs)</div>
-          <div class="number">40,876</div>
+          <div class="number"> <p id="auctionDash"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
