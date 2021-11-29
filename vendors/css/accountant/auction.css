@@ -120,7 +120,8 @@
 /* **************** table container  ********************** */
 .table-section{
     font-family: 'Poppins', sans-serif;
-  display: grid;
+    display:block;
+    overflow-y:scroll ;
   /* grid-template-columns: 1fr 1fr; */
   padding: 20px;
   color: #4f546c;
@@ -131,6 +132,7 @@
       -moz-animation: fadeIn 2.5s;
       -o-animation: fadeIn 2.5s;
       -ms-animation: fadeIn 2.5s;
+  max-height:500px;
   
 }
 @keyframes fadeIn {
