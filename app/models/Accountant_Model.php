@@ -102,6 +102,17 @@ class Accountant_Model extends Model {
         $result=$this->db->deleteQuery($query);
         echo $result;
     }
+    function getLandonwerTable(){
+        $query="SELECT landowner.user_id,landowner.contact_number,user.name,user.address
+        FROM landowner INNER JOIN user ON landowner.user_id=user.user_id";
+
+        $row = $this->db->selectQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
     
 }
 ?>

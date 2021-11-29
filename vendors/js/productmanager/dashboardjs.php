@@ -22,7 +22,7 @@
                 //auctionDash
                 var s=document.getElementById("auctionDash").innerHTML=tot;
                 console.log(tot);
-                //console.log(s);
+                console.log(data);
             }
         })
     }
