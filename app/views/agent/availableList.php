@@ -73,6 +73,8 @@
           "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
           "</div>" +
           "</div>";
+          console.log('lid'+landownerId);
+          console.log('initialweight'+initialTeaWeight);
         // if(inAmount == 0) {
         //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
         // }else if(inAmount < 0) {
