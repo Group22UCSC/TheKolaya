@@ -98,14 +98,28 @@
         var requestType = $('#rtype').val();
         var amount=$('#amount').val();
         // var priceForAmount = pricePerUnit*inAmount;
-        var str = "<div style=\"display:flex; justify-content:center;\">" +
+        if(requestType=='Fertilizer'){
+          var str = "<div style=\"display:flex; justify-content:center;\">" +
           "<div style=\"text-align:left;\">" +
           "<div>Request ID : <span style=\"color:#01830c;\"><b>" + requestId + "</b></span></div>" +
           "<div>Landowner ID : <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
           "<div>Request Type : <span style=\"color:#01830c;\"><b>" + requestType + "</b></span></div>" +
-          "<div>Requested Amount :  <span style=\"color:#01830c;\"><b> " + amount + "kg</b></span></div>" +
+          "<div>Requested Amount :  <span style=\"color:#01830c;\"><b> " + amount + " kg</b></span></div>" +
           "</div>" +
           "</div>";
+        }
+        else if(requestType=='Advance'){
+          var str = "<div style=\"display:flex; justify-content:center;\">" +
+          "<div style=\"text-align:left;\">" +
+          "<div>Request ID : <span style=\"color:#01830c;\"><b>" + requestId + "</b></span></div>" +
+          "<div>Landowner ID : <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
+          "<div>Request Type : <span style=\"color:#01830c;\"><b>" + requestType + "</b></span></div>" +
+          "<div>Requested Amount :  <span style=\"color:#01830c;\"><b> Rs " + amount + "</b></span></div>" +
+          "</div>" +
+          "</div>";
+        }
+        
+          console.log('requestid'+requestId);
         // if(inAmount == 0) {
         //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
         // }else if(inAmount < 0) {
