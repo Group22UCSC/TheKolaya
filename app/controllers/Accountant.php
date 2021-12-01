@@ -107,6 +107,12 @@ class Accountant extends Controller{
     {
         $this->view->render('user/profile/enterPassword');
     }
+
+    function getLandonwerTable(){
+        $tblResult = $this->model->getLandonwerTable();
+        $json_arr=json_encode($tblResult);
+        echo $json_arr;// echo passes the data 
+    }
 }
 
 ?>

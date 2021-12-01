@@ -2,7 +2,7 @@
 
 use function PHPSTORM_META\type;
 
-class productmanager_Model extends Model {
+class Productmanager_Model extends Model {
 
     function __construct()
     {
@@ -89,7 +89,8 @@ class productmanager_Model extends Model {
             return false;
         }
     }
-    function insertAution(){
+    function insertAution(){ // insert auction details to auction and update changed stock
+                            //to the products table
             
             date_default_timezone_set('Asia/Colombo');
             $date=date("Y-m-d H:i:s");
@@ -98,17 +99,14 @@ class productmanager_Model extends Model {
             $price=$_POST['price'];
             $bid=$_POST['bid'];
             $emp_id=$_SESSION['user_id'];
+            
+            
             // get the details of the products(The current stock);
-
             $getCurrentStockQuery="SELECT stock FROM product WHERE product_id='{$pid}'";
             $rslt=$this->db->runQuery($getCurrentStockQuery);
             $currentStock=$rslt[0]['stock'];
-            //echo "Hello";
-            // $_SESSION['newstck']="d";
-            //return($currentStock);
             
             
-
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $query = "INSERT INTO auction (date,product_id,buyer_id,sold_price,sold_amount,emp_id) VALUES ('{$date}','{$pid}','{$bid}','{$price}','{$amount}','{$emp_id}')";
             $newStock=$currentStock-$amount;
@@ -146,5 +144,82 @@ class productmanager_Model extends Model {
             return false;
         }
     }
+
+    function insertProduct(){
+        date_default_timezone_set('Asia/Colombo');
+        $date=date("Y-m-d H:i:s");
+        $pid=$_POST['pid'];
+        $amount=(float)$_POST['amount'];
+        $emp_id=$_SESSION['user_id'];
+        
+        
+        // get the details of the products(The current stock);
+        $getCurrentStockQuery="SELECT stock FROM product WHERE product_id='{$pid}'";
+        $rslt=$this->db->runQuery($getCurrentStockQuery);
+        $currentStock=(float)$rslt[0]['stock'];
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $query = "INSERT INTO products_in(products_id,date,amount,emp_id) VALUES ('{$pid}','{$date}','{$amount}','{$emp_id}')";
+            $newStock=($currentStock)+($amount);
+            //$adding the new amount to stock table     
+            $query2="UPDATE product SET stock='{$newStock}' WHERE product_id='{$pid}'";
+            // $newstckrslt=$this->db->runQuery($query2);
+
+           // $_SESSION['newstck']=$newStock;
+            //$query2="UPDATE"
+        try{ 
+            $this->db->beginTransaction();
+            $row = $this->db->insertQuery($query);
+            $row2 = $this->db->insertQuery($query2);
+            //print_r($row);
+            $this->db->commit();
+            if($row2){
+                return true;
+            }else {
+                return false;
+            }
+        }
+        catch( PDOException $e){
+            $this->db->rollback();
+            throw $e;
+        }
+    }
+
+    function getProductsINTable(){
+        $query1 = "SELECT products_in.date,products_in.products_id, product.product_name, products_in.amount
+                FROM products_in 
+                INNER JOIN product 
+                ON products_in.products_id=product.product_id 
+                ORDER BY products_in.date DESC";
+        $query="SELECT * FROM products_in";
+        $row = $this->db->selectQuery($query1);
+        //echo gettype($row);
+        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    //get the auction income of the last 30 days
+    function AuctionIncome30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `date`, `sold_amount`,`sold_price` FROM `auction` WHERE date>= '$dateBack30' AND date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        
+        //echo gettype($row);
+        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+    
 }
 ?>

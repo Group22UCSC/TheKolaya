@@ -69,7 +69,7 @@
 }
 
 /* bell with notification badge-newly added */
-.icon-button {
+/* .icon-button {
   position: relative;
   display: flex;
   align-items: center;
@@ -107,7 +107,7 @@
 
 .hide {
   display: none;
-}
+} */
 /* ----------------- */
 
 
@@ -336,6 +336,17 @@
 
 #account {
   display: none;
+}
+
+@media (max-width: 720px) {
+  #account-web .name {
+    display: none;
+  }
+
+  .profile .icon_wrap img {
+    margin-right: 15px;
+  }
+
 }
 
 @media (max-width: 600px) {

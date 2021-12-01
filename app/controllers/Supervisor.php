@@ -15,7 +15,7 @@ class Supervisor extends Controller
         $todayRequests = $this->model->getTodayFertilizerRequest();
 
         $this->getNotificationCount(); //This for get Notification count
-        $this->view->render('Supervisor/Supervisor', $stock, $teaCollection, $todayRequests);
+        $this->view->render('supervisor/supervisor', $stock, $teaCollection, $todayRequests);
     }
 
     function getAgentTeaCollection()
@@ -163,7 +163,7 @@ class Supervisor extends Controller
             }
         } else {
             $updateTable = $this->model->getUpdateTeaMeasure();
-            $this->view->render('Supervisor/updateTeaMeasure', $updateTable);
+            $this->view->render('supervisor/updateTeaMeasure', $updateTable);
         }
     }
 
@@ -174,7 +174,7 @@ class Supervisor extends Controller
             $this->model->manageRequests($_POST);
         } else {
             $request = $this->model->getRequests();
-            $this->view->render('Supervisor/manageRequests', $request);
+            $this->view->render('supervisor/manageRequests', $request);
         }
     }
 
@@ -191,15 +191,15 @@ class Supervisor extends Controller
             if ($_POST['stock_type'] == 'in_stock') {
                 $data['price_per_unit'] = trim($_POST['price_per_unit']);
             }
-            
+
             $this->model->manageStock($data);
             $stock = $this->model->getStock();
             $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
-            if($_SESSION['fertilizer_stock'] <= 500) {
+            if ($_SESSION['fertilizer_stock'] <= 500) {
                 $this->model->stockGetLimit("Fertilzer Stock");
             }
         } else {
-            $this->view->render('Supervisor/manageFertilizer');
+            $this->view->render('supervisor/manageFertilizer');
         }
     }
 
@@ -220,11 +220,11 @@ class Supervisor extends Controller
             $this->model->manageStock($data);
             $stock = $this->model->getStock();
             $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
-            if($_SESSION['firewood_stock'] <= 500) {
+            if ($_SESSION['firewood_stock'] <= 500) {
                 $this->model->stockGetLimit("Firewood Stock");
             }
         } else {
-            $this->view->render('Supervisor/manageFirewood');
+            $this->view->render('supervisor/manageFirewood');
         }
     }
 
@@ -241,7 +241,7 @@ class Supervisor extends Controller
             $_SESSION['search'] = 1;
         }
         $instock = $this->model->stock($data);
-        $this->view->render('Supervisor/fertilizerInStock', $instock);
+        $this->view->render('supervisor/fertilizerInStock', $instock);
     }
 
     function firewoodInStock()
@@ -253,12 +253,12 @@ class Supervisor extends Controller
             'date' => ''
         ];
         $instock = $this->model->stock($data);
-        $this->view->render('Supervisor/firewoodInStock', $instock);
+        $this->view->render('supervisor/firewoodInStock', $instock);
     }
 
     function fertilizerOutStock()
     {
-        $this->view->render('Supervisor/fertilizerOutstock');
+        $this->view->render('supervisor/fertilizerOutstock');
     }
 
     function firewoodOutStock()
@@ -269,7 +269,7 @@ class Supervisor extends Controller
             'type' => 'firewood',
         ];
         $outstock = $this->model->stock($data);
-        $this->view->render('Supervisor/firewoodOutStock', $outstock);
+        $this->view->render('supervisor/firewoodOutStock', $outstock);
     }
 
     //Manage Profile
@@ -280,10 +280,12 @@ class Supervisor extends Controller
 
     function editProfile()
     {
-        include '../app/controllers/User.php';
-        $user = new User();
-        $user->loadModelUser('user');
-        $user->editProfile();
+        // if (isLoggedIn()) {
+            include '../app/controllers/User.php';
+            $user = new User();
+            $user->loadModelUser('User');
+            $user->editProfile();
+        // }
     }
 
     function enterPassword()
@@ -297,25 +299,42 @@ class Supervisor extends Controller
         if (!empty($notification)) {
             echo '<div id="all_notifications">';
             for ($i = 0; $i < count($notification); $i++) {
-                switch($notification[$i]['notification_type']) {
+                switch ($notification[$i]['notification_type']) {
                     case 'warning':
-                        $imgPath = URL.'/vendors/images/notifications/warning.jpg';
+                        $imgPath = URL . '/vendors/images/notifications/warning.jpg';
                         break;
                     case 'request':
-                        $imgPath = URL.'/vendors/images/notifications/request.jpg';
+                        $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                        break;
+                }
+
+                switch ($notification[$i]['read_unread']) {
+                    case 0:
+                        $notificationStatus = "unread";
+                        break;
+                    case 1:
+                        $notificationStatus = "read";
                         break;
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
-                echo 
-                    '<div class="sec new '. $notification[$i]['notification_type'] .'" id="n-'. $notification[$i]['notification_id'] .'">
+                echo
+                '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
                         <div class = "profCont">
-                            <img class = "notification_profile" src = "'. $imgPath .'">
+                            <img class = "notification_profile" src = "' . $imgPath . '">
                         </div>
-                        <div class="txt '. $notification[$i]['notification_type'] .'">'. $notification[$i]['message'] .'</div>
-                        <div class="txt sub">'.$dateTime.'</div>
-                    </div>';                    
+                        <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                        <div class="txt sub">' . $dateTime . '</div>
+                    </div>';
             }
             echo '</div>';
+        } else {
+            echo
+            '<div id="all_notifications">
+                <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                </div>
+            </div>';
         }
     }
 
@@ -328,16 +347,9 @@ class Supervisor extends Controller
     function getNotification()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if ($_POST['notification_type'] == 'half') {
-                $notification = $this->model->getNotReadedNotification();
+            if (isset($_POST['notification_type'])) {
+                $notification = $this->model->getNotification($_POST);
                 $this->setNotification($notification);
-            } else if ($_POST['notification_type'] == 'all') {
-                $notification = $this->model->getAllNotification();
-                $this->setNotification($notification);
-            } else {
-                $notification = $this->model->getNotSeenNotification();
-                $notification_count = count($notification);
-                echo $notification_count;
             }
         }
     }

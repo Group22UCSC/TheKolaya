@@ -14,8 +14,24 @@
 .top-container>p{
 text-align: center;
 padding-top: 15px;
-
 justify-self: center ;
+
+}
+
+.tableTopic{
+  display: block;
+  height: 50px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 15px;
+  text-align: center;
+padding-top: 15px;
+justify-self: center;
+
+}
+.tableTopic>p{
+  color: rgb(35, 173, 104);
+  font-size: larger;
 }
 /* .top-container >div{
 
@@ -40,6 +56,7 @@ justify-self: center ;
   width: 100%;
   background: white;
   margin: 30px auto ;
+  
  border-radius: 25px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
   padding: 40px;
@@ -48,7 +65,6 @@ justify-self: center ;
   -moz-animation: fadeIn 2.2s;
   -o-animation: fadeIn 2.2s;
   -ms-animation: fadeIn 2.2s; 
-  /* background-image: url("../../images/productmanager/tea_plant3.png"); */
   /* background: rgba(255, 255, 255, 0.3) url("../../images/productmanager/tea_plant.jpg"); */
   /* animation: fadeIn 2s;
       -webkit-animation: fadeIn 2s;
@@ -172,8 +188,10 @@ justify-self: center ;
       flex-direction: row;
     }
   }
-
- 
+  .error {
+    color: red;
+    font-size: 14px;
+}
 /*  **** set button pop up ******** */
 
 *, *::after, *::before {
@@ -187,7 +205,7 @@ justify-self: center ;
   
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 3px solid rgb(182, 15, 15);
+  border: 3px solid rgb(8, 212, 134);
   border-radius: 10px;
   z-index: 10;
   background-color: white;
@@ -221,12 +239,22 @@ justify-self: center ;
   background: none;
   font-size: 1.25rem;
   font-weight: bold;
+  color: red;
 }
 
 .modal-body {
   padding: 30px;
 }
-
+.modalInput{
+  border: none;
+  color: #f88a0d;
+  font-size: 16px;
+  max-width: 600px;
+}
+.modalInput:focus{
+  
+  outline: none;
+}
 #overlay {
   position: fixed;
   opacity: 0;
@@ -297,79 +325,126 @@ justify-self: center ;
 }
 
 /* **************** table container ********************** */
-#pricetbl{
-    font-family: 'Poppins', sans-serif;
-  display: grid;
-  padding: 40px;
-  color: #4f546c;
-  font-size: 0.9rem;
-  background-color: #f9fbff;
-  margin-top: 20px;
-  animation: fadeIn 1.6s;
-      -webkit-animation: fadeIn 1.6s;
-      -moz-animation: fadeIn 1.6;
-      -o-animation: fadeIn 1.6s;
-      -ms-animation: fadeIn 1.6s;
+
+.table-section{
+  font-family: 'Poppins', sans-serif;
+display: grid;
+/* grid-template-columns: 1fr 1fr; */
+padding: 40px;
+color: #4f546c;
+font-size: 0.9rem;
+background-color: #f9fbff;;
+animation: fadeIn 2.5s;
+    -webkit-animation: fadeIn 2.5s;
+    -moz-animation: fadeIn 2.5s;
+    -o-animation: fadeIn 2.5s;
+    -ms-animation: fadeIn 2.5s; 
 }
 .teapricetable {
-    border-collapse: collapse;
+  display:block;
+    overflow-y:scroll ;
+  height: 300px;
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px #e1e5ee;
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  
+}
+  .threadcls {
     box-shadow: 0 5px 10px #e1e5ee;
-    background-color: white;
-    text-align: left;
-    overflow: hidden;
-    width: 100%;
   }
-    .threadcls {
-      box-shadow: 0 5px 10px #e1e5ee;
-    }
-  
-    .thcls   {
-      padding: 1rem 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      font-size: 0.7rem;
-      font-weight: 900;
-    }
-  
-    .tdcls {
-      padding: 1rem 2rem;
-    }
-  
-    .acls {
-      text-decoration: none;
-      color:#2962ff;
-    }
-  
-    .status {
-      border-radius:  0.2rem;
-      background-color: red;
-      padding: 0.2rem 1rem;
-      text-align: center;
-  }
-     .status-pending {
-        background-color: #fff0c2;
-        color: #a68b00;
-      }
-  
-       .status-paid {
-        background-color: #c8e6c9;
-        color:  #388e3c;
-      }
-  
-        .status-notupdated {
-        background-color: #ffcdd2;
-        color: #c62828;
-      }
+  /* .trcls{
+    display:block;
+    overflow-y:scroll ;
+  height: 300px;
+  } */
+  .thcls   {
     
+    padding: 1rem 6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+    /* position: fixed;
+    top: 0px; display:none;
+    background-color:white; */
+  }
+
+  td {
+    padding: 1rem 2rem;
+  }
+
+  .acls {
+    text-decoration: none;
+    color:#2962ff;
+  }
+  .tdcls .tblbutton{
+    background-color: rgb(35, 173, 104);
+    padding: 10px 20px;
   
-    .amount {
-      text-align: right;
-    }
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  }
+  .tdcls .tblbutton:hover{
+    background-color: rgb(221, 119, 51);
+  }
+/* Delete button in the auction table */
+.deleteBtn{
+    padding: 10px 20px;
+    background-color: rgb(255, 101, 30);
+    border: 1px solid #ddd;
+    color: white;
+    text-decoration: none;
+}
   
-   
-    tr:nth-child(even) {
-      background-color: #f4f6fb;
-    }
+  .deleteBtn button:hover {
+    background-color: rgb(241, 44, 37);
+  }
+
+  
+
+  .amount {
+    text-align: right;
+  }
+
+ 
+  tr:nth-child(even) {
+    background-color: #f4f6fb;
+  }
+/*  Changin color when mouse over rows */
+  table tr:not(:first-child){
+    cursor: pointer; transition: all .25s ease-in-out;
+  }
+  table tr:not(:first-child):hover{
+    background-color: #ddd;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
 
     /* ********** table section over ********** */
    

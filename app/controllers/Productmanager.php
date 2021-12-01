@@ -23,7 +23,7 @@ class ProductManager extends Controller{
 
         if($_SERVER['REQUEST_METHOD']=='POST'){
                 
-            $result = $this->model->insertAution();
+            $result = $this->model->insertProduct();
             if($result==true){
             //     $buyers=$this->model->getBuyersDetails();
             // $tblResult = $this->model->auction();
@@ -77,6 +77,7 @@ class ProductManager extends Controller{
         }
             
     }
+    // ==== get the details of the auction table for the updateAuction UI
     function getAuctionTable(){
         $tblResult = $this->model->auction();
         // print_r($tblResult);
@@ -85,6 +86,16 @@ class ProductManager extends Controller{
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
     }
+    // get details of the products_in table
+    function getProductsINTable(){
+        $tblResult = $this->model->getProductsINTable();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    }
+
 
     // get the data of the last row of suction(Latest updated row)
     function getLastRowAuction(){
@@ -127,6 +138,14 @@ class ProductManager extends Controller{
        //echo $pid;
        //return $pid;
     }
+    function AuctionIncome30(){
+        $tblResult = $this->model->AuctionIncome30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    } 
 }
 
 ?>

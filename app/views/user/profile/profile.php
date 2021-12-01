@@ -6,6 +6,7 @@
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style2.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/profile-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/table-style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -15,11 +16,11 @@
    </head>
 <body>
 <?php 
-$file = '../app/views/'.$_SESSION["user_type"].'/top-container.php';
+$file = '../app/views/'.strtolower($_SESSION["user_type"]).'/top-container.php';
 if(file_exists($file)) {
     include $file;
 }else {
-    $file = '../app/views/'.$_SESSION["user_type"].'/topContainer.php';
+    $file = '../app/views/'.strtolower($_SESSION["user_type"]).'/topContainer.php';
     include $file;
 }
 ?>
@@ -31,7 +32,7 @@ if(file_exists($file)) {
         <div class="wrapper-profile">
             <div class="profile-container middle">
                 <div class="profile-img middle">
-                    <img src="<?php echo URL?>vendors/images/<?php echo $_SESSION['user_type']?>/profile.jpg" alt="">
+                    <img src="<?php echo URL?>vendors/images/<?php echo strtolower($_SESSION["user_type"])?>/profile.jpg" alt="">
                 </div>
                 <div class="profile-container-text"><h1><?php echo $_SESSION['name']?></h1></div>
                 <div class="profile-container-text"><?php echo $_SESSION['user_type']?></div>
@@ -49,11 +50,11 @@ if(file_exists($file)) {
         </div>
     </div>
     <?php 
-$file = '../app/views/'.$_SESSION["user_type"].'/bottom-container.php';
+$file = '../app/views/'.strtolower($_SESSION["user_type"]).'/bottom-container.php';
 if(file_exists($file)) {
     include $file;
 }else {
-    $file = '../app/views/'.$_SESSION["user_type"].'/bottomContainer.php';
+    $file = '../app/views/'.strtolower($_SESSION["user_type"]).'/bottomContainer.php';
     include $file;
 }
 ?>
