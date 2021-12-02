@@ -4,7 +4,7 @@
 }
 
 .resultform{
-    display:flex;
+    display:none;
     flex-direction: column;
     margin: 10px auto;
     width:50%;    

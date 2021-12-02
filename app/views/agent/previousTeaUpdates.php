@@ -24,7 +24,7 @@
     <input type="text" id="search" placeholder="Enter Landowner ID.." required>
     <input type="submit" value="search" id="submit">
 </form>
-<form class="resultform">
+<form class="resultform" id="resultform">
 <div class="inputfield">
     <label class="resultlbl">Agent ID</label>
     <input type="text" id="ramount"  size="6"  readonly>
@@ -68,4 +68,11 @@
     
 </form>
 </div>
+<script>
+$(document).ready(function(){
+  $("#submit").click(function(){
+    $("#resultform").show();
+  });
+});
+  </script>
   <?php include 'bottomContainer.php';?>
