@@ -20,6 +20,13 @@
        <span class="tooltip">Available Landowners</span>
      </li>
      <li>
+       <a href="<?php echo URL?>Agent/confirmDeliverables">
+        <i class="fa fa-check-square" aria-hidden="true"></i>
+         <span class="links_name">Confirm Deliverables</span>
+       </a>
+       <span class="tooltip">Confirm Deliverables</span>
+     </li>
+     <li>
        <a href="<?php echo URL?>Agent/viewPreviousUpdates">
         <i class="fa fa-balance-scale" aria-hidden="true"></i>
          <span class="links_name">View Previous Updates</span>
@@ -33,13 +40,7 @@
        </a>
        <span class="tooltip">Emergency Message</span>
      </li>
-     <li>
-       <a href="<?php echo URL?>Agent/confirmDeliverables">
-        <i class="fa fa-check-square" aria-hidden="true"></i>
-         <span class="links_name">Confirm Deliverables</span>
-       </a>
-       <span class="tooltip">Confirm Deliverables</span>
-     </li>
+     
 </ul>
      <div class="social_media_icon">
       <div class="social_media">
