@@ -113,6 +113,15 @@ class Accountant extends Controller{
         $json_arr=json_encode($tblResult);
         echo $json_arr;// echo passes the data 
     }
+    // income card - dashboard
+    function AuctionIncome30(){
+        $tblResult = $this->model->AuctionIncome30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    } 
 }
 
 ?>
