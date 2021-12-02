@@ -104,10 +104,10 @@ class Agent extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->request_data['date'] = date("Y-m-d");
-            $this->request_data['lid'] = trim($_POST['lid-popup']);
-            $this->request_data['rid'] = trim($_POST['rid-popup']);
-            $this->request_data['request_type'] = trim($_POST['rtype-popup']);
-            $this->request_data['amount'] = trim($_POST['amount-popup']);
+            $this->request_data['lid'] = trim($_POST['lid']);
+            $this->request_data['rid'] = trim($_POST['rid']);
+            $this->request_data['request_type'] = trim($_POST['rtype']);
+            $this->request_data['amount'] = trim($_POST['amount']);
             $this->request_data['agent_id'] = $_SESSION['user_id'];
 
             if ($this->request_data['request_type'] == "Fertilizer") {
@@ -117,7 +117,7 @@ class Agent extends Controller
             }
             $result1 = $this->model->fertilizerdeliveryListTable();
             $result2 = $this->model->advancedeliveryListTable();
-            // print_r($result);
+             print_r($this->request_data);
             $this->view->render2('Agent/DeliveryList', $result1, $result2);
             // $this->view->showPage('Agent/DeliveryList');
 
