@@ -1,5 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top dashboard home content -->
+<body onload="AuctionIncome30();"></body>
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
   <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
@@ -11,7 +12,7 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Total Income(Rs)</div>
-          <div class="number">40,876</div>
+          <div class="number"> <p id="auctionDash"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
@@ -131,5 +132,6 @@
         </div>
   </div>
   <!-- bar chart 2 -->
-
-  <?php include 'bottom-container.php'; ?>
+<?php include 'js/accountant/dashboardjs.php'; ?>
+<script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
+<?php include 'bottom-container.php'; ?>
