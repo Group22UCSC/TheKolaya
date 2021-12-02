@@ -109,13 +109,18 @@ form.sign-in-form {
   outline: none;
 }
 
-.input-field select option {
+/* .input-field select option {
   
-}
+} */
 
 .is-invalid {
   color: red;
   border: solid 1px red;
+}
+
+.is-invalid::placeholder {
+  color: red;
+  font-weight: 500;
 }
 
 .invalid-feedback {
@@ -131,10 +136,10 @@ form.sign-in-form {
   font-weight: 500;
 }
 
-.input-field .input-is-invalid::placeholder {
+/* .input-field .input-is-invalid::placeholder {
   color: red;
   font-weight: 500;
-}
+} */
 
 .social-text {
   padding: 0.7rem 0;

@@ -67,13 +67,23 @@ class Registration_Model extends Model {
         }
     }
 
-    public function isRegisteredUser($contact_number) {
+    public function isVerifiedUser($contact_number) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND verify = 1";
 
         $row = $this->db->runQuery($query);
 
         if(count($row)) {
             return true;
+        }else {
+            return false;
+        }
+    }
+
+    function isRegisteredUser($contact_number) {
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND verify = 0";
+        $row = $this->db->runQuery($query);
+        if(!empty($row)) {
+            return $row;
         }else {
             return false;
         }
