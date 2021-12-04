@@ -22,7 +22,8 @@
 <form class="searchform">
     <input type="date" id="date" name="date"  required>
     <input type="text" id="search" placeholder="Enter Landowner ID.." required>
-    <input type="submit" value="search" id="submit">
+    <!-- <button id="search">Search</button> -->
+    <input type="button" value="search" id="submit">
 </form>
 <form class="resultform" id="resultform">
 <div class="inputfield">
