@@ -38,18 +38,6 @@
                 </tr>
             
 
-
-                <tr>
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">L.Gunapala</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                   
-
-                </tr>
-                
-
         </table>
     </div>
 
