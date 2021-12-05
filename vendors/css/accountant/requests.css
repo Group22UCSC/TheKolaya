@@ -32,7 +32,7 @@
     font-family: 'Poppins', sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 40px;
+  padding: 30px;
   color: #4f546c;
   font-size: 0.9rem;
   
@@ -81,12 +81,16 @@
       letter-spacing: 0.1rem;
       font-size: 0.7rem;
       font-weight: 900;
+      text-align: center;
     }
   
     .tdcls {
       padding: 1rem 2rem;
+      
     }
-  
+    #requeststbl td{
+      text-align: center;
+    }
     .acls {
       text-decoration: none;
       color:#2962ff;

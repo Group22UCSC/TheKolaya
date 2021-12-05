@@ -1,5 +1,5 @@
 <script>
-    
+  
 var table = document.getElementById('requeststbl');
 
 for(var i = 1; i < table.rows.length; i++)
@@ -15,6 +15,8 @@ for(var i = 1; i < table.rows.length; i++)
     };
 }
 
+
+// ..........
 function getAdvanceRequests(){
     console.log("d");
     var url="http://localhost/Thekolaya/accountant/getAdvanceRequests";
@@ -28,51 +30,68 @@ function getAdvanceRequests(){
             for(var i=0;i<len;i++){
                 
                 var deleteBtn=$("<button>Delete</button>");
-                //console.log("year :"+year+"month :"+month+"date :"+date2);
-
-
                
-                // Check Date and Set DELETE BUTTONS TO THE TABLE
-                // if(thisYear==year && thisMonth==month && thisDate==date2){
-                //     deleteBtn.appendTo("#actionCol");
-                // }else{
-                //     $("#actionCol").append("<td>No Action</td>");
-                // }
-
-
-
-
-                // const month=data.getMonth()+1
-                // console.log(date);
                 var str=
-                "<tr class='row'>"+
-                "<td>"+
-                    data[i].date+
+                "<tr class='row' onclick='rowClick()'>"+
+                "<td class='tdcls'>"+
+                    data[i].request_id+
                 "</td>"+   
                 "<td>"+
-                    year+
+                    data[i].lid+
                 "</td>"+   
                 "<td>"+
-                    month+
+                    data[i].name+
                 "</td>"+
               
                 "<td>"+
-                    data[i].price+
+                    data[i].request_date+
                 "</td>"+
-                "<td class='actionCol'>"+
-               // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
+                "<td>"+
+                    data[i].amount_rs+
+                "</td>"+
+            //     "<td class='actionCol'>"+
+            //    // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
                     
-               "<button type='button' id='editbutton' onclick='deleteRow()' >" +
-                 "Delete"+
-                "</button>" +
+            //    "<button type='button' id='editbutton' onclick='deleteRow()' >" +
+            //      "Delete"+
+            //     "</button>" +
 
-                "</td>"+
+            //     "</td>"+
                 "</tr>";
-                $("#teapricetable tbody").append(str);
+                $("#requeststbl tbody").append(str);
                 // there in the table DO NOT DEFINE <tbody> MANULLY
                 //IF SO IT WILL SHOW THE RESULTS TWICE
             }
         }
     })
 }
+
+
+
+// when a row is clicked fill the details to the form automatically
+function rowClick(){
+    // remobe the row from ui
+    $('#requeststbl tbody').on('click','tr',function(){
+    //console.log("dd");
+    // remobe the row from ui
+    //$(this).closest('tr').remove();
+    
+    var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
+    $date = $row.find("td:nth-child(1)"); // ist column value
+
+    var date2=$date.text(); // date as a javascript variable
+    console.log(date2);
+    
+    //check date and delete
+    var todaysDate=new Date();        
+    var thisMonth=todaysDate.getMonth()+1;
+    var thisYear=todaysDate.getFullYear();
+
+
+    });
+   
+}
+
+
+
 </script>
