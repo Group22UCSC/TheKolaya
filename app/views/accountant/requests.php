@@ -1,7 +1,10 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
+<body onload="getAdvanceRequests();">
+    
+</body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/requests.css">
-<script defer src="<?php echo URL ?>vendors/js/accountant/requests.js""></script>
+
 <div class="middle-section">
     <div class="top-container">
         <div class="left"></div>
@@ -182,5 +185,7 @@
 
 
 </div>
-
+<?php include 'js/accountant/requestsjs.php"';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
