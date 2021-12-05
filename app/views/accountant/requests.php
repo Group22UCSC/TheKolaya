@@ -65,7 +65,7 @@
             <!-- <textarea id="Comment" type="text" placeholder="Comment" name="comment" </textarea> -->
             <textarea name="" id="Comment" cols="30" rows="10" placeholder="Please Enter Your Comment Here" name="coment"></textarea>
             <a class="btn viewlandowner" href="<?php echo URL?>/accountant/landownersGraphpage">View Landowner</a>
-            <a class="btn accept">Accept</a>
+            <a class="btn accept" id="acceptBtn">Accept</a>
             <a class="btn cancel">Reject</a>
             
         </form>
