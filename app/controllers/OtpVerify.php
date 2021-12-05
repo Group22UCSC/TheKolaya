@@ -42,8 +42,8 @@ class Otpverify extends Controller
                     require_once '../app/controllers/Registration.php';
                     $otpCorrect = new Registration();
                     $otpCorrect->loadModelUser('Registration');
-                    $otpCorrect->updateVerifiedUser();
                     unset($_SESSION['OTP']);
+                    $otpCorrect->updateVerifiedUser();
                     $this->view->render('otp/correctOTP');
                 } else {
                     $verifyOTP = '';

@@ -21,6 +21,17 @@
     .signin-signup .forget-password a:active {
       border-bottom: 1px solid #33aa3d;
     }
+
+    #register_here:hover,
+    #login_here:hover {
+      border-bottom: 1px solid black;
+    }
+
+    .forget-password a {
+      text-decoration: none;
+      color: black;
+      cursor: pointer
+    }
   </style>
   <title><?php echo TITLE ?></title>
   <link rel="icon" href="<?php echo URL ?>vendors/images/thekolaya2.png" type="image/x-icon">
@@ -52,12 +63,12 @@
             <a href="<?php echo URL ?>/Login/forgetPassword">Forget Password?</a>
           </div>
           <div style="text-align: center;" class="forget-password">
-            <span style="color: blue; cursor:context-menu">Not a member? </span> <a href="<?php echo URL ?>Registration">Register Here</a>
+            <span style="color: blue; cursor:default;">Not a member? </span> <a id="register_here">Register Here</a>
           </div>
         </form>
 
 
-        <form action="<?php echo URL ?>Registration" class="sign-up-form" method="POST">
+        <form action="<?php echo URL ?>Registration" class="sign-up-form" method="POST" id="registration_form">
           <div class="logo">
             <img src="<?php echo URL ?>vendors/images/login/logo.png" alt="">
           </div>
@@ -65,16 +76,12 @@
           <div class="input-field <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>">
             <i class="fas fa-user icon <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>"></i>
             <input class="input<?php echo (!empty($data['name_err'])) ? '-is-invalid' : ''; ?>" type="text" placeholder="<?php (!empty($data['name_err'])) ? print $data['name_err'] : print 'name*'; ?>" name="name" />
+
           </div>
 
           <div class="input-field <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>">
             <i class="fas fa-phone icon <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>"></i>
             <input class="input<?php echo (!empty($data['contact_number_err'])) ? '-is-invalid' : ''; ?>" type="tel" placeholder="<?php (!empty($data['contact_number_err'])) ? print $data['contact_number_err'] : print 'mobile number*'; ?>" name="contact_number" />
-          </div>
-
-          <div class="input-field <?php echo (!empty($data['user_id_err'])) ? 'is-invalid' : ''; ?>">
-            <i class="far fa-id-card icon <?php echo (!empty($data['user_id_err'])) ? 'is-invalid' : ''; ?>"></i>
-            <input class="input<?php echo (!empty($data['user_id_err'])) ? '-is-invalid' : ''; ?>" type="text" placeholder="<?php (!empty($data['user_id_err'])) ? print $data['user_id_err'] : print 'user id*'; ?>" name="user_id" />
           </div>
 
           <div class="input-field <?php echo (!empty($data['user_type_err'])) ? 'is-invalid' : ''; ?>">
@@ -89,6 +96,11 @@
               <option value="product_manager">Product Manager</option>
               <option value="supervisor">Supervisor</option>
             </select>
+          </div>
+
+          <div class="input-field <?php echo (!empty($data['user_id_err'])) ? 'is-invalid' : ''; ?>">
+            <i class="far fa-id-card icon <?php echo (!empty($data['user_id_err'])) ? 'is-invalid' : ''; ?>"></i>
+            <input class="input<?php echo (!empty($data['user_id_err'])) ? '-is-invalid' : ''; ?>" type="text" placeholder="<?php (!empty($data['user_id_err'])) ? print $data['user_id_err'] : print 'user id*'; ?>" name="user_id" />
           </div>
 
           <div class="input-field <?php echo (!empty($data['address_err'])) ? 'is-invalid' : ''; ?>">
@@ -107,7 +119,12 @@
           </div>
 
           <input type="submit" class="btn" value="Register" name="register" id="registrationBtn" />
+
+          <div style="text-align: center;" class="forget-password">
+            <span style="color: blue; cursor: default;">One OF Us? </span><a style="color: black;" id="login_here">Login Here</a>
+          </div>
         </form>
+
       </div>
     </div>
 
@@ -130,6 +147,8 @@
   </div>
 
   <script src="<?php echo URL ?>vendors/js/login/app.js"></script>
+  <?php include 'js/registration/registrationJS.php'?>
+  
 </body>
 
 </html>
