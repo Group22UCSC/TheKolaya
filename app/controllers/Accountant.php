@@ -122,6 +122,11 @@ class Accountant extends Controller{
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
     } 
+    // get advacne request details 
+    function getAdvanceRequests(){
+        $reslt=$this->model->getAdvanceRequests();
+        $json_arr=json_encode($reslt);
+        echo $json_arr;
+    }
 }
-
 ?>
