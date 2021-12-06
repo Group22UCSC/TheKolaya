@@ -114,30 +114,6 @@
 
       </div>
     </div>
-    <!-- <div class="from-container-outside">
-      <div class="form-container">
-        <div class="title">Request Confirmation Form</div>
-        <form action="#" id="request_confirm_form">
-          <div class="form">
-            <div class="inputfield">
-              <label>Landowner ID</label>
-              <input type="text" class="input" id="landowner-id" name="landowner_id">
-            </div>
-            <div class="inputfield">
-              <label>Comment</label>
-              <textarea class="textarea" name="comment"></textarea>
-            </div>
-            <div class="inputfield">
-              <input type="submit" value="Accept" class="accept-btn confirmBtn" name="accept_btn" id="request_accept_btn">
-            </div>
-            <div class="inputfield">
-              <input type="submit" value="Decline" class="decline-btn confirmBtn" name="decline_btn" id="request_decline_btn">
-            </div>
-          </div>
-        </form>
-      </div>
-    </div> -->
-
 
   </div>
   <?php include 'script-included.php' ?>

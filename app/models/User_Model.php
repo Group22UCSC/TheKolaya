@@ -20,6 +20,16 @@ class User_Model extends Model {
         }
     }
 
+    function profileUpload($image) {
+        $user_id = $_SESSION['user_id'];
+        $query = "UPDATE user SET profile_picture='$image' WHERE user_id = '$user_id'";
+        $this->db->runQuery($query);
+
+        $query = "SELECT * FROM user WHERE user_id = '$user_id'";
+        $row = $this->db->runQuery($query);
+        $_SESSION['profile_picture'] = $row[0]['profile_picture'];
+        $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"])."/".$_SESSION['profile_picture'];
+    }
     function checkPassword($password) {
         $user_id = $_SESSION['user_id'];
 

@@ -9,9 +9,25 @@ class User extends Controller
 
     function index()
     {
-        $this->view->render('user/home');
+        // $this->view->render('user/home');
     }
 
+    function setProfile() {
+        if(isset($_POST['change_profile_sumbit_btn'])) {
+            $image_name = $_FILES['image_file']['name'];
+            $extension = pathinfo($image_name, PATHINFO_EXTENSION);
+            $image = $_SESSION['user_id'].'.'.$extension;
+
+            $fileToUpload ="images/".strtolower($_SESSION['user_type'])."/".$image;
+            $fileName = $_FILES['image_file']['tmp_name'];
+            if(move_uploaded_file($fileName, $fileToUpload)) {
+                $this->model->profileUpload($image);
+                $this->view->render('user/profile/profile');
+            }
+        }else {
+            $this->view->render('Errors/Errors');
+        }
+    }
     function editProfile()
     {
         if (isLoggedIn()) {
