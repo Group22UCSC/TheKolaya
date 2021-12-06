@@ -1,6 +1,6 @@
 <div class="profile">
     <div class="icon_wrap" id="account-web">
-        <img src="<?php echo URL ?>vendors/images/<?php echo strtolower($_SESSION['user_type'])?>/profile.jpg" alt="profile_pic">
+        <img src="<?php echo URL . 'vendors/images/' . $_SESSION['profile_picture'] ?>" alt="profile_pic">
         <span class="name"><?php echo $_SESSION['name'] ?></span>
         <i class="fas fa-chevron-down"></i>
     </div>
@@ -9,7 +9,7 @@
         <ul class="profile_ul">
             <li class="profile_li">
                 <div class="icon_wrap" id="account">
-                    <img src="<?php echo URL ?>vendors/images/<?php echo strtolower($_SESSION['user_type'])?>/profile.jpg" alt="profile_pic">
+                    <img src="<?php echo URL . 'vendors/images/' . $_SESSION['profile_picture'] ?>" alt="profile_pic">
                     <span class="name"><?php echo $_SESSION['name'] ?></span>
                 </div>
             </li>
