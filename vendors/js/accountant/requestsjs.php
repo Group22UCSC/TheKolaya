@@ -120,6 +120,7 @@ $(document).ready(function(){
       var name = $('#name').val();
       var date = $('#date').val();
       var Amount = $('#amount').val();
+      var Comment = $('#Comment').val();
       if(Amount == '') {
           return;
       }
@@ -128,6 +129,7 @@ $(document).ready(function(){
               "Name:  " +name+ "\n" +
               "Date:  " +date+ "\n" +
               "Amount(Rs):  " +Amount+ "\n" +
+              "Comment:  " +Comment+ "\n" +
               "\n";
       Swal.fire({
       title: 'Are you sure to accept this request ',
@@ -145,15 +147,16 @@ $(document).ready(function(){
               
               $.ajax({
                   type: "POST",
-                  url: "http://localhost/Thekolaya/accountant/acceptRequest",
+                  url: "http://localhost/Thekolaya/accountant/acceptAdvanceRequest",
                   
                   data: {
                     rid:rid,
                     lid:lid,
+                    comment:Comment
                     
                   },
                   success: function(data) {
-                      
+                      console.log(data);
                       Swal.fire(
                       'Updated!',
                       'Your file has been updated.',

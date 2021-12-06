@@ -149,5 +149,15 @@ class Accountant_Model extends Model {
             return false;
         }
     }
+    function acceptAdvanceRequest(){
+        $user_id = $_SESSION['user_id'];
+        $comment=$_POST['Comment'];
+        $rid=$_POST['rid'];
+        $query1="UPDATE advance_request SET acc_id='{$user_id}' WHERE request_id='{$rid}'";
+        $query2="UPDATE request SET response_status='accept',comment='{$comment}' WHERE request_id='$rid'";
+    }
+
+
+
 }
 ?>
