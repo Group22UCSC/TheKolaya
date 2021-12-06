@@ -115,28 +115,24 @@ $(document).ready(function(){
 
      
       $('.error').remove();
-      var Year=$('#year').val();
-      var Month = $('#month').val();
-      var price = $('#price').val();
-      
-      //console.log(amount+pid+price+bid);
-      var action='save';
-      
-      if(price < 0) {
-          $('#price').parent().after("<p class=\"error\">*Price cannot be negative</p>");
-      }else if(price == 0) {
-          $('#price').parent().after("<p class=\"error\">*Price cannot be zero</p>");
-      }
-
-      if(price <= 0) {
+      var rid=$('#rid').val();
+      var lid = $('#lid').val();
+      var name = $('#name').val();
+      var date = $('#date').val();
+      var Amount = $('#amount').val();
+      var Comment = $('#Comment').val();
+      if(Amount == '') {
           return;
       }
-      var str="Year" +Year+ "\n" +
-              "Month :   " +Month+ "\n" +
-              "Price:  " +price+ "\n" +
+      var str="Request Id" +rid+ "\n" +
+              "Landowner id :   " +lid+ "\n" +
+              "Name:  " +name+ "\n" +
+              "Date:  " +date+ "\n" +
+              "Amount(Rs):  " +Amount+ "\n" +
+              "Comment:  " +Comment+ "\n" +
               "\n";
       Swal.fire({
-      title: 'Confirm Update ',
+      title: 'Are you sure to accept this request ',
       icon: 'warning',
     //   html:'<div>Line0<br />Line1<br /></div>',
     html: '<pre>' + str + '</pre>',
@@ -147,28 +143,28 @@ $(document).ready(function(){
       showCancelButton: true
       }).then((result) => {
           if (result.isConfirmed) {
-              $("#setTeaPriceForm").trigger("reset");
+              $("#myForm").trigger("reset");
               
               $.ajax({
                   type: "POST",
-                  url: "http://localhost/Thekolaya/accountant/setTeaPrice",
+                  url: "http://localhost/Thekolaya/accountant/acceptAdvanceRequest",
                   
                   data: {
-                    action:action,
-                    year:Year,
-                    month:Month,
-                    teaPrice:price,
+                    rid:rid,
+                    lid:lid,
+                    comment:Comment
+                    
                   },
                   success: function(data) {
-                      
+                      console.log(data);
                       Swal.fire(
                       'Updated!',
                       'Your file has been updated.',
                       'success'
                       )
                       clearTable();
-                      getTable();
-                      checkForm();
+                      getAdvanceRequests();
+                     
                   },
                   error : function (xhr, ajaxOptions, thrownError) {
                       Swal.fire({
@@ -184,4 +180,8 @@ $(document).ready(function(){
   })
 })
 
+function clearTable(){
+    // $("#updateAuctionTable tr").remove();
+    $('.row ').remove(); // removing the previus rows in the ui
+}
 </script>
