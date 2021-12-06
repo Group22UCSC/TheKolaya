@@ -107,6 +107,26 @@ class Accountant extends Controller{
     {
         $this->view->render('user/profile/enterPassword');
     }
-}
 
+    function getLandonwerTable(){
+        $tblResult = $this->model->getLandonwerTable();
+        $json_arr=json_encode($tblResult);
+        echo $json_arr;// echo passes the data 
+    }
+    // income card - dashboard
+    function AuctionIncome30(){
+        $tblResult = $this->model->AuctionIncome30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    } 
+    // get advacne request details 
+    function getAdvanceRequests(){
+        $reslt=$this->model->getAdvanceRequests();
+        $json_arr=json_encode($reslt);
+        echo $json_arr;
+    }
+}
 ?>

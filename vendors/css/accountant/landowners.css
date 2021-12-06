@@ -35,119 +35,115 @@
 }
 
 /* **************** table container  ********************** */
+.table-section{
+  font-family: 'Poppins', sans-serif;
+  display:block;
+  overflow-y:scroll ;
+/* grid-template-columns: 1fr 1fr; */
+padding: 20px;
+color: #4f546c;
+font-size: 0.9rem;
+background-color: #f9fbff;
+animation: fadeIn 2.5s;
+    -webkit-animation: fadeIn 2.5s;
+    -moz-animation: fadeIn 2.5s;
+    -o-animation: fadeIn 2.5s;
+    -ms-animation: fadeIn 2.5s;
+max-height:500px;
 
+}
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+0% {opacity:0;}
+100% {opacity:1;}
 }
 
 @-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+0% {opacity:0;}
+100% {opacity:1;}
 }
 
 @-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+0% {opacity:0;}
+100% {opacity:1;}
 }
 
 @-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+0% {opacity:0;}
+100% {opacity:1;}
 }
 
 @-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-
-
-.table-section{
-    font-family: 'Poppins', sans-serif;
-  display: grid;
-  /* grid-template-columns: 1fr 1fr; */
-  padding: 40px;
-  color: #4f546c;
-  font-size: 0.9rem;
-  background-color: #f9fbff;;
-  
-
-  animation: fadeIn 1.8s;
--webkit-animation: fadeIn 1.8s;
--moz-animation: fadeIn 1.8s;
--o-animation: fadeIn 1.8s;
--ms-animation: fadeIn 1.8s; 
+0% {opacity:0;}
+100% {opacity:1;}
 }
 .teapricetable {
-    border-collapse: collapse;
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px #e1e5ee;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+} 
+.teapricetable td{
+  text-align: center;
+}
+  .threadcls {
     box-shadow: 0 5px 10px #e1e5ee;
-    background-color: white;
-    text-align: left;
-    overflow: hidden;
-    width: 100%;
   }
-    .threadcls {
-      box-shadow: 0 5px 10px #e1e5ee;
-    }
+  td{
+    padding: 1px;
+  }
+  .thcls   {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-align: center;
+  }
   
-    .thcls   {
-      padding: 1rem 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      font-size: 0.7rem;
-      font-weight: 900;
-    }
+  .tdcls {
+    padding: 3px
+  }
+
+  .acls {
+    text-decoration: none;
+    color:#2962ff;
+  }
+  .tdcls .tblbutton{
+    background-color: rgb(35, 173, 104);
+    padding: 10px 20px;
   
-    .tdcls {
-      padding: 1rem 2rem;
-    }
-  
-    .acls {
-      text-decoration: none;
-      color:#2962ff;
-    }
-    .tdcls .tblbutton{
-      background-color: rgb(35, 173, 104);
-      padding: 10px 20px;
-    
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  }
+  .tdcls .tblbutton:hover{
+    background-color: rgb(221, 119, 51);
+  } 
+  table tr:not(:first-child){
+    cursor: pointer; transition: all .25s ease-in-out;
+  }
+  table tr:not(:first-child):hover{
+    background-color: #ddd;
+  }
+  /* view button of the table */
+  .actionCol button{ 
+    padding: 5px 10px;
+    background-color: rgb(255, 83, 16);
+    border: 5px solid ;
     color: white;
     border-radius: 12px;
-    }
-    .tdcls .tblbutton:hover{
-      background-color: rgb(221, 119, 51);
-    }
-    /* .status {
-      border-radius:  0.2rem;
-      background-color: red;
-      padding: 0.2rem 1rem;
-      text-align: center;
+    width: 40%;
+    text-decoration: none;
+    cursor: pointer;
   }
-     .status-pending {
-        background-color: #fff0c2;
-        color: #a68b00;
-      }
-  
-       .status-paid {
-        background-color: #c8e6c9;
-        color:  #388e3c;
-      }
-  
-        .status-notupdated {
-        background-color: #ffcdd2;
-        color: #c62828;
-      } */
+  .actionCol button:hover{
     
-  
-    .amount {
-      text-align: right;
-    }
-  
-   
-    tr:nth-child(even) {
-      background-color: #f4f6fb;
-    }
+    background-color:  rgb(22, 182, 89);
+
+    cursor: pointer;
+  }
     /*  ******** bar chart section ************ */
     
    /* ******************** Top Search Bar ************ */

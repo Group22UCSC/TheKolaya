@@ -4,14 +4,14 @@
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-queries.css">
-
+   
   <!-- toop button container -->
   <div class="home-content">
     <div class="overview-boxes">
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Auction Income (Rs)</div>
-          <div class="number">40,876</div>
+          <div class="number"> <p id="auctionDash"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>

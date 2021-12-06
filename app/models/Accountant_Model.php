@@ -102,6 +102,52 @@ class Accountant_Model extends Model {
         $result=$this->db->deleteQuery($query);
         echo $result;
     }
+    function getLandonwerTable(){
+        $query="SELECT landowner.user_id,landowner.contact_number,user.name,user.address
+        FROM landowner INNER JOIN user ON landowner.user_id=user.user_id";
+
+        $row = $this->db->selectQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+    //get the auction income of the last 30 days
+    function AuctionIncome30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `date`, `sold_amount`,`sold_price` FROM `auction` WHERE date>= '$dateBack30' AND date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        
+        //echo gettype($row);
+        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
     
+    function getAdvanceRequests(){
+        $sql="SELECT request.request_id,request.request_date,request.lid,advance_request.amount_rs,user.name
+        FROM request 
+        INNER JOIN advance_request ON request.request_id=advance_request.request_id 
+        INNER JOIN user ON user.user_id=request.lid
+        WHERE request.request_type='advance' AND request.response_status='receive' ";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
 }
 ?>

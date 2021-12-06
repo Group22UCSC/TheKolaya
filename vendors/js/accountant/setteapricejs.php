@@ -175,7 +175,7 @@ function getTable(){
             
         }
     }) 
-}
+}   
 
 function checkForm(){
     var url="http://localhost/Thekolaya/accountant/getTeaPrice";

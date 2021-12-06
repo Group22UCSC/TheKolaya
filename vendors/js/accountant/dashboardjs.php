@@ -4,7 +4,7 @@
         // var pid = $('#pid').val();
         // var amount = $('#amount').val();
         // var availableStock = 0;
-        var url = "http://localhost/Thekolaya/productmanager/AuctionIncome30";
+        var url = "http://localhost/Thekolaya/accountant/AuctionIncome30";
         var tot=0;
         $.ajax({
             url: url,
