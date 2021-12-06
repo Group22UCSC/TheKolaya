@@ -124,6 +124,22 @@ class Agent extends Controller
         }
     }
 
+    function searchPreviousTeaUpdates(){
+        $pre_tea_data = [
+            'date' => '',
+            'lid' => ''            
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->pre_tea_data['date'] = trim($_POST['searchdate']); 
+            $this->pre_tea_data['lid'] = trim($_POST['searchlid']);   
+            
+           $result= $this->model->searchTeaUpdates($this->pre_tea_data);
+           $this->view->render('Agent/previousTeaUpdates', $result);
+        //    print_r($result);
+    }
+    }
     function loadPopup()
     {
         $this->view->showPage('Agent/popup');
