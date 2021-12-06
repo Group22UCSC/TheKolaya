@@ -33,6 +33,11 @@ class Database extends PDO{
 
         return $stmt->execute();
     }
+    public function updateQuery($query){
+        $stmt = $this->prepare($query);
+
+        return $stmt->execute();
+    }
 }
 
 ?>

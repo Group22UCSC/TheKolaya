@@ -128,5 +128,9 @@ class Accountant extends Controller{
         $json_arr=json_encode($reslt);
         echo $json_arr;
     }
-}
+    }
+    function acceptAdvanceRequest(){
+        $reslt=$this->model->acceptAdvanceRequest();
+        return $reslt;
+    }
 ?>
