@@ -151,10 +151,36 @@ class Accountant_Model extends Model {
     }
     function acceptAdvanceRequest(){
         $user_id = $_SESSION['user_id'];
-        $comment=$_POST['Comment'];
+        $comment=$_POST['comment'];
         $rid=$_POST['rid'];
+        
+        // $query="SELECT * FROM request"
         $query1="UPDATE advance_request SET acc_id='{$user_id}' WHERE request_id='{$rid}'";
-        $query2="UPDATE request SET response_status='accept',comment='{$comment}' WHERE request_id='$rid'";
+        $row = $this->db->updateQuery($query1);
+        //print_r($row);
+        if($row){
+            return true;
+        }else {
+            return false;
+        }
+        // $query2="UPDATE request SET response_status='accept',comments='{$comment}' WHERE request_id='$rid'";
+        // $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // try{ 
+        //     $this->db->beginTransaction();
+        //     $row = $this->db->insertQuery($query1);
+        //     $row2 = $this->db->insertQuery($query2);
+        //     //print_r($row);
+        //     $this->db->commit();
+        //     if($row2){
+        //         return true;
+        //     }else {
+        //         return false;
+        //     }
+        // }
+        // catch( PDOException $e){
+        //     $this->db->rollback();
+        //     throw $e;
+        // }
     }
 
 

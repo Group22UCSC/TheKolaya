@@ -1,21 +1,7 @@
 <script>
-    var table = document.getElementById('requeststbl');
-
-    for (var i = 1; i < table.rows.length; i++) {
-        table.rows[i].onclick = function() {
-            //rIndex = this.rowIndex;
-            document.getElementById("rid").value = this.cells[0].innerHTML;
-            document.getElementById("lid").value = this.cells[1].innerHTML;
-            document.getElementById("name").value = this.cells[2].innerHTML;
-            document.getElementById("date").value = this.cells[3].innerHTML;
-            document.getElementById("amount").value = this.cells[4].innerHTML;
-        };
-    }
-
-
     // ..........
     function getAdvanceRequests() {
-        console.log("d");
+        console.log("getAdvanceRequests");
         var url = "http://localhost/Thekolaya/accountant/getAdvanceRequests";
         $.ajax({
             url: url,
@@ -75,15 +61,15 @@
 
             var $row = $(this).closest("tr"), // Finds the closest row <tr> 
                 $rid = $row.find("td:nth-child(1)"); // ist column value
-                $lid=$row.find("td:nth-child(2)");
-                $name = $row.find("td:nth-child(3)"); // ist column value
-                $rDate=$row.find("td:nth-child(4)");
-                $amount=$row.find("td:nth-child(5)");
+            $lid = $row.find("td:nth-child(2)");
+            $name = $row.find("td:nth-child(3)"); // ist column value
+            $rDate = $row.find("td:nth-child(4)");
+            $amount = $row.find("td:nth-child(5)");
 
             var Rid = $rid.text(); // rid as a javascript variable
-            var Lid= $lid.text();
+            var Lid = $lid.text();
             var name = $name.text(); // rid as a javascript variable
-            var rDate= $rDate.text();
+            var rDate = $rDate.text();
             var amount = $amount.text(); // rid as a javascript variable
 
 
@@ -106,82 +92,87 @@
 
     // request submission form
     //  form submit - Accept Request
-$(document).ready(function(){
-  $('#acceptBtn').click(function(event){
-      event.preventDefault();
-      var form = $('#myForm').serializeArray();
-      // form.push({name:'stock_type', value: 'in_stock'});
-      // form.push({name:'type', value: 'firewood'});
+    $(document).ready(function() {
+        $('#acceptBtn').click(function(event) {
+            // validateAmount();
+            event.preventDefault();
 
-     
-      $('.error').remove();
-      var rid=$('#rid').val();
-      var lid = $('#lid').val();
-      var name = $('#name').val();
-      var date = $('#date').val();
-      var Amount = $('#amount').val();
-      var Comment = $('#Comment').val();
-      if(Amount == '') {
-          return;
-      }
-      var str="Request Id" +rid+ "\n" +
-              "Landowner id :   " +lid+ "\n" +
-              "Name:  " +name+ "\n" +
-              "Date:  " +date+ "\n" +
-              "Amount(Rs):  " +Amount+ "\n" +
-              "Comment:  " +Comment+ "\n" +
-              "\n";
-      Swal.fire({
-      title: 'Are you sure to accept this request ',
-      icon: 'warning',
-    //   html:'<div>Line0<br />Line1<br /></div>',
-    html: '<pre>' + str + '</pre>',
-      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
-      confirmButtonColor: '#4DD101',
-      cancelButtonColor: '#FF2400',
-      confirmButtonText: 'Confirm!',
-      showCancelButton: true
-      }).then((result) => {
-          if (result.isConfirmed) {
-              $("#myForm").trigger("reset");
-              
-              $.ajax({
-                  type: "POST",
-                  url: "http://localhost/Thekolaya/accountant/acceptAdvanceRequest",
-                  
-                  data: {
-                    rid:rid,
-                    lid:lid,
-                    comment:Comment
-                    
-                  },
-                  success: function(data) {
-                      console.log(data);
-                      Swal.fire(
-                      'Updated!',
-                      'Your file has been updated.',
-                      'success'
-                      )
-                      clearTable();
-                      getAdvanceRequests();
-                     
-                  },
-                  error : function (xhr, ajaxOptions, thrownError) {
-                      Swal.fire({
-                          icon: 'error',
-                          title: 'Oops...',
-                          text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
-                          // footer: '<a href="">Why do I have this issue?</a>'
-                      })
-                  }
-              })
-          }
-      })
-  })
-})
+            var form = $('#requestForm').serializeArray();
 
-function clearTable(){
-    // $("#updateAuctionTable tr").remove();
-    $('.row ').remove(); // removing the previus rows in the ui
-}
+
+            $('.error').remove(); // remove the previos error messages displayed
+            // after clicking the update again the same error may appear so have to remove previous errors
+
+            var rid = $('#rid').val();
+            var lid = $('#lid').val();
+            var name = $('#name').val();
+            var date = $('#date').val();
+            var amount = $('#amount').val();
+            var comment = $('textarea#Comment').val();
+            var action='Save';
+
+            if (amount <= 0) {
+                return;
+            }
+            var str = "Request Id:  " + rid + "\n" +
+                "Amount :   " + amount + "\n" +
+                "Comment :   " + comment + "\n" +
+                "Landowner's Id :" + lid + "\n";
+            Swal.fire({
+                title: 'Confirm Update ',
+                icon: 'warning',
+                //   html:'<div>Line0<br />Line1<br /></div>',
+                html: '<pre>' + str + '</pre>',
+                //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
+                confirmButtonColor: '#4DD101',
+                cancelButtonColor: '#FF2400',
+                confirmButtonText: 'Confirm!',
+                showCancelButton: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#requestForm").trigger("reset");
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost/Thekolaya/accountant/requests",
+                            
+                        data: {
+                            action: action,
+                            amount: amount,
+                            comment:comment,
+                            rid: rid,
+
+                        },
+                        success: function(data) {
+
+                            console.log(data);
+                            Swal.fire(
+                                'Updated!',
+                                'Your file has been updated.',
+                                'success'
+                            )
+                            // clearTable();
+                            // getTable();
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                                // footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        }
+                    })
+                }
+            })
+        })
+    })
+
+    // previous
+
+
+    function clearTable() {
+        // $("#updateAuctionTable tr").remove();
+        $('.row ').remove(); // removing the previus rows in the ui
+    }
 </script>

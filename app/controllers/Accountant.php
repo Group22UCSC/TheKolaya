@@ -74,7 +74,25 @@ class Accountant extends Controller{
         $this->view->showPage('accountant/landownersGraphpage');
     }
     function requests(){
-        $this->view->showPage('accountant/requests');
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            
+
+            $result=$this->model->acceptAdvanceRequest();
+            if($result==true){
+                
+                $_POST['success']=1;
+               
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        }
+        else{
+            $this->view->showPage('accountant/requests');
+        }
+        
     }
     // testing model
     function testModel(){
@@ -129,8 +147,18 @@ class Accountant extends Controller{
         echo $json_arr;
     }
     }
-    function acceptAdvanceRequest(){
-        $reslt=$this->model->acceptAdvanceRequest();
-        return $reslt;
+    function acptAdvRqst(){
+           
+            $result=$this->model->acceptAdvanceRequest();
+            
+            if($result==true){
+                return $result;
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+       
     }
 ?>

@@ -44,7 +44,7 @@
     
 
     <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
+        <form action="<?php echo URL?>accountant/requests" method="post" class="form-container" id="requestForm">
             <h1>Advance Request</h1>
 
             <label for="rid"><b>Rid</b></label>
@@ -58,16 +58,17 @@
             <label for="date"><b>Date</b></label>
             <input type="text" placeholder="Enter Date" name="date" id="date" required readonly>
 
-            <label for="amount"><b>Amount(Rs)</b></label>
-            <input id="amount" type="text" placeholder="Enter the amount" name="amount" required readonly>
+            <label for="name"><b>Amount(Rs)</b></label>
+            <input type="text" placeholder="Enter the amount" name="amount" id="amount" required readonly>
 
             <label for="Comment"><b>Comment</b></label>
             <!-- <textarea id="Comment" type="text" placeholder="Comment" name="comment" </textarea> -->
             <textarea name="" id="Comment" cols="30" rows="10" placeholder="Please Enter Your Comment Here" name="coment"></textarea>
+           
             <a class="btn viewlandowner" href="<?php echo URL?>/accountant/landownersGraphpage">View Landowner</a>
-            <a class="btn accept" id="acceptBtn">Accept</a>
+            <!-- <a class="btn accept" id="acceptBtn">Accept</a> -->
             <a class="btn cancel">Reject</a>
-            
+            <input type="submit" value="accept " class="btn" name="submit" id="acceptBtn">
         </form>
     </div>
 
