@@ -72,6 +72,13 @@ class Login extends Controller {
         $_SESSION['contact_number'] = $user[0]['contact_number'];
         $_SESSION['name'] = $user[0]['name'];
         $_SESSION['address'] = $user[0]['address'];
+        $_SESSION['profile_picture'] = $user[0]['profile_picture'];
+        $_SESSION['profile_picture'] = "default_profile/profile.jpg";
+        if($_SESSION['profile_picture'] == NULL) {
+            $_SESSION['profile_picture'] = "default_profile/profile.jpg";
+        }else {
+            $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"])."/".$_SESSION['profile_picture'];
+        }
         
         // switch($_SESSION['user_type']) {
         //     case 'LandOwner' : $_SESSION['user_type'] = 
@@ -90,6 +97,7 @@ class Login extends Controller {
         unset($_SESSION['contact_number']);
         unset($_SESSION['name']);
         unset($_SESSION['address']);
+        unset($_SESSION['profile_picture']);
             
         session_destroy();
         redirect('Login');
