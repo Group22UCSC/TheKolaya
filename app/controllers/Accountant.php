@@ -63,15 +63,20 @@ class Accountant extends Controller{
 
 
     function payments() {
+        $this->getNotificationCount();
         $this->view->showPage('accountant/payments');
     }
     function landowners() {
+
+        $this->getNotificationCount();
         $this->view->showPage('accountant/landowners');
     }
     function pdf() {
+        $this->getNotificationCount();
         $this->view->showPage('accountant/pdf');
     }
     function landownersGraphpage() {
+        $this->getNotificationCount();
         $this->view->showPage('accountant/landownersGraphpage');
     }
     function requests(){
@@ -87,6 +92,7 @@ class Accountant extends Controller{
             }
         }
         else{
+            $this->getNotificationCount();
             $this->view->showPage('accountant/requests');
         }
         
@@ -100,6 +106,7 @@ class Accountant extends Controller{
     function auction(){
         $result = $this->model->auction();
        // print_r($result);
+       $this->getNotificationCount();
         $this->view->render('accountant/auction', $result);
         //$this->view->showPage('accountant/auction');
     }
@@ -107,11 +114,13 @@ class Accountant extends Controller{
     //Manage Profile
     function profile()
     {
+        $this->getNotificationCount();
         $this->view->render('user/profile/profile');
     }
     
     function editProfile()
     {
+        $this->getNotificationCount();
         include '../app/controllers/User.php';
         $user = new User();
         $user->loadModelUser('user');
@@ -119,7 +128,8 @@ class Accountant extends Controller{
     }
 
     function enterPassword()
-    {
+    {   
+        $this->getNotificationCount();
         $this->view->render('user/profile/enterPassword');
     }
 
