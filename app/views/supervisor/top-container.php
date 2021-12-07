@@ -71,10 +71,10 @@
               }
               ?>
               <!-- Using AJAX Update notification_count -->
-              <div class="number" id="notification_count"><?php echo $notificationCount; ?></div>
+              <div class="notiNumber" id="notification_count"><?php echo $notificationCount; ?></div>
 
               <i class="fas fa-bell notification_bell"></i>
-              <div class="box">
+              <div class="notiBox">
                 <!-- <div style="padding: 15px 0 15px 30px; font-size: 1.5rem; font-weight:bold; background-color:#27ae60;">
                   Notifications
                 </div> -->
