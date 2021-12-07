@@ -74,7 +74,7 @@
                 hoverIcon(navProfile, darkGreen, 'black');
             }
             $('.profile_dd').slideToggle();
-            $('.box').hide();
+            $('.notiBox').hide();
 
             hoverIcon(notificationBell, darkGreen, 'black');
             var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotificationCount";
@@ -92,7 +92,7 @@
 
         notificationBell.click(function() {
             notificationType = 'full';
-            if ($('.box').css("display") == 'none') {
+            if ($('.notiBox').css("display") == 'none') {
                 x = 0;
                 changeNotificationBtn(lightGreen, darkGreen);
                 hoverIcon(notificationBell, darkGreen, darkGreen);
@@ -102,7 +102,7 @@
 
             }
 
-            $('.box').slideToggle();
+            $('.notiBox').slideToggle();
             $(".profile_dd").hide();
 
 
@@ -194,7 +194,7 @@
         // });
 
 
-        $(".box").click(function(event) {
+        $(".notiBox").click(function(event) {
             var notificationId = event.target.parentNode;
             if ($(notificationId).hasClass('profCont')) {
                 notificationId = notificationId.parentNode;
