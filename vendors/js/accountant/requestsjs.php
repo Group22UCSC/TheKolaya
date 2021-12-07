@@ -136,7 +136,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost/Thekolaya/accountant/requests",
+                        url: "<?php echo URL?>accountant/requests",
                             
                         data: {
                             action: action,
