@@ -115,9 +115,11 @@
                 return;
             }
             var str = "Request Id:  " + rid + "\n" +
+                "Landowner's Id :   " + lid + "\n" +
+                "Landowner'Name :   " + name + "\n" +
+                "Requested Date :   " + date + "\n" +
                 "Amount :   " + amount + "\n" +
-                "Comment :   " + comment + "\n" +
-                "Landowner's Id :" + lid + "\n";
+                "Comment :   " + comment + "\n";
             Swal.fire({
                 title: 'Confirm Update ',
                 icon: 'warning',
@@ -151,7 +153,8 @@
                                 'Your file has been updated.',
                                 'success'
                             )
-                            // clearTable();
+                                clearTable();
+                                getAdvanceRequests();
                             // getTable();
                         },
                         error: function(xhr, ajaxOptions, thrownError) {

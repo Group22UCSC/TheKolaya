@@ -75,13 +75,9 @@ class Accountant extends Controller{
     }
     function requests(){
         if(($_SERVER['REQUEST_METHOD']=='POST')){
-            
-
             $result=$this->model->acceptAdvanceRequest();
             if($result==true){
-                
                 $_POST['success']=1;
-               
             }
             else{
                 // un successfull pop up 
@@ -147,18 +143,5 @@ class Accountant extends Controller{
         echo $json_arr;
     }
     }
-    function acptAdvRqst(){
-           
-            $result=$this->model->acceptAdvanceRequest();
-            
-            if($result==true){
-                return $result;
-            }
-            else{
-                // un successfull pop up 
-                // first check using a alert ()
-                echo "failed to add";
-            }
-       
-    }
+    
 ?>
