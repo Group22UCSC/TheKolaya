@@ -189,10 +189,10 @@ class Accountant_Model extends Model {
          }
          if ($notification_type == 'full') {
              $query = "SELECT * FROM notification 
-             WHERE receiver_type='Supervisor' ORDER BY read_unread ASC, notification_id DESC";
+             WHERE receiver_type='Accountant' ORDER BY read_unread ASC, notification_id DESC";
          } else if ($notification_type == 'half') {
              $query = "SELECT * FROM notification 
-             WHERE receiver_type='Supervisor' AND read_unread=0 ORDER BY notification_id DESC";
+             WHERE receiver_type='Accountant' AND read_unread=0 ORDER BY notification_id DESC";
          }
  
          $row = $this->db->runQuery($query);
@@ -224,7 +224,7 @@ class Accountant_Model extends Model {
         $this->db->runQuery($query);
 
         $query = "SELECT * FROM notification 
-            WHERE receiver_type='Supervisor' ORDER BY notification_id DESC";
+            WHERE receiver_type='Accountant' ORDER BY notification_id DESC";
 
         $row = $this->db->runQuery($query);
         if (count($row)) {
@@ -234,7 +234,7 @@ class Accountant_Model extends Model {
     function getNotificationCount()
     {
         $query = "SELECT * FROM notification 
-        WHERE receiver_type='Supervisor' AND seen_not_seen=0";
+        WHERE receiver_type='Accountant' AND seen_not_seen=0";
         $row = $this->db->runQuery($query);
 
         if (count($row)) {
