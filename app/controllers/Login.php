@@ -73,8 +73,7 @@ class Login extends Controller {
         $_SESSION['name'] = $user[0]['name'];
         $_SESSION['address'] = $user[0]['address'];
         $_SESSION['profile_picture'] = $user[0]['profile_picture'];
-        $_SESSION['profile_picture'] = "default_profile/profile.jpg";
-        if($_SESSION['profile_picture'] == NULL) {
+        if($_SESSION['profile_picture'] == null) {
             $_SESSION['profile_picture'] = "default_profile/profile.jpg";
         }else {
             $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"])."/".$_SESSION['profile_picture'];
