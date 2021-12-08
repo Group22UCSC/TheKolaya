@@ -81,7 +81,13 @@ class Accountant extends Controller{
     }
     function requests(){
         if(($_SERVER['REQUEST_METHOD']=='POST')){
-            $result=$this->model->acceptAdvanceRequest();
+            if($_POST['action']=='Reject'){
+                $result=$this->model->rejecttAdvanceRequest();
+            }
+            else{
+                $result=$this->model->acceptAdvanceRequest();
+            }
+            
             if($result==true){
                 $_POST['success']=1;
             }

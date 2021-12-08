@@ -115,7 +115,7 @@ class landowner_Model extends Model
             $this->db->runQuery($query);
             $message = $_SESSION['name'] . " requested an advance of Rs." . $request_amount ;
             $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
-            VALUES(0, 0, '$message', 'Supervisor', 'request', '" . $_SESSION['user_id'] . "')";
+            VALUES(0, 0, '$message', 'Accountant', 'request', '" . $_SESSION['user_id'] . "')";
             $this->db->runQuery($notificationQuery);
         }
     }

@@ -143,7 +143,7 @@
                             amount: amount,
                             comment:comment,
                             rid: rid,
-
+                            name:name,
                         },
                         success: function(data) {
 
@@ -171,6 +171,87 @@
         })
     })
 
+
+
+    //  form submit - Reject Request
+    $(document).ready(function() {
+        $('#reject').click(function(event) {
+            // validateAmount();
+            event.preventDefault();
+
+            var form = $('#requestForm').serializeArray();
+
+
+            $('.error').remove(); // remove the previos error messages displayed
+            // after clicking the update again the same error may appear so have to remove previous errors
+
+            var rid = $('#rid').val();
+            var lid = $('#lid').val();
+            var name = $('#name').val();
+            var date = $('#date').val();
+            var amount = $('#amount').val();
+            var comment = $('textarea#Comment').val();
+            var action='Reject';
+
+            if (amount <= 0) {
+                return;
+            }
+            var str = "Request Id:  " + rid + "\n" +
+                "Landowner's Id :   " + lid + "\n" +
+                "Landowner'Name :   " + name + "\n" +
+                "Requested Date :   " + date + "\n" +
+                "Amount :   " + amount + "\n" +
+                "Comment :   " + comment + "\n";
+            Swal.fire({
+                title: 'Reject the request !',
+                icon: 'warning',
+                //   html:'<div>Line0<br />Line1<br /></div>',
+                html: '<pre>' + str + '</pre>',
+                //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
+                confirmButtonColor: '#4DD101',
+                cancelButtonColor: '#FF2400',
+                confirmButtonText: 'Confirm!',
+                showCancelButton: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#requestForm").trigger("reset");
+
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo URL?>accountant/requests",
+                            
+                        data: {
+                            action: action,
+                            amount: amount,
+                            comment:comment,
+                            rid: rid,
+                            name:name,
+                        },
+                        success: function(data) {
+
+                            console.log(data);
+                            Swal.fire(
+                                'Rejection Updated!',
+                                'Requested was rrejected.',
+                                'success'
+                            )
+                                clearTable();
+                                getAdvanceRequests();
+                            // getTable();
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                                // footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        }
+                    })
+                }
+            })
+        })
+    })
     // previous
 
 
