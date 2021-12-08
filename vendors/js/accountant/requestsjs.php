@@ -143,7 +143,7 @@
                             amount: amount,
                             comment:comment,
                             rid: rid,
-
+                            name:name,
                         },
                         success: function(data) {
 
