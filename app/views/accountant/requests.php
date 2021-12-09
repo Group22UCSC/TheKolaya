@@ -1,7 +1,10 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
+<body onload="getAdvanceRequests();">
+    
+</body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/requests.css">
-<script defer src="<?php echo URL ?>vendors/js/accountant/requests.js""></script>
+
 <div class="middle-section">
     <div class="top-container">
         <div class="left"></div>
@@ -23,7 +26,7 @@
 <div class="table-container" id="idtable-container">
     <div class="table-section">
         <table class="requeststbl" id="requeststbl">
-            <!-- <thead class="threadcls"> -->
+            
                 <tr class="trcls">
                     <th class="thcls">Rid</th>
                     <th class="thcls">Lid</th>
@@ -33,104 +36,7 @@
                    
 
                 </tr>
-            <!-- </thead> -->
-
-            <!-- <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                <td class="tdcls">January</td>
-                <td class="tdcls">98</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
-
-            </tr> -->
-
-            <!-- <tbody> -->
-
-
-                <tr onclick="openForm()">
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">L.Gunapala</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                   
-
-                </tr>
-                <tr>
-                    <td class="tdcls">AR445</td>
-                    <td class="tdcls">L45</td>
-                    <td class="tdcls">R.Gunasena</td>
-                    <td class="tdcls">09/06/2021</td>
-                    <td class="tdcls">1200</td>
-                    
-
-                </tr>
-                <tr>
-                    <td class="tdcls">AR32</td>
-                    <td class="tdcls">L43</td>
-                    <td class="tdcls">L.Gunapala</td>
-                    <td class="tdcls">09/08/2021</td>
-                    <td class="tdcls">12800</td>
-                    
-                </tr>
-                <tr>
-                    <td class="tdcls">AR52</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">Wimal Perera</td>
-                    <td class="tdcls">06/09/2021</td>
-                    <td class="tdcls">22500</td>
-                    
-                </tr>
-                <tr>
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">Sunil Gomez</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                   
-                </tr>
-
-                <tr>
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">Wimal Perera</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                   
-                </tr>
-                <tr>
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">L.Gunapala</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                   
-                    
-                </tr>
-                <tr>
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">Sunil Gomez</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                  
-                    
-                </tr>
-                <tr>
-                    <td class="tdcls">AR352</td>
-                    <td class="tdcls">L453</td>
-                    <td class="tdcls">Wimal Perera</td>
-                    <td class="tdcls">09/09/2021</td>
-                    <td class="tdcls">12500</td>
-                    
-                </tr>
-                  
-                
-
-                
-               
-            <!-- </tbody> -->
+            
 
         </table>
     </div>
@@ -138,7 +44,7 @@
     
 
     <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
+        <form action="<?php echo URL?>accountant/requests" method="post" class="form-container" id="requestForm">
             <h1>Advance Request</h1>
 
             <label for="rid"><b>Rid</b></label>
@@ -152,16 +58,17 @@
             <label for="date"><b>Date</b></label>
             <input type="text" placeholder="Enter Date" name="date" id="date" required readonly>
 
-            <label for="amount"><b>Amount(Rs)</b></label>
-            <input id="amount" type="text" placeholder="Enter the amount" name="amount" required readonly>
+            <label for="name"><b>Amount(Rs)</b></label>
+            <input type="text" placeholder="Enter the amount" name="amount" id="amount" required readonly>
 
             <label for="Comment"><b>Comment</b></label>
             <!-- <textarea id="Comment" type="text" placeholder="Comment" name="comment" </textarea> -->
             <textarea name="" id="Comment" cols="30" rows="10" placeholder="Please Enter Your Comment Here" name="coment"></textarea>
+           
             <a class="btn viewlandowner" href="<?php echo URL?>/accountant/landownersGraphpage">View Landowner</a>
-            <a class="btn accept">Accept</a>
-            <a class="btn cancel">Reject</a>
-            
+            <a class="btn accept" id="acceptBtn">Accept</a>
+            <a class="btn cancel" id="reject">Reject</a>
+            <!-- <input type="submit" value="accept " class="btn" name="submit" id="acceptBtn"> -->
         </form>
     </div>
 
@@ -182,5 +89,7 @@
 
 
 </div>
-
+<?php include 'js/accountant/requestsjs.php"';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>

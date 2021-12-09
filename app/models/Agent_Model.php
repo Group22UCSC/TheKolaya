@@ -132,6 +132,20 @@ class Agent_Model extends Model{
 
     }
 
+    function searchTeaUpdates($data=[]){
+        $date = $data['date'];
+        $lid = $data['lid'];
+
+        $query = "SELECT * FROM tea where lid = '$lid' AND date = '$date'";
+        $row = $this->db->runQuery($query);
+
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+
  
 }
 

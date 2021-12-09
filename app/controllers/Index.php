@@ -8,7 +8,7 @@ class Index extends Controller{
     }
 
     function index() {
-        $this->view->showPage('user/home');
+        $this->view->render('user/home');
     }
 }
 

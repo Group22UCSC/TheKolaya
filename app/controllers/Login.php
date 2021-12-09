@@ -72,14 +72,18 @@ class Login extends Controller {
         $_SESSION['contact_number'] = $user[0]['contact_number'];
         $_SESSION['name'] = $user[0]['name'];
         $_SESSION['address'] = $user[0]['address'];
+        $_SESSION['profile_picture'] = $user[0]['profile_picture'];
+        if($_SESSION['profile_picture'] == null) {
+            $_SESSION['profile_picture'] = "default_profile/profile.jpg";
+        }else {
+            $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"])."/".$_SESSION['profile_picture'];
+        }
         
         // switch($_SESSION['user_type']) {
         //     case 'LandOwner' : $_SESSION['user_type'] = 
         // }
-        if($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'LandOwner') {
-            if($_SESSION['user_type'] == 'LandOwner') {
-                $_SESSION['user_type'] = 'Landowner';
-            }
+        $_SESSION['user_type'] = ucwords(strtolower($_SESSION['user_type']));
+        if($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'Landowner') {
             $this->model->getRoute($_SESSION['user_type']);
         }
         $_SESSION['NotSeenCount'] = $this->model->getNotSeenNotificationCount($_SESSION['user_type']);
@@ -92,6 +96,7 @@ class Login extends Controller {
         unset($_SESSION['contact_number']);
         unset($_SESSION['name']);
         unset($_SESSION['address']);
+        unset($_SESSION['profile_picture']);
             
         session_destroy();
         redirect('Login');
@@ -119,17 +124,16 @@ class Login extends Controller {
                 $_SESSION['controller'] = $data['controller'];
                 otpSend();
             }else {
-                $this->view->render('User/forgetPassword/wrongNumber', $data);
+                $this->view->render('user/forgetPassword/wrongNumber', $data);
             }
-        }
-        
-        else {
-            $this->view->render('User/forgetPassword/forgetPassword');
+        }else {
+            $this->view->render('user/forgetPassword/forgetPassword');
         }
     }
 
-    public function changePassword() {
+    function changePassword() {
         if(isset($_POST['change_pw_btn'])) {
+            unset($_SESSION['changePassword']);
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'new_password' => $_POST['new_password'],
@@ -139,7 +143,7 @@ class Login extends Controller {
                 'new_password_err' => '',
                 'confirm_password_err' => ''
             ];
-            unset($_SESSION['contact_number']);
+            // unset($_SESSION['contact_number']);
             if(empty($data['new_password'])) {
                 $data['new_password_err'] = "Please enter a new passoword";
             }
@@ -150,15 +154,17 @@ class Login extends Controller {
                 $data['confirm_password_err'] = "Doesn't match with password";
             }
 
-            if(!empty($data['new_password']) || !empty($data['confirm_password'])) {
+            if(empty($data['new_password_err']) && empty($data['confirm_password_err'])) {
                 $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
                 $this->model->changePassword($data);
                 redirect('Login');
             }else {
-                $this->view->render('User/forgetPassword/changePassword', $data);
+                $this->view->render('user/forgetPassword/changePassword', $data);
             }
+        }else if(isset($_SESSION['changePassword'])){
+            $this->view->render('user/forgetPassword/changePassword');
         }else {
-            $this->view->render('User/forgetPassword/changePassword');
+            $this->view->render('Errors/Errors');
         }
     }
 }

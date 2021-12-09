@@ -1,5 +1,7 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
+
+<body onload="getLandonwerTable();"> </body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/landowners.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <div class="top-container">
@@ -21,57 +23,35 @@
 <!-- ********************** Table container  ***********************-->
 <div class="table-container">
     <div class="table-section">
-        <table class="teapricetable">
-            <thead class="threadcls">
+        <table class="teapricetable" id="teapricetable">
+            
                 <tr class="trcls">
                     <th class="thcls">Lid</th>
                     <th class="thcls">Name</th>
-                    <th class="thcls"></th>
+                    <th class="thcls">Contact No</th>
+                    <th class="thcls">Address</th>
+                    <th class="thcls">Action</th>
+                 </tr>
+           
 
 
-                </tr>
-            </thead>
 
-
-
-            <tr>
+            <!-- <tr>
                 <td class="tdcls">L456</td>
                 <td class="tdcls">Kamal Jayawardane</td>
                 <td class="tdcls">
                     <button id="tblbtn" class="tblbutton" onclick="location.href='<?php echo URL?>/accountant/landownersGraphpage';">View Deatils</button>
                 </td>
 
-            </tr>
-            <tr>
-                <td class="tdcls">L23</td>
-                <td class="tdcls">Nimal Silva</td>
-                <td class="tdcls">
-                    <button id="tblbtn" class="tblbutton"  onclick="location.href='<?php echo URL?>/accountant/landownersGraphpage';">View Deatils</button>
-                </td>
-
-            </tr>
-            <tr>
-                <td class="tdcls">L234</td>
-                <td class="tdcls">Sunil Gunawardane</td>
-                <td class="tdcls">
-                    <button id="tblbtn" class="tblbutton"  onclick="location.href='<?php echo URL?>/accountant/landownersGraphpage';">View Deatils</button>
-                </td>
-
-            </tr>
+            </tr> -->
+            
             
         </table>
     </div>
 
     
 </div>
-<!-- <script>
-                function loadLandowner() {
-                   var x=document.getElementsByClassName('.barChartSection');  
-                   
-                   let btn=document.querySelector('button');
-                    btn.addEventListener('click',()=>{
-                        x.style.display='block';
-                    })
-                }
-            </script> -->
+
+<?php include 'js/accountant/landownersDetailsjs.php';?>
+<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>

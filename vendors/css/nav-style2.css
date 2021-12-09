@@ -1,16 +1,16 @@
-.box::-webkit-scrollbar-track {
+.notiBox::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
   border-radius: 5px;
 }
 
-.box::-webkit-scrollbar {
+.notiBox::-webkit-scrollbar {
   width: 10px;
   background-color: #f5f5f5;
   border-radius: 5px;
 }
 
-.box::-webkit-scrollbar-thumb {
+.notiBox::-webkit-scrollbar-thumb {
   background-color: #27ae60;
   border: 2px solid #14a14f;
   border-radius: 5px;
@@ -27,7 +27,7 @@
   display: inline-block;
 }
 
-.number {
+.notiNumber {
   height: 25px;
   width: 25px;
   background-color: #d63031;
@@ -42,7 +42,7 @@
   border-width: 2px;
 }
 
-.number:empty {
+.notiNumber:empty {
   display: none;
 }
 
@@ -59,7 +59,7 @@
   margin-left: 20px;
 }
 
-.box {
+.notiBox {
   width: 300px;
   height: 0px;
   border-radius: 10px;
@@ -82,11 +82,11 @@
   color: #27ae60;
 }
 
-.notBtn > .box {
+.notBtn > .notiBox {
   height: 60vh;
 }
 
-.box.active {
+.notiBox.active {
   display: block;
 }
 
@@ -208,7 +208,7 @@
   /* float: left; */
 }
 
-.box:before {
+.notiBox:before {
   content: "";
   position: absolute;
   top: -20px;

@@ -1,65 +1,92 @@
 <?php
 
-class OtpVerify extends Controller {
-    function __construct(){
+class Otpverify extends Controller
+{
+    function __construct()
+    {
         parent::__construct();
     }
 
-    function index() {
-        if(!empty($_SESSION) && empty($_SESSION['user_type']))
-            $this->view->render('otp/OtpVerify');
-        else {
-            $this->view->render('Errors/Errors');
+    function index()
+    {
+        if (!empty($_SESSION['OTP'])) {
+            $this->view->render('otp/OTPverify');
+        } else {
+            if(isset($_SESSION['flash_message'])) {
+                $this->view->render('Errors/Errors');
+            }else {
+                $this->view->render('Errors/Errors');
+            }
         }
     }
 
-    function checkOtp() {
+    function validateOtp($OTP = [])
+    {
         $verifyOTP = "";
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            for($i = 1; $i < 5; $i++) {
-                $number = 'n-'.$i;
-                $verifyOTP .= trim($_POST[$number]);
-            }
-            if(isset($_POST['registration-verify'])) {
-                if($verifyOTP == $_SESSION['OTP']){
+        for ($i = 1; $i < 5; $i++) {
+            $number = 'n-' . $i;
+            $verifyOTP .= trim($OTP[$number]);
+        }
+        return $verifyOTP;
+    }
+
+    function checkOtp()
+    {
+        if (!empty($_SESSION['OTP'])) {
+            flash('OTP');
+            if (isset($_GET['registration-verify'])) {
+                $verifyOTP = $this->validateOtp($_GET);
+                if ($verifyOTP == $_SESSION['OTP']) {
                     $verifyOTP = '';
                     $_SESSION['verify'] = 1;
                     require_once '../app/controllers/Registration.php';
                     $otpCorrect = new Registration();
                     $otpCorrect->loadModelUser('Registration');
+                    unset($_SESSION['OTP']);
                     $otpCorrect->updateVerifiedUser();
                     $this->view->render('otp/correctOTP');
-                }
-                else{
+                } else {
                     $verifyOTP = '';
                     $_SESSION['verify'] = 0;
+                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
-            }
-            else if(isset($_POST['login-verify'])) {
-                if($verifyOTP == $_SESSION['OTP']){
+            } else if (isset($_GET['login-verify'])) {
+                $verifyOTP = $this->validateOtp($_GET);
+                if ($verifyOTP == $_SESSION['OTP']) {
                     $verifyOTP = '';
+                    unset($_SESSION['OTP']);
+                    $_SESSION['changePassword'] = true;
                     redirect('Login/changePassword');
-                }
-                else{
+                } else {
                     $verifyOTP = '';
+                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
-            }else if(isset($_POST['profile-verify'])) {
-                if($verifyOTP == $_SESSION['OTP']){
+            } else if (isset($_GET['profile-verify'])) {
+                $verifyOTP = $this->validateOtp($_GET);
+                if ($verifyOTP == $_SESSION['OTP']) {
                     $verifyOTP = '';
-                    $this->view->render('user/profile/changePassword');
-                }
-                else{
+                    unset($_SESSION['OTP']);
+                    $_SESSION['changePassword'] = true;
+                    redirect('User/passwordChange');
+                    
+                } else {
                     $verifyOTP = '';
+                    unset($_SESSION['OTP']);
                     $this->view->render('otp/wrongOTP');
                 }
+            } else {
+                unset($_SESSION['OTP']);
+                $this->view->render('Errors/Errors');
             }
-            
+        } else {
+            $this->view->render('Errors/Errors');
         }
     }
 
-    public function reSendOtp() {
+    function reSendOtp()
+    {
         $OTPcode = '1002';
         $_SESSION['OTP'] = $OTPcode;
         // $data['OTP'] = $OTPcode;
@@ -81,5 +108,3 @@ class OtpVerify extends Controller {
         // $this->view->render('otp/OTPverify', $data);
     }
 }
-
-?>

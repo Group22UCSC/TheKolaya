@@ -1,6 +1,6 @@
 <?php
 
-class landowner extends Controller
+class Landowner extends Controller
 {
     function __construct()
     {

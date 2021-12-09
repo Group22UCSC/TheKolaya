@@ -9,7 +9,7 @@
   <form action="#" method="POST" id="deliveryUpdateForm">
       <div class="inputfield">
           <label>Request ID</label>
-          <input type="text" class="input" id="rid" readonly>
+          <input type="text" class="input" name ="rid" id="rid" readonly>
       </div> 
 
       <div class="inputfield">
@@ -28,8 +28,9 @@
             </div>        
             
       <div class="inputfield" id="btnset">
-      <button class="back" onclick="closerequestform()">Back</button> 
       <button class  = "btn" id="myBtn"> Confirm </button>
+      <button class="back" onclick="closerequestform()">Back</button> 
+      
          
       </div>
 </form>

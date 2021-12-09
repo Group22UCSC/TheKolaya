@@ -16,11 +16,11 @@
    </head>
 <body>
 <?php
-$file = '../app/views/'.$_SESSION["user_type"].'/top-container.php';
+$file = '../app/views/'.strtolower($_SESSION["user_type"]).'/top-container.php';
 if(file_exists($file)) {
   include $file;
 }else {
-  $file = '../app/views/'.$_SESSION["user_type"].'/topContainer.php';
+  $file = '../app/views/'.strtolower($_SESSION["user_type"]).'/topContainer.php';
   include $file;
 }
 ?>
@@ -42,7 +42,7 @@ if(file_exists($file)) {
                 <input type="number" class="input" id="Mobile-number" value="<?php echo  $_SESSION['contact_number']?>" name="contact_number">
               </div>
                 <div class="inputfield" id="left-btn">
-                    <a href="<?php echo URL?>user/changePassword"><input type="button" value="Change Password" class="accept-btn change"></a>
+                    <a href="<?php echo URL?>User/changePassword"><input type="button" value="Change Password" class="accept-btn change"></a>
                 </div>
                 <div class="inputfield" id="right-btn">
                     <input type="submit" value="Accept" class="accept-btn"name="accept-btn">
@@ -56,10 +56,10 @@ if(file_exists($file)) {
 <script src="<?php echo URL?>vendors/js/editProfile.js"></script>
 
 <?php 
-$file = '../app/views/'.$_SESSION["user_type"].'/bottom-container.php';
+$file = '../app/views/'.strtolower($_SESSION["user_type"]).'/bottom-container.php';
 if(file_exists($file)) {
   include $file;
 }else {
-  $file = '../app/views/'.$_SESSION["user_type"].'/bottomContainer.php';
+  $file = '../app/views/'.strtolower($_SESSION["user_type"]).'/bottomContainer.php';
   include $file;
 }

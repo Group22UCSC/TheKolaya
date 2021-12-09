@@ -22,7 +22,8 @@ function otpSend() {
     // $ret = file($url);
 
     // $res= explode(":",$ret[0]);
-    redirect('OtpVerify');
+    if($_SESSION['controller'] != 'registration')
+        redirect('OtpVerify');
     // $this->view->render('otp/OTPverify', $data);
 }
 

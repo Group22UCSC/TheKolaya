@@ -21,6 +21,15 @@
     .signin-signup .forget-password a:active {
       border-bottom: 1px solid #33aa3d;
     }
+
+    #register_here {
+      color: black;
+    }
+    .signin-signup .forget-password #register_here:hover,
+    .signin-signup .forget-password #register_here:active {
+      border-bottom: 1px solid black;
+    }
+
   </style>
   <title><?php echo TITLE ?></title>
   <link rel="icon" href="<?php echo URL ?>vendors/images/thekolaya2.png" type="image/x-icon">
@@ -56,7 +65,7 @@
           <a href="<?php echo URL ?>Login/forgetPassword">Forget Password?</a>
         </div>
         <div style="text-align: center;" class="forget-password">
-          <span style="color: blue; cursor:context-menu">Not a member? </span> <a href="<?php echo URL ?>Registration">Register Here</a>
+          <span style="color: blue; cursor:default">Not a member? </span> <a id="register_here" href="<?php echo URL ?>Registration">Register From Here</a>
         </div>
       </div>
     </div>
@@ -71,7 +80,6 @@
     </div>
   </div>
 
-  <script src="<?php echo URL ?>vendors/js/login/app.js"></script>
 </body>
 
 </html>

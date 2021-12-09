@@ -19,12 +19,13 @@
 <div class="topic">View Previous Tea Updates</div>
 <button class="backbtn" onclick="goBack()">Back </button>
 <div class="form-container">
-<form class="searchform">
-    <input type="date" id="date" name="date"  required>
-    <input type="text" id="search" placeholder="Enter Landowner ID.." required>
-    <input type="submit" value="search" id="submit">
+<form class="searchform" id="searchTeaForm">
+    <input type="date" id="searchdate" name="searchdate"  required>
+    <input type="text" id="search" name="searchlid" placeholder="Enter Landowner ID.." required>
+    <!-- <button id="search">Search</button> -->
+    <input type="button" value="search" id="submit">
 </form>
-<form class="resultform">
+<form class="resultform" id="resultform">
 <div class="inputfield">
     <label class="resultlbl">Agent ID</label>
     <input type="text" id="ramount"  size="6"  readonly>
@@ -68,4 +69,91 @@
     
 </form>
 </div>
+<!-- <script>
+$(document).ready(function(){
+  $("#submit").click(function(){
+    $("#resultform").show();
+  });
+});
+  </script> -->
+  <script src="<?php echo URL ?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
+  <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#submit').click(function(event) {
+        event.preventDefault();
+        var form = $('#searchTeaForm').serializeArray();
+        // form.push({name:'stock_type', value: 'in_stock'});
+        // form.push({name:'type', value: 'fertilizer'});
+        // // console.log(form);
+        // $('.error').remove();
+        var date = $('#searchdate').val();
+        var landownerId = $('#search').val();
+        // var priceForAmount = pricePerUnit*inAmount;
+        var str = "<div style=\"display:flex; justify-content:center;\">" +
+          "<div style=\"text-align:left;\">" +
+          "<div>Landowner ID: <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
+          "<div>Date :  <span style=\"color:#01830c;\"><b> " + date + "</b></span></div>" +
+          "</div>" +
+          "</div>";
+          console.log('date'+date);
+          console.log('lid'+landownerId);
+         
+        // if(inAmount == 0) {
+        //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
+        // }else if(inAmount < 0) {
+        //     $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+        // } 
+        // if(pricePerUnit < 0) {
+        //     $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
+        // }else if(pricePerUnit == 0) {
+        //     $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
+        // }
+
+        // if(pricePerUnit <= 0 || inAmount <= 0) {
+        //     return;
+        // }
+        Swal.fire({
+          title: 'Are you sure?',
+          html: '<div>' + str + '</div>',
+          // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#01830c',
+          cancelButtonColor: '#ff3300',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $("#searchTeaForm").trigger("reset");
+            $.ajax({
+              type: "POST",
+              url: "<?php echo URL ?>agent/searchPreviousTeaUpdates",
+              cache: false,
+              data: form,
+              success: function(data) {
+                // Swal.fire(
+                //   'Updated!',
+                //   'Your file has been updated.',
+                //   'success'
+                // ).then((result) => {
+                //   location.reload();
+                // })
+                 document.getElementById("date").value = "2021-10-28";
+                  
+                  // console.log(data);
+              },
+              error: function(xhr, ajaxOptions, thrownError) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                  // footer: '<a href="">Why do I have this issue?</a>'
+                })
+              }
+            })
+          }
+        })
+      })
+    })
+  </script>
   <?php include 'bottomContainer.php';?>
