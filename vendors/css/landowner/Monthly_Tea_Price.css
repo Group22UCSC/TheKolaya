@@ -64,7 +64,8 @@
   background-color: white;
   text-align: left;
   overflow: hidden;
-  width: 100%;
+  width: 80%;
+  margin-left: 100px;
 }
 .threadcls {
   box-shadow: 0 5px 10px #e1e5ee;
@@ -76,11 +77,12 @@
   letter-spacing: 0.1rem;
   font-size: 0.7rem;
   font-weight: 900;
+  text-align: center;
 }
 .teapricetable td {
   text-align: center;
 }
-.tdcls {
+td {
   padding: 1rem 2rem;
   /* text-transform: uppercase;
   letter-spacing: 0.1rem;
