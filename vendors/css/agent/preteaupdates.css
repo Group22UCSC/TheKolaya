@@ -60,6 +60,10 @@ button{
   margin-left: 10px;
 }
 
+#ok{
+  margin-left:150px;
+}
+
 button:hover{
   cursor: pointer;
   color: rgba(1, 131, 12,1);
