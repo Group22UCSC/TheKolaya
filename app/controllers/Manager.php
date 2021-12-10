@@ -16,7 +16,22 @@ class Manager extends Controller
         // $todayRequests = $this->model->getTodayFertilizerRequest();
 
         // $this->getNotificationCount(); //This for get Notification count
-        $this->view->render('Manager/Manager', $stock);
+
+        $stock2 = $this->model->getStock2();
+        $_SESSION['Green_Tea_stock'] = $stock2[0]['stock'];
+        $_SESSION['White_Tea_stock'] = $stock2[1]['stock'];
+        $_SESSION['B-100_Black_Tea_stock'] = $stock2[2]['stock'];
+        $_SESSION['N_Black_Tea_stock'] = $stock2[3]['stock'];
+        $_SESSION['Early_Black_Tea_stock'] = $stock2[4]['stock'];
+        $_SESSION['Masala_chai_stock'] = $stock2[5]['stock'];
+        $_SESSION['Matcha_Tea_stock'] = $stock2[6]['stock'];
+        $_SESSION['Oolang_Tea_stock'] = $stock2[7]['stock'];
+        $_SESSION['Sencha_Tea_stock'] = $stock2[8]['stock'];
+        
+
+
+
+        $this->view->render('Manager/Manager', $stock, $stock2);
          // $this->view->render('Manager/Manager', $stock, $teaCollection, $todayRequests);
     }
 

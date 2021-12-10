@@ -12,9 +12,8 @@
 
 h2{
   padding-top: 10px;
- padding-left: 37%;
- size: 25px;
-
+ /*padding-left: 37%;*/
+ text-align: center;
 }
 
 }
