@@ -171,6 +171,7 @@ class Supervisor extends Controller
     {
         $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->model->manageRequests($_POST);
         } else {
             $request = $this->model->getRequests();
@@ -193,11 +194,6 @@ class Supervisor extends Controller
             }
 
             $this->model->manageStock($data);
-            $stock = $this->model->getStock();
-            $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
-            if ($_SESSION['fertilizer_stock'] <= 500) {
-                $this->model->stockGetLimit("Fertilzer Stock");
-            }
         } else {
             $this->view->render('supervisor/manageFertilizer');
         }
@@ -218,11 +214,6 @@ class Supervisor extends Controller
             }
 
             $this->model->manageStock($data);
-            $stock = $this->model->getStock();
-            $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
-            if ($_SESSION['firewood_stock'] <= 500) {
-                $this->model->stockGetLimit("Firewood Stock");
-            }
         } else {
             $this->view->render('supervisor/manageFirewood');
         }
