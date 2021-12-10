@@ -80,8 +80,7 @@ $(document).ready(function(){
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>  
   <script>
     $(document).ready(function () {
-      $('#submit').click(function(event) {
-        $("#resultform").show();
+      $('#submit').click(function(event) {       
         var form = $('#searchTeaForm').serializeArray();
         // console.log(form);
         var date = $('#searchdate').val();
@@ -92,8 +91,9 @@ $(document).ready(function(){
       cache: false,
       data: form,
     }).done(function (response) {      
-      // console.log("success");
+      console.log("success");
       // console.log(response);
+      $("#resultform").show();
       $('#resultform').html(response);
       
     });
