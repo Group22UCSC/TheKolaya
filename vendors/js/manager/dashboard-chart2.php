@@ -1,6 +1,6 @@
 
 <script>
-    var xValues = ["Green Tea","White Tea", "B-100 Black Tea","N_Black_Tea_stock", "Early Black Tea","Masala chai","Matcha Tea", "Oolang Tea","Sencha Tea"];
+    var xValues = ["Green Tea","White Tea", "B-100 Black Tea","N Black Tea", "Early Black Tea","Masala chai","Matcha Tea", "Oolang Tea","Sencha Tea"];
 
     var yValues = [
     <?php echo  $_SESSION['Green_Tea_stock']?>,

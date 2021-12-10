@@ -84,7 +84,9 @@ class Manager extends Controller
 
     public function viewFertilizer()
     {
-        $this->view->showPage('Manager/viewFertilizer');
+        $result = $this->model->view_instock();
+        // print_r($result);
+        $this->view->render('Manager/viewFertilizer', $result);
     }
 
     public function viewFirewood()
