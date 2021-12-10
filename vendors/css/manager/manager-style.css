@@ -10,6 +10,16 @@
  
 }
 
+.title-container2{
+   background-color: whitesmoke;
+   margin-top: 10px;
+   margin-bottom: 15px;
+   height: 45px;
+   width:100%;
+   align-content: center;
+ 
+}
+
 h2{
   padding-top: 10px;
  /*padding-left: 37%;*/
