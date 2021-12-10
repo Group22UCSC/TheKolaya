@@ -16,10 +16,10 @@
 
                       <table id="myTable">
                            <tr class="header">
-                                <th style="width:16.66%;">Date</th>
-                                <th style="width:16.66%;">Type</th>                                
-                                <th style="width:16.66%;" id="hide">Quantity</th>
-                                <th style="width:16.66%;" id="hide">Employee ID</th>
+                                <th style="width:25%;">Date</th>
+                                <th style="width:25%;">Type</th>                                
+                                <th style="width:25%;" id="hide">Quantity</th>
+                                <th style="width:25%;" id="hide">Employee ID</th>
                                
                               
                             </tr>
