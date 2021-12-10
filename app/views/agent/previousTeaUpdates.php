@@ -78,7 +78,7 @@ $(document).ready(function(){
   </script> -->
   <script src="<?php echo URL ?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
-  <script>
+  <!-- <script>
     $(document).ready(function() {
       $('#submit').click(function(event) {
         event.preventDefault();
@@ -127,7 +127,7 @@ $(document).ready(function(){
             $("#searchTeaForm").trigger("reset");
             $.ajax({
               type: "POST",
-              url: "<?php echo URL ?>agent/searchPreviousTeaUpdates",
+              
               cache: false,
               data: form,
               success: function(data) {
@@ -155,5 +155,28 @@ $(document).ready(function(){
         })
       })
     })
-  </script>
+  </script> -->
+  <script>
+    $(document).ready(function () {
+      $('#submit').click(function(event) {
+        var form = $('#searchTeaForm').serializeArray();
+        console.log(form);
+        var date = $('#searchdate').val();
+        var landownerId = $('#search').val();
+    $.ajax({
+      type: "POST",
+      url: "<?php echo URL ?>agent/searchPreviousTeaUpdates",
+      cache: false,
+      data: form,
+    }).done(function (response) {
+      document.getElementById("date").value = "2021-10-28";
+      console.log("success");
+      console.log(response);
+    });
+    console.log('date'+date);
+    console.log('lid'+landownerId);
+    event.preventDefault();
+  });
+});
+</script>
   <?php include 'bottomContainer.php';?>
