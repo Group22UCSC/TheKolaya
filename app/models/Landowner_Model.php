@@ -90,7 +90,7 @@ class landowner_Model extends Model
             //--------------------------------------//
 
 
-            $message = $_SESSION['name'] . " Request fertilizer " . $request_amount . "kg";
+            $message = $_SESSION['name'] . " requested Kg.".$request_amount. "of fertilizer";
             $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
             VALUES(0, 0, '$message', 'Supervisor', 'request', '" . $_SESSION['user_id'] . "')";
             $this->db->runQuery($notificationQuery);
@@ -113,6 +113,10 @@ class landowner_Model extends Model
         } else if ($requests_type == 'advance') {
             $query = "INSERT INTO advance_request(request_id, amount_rs) VALUES(LAST_INSERT_ID(), '$request_amount')";
             $this->db->runQuery($query);
+            $message = $_SESSION['name'] . " requested an advance of Rs." . $request_amount ;
+            $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
+            VALUES(0, 0, '$message', 'Accountant', 'request', '" . $_SESSION['user_id'] . "')";
+            $this->db->runQuery($notificationQuery);
         }
     }
 
