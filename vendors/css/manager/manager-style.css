@@ -1,12 +1,22 @@
 *{ margin: 0; padding: 0; }
 
+.title-container{
+   background-color: whitesmoke;
+   margin-top: 10px;
+   margin-bottom: 15px;
+   height: 45px;
+   width:100%;
+   align-content: center;
+ 
+}
 
-.king{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  
-  
+h2{
+  padding-top: 10px;
+ padding-left: 37%;
+ size: 25px;
+
+}
+
 }
 
 .img{

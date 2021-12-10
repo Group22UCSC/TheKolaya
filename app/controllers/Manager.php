@@ -9,7 +9,15 @@ class Manager extends Controller
 
     function index()
     {
-        $this->view->showPage('Manager/Manager');
+        $stock = $this->model->getStock();
+        $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
+        $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
+        // $teaCollection = $this->model->getTeaCollection();
+        // $todayRequests = $this->model->getTodayFertilizerRequest();
+
+        // $this->getNotificationCount(); //This for get Notification count
+        $this->view->render('Manager/Manager', $stock);
+         // $this->view->render('Manager/Manager', $stock, $teaCollection, $todayRequests);
     }
 
     public function viewAccount()
