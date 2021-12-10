@@ -38,5 +38,6 @@
     <div class="inputfield">
     <label class="resultlbl">Quality</label>
     <input type="text" id="ramount"  size="6" value="<?php echo $data[0]['quality'] ;?>" readonly>
-    </div>    
+    </div> 
+    <button id="ok">OK</button>   
     
