@@ -82,16 +82,17 @@ class Manager extends Controller
         $this->view->showPage('Manager/viewProduct');
     }
 
-    public function viewFertilizer()
+    public function instock()
     {
         $result = $this->model->view_instock();
         // print_r($result);
         $this->view->render('Manager/viewFertilizer', $result);
     }
 
-    public function viewFirewood()
+    public function outstock()
     {
-        $this->view->showPage('Manager/viewFirewood');
+        $result = $this->model->view_outstock();
+        $this->view->render('Manager/outstock',$result);
     }
 
     public function manager()
