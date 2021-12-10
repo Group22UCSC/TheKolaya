@@ -15,4 +15,18 @@
 
 
 
+    <div class="title-container2">
+    <h2>Product Stock details</h2>
+  </div>
+ <!--  <div class="middle-container"> -->
+    <div class="graph-container2">
+
+      <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
+      <?php include 'js/manager/dashboard-chart2.php' ?>
+    </div>
+
+
+
+
+
 <?php include 'bottom-container.php';?>

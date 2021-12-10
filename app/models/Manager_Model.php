@@ -126,4 +126,16 @@ class Manager_Model extends Model {
         }
     }
 
+
+      function getStock2()
+    {
+        $query = "SELECT * FROM product";
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
 }
