@@ -171,7 +171,9 @@ $(document).ready(function(){
     }).done(function (response) {
       document.getElementById("date").value = "2021-10-28";
       console.log("success");
-      console.log(response);
+      // console.log(response);
+      $('#resultform').html(response);
+      
     });
     console.log('date'+date);
     console.log('lid'+landownerId);
