@@ -85,6 +85,16 @@ class Manager_Model extends Model {
         }
     }
 
+      function view_outstock(){
+        $query = "SELECT * FROM out_stock";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
 
       function availableListTable(){
         $query = "SELECT *FROM user WHERE verify=1";

@@ -115,7 +115,7 @@
 
 <div class="k1">  
  <div class="wrapper1">
-  <div class="title">  VIEW ACCOUNT DETAILS  </div>
+  <div class="title">  VIEW DETAILS  </div>
     
       <div class="form">
 
