@@ -7,7 +7,7 @@ class Accountant extends Controller{
     }
 
     function index() {
-
+        $this->getNotificationCount();
         $this->view->showPage('accountant/accountant');
     }  
 
@@ -37,6 +37,7 @@ class Accountant extends Controller{
             }
         }
         else{
+            $this->getNotificationCount();
             $result = $this->model->teaPriceTable();
             $this->view->render('accountant/setTeaPrice',$result);
         }
@@ -62,19 +63,45 @@ class Accountant extends Controller{
 
 
     function payments() {
+        $this->getNotificationCount();
         $this->view->showPage('accountant/payments');
     }
     function landowners() {
+
+        $this->getNotificationCount();
         $this->view->showPage('accountant/landowners');
     }
     function pdf() {
+        $this->getNotificationCount();
         $this->view->showPage('accountant/pdf');
     }
     function landownersGraphpage() {
+        $this->getNotificationCount();
         $this->view->showPage('accountant/landownersGraphpage');
     }
     function requests(){
-        $this->view->showPage('accountant/requests');
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            if($_POST['action']=='Reject'){
+                $result=$this->model->rejecttAdvanceRequest();
+            }
+            else{
+                $result=$this->model->acceptAdvanceRequest();
+            }
+            
+            if($result==true){
+                $_POST['success']=1;
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        }
+        else{
+            $this->getNotificationCount();
+            $this->view->showPage('accountant/requests');
+        }
+        
     }
     // testing model
     function testModel(){
@@ -85,6 +112,7 @@ class Accountant extends Controller{
     function auction(){
         $result = $this->model->auction();
        // print_r($result);
+       $this->getNotificationCount();
         $this->view->render('accountant/auction', $result);
         //$this->view->showPage('accountant/auction');
     }
@@ -92,11 +120,13 @@ class Accountant extends Controller{
     //Manage Profile
     function profile()
     {
+        $this->getNotificationCount();
         $this->view->render('user/profile/profile');
     }
     
     function editProfile()
     {
+        $this->getNotificationCount();
         include '../app/controllers/User.php';
         $user = new User();
         $user->loadModelUser('user');
@@ -104,7 +134,8 @@ class Accountant extends Controller{
     }
 
     function enterPassword()
-    {
+    {   
+        $this->getNotificationCount();
         $this->view->render('user/profile/enterPassword');
     }
 
@@ -122,6 +153,76 @@ class Accountant extends Controller{
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
     } 
-}
+    // get advacne request details 
+    function getAdvanceRequests(){
+        $reslt=$this->model->getAdvanceRequests();
+        $json_arr=json_encode($reslt);
+        echo $json_arr;
+    }
 
+    //Get Notification
+    function setNotification($notification)
+    {
+        if (!empty($notification)) {
+            echo '<div id="all_notifications">';
+            for ($i = 0; $i < count($notification); $i++) {
+                switch ($notification[$i]['notification_type']) {
+                    case 'warning':
+                        $imgPath = URL . '/vendors/images/notifications/warning.jpg';
+                        break;
+                    case 'request':
+                        $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                        break;
+                }
+
+                switch ($notification[$i]['read_unread']) {
+                    case 0:
+                        $notificationStatus = "unread";
+                        break;
+                    case 1:
+                        $notificationStatus = "read";
+                        break;
+                }
+                $dateTime = $notification[$i]['receive_datetime'];
+                echo
+                '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
+                        <div class = "profCont">
+                            <img class = "notification_profile" src = "' . $imgPath . '">
+                        </div>
+                        <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                        <div class="txt sub">' . $dateTime . '</div>
+                    </div>';
+            }
+            echo '</div>';
+        } else {
+            echo
+            '<div id="all_notifications">
+                <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                </div>
+            </div>';
+        }
+    }
+
+    public function getNotificationCount()
+    {
+        $notificationCount = $this->model->getNotificationCount($_GET);
+        return $notificationCount;
+    }
+
+    function getNotification()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['notification_type'])) {
+                $notification = $this->model->getNotification($_POST);
+                $this->setNotification($notification);
+            }
+        }
+    }
+
+
+
+    }
+    
 ?>
