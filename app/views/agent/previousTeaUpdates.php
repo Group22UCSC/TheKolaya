@@ -168,10 +168,10 @@ $(document).ready(function(){
       url: "<?php echo URL ?>agent/searchPreviousTeaUpdates",
       cache: false,
       data: form,
-    }).done(function (data) {
+    }).done(function (response) {
       document.getElementById("date").value = "2021-10-28";
       console.log("success");
-      console.log(data);
+      console.log(response);
     });
     console.log('date'+date);
     console.log('lid'+landownerId);
