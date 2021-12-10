@@ -136,8 +136,8 @@ class Agent extends Controller
             $this->pre_tea_data['lid'] = trim($_POST['searchlid']);   
             
            $result= $this->model->searchTeaUpdates($this->pre_tea_data);
-        //    $this->view->render('Agent/previousTeaUpdates', $result);
-            print_r($result);
+           $this->view->render('Agent/preTeaUpdatesResults', $result);
+            // print_r($result);
     }
     }
     function loadPopup()
