@@ -81,8 +81,9 @@ $(document).ready(function(){
   <script>
     $(document).ready(function () {
       $('#submit').click(function(event) {
+        $("#resultform").show();
         var form = $('#searchTeaForm').serializeArray();
-        console.log(form);
+        // console.log(form);
         var date = $('#searchdate').val();
         var landownerId = $('#search').val();
     $.ajax({
@@ -90,9 +91,8 @@ $(document).ready(function(){
       url: "<?php echo URL ?>agent/searchPreviousTeaUpdates",
       cache: false,
       data: form,
-    }).done(function (response) {
-      document.getElementById("date").value = "2021-10-28";
-      console.log("success");
+    }).done(function (response) {      
+      // console.log("success");
       // console.log(response);
       $('#resultform').html(response);
       
