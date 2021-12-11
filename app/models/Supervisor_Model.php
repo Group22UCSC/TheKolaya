@@ -98,6 +98,28 @@ class Supervisor_Model extends Model
         }
     }
 
+
+    function isCollected($landowner_id) {
+        $date = date("Y-m-d");
+        $query = "SELECT * FROM tea WHERE lid='$landowner_id' AND date='$date'";
+        $row = $this->db->runQuery($query);
+        if(!empty($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function getLandownerId() {
+        $date = date("Y-m-d");
+        $query = "SELECT * FROM tea WHERE date='$date' AND sup_id IS NULL";
+        $row = $this->db->runQuery($query);
+        if(!empty($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
     function updateTeaMeasure($data)
     {
         $landowner_id = $data['landowner_id'];
@@ -142,7 +164,6 @@ class Supervisor_Model extends Model
             return false;
         }
     }
-
 
     function getRequests()
     {
