@@ -19,17 +19,17 @@
 <div class="topic">View Previous Request Updates</div>
 <button class="backbtn" onclick="goBack()">Back </button>
 <div class="form-container">
-<form class="searchform">
-    <input type="date" id="date" name="date"  required>
-    <input type="text" id="search" placeholder="Enter Landowner ID.." required>
-    <select id="dropdown" required>
+<form class="searchform" id="searchRequestForm">
+    <input type="date" id="searchdate" name="searchdate"  required>
+    <input type="text" id="search" name="searchlid" placeholder="Enter Landowner ID.." required>
+    <select id="dropdown" name="searchtype" required>
         <option value="" disabled selected hidden><span>Choose </span>Request Type..</option>
         <option>Advance</option>
         <option>Fertilizer</option>
     </select>
-    <input type="submit" value="search" id="submit">
+    <input type="button" value="search" id="submit">
 </form>
-<form class="resultform">
+<form class="resultform" id="resultform">
 <div class="inputfield">
     <label class="resultlbl">Agent ID</label>
     <input type="text" id="lid"  size="6"  readonly>
@@ -62,4 +62,31 @@
     
 </form>
 </div>
+<script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>  
+  <script>
+    $(document).ready(function () {
+      $('#submit').click(function(event) {       
+        var form = $('#searchRequestForm').serializeArray();
+        // console.log(form);
+        var date = $('#searchdate').val();
+        var landownerId = $('#search').val();
+        var requestType=$('#dropdown').val();
+    $.ajax({
+      type: "POST",
+      url: "<?php echo URL ?>agent/searchPreviousRequestUpdates",
+      cache: false,
+      data: form,
+    }).done(function (response) {      
+      console.log("success");
+       console.log(response);
+      $("#resultform").show();
+      $('#resultform').html(response);
+      
+    });
+    console.log('date'+date);
+    console.log('lid'+landownerId);
+    event.preventDefault();
+  });
+});
+</script>
   <?php include 'bottomContainer.php';?>

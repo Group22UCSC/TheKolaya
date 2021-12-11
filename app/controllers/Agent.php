@@ -136,10 +136,38 @@ class Agent extends Controller
             $this->pre_tea_data['lid'] = trim($_POST['searchlid']);   
             
            $result= $this->model->searchTeaUpdates($this->pre_tea_data);
-        //    $this->view->render('Agent/previousTeaUpdates', $result);
-            print_r($result);
+           $this->view->render('Agent/preTeaUpdatesResults', $result);
+            // print_r($result);
     }
     }
+
+    function searchPreviousRequestUpdates(){
+        $pre_request_data = [
+            'date' => '',
+            'lid' => '' ,
+            'rtype' =>''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->pre_request_data['date'] = trim($_POST['searchdate']); 
+            $this->pre_request_data['lid'] = trim($_POST['searchlid']);   
+            $this->pre_request_data['rtype'] = trim($_POST['searchtype']);   
+
+            if ($this->pre_request_data['rtype'] == "Fertilizer") {
+                $result= $this->model->searchFertilizerUpdates($this->pre_request_data);
+                $this->view->render('Agent/preFertilizerRequestsResults', $result);
+                print_r($result);
+            } else if ($this->request_data['rtype'] == "Advance") {
+                $result= $this->model->searchAdvanceUpdates($this->pre_request_data);
+                $this->view->render('Agent/preAdvanceRequestsResults', $result);
+                print_r($result);
+            }
+          
+            
+    }
+    }
+
     function loadPopup()
     {
         $this->view->showPage('Agent/popup');
