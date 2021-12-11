@@ -123,43 +123,65 @@ class Supervisor extends Controller
     {
         $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $data = [
-                'landowner_id' => $_POST['landowner_id'],
-                'weight' => $_POST['weight'],
-                'water' => $_POST['water'],
-                'mature_leaves' => $_POST['mature_leaves'],
-                'container' => $_POST['container'],
-
-                'net_weight' => '',
-                'rate' => $_POST['rate']
-            ];
-            $reduction = ($data['weight'] * ($data['water'] + $data['container'] + $data['mature_leaves'])) / 100;
-            $data['net_weight'] = $data['weight'] - $reduction;
-            $data['rate'] = ($data['rate']) * 20;
-
-            if ($this->model->updateTeaMeasure($data))
-                $updateTable = $this->model->getUpdateTeaMeasureById($data['landowner_id']);
-
-            if (!empty($updateTable)) {
-                $countData = count($updateTable) - 1;
-                if ($updateTable[$countData]['quality'] <= 20) {
-                    $teaQuality = 'Too Bad';
-                } else if ($updateTable[$countData]['quality'] > 20 && $updateTable[$countData]['quality'] <= 40) {
-                    $teaQuality = 'Bad';
-                } else if ($updateTable[$countData]['quality'] > 40 && $updateTable[$countData]['quality'] <= 60) {
-                    $teaQuality = 'Average';
-                } else if ($updateTable[$countData]['quality'] > 60 && $updateTable[$countData]['quality'] <= 80) {
-                    $teaQuality = 'Good';
-                } else if ($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
-                    $teaQuality = 'Excellent';
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            if($_POST['method_name'] == "getLandownerId") {
+                $data = $this->model->getLandownerId();
+                if($data) {
+                    $json_arr = json_encode($data);
+                    echo $json_arr;
                 }
-                $reductions = $updateTable[$countData]['water_precentage'] + $updateTable[$countData]['container_precentage'] + $updateTable[$countData]['matured_precentage'];
-                echo '<div class="row">
-                          <div class="cell" data-title="Landowener Id">' . $updateTable[$countData]['lid'] . '</div>
-                          <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
-                          <div class="cell" data-title="Net-Weight(kg)">' . $updateTable[$countData]['net_weight'] . '</div>
-                          <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
-                        </div>';
+                return;
+            }
+            if ($_POST['isCollected'] == "false") {
+                $data = $this->model->isCollected($_POST['landowner_id']);
+                if(!empty($data)){
+                    if(!empty($data[0]['sup_id'])){
+                        echo "updated";
+                    }else {
+                        echo "true";
+                    }
+                }else {
+                    echo "false";
+                }
+            } else if ($_POST['isCollected'] == "true") {
+                $data = [
+                    'landowner_id' => $_POST['landowner_id'],
+                    'weight' => $_POST['weight'],
+                    'water' => $_POST['water'],
+                    'mature_leaves' => $_POST['mature_leaves'],
+                    'container' => $_POST['container'],
+
+                    'net_weight' => '',
+                    'rate' => $_POST['rate']
+                ];
+                $reduction = ($data['weight'] * ($data['water'] + $data['container'] + $data['mature_leaves'])) / 100;
+                $data['net_weight'] = $data['weight'] - $reduction;
+                $data['rate'] = ($data['rate']) * 20;
+
+                if ($this->model->updateTeaMeasure($data))
+                    $updateTable = $this->model->getUpdateTeaMeasureById($data['landowner_id']);
+
+                if (!empty($updateTable)) {
+                    $countData = count($updateTable) - 1;
+                    if ($updateTable[$countData]['quality'] <= 20) {
+                        $teaQuality = 'Too Bad';
+                    } else if ($updateTable[$countData]['quality'] > 20 && $updateTable[$countData]['quality'] <= 40) {
+                        $teaQuality = 'Bad';
+                    } else if ($updateTable[$countData]['quality'] > 40 && $updateTable[$countData]['quality'] <= 60) {
+                        $teaQuality = 'Average';
+                    } else if ($updateTable[$countData]['quality'] > 60 && $updateTable[$countData]['quality'] <= 80) {
+                        $teaQuality = 'Good';
+                    } else if ($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
+                        $teaQuality = 'Excellent';
+                    }
+                    $reductions = $updateTable[$countData]['water_precentage'] + $updateTable[$countData]['container_precentage'] + $updateTable[$countData]['matured_precentage'];
+                    echo '<div class="row">
+                              <div class="cell" data-title="Landowener Id">' . $updateTable[$countData]['lid'] . '</div>
+                              <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
+                              <div class="cell" data-title="Net-Weight(kg)">' . $updateTable[$countData]['net_weight'] . '</div>
+                              <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
+                            </div>';
+                }
             }
         } else {
             $updateTable = $this->model->getUpdateTeaMeasure();
@@ -272,10 +294,10 @@ class Supervisor extends Controller
     function editProfile()
     {
         // if (isLoggedIn()) {
-            include '../app/controllers/User.php';
-            $user = new User();
-            $user->loadModelUser('User');
-            $user->editProfile();
+        include '../app/controllers/User.php';
+        $user = new User();
+        $user->loadModelUser('User');
+        $user->editProfile();
         // }
     }
 
