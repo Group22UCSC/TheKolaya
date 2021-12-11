@@ -160,7 +160,7 @@ class Agent extends Controller
                 $result= $this->model->searchAdvanceUpdates($this->pre_request_data);
             }
 
-           $this->view->render('Agent/preRequestUpdatesResults', $result);
+           $this->view->render('Agent/preFertilizerRequestsResults', $result);
             // print_r($result);
     }
     }

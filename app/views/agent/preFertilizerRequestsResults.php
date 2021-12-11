@@ -26,6 +26,6 @@
     </div>
     <div class="inputfield">
     <label class="resultlbl">Amount</label>
-    <input type="text" id="ramount" value="<?php echo $data[0]['amount'] ;?>" size="6"  readonly>
+    <input type="text" id="ramount" value="<?php echo $data[0]['amount'] ;?> kg" size="6"  readonly>
 </div>
 <button id="ok">OK</button>  
