@@ -187,3 +187,12 @@
 .form-container .form .inputfield .rate > label:hover ~ input:checked ~ label {
     color: #7af334;
 }
+
+.is-invalid {
+  border: 1px solid red;
+}
+
+.is-invalid::placeholder {
+  color: red;
+  font-weight: 500;
+}
