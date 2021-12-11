@@ -156,12 +156,15 @@ class Agent extends Controller
 
             if ($this->pre_request_data['rtype'] == "Fertilizer") {
                 $result= $this->model->searchFertilizerUpdates($this->pre_request_data);
+                $this->view->render('Agent/preFertilizerRequestsResults', $result);
+                print_r($result);
             } else if ($this->request_data['rtype'] == "Advance") {
                 $result= $this->model->searchAdvanceUpdates($this->pre_request_data);
+                $this->view->render('Agent/preAdvanceRequestsResults', $result);
+                print_r($result);
             }
-
-           $this->view->render('Agent/preRequestUpdatesResults', $result);
-            // print_r($result);
+          
+            
     }
     }
 

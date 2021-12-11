@@ -166,6 +166,25 @@ class Agent_Model extends Model{
         }
     }
 
+    function searchAdvanceUpdates($data=[]){
+        $date = $data['date'];
+        $lid = $data['lid'];
+
+        $query = "SELECT request.request_id,request.request_date,request.confirm_date, request.request_type, request.lid, 
+        advance_request.amount_rs, advance_request.agent_id,advance_request.acc_id,
+        advance_request.payment_day
+         FROM request 
+         INNER JOIN advance_request
+         ON  request.request_id = advance_request.request_id                   
+        WHERE  request.lid ='$lid' AND request.request_date='$date'";
+        $row = $this->db->runQuery($query);
+
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
  
 }
 
