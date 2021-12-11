@@ -161,7 +161,7 @@ class Agent extends Controller
             }
 
            $this->view->render('Agent/preRequestUpdatesResults', $result);
-            print_r($result);
+            // print_r($result);
     }
     }
 

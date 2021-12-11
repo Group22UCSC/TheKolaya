@@ -150,13 +150,13 @@ class Agent_Model extends Model{
         $date = $data['date'];
         $lid = $data['lid'];
 
-        // $query = "SELECT request.request_id,request.request_date,request.confirm_date, request.request_type, request.lid, 
-        // fertilizer_request.amount, fertilizer_request.agent_id,fertilizer_request.sup_id,
-        // fertilizer_request.date_delivered
-        //  FROM request 
-        //  INNER JOIN fertilizer_request
-        //  ON  request.request_id = fertilizer_request.request_id                   
-        // WHERE  request.lid IN (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
+        $query = "SELECT request.request_id,request.request_date,request.confirm_date, request.request_type, request.lid, 
+        fertilizer_request.amount, fertilizer_request.agent_id,fertilizer_request.sup_id,
+        fertilizer_request.date_delivered
+         FROM request 
+         INNER JOIN fertilizer_request
+         ON  request.request_id = fertilizer_request.request_id                   
+        WHERE  request.lid ='$lid' AND request.request_date='$date'";
         $row = $this->db->runQuery($query);
 
         if($row) {
