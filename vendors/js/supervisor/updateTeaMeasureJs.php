@@ -59,24 +59,20 @@
             }
         });
 
-        $(inputField[0]).click(function() {
-            $.ajax({
-                url: "<?php echo URL ?>Supervisor/updateTeaMeasure",
-                type: "POST",
-                data: "method_name=getLandownerId",
-                dataType: "JSON",
-                success: function(data) {
-                    inputField[0].value = data[0]['lid'];
-                    landowner_id[1]['value'] = true;
-                }
-            })
-        });
-        // console.log(inputField);
+        //Update automatically landowner Id
+        $.ajax({
+            url: "<?php echo URL ?>Supervisor/updateTeaMeasure",
+            type: "POST",
+            data: "method_name=getLandownerId",
+            dataType: "JSON",
+            success: function(data) {
+                inputField[0].value = data[0]['lid'];
+                landowner_id[1]['value'] = true;
+            }
+        })
         $('#update_tea_btn').click(function(event) {
             event.preventDefault();
             var form = $('#update_tea_form').serializeArray();
-            // console.log(form);
-            // console.log(landowner_id);
             if (form[0]['value'] && form[1]['value']) {
                 Swal.fire({
                     title: 'Are you sure?',
@@ -97,11 +93,12 @@
                             cache: false,
                             data: form,
                             success: function(data) {
-                                Swal.fire(
-                                    'Updated!',
-                                    'Your file has been updated.',
-                                    'success'
-                                )
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Updated !',
+                                    text: 'Your file has been updated.',
+                                    confirmButtonColor: '#01830c'
+                                })
                                 $('#not_display_yet').hide();
                                 $('#update_tea_table').append(data);
                                 // console.log(data);
