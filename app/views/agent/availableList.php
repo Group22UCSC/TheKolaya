@@ -73,8 +73,8 @@
           "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
           "</div>" +
           "</div>";
-          console.log('lid'+landownerId);
-          console.log('initialweight'+initialTeaWeight);
+        console.log('lid' + landownerId);
+        console.log('initialweight' + initialTeaWeight);
         // if(inAmount == 0) {
         //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
         // }else if(inAmount < 0) {
@@ -107,11 +107,12 @@
               cache: false,
               data: form,
               success: function(data) {
-                Swal.fire(
-                  'Updated!',
-                  'Your file has been updated.',
-                  'success'
-                ).then((result) => {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Updated !',
+                  text: 'Your file has been updated.',
+                  confirmButtonColor: '#01830c'
+                }).then((result) => {
                   location.reload();
                 })
                 // console.log(data);
@@ -132,7 +133,7 @@
   </script>
   <?php include 'bottomContainer.php'; ?>
 
-   <!-- include 'popup.php';  -->
+  <!-- include 'popup.php';  -->
 
   <script>
     var table = document.getElementById('availabletable');

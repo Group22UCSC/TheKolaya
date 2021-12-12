@@ -93,11 +93,12 @@
                             cache: false,
                             data: form,
                             success: function(data) {
-                                Swal.fire(
-                                    'Updated!',
-                                    'Your file has been updated.',
-                                    'success'
-                                )
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Updated !',
+                                    text: 'Your file has been updated.',
+                                    confirmButtonColor: '#01830c'
+                                })
                                 $('#not_display_yet').hide();
                                 $('#update_tea_table').append(data);
                                 // console.log(data);
