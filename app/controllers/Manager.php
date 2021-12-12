@@ -61,7 +61,7 @@ class Manager extends Controller
     public function viewPayments()
     {
         // $this->view->showPage('Manager/viewPayments');
-        $result = $this->model->availablelistTable_landowners();
+        $result = $this->model->view_payments_table();
         // print_r($result);
         $this->view->render('Manager/viewPayments', $result);
     }
