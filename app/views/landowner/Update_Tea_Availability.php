@@ -63,7 +63,7 @@
           $('#update_availability_form').trigger('reset');
           $.ajax({
             type: 'POST',
-            url: 'http://localhost/Thekolaya/landowner/Update_Tea_Availability',
+            url: '<?php echo URL?>landowner/Update_Tea_Availability',
             cache: false,
             data: form,
             success: function(data) {

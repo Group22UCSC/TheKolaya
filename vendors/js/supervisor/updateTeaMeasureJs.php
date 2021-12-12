@@ -73,6 +73,10 @@
         $('#update_tea_btn').click(function(event) {
             event.preventDefault();
             var form = $('#update_tea_form').serializeArray();
+            form.push({
+                name: 'isCollected',
+                value: true
+            });
             if (form[0]['value'] && form[1]['value']) {
                 Swal.fire({
                     title: 'Are you sure?',
@@ -82,7 +86,7 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD101',
-                    cancelButtonColor: '#FF2400',
+                    confirmButtonColor: '#01830c',
                     confirmButtonText: 'Yes, Update it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -98,6 +102,18 @@
                                     title: 'Updated !',
                                     text: 'Your file has been updated.',
                                     confirmButtonColor: '#01830c'
+                                }).then(() => {
+                                    //Update automatically landowner Id
+                                    $.ajax({
+                                        url: "<?php echo URL ?>Supervisor/updateTeaMeasure",
+                                        type: "POST",
+                                        data: "method_name=getLandownerId",
+                                        dataType: "JSON",
+                                        success: function(data) {
+                                            inputField[0].value = data[0]['lid'];
+                                            landowner_id[1]['value'] = true;
+                                        }
+                                    })
                                 })
                                 $('#not_display_yet').hide();
                                 $('#update_tea_table').append(data);
