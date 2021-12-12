@@ -10,15 +10,15 @@
     </div>    
     <div class="inputfield">
     <label class="resultlbl">Request Date</label>
-    <input type="date" id="rdate" name="date" value="<?php echo $data[0]['request_date'] ;?>" size="6"  readonly>
+    <input type="date" id="rdate" name="date" value="<?php echo $data[0]['DATE(request.request_date)'] ;?>" size="6"  readonly>
     </div>
     <div class="inputfield">
     <label class="resultlbl">Confirm Date</label>
-    <input type="date" id="cdate" name="date" value="<?php echo $data[0]['confirm_date'] ;?>" size="6"  readonly>
+    <input type="date" id="cdate" name="date" value="<?php echo $data[0]['DATE(request.confirm_date)'] ;?>" size="6"  readonly>
     </div>
     <div class="inputfield">
     <label class="resultlbl">Delivered Date</label>
-    <input type="date" id="cdate" name="date"  value="<?php echo $data[0]['date_delivered'] ;?>" size="6"  readonly>
+    <input type="date" id="cdate" name="date"  value="<?php echo $data[0]['DATE(advance_request.payment_day)'] ;?>" size="6"  readonly>
     </div>
     <div class="inputfield">
     <label class="resultlbl">Request Type</label>
@@ -26,6 +26,6 @@
     </div>
     <div class="inputfield">
     <label class="resultlbl">Amount</label>
-    <input type="text" id="ramount" value="<?php echo $data[0]['amount'] ;?> kg" size="6"  readonly>
+    <input type="text" id="ramount" value="Rs <?php echo $data[0]['amount_rs'];?>/=" size="6"  readonly>
 </div>
 <button id="ok">OK</button>  

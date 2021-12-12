@@ -170,9 +170,9 @@ class Agent_Model extends Model{
         $date = $data['date'];
         $lid = $data['lid'];
 
-        $query = "SELECT request.request_id,request.request_date,request.confirm_date, request.request_type, request.lid, 
+        $query = "SELECT request.request_id,DATE(request.request_date),DATE(request.confirm_date), request.request_type, request.lid, 
         advance_request.amount_rs, advance_request.agent_id,advance_request.acc_id,
-        advance_request.payment_day
+        DATE(advance_request.payment_day)
          FROM request 
          INNER JOIN advance_request
          ON  request.request_id = advance_request.request_id                   
