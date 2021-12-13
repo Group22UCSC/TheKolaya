@@ -294,5 +294,20 @@ class Accountant_Model extends Model {
             $_SESSION['NotSeenCount'] = 0;
         }
     }
+
+    function getPaymentFormDetails(){
+        $sql="SELECT user.user_id,request.request_date,request.lid,advance_request.amount_rs,user.name
+        FROM request 
+        INNER JOIN advance_request ON request.request_id=advance_request.request_id 
+        INNER JOIN user ON user.user_id=request.lid
+        WHERE request.request_type='advance' AND request.response_status='receive' ";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
 }
 ?>

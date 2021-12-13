@@ -76,7 +76,7 @@ document.querySelector('#lid').addEventListener('keypress', function (e) {
           data: {
                 year:year,
                 month:month,
-                teaPrice:price,
+                lid:lid,
           },
           success:function(data){
             console.log(data);
