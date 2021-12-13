@@ -74,6 +74,41 @@ class Manager_Model extends Model {
         }
     }
 
+
+     function view_payments_table(){
+        $query = "SELECT * FROM monthly_payment";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+
+    function view_instock(){
+        $query = "SELECT * FROM in_stock";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+      function view_outstock(){
+        $query = "SELECT * FROM out_stock";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
       function availableListTable(){
         $query = "SELECT *FROM user WHERE verify=1";
         $row = $this->db->runQuery($query);
@@ -112,6 +147,30 @@ class Manager_Model extends Model {
         $query = "UPDATE request SET response_status='$response_status' WHERE request_id='$request_id'";
 
         $this->db->runQuery($query);
+    }
+
+
+      function getStock()
+    {
+        $query = "SELECT * FROM stock";
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+      function getStock2()
+    {
+        $query = "SELECT * FROM product";
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
     }
 
 }

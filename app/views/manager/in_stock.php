@@ -2,10 +2,10 @@
 
 <?php include 'top-container.php';?>
 
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/outstock.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/in_stock.css">
 
   
-   <div class="middle">VIEW OUT-STOCK DETAILS</div>
+   <div class="middle">VIEW IN-STOCK DETAILS</div>
 
    <div class="middle-conatiner">
 
@@ -18,6 +18,8 @@
                            <tr class="header">
                                 <th style="width:16.66%;">Date</th>
                                 <th style="width:16.66%;">Type</th>                                
+                                <th style="width:16.66%;" id="hide">Unit Price</th>
+                                <th style="width:16.66%;" id="hide">Price for Amount</th>
                                 <th style="width:16.66%;" id="hide">Quantity</th>
                                 <th style="width:16.66%;" id="hide">Employee ID</th>
                                
@@ -29,9 +31,11 @@
                                $x=count($data);
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">
-                                           <td>'.$data[$i]['out_date'].'</td>
+                                           <td>'.$data[$i]['in_date'].'</td>
                                            <td>'.$data[$i]['type'].'</td>
-                                           <td style id="hide">'.$data[$i]['out_quantity'].'</td>
+                                           <td style id="hide">'.$data[$i]['price_per_unit'].'</td>
+                                           <td style id="hide">'.$data[$i]['price_for_amount'].'</td>
+                                           <td style id="hide">'.$data[$i]['in_quantity'].'</td>
                                            <td style id="hide">'.$data[$i]['emp_id'].'</td>
                                            
                                        </tr>';                
@@ -56,8 +60,10 @@
                     //rIndex=this.rowIndex;
                       document.getElementById("date").value=this.cells[0].innerHTML;
                       document.getElementById("type").value=this.cells[1].innerHTML;
-                      document.getElementById("quantity").value=this.cells[2].innerHTML;
-                      document.getElementById("id").value=this.cells[3].innerHTML;
+                      document.getElementById("unit_price").value=this.cells[2].innerHTML;
+                      document.getElementById("total_price").value=this.cells[3].innerHTML;
+                      document.getElementById("quantity").value=this.cells[4].innerHTML;
+                      document.getElementById("id").value=this.cells[5].innerHTML;
                    
                  
                    };
@@ -104,7 +110,7 @@
 
 
  <div class="middle1"> 
-<a >VIEW OUT-STOCK DETAILS</a> </div>
+<a >VIEW IN-STOCK DETAILS</a> </div>
   
 
 <div class="k1">  
@@ -114,20 +120,31 @@
       <div class="form">
 
         <div class="inputfield">
-           <label> OUT-Date</label>
-           <input type="text" class="input" name="out_date" id="date" required readonly>
+           <label> In-Date</label>
+           <input type="text" class="input" name="in_date" id="date" required readonly>
        </div> 
 
 
        <div class="inputfield">
-          <label>OUT-stock Type</label>
+          <label>In-stock Type</label>
                <input type="text" class="input" name="type" id="type" required readonly>  
        </div>
 
-        <div class="inputfield">
-          <label>OUT-Quantity</label>
-          <input type="text" class="input" name="out_quantity" id="quantity" required readonly>
+       <div class="inputfield">
+          <label>Unit Price</label>
+          <input type="text" class="input" name="price_per_unit" id="unit_price" required readonly>
        </div> 
+
+        <div class="inputfield">
+          <label>In-Quantity</label>
+          <input type="text" class="input" name="in_quantity" id="quantity" required readonly>
+       </div> 
+
+       <div class="inputfield">
+          <label>Price per Amount</label>
+          <input type="text" class="input" name="price_for_amount" id="total_price" required readonly>
+       </div> 
+
 
        <div class="inputfield">
           <label>Emp-ID</label>

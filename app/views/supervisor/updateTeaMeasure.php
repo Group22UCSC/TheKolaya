@@ -27,11 +27,11 @@
           <div class="form">
             <div class="inputfield">
               <label>Landowner ID</label>
-              <input type="text" class="input" name="landowner_id">
+              <input type="text" class="input" name="landowner_id" required>
             </div>
             <div class="inputfield">
               <label>Initial Tea Weight</label>
-              <input type="number" class="input" name="weight">
+              <input type="number" class="input" name="weight" required>
             </div>
             <div class="inputfield">
               <label>Reductions(kg)</label>
