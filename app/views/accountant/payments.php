@@ -13,6 +13,10 @@
         <button type="submit">Search</button>
     </form>
 </div> -->
+<?php 
+    $year=date('Y');
+    $month=date('m');
+?>
 <div class="formSection">
 <form action="<?php echo URL ?>/accountant/pdf" method="POST" target="_blank">
 		<!-- <h2>CSS Form</h2> -->
@@ -29,11 +33,11 @@
 			
 			<div class="small-group">
                 <label for="year">Year</label>
-				<input for="year" type="text" name="year" readonly/>
+				<input for="year" type="text" name="year" id="year" value="<?php echo $year?>"/>
 			</div>
 			<div class="small-group">
 				<label for="month">Month</label>
-				<input for="month" type="text" name="month" readonly/>
+				<input for="month" type="text" name="month" id="month" value="<?php echo $month?>" />
 			</div>
 			
 			<div class="small-group">

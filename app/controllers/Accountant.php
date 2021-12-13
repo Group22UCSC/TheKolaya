@@ -221,7 +221,11 @@ class Accountant extends Controller{
         }
     }
 
+    // get the details of the landowner and his payments after press Enter 
+    //in the payment form of accountant
+    function getPaymentFormDetails(){
 
+    }
 
     }
     

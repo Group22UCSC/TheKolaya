@@ -61,5 +61,28 @@ $(document).ready(function(){
 })
 
 
+document.querySelector('#lid').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      var year=document.getElementById("year").value;
+      var month=document.getElementById("month").value;
+      var lid=document.getElementById("lid").value;
+      //alert(lid);
+      var url="http://localhost/Thekolaya/accountant/getPaymentFormDetails";
+      $.ajax({
+          url:url,
+          type:POST,
+          dataType:"JSON",
+          data: {
+                year:year,
+                month:month,
+                teaPrice:price,
+          },
+          success:function(data){
+            console.log(data);
+          }
 
+      });
+    }
+});
 </script>
