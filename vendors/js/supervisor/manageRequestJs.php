@@ -110,13 +110,13 @@
       }
 
       // console.log(form);
-      
+
       Swal.fire({
         title: sweetAlert.title,
         html: '<div>' + sweetAlert.message + '</div>',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#4DD101',
+        confirmButtonColor: '#01830c',
         cancelButtonColor: '#FF2400',
         confirmButtonText: 'Yes, Update it!'
       }).then((result) => {
@@ -128,11 +128,12 @@
             cache: false,
             data: form,
             success: function(data) {
-              Swal.fire(
-                'Updated!',
-                'Your file has been updated.',
-                'success'
-              ).then((result) => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Updated !',
+                text: 'Your file has been updated.',
+                confirmButtonColor: '#01830c'
+              }).then((result) => {
                 location.reload();
               })
               // console.log(data);

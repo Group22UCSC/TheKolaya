@@ -124,13 +124,16 @@ class Supervisor extends Controller
         $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            if($_POST['method_name'] == "getLandownerId") {
+            if(isset($_POST['method_name'])) {
                 $data = $this->model->getLandownerId();
                 if($data) {
                     $json_arr = json_encode($data);
                     echo $json_arr;
                 }
                 return;
+            }
+            if(isset($_POST['isCollected'])) {
+                
             }
             if ($_POST['isCollected'] == "false") {
                 $data = $this->model->isCollected($_POST['landowner_id']);
