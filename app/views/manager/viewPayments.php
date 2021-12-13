@@ -17,14 +17,15 @@
 
                       <table id="myTable">
                            <tr class="header">
-                               <th style="width:12.5%;">Name</th>
-                                <th style="width:12.5%;">ID</th>
+                               
+                                <th style="width:12.5%;">Landowner ID</th>
                                 <th style="width:12.5%;" id="hide">Date</th>
                                 <th style="width:12.5%;" id="hide">Payment Date</th>
                                 <th style="width:12.5%;" id="hide">Fertilizer Expenses</th>
                                 <th style="width:12.5%;" id="hide">Advance Expenses</th>
                                 <th style="width:12.5%;" id="hide">Income</th>
-                                <th style="width:12.5%;">Final Payment</th>                                
+                                <th style="width:12.5%;">Final Payment</th>   
+                                <th style="width:12.5%;" id="hide">Employee ID</th>                             
                                
                               
                             </tr>
@@ -34,7 +35,6 @@
                                $x=count($data);
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">
-                                           <td>'.$data[$i]['name'].'</td>
                                            <td>'.$data[$i]['lid'].'</td>
                                            <td style id="hide">'.$data[$i]['date'].'</td>
                                            <td style id="hide">'.$data[$i]['payment_date'].'</td>
@@ -42,6 +42,7 @@
                                            <td style id="hide">'.$data[$i]['advance_expenses'].'</td>
                                            <td style id="hide">'.$data[$i]['income'].'</td>
                                            <td>'.$data[$i]['final_payment'].'</td>
+                                           <td style id="hide">'.$data[$i]['emp_id'].'</td>
                                        </tr>';                
                                }       
                                ?>         
@@ -62,14 +63,15 @@
                    table.rows[i].onclick=function()
                    {
                     //rIndex=this.rowIndex;
-                      document.getElementById("name").value=this.cells[0].innerHTML;
-                      document.getElementById("id").value=this.cells[1].innerHTML;
-                      document.getElementById("date").value=this.cells[2].innerHTML;
-                      document.getElementById("payment_date").value=this.cells[3].innerHTML;
-                      document.getElementById("fertilizer_expenses").value=this.cells[4].innerHTML;
-                      document.getElementById("advance_expenses").value=this.cells[5].innerHTML;
-                      document.getElementById("income").value=this.cells[6].innerHTML;
-                      document.getElementById("final_payment").value=this.cells[7].innerHTML;
+                      
+                      document.getElementById("id").value=this.cells[0].innerHTML;
+                      document.getElementById("date").value=this.cells[1].innerHTML;
+                      document.getElementById("payment_date").value=this.cells[2].innerHTML;
+                      document.getElementById("fertilizer_expenses").value=this.cells[3].innerHTML;
+                      document.getElementById("advance_expenses").value=this.cells[4].innerHTML;
+                      document.getElementById("income").value=this.cells[5].innerHTML;
+                      document.getElementById("final_payment").value=this.cells[6].innerHTML;
+                      document.getElementById("emp_id").value=this.cells[7].innerHTML;
                  
                    };
                  }
@@ -125,11 +127,6 @@
       <div class="form">
 
         <div class="inputfield">
-           <label>LandOwner Name</label>
-           <input type="text" class="input" name="name" id="name" required readonly>
-       </div> 
-
-        <div class="inputfield">
           <label>LandOwner ID</label>
           <input type="text" class="input" name="lid" id="id" required readonly>
        </div> 
@@ -163,6 +160,12 @@
           <label>Final Payment</label>
                <input type="text" class="input" name="final_payment" id="final_payment" required readonly>  
        </div>
+
+       <div class="inputfield">
+          <label>Accountant ID</label>
+          <input type="text" class="input" name="emp_id" id="emp_id" required readonly>
+       </div> 
+
      
      </form>
 
