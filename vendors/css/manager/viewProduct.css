@@ -1,119 +1,129 @@
 *{ margin: 0; padding: 0; }
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
-
-
+#hide{
+  display: none;
+}
 
 
 .middle{
-    background-color: white;
+  border: 1px solid #d5dbd9;
   margin-top: 15px;
-  margin-bottom: 15px;
-  padding-top: 12px;
-  width: 90%;
   height: 50px;
+  width: 90%;
+  background-color: white;
   margin-left: 5%;
   text-align: center;
   color: green;
   font-weight: bold;
-  font-size: 23px;
+  font-size: 20px;
+  padding-top: 13px;
+}
 
+.name1{
+  padding-top: 10px;
+  width: 80%;
+  padding-left: 20%;
 }
 
 
 
-
-.table{
-   background-image: url("../../images/manager/2.jpg");
+.middle-conatiner {
+   background-image: url("../../images/admin/24.jpg");
    background-repeat: no-repeat;
     background-size: 100% 100%;
+   /* margin: 25px 0px;*/
+   margin-top: 15px;
+    text-align: center;
     width: 90%;
     margin-left: 5%;
-    height: 600px;
-  padding-top: 125px;
-  padding-bottom: 150px;
-  padding-left:23% ;
-
+    display: flex;
+    flex-direction: column;
 }
 
 
 
-.table-container{
-    font-family: 'Poppins', sans-serif;
-  display: grid;
-  padding: 40px;
-  color: #4f546c;
-  font-size: 0.9rem;
- /* background-color: #f9fbff;*/
+
+
+* {
+  box-sizing: border-box;
 }
-.teapricetable {
-    border-collapse: collapse;
-  /*  box-shadow: 0 5px 10px #e1e5ee;*/
-    background-color: white;
-    text-align: left;
-    overflow: hidden;
-    width: 60%;
-  }
-  .teapricetable tbody{
-    /* Set the height of table body */
-    height: 20px; 
-              
-    /* Set vertical scroll */
-    overflow-y: auto;
-      
-    /* Hide the horizontal scroll */
-    overflow-x: hidden; 
-  }
-  
-    .threadcls {
-      box-shadow: 0 5px 10px #e1e5ee;
-    }
-  
-    .thcls   {
-      padding: 1rem 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      font-size: 0.7rem;
-      font-weight: 900;
-    }
-  
-    .tdcls {
-      padding: 1rem 2rem;
-    }
-  
-    .acls {
-      text-decoration: none;
-      color:#2962ff;
-    }
-  
-    .status {
-      border-radius:  0.2rem;
-      background-color: red;
-      padding: 0.2rem 1rem;
-      text-align: center;
-  }
-     .status-pending {
-        background-color: #fff0c2;
-        color: #a68b00;
-      }
-      
-        
-       .status-paid {
-        background-color: #c8e6c9;
-        color:  #388e3c;
-      }
-  
-        .status-notupdated {
-        background-color: #ffcdd2;
-        color: #c62828;
-      }
-    
-  
-    .amount {
-      text-align: right;
-    }
-  
-   
-    tr:nth-child(even) {
-      background-color: #f4f6fb;
-    }
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  background-color: white;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+ display: block;
+  height: 500px;
+  overflow-y: auto;
+
+}
+
+#myTable th, #myTable td {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+/*#myTable .vertical{
+  display: block;
+  height: 600px;
+  overflow-y: auto;
+}
+*/
+#myTable.vertical tr{
+  display: block;
+}
+
+
+/*update form*////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.middle1{
+  border: 1px solid #d5dbd9;
+  margin-top: 15px;
+  height: 50px;
+  width: 90%;
+  background-color: white;
+  margin-left: 5%;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 13px;
+}

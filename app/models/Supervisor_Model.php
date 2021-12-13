@@ -2,7 +2,6 @@
 
 class Supervisor_Model extends Model
 {
-
     function __construct()
     {
         parent::__construct();
@@ -99,6 +98,28 @@ class Supervisor_Model extends Model
         }
     }
 
+
+    function isCollected($landowner_id) {
+        $date = date("Y-m-d");
+        $query = "SELECT * FROM tea WHERE lid='$landowner_id' AND date='$date'";
+        $row = $this->db->runQuery($query);
+        if(!empty($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function getLandownerId() {
+        $date = date("Y-m-d");
+        $query = "SELECT * FROM tea WHERE date='$date' AND sup_id IS NULL";
+        $row = $this->db->runQuery($query);
+        if(!empty($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
     function updateTeaMeasure($data)
     {
         $landowner_id = $data['landowner_id'];
@@ -144,7 +165,6 @@ class Supervisor_Model extends Model
         }
     }
 
-
     function getRequests()
     {
         $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
@@ -167,9 +187,30 @@ class Supervisor_Model extends Model
     {
         $request_id = $data['request_id'];
         $response_status = $data['response_status'];
+        $comment = $data['comment'];
         $query = "UPDATE request SET response_status='$response_status' WHERE request_id='$request_id'";
 
-        $this->db->runQuery($query);
+        if ($response_status == 'accept') {
+            $message = "Your Request accepted, Agent will diliver your fertilizer amount.";
+        } else if ($response_status == 'decline') {
+            $message = "Your Request declined, For more details contact Supervisor " . $_SESSION['name'];
+            if ($comment != '') {
+                $message = "Your Request declined, " . $comment . " For more details contact Supervisor " . $_SESSION['name'];
+            }
+        }
+        $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id)
+        VALUES(0, 0, '$message', 'Landowner', 'request', '" . $_SESSION['user_id'] . "')";
+
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $this->db->beginTransaction();
+            $this->db->runQuery($query);
+            $this->db->runQuery($notificationQuery);
+            $this->db->commit();
+        } catch (PDOException $e) {
+            $this->db->rollback();
+            throw $e;
+        }
     }
 
     function stock($data)
@@ -205,47 +246,70 @@ class Supervisor_Model extends Model
 
         $query = "SELECT * FROM stock WHERE type='$type'";
         $row = $this->db->runQuery($query);
-        if (empty($row)) {
-            $query = "INSERT INTO stock(type, full_stock, emp_id) VALUES('$type', '$amount', '$emp_id')";
-            $this->db->runQuery($query);
-        } else {
-            $full_stock = $row[0]['full_stock'];
-        }
 
-        if ($data['stock_type'] == 'in_stock') {
-            $price_per_unit = $data['price_per_unit'];
-            $price_for_amount = $price_per_unit * $amount;
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $this->db->beginTransaction();
 
-            if ($full_stock) {
+            if (empty($row)) {
+                $full_stock = 0;
+                $query = "INSERT INTO stock(type, full_stock, emp_id) VALUES('$type', '$full_stock', '$emp_id')";
+                $this->db->runQuery($query);
+            } else {
+                $full_stock = $row[0]['full_stock'];
+            }
+
+            if ($data['stock_type'] == 'in_stock') {
+                $price_per_unit = $data['price_per_unit'];
+                $price_for_amount = $price_per_unit * $amount;
+
                 $full_stock += $amount;
                 $query = "UPDATE stock SET full_stock='$full_stock', emp_id='$emp_id' WHERE type='$type'";
                 $this->db->runQuery($query);
-            }
 
-            $query = "INSERT INTO in_stock(type, price_per_unit, price_for_amount, in_quantity, emp_id) 
-                    VALUES('$type', '$price_per_unit', '$price_for_amount' , '$amount', '$emp_id')";
-            $this->db->runQuery($query);
-        } else if ($data['stock_type'] == 'out_stock') {
-            if ($full_stock) {
-                if ($full_stock < $amount) {
-                    $full_stock -= $full_stock;
-                } else {
-                    $full_stock -= $amount;
+                $query = "INSERT INTO in_stock(type, price_per_unit, price_for_amount, in_quantity, emp_id) 
+                        VALUES('$type', '$price_per_unit', '$price_for_amount' , '$amount', '$emp_id')";
+                $this->db->runQuery($query);
+            } else if ($data['stock_type'] == 'out_stock') {
+                if ($full_stock) {
+                    if ($full_stock < $amount) {
+                        $amount = $full_stock;
+                        $full_stock -= $full_stock;
+                    } else {
+                        $full_stock -= $amount;
+                    }
+                    if($type == 'fertilizer') {
+                        $_SESSION['fertilizer_stock'] = $full_stock;
+                        if ($full_stock <= 500) {
+                            $this->stockGetLimit("Fertilzer Stock", $full_stock);
+                        }
+                    }else if($type == 'firewood') {
+                        $_SESSION['firewood_stock'] = $full_stock;
+                        if ($full_stock <= 500) {
+                            $this->stockGetLimit("Firewood Stock", $full_stock);
+                        }
+                    }
+                    
+                    $query = "UPDATE stock SET full_stock='$full_stock', emp_id='$emp_id' WHERE type='$type'";
+                    $this->db->runQuery($query);
                 }
-                $query = "UPDATE stock SET full_stock='$full_stock', emp_id='$emp_id' WHERE type='$type'";
+
+                $query = "INSERT INTO out_stock(type, out_quantity, emp_id) VALUES('$type', '$amount', '$emp_id')";
                 $this->db->runQuery($query);
             }
-
-            $query = "INSERT INTO out_stock(type, out_quantity, emp_id) VALUES('$type', '$amount', '$emp_id')";
-            $this->db->runQuery($query);
+            $this->db->commit();
+            return true;
+        } catch (PDOException $e) {
+            $this->db->rollback();
+            throw $e;
+            return false;
         }
-        return true;
     }
 
     //Insert Notification about stock limit
-    function stockGetLimit($stock_type)
+    function stockGetLimit($stock_type, $full_stock)
     {
-        $message = $stock_type . " is Getting bellow Stock Limit";
+        $message = $stock_type . " ". $full_stock. ". Please inform manager";
         $query = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, sender_id) 
         VALUES(0, 0, '$message', 'Supervisor', '" . $_SESSION['user_id'] . "')";
         $this->db->runQuery($query);
@@ -290,12 +354,12 @@ class Supervisor_Model extends Model
 
         $row = $this->db->runQuery($query);
 
-        if(isset($data['notification_id'])) {
+        if (isset($data['notification_id'])) {
             if (count($row)) {
-            return $row;
-        } else {
-            return false;
-        }
+                return $row;
+            } else {
+                return false;
+            }
         }
 
         $query = "UPDATE notification

@@ -9,7 +9,30 @@ class Manager extends Controller
 
     function index()
     {
-        $this->view->showPage('Manager/Manager');
+        $stock = $this->model->getStock();
+        $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
+        $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
+        // $teaCollection = $this->model->getTeaCollection();
+        // $todayRequests = $this->model->getTodayFertilizerRequest();
+
+        // $this->getNotificationCount(); //This for get Notification count
+
+        $stock2 = $this->model->getStock2();
+        $_SESSION['Green_Tea_stock'] = $stock2[0]['stock'];
+        $_SESSION['White_Tea_stock'] = $stock2[1]['stock'];
+        $_SESSION['B-100_Black_Tea_stock'] = $stock2[2]['stock'];
+        $_SESSION['N_Black_Tea_stock'] = $stock2[3]['stock'];
+        $_SESSION['Early_Black_Tea_stock'] = $stock2[4]['stock'];
+        $_SESSION['Masala_chai_stock'] = $stock2[5]['stock'];
+        $_SESSION['Matcha_Tea_stock'] = $stock2[6]['stock'];
+        $_SESSION['Oolang_Tea_stock'] = $stock2[7]['stock'];
+        $_SESSION['Sencha_Tea_stock'] = $stock2[8]['stock'];
+        
+
+
+
+        $this->view->render('Manager/Manager', $stock, $stock2);
+         // $this->view->render('Manager/Manager', $stock, $teaCollection, $todayRequests);
     }
 
     public function viewAccount()
@@ -38,7 +61,7 @@ class Manager extends Controller
     public function viewPayments()
     {
         // $this->view->showPage('Manager/viewPayments');
-        $result = $this->model->availablelistTable_landowners();
+        $result = $this->model->view_payments_table();
         // print_r($result);
         $this->view->render('Manager/viewPayments', $result);
     }
@@ -56,17 +79,22 @@ class Manager extends Controller
 
     public function viewProduct()
     {
-        $this->view->showPage('Manager/viewProduct');
+        $result=$this->model->viewProduct_instock();
+        $this->view->render('Manager/viewProduct', $result);
     }
 
-    public function viewFertilizer()
+     public function instock()
     {
-        $this->view->showPage('Manager/viewFertilizer');
+        $result = $this->model->view_instock();
+        // print_r($result);
+        $this->view->render('Manager/in_stock', $result);
     }
 
-    public function viewFirewood()
+
+    public function outstock()
     {
-        $this->view->showPage('Manager/viewFirewood');
+        $result = $this->model->view_outstock();
+        $this->view->render('Manager/outstock',$result);
     }
 
     public function manager()

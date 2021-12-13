@@ -49,14 +49,14 @@
           $('#tea-rate').html(myHtml);
           // console.log(myHtml);
         },
-        // error: function(xhr, ajaxOptions, thrownError) {
-        //   Swal.fire({
-        //     icon: 'error',
-        //     title: 'Oops...',
-        //     text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
-        //     // footer: '<a href="">Why do I have this issue?</a>'
-        //   })
-        // }
+        error: function(xhr, ajaxOptions, thrownError) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
+        }
       })
       toggleModal();
       closeButton.addEventListener("click", toggleModal);
@@ -71,7 +71,7 @@
       confirmBtnValue = $(event.target).val();
       // console.log(confirmBtnValue)
     }
-    console.log(requestDetails);
+    // console.log(requestDetails);
     // console.log(confirmBtnValue);
     $(this).submit(function(event) {
       event.preventDefault();
@@ -109,40 +109,14 @@
           "</div>";
       }
 
-      console.log(form);
-      // form.push({name:'type', value: 'fertilizer'});
-      // // console.log(form);
-      // $('.error').remove();
-      // var inAmount = $('#in_amount').val();
-      // var pricePerUnit = $('#price_per_unit').val();
-      // var priceForAmount = pricePerUnit*inAmount;
-      // var str="<div style=\"display:flex; justify-content:center;\">"+ 
-      //         "<div style=\"text-align:left;\">"+
-      //             "<div>Price Per Unit: <span style=\"color:#4DD101;\"><b>Rs. " +pricePerUnit+ "</b></span></div>" +
-      //             "<div>Amount :  <span style=\"color:#4DD101;\"><b> " +inAmount+ "kg</b></span></div>" +
-      //             "<div>Price For Amount:  <span style=\"color:#4DD101;\"><b>Rs. " +priceForAmount+ "</b></span></div>" +
-      //         "</div>" +
-      //         "</div>";
-      // if(inAmount == 0) {
-      //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
-      // }else if(inAmount < 0) {
-      //     $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-      // } 
-      // if(pricePerUnit < 0) {
-      //     $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-      // }else if(pricePerUnit == 0) {
-      //     $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
-      // }
+      // console.log(form);
 
-      // if(pricePerUnit <= 0 || inAmount <= 0) {
-      //     return;
-      // }
       Swal.fire({
         title: sweetAlert.title,
         html: '<div>' + sweetAlert.message + '</div>',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#4DD101',
+        confirmButtonColor: '#01830c',
         cancelButtonColor: '#FF2400',
         confirmButtonText: 'Yes, Update it!'
       }).then((result) => {
@@ -154,11 +128,12 @@
             cache: false,
             data: form,
             success: function(data) {
-              Swal.fire(
-                'Updated!',
-                'Your file has been updated.',
-                'success'
-              ).then((result) => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Updated !',
+                text: 'Your file has been updated.',
+                confirmButtonColor: '#01830c'
+              }).then((result) => {
                 location.reload();
               })
               // console.log(data);

@@ -52,12 +52,13 @@
           type: 'POST',
           data: form,
           success: function() {
-            Swal.fire(
-              'Updated!',
-              'Your file has been updated.',
-              'success'
-            ).then((result) => {
-              location.replace("<?php echo URL?>Login");
+            Swal.fire({
+              icon: 'success',
+              title: 'Updated !',
+              text: 'Your file has been updated.',
+              confirmButtonColor: '#01830c'
+            }).then((result) => {
+              location.replace("<?php echo URL ?>Login");
             })
           }
         })
