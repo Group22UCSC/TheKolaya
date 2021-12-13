@@ -124,66 +124,65 @@ class Supervisor extends Controller
         $this->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            if(isset($_POST['method_name'])) {
+            if (isset($_POST['method_name'])) {
                 $data = $this->model->getLandownerId();
-                if($data) {
+                if ($data) {
                     $json_arr = json_encode($data);
                     echo $json_arr;
                 }
                 return;
             }
-            if(isset($_POST['isCollected'])) {
-                
-            }
-            if ($_POST['isCollected'] == "false") {
-                $data = $this->model->isCollected($_POST['landowner_id']);
-                if(!empty($data)){
-                    if(!empty($data[0]['sup_id'])){
-                        echo "updated";
-                    }else {
-                        echo "true";
+            if (isset($_POST['isCollected'])) {
+                if ($_POST['isCollected'] == "false") {
+                    $data = $this->model->isCollected($_POST['landowner_id']);
+                    if (!empty($data)) {
+                        if (!empty($data[0]['sup_id'])) {
+                            echo "updated";
+                        } else {
+                            echo "true";
+                        }
+                    } else {
+                        echo "false";
                     }
-                }else {
-                    echo "false";
-                }
-            } else if ($_POST['isCollected'] == "true") {
-                $data = [
-                    'landowner_id' => $_POST['landowner_id'],
-                    'weight' => $_POST['weight'],
-                    'water' => $_POST['water'],
-                    'mature_leaves' => $_POST['mature_leaves'],
-                    'container' => $_POST['container'],
+                } else if ($_POST['isCollected'] == "true") {
+                    $data = [
+                        'landowner_id' => $_POST['landowner_id'],
+                        'weight' => $_POST['weight'],
+                        'water' => $_POST['water'],
+                        'mature_leaves' => $_POST['mature_leaves'],
+                        'container' => $_POST['container'],
 
-                    'net_weight' => '',
-                    'rate' => $_POST['rate']
-                ];
-                $reduction = ($data['weight'] * ($data['water'] + $data['container'] + $data['mature_leaves'])) / 100;
-                $data['net_weight'] = $data['weight'] - $reduction;
-                $data['rate'] = ($data['rate']) * 20;
+                        'net_weight' => '',
+                        'rate' => $_POST['rate']
+                    ];
+                    $reduction = ($data['weight'] * ($data['water'] + $data['container'] + $data['mature_leaves'])) / 100;
+                    $data['net_weight'] = $data['weight'] - $reduction;
+                    $data['rate'] = ($data['rate']) * 20;
 
-                if ($this->model->updateTeaMeasure($data))
-                    $updateTable = $this->model->getUpdateTeaMeasureById($data['landowner_id']);
+                    if ($this->model->updateTeaMeasure($data))
+                        $updateTable = $this->model->getUpdateTeaMeasureById($data['landowner_id']);
 
-                if (!empty($updateTable)) {
-                    $countData = count($updateTable) - 1;
-                    if ($updateTable[$countData]['quality'] <= 20) {
-                        $teaQuality = 'Too Bad';
-                    } else if ($updateTable[$countData]['quality'] > 20 && $updateTable[$countData]['quality'] <= 40) {
-                        $teaQuality = 'Bad';
-                    } else if ($updateTable[$countData]['quality'] > 40 && $updateTable[$countData]['quality'] <= 60) {
-                        $teaQuality = 'Average';
-                    } else if ($updateTable[$countData]['quality'] > 60 && $updateTable[$countData]['quality'] <= 80) {
-                        $teaQuality = 'Good';
-                    } else if ($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
-                        $teaQuality = 'Excellent';
+                    if (!empty($updateTable)) {
+                        $countData = count($updateTable) - 1;
+                        if ($updateTable[$countData]['quality'] <= 20) {
+                            $teaQuality = 'Too Bad';
+                        } else if ($updateTable[$countData]['quality'] > 20 && $updateTable[$countData]['quality'] <= 40) {
+                            $teaQuality = 'Bad';
+                        } else if ($updateTable[$countData]['quality'] > 40 && $updateTable[$countData]['quality'] <= 60) {
+                            $teaQuality = 'Average';
+                        } else if ($updateTable[$countData]['quality'] > 60 && $updateTable[$countData]['quality'] <= 80) {
+                            $teaQuality = 'Good';
+                        } else if ($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
+                            $teaQuality = 'Excellent';
+                        }
+                        $reductions = $updateTable[$countData]['water_precentage'] + $updateTable[$countData]['container_precentage'] + $updateTable[$countData]['matured_precentage'];
+                        echo '<div class="row">
+                                  <div class="cell" data-title="Landowener Id">' . $updateTable[$countData]['lid'] . '</div>
+                                  <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
+                                  <div class="cell" data-title="Net-Weight(kg)">' . $updateTable[$countData]['net_weight'] . '</div>
+                                  <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
+                                </div>';
                     }
-                    $reductions = $updateTable[$countData]['water_precentage'] + $updateTable[$countData]['container_precentage'] + $updateTable[$countData]['matured_precentage'];
-                    echo '<div class="row">
-                              <div class="cell" data-title="Landowener Id">' . $updateTable[$countData]['lid'] . '</div>
-                              <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
-                              <div class="cell" data-title="Net-Weight(kg)">' . $updateTable[$countData]['net_weight'] . '</div>
-                              <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
-                            </div>';
                 }
             }
         } else {
