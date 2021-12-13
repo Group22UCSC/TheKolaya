@@ -135,16 +135,16 @@
           <input type="text" class="input" name="price_per_unit" id="unit_price" required readonly>
        </div> 
 
+        <div class="inputfield">
+          <label>In-Quantity</label>
+          <input type="text" class="input" name="in_quantity" id="quantity" required readonly>
+       </div> 
 
        <div class="inputfield">
           <label>Price per Amount</label>
           <input type="text" class="input" name="price_for_amount" id="total_price" required readonly>
        </div> 
 
-        <div class="inputfield">
-          <label>In-Quantity</label>
-          <input type="text" class="input" name="in_quantity" id="quantity" required readonly>
-       </div> 
 
        <div class="inputfield">
           <label>Emp-ID</label>
