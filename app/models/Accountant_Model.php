@@ -82,10 +82,12 @@ class Accountant_Model extends Model {
     }
     function insertTeaPrice(){
             $date=date("Y-m-d");
+            $month=$_POST['month'];
+            $year=$_POST['year'];
             $teaPrice=$_POST['teaPrice'];
             // HAS TO CHANGE THIS
             $emp_id=$_SESSION['user_id'];
-            $query = "INSERT INTO monthly_tea_price (date,price,emp_id) VALUES ('{$date}','{$teaPrice}','{$emp_id}')";
+            $query = "INSERT INTO monthly_tea_price (date,year,month,price,emp_id) VALUES ('{$date}','{$year}','{$month}','{$teaPrice}','{$emp_id}')";
             $row = $this->db->insertQuery($query);
             //print_r($row);
             if($row){
@@ -295,17 +297,65 @@ class Accountant_Model extends Model {
         }
     }
 
-    function getPaymentFormDetails(){
-        $sql="SELECT user.user_id,request.request_date,request.lid,advance_request.amount_rs,user.name
-        FROM request 
-        INNER JOIN advance_request ON request.request_id=advance_request.request_id 
-        INNER JOIN user ON user.user_id=request.lid
-        WHERE request.request_type='advance' AND request.response_status='receive' ";
+    function getLandownerNamePayment(){ //get the name of the landowner for the payment form
+        $user_id=$_POST['lid'];
+        $sql="SELECT name FROM user WHERE user_id='{$user_id}'";
         $row=$this->db->selectQuery($sql);
         if($row){
             return $row;
         }
         else{
+            return false;
+        } 
+    }
+
+    function getGrossIncome($lastPaymentDate){
+        
+        $user_id=$_POST['lid'];
+        $lastPaymentD=$lastPaymentDate[0]['toDate'];//from lastPaymentDate it return an array
+                            // so get the relevant data from it.
+        // $year=$_POST['year'];
+        // $month=$_POST['month'];
+        // $stringFrom = $year . "/" . $month . "/1";
+        // $stringTo =  $year . "/" . $month . "/1";
+        // $time = strtotime($stringFrom);
+        // $dateStart = date('Y-m-d', $time);
+        // $lastPaidDate=$_POST['lastPaidDate'];
+        $today=date('Y-m-d');
+        //return $lastPaymentD;
+        $sql="SELECT net_weight FROM tea WHERE lid='{$user_id}' AND date > '{$lastPaymentD}' AND date <= '{$today}' ";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function getLastPaymentDate(){// last date where the payment was made for that particular landowner
+        $user_id=$_POST['lid'];
+        $sql="SELECT toDate FROM monthly_payment WHERE lid='{$user_id}' ORDER BY toDate DESC LIMIT 1";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function getmonthlyTPrice($lastPaymentDate){
+        $lastPaymentD = $lastPaymentDate[0]['toDate']; //from lastPaymentDate it return an array
+        $dateValue = strtotime($lastPaymentD);
+        $month=date('m',$dateValue);
+        $year=date('Y',$dateValue);
+        
+        $sql = "SELECT price FROM monthly_tea_price WHERE month='{$month}' AND year='{$year}' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $lastPaymentDate;
+        } else {
             return false;
         }
     }

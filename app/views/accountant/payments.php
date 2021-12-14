@@ -16,7 +16,19 @@
 <?php 
     $year=date('Y');
     $month=date('m');
+    $string=$year."/".$month."/1";
+    //echo $string;
+    $time=strtotime($string);
+    $dateStart=date('Y-m-d',$time);
+    echo $dateStart;
+
+
+    // $dateToTest = "2016-02-01";
+    // $lastday = date('t',strtotime($dateToTest));
+    // echo "last day :".$lastday;
 ?>
+<!-- hidden feild in order to calculate the payment -->
+<input for="lastPaidDate" type="text" name="lastPaidDate" id="lastPaidDate" readonly />
 <div class="formSection">
 <form action="<?php echo URL ?>/accountant/pdf" method="POST" target="_blank">
 		<!-- <h2>CSS Form</h2> -->
@@ -28,7 +40,7 @@
 			
 			<div class="small-group">
 				<label for="name">Landowner's Name</label>
-				<input for="name" type="text" name="name"readonly />
+				<input for="name" type="text" name="name" id="lname" readonly />
 			</div>
 			
 			<div class="small-group">
@@ -175,5 +187,6 @@
 </div>
 
 <?php include 'js/accountant/paymentsjs.php';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>

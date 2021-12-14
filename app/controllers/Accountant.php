@@ -221,12 +221,36 @@ class Accountant extends Controller{
         }
     }
 
-    // get the details of the landowner and his payments after press Enter 
-    //in the payment form of accountant
-    function getPaymentFormDetails(){
-        $reslt=$this->model->getPaymentFormDetails();
-        $json_arr=json_encode($reslt);
+    //get the name of the landowner for the payment form 
+    function getLandownerNamePayment(){
+        $names=$this->model->getLandownerNamePayment();
+        $lastPaymentDate=$this->model->getLastPaymentDate();
+        $grossIncome=$this->model->getGrossIncome($lastPaymentDate);
+        $monthlyTPrice=$this->model->getmonthlyTPrice($lastPaymentDate);
+        $arr=array_merge($names,$lastPaymentDate,$grossIncome);
+
+        $json_arr=json_encode($arr);
+        // $json_arr2=json_encode($reslt);
         echo $json_arr;
+    }
+
+    //get the gross income of a particluar landowner - Accountant payment
+    function getGrossIncome(){
+        $lastPaymentDate=$this->model->getLastPaymentDate();
+        $grossIncome=$this->model->getGrossIncome($lastPaymentDate);
+        $json_arr=json_encode($grossIncome);
+        echo $json_arr;
+    }
+
+    function getLastPaymentDate(){
+        $reslt=$this->model->getLastPaymentDate();
+        $json_arr=json_encode($reslt);
+        echo $reslt;
+    }
+    function getMonthlyTPrice(){
+        $reslt=$this->model->getLastPaymentDate();
+        $json_arr=json_encode($reslt);
+        echo $reslt;
     }
 
     }
