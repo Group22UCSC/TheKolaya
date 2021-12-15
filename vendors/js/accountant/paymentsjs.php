@@ -81,6 +81,7 @@
         success: function(data) {
           var len = data.length;
           var tot=0.0;
+          var monthlyPrice=0.0;
           console.log(data);
           if (len == undefined) { // if len==undefined from that LID 
             document.getElementById("lname").value = "No Landowner Found";
@@ -94,8 +95,12 @@
               if(parseFloat(data[i]['net_weight'])>0){
                 tot+=parseFloat(data[i].net_weight);
               }
+              if(parseFloat(data[i]['price'])>0){
+                monthlyPrice=parseFloat(data[i].price);
+              }
             }
-            document.getElementById("grossIncome").value = tot;
+            
+            document.getElementById("grossIncome").value = monthlyPrice*tot;
           }
           console.log(tot);
           

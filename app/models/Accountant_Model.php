@@ -348,13 +348,17 @@ class Accountant_Model extends Model {
     function getmonthlyTPrice($lastPaymentDate){
         $lastPaymentD = $lastPaymentDate[0]['toDate']; //from lastPaymentDate it return an array
         $dateValue = strtotime($lastPaymentD);
-        $month=date('m',$dateValue);
-        $year=date('Y',$dateValue);
-        
+        $month = date('m', $dateValue);
+        $year = date('Y', $dateValue);
+        //$salaries = ["mohammad" => 2000, "qadir" => 1000, "zara" => 500];
+        //return $salaries;
+
+
         $sql = "SELECT price FROM monthly_tea_price WHERE month='{$month}' AND year='{$year}' ";
+        //$sql = "SELECT price FROM monthly_tea_price WHERE date='{$lastPaymentD}' ";
         $row = $this->db->selectQuery($sql);
         if ($row) {
-            return $lastPaymentDate;
+            return $row;
         } else {
             return false;
         }
