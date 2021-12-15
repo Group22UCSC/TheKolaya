@@ -86,7 +86,7 @@ class landowner_Model extends Model
             );
 
             $data['message'] = 'hello world';
-            $pusher->trigger('my-channel', 'today_request_table', $data);
+            $pusher->trigger('my-channel', 'today_fertilizer_request', $data);
             //--------------------------------------//
 
 
