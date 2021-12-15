@@ -228,7 +228,7 @@ class Accountant extends Controller{
         $grossIncome=$this->model->getGrossIncome($lastPaymentDate);
         $monthlyTPrice=$this->model->getmonthlyTPrice($lastPaymentDate);
         $arr=array_merge($names,$lastPaymentDate,$grossIncome,$monthlyTPrice);
-
+        
         $json_arr=json_encode($arr);
         // $json_arr2=json_encode($reslt);
         //echo gettype($lastPaymentDate);

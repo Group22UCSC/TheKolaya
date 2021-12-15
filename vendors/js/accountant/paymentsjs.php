@@ -108,8 +108,8 @@
           error: function(xhr, ajaxOptions, thrownError) {
               Swal.fire({
                 icon: 'error',
-                title: 'User not found',
-                text: 'Enter a valid Lid' ,
+                title: 'Something went wrong !',
+                text: 'Invalid Lid or no pending payments' ,
                 // footer: '<a href="">Why do I have this issue?</a>'
               })
             }
