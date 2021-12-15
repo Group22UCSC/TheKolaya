@@ -36,8 +36,8 @@ if (!empty($data)) {
             </div>';
   for ($i = 0; $i < count($data); $i++) {
     echo '<div class="row table2-row">
-            <div class="cell" data-title="Landowener_id">' . $data[$i]['out_date'] . '</div>
-            <div class="cell" data-title="Agent_id">' . $data[$i]['out_quantity'] . '</div>
+            <div class="cell" data-title="Date">' . $data[$i]['out_date'] . '</div>
+            <div class="cell" data-title="Amount(kg)">' . $data[$i]['out_quantity'] . '</div>
           </div>';
   }
 } else {
