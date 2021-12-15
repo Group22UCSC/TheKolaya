@@ -19,6 +19,20 @@
             }
         });
     });
+
+    channel.bind('<_notification', function(data) {
+        var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotificationCount";
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: "getCount=byAjax",
+            success: function(data) {
+                var myHtml = "<p>" + data + "</p>";
+                $('#notification_count').html(myHtml);
+                // console.log(data);
+            }
+        });
+    });
 </script>
 
 

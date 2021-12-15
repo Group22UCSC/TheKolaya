@@ -108,7 +108,7 @@ class landowner_Model extends Model
             );
 
             $data['message'] = 'hello world';
-            $pusher->trigger('my-channel', 'request_notification', $data);
+            $pusher->trigger('my-channel', 'Supervisor_notification', $data);
             //-------------------------------------------//
         } else if ($requests_type == 'advance') {
             $query = "INSERT INTO advance_request(request_id, amount_rs) VALUES(LAST_INSERT_ID(), '$request_amount')";
