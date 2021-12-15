@@ -313,7 +313,8 @@ class Accountant_Model extends Model {
         
         $user_id=$_POST['lid'];
         $lastPaymentD=$lastPaymentDate[0]['toDate'];//from lastPaymentDate it return an array
-                            // so get the relevant data from it.
+                           // so get the relevant data from it.
+        //$nextDate=strtotime('+1 day',strtotime($lastPaymentD)); // get the next date
         // $year=$_POST['year'];
         // $month=$_POST['month'];
         // $stringFrom = $year . "/" . $month . "/1";
@@ -344,12 +345,15 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-
+    
     function getmonthlyTPrice($lastPaymentDate){
         $lastPaymentD = $lastPaymentDate[0]['toDate']; //from lastPaymentDate it return an array
         $dateValue = strtotime($lastPaymentD);
-        $month = date('m', $dateValue);
-        $year = date('Y', $dateValue);
+        //$strdate=date('Y-m-d',$dateValue);
+        $nextDate=strtotime('+1 day',strtotime($lastPaymentD));
+       // return $nextDate;
+        $month = date('m', $nextDate);
+        $year = date('Y', $nextDate);
         //$salaries = ["mohammad" => 2000, "qadir" => 1000, "zara" => 500];
         //return $salaries;
 

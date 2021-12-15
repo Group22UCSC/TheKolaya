@@ -54,7 +54,7 @@
 			
 			<div class="small-group">
 				<label for="grossIncome">Gross Income(Rs)</label>
-				<input id="grossIncome" type="text" name="grossIncome" readonly/>
+				<input id="grossIncome" type="number" name="grossIncome" readonly/>
 			</div>
 			
 			<div class="small-group">
