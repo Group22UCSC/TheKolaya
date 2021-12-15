@@ -339,7 +339,7 @@ class Supervisor_Model extends Model
     //Insert Notification about stock limit
     function stockGetLimit($stock_type, $full_stock)
     {
-        $message = $stock_type . " " . $full_stock . ". Please inform manager";
+        $message = $stock_type . " " . $full_stock . "kg. Please inform manager";
         $query = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, sender_id) 
         VALUES(0, 0, '$message', 'Supervisor', '" . $_SESSION['user_id'] . "')";
         $this->db->runQuery($query);
