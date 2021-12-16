@@ -228,6 +228,7 @@ class Accountant extends Controller{
         //$lastPaymentDate=$this->model->getLastPaymentDate();
         $teaCollection=$this->model->getteaCollection();//get the details of the tea handed over to the factory by lid in that month
         $monthlyTPrice=$this->model->getmonthlyTPrice();
+        
         $arr=array_merge($names,$teaCollection,$monthlyTPrice);
         $json_arr=json_encode($arr);
         // $json_arr2=json_encode($reslt);
@@ -254,7 +255,7 @@ class Accountant extends Controller{
         echo $reslt;
     }
 
-    function checkPayment(){
+    function checkPayment(){//check whether the landowner is already paid for that month
         $result=$this->model->checkPayment();
         $json_arr=json_encode($result);
         echo $json_arr;

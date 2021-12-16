@@ -157,9 +157,10 @@ class Accountant_Model extends Model {
         $rid=$_POST['rid'];
         $name=$_POST['name'];
         $amount=$_POST['amount'];
+        $today=date('Y-m-d');
         // $query="SELECT * FROM request"
         $query1="UPDATE advance_request SET acc_id='{$user_id}' WHERE request_id='{$rid}'";
-        $query2="UPDATE request SET response_status='accept',comments='{$comment}' WHERE request_id='$rid'";
+        $query2="UPDATE request SET confirm_date='{$today}',response_status='accept',comments='{$comment}' WHERE request_id='$rid'";
         if($comment==''){
             $message = "Dear customer your advance request of Rs." . $amount." is accepted and will handover to you as quickly as possible. Thank you for being with තේ කොළය";
         }
@@ -196,9 +197,10 @@ class Accountant_Model extends Model {
         $rid=$_POST['rid'];
         $name=$_POST['name'];
         $amount=$_POST['amount'];
+        $today=date('Y-m-d');
         // $query="SELECT * FROM request"
         $query1="UPDATE advance_request SET acc_id='{$user_id}' WHERE request_id='{$rid}'";
-        $query2="UPDATE request SET response_status='decline',comments='{$comment}' WHERE request_id='$rid'";
+        $query2="UPDATE request SET confirm_date='{$today}',response_status='decline',comments='{$comment}' WHERE request_id='$rid'";
         if($comment==''){
             $message = "Dear customer, we regret to inform that your advance request of Rs." . $amount." is rejected due to an unavoidable reason. Contact us for more details. Thank you for being with තේ කොළය";
         }
@@ -375,7 +377,7 @@ class Accountant_Model extends Model {
         }
     }
 
-    function checkPayment(){
+    function checkPayment(){//check whether the landowner is already paid for that month
         $user_id=$_POST['lid'];
         $year=$_POST['year'];
         $month=$_POST['month'];
@@ -387,7 +389,8 @@ class Accountant_Model extends Model {
         else{
             return false;
         }
-    
     }
+
+
 }
 ?>
