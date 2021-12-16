@@ -221,13 +221,13 @@ class Accountant extends Controller{
         }
     }
 
-    //get the name of the landowner for the payment form 
-    function getLandownerNamePayment(){
-        $names=$this->model->getLandownerNamePayment();
-        $lastPaymentDate=$this->model->getLastPaymentDate();
-        $grossIncome=$this->model->getGrossIncome($lastPaymentDate);
-        $monthlyTPrice=$this->model->getmonthlyTPrice($lastPaymentDate);
-        $arr=array_merge($names,$lastPaymentDate,$grossIncome,$monthlyTPrice);
+    //get all the details to the payment form 
+    function loadPayment(){
+        $names=$this->model->getLandownerNamePayment();//get the name of the landowner for the payment form 
+        //$lastPaymentDate=$this->model->getLastPaymentDate();
+        $teaCollection=$this->model->getteaCollection();//get the details of the tea handed over to the factory by lid in that month
+        $monthlyTPrice=$this->model->getmonthlyTPrice();
+        $arr=array_merge($names,$teaCollection,$monthlyTPrice);
 
         $json_arr=json_encode($arr);
         // $json_arr2=json_encode($reslt);
@@ -254,6 +254,11 @@ class Accountant extends Controller{
         echo $reslt;
     }
 
+    function checkPayment(){
+        $result=$this->model->checkPayment();
+        $json_arr=json_encode($result);
+        echo $json_arr;
+    }
     }
     
 ?>

@@ -20,7 +20,7 @@
     //echo $string;
     $time=strtotime($string);
     $dateStart=date('Y-m-d',$time);
-    echo $dateStart;
+    //echo $dateStart;
 
 
     // $dateToTest = "2016-02-01";
@@ -28,7 +28,7 @@
     // echo "last day :".$lastday;
 ?>
 <!-- hidden feild in order to calculate the payment -->
-<input for="lastPaidDate" type="text" name="lastPaidDate" id="lastPaidDate" readonly />
+
 <div class="formSection">
 <form action="<?php echo URL ?>/accountant/pdf" method="POST" target="_blank">
 		<!-- <h2>CSS Form</h2> -->
@@ -65,6 +65,14 @@
             <div class="small-group">
 				<label for="advance">Advance Expenses(Rs)</label>
 				<input id="advance" type="text" name="advance" readonly/>
+            </div>
+            <div class="small-group">
+				<label for="advance">Tea Price Of The Month(Rs)</label>
+				<input id="teaPrice" type="text" name="teaPrice" readonly/>
+            </div>
+            <div class="small-group">
+				<label for="advance">Cheque Ref No(Rs)</label>
+				<input id="chequeRef" type="text" name="chequeRef" placeholder="Please Enter The Ref No Of The Cheque" />
             </div>
             <div class="small-group finalPayment">
 				<label for="final" style="color:red">Final Payment(Rs)</label>
