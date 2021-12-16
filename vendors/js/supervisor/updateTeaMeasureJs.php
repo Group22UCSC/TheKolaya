@@ -10,10 +10,10 @@
             name: 'isCollected',
             value: false
         });
-        landowner_id.push({
-            name: 'method_name',
-            value: 'isCollected'
-        });
+        // landowner_id.push({
+        //     name: 'method_name',
+        //     value: 'isCollected'
+        // });
 
         function showError(number, error) {
             inputField[number].value = '';
@@ -30,15 +30,12 @@
             var tempLandId = $(this).serializeArray();
             landowner_id[0]['value'] = tempLandId[0]['value'];
             landowner_id[1]['value'] = false;
-            // console.log(landowner_id)
             if (landowner_id[0]['value'] != '') {
                 $.ajax({
                     url: "<?php echo URL ?>Supervisor/updateTeaMeasure",
                     type: "POST",
                     data: landowner_id,
                     success: function(data) {
-                        // console.log(data);
-
                         if (data == "false") {
                             landowner_id[1]['value'] = false;
                             errors.landowner_id = "Not Collected!";
@@ -50,7 +47,6 @@
                         } else if (data == 'updated') {
                             landowner_id[1]['value'] = false;
                             // console.log(landowner_id);
-
                             errors.landowner_id = "Already Updated!";
                             showError(0, errors.landowner_id);
                         }
@@ -85,8 +81,8 @@
                     // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#4DD101',
                     confirmButtonColor: '#01830c',
+                    cancelButtonColor: '#FF2400',
                     confirmButtonText: 'Yes, Update it!'
                 }).then((result) => {
                     if (result.isConfirmed) {

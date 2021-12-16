@@ -3,71 +3,85 @@
 <?php include 'top-container.php';?>
 
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewProduct.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
+     
+   <div class="middle">VIEW PRODUCT IN-STOCK DETAILS</div>
 
+   <div class="middle-conatiner">
+
+     <div class="name1">
+     
+  
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+                      <table id="myTable">
+                           <tr class="header">
+                               
+                                <th style="width:33.3%;">Product ID</th>
+                                <th style="width:33.3%;">Date</th>
+                                <th style="width:33.3%;">Amount</th>
+                              
+                            </tr>
+                       <div class="vertical">
     
-   <div class="middle">PRODUCT STOCK DETAILS</div>
-   
-<div class="table">
-
-<div class="table-container">
-    <div class="table-section">
-        <table class="teapricetable">
-            <thead class="threadcls">
-                <tr class="trcls">
-                    <th class="thcls">Date</th>
-                    <th class="thcls">Product ID</th>
-                     <th class="thcls">Product Name</th>
-                    <th class="thcls">Product Stock</th>
-                </tr>
-            </thead>
-
-            <!-- <tr>
-                <td class="tdcls"><a class="acls" href="#">2021</a></td>
-                <td class="tdcls">January</td>
-                <td class="tdcls">98</td>
-                <td class="tdcls">
-                    <p class="status status-paid">Updated</p>
-                </td>
-
-            </tr> -->
-
-            <tbody>
+                               <?php
+                               $x=count($data);
+                               for($i=0;$i<$x;$i++){
+                                 echo '<tr id="tea" data-href="">
+                                           <td>'.$data[$i]['products_id'].'</td>
+                                           <td>'.$data[$i]['date'].'</td>
+                                           <td>'.$data[$i]['amount'].'</td>
+                                       </tr>';                
+                               }       
+                               ?>         
 
 
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021.01.10</a></td>
-                    <td class="tdcls">001</td>
-                    <td class="tdcls">A</td>
-                    <td class="tdcls">150Kg</td>
-                  
-                </tr>
 
-                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021.28.09</a></td>
-                    <td class="tdcls">002</td>
-                    <td class="tdcls">B</td>
-                    <td class="tdcls">150Kg</td>
-                  
-                </tr>
-               
-                 <tr>
-                    <td class="tdcls"><a class="acls" href="#">2021.25.09</a></td>
-                    <td class="tdcls">003</td>
-                    <td class="tdcls">C</td>
-                    <td class="tdcls">150Kg</td>
-                  
-                </tr>
+                        </div>
+  
+                      </table>
+  
 
-
-            </tbody>
-
-        </table>
+            <!--  // script for filtering -->
+              <script>
+              function myFunction() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+               tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                  td = tr[i].getElementsByTagName("td")[0];
+                  if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                    } else {
+                      tr[i].style.display = "none";
+                    }
+                  }       
+                }
+              }
+              
+              </script>
+                                  
     </div>
+    
+  </div>
+
+
+
+ <div class="middle1"> 
+      <a >VIEW REMAINING PRODUCT STOCK </a> </div>
+  
+
+<div class="graph-container2">
+
+      <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
+      <?php include 'js/manager/dashboard-chart2.php' ?>
 </div>
-      
-     </div>
-      
+
    
 
 <?php include 'bottom-container.php';?>

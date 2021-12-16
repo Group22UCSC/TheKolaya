@@ -74,6 +74,17 @@ class Manager_Model extends Model {
         }
     }
 
+     function viewProduct_instock(){
+        $query = "SELECT * FROM products_in";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
 
      function view_payments_table(){
         $query = "SELECT * FROM monthly_payment";
