@@ -312,6 +312,7 @@ class Accountant_Model extends Model {
     //get the details of the tea handed over to the factory by lid in that month
     function getteaCollection(){
         $user_id=$_POST['lid'];
+<<<<<<< HEAD
          $year=$_POST['year'];
          $month=$_POST['month'];
         // //return $month;
@@ -322,6 +323,11 @@ class Accountant_Model extends Model {
         // First day of the month.
 // $first_day_this_month=date('Y-m-01', strtotime($query_date));
 
+=======
+        $lastPaymentD=$lastPaymentDate[0]['toDate'];//from lastPaymentDate it return an array
+                           // so get the relevant data from it.
+        //$nextDate=strtotime('+1 day',strtotime($lastPaymentD)); // get the next date
+>>>>>>> b876e7ec2c52eff5f53b5e7016a3ddbec862a674
         // $year=$_POST['year'];
         // $month=$_POST['month'];
         // $stringFrom = $year . "/" . $month . "/1";
@@ -352,6 +358,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
+<<<<<<< HEAD
 
     function getmonthlyTPrice(){
         // $lastPaymentD = $lastPaymentDate[0]['toDate']; //from lastPaymentDate it return an array
@@ -360,6 +367,17 @@ class Accountant_Model extends Model {
         $month=$_POST['month'];
         // $month = date('m', $dateValue);
         // $year = date('Y', $dateValue);
+=======
+    
+    function getmonthlyTPrice($lastPaymentDate){
+        $lastPaymentD = $lastPaymentDate[0]['toDate']; //from lastPaymentDate it return an array
+        $dateValue = strtotime($lastPaymentD);
+        //$strdate=date('Y-m-d',$dateValue);
+        $nextDate=strtotime('+1 day',strtotime($lastPaymentD));
+       // return $nextDate;
+        $month = date('m', $nextDate);
+        $year = date('Y', $nextDate);
+>>>>>>> b876e7ec2c52eff5f53b5e7016a3ddbec862a674
         //$salaries = ["mohammad" => 2000, "qadir" => 1000, "zara" => 500];
         //return $salaries;
 
