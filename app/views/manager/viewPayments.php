@@ -19,8 +19,8 @@
                            <tr class="header">
                                
                                 <th style="width:12.5%;">Landowner ID</th>
-                                <th style="width:12.5%;" id="hide">Date</th>
-                                <th style="width:12.5%;" id="hide">Payment Date</th>
+                                <th style="width:12.5%;" id="hide">To Date</th>
+                                <th style="width:12.5%;" id="hide">From Date</th>
                                 <th style="width:12.5%;" id="hide">Fertilizer Expenses</th>
                                 <th style="width:12.5%;" id="hide">Advance Expenses</th>
                                 <th style="width:12.5%;" id="hide">Income</th>
@@ -36,8 +36,8 @@
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">
                                            <td>'.$data[$i]['lid'].'</td>
-                                           <td style id="hide">'.$data[$i]['date'].'</td>
-                                           <td style id="hide">'.$data[$i]['payment_date'].'</td>
+                                           <td style id="hide">'.$data[$i]['toDate'].'</td>
+                                           <td style id="hide">'.$data[$i]['fromDate'].'</td>
                                            <td style id="hide">'.$data[$i]['fertilizer_expenses'].'</td>
                                            <td style id="hide">'.$data[$i]['advance_expenses'].'</td>
                                            <td style id="hide">'.$data[$i]['income'].'</td>
@@ -65,8 +65,8 @@
                     //rIndex=this.rowIndex;
                       
                       document.getElementById("id").value=this.cells[0].innerHTML;
-                      document.getElementById("date").value=this.cells[1].innerHTML;
-                      document.getElementById("payment_date").value=this.cells[2].innerHTML;
+                      document.getElementById("toDate").value=this.cells[1].innerHTML;
+                      document.getElementById("fromDate").value=this.cells[2].innerHTML;
                       document.getElementById("fertilizer_expenses").value=this.cells[3].innerHTML;
                       document.getElementById("advance_expenses").value=this.cells[4].innerHTML;
                       document.getElementById("income").value=this.cells[5].innerHTML;
@@ -132,13 +132,13 @@
        </div> 
 
        <div class="inputfield">
-          <label>Date</label>
-               <input type="text" class="input" name="date" id="date" required readonly>  
+          <label>To Date</label>
+               <input type="text" class="input" name="toDate" id="toDate" required readonly>  
        </div>
 
         <div class="inputfield">
-          <label>Payment Date</label>
-               <input type="text" class="input" name="payment_date" id="payment_date" required readonly>  
+          <label>From Date</label>
+               <input type="text" class="input" name="fromDate" id="fromDate" required readonly>  
        </div>
 
         <div class="inputfield">
