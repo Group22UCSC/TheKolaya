@@ -10,41 +10,46 @@
             success: function(data) {
                 console.log(data);
                 var len = data.length;
-                for (var i = 0; i < len; i++) {
+                if (len == 0) {
+                    
+                } else {
+                    for (var i = 0; i < len; i++) {
 
-                    var deleteBtn = $("<button>Delete</button>");
+                        var deleteBtn = $("<button>Delete</button>");
 
-                    var str =
-                        "<tr class='row' onclick='rowClick()'>" +
-                        "<td class='tdcls'>" +
-                        data[i].request_id +
-                        "</td>" +
-                        "<td>" +
-                        data[i].lid +
-                        "</td>" +
-                        "<td>" +
-                        data[i].name +
-                        "</td>" +
+                        var str =
+                            "<tr class='row' onclick='rowClick()'>" +
+                            "<td class='tdcls'>" +
+                            data[i].request_id +
+                            "</td>" +
+                            "<td>" +
+                            data[i].lid +
+                            "</td>" +
+                            "<td>" +
+                            data[i].name +
+                            "</td>" +
 
-                        "<td>" +
-                        data[i].request_date +
-                        "</td>" +
-                        "<td>" +
-                        data[i].amount_rs +
-                        "</td>" +
-                        //     "<td class='actionCol'>"+
-                        //    // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
+                            "<td>" +
+                            data[i].request_date +
+                            "</td>" +
+                            "<td>" +
+                            data[i].amount_rs +
+                            "</td>" +
+                            //     "<td class='actionCol'>"+
+                            //    // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
 
-                        //    "<button type='button' id='editbutton' onclick='deleteRow()' >" +
-                        //      "Delete"+
-                        //     "</button>" +
+                            //    "<button type='button' id='editbutton' onclick='deleteRow()' >" +
+                            //      "Delete"+
+                            //     "</button>" +
 
-                        //     "</td>"+
-                        "</tr>";
-                    $("#requeststbl tbody").append(str);
-                    // there in the table DO NOT DEFINE <tbody> MANULLY
-                    //IF SO IT WILL SHOW THE RESULTS TWICE
+                            //     "</td>"+
+                            "</tr>";
+                        $("#requeststbl tbody").append(str);
+                        // there in the table DO NOT DEFINE <tbody> MANULLY
+                        //IF SO IT WILL SHOW THE RESULTS TWICE
+                    }
                 }
+
             }
         })
     }
@@ -109,7 +114,7 @@
             var date = $('#date').val();
             var amount = $('#amount').val();
             var comment = $('textarea#Comment').val();
-            var action='Save';
+            var action = 'Save';
 
             if (amount <= 0) {
                 return;
@@ -136,14 +141,14 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo URL?>accountant/requests",
-                            
+                        url: "<?php echo URL ?>accountant/requests",
+
                         data: {
                             action: action,
                             amount: amount,
-                            comment:comment,
+                            comment: comment,
                             rid: rid,
-                            name:name,
+                            name: name,
                         },
                         success: function(data) {
 
@@ -153,8 +158,8 @@
                                 'Your file has been updated.',
                                 'success'
                             )
-                                clearTable();
-                                getAdvanceRequests();
+                            clearTable();
+                            getAdvanceRequests();
                             // getTable();
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
@@ -191,7 +196,7 @@
             var date = $('#date').val();
             var amount = $('#amount').val();
             var comment = $('textarea#Comment').val();
-            var action='Reject';
+            var action = 'Reject';
 
             if (amount <= 0) {
                 return;
@@ -218,14 +223,14 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo URL?>accountant/requests",
-                            
+                        url: "<?php echo URL ?>accountant/requests",
+
                         data: {
                             action: action,
                             amount: amount,
-                            comment:comment,
+                            comment: comment,
                             rid: rid,
-                            name:name,
+                            name: name,
                         },
                         success: function(data) {
 
@@ -235,8 +240,8 @@
                                 'Requested was rrejected.',
                                 'success'
                             )
-                                clearTable();
-                                getAdvanceRequests();
+                            clearTable();
+                            getAdvanceRequests();
                             // getTable();
                         },
                         error: function(xhr, ajaxOptions, thrownError) {

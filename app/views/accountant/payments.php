@@ -13,6 +13,22 @@
         <button type="submit">Search</button>
     </form>
 </div> -->
+<?php 
+    $year=date('Y');
+    $month=date('m');
+    $string=$year."/".$month."/1";
+    //echo $string;
+    $time=strtotime($string);
+    $dateStart=date('Y-m-d',$time);
+    //echo $dateStart;
+
+
+    // $dateToTest = "2016-02-01";
+    // $lastday = date('t',strtotime($dateToTest));
+    // echo "last day :".$lastday;
+?>
+<!-- hidden feild in order to calculate the payment -->
+
 <div class="formSection">
 <form action="<?php echo URL ?>/accountant/pdf" method="POST" target="_blank">
 		<!-- <h2>CSS Form</h2> -->
@@ -24,21 +40,21 @@
 			
 			<div class="small-group">
 				<label for="name">Landowner's Name</label>
-				<input for="name" type="text" name="name"readonly />
+				<input for="name" type="text" name="name" id="lname" readonly />
 			</div>
 			
 			<div class="small-group">
                 <label for="year">Year</label>
-				<input for="year" type="text" name="year" readonly/>
+				<input for="year" type="text" name="year" id="year" value="<?php echo $year?>"/>
 			</div>
 			<div class="small-group">
 				<label for="month">Month</label>
-				<input for="month" type="text" name="month" readonly/>
+				<input for="month" type="text" name="month" id="month" value="<?php echo $month?>" />
 			</div>
 			
 			<div class="small-group">
 				<label for="grossIncome">Gross Income(Rs)</label>
-				<input id="grossIncome" type="text" name="grossIncome" readonly/>
+				<input id="grossIncome" type="number" name="grossIncome" readonly/>
 			</div>
 			
 			<div class="small-group">
@@ -49,6 +65,14 @@
             <div class="small-group">
 				<label for="advance">Advance Expenses(Rs)</label>
 				<input id="advance" type="text" name="advance" readonly/>
+            </div>
+            <div class="small-group">
+				<label for="advance">Tea Price Of The Month(Rs)</label>
+				<input id="teaPrice" type="text" name="teaPrice" readonly/>
+            </div>
+            <div class="small-group">
+				<label for="advance">Cheque Ref No(Rs)</label>
+				<input id="chequeRef" type="text" name="chequeRef" placeholder="Please Enter The Ref No Of The Cheque" />
             </div>
             <div class="small-group finalPayment">
 				<label for="final" style="color:red">Final Payment(Rs)</label>
@@ -171,5 +195,6 @@
 </div>
 
 <?php include 'js/accountant/paymentsjs.php';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
