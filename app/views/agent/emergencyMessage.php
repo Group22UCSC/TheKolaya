@@ -25,7 +25,7 @@
         <div class="form">
             <div class="inputfield">
                 <label>Route No</label>
-                <input type="text" class="input">
+                <input type="text" id="route_no" value="<?php echo $_SESSION['route']?>" class="input" required>
             </div>  
             <div class="inputfield">
                 <label>Message</label>
@@ -66,5 +66,6 @@
 				})
 		});
     
+   
     </script>
 
