@@ -86,15 +86,15 @@ class landowner_Model extends Model
             );
 
             $data['message'] = 'hello world';
-            $pusher->trigger('my-channel', 'today_request_table', $data);
+            $pusher->trigger('my-channel', 'today_fertilizer_request', $data);
             //--------------------------------------//
 
 
-            $message = $_SESSION['name'] . " requested Kg.".$request_amount. "of fertilizer";
+            $message = $_SESSION['name'] . " requested " . $request_amount . "kg of fertilizer.";
             $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
             VALUES(0, 0, '$message', 'Supervisor', 'request', '" . $_SESSION['user_id'] . "')";
             $this->db->runQuery($notificationQuery);
-            
+
             //----------------Pusher API------------------//
             $options = array(
                 'cluster' => 'ap1',
@@ -108,12 +108,12 @@ class landowner_Model extends Model
             );
 
             $data['message'] = 'hello world';
-            $pusher->trigger('my-channel', 'request_notification', $data);
+            $pusher->trigger('my-channel', 'Supervisor_notification', $data);
             //-------------------------------------------//
         } else if ($requests_type == 'advance') {
             $query = "INSERT INTO advance_request(request_id, amount_rs) VALUES(LAST_INSERT_ID(), '$request_amount')";
             $this->db->runQuery($query);
-            $message = $_SESSION['name'] . " requested an advance of Rs." . $request_amount ;
+            $message = $_SESSION['name'] . " requested an advance of Rs." . $request_amount;
             $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
             VALUES(0, 0, '$message', 'Accountant', 'request', '" . $_SESSION['user_id'] . "')";
             $this->db->runQuery($notificationQuery);

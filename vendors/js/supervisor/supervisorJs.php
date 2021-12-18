@@ -18,7 +18,7 @@
     });
 
     var channel = pusher.subscribe('my-channel');
-    channel.bind('today_request_table', function(data) {
+    channel.bind('today_fertilizer_request', function(data) {
       $.ajax({
         url: "<?php echo URL ?>Supervisor/getLandownerRequest",
         success: function(result) {

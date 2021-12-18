@@ -222,7 +222,45 @@ class Accountant extends Controller{
     }
 
 
-
+    //get all the details to the payment form 
+    function loadPayment(){
+        $names=$this->model->getLandownerNamePayment();//get the name of the landowner for the payment form 
+        //$lastPaymentDate=$this->model->getLastPaymentDate();
+        $teaCollection=$this->model->getteaCollection();//get the details of the tea handed over to the factory by lid in that month
+        $monthlyTPrice=$this->model->getmonthlyTPrice();
+        
+        $arr=array_merge($names,$teaCollection,$monthlyTPrice);
+        $json_arr=json_encode($arr);
+        // $json_arr2=json_encode($reslt);
+        //echo gettype($lastPaymentDate);
+        echo $json_arr;
     }
+
+    //get the gross income of a particluar landowner - Accountant payment
+    function getGrossIncome(){
+        $lastPaymentDate=$this->model->getLastPaymentDate();
+        $grossIncome=$this->model->getGrossIncome($lastPaymentDate);
+        $json_arr=json_encode($grossIncome);
+        echo $json_arr;
+    }
+
+    function getLastPaymentDate(){
+        $reslt=$this->model->getLastPaymentDate();
+        $json_arr=json_encode($reslt);
+        echo $reslt;
+    }
+    function getMonthlyTPrice(){
+        $reslt=$this->model->getLastPaymentDate();
+        $json_arr=json_encode($reslt);
+        echo $reslt;
+    }
+
+    function checkPayment(){//check whether the landowner is already paid for that month
+        $result=$this->model->checkPayment();
+        $json_arr=json_encode($result);
+        echo $json_arr;
+    }
+}
+
     
 ?>

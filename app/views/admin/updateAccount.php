@@ -172,7 +172,7 @@
 
 
        <div class="b">
-         <a href="<?php echo URL?>admin/admin"><input type="submit" value="Discard" class="btn"></a>
+         <a href="<?php echo URL?>admin/admin"><input  value="Discard" class="btn"></a>
       </div>
            
 

@@ -99,24 +99,26 @@ class Supervisor_Model extends Model
     }
 
 
-    function isCollected($landowner_id) {
+    function isCollected($landowner_id)
+    {
         $date = date("Y-m-d");
         $query = "SELECT * FROM tea WHERE lid='$landowner_id' AND date='$date'";
         $row = $this->db->runQuery($query);
-        if(!empty($row)) {
+        if (!empty($row)) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
 
-    function getLandownerId() {
+    function getLandownerId()
+    {
         $date = date("Y-m-d");
         $query = "SELECT * FROM tea WHERE date='$date' AND sup_id IS NULL";
         $row = $this->db->runQuery($query);
-        if(!empty($row)) {
+        if (!empty($row)) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
@@ -278,18 +280,46 @@ class Supervisor_Model extends Model
                     } else {
                         $full_stock -= $amount;
                     }
-                    if($type == 'fertilizer') {
+                    if ($type == 'fertilizer') {
                         $_SESSION['fertilizer_stock'] = $full_stock;
                         if ($full_stock <= 500) {
                             $this->stockGetLimit("Fertilzer Stock", $full_stock);
+                            //----------------Pusher API------------------//
+                            $options = array(
+                                'cluster' => 'ap1',
+                                'useTLS' => true
+                            );
+                            $pusher = new Pusher\Pusher(
+                                'ef64da0120ca27fe19a3',
+                                'd5033393ff3b228540f7',
+                                '1290222',
+                                $options
+                            );
+
+                            $pusher->trigger('my-channel', 'Supervisor_notification', $data);
+                            //-------------------------------------------//
                         }
-                    }else if($type == 'firewood') {
+                    } else if ($type == 'firewood') {
                         $_SESSION['firewood_stock'] = $full_stock;
                         if ($full_stock <= 500) {
                             $this->stockGetLimit("Firewood Stock", $full_stock);
+                            //----------------Pusher API------------------//
+                            $options = array(
+                                'cluster' => 'ap1',
+                                'useTLS' => true
+                            );
+                            $pusher = new Pusher\Pusher(
+                                'ef64da0120ca27fe19a3',
+                                'd5033393ff3b228540f7',
+                                '1290222',
+                                $options
+                            );
+
+                            $pusher->trigger('my-channel', 'Supervisor_notification', $data);
+                            //-------------------------------------------//
                         }
                     }
-                    
+
                     $query = "UPDATE stock SET full_stock='$full_stock', emp_id='$emp_id' WHERE type='$type'";
                     $this->db->runQuery($query);
                 }
@@ -309,7 +339,7 @@ class Supervisor_Model extends Model
     //Insert Notification about stock limit
     function stockGetLimit($stock_type, $full_stock)
     {
-        $message = $stock_type . " ". $full_stock. ". Please inform manager";
+        $message = $stock_type . " " . $full_stock . "kg. Please inform manager";
         $query = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, sender_id) 
         VALUES(0, 0, '$message', 'Supervisor', '" . $_SESSION['user_id'] . "')";
         $this->db->runQuery($query);
