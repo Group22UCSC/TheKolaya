@@ -23,17 +23,19 @@
            Emergency Message
         </div>        
         <div class="form">
+        <form class="emergencyForm" id="emergencyForm">
             <div class="inputfield">
                 <label>Route No</label>
                 <input type="text" id="route_no" value="<?php echo $_SESSION['route']?>" class="input" required>
             </div>  
             <div class="inputfield">
                 <label>Message</label>
-               <textarea class="input" rows=5 columns=50 placeholder="Type your message here."></textarea>
+               <textarea class="input" rows=5 columns=50 id="message" placeholder="Type your message here."></textarea>
             </div>        
             <div class="inputfield">
             <input type="submit" value="Send" class="btn" id="link">
             </div>
+        </form>
         </div>
       </div>	              
 <?php include 'bottomContainer.php';?>
@@ -66,6 +68,27 @@
 				})
 		});
     
-   
+    $(document).ready(function () {
+      $('#link').click(function(event) {       
+        var form = $('#emergencyForm').serializeArray();
+        // console.log(form);
+        var route = $('#route_no').val();
+        var message = $('#message').val();
+    $.ajax({
+      type: "POST",
+      url: "<?php echo URL ?>agent/sendEmergencyMessage",
+      cache: false,
+      data: form,
+    }).done(function (response) {      
+      console.log("success");
+      // console.log(response);     
+      // $('#emergencyForm').html(response);
+      
+    });
+    console.log('route'+route);
+    console.log('message'+message);
+    event.preventDefault();
+  });
+});
     </script>
 

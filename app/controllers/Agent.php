@@ -62,7 +62,7 @@ class Agent extends Controller
     }
 
 
-    function sendEmergencyMessage()
+    function viewEmergencyMessage()
     {
         $this->view->showPage('Agent/EmergencyMessage');
     }
