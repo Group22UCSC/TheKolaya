@@ -201,6 +201,10 @@
                 monthlyPrice=parseFloat(data[i].price);
                 document.getElementById("teaPrice").value = data[i].price;
               }
+              if(parseFloat(data[i]['amount'])==0){
+                document.getElementById("fertilizer").value = data[i].amount;
+              }
+
             }
             
             document.getElementById("grossIncome").value = monthlyPrice*tot;
