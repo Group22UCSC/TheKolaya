@@ -61,6 +61,15 @@
        </a>
        <span class="tooltip">View Account</span>
      </li>
+      
+      <li>
+      <a href="<?php echo URL?>manager/emergency">
+      <i class="fas fa-book"></i>
+         <span class="links_name">Emergency</span>
+       </a>
+       <span class="tooltip">Emergency</span>
+     </li>
+     <li>
      
     </ul>
   </div>
