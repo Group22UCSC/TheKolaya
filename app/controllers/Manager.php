@@ -73,10 +73,10 @@ class Manager extends Controller
     }
 
 
-    public function emergency()
-    {
-        $this->view->showPage('Manager/emergency');
-    }
+    // public function emergency()
+    // {
+    //     $this->view->showPage('Manager/emergency');
+    // }
 
 
     public function viewStock()
@@ -138,5 +138,32 @@ class Manager extends Controller
             $this->view->render('Supervisor/manageRequests', $request);
         }
     }
+
+
+     //send emergency message to manager
+    function emergency(){
+
+
+         $result = $this->model->emergencyTable();
+        $this->view->render('Manager/emergency', $result);
+ 
+
+        $msg_data = [
+            'message' => '',           
+            'emp' => ''
+        ]; 
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->msg_data['message'] = trim($_POST['message']);
+            $this->msg_data['emp'] =trim($_POST['emp_id']);
+            $result = $this->model->storeEmergencyMessage($this->msg_data);
+            // print_r($this->msg_data);
+            // $this->view->showPage('Manager/emergency');
+
+            // $result=$this->model->viewProduct_instock();
+            $this->view->render('Manager/emergency', $result);
+    }
+}
 
 }
