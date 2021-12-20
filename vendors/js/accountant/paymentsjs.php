@@ -186,6 +186,7 @@
           var monthlyPrice=0.0;
           var fertilizerAmount=0.0;
           var fertilizerPrice=0.0;
+          var advanceExpenses=0.0;
           
           if (len == undefined) { // if len==undefined from that LID 
             document.getElementById("lname").value = "No Landowner Found";
@@ -212,11 +213,17 @@
               if(parseFloat(data[i]['price_per_unit'])>0){
                 fertilizerPrice=parseFloat(data[i].price_per_unit); 
               }
-
+              if(parseFloat(data[i]['amount_rs'])>0){
+                advanceExpenses+=parseFloat(data[i].amount_rs);
+              }
             }
-            
-            document.getElementById("grossIncome").value = monthlyPrice*tot; // after adding all print it to form
-            document.getElementById("fertilizer").value = fertilizerPrice * fertilizerAmount;// after adding all print it to form
+            var grossIncome=parseFloat(monthlyPrice*tot);
+            var fertilizerExpenses=parseFloat(fertilizerPrice * fertilizerAmount);
+            document.getElementById("grossIncome").value = grossIncome; // after adding all print it to form
+            document.getElementById("fertilizer").value =fertilizerExpenses ;// after adding all print it to form
+            document.getElementById("advance").value = advanceExpenses;// after adding all advance expenses
+            var finalPayment=parseFloat(grossIncome)-parseFloat(fertilizerExpenses)-parseFloat(advanceExpenses);
+            document.getElementById("final").value = finalPayment;// after adding 
           }
           
           // console.log(tot);
