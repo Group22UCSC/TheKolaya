@@ -251,16 +251,30 @@
 
       var Year = $('#year').val();
       var Month = $('#month').val();
-      var price = $('#price').val();
-
+     // var price = $('#price').val();
+      var lname=$("#lname").val();
+      var gIncome=$("#grossIncome").val();
+      var fertilizer=$("#fertilizer").val();
+      var advance=$("#advance").val();
+      var cheque=$("#chequeRef").val();
+      var final=$("#final").val();
+      
       //console.log(amount+pid+price+bid);
       var action = 'save';
 
-      if (price < 0) {
-        $('#price').parent().after("<p class=\"error\">*Price cannot be negative</p>");
-      } else if (price == 0) {
-        $('#price').parent().after("<p class=\"error\">*Price cannot be zero</p>");
+      if(cheque==''){
+        document.getElementById("chequeRef").value = "Enter A Valid Cheque No";
+        $("#chequeRef").css("color", "red");
+        $('#chequeRef').focus(
+          function() {
+            // $(this).val='';
+            document.getElementById("chequeRef").value = "";//clear year feild to fill it
+            $(this).css({
+              'color': 'black' //make inyear feild black
+            });
+          });
       }
+      //***** Validation of Year feild ****** */
       if (Year == '') {
         document.getElementById("year").value = "Enter A Valid Year";
         $("#year").css("color", "red");
@@ -286,12 +300,43 @@
           });
       }
 
-      if (price <= 0 || Year == '' || (!(Year > 1998 && Year < 2100))  ) {
+      // ***** Validation of Month feild ****** */
+      if (Month == '') {
+        document.getElementById("month").value = "Enter A Valid Month";
+        $("#month").css("color", "red");
+        $('#month').focus(
+          function() {
+            // $(this).val='';
+            document.getElementById("month").value = "";//clear year feild to fill it
+            $(this).css({
+              'color': 'black' //make inyear feild black
+            });
+          });
+       
+      }if (!(Month >= 1 && Month <= 12)) {
+        document.getElementById("month").value = "Enter A Valid Month";
+        $("#month").css("color", "red");
+        $('#month').focus(
+          function() {
+            // $(this).val='';
+            document.getElementById("month").value = "";//clear year feild to fill it
+            $(this).css({
+              'color': 'black' //make inyear feild black
+            });
+          });
+      }
+
+
+
+      // return to the form without submitting  if any error
+      if ( cheque=='Enter A Valid Cheque No'|| cheque==''|| Year == '' || (!(Year > 1998 && Year < 2100)) || (!(Month >= 1 && Month <= 12))  ) {
         return;
       }
-      var str = "Year" + Year + "\n" +
+      var str = "Landowner :" + lname + "\n" +
+        "Year :   " + Year + "\n" +
         "Month :   " + Month + "\n" +
-        "Price:  " + price + "\n" +
+        "Cheque No :   " + cheque + "\n" +
+        "Final Payment:   " + final + "\n" +
         "\n";
       Swal.fire({
         title: 'Confirm Update ',
