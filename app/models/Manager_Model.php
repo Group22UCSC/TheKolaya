@@ -184,4 +184,29 @@ class Manager_Model extends Model {
         }
     }
 
+
+    function storeEmergencyMessage($data=[]){
+        $message = $data['message'];
+        $receiver_id = $data['emp'];
+    
+        $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
+         receiver_type, notification_type, sender_id) VALUES
+         ('0','0','$message','$receiver_id','Assign to emergency root','Manager')"; 
+         //have not added receiver_id and receive_datetime,Check into that.
+         $this->db->runQuery($query);
+         //add the query to make the agent unavailable         
+    }
+
+     function emergencyTable(){
+        $query = "SELECT * FROM agent WHERE availability=1";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+
 }
