@@ -394,8 +394,8 @@ class Accountant_Model extends Model {
     //get fertilizer details
     function getFertilizer(){
         $user_id=$_POST['lid'];
-         $year=$_POST['year'];
-         $month=$_POST['month'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
         // //return $month;
         $date= strtotime($year."-".$month."-01" );
         $first = date('Y-m-01',$date); // hard-coded '01' for first day
@@ -419,6 +419,18 @@ class Accountant_Model extends Model {
         }
         else{
             return $arr; //if no fertilizer requests. amount = 0
+        }
+    }
+
+    // get the price of the fertilizer
+    function getFertilizerPrice(){
+        $sql="SELECT price_per_unit FROM in_stock ORDER BY in_date DESC LIMIT 1";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
         }
     }
 }
