@@ -230,7 +230,8 @@ class Accountant extends Controller{
         $monthlyTPrice=$this->model->getmonthlyTPrice();
         $fertilizer=$this->model->getFertilizer();
         $fertilizerPrice=$this->model->getFertilizerPrice();
-        $arr=array_merge($names,$teaCollection,$monthlyTPrice,$fertilizer,$fertilizerPrice);
+        $advance=$this->model->getAdvance();
+        $arr=array_merge($names,$teaCollection,$monthlyTPrice,$fertilizer,$fertilizerPrice,$advance);
         $json_arr=json_encode($arr);
         // $json_arr2=json_encode($reslt);
         //echo gettype($lastPaymentDate);

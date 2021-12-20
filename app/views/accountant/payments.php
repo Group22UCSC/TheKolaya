@@ -30,7 +30,7 @@
 <!-- hidden feild in order to calculate the payment -->
 
 <div class="formSection">
-<form action="<?php echo URL ?>/accountant/pdf" method="POST" target="_blank">
+<form action="<?php echo URL?>accountant/pdf" method="post" target="_blank" id="paymentForm">
 		<!-- <h2>CSS Form</h2> -->
 		<div class="large-group">
 			<div class="small-group">
@@ -45,7 +45,7 @@
 			
 			<div class="small-group">
                 <label for="year">Year</label>
-				<input for="year" type="text" name="year" id="year" value="<?php echo $year?>"/>
+				<input for="year" type="text" name="year" id="year" value="<?php echo $year?>"  onfocus=""/>
 			</div>
 			<div class="small-group">
 				<label for="month">Month</label>
@@ -84,8 +84,8 @@
 				<input id="advance" type="text" name="advance"/>
 			</div> -->
 			
-                <input id="submitbtn" class="btn" type="submit" name="submit"/>
                 
+                <input type="submit"  class="btn" name="submit" id="paymentSubmitbtn">
 
 		</div>
 	</form>
