@@ -184,7 +184,8 @@
           var len = data.length;
           var tot=0.0;
           var monthlyPrice=0.0;
-          
+          var fertilizerAmount=0.0;
+          var fertilizerPrice=0.0;
           
           if (len == undefined) { // if len==undefined from that LID 
             document.getElementById("lname").value = "No Landowner Found";
@@ -194,17 +195,28 @@
             //console.log();
             for(var i=0;i<len;i++){ // calculate the gross income
               
-              if(parseFloat(data[i]['net_weight'])>0){
+              if(parseFloat(data[i]['net_weight'])>0){//calculate the total nettea weightof lid
                 tot+=parseFloat(data[i].net_weight);
               }
               if(parseFloat(data[i]['price'])>0){
                 monthlyPrice=parseFloat(data[i].price);
                 document.getElementById("teaPrice").value = data[i].price;
               }
+              if(parseFloat(data[i]['amount'])==0){
+                document.getElementById("fertilizer").value = data[i].amount;
+              }
+              if(parseFloat(data[i]['amount'])>0){
+                fertilizerAmount+=parseFloat(data[i].amount);
+                
+              }
+              if(parseFloat(data[i]['price_per_unit'])>0){
+                fertilizerPrice=parseFloat(data[i].price_per_unit); 
+              }
+
             }
             
-            document.getElementById("grossIncome").value = monthlyPrice*tot;
-
+            document.getElementById("grossIncome").value = monthlyPrice*tot; // after adding all print it to form
+            document.getElementById("fertilizer").value = fertilizerPrice * fertilizerAmount;// after adding all print it to form
           }
           
           // console.log(tot);

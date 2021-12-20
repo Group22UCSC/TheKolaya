@@ -391,6 +391,47 @@ class Accountant_Model extends Model {
         }
     }
 
+    //get fertilizer details
+    function getFertilizer(){
+        $user_id=$_POST['lid'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
+        // //return $month;
+        $date= strtotime($year."-".$month."-01" );
+        $first = date('Y-m-01',$date); // hard-coded '01' for first day
+        $last  = date('Y-m-t',$date);
+        $sql="SELECT fertilizer_request.amount FROM fertilizer_request
+            INNER JOIN request ON request.request_id=fertilizer_request.request_id
+         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1";
+        $row=$this->db->selectQuery($sql);
+        $arr=array();
+        $arr[0]["amount"]=0; //default amount of fertilizer = 0
+        if($row){
+            // return $row;
+            //$arr = array('amount' => 0);
+            
+            if(!empty($row)) { //if rows are not empty thre are fertilizer requests
+                return  $row;// Rows Returned
+              }else{
+                 echo $arr;
+              }
+            
+        }
+        else{
+            return $arr; //if no fertilizer requests. amount = 0
+        }
+    }
 
+    // get the price of the fertilizer
+    function getFertilizerPrice(){
+        $sql="SELECT price_per_unit FROM in_stock ORDER BY in_date DESC LIMIT 1";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
 }
 ?>
