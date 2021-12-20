@@ -43,10 +43,10 @@ if (!empty($data)) {
             </div>';
   for ($i = 0; $i < count($data); $i++) {
     echo '<div class="row table2-row">
-            <div class="cell" data-title="Landowener_id">' . $data[$i]['in_date'] . '</div>
-            <div class="cell" data-title="Tea_weight">' . $data[$i]['price_per_unit'] . '</div>
-            <div class="cell" data-title="Agent_id">' . $data[$i]['in_quantity'] . '</div>
-            <div class="cell" data-title="Agent_id">' . $data[$i]['price_for_amount'] . '</div>
+            <div class="cell" data-title="Date">' . $data[$i]['in_date'] . '</div>
+            <div class="cell" data-title="Price Per Unit(Rs)">' . $data[$i]['price_per_unit'] . '</div>
+            <div class="cell" data-title="Amount(kg)">' . $data[$i]['in_quantity'] . '</div>
+            <div class="cell" data-title="Price For Amount(Rs)">' . $data[$i]['price_for_amount'] . '</div>
           </div>';
   }
 } else {
