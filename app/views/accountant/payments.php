@@ -96,13 +96,15 @@
         <table class="teapricetable">
             <thead class="threadcls">
                 <tr class="trcls">
+                    <th class="thcls">Date</th>
+                    <th class="thcls">Lid(Rs)</th>
                     <th class="thcls">Year</th>
                     <th class="thcls">Month</th>
-                    <th class="thcls">Lid(Rs)</th>
-                    <th class="thcls">Income</th>
+                    <th class="thcls">Gross Income</th>
                     <th class="thcls">Fertilizer Expences</th>
                     <th class="thcls">Advance Expences</th>
                     <th class="thcls">Final Payment</th>
+                    <th class="thcls">Cheque Ref No</th>
                     <!-- <th class="thcls">Status</th> -->
 
                 </tr>
