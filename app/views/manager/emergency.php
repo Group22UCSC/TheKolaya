@@ -103,40 +103,28 @@
 <div class="k1">  
  <div class="wrapper1">
   <div class="title">  EMERGENCY DETAILS FORM </div>
-    
+     <form action="<?php echo URL?>manager/emergency" method="POST">
       <div class="form">
-
         <div class="inputfield">
            <label>Agent ID</label>
            <input type="text" class="input" name="emp_id" id="emp_id" required readonly>
+        </div> 
+
+        <div class="inputfield">
+            <label>Message</label>
+            <textarea class="input" rows=5 columns=50 id="message" name="message" placeholder="Type your message here."></textarea>
+        </div>      
+
+
+       <div class="inputfield">
+           <input type="submit" value="Send" class="btn" id="link">
+       </div>
        </div> 
-
-        <!-- <div class="inputfield">
-          <label>Route Number</label>
-          <input type="text" class="input" name="route_no" id="route_no" required readonly>
-       </div>  -->
-
-       <div class="inputfield">
-                <label>Message</label>
-               <textarea class="input" rows=5 columns=50 id="message" name="message" placeholder="Type your message here."></textarea>
-            </div>      
-
-      <!--  <div class="inputfield">
-          <label>User Type</label>
-               <input type="text" class="input" name="user_type" id="user_type" required readonly>  
-       </div> -->
-
-       <div class="inputfield">
-            <input type="submit" value="Send" class="btn" id="link">
-            </div>
-
      </form>
 
     </div>
 
   </div> 
-
-
-
+ </div> 
 
 <?php include 'bottom-container.php';?>
