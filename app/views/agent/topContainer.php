@@ -34,7 +34,7 @@
        <span class="tooltip">View Previous Updates</span>
      </li>
      <li>
-       <a href="<?php echo URL?>Agent/sendEmergencyMessage">
+       <a href="<?php echo URL?>Agent/viewEmergencyMessage">
         <i class="fa fa-envelope" aria-hidden="true"></i>
          <span class="links_name">Emergency Message</span>
        </a>
