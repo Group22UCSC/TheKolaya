@@ -489,7 +489,7 @@ class Accountant_Model extends Model {
 
     //getting payment details
     function getPayment(){
-        $sql="SELECT * FROM monthly_payment";
+        $sql="SELECT * FROM monthly_payment ORDER BY Date DESC";
         $row=$this->db->selectQuery($sql);
         if($row){
             return $row;
