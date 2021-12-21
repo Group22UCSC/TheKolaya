@@ -404,17 +404,17 @@ function getPayment(){
             console.log(data);
             var len=data.length;
             var action="";
-            var todaysDate=new Date();
-            var thisYear=todaysDate.getFullYear();
-            var thisMonth=todaysDate.getMonth()+1;
-            var thisDate=todaysDate.getDate();
+            // var todaysDate=new Date();
+            // var thisYear=todaysDate.getFullYear();
+            // var thisMonth=todaysDate.getMonth()+1;
+            // var thisDate=todaysDate.getDate();
             
 
             for(var i=0;i<len;i++){
-                var date=new Date(data[i].date);
-                var month=date.getMonth()+1;
-                var year=date.getFullYear();
-                var date2=date.getDate();
+                // var date=new Date(data[i].date);
+                // var month=date.getMonth()+1;
+                // var year=date.getFullYear();
+                // var date2=date.getDate();
 
                 var deleteBtn=$("<button>Delete</button>");
               
@@ -422,18 +422,34 @@ function getPayment(){
                 var str=
                 "<tr class='row'>"+
                 "<td>"+
-                    data[i].date+
+                    data[i].Date+
                 "</td>"+   
                 "<td>"+
-                    year+
+                    data[i].lid+
                 "</td>"+   
                 "<td>"+
-                    month+
+                    data[i].year+
                 "</td>"+
               
                 "<td>"+
-                    data[i].price+
+                    data[i].month+
                 "</td>"+
+                "<td>"+
+                    data[i].income+
+                "</td>"+
+                "<td>"+
+                    data[i].fertilizer_expenses+
+                "</td>"+
+                "<td>"+
+                    data[i].advance_expenses+
+                "</td>"+
+                "<td>"+
+                    data[i].final_payment+
+                "</td>"+
+                "<td>"+
+                    data[i].cheque_Ref_No+
+                "</td>"+
+                
                 "<td class='actionCol'>"+
                // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
                     
@@ -443,7 +459,7 @@ function getPayment(){
 
                 "</td>"+
                 "</tr>";
-                $("#teapricetable tbody").append(str);
+                $("#paymentTable tbody").append(str);
                 // there in the table DO NOT DEFINE <tbody> MANULLY
                 //IF SO IT WILL SHOW THE RESULTS TWICE
             }
