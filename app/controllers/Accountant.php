@@ -262,6 +262,22 @@ class Accountant extends Controller{
         $json_arr=json_encode($result);
         echo $json_arr;
     }
+
+    function setPayment(){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $result = $this->model->setPayment();
+            if($result==true){
+                $_POST['success']=1;
+            }
+            else{
+                echo "failed to add";
+            }
+        }
+        else{
+            echo "failed to add POST not set";
+        }
+        
+    }
 }
 
     
