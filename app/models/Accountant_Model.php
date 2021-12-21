@@ -463,5 +463,32 @@ class Accountant_Model extends Model {
             return $arr; //if no fertilizer requests. amount = 0
         }
     }
+
+    //set the payment details to the database
+    function setPayment(){
+        $date = date("Y-m-d");
+        $month = $_POST['month'];
+        $year = $_POST['year'];
+        $lid = $_POST['lid'];
+        $gIncome = $_POST['gIncome'];
+        $fertilizer = $_POST['fertilizer'];
+        $advance = $_POST['advance'];
+        $cheque = $_POST['cheque'];
+        $final = $_POST['final'];
+        $emp_id = $_SESSION['user_id'];
+
+        $query = "INSERT INTO monthly_payment VALUES ('{$date}','{$lid}','{$year}','{$month}','{$fertilizer}','{$advance}','{$gIncome}','{$final}','{$cheque}','{$emp_id}')";
+        $row = $this->db->insertQuery($query);
+        //print_r($row);
+        if ($row) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
 }
 ?>

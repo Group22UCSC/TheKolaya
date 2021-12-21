@@ -251,6 +251,7 @@
 
       var Year = $('#year').val();
       var Month = $('#month').val();
+      var lid=$("#lid").val();
      // var price = $('#price').val();
       var lname=$("#lname").val();
       var gIncome=$("#grossIncome").val();
@@ -350,17 +351,21 @@
         showCancelButton: true
       }).then((result) => {
         if (result.isConfirmed) {
-          $("#setTeaPriceForm").trigger("reset");
+          $("#paymentForm").trigger("reset");
 
           $.ajax({
             type: "POST",
-            url: "http://localhost/Thekolaya/accountant/setTeaPrice",
+            url: "http://localhost/Thekolaya/accountant/setPayment",
 
             data: {
-              action: action,
               year: Year,
               month: Month,
-              teaPrice: price,
+              lid: lid,
+              gIncome: gIncome,
+              fertilizer: fertilizer,
+              advance: advance,
+              cheque: cheque,
+              final: final,
             },
             success: function(data) {
 
@@ -369,9 +374,9 @@
                 'Your file has been updated.',
                 'success'
               )
-              clearTable();
-              getTable();
-              checkForm();
+              // clearTable();
+              // getTable();
+              // checkForm();
             },
             error: function(xhr, ajaxOptions, thrownError) {
               Swal.fire({
