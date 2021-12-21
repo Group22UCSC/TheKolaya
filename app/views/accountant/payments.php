@@ -1,5 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
+<body onload="getPayment()"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/payments.css">
 <div class="top-container">
     <p>Monthly Payment</p>

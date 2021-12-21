@@ -278,6 +278,12 @@ class Accountant extends Controller{
         }
         
     }
+
+    function getPayment(){
+        $reslt=$this->model->getPayment();
+        $json_arr=json_encode($reslt);
+        echo $json_arr;
+    }
 }
 
     
