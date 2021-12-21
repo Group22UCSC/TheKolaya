@@ -186,7 +186,21 @@ class Agent_Model extends Model{
         }
     }
  
+
+    function storeEmergencyMessage($data=[]){
+        $message = $data['message'];
+        $sender_id = $data['agent_id'];
+    
+        $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
+         receiver_type, notification_type, sender_id) VALUES
+         ('0','0','$message','manager','emergency','$sender_id')"; 
+         //have not added receiver_id and receive_datetime,Check into that.
+         $this->db->runQuery($query);
+         //add the query to make the agent unavailable         
+    }
 }
+
+
 
 
 
