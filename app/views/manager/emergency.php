@@ -51,7 +51,7 @@
                    {
                     //rIndex=this.rowIndex;
                       document.getElementById("emp_id").value=this.cells[0].innerHTML;
-                      document.getElementById("route_no").value=this.cells[1].innerHTML;
+                      // document.getElementById("route_no").value=this.cells[1].innerHTML;
                 
                    };
                  }
@@ -97,55 +97,34 @@
 
 
  <div class="middle1"> 
-<a >EMERGENCY MESSAGES</a> </div>
+  <a >EMERGENCY MESSAGES</a> </div>
   
 
 <div class="k1">  
  <div class="wrapper1">
   <div class="title">  EMERGENCY DETAILS FORM </div>
-    
+     <form action="<?php echo URL?>manager/emergency" method="POST">
       <div class="form">
-
         <div class="inputfield">
            <label>Agent ID</label>
            <input type="text" class="input" name="emp_id" id="emp_id" required readonly>
-       </div> 
+        </div> 
 
         <div class="inputfield">
-          <label>Route Number</label>
-          <input type="text" class="input" name="user_id" id="id" required readonly>
-       </div> 
+            <label>Message</label>
+            <textarea class="input" rows=5 columns=50 id="message" name="message" placeholder="Type your message here."></textarea>
+        </div>      
+
 
        <div class="inputfield">
-          <label>User Type</label>
-               <input type="text" class="input" name="user_type" id="user_type" required readonly>  
+           <input type="submit" value="Send" class="btn" id="link">
        </div>
-
-       <div class="inputfield">
-          <label>Address</label>
-          <textarea class="textarea" name="address" id="address" required readonly></textarea>
        </div> 
-
-
-        <div class="inputfield">
-          <label>Contact Number</label>
-            <input type="tel" class="input" name="contact_number" id="contact_number" required readonly>
-       </div>
-<!-- 
-        <div class="inputfield">
-          <label>Account Create Date</label>
-            <input type="CURRENT_TIMESTAMP()" class="input" name="created_at" id="created_at" required readonly>
-       </div>
- -->
-
-     
      </form>
 
     </div>
 
   </div> 
-</div>
-
-
+ </div> 
 
 <?php include 'bottom-container.php';?>
