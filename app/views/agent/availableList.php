@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/agent.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/availablelist.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/unavailableNotice.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/searchbar.css">
   <script src="<?php echo URL ?>vendors/js/agent/dashboard.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,18 +30,18 @@
   // $x = count($data);
   ?>
   <div class="topic">Tea Available Landowner List </div>
-  <form class="searchform">
+  <form class="searchform" id="searchform">
     <input type="text" id="search" placeholder="Enter Landowner ID.." onkeyup="searchTable()">
     <!-- <input type="submit" value="search" id="submit"> -->
   </form>
-  <div class="availablelist">
+  <div class="availablelist">    
+    <?php include 'unavailableNotice.php';?>
     <table class="availabletable" id="availabletable">
       <tr>
         <td class="th">Landowner ID</td>
         <td class="th">Container Estimation</td>
       </tr>
       <?php
-
       for ($i = 0; $i < $x; $i++) {
         echo '<tr id="tea" data-href-tea="">
                     <td>' . $data[$i]['user_id'] . '</td>
@@ -52,7 +53,7 @@
     </table>
   </div>
   <div class="forms">
-    <?php include 'teaCollection.php'; ?>
+    <?php include 'teaCollection.php'; ?>      
   </div>
   <script src="<?php echo URL ?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
@@ -60,6 +61,9 @@
     $(document).ready(function() {
       if(<?php echo $x?> == '0'){
         console.log('zero landowners');
+        $('#searchform').hide();
+        $('#availabletable').hide();
+        $('#unavailable_notice').show();
       }
       $('#myBtn').click(function(event) {
         event.preventDefault();

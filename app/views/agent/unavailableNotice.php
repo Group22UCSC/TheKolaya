@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/unavailablenotice.css">
-
-<div class="page" id="unavailable_notice">
+<div class="page1" id="unavailable_notice">
     <div class="title">
-       Sorry, No landowners to colllect tea leaves today!
+       Sorry, No landowners to collect tea leaves!
     </div>
 </div>
 
