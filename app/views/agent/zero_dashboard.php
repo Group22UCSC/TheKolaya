@@ -23,7 +23,7 @@
     $x = count($data1);
   }
   else{
-    $x = "0";
+    $x = "Sorry, No";
   }
   ?>
     <div class="flip-box-front" id = "availableflipfront">
@@ -52,7 +52,7 @@
     $tot = count($data3);
   }
   else{
-    $tot = "0";
+    $tot = "Sorry, No";
   }
   ?>
    
