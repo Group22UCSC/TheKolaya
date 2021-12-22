@@ -228,8 +228,10 @@ class Accountant extends Controller{
         //$lastPaymentDate=$this->model->getLastPaymentDate();
         $teaCollection=$this->model->getteaCollection();//get the details of the tea handed over to the factory by lid in that month
         $monthlyTPrice=$this->model->getmonthlyTPrice();
-        
-        $arr=array_merge($names,$teaCollection,$monthlyTPrice);
+        $fertilizer=$this->model->getFertilizer();
+        $fertilizerPrice=$this->model->getFertilizerPrice();
+        $advance=$this->model->getAdvance();
+        $arr=array_merge($names,$teaCollection,$monthlyTPrice,$fertilizer,$fertilizerPrice,$advance);
         $json_arr=json_encode($arr);
         // $json_arr2=json_encode($reslt);
         //echo gettype($lastPaymentDate);
@@ -258,6 +260,28 @@ class Accountant extends Controller{
     function checkPayment(){//check whether the landowner is already paid for that month
         $result=$this->model->checkPayment();
         $json_arr=json_encode($result);
+        echo $json_arr;
+    }
+
+    function setPayment(){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $result = $this->model->setPayment();
+            if($result==true){
+                $_POST['success']=1;
+            }
+            else{
+                echo "failed to add";
+            }
+        }
+        else{
+            echo "failed to add POST not set";
+        }
+        
+    }
+
+    function getPayment(){
+        $reslt=$this->model->getPayment();
+        $json_arr=json_encode($reslt);
         echo $json_arr;
     }
 }
