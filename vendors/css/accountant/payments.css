@@ -144,52 +144,74 @@ justify-self: center ;
   border-color: red;
 }
 
+
+    
 /* **************** table container ********************** */
+
+/* edit button of the table */
 .table-container{
-    font-family: 'Poppins', sans-serif;
-  display: grid;
+  display:block; 
+  height: 300px;
+  overflow-y:auto;
+  overflow-x: auto;
+}
+
+.actionCol button{ /*delete button*/
+  padding: 5px 10px;
+  background-color: rgb(255, 83, 16);
+  border: 5px solid ;
+  color: white;
+  border-radius: 12px;
+  width: 70%;
+  text-decoration: none;
+  cursor: pointer;
+}
+.actionCol button:hover{
+  
+  background-color:  rgb(133, 39, 3);
+
+  cursor: pointer;
+}
+#pricetbl{
+  font-family: 'Poppins', sans-serif;
+  display: none;
   padding: 40px;
   color: #4f546c;
   font-size: 0.9rem;
   background-color: #f9fbff;
+  margin-top: 20px;
+  animation: fadeIn 1.6s;
+      -webkit-animation: fadeIn 1.6s;
+      -moz-animation: fadeIn 1.6;
+      -o-animation: fadeIn 1.6s;
+      -ms-animation: fadeIn 1.6s;
 }
 .teapricetable {
     border-collapse: collapse;
     box-shadow: 0 5px 10px #e1e5ee;
     background-color: white;
-    text-align: left;
+    text-align: center;
     overflow: hidden;
     width: 100%;
   }
-  .teapricetable tbody{
-    /* Set the height of table body */
-    height: 20px; 
-              
-    /* Set vertical scroll */
-    overflow-y: auto;
-      
-    /* Hide the horizontal scroll */
-    overflow-x: hidden; 
-  }
-  
     .threadcls {
       box-shadow: 0 5px 10px #e1e5ee;
     }
   
     .thcls   {
-      padding: 1rem 2rem;
+      padding: 1rem 1.7rem;
       text-transform: uppercase;
       letter-spacing: 0.1rem;
       font-size: 0.7rem;
       font-weight: 900;
     }
-  
+    .teapricetable td{
+      text-align: center;
+    }
     .tdcls {
-      padding: 1rem 2rem;
+      padding: 1.5rem 1.9rem;
     }
-    .tdcls a{
-      text-decoration: none;
-    }
+  
     .acls {
       text-decoration: none;
       color:#2962ff;
@@ -205,8 +227,7 @@ justify-self: center ;
         background-color: #fff0c2;
         color: #a68b00;
       }
-      
-        
+  
        .status-paid {
         background-color: #c8e6c9;
         color:  #388e3c;
@@ -221,11 +242,22 @@ justify-self: center ;
     .amount {
       text-align: right;
     }
-  
    
     tr:nth-child(even) {
       background-color: #f4f6fb;
     }
+
+    #paymentTable tr:not(:first-child){
+      cursor: pointer; transition: all .25s ease-in-out;
+    }
+    #paymentTable tr:not(:first-child):hover{
+      background-color: #ddd;
+    }
+
+    /* ********** table section over ********** */
+   
+
+
 
   /*  ***************************bottom payment form ************************ */
     .paymentFormContainer{
