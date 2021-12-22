@@ -137,14 +137,15 @@
 
   <script>
     var table = document.getElementById('availabletable');
-
+    
+    //when a table row is clicked, the landowner gets autofilled in the form
     for (var i = 1; i < table.rows.length; i++) {
       table.rows[i].onclick = function() {
         //rIndex = this.rowIndex;
         document.getElementById("lid").value = this.cells[0].innerHTML;
       };
     }
-
+    //search for a landowner
     function searchTable() {
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("search");
