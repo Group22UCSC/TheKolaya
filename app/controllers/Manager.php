@@ -145,15 +145,17 @@ class Manager extends Controller
      //send emergency message to manager
     function emergency(){
    
-     $data = [
-            'message' => '',           
-            'emp_id' => ''
-        ]; 
-
+     
+         
          $result = $this->model->emergencyTable();
         $this->view->render('Manager/emergency', $result);
        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $data = [
+            'message' => '',           
+            'emp_id' => ''
+        ]; 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->data['message'] = trim($_POST['message']);
             $this->data['emp_id'] =trim($_POST['emp_id']);
@@ -161,9 +163,16 @@ class Manager extends Controller
             // print_r($this->msg_data);
             // $this->view->showPage('Manager/emergency');
 
-            // $result=$this->model->viewProduct_instock();
-            $this->view->render('Manager/emergency', $result);
+            // $this->view->render('Manager/emergency', $result);
+    }else{
+
+              $data = [
+                'message' => '',           
+                'emp_id' => ''
+            ];
+           
     }
+
 }
 
 }
