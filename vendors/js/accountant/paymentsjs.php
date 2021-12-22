@@ -242,7 +242,8 @@
 
 
   //  form submit - INSERT payment
-  $(document).ready(function() {
+    $(document).ready(function() {
+    
     $('#paymentSubmitbtn').click(function(event) {
       event.preventDefault();
       var form = $('#paymentForm').serializeArray();
@@ -275,6 +276,10 @@
             });
           });
       }
+
+
+      
+
       //***** Validation of Year feild ****** */
       if (Year == '') {
         document.getElementById("year").value = "Enter A Valid Year";
@@ -330,7 +335,7 @@
 
 
       // return to the form without submitting  if any error
-      if ( cheque=='Enter A Valid Cheque No'|| cheque==''|| Year == '' || (!(Year > 1998 && Year < 2100)) || (!(Month >= 1 && Month <= 12))  ) {
+      if ( cheque=='Enter A Valid Cheque No'|| cheque==''|| Year == '' || (!(Year > 1998 && Year < 2100)) || (!(Month >= 1 && Month <= 12)) || gIncome=='' ) {
         return;
       }
       var str = "Landowner :" + lname + "\n" +
@@ -374,8 +379,8 @@
                 'Your file has been updated.',
                 'success'
               )
-              // clearTable();
-              // getTable();
+              clearTable();
+              getPayment();
               // checkForm();
             },
             error: function(xhr, ajaxOptions, thrownError) {
@@ -467,5 +472,93 @@ function getPayment(){
         }
     }) 
 }  
+
+
+function clearTable(){
+    // $("#updateAuctionTable tr").remove();
+    $('.row ').remove(); // removing the previus rows in the ui
+}
+
+
+
+function deleteRow(){
+    // remobe the row from ui
+    $('#paymentTable tbody').on('click','#editbutton',function(){
+    // remobe the row from ui
+    //$(this).closest('tr').remove();
+
+
+    var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
+    $date = $row.find("td:nth-child(1)"); // ist COLUMN(Date,Lid,Year,....) value
+    $lid= $row.find("td:nth-child(2)");
+    $year= $row.find("td:nth-child(3)");
+    $month= $row.find("td:nth-child(4)");
+
+
+    var date2=$date.text(); // date as a javascript variable
+    var lid=$lid.text();
+    var year=$year.text();
+    var month=$month.text();
+    console.log(date2);
+    
+    //check date and delete
+    var todaysDate=new Date();        
+    var thisMonth=todaysDate.getMonth()+1;
+    var thisYear=todaysDate.getFullYear();
+
+
+
+    var str="Delete payment of "+lid+" for \n year : "+year+" month : "+month+" ?";
+    Swal.fire({
+      title: 'Are You Sure ?',
+      icon: 'warning',
+    //   html:'<div>Line0<br />Line1<br /></div>',
+    html: '<pre>' + str + '</pre>',
+      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
+      confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
+      confirmButtonText: 'Delete!',
+      showCancelButton: true
+      }).then((result) => {
+          if (result.isConfirmed) {
+              $("#setTeaPriceForm").trigger("reset");
+              
+              $.ajax({
+                  type: "POST",
+                  url: "http://localhost/Thekolaya/accountant/deletePayment",
+                  
+                  data: {
+                    lid:lid,
+                    year:year,
+                    month:month,
+                  },
+                  success: function(data) {
+                      console.log(data);
+                      Swal.fire(
+                      'Deleted!',
+                      'Your Record Was Deleted Succesfully.',
+                      'success'
+                      )
+                      clearTable();
+                      getPayment();
+                      // checkForm();
+                  },
+                  error : function (xhr, ajaxOptions, thrownError) {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Oops...',
+                          text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                          // footer: '<a href="">Why do I have this issue?</a>'
+                      })
+                  }
+              })
+          }
+      })
+
+
+
+    });
+   
+}
 
 </script>
