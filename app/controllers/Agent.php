@@ -9,6 +9,8 @@ class Agent extends Controller
 
     function index()
     {
+        //take the available landowners count to collect tea and to deliver requests to be 
+        //displayed on the dashboard//
         $available_res = $this->model->availablelistTable();
         $fert_res = $this->model->fertilizerdeliveryListTable();
         $adv_res = $this->model->advancedeliveryListTable();
