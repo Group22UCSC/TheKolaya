@@ -242,7 +242,8 @@
 
 
   //  form submit - INSERT payment
-  $(document).ready(function() {
+    $(document).ready(function() {
+    
     $('#paymentSubmitbtn').click(function(event) {
       event.preventDefault();
       var form = $('#paymentForm').serializeArray();
@@ -374,8 +375,8 @@
                 'Your file has been updated.',
                 'success'
               )
-              // clearTable();
-              // getTable();
+              clearTable();
+              getPayment();
               // checkForm();
             },
             error: function(xhr, ajaxOptions, thrownError) {
@@ -467,5 +468,11 @@ function getPayment(){
         }
     }) 
 }  
+
+
+function clearTable(){
+    // $("#updateAuctionTable tr").remove();
+    $('.row ').remove(); // removing the previus rows in the ui
+}
 
 </script>

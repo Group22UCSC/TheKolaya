@@ -31,7 +31,7 @@
 <!-- hidden feild in order to calculate the payment -->
 
 <div class="formSection">
-<form action="<?php echo URL?>accountant/pdf" method="post" target="_blank" id="paymentForm">
+<form action="" method="post" target="_blank" id="paymentForm">
 		<!-- <h2>CSS Form</h2> -->
 		<div class="large-group">
 			<div class="small-group">
