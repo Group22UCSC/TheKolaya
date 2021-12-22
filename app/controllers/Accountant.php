@@ -279,10 +279,27 @@ class Accountant extends Controller{
         
     }
 
-    function getPayment(){
+    function getPayment(){ // get the details of payments to payment form of make payment
         $reslt=$this->model->getPayment();
         $json_arr=json_encode($reslt);
         echo $json_arr;
+    }
+
+    function deletePayment(){//delete a row from payment table
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $result = $this->model->deletePayment();
+            if($result==true){
+                
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to delete";
+            }
+        }
+        else{
+            echo "Data was not passed to the controller";
+        }
     }
 }
 
