@@ -26,6 +26,7 @@
   } else {
     $x = "0";
   }
+  // $x = count($data);
   ?>
   <div class="topic">Tea Available Landowner List </div>
   <form class="searchform">
@@ -57,6 +58,9 @@
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
+      if(<?php echo $x?> == '0'){
+        console.log('zero landowners');
+      }
       $('#myBtn').click(function(event) {
         event.preventDefault();
         var form = $('#teaUpdateForm').serializeArray();
