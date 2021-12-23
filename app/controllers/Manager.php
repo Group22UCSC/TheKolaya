@@ -164,15 +164,15 @@ class Manager extends Controller
             // $this->view->showPage('Manager/emergency');
 
             // $this->view->render('Manager/emergency', $result);
-    }else{
+        }else{
 
               $data = [
                 'message' => '',           
                 'emp_id' => ''
             ];
            
-    }
+        }
 
-}
+    }
 
 }

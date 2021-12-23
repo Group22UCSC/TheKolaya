@@ -167,14 +167,15 @@
       
       <div class="last">
             <div class="a">
-       <input type="submit" value="Update" class="btn">
+       <input type="submit" value="Update" onclick="deleteRow()" class="btn">
+       <!-- <button  onclick="previousPrices();scrollFunc();">Previous Tea Prices</button> -->
       </div>
 
 
-       <div class="b">
+      <!--  <div class="b">
          <a href="<?php echo URL?>admin/admin"><input  value="Discard" class="btn"></a>
       </div>
-           
+            -->
 
       </div>
 
@@ -186,5 +187,6 @@
 </div>
 
 
-
+<?php include 'js/admin/updatejs.php';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 <?php include 'bottom-container.php';?>
