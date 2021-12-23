@@ -499,6 +499,15 @@ class Accountant_Model extends Model {
         }
     }
 
+    function deletePayment(){
+        $date=$_POST['date'];
+        $lid=$_POST['lid'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
+        $query = " DELETE FROM `monthly_payment` WHERE lid='{$lid}' AND year='{$year}' AND month='{$month}' ";
+        $result=$this->db->deleteQuery($query);
+        echo $result;
+    }
 
 }
 ?>
