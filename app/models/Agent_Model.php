@@ -198,6 +198,75 @@ class Agent_Model extends Model{
          $this->db->runQuery($query);
          //add the query to make the agent unavailable         
     }
+
+     //Get Notification
+     function getNotification($data = [])
+     {
+         $notification_type = $data['notification_type'];
+         if (isset($data['notification_id'])) {
+             $notification_id = $data['notification_id'];
+             $query = "UPDATE notification 
+             SET read_unread=1 WHERE notification_id='$notification_id'";
+             $this->db->runQuery($query);
+         }
+         if ($notification_type == 'full') {
+             $query = "SELECT * FROM notification 
+             WHERE receiver_type='Agent' ORDER BY read_unread ASC, notification_id DESC";
+         } else if ($notification_type == 'half') {
+             $query = "SELECT * FROM notification 
+             WHERE receiver_type='Agent' AND read_unread=0 ORDER BY notification_id DESC";
+         }
+ 
+         $row = $this->db->runQuery($query);
+ 
+         if (isset($data['notification_id'])) {
+             if (count($row)) {
+                 return $row;
+             } else {
+                 return false;
+             }
+         }
+ 
+         $query = "UPDATE notification
+                 SET seen_not_seen=1 WHERE seen_not_seen=0";
+         $this->db->runQuery($query);
+         $_SESSION['NotSeenCount'] = '';
+         echo '<p>' . $_SESSION["NotSeenCount"] . '</p>';
+         if (count($row)) {
+             return $row;
+         } else {
+             return false;
+         }
+     }
+ 
+     function updateReadNotification($notification_id)
+     {
+         $query = "UPDATE notification 
+         SET read_unread=1 WHERE notification_id='$notification_id'";
+         $this->db->runQuery($query);
+ 
+         $query = "SELECT * FROM notification 
+             WHERE receiver_type='Agent' ORDER BY notification_id DESC";
+ 
+         $row = $this->db->runQuery($query);
+         if (count($row)) {
+             return $row;
+         }
+     }
+     function getNotificationCount()
+     {
+         $query = "SELECT * FROM notification 
+         WHERE receiver_type='Agent' AND seen_not_seen=0";
+         $row = $this->db->runQuery($query);
+ 
+         if (count($row)) {
+             $_SESSION['NotSeenCount'] = count($row);
+             if (isset($_GET['getCount']))
+                 echo $_SESSION['NotSeenCount'];
+         } else {
+             $_SESSION['NotSeenCount'] = 0;
+         }
+     }
 }
 
 

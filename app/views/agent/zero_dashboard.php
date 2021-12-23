@@ -14,6 +14,7 @@
    </head>
    <body>
 <?php include 'topContainer.php';?>
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/zero_dashboard.css">  
   <div class = "topic"><h3>My Dashboard</h3></div>
   <div class="main-content">
   <div class="flip-box">
