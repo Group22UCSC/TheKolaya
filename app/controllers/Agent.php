@@ -9,18 +9,27 @@ class Agent extends Controller
 
     function index()
     {
+        // take the available landowners count to collect tea and to deliver requests to be 
+        // displayed on the dashboard
         $available_res = $this->model->availablelistTable();
         $fert_res = $this->model->fertilizerdeliveryListTable();
         $adv_res = $this->model->advancedeliveryListTable();
-
+        // $this->view->showPage('Agent/unavailableNotice');
         $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);
     }
 
     function availableLandownerList()
     {
+
         $result = $this->model->availablelistTable();
+        // if($result != 0){
+            $this->view->render('Agent/availableList', $result);
+        // }
+        // else {
+        //     $this->view->showPage('Agent/unavailableNotice');
+        // }
         // //    print_r($result);
-        $this->view->render('Agent/availableList', $result);
+        
     }
 
     function updateTeaWeight()
@@ -61,11 +70,28 @@ class Agent extends Controller
         }
     }
 
-
-    function sendEmergencyMessage()
+    //load emergency message page
+    function viewEmergencyMessage()
     {
         $this->view->showPage('Agent/EmergencyMessage');
     }
+
+    //send emergency message to manager
+    function sendEmergencyMessage(){
+        $msg_data = [
+            'message' => '',           
+            'agent_id' => ''
+        ]; 
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->msg_data['message'] = trim($_POST['message']);
+            $this->msg_data['agent_id'] = $_SESSION['user_id'];
+            $this->model->storeEmergencyMessage($this->msg_data);
+            print_r($this->msg_data);
+            $this->view->showPage('Agent/EmergencyMessage');
+    }
+}
 
     function viewPreviousUpdates()
     {

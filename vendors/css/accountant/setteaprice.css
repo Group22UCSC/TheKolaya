@@ -445,7 +445,9 @@ justify-self: center ;
     background-color: #fff;
     border: 1px solid #ddd;
   }
-  
+  .form-inline input:focus {
+    color: #00000073;
+  }
   /* Style the submit button */
   .form-inline button {
     padding: 10px 20px;
