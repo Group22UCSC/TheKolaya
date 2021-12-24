@@ -1,138 +1,128 @@
 <?php
 
-class Login extends Controller {
-    function __construct(){
+class Login extends Controller
+{
+    function __construct()
+    {
         parent::__construct();
     }
 
-    function index() {
+    function index()
+    {
         // $this->view->goHome('user/login');
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            // Process form
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-              $data = [
-                  'contact_number' => trim($_POST['contact_number']),
-                  'password' => trim($_POST['password']),
-                  'contact_number_err' => '',
-                  'password_err' => '',
-              ];
-  
-              //Validate mobile number
-              if(empty($data['contact_number'])) {
-                  $data['contact_number_err'] = "Please enter the mobile number";
-              }
-  
-              //Validate password
-              if(empty($data['password'])) {
-                  $data['password_err'] = "Please enter the password";
-              }
-  
-              if($this->model->findUserByMobileNumber($data['contact_number'])) {
-                  //User found
-              }else {
-                  //User not Found
-                  $data['contact_number_err'] = "No User Found";
-              }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            redirect($_SESSION['user_type']);
 
-              //Make sure errors are empty
-              if(empty($data['contact_number_err']) && empty($data['password_err'])) {
-                  //Validated
-                  //Check and set logged in user
-                  $loggedInUser = $this->model->login($data['contact_number'], $data['password']);
-  
-                  if($loggedInUser) {
-                      //Create Session
-                      $this->createUserSession($loggedInUser);
-                  }else {
-                      $data['password_err'] = "Password incorrect";
-  
-                      $this->view->render('user/login', $data);
-                  }
-              }else {
-                  $this->view->render('user/login', $data);
-              }
-  
-          } else {
-            // Init data
-            $data =[    
-              'contact_number' => '',
-              'password' => '',
-              'contact_number_err' => '',
-              'password_err' => '',
-            ];
-    
-            // Load view
-            $this->view->render('user/login', $data);
-          }
+        } else {
+            $this->view->render('user/login');
+        }
     }
 
-    function createUserSession($user) {
+    function controllCheckData()
+    {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $data = [
+            'contact_number' => trim($_POST['contact_number']),
+            'password' => $_POST['password'],
+        ];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $function_name = $_POST['function_name'];
+            switch ($function_name) {
+                case 'checkUser':
+                    if ($this->model->isVerifiedUser($data['contact_number'])) {
+                        echo 'Verified';
+                    } else if ($this->model->isRegisteredUser($data['contact_number'])) {
+                        echo 'Registered';
+                    } else {
+                        echo 'notRegistered';
+                    }
+                    break;
+                case 'login':
+                    $loggedInUser = $this->model->login($data['contact_number'], $data['password']);
+
+                    if ($loggedInUser) {
+                        //Create Session
+                        $this->createUserSession($loggedInUser);
+                        echo 'login';
+                    } else {
+                        echo 'wrongPassword';
+                    }
+                    break;
+            }
+        }
+    }
+
+    function createUserSession($user)
+    {
         $_SESSION['user_id'] = $user[0]['user_id'];
         $_SESSION['user_type'] = str_replace("_", "", $user[0]['user_type']);
         $_SESSION['contact_number'] = $user[0]['contact_number'];
         $_SESSION['name'] = $user[0]['name'];
         $_SESSION['address'] = $user[0]['address'];
         $_SESSION['profile_picture'] = $user[0]['profile_picture'];
-        if($_SESSION['profile_picture'] == null) {
+        if ($_SESSION['profile_picture'] == null) {
             $_SESSION['profile_picture'] = "default_profile/profile.jpg";
-        }else {
-            $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"])."/".$_SESSION['profile_picture'];
+        } else {
+            $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"]) . "/" . $_SESSION['profile_picture'];
         }
-        
+
         // switch($_SESSION['user_type']) {
         //     case 'LandOwner' : $_SESSION['user_type'] = 
         // }
         $_SESSION['user_type'] = ucwords(strtolower($_SESSION['user_type']));
-        if($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'Landowner') {
+        if ($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'Landowner') {
             $this->model->getRoute($_SESSION['user_type']);
         }
         $_SESSION['NotSeenCount'] = $this->model->getNotSeenNotificationCount($_SESSION['user_type']);
-        redirect($_SESSION['user_type']);
     }
 
-    function logout() {
+    function logout()
+    {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_type']);
         unset($_SESSION['contact_number']);
         unset($_SESSION['name']);
         unset($_SESSION['address']);
         unset($_SESSION['profile_picture']);
-            
+
         session_destroy();
         redirect('Login');
     }
 
-    function isLoggedIn() {
-        if(isset($_SESSION['user_id'])) {
+    function isLoggedIn()
+    {
+        if (isset($_SESSION['user_id'])) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    function forgetPassword() {
-        if(isset($_POST['enter_btn'])) {
+    function forgetPassword()
+    {
+        if (isset($_POST['enter_btn'])) {
             $data = [
                 'contact_number' => trim($_POST['contact_number']),
                 'controller' => 'login'
             ];
-            
-            if($this->model->isRegisteredUser($data['contact_number'])) {
+
+            if ($this->model->isRegisteredUser($data['contact_number'])) {
                 // $otp = new OtpVerify;
                 // $otp->otpSend($data);
                 $_SESSION['contact_number'] = $data['contact_number'];
                 $_SESSION['controller'] = $data['controller'];
                 otpSend();
-            }else {
+            } else {
                 $this->view->render('user/forgetPassword/wrongNumber', $data);
             }
-        }else {
+        } else {
             $this->view->render('user/forgetPassword/forgetPassword');
         }
     }
 
-    function changePassword() {
-        if(isset($_POST['change_pw_btn'])) {
+    function changePassword()
+    {
+        if (isset($_POST['change_pw_btn'])) {
             unset($_SESSION['changePassword']);
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
@@ -144,29 +134,27 @@ class Login extends Controller {
                 'confirm_password_err' => ''
             ];
             // unset($_SESSION['contact_number']);
-            if(empty($data['new_password'])) {
+            if (empty($data['new_password'])) {
                 $data['new_password_err'] = "Please enter a new passoword";
             }
 
-            if(empty($data['confirm_password'])) {
+            if (empty($data['confirm_password'])) {
                 $data['confirm_password_err'] = "Please confirm the password";
-            }else if($data['new_password'] != $data['confirm_password']) {
+            } else if ($data['new_password'] != $data['confirm_password']) {
                 $data['confirm_password_err'] = "Doesn't match with password";
             }
 
-            if(empty($data['new_password_err']) && empty($data['confirm_password_err'])) {
+            if (empty($data['new_password_err']) && empty($data['confirm_password_err'])) {
                 $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
                 $this->model->changePassword($data);
                 redirect('Login');
-            }else {
+            } else {
                 $this->view->render('user/forgetPassword/changePassword', $data);
             }
-        }else if(isset($_SESSION['changePassword'])){
+        } else if (isset($_SESSION['changePassword'])) {
             $this->view->render('user/forgetPassword/changePassword');
-        }else {
+        } else {
             $this->view->render('Errors/Errors');
         }
     }
 }
-
-?>
