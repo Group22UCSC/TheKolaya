@@ -14,6 +14,7 @@
    </head>
    <body>
 <?php include 'topContainer.php';?>
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/zero_dashboard.css">  
   <div class = "topic"><h3>My Dashboard</h3></div>
   <div class="main-content">
   <div class="flip-box">
@@ -23,7 +24,7 @@
     $x = count($data1);
   }
   else{
-    $x = "0";
+    $x = "Sorry, No";
   }
   ?>
     <div class="flip-box-front" id = "availableflipfront">
@@ -52,7 +53,7 @@
     $tot = count($data3);
   }
   else{
-    $tot = "0";
+    $tot = "Sorry, No";
   }
   ?>
    

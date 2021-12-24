@@ -9,18 +9,28 @@ class Agent extends Controller
 
     function index()
     {
+        $this->getNotificationCount(); //This for get Notification count
+        // take the available landowners count to collect tea and to deliver requests to be 
+        // displayed on the dashboard
         $available_res = $this->model->availablelistTable();
         $fert_res = $this->model->fertilizerdeliveryListTable();
         $adv_res = $this->model->advancedeliveryListTable();
-
+        // $this->view->showPage('Agent/unavailableNotice');
         $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);
     }
 
     function availableLandownerList()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $result = $this->model->availablelistTable();
+        // if($result != 0){
+            $this->view->render('Agent/availableList', $result);
+        // }
+        // else {
+        //     $this->view->showPage('Agent/unavailableNotice');
+        // }
         // //    print_r($result);
-        $this->view->render('Agent/availableList', $result);
+        
     }
 
     function updateTeaWeight()
@@ -64,11 +74,13 @@ class Agent extends Controller
     //load emergency message page
     function viewEmergencyMessage()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/EmergencyMessage');
     }
 
     //send emergency message to manager
     function sendEmergencyMessage(){
+        $this->getNotificationCount(); //This for get Notification count
         $msg_data = [
             'message' => '',           
             'agent_id' => ''
@@ -86,21 +98,25 @@ class Agent extends Controller
 
     function viewPreviousUpdates()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/previousUpdates');
     }
 
     function viewTeaUpdates()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/previousTeaUpdates');
     }
 
     function ViewRequestUpdates()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/previousRequestUpdates');
     }
 
     function confirmDeliverables()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $result1 = $this->model->fertilizerdeliveryListTable();
         $result2 = $this->model->advancedeliveryListTable();
         // print_r($result);
@@ -110,6 +126,7 @@ class Agent extends Controller
 
     function updateRequest()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $request_data = [
             'date' => '',
             'lid' => '',
@@ -142,6 +159,7 @@ class Agent extends Controller
     }
 
     function searchPreviousTeaUpdates(){
+        $this->getNotificationCount(); //This for get Notification count
         $pre_tea_data = [
             'date' => '',
             'lid' => ''            
@@ -159,6 +177,7 @@ class Agent extends Controller
     }
 
     function searchPreviousRequestUpdates(){
+        $this->getNotificationCount(); //This for get Notification count
         $pre_request_data = [
             'date' => '',
             'lid' => '' ,
@@ -187,12 +206,14 @@ class Agent extends Controller
 
     function loadPopup()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/popup');
     }
 
     //manage profile
     function profile()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->render('user/profile/profile');
     }
 
@@ -206,6 +227,68 @@ class Agent extends Controller
 
     function enterPassword()
     {
+        $this->getNotificationCount(); //This for get Notification count
         $this->view->render('user/profile/enterPassword');
+    }
+
+    //Get Notification
+    function setNotification($notification)
+    {
+        if (!empty($notification)) {
+            echo '<div id="all_notifications">';
+            for ($i = 0; $i < count($notification); $i++) {
+                switch ($notification[$i]['notification_type']) {
+                    case 'warning':
+                        $imgPath = URL . '/vendors/images/notifications/warning.jpg';
+                        break;
+                    case 'request':
+                        $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                        break;
+                }
+
+                switch ($notification[$i]['read_unread']) {
+                    case 0:
+                        $notificationStatus = "unread";
+                        break;
+                    case 1:
+                        $notificationStatus = "read";
+                        break;
+                }
+                $dateTime = $notification[$i]['receive_datetime'];
+                echo
+                '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
+                        <div class = "profCont">
+                            <img class = "notification_profile" src = "' . $imgPath . '">
+                        </div>
+                        <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                        <div class="txt sub">' . $dateTime . '</div>
+                    </div>';
+            }
+            echo '</div>';
+        } else {
+            echo
+            '<div id="all_notifications">
+                <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                </div>
+            </div>';
+        }
+    }
+
+    public function getNotificationCount()
+    {
+        $notificationCount = $this->model->getNotificationCount($_GET);
+        return $notificationCount;
+    }
+
+    function getNotification()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['notification_type'])) {
+                $notification = $this->model->getNotification($_POST);
+                $this->setNotification($notification);
+            }
+        }
     }
 }
