@@ -33,7 +33,17 @@ class Login_Model extends Model {
         }
     }
 
-    public function isRegisteredUser($contact_number) {
+    function isRegisteredUser($contact_number) {
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND verify = 0";
+        $row = $this->db->runQuery($query);
+        if(!empty($row)) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    public function isVerifiedUser($contact_number) {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number' AND verify = 1";
 
         $row = $this->db->runQuery($query);
