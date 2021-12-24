@@ -1,12 +1,12 @@
 <script>
     
     $(document).ready(function(){
-        $('#updateAccountBtn').click(function(event) {
+        $('#sendBtn').click(function(event) {
             event.preventDefault();
-            var form = $('#updateForm').serializeArray();
+            var form = $('#emergencyForm').serializeArray();
              // var user_id=document.getElementById("id").val;
 
-    var str="Update details set on ?";
+    var str="Emergency details set on ?";
 
     Swal.fire({
       title: 'Are You Sure ?',
@@ -16,22 +16,22 @@
       //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
       confirmButtonColor: '#FF2400',
       cancelButtonColor: '#4DD101',
-      confirmButtonText: 'Update!',
+      confirmButtonText: 'Send!',
       showCancelButton: true
       }).then((result) => {
           if (result.isConfirmed) {
-              $("#updateForm").trigger("reset");
+              $("#deleteteForm").trigger("reset");
               
               $.ajax({
                   type: "POST",
-                  url: "<?php echo URL?>Admin/updateAccount",
+                  url: "<?php echo URL?>manager/emergency",
                   
                   data: form,
                   success: function(data) {
                       console.log(data);
                       Swal.fire(
-                      'Updated!',
-                      'Your Record Was Updated Succesfully.',
+                      'Sent!',
+                      'Your message Was Sent Succesfully.',
                       'success'
                       ).then(() => {
                         location.reload();
