@@ -120,7 +120,7 @@
  <div class="wrapper1">
   <div class="title">  Update Form  </div>
     
-    <form action="<?php echo URL?>admin/updateAccount" method="POST">
+    <form action="<?php echo URL?>admin/updateAccount" method="POST" id="updateForm">
       <div class="form">
 
         <div class="inputfield">
@@ -167,7 +167,7 @@
       
       <div class="last">
             <div class="a">
-       <input type="submit" value="Update" onclick="deleteRow()" class="btn">
+       <input type="submit" value="Update" class="btn" id="updateAccountBtn">
        <!-- <button  onclick="previousPrices();scrollFunc();">Previous Tea Prices</button> -->
       </div>
 
