@@ -7,6 +7,7 @@ class Agent_Model extends Model{
         parent::__construct();
     }
     
+    //edit profile
     function editProfile() {
         $contact_number = $_SESSION['contact_number'];
         $name = $_SESSION['name'];
@@ -15,6 +16,7 @@ class Agent_Model extends Model{
         $this->db->runQuery($query);
     }
 
+    //check password
     function checkPassword($data) {
         $user_id = $_SESSION['user_id'];
         $query = "SELECT * FROM user WHERE user_id='$user_id'";
@@ -29,6 +31,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //change password
     function changePassword($data = []) {
         $new_password = $data['new_password'];
         $contact_number = $_SESSION['contact_number'];
@@ -42,6 +45,20 @@ class Agent_Model extends Model{
         }
     }
 
+    //check whether the agent is available
+    function checkAvailability(){
+        $agent_id = $_SESSION['user_id'];
+        $query = "SELECT availability FROM agent WHERE emp_id='$agent_id'";
+        $row = $this->db->runQuery($query);
+
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+
+    //get details to display tea available list
     function availableListTable(){
         $route_no=$_SESSION['route']; 
         $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no='$route_no' AND landowner_type='indirect_landowner' AND tea_availability=1 ";
@@ -54,6 +71,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //add initial tea weight by agent
     function updateWeight($data = []){
         $landowner_id = $data['lid'];
         $weight = $data['initial_weight'];
@@ -67,6 +85,7 @@ class Agent_Model extends Model{
 
     }
 
+    //get details to display in fertilizer request table
     function fertilizerdeliveryListTable(){
         $route_no=$_SESSION['route'];        
         $query = "SELECT request.request_id, request.request_type, request.lid, 
@@ -87,6 +106,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //get details to display advance requests table
     function advancedeliveryListTable(){
         $route_no=$_SESSION['route'];        
         $query = "SELECT request.request_id, request.request_type, request.lid, 
@@ -107,6 +127,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //add fertilizer requests when completed
     function updateFertilizerRequest($data = []){
         $date = $data['date'];
         $request_id = $data['rid'];        
@@ -119,6 +140,7 @@ class Agent_Model extends Model{
         $this->db->runQuery($query2);
     }
 
+//add advance requests when completed
     function updateAdvanceRequest($data = []){
         $date = $data['date'];
         $request_id = $data['rid'];        
@@ -132,6 +154,7 @@ class Agent_Model extends Model{
 
     }
 
+    //search previous tea updates
     function searchTeaUpdates($data=[]){
         $date = $data['date'];
         $lid = $data['lid'];
@@ -146,6 +169,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //search previous fertilizer deliveries
     function searchFertilizerUpdates($data=[]){
         $date = $data['date'];
         $lid = $data['lid'];
@@ -166,6 +190,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //search previous advance deliveries
     function searchAdvanceUpdates($data=[]){
         $date = $data['date'];
         $lid = $data['lid'];
@@ -186,7 +211,7 @@ class Agent_Model extends Model{
         }
     }
  
-
+    //storing the emergency message needed to be sent to the manager
     function storeEmergencyMessage($data=[]){
         $message = $data['message'];
         $sender_id = $data['agent_id'];
@@ -195,7 +220,9 @@ class Agent_Model extends Model{
          receiver_type, notification_type, sender_id) VALUES
          ('0','0','$message','manager','emergency','$sender_id')"; 
          //have not added receiver_id and receive_datetime,Check into that.
+         $query1 = "UPDATE agent SET availability='0' WHERE emp_id='$sender_id'";
          $this->db->runQuery($query);
+         $this->db->runQuery($query1);
          //add the query to make the agent unavailable         
     }
 
