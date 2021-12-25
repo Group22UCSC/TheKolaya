@@ -8,7 +8,7 @@ class Agent extends Controller
     }
 
     function index()
-    {
+     {
         $this->getNotificationCount(); //This for get Notification count
         $result=$this->model->checkAvailability();
         // print_r($result);
