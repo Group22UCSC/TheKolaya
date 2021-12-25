@@ -1,18 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  background-image: url("../../images/agent/dashboard.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ 
+}
+
 .toggle-div{
     max-width: 50%;
     width: 50%;
     background: white;
-    margin:100px auto;
+    margin:180px auto;
    border-radius: 25px;
     box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
-    padding: 40px;       
+    padding: 10px;       
   }
 
   .toggle-div .note{
     font-size: 24px;
     font-weight: 700;
     /* margin-bottom: 25px; */
-    margin: 10px 10px auto;
+    margin: 5px 10px auto;
+    padding: 20px;
     color: #01830c;    
     text-align: center;
   }
+
+  button{
+    border: none;
+    background-color: rgba(1, 131, 12,1);
+    color: white;
+    padding: 10px auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;   
+    border-radius: 12px;
+    transition-duration: 0.4s; 
+    width:120px; 
+    height: 50px;  
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+
+  button:hover{
+    cursor: pointer;
+    color: rgba(1, 131, 12,1);
+    background-color:#cdfed1;  
+  }
+  
