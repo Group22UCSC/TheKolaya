@@ -58,6 +58,14 @@ class Agent_Model extends Model{
         }
     }
 
+    //make the unavailable agent available
+    function availableAgent(){
+        $agent_id = $_SESSION['user_id'];
+        $query = $next_query = "UPDATE agent SET availability='1' WHERE emp_id='$agent_id'";
+         $this->db->runQuery($query);
+
+    }
+
     //get details to display tea available list
     function availableListTable(){
         $route_no=$_SESSION['route']; 

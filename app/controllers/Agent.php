@@ -14,7 +14,7 @@ class Agent extends Controller
         // print_r($result);
 
         if($result[0]['availability'] == 1){
-            print_r("Agent available");
+            // print_r("Agent available");
             // take the available landowners count to collect tea and to deliver requests
             // to be displayed on the dashboard
             $available_res = $this->model->availablelistTable();
@@ -29,6 +29,12 @@ class Agent extends Controller
             $this->view->showPage('Agent/availabilityOn');
         }
        
+    }
+
+    //make the agent available after toggle 
+    function makeAvailable(){
+        $this->model->availableAgent();
+        $this->index();
     }
 
     function availableLandownerList()

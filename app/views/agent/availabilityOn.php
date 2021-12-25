@@ -22,9 +22,26 @@
   <div class="toggle-div" id="toggle-div">
       <div class="note">Currently you are unavailable.Please switch on your availability</div>
       <label class="switch">
-        <input type="checkbox">
+        <input type="checkbox" id="togglebtn">
         <span class="slider round"></span>
     </label>
 </div>
 
+<script>
+  var switchStatus = false;
+  $("#togglebtn").on('change', function() {
+    if ($(this).is(':checked')) {
+        switchStatus = $(this).is(':checked');
+        // console.log("this is if part");
+        // console.log(switchStatus);// To verify
+        location.replace("agent/makeAvailable");
+    }
+    else {
+       switchStatus = $(this).is(':checked');
+       console.log("this is else part");
+       console.log(switchStatus);// To verify
+      
+    }
+});
+  </script>
   <?php include 'bottomContainer.php'; ?>
