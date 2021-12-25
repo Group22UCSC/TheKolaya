@@ -45,6 +45,19 @@ class Agent_Model extends Model{
         }
     }
 
+    //check whether the agent is available
+    function checkAvailability(){
+        $agent_id = $_SESSION['user_id'];
+        $query = "SELECT availability FROM agent WHERE emp_id='$agent_id'";
+        $row = $this->db->runQuery($query);
+
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+
     //get details to display tea available list
     function availableListTable(){
         $route_no=$_SESSION['route']; 
@@ -207,7 +220,9 @@ class Agent_Model extends Model{
          receiver_type, notification_type, sender_id) VALUES
          ('0','0','$message','manager','emergency','$sender_id')"; 
          //have not added receiver_id and receive_datetime,Check into that.
+         $query1 = "UPDATE agent SET availability='0' WHERE emp_id='$sender_id'";
          $this->db->runQuery($query);
+         $this->db->runQuery($query1);
          //add the query to make the agent unavailable         
     }
 
