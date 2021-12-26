@@ -2,9 +2,23 @@
   // $(document).ready(function() {
   var modal = document.querySelector(".modal");
   var closeButton = document.querySelector(".close-button");
+  // var isNotificationsSlided = false;
 
   function toggleModal() {
     modal.classList.toggle("show-modal");
+    if ($('.notiBox').is(':visible')) {
+      $('.notiBox').slideUp();
+      isNotificationsSlided = true;
+    }else {
+      if(typeof isNotificationsSlided === 'undefined') {
+
+      }else if(isNotificationsSlided == true) {
+        console.log('bye' + isNotificationsSlided);
+        $('.notiBox').slideDown();
+        isNotificationsSlided == false;
+      }
+    }
+    // console.log(isNotificationsSlided);
   }
 
   function windowOnClick(event) {
