@@ -51,7 +51,6 @@
 
 
     </div>
-
     <div class="modal">
       <div class="modal-content">
         <span class="close-button">×</span>
@@ -117,9 +116,6 @@
 
   </div>
   <?php include 'script-included.php' ?>
-  <script>
-
-  </script>
   <script>
     $('.landowner_tea_rate').click(function() {
       $('.Landowner-details').hide();
