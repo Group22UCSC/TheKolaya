@@ -226,7 +226,7 @@
                 toggleNotiModal();
             }
         }
-        notiModalCloseButton.addEventListener("click", toggleModal);
+        notiModalCloseButton.addEventListener("click", toggleNotiModal);
         window.addEventListener("click", windowOnClick);
         $(".notiBox").click(function(event) {
             var notificationId = event.target.parentNode;
