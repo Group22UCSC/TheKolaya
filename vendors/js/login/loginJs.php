@@ -134,22 +134,46 @@
 
         $('#login_btn').click(function(event) {
             SerializeData();
+            var notFilled = 0;
             //Check is filled mobile number
             if (inputField[0].value.length < 10) {
                 event.preventDefault();
                 errors.mobile_number = "Less than 10 characters";
                 showError(0, errors.mobile_number);
+                notFilled = 1;
             }else if (inputField[0].value == '') {
                 event.preventDefault();
                 errors.mobile_number = "This is must filled";
                 showError(0, errors.mobile_number);
+                notFilled = 1;
             }
             //check is filled password
             if (inputField[1].value == '') {
                 event.preventDefault();
                 errors.password = "This is must filled";
                 showError(1, errors.password);
+                notFilled = 1;
             }
+
+            // if(notFilled == 0) {
+            //     form.push({
+            //         name: 'function_name',
+            //         value: 'nowLogin'
+            //     });
+            //     $.ajax({
+            //         url: url,
+            //         type: "POST",
+            //         data: form,
+            //         success: function(responseText) {
+            //             if (responseText == 'wrongPassword') {
+            //                 errors.password = "Password is wrong!";
+            //                 showError(1, errors.password);
+            //             } else {
+            //                 removeError(1);
+            //             }
+            //         }
+            //     });
+            // }
         });
     });
 </script>
