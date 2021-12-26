@@ -11,8 +11,17 @@ class Login extends Controller
     {
         // $this->view->goHome('user/login');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            redirect($_SESSION['user_type']);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'contact_number' => trim($_POST['contact_number']),
+                'password' => $_POST['password'],
+            ];
+            $loggedInUser = $this->model->login($data['contact_number'], $data['password']);
 
+            if ($loggedInUser) {
+                $this->createUserSession($loggedInUser);
+                redirect($_SESSION['user_type']);
+            }
         } else {
             $this->view->render('user/login');
         }
@@ -40,12 +49,15 @@ class Login extends Controller
                 case 'login':
                     $loggedInUser = $this->model->login($data['contact_number'], $data['password']);
 
-                    if ($loggedInUser) {
-                        //Create Session
-                        $this->createUserSession($loggedInUser);
-                        echo 'login';
-                    } else {
+                    if (!$loggedInUser) {
                         echo 'wrongPassword';
+                    }
+                    break;
+                case 'nowLogin':
+                    $loggedInUser = $this->model->login($data['contact_number'], $data['password']);
+
+                    if ($loggedInUser) {
+                        $this->createUserSession($loggedInUser);
                     }
                     break;
             }
