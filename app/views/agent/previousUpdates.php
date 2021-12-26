@@ -13,7 +13,7 @@
    </head>
 <body>
 <?php include 'topContainer.php';?>
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/preupdates.css">  ">  
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/preupdates.css"> 
 <div class="topic">View Previous Updates</div>
 
 <div class="update_buttons">
