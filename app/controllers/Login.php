@@ -53,13 +53,6 @@ class Login extends Controller
                         echo 'wrongPassword';
                     }
                     break;
-                case 'nowLogin':
-                    $loggedInUser = $this->model->login($data['contact_number'], $data['password']);
-
-                    if ($loggedInUser) {
-                        $this->createUserSession($loggedInUser);
-                    }
-                    break;
             }
         }
     }
