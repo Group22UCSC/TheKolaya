@@ -95,6 +95,12 @@
                 </div>
               </div>
             </div>
+            <div class="noti-modal">
+              <div class="noti-modal-content">
+                <span class="noti-modal-close-button">×</span>
+                <div>Add Your Content Here !</div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- ------------------------------ -->

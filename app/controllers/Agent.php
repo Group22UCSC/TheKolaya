@@ -281,7 +281,7 @@ class Agent extends Controller
                         <div class = "profCont">
                             <img class = "notification_profile" src = "' . $imgPath . '">
                         </div>
-                        <div class="txt ' . $notification[$i]['notification_type'] . '"><a href="http://localhost/thekolaya/Agent/viewEmergencyMessage">' . $notification[$i]['message'] . '</a></div>
+                        <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
                         <div class="txt sub">' . $dateTime . '</div>
                     </div>';
             }
