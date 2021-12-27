@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style2.css">
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/notification.css">
   <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name"><img src="<?php echo URL?>vendors/images/thekolaya-white.png" alt=""></div>
@@ -98,7 +99,10 @@
             <div class="noti-modal">
               <div class="noti-modal-content">
                 <span class="noti-modal-close-button">×</span>
-                <div>Add Your Content Here !</div>
+                <div class="inputfield" id="btnset">
+                <button class="btn" id="myBtn"> Confirm</button>
+                <button class="back" onclick="closeteaform()">Reject</button>               
+            </div>
               </div>
             </div>
           </div>
