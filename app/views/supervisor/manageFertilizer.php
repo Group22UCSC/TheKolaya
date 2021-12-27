@@ -5,17 +5,16 @@
   <meta charset="UTF-8">
   <title><?php echo TITLE ?></title>
   <?php include 'styles-titleIcon-included.php' ?>
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
-  <!-- <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/stock-style.css"> -->
+  <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/form-style.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/supervisor/stock-style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+  <!-- <style>
     .middle-container>div {
       background: #fff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
-  </style>
+  </style> -->
 </head>
 
 <body>
@@ -24,7 +23,7 @@
     <h2>Update Fertilizer Details</h2>
   </div>
   <div class="middle-container">
-    <div class="form-instock" style="margin: 10px auto; padding:10px 40px">
+    <div class="form-instock" style="padding:40px 0px">
       <div class="form-container">
         <div class="title">
           Fertilizer Purchase
