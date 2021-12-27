@@ -53,27 +53,33 @@ class Supervisor extends Controller
             if (!empty($lastRequests)) {
 
                 echo '<div id="previous_details">';
-                echo '<div class="row tabel-header">
-                        <div class="cell">Previous Request Date</div>
-                        <div class="cell">Monthly Tea Amount(kg)</div>
+                echo '<div class="manage-request-row tabel-header">
+                        <div class="manage-request-cell">Previous Request Date</div>
+                        <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
                     </div>';
                 for ($i = 0; $i < count($lastRequests); $i++) {
-                    echo '<div class="row">
-                            <div class="cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
-                            <div class="cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
+                    $monthNum  = $month - 1;
+                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                    $monthName = $dateObj->format('F'); // March
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']). 'Kg for '. $monthName . '</div>
                         </div>';
                 }
                 echo '</div>';
             } else {
                 echo '<div id="previous_details">';
-                echo '<div class="row tabel-header">
-                        <div class="cell">Previous Request Date</div>
-                        <div class="cell">Monthly Tea Amount(kg)</div>
-                    </div>';
+                // echo '<div class="manage-request-row tabel-header">
+                //         <div class="manage-request-cell">Previous Request Date</div>
+                //         <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
+                //     </div>';
                 for ($i = 0; $i < 2; $i++) {
-                    echo '<div class="row">
-                            <div class="cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests</b>' . '</div>
-                            <div class="cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
+                    $monthNum  = $month - 1;
+                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                    $monthName = $dateObj->format('F');
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests for ' . $monthName .'</b>' . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']). 'Kg for '. $monthName . '</div>
                         </div>';
                 }
                 echo '</div>';
