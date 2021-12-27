@@ -71,9 +71,11 @@ class Accountant extends Controller{
         $this->getNotificationCount();
         $this->view->showPage('accountant/landowners');
     }
-    function pdf() {
-        $this->getNotificationCount();
-        $this->view->showPage('accountant/pdf');
+    function pdf($lid) {
+        //$this->getNotificationCount();
+        $_POST['lid']=$lid;
+        $result = $this->model->pdfTEst();
+        $this->view->render('accountant/pdf2',$result);
     }
     function landownersGraphpage() {
         $this->getNotificationCount();
@@ -225,13 +227,14 @@ class Accountant extends Controller{
     //get all the details to the payment form 
     function loadPayment(){
         $names=$this->model->getLandownerNamePayment();//get the name of the landowner for the payment form 
-        //$lastPaymentDate=$this->model->getLastPaymentDate();
+        
         $teaCollection=$this->model->getteaCollection();//get the details of the tea handed over to the factory by lid in that month
         $monthlyTPrice=$this->model->getmonthlyTPrice();
         $fertilizer=$this->model->getFertilizer();
         $fertilizerPrice=$this->model->getFertilizerPrice();
         $advance=$this->model->getAdvance();
         $arr=array_merge($names,$teaCollection,$monthlyTPrice,$fertilizer,$fertilizerPrice,$advance);
+        
         $json_arr=json_encode($arr);
         // $json_arr2=json_encode($reslt);
         //echo gettype($lastPaymentDate);
@@ -267,6 +270,8 @@ class Accountant extends Controller{
         if(($_SERVER['REQUEST_METHOD']=='POST')){
             $result = $this->model->setPayment();
             if($result==true){
+                //$this->getNotificationCount();
+                //$this->view->showPage('accountant/pdf');
                 $_POST['success']=1;
             }
             else{

@@ -76,7 +76,7 @@ $(document).ready(function(){
                       
                       Swal.fire(
                       'Updated!',
-                      'Your file has been updated.',
+                      'Data updated successfully.',
                       'success'
                       )
                       clearTable();
