@@ -5,12 +5,19 @@ require('../app/libs/fpdf/fpdf.php');
 // http://localhost/Thekolaya/productmanager/updateAuction
 // D:\Program Files\Xampp\htdocs\TheKolaya\app\libs\fpdf
 
+// function setData($input){
+   
+//     $GLOBALS['data']=$input;
+//     print_r($data);
+// }
+
 class PDF extends FPDF
 {
 // Page header
 function Header()
 {
     // Logo
+    print_r($data);
     $this->Image('images/thekolaya.png',10,6,30);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
@@ -50,7 +57,7 @@ $pdf->SetFont('Arial','B',20);
 
 /*Cell(width , height , text , border , end line , [align] )*/
 
-$pdf->Cell(60 ,10,'',0,0);
+$pdf->Cell(60 ,10,$data['Date'],0,0);
 $pdf->Cell(59 ,5,'The Kolaya Invoice',0,0);
 $pdf->Cell(59 ,30,'',0,1);
 

@@ -498,6 +498,17 @@ class Accountant_Model extends Model {
             return false;
         }
     }
+    function pdfTEst(){
+        $lid=$_POST['lid'];
+        $sql="SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC ";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
 
     function deletePayment(){
         $date=$_POST['date'];
