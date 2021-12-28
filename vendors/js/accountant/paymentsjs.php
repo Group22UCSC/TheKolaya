@@ -328,8 +328,8 @@
               clearTable();
               getPayment();
               
-              window.open("<?php echo URL ?>accountant/pdf/"+lid+"", "_blank");
-              callPdf();
+              window.open("<?php echo URL ?>accountant/pdf/"+lid+"/"+Year+"/"+Month+"", "_blank");
+              //callPdf();
               // checkForm();
             },
             error: function(xhr, ajaxOptions, thrownError) {
