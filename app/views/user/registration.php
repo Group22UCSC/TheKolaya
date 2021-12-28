@@ -44,21 +44,22 @@
     <div class="forms-container">
       <div class="signin-signup">
 
-        <form action="<?php echo URL ?>Login" class="sign-in-form" method="POST">
+        <form action="<?php echo URL ?>Login" class="sign-in-form" method="POST" id="loginForm">
           <div class="logo">
             <img src="<?php echo URL ?>vendors/images/login/logo.png" alt="">
           </div>
           <h2 class="title">LOG IN</h2>
-          <div class="input-field <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>">
-            <i class="fas fa-phone icon <?php echo (!empty($data['contact_number_err'])) ? 'is-invalid' : ''; ?>"></i>
-            <input class="input<?php echo (!empty($data['contact_number_err'])) ? '-is-invalid' : ''; ?>" type="tel" placeholder="<?php (!empty($data['contact_number_err'])) ? print $data['contact_number_err'] : print 'mobile number*'; ?>" name="contact_number" />
+
+          <div class="input-field">
+            <i class="fas fa-phone icon"></i>
+            <input class="input" type="tel" placeholder="mobile number*" name="contact_number" />
           </div>
 
-          <div class="input-field <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>">
-            <i class="fas fa-lock icon <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>"></i>
-            <input class="input<?php echo (!empty($data['password_err'])) ? '-is-invalid' : ''; ?>" type="password" placeholder="<?php (!empty($data['password_err'])) ? print $data['password_err'] : print 'password*'; ?>" name="password" />
+          <div class="input-field">
+            <i class="fas fa-lock icon"></i>
+            <input class="input" type="password" placeholder="password*" name="password" />
           </div>
-          <input type="submit" value="Login" name="login" class="btn solid" />
+          <input type="submit" value="Login" name="login" class="btn solid" id="login_btn"/>
           <div style="text-align: center;" class="forget-password">
             <a href="<?php echo URL ?>/Login/forgetPassword">Forget Password?</a>
           </div>
@@ -147,8 +148,9 @@
   </div>
 
   <script src="<?php echo URL ?>vendors/js/login/app.js"></script>
-  <?php include 'js/registration/registrationJS.php'?>
-  
+  <?php include 'js/registration/registrationJS.php' ?>
+  <?php include 'js/login/loginJs.php' ?>
+
 </body>
 
 </html>

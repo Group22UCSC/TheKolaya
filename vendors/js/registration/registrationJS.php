@@ -89,10 +89,15 @@
             }
         }
         $(inputField[1]).change(function() {
-            if (inputField[1].value.length < 10) {
-                errors.mobile_number = "There must 10 charchters";
+            if (inputField[1].value.length > 10) {
+                errors.mobile_number = "More than 10 charcters";
                 showError(1, errors.mobile_number);
-            } else if (inputField[1].value >= 10) {
+            } else if (isEmpty(1)) {
+                showError(1);
+            } else if (!phonenumber(inputField[1].value)) {
+                errors.mobile_number = "Can't include characters";
+                showError(1, errors.mobile_number);
+            }  else if (inputField[1].value >= 10 && phonenumber(inputField[1].value)) {
                 SerializeData();
                 form.push({
                     name: 'function_name',
@@ -118,11 +123,6 @@
                         // console.log(form);
                     }
                 })
-            } else if (isEmpty(1)) {
-                showError(1);
-            } else if (!phonenumber(inputField[1].value)) {
-                errors.mobile_number = "Can't include characters";
-                showError(1, errors.mobile_number);
             } else {
                 errors.mobile_number = '';
                 removeError(1);
@@ -141,7 +141,7 @@
             }
         });
 
-        console.log(inputField);
+        // console.log(inputField);
 
         function hasError(input) {
             if (input == '') {
@@ -155,6 +155,10 @@
 
         $('#registrationBtn').click(function(event) {
             event.preventDefault();
+            if (inputField[1].value.length < 10) {
+                errors.mobile_number = "Less than 10 characters";
+                showError(1, errors.mobile_number);
+            }
             SerializeData();
             for (var i = 0; i < form.length; i++) {
                 if (hasError(form[i]['value'])) {

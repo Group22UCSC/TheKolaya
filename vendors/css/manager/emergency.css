@@ -290,18 +290,9 @@
   display: block;
 }
 
-.wrapper1 .form .a .btn{
-  width: 100%;
-   padding: 8px 10px;
-  font-size: 15px; 
-  border: 0px;
-  background:  green;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 3px;
-  outline: none;
+.b{
+  padding-left: 45%;
 }
-
 
 .wrapper1 .form .b .btn{
   width: 100%;
