@@ -71,7 +71,7 @@ class Accountant extends Controller{
         $this->getNotificationCount();
         $this->view->showPage('accountant/landowners');
     }
-    function pdf($lid,$year,$month) {
+    function pdf($lid,$year,$month) { //payment pdf 
         //$this->getNotificationCount();
         $_POST['lid']=$lid;
         $_POST['Year']=$year;
@@ -87,7 +87,7 @@ class Accountant extends Controller{
         $this->getNotificationCount();
         $this->view->showPage('accountant/landownersGraphpage');
     }
-    function requests(){
+    function requests(){ //advance requests
         if(($_SERVER['REQUEST_METHOD']=='POST')){
             if($_POST['action']=='Reject'){
                 $result=$this->model->rejecttAdvanceRequest();
@@ -161,6 +161,14 @@ class Accountant extends Controller{
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
     } 
+
+    function expenses30(){ // JNOT DEVELOPED
+        $tblResult = $this->model->expenses30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
     // get advacne request details 
     function getAdvanceRequests(){
         $reslt=$this->model->getAdvanceRequests();
