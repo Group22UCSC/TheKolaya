@@ -12,7 +12,7 @@ class View {
             die('View does not exist');
         }
     }
-
+    
     public function render2($viewName, $data1 = [], $data2 = []) {
         if(file_exists('../app/views/' .$viewName. '.php')){
             require '../app/views/' .$viewName. '.php';

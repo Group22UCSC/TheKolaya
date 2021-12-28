@@ -328,7 +328,7 @@
               clearTable();
               getPayment();
               
-              window.open("<?php echo URL ?>accountant/pdf/"+lid+"/"+year+"/"+month+"", "_blank");
+              window.open("<?php echo URL ?>accountant/pdf/"+lid+"/"+Year+"/"+Month+"", "_blank");
               //callPdf();
               // checkForm();
             },

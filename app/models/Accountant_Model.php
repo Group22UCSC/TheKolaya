@@ -500,10 +500,13 @@ class Accountant_Model extends Model {
     }
     function genPDF(){
         $lid=$_POST['lid'];
-        $year=$_POST['year'];
-        $month=$_POST['month'];
-        $sql="SELECT * FROM monthly_payment WHERE ( lid='{$lid}' AND year='{$year}' AND month='{$month}') ORDER BY Date DESC ";
-        $row=$this->db->selectQuery($sql);
+        $year=$_POST['Year'];
+        $month=$_POST['Month'];
+        // return $lid;
+        $sql="SELECT * FROM monthly_payment WHERE  lid='{$lid}' AND year='{$year}' AND month='{$month}' ";
+        // $sql="SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC ";
+        $row=$this->db->runQuery($sql);
+        // return $row[0]['lid'] ?? 'default value';
         if($row){
             return $row;
         }
