@@ -176,7 +176,7 @@
         Swal.fire({
           icon: 'error',
           title: 'Payment Error',
-          text: 'Invalid Lid or no payments to pay',
+          text: 'No payments to pay or Tea price is not set',
           // footer: '<a href="">Why do I have this issue?</a>'
         })
       }
