@@ -71,10 +71,12 @@ class Accountant extends Controller{
         $this->getNotificationCount();
         $this->view->showPage('accountant/landowners');
     }
-    function pdf($lid) {
+    function pdf($lid,$year,$month) {
         //$this->getNotificationCount();
         $_POST['lid']=$lid;
-        $result = $this->model->pdfTEst();
+        $_POST['year']=$year;
+        $_POST['month']=$month;
+        $result = $this->model->genPDF();
         $this->view->render('accountant/pdf2',$result);
     }
     function landownersGraphpage() {

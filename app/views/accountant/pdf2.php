@@ -39,7 +39,7 @@ $pdf->Cell(59	,5,'',0,1);//end of line
 
 $pdf->Cell(130	,5,'[City, Country, ZIP]',0,0);
 $pdf->Cell(25	,5,'Date',0,0);
-$pdf->Cell(34	,5,$data[0]['lid'],0,1);//end of line
+$pdf->Cell(34	,5,$data[0]['final_payment'],0,1);//end of line
 
 $pdf->Cell(130	,5,'Phone [+12345678]',0,0);
 $pdf->Cell(25	,5,'Invoice #',0,0);
