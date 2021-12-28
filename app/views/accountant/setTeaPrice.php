@@ -28,7 +28,7 @@
         </div>
         <div class="inputfield">
             <label>Tea Price(Rs)</label>
-            <input type="number" id="price" name="teaPrice" class="input"  >
+            <input type="text" id="price" name="teaPrice" class="input"  >
 
             <!-- class="input<?php echo($isPriceSet)?'-set':''?>" value="<?php echo($isPriceSet)?"Tea Price Already Set For {$month}":''; ?>" <?php if($isPriceSet){echo "readonly";} ?> -->
 

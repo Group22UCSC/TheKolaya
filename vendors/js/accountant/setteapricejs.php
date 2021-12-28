@@ -40,8 +40,12 @@ $(document).ready(function(){
       }else if(price == 0) {
           $('#price').parent().after("<p class=\"error\">*Price cannot be zero</p>");
       }
+      let isnum = /^\d+$/.test(price); //price validation -only numbers
+      if(!isnum){
+        $('#price').parent().after("<p class=\"error\">*Enter a valid price</p>");
 
-      if(price <= 0) {
+      }
+      if(price <= 0 || !isnum) {
           return;
       }
       var str="Year" +Year+ "\n" +
