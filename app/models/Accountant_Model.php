@@ -127,9 +127,6 @@ class Accountant_Model extends Model {
         //details are not coming for 30 days
         $row = $this->db->selectQuery($query);
         
-        
-        //echo gettype($row);
-        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
         if($row){
             return $row;
         }else {
@@ -137,6 +134,41 @@ class Accountant_Model extends Model {
         }
     }
     
+    //get the in-stock(fertilizer,firewood) expenses of the last 30 days
+    function instockExp30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `price_for_amount` FROM `in_stock` WHERE in_date>= '$dateBack30' AND in_date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    //get the payment expenses of the last 30 days
+    function  paymentExp30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `final_payment` FROM `monthly_payment` WHERE Date>= '$dateBack30' AND Date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+   
+
     function getAdvanceRequests(){
         $sql="SELECT request.request_id,request.request_date,request.lid,advance_request.amount_rs,user.name
         FROM request 

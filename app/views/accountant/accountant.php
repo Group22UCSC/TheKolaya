@@ -1,6 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top dashboard home content -->
-<body onload="AuctionIncome30();"></body>
+<body onload="AuctionIncome30();expenses30();"></body>
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
   <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
@@ -23,7 +23,7 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Total Expenses(Rs)</div>
-          <div class="number">38,876</div>
+          <div class="number"><p id="auctionExpenses"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
