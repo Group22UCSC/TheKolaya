@@ -162,10 +162,12 @@ class Accountant extends Controller{
         
     } 
 
-    function expenses30(){ // JNOT DEVELOPED
-        $tblResult = $this->model->expenses30();
+    function expenses30(){ // NOT DEVELOPED
+        $result1 = $this->model->instockExp30();
+        $result2 = $this->model->paymentExp30();
+        $arr=array_merge($result1,$result2);
         // print_r($tblResult);
-        $json_arr=json_encode($tblResult);
+        $json_arr=json_encode($arr);
         //print_r($json_arr);
         echo $json_arr;
     }

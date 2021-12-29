@@ -127,9 +127,6 @@ class Accountant_Model extends Model {
         //details are not coming for 30 days
         $row = $this->db->selectQuery($query);
         
-        
-        //echo gettype($row);
-        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
         if($row){
             return $row;
         }else {
@@ -137,6 +134,41 @@ class Accountant_Model extends Model {
         }
     }
     
+    //get the in-stock(fertilizer,firewood) expenses of the last 30 days
+    function instockExp30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `price_for_amount` FROM `in_stock` WHERE in_date>= '$dateBack30' AND in_date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    //get the payment expenses of the last 30 days
+    function  paymentExp30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `final_payment` FROM `monthly_payment` WHERE Date>= '$dateBack30' AND Date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+   
+
     function getAdvanceRequests(){
         $sql="SELECT request.request_id,request.request_date,request.lid,advance_request.amount_rs,user.name
         FROM request 
@@ -402,7 +434,7 @@ class Accountant_Model extends Model {
         $last  = date('Y-m-t',$date);
         $sql="SELECT fertilizer_request.amount FROM fertilizer_request
             INNER JOIN request ON request.request_id=fertilizer_request.request_id
-         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='fertilizer' ";
+         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='fertilizer' AND request.response_status='accept'";
         $row=$this->db->selectQuery($sql);
         $arr=array();
         $arr[0]["amount"]=0; //default amount of fertilizer = 0
@@ -444,7 +476,7 @@ class Accountant_Model extends Model {
         $last  = date('Y-m-t',$date);
         $sql="SELECT advance_request.amount_rs FROM advance_request
             INNER JOIN request ON request.request_id=advance_request.request_id
-         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='advance' ";
+         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='advance' AND request.response_status='accept' ";
         $row=$this->db->selectQuery($sql);
         $arr=array();
         $arr[0]["amount"]=0; //default amount of fertilizer = 0
