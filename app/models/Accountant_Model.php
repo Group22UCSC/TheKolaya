@@ -434,7 +434,7 @@ class Accountant_Model extends Model {
         $last  = date('Y-m-t',$date);
         $sql="SELECT fertilizer_request.amount FROM fertilizer_request
             INNER JOIN request ON request.request_id=fertilizer_request.request_id
-         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='fertilizer' ";
+         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='fertilizer' AND request.response_status='accept'";
         $row=$this->db->selectQuery($sql);
         $arr=array();
         $arr[0]["amount"]=0; //default amount of fertilizer = 0
@@ -476,7 +476,7 @@ class Accountant_Model extends Model {
         $last  = date('Y-m-t',$date);
         $sql="SELECT advance_request.amount_rs FROM advance_request
             INNER JOIN request ON request.request_id=advance_request.request_id
-         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='advance' ";
+         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='advance' AND request.response_status='accept' ";
         $row=$this->db->selectQuery($sql);
         $arr=array();
         $arr[0]["amount"]=0; //default amount of fertilizer = 0
