@@ -100,8 +100,8 @@
               <div class="noti-modal-content">
                 <span class="noti-modal-close-button">×</span>
                 <div class="inputfield" id="btnset">
-                <button class="btn" id="myBtn"> Confirm</button>
-                <button class="back" onclick="closeteaform()">Reject</button>               
+                <button class="assignconfirm" id="assignconfirm" onclick="confirmassign()"> Confirm</button>
+                <button class="assignreject" onclick="rejectassign()">Reject</button>               
             </div>
               </div>
             </div>
@@ -112,3 +112,13 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function rejectassign(){
+
+    }
+
+    function confirmassign(){
+      location.replace("agent");
+    }
+    </script>
