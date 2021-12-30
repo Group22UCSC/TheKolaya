@@ -188,7 +188,7 @@ class Admin_Model extends Model {
         }
     }
 
-////////////////////// update accounts/////////////////////////////
+ // update accounts
 
         function userUpdate($data = []) {
         $name = $data['name'];
@@ -222,5 +222,28 @@ class Admin_Model extends Model {
         $this->db->runQuery($query);        
     }
 
+
+      function buyerTable(){
+        $query = "SELECT * FROM buyer ";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function buyerRegistration($data = []) {
+         $buyer_id = $data['reg_id'];
+        $name = $data['name'];
+        $contact_no = $data['mobile_number'];
+       
+
+
+        $query = "INSERT INTO buyer(buyer_id, name, contact_no) values('$buyer_id', '$name', '$contact_no')";
+            $this->db->runQuery($query);
+        }
+        
 
 }

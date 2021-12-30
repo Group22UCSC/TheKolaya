@@ -54,8 +54,7 @@
                    {
                     //rIndex=this.rowIndex;
                     document.getElementById("buyer_id").value=this.cells[0].innerHTML;
-                     document.getElementById("name").value=this.cells[1].innerHTML;
-                      document.getElementById("contact_no").value=this.cells[2].innerHTML;
+                    
                       
                    };
                  }
@@ -106,21 +105,23 @@
 <div class="k1">  
 <div class="wrapper1">
     <div class="title">  Add new buyer form  </div>
-      <form action="<?php echo URL?>admin/addbuyer" method="POST"  id="deleteForm">
+      <form action="<?php echo URL?>admin/addbuyer" method="POST"  id="buyerForm">
        <div class="form">
+              
                <div class="inputfield">
-                 <label> Name</label>
-                 <input type="text" name="name" id="fname" class="input" required readonly>
+                 <label>Buyer ID</label>
+                 <input type="text" name="buyer_id" id="buyer_id" class="input" >
                </div> 
 
+
                <div class="inputfield">
-                 <label>ID</label>
-                 <input type="text" name="user_id" id="id" class="input" required readonly>
+                 <label> Name</label>
+                 <input type="text" name="name" id="name" class="input">
                </div> 
 
                <div class="inputfield">
                  <label>Phone number</label>
-                 <input type="text" name="contact_number" id="Phone" class="input" required readonly>
+                 <input type="text" name="contact_no" id="contact_no" class="input" >
                </div>
 
 
