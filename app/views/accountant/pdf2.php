@@ -18,7 +18,7 @@ require('../app/libs/fpdf/fpdf.php');
 //A4 width : 219mm
 //default margin : 10mm each side
 //writable horizontal : 219-(10*2)=189mm
-// print_r($data);
+// print_r($data1[]);
 $pdf = new FPDF('P','mm','A4');
 
 $pdf->AddPage();
@@ -81,9 +81,12 @@ $pdf->SetFont('Arial','B',10);
 // $pdf->multicell(40, 8, "Gross Income\n Rs.".$data[0]['income'], 1, 'C', false);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
+$pdf->SetDrawColor(1,255,1);
+$pdf->SetLineWidth(0.4);
 $pdf->multicell(38,8,"Gross Income\n Rs.".$data[0]['income'],1,'C');
 $pdf->SetXY($x + 40, $y);
 $pdf->Cell(5 ,10,'- ',0,0);
+$pdf->SetDrawColor(1,1,255);
 $pdf->multicell(44,8,"Advance Expenses\n Rs.".$data[0]['advance_expenses'],1,'C');
 // $x = $pdf->GetX();
 // $y = $pdf->GetY();
@@ -112,33 +115,48 @@ $pdf->SetFont('Arial','B',15);
 $pdf->Cell(130 ,5,'',0,0);
 $pdf->Cell(59 ,5,'',0,0);
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(189 ,10,'',0,1);
+// $pdf->Cell(30 ,10,'',0,1);
 
-$pdf->Cell(50 ,10,'',0,1);
+$pdf->Cell(20 ,10,'',0,1);
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(50 ,10,'Tea Suppliment Details',0,1);
 
 $pdf->SetFont('Arial','B',10);
+
+// ************ Table ************
 /*Heading Of the table*/
-$pdf->Cell(10 ,6,'Sl',1,0,'C');
-$pdf->Cell(80 ,6,'Description',1,0,'C');
-$pdf->Cell(23 ,6,'Qty',1,0,'C');
-$pdf->Cell(30 ,6,'Unit Price',1,0,'C');
-$pdf->Cell(20 ,6,'Sales Tax',1,0,'C');
-$pdf->Cell(25 ,6,'Total',1,1,'C');/*end of line*/
+$pdf->SetLineWidth(0.2);
+$pdf->Cell(10 ,8,'No',1,0,'L');
+$pdf->Cell(22 ,8,'Date',1,0,'L');
+$pdf->Cell(30 ,8,'Initial Weight(kg)',1,0,'L');
+$pdf->Cell(32 ,8,'Water Reduc(kg)',1,0,'L');
+$pdf->Cell(32 ,8,'Container Re(Kg)',1,0,'L');
+$pdf->Cell(28 ,8,'Mature Tea(Kg)',1,0,'L');
+$pdf->Cell(33 ,8,'Net Weight(Kg)',1,1,'L');
+// $pdf->Cell(25 ,6,'',1,1,'C');
 /*Heading Of the table end*/
+$len=sizeof($data1);
+// print_r($data1);
+// echo $len;
+$totTeaWeight=0.0;
 $pdf->SetFont('Arial','',10);
-    for ($i = 0; $i <= 10; $i++) {
-		$pdf->Cell(10 ,6,$i,1,0);
-		$pdf->Cell(80 ,6,'For Tea Supply',1,0);
-		$pdf->Cell(23 ,6,'1',1,0,'R');
-		$pdf->Cell(30 ,6,'15000.00',1,0,'R');
-		$pdf->Cell(20 ,6,'100.00',1,0,'R');
-		$pdf->Cell(25 ,6,'15100.00',1,1,'R');
+    for ($i = 0; $i < $len; $i++) {
+		$pdf->Cell(10 ,6,$i+1,1,0);
+		$pdf->Cell(22 ,6,$data1[$i]['date'],1,0,'L');
+		$pdf->Cell(30 ,6,$data1[$i]['initial_weight_sup'],1,0,'L');//initial_weight_sup
+		$pdf->Cell(32 ,6,$data1[$i]['water_precentage'],1,0,'L');//water reduction
+		$pdf->Cell(32 ,6,$data1[$i]['container_precentage'],1,0,'L');
+		$pdf->Cell(28 ,6,$data1[$i]['matured_precentage'],1,0,'L');
+		$pdf->Cell(33 ,6,$data1[$i]['net_weight'],1,1,'L');
+		$totTeaWeight=$totTeaWeight+$data1[$i]['net_weight'];
+		// $pdf->Cell(40 ,6,'15100.00',1,1,'R');
 	}
 		
 
-$pdf->Cell(118 ,6,'',0,0);
-$pdf->Cell(25 ,6,'Subtotal',0,0);
-$pdf->Cell(45 ,6,'151000.00',1,1,'R');
+$pdf->Cell(126 ,6,'',0,0);
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(28 ,6,'Subtotal',0,0);
+$pdf->Cell(33 ,6,$totTeaWeight,1,1,'L');
 
 
 $pdf->Output();
