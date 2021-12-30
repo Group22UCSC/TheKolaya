@@ -279,4 +279,10 @@ class Admin extends Controller
     {
         $this->view->render('user/profile/enterPassword');
     }
+
+
+     public function addbuyer()
+    {
+        $this->view->showPage('Admin/addbuyer');
+    }
 }

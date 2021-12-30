@@ -1,4 +1,4 @@
-.page .form .inputfield .btn, .back{
+.page .form .inputfield .assignconfirm, .assignreject{
     width: 50%;
     padding: 8px 10px;
     margin-top: 20px;
@@ -12,7 +12,7 @@
     outline: none;
   }
   
-  .page .form .inputfield .btn:hover{
+  .page .form .inputfield .assignconfirm:hover{
     background: #01830c73;
     color:#01830c;
     cursor: pointer;
@@ -20,14 +20,14 @@
     z-index: 5;
   }
   
-  .back{
+  .assignreject{
     
     margin-left:30px;  
     background:  #ff3300;  
     
   }
   
-  .back:hover{
+  .assignreject:hover{
     background-color: #ffc2b3;
     color: #ff3300;
     cursor: pointer;
