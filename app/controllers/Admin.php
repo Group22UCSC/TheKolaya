@@ -281,8 +281,35 @@ class Admin extends Controller
     }
 
 
+
+
+      public $buyer = [
+        'name' => '',
+        'reg_id' => '',
+
+        'mobile_number' => '',
+
+        'password' => '',
+        'confirm_password' => '',
+
+        'confirm_password_err' => '',
+        'reg_id_err' => '',
+        'mobile_number_err' => '',
+    ];
      public function addbuyer()
     {
-        $this->view->showPage('Admin/addbuyer');
+        $result = $this->model->buyerTable();
+        $this->view->render('Admin/addbuyer', $result);
+
+         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->buyer['reg_id'] = trim($_POST['buyer_id']);
+            $this->buyer['name'] = trim($_POST['name']);
+            $this->buyer['mobile_number'] = trim($_POST['contact_no']);
+
+             $this->model->buyerRegistration($this->buyer);
+           }
+
+
     }
 }

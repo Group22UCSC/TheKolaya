@@ -61,7 +61,7 @@
      <li>
         <a href="<?php echo URL?>admin/addbuyer">
         <!-- <i class="fas fa-fire"></i> -->
-        <i class="fas fa-eye"></i>
+        <i class="fas fa-user-tie fa-2x"></i>
          <span class="links_name">Add buyer</span>
        </a>
        <span class="tooltip">Add buyer</span>
