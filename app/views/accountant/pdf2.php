@@ -36,9 +36,12 @@ $pdf->Image('images/thekolaya.png',10,6,30);
 /*set font to arial, bold, 14pt*/
 $pdf->SetFont('Arial','B',20);
 
+
 $pdf->Cell(164 ,10,'The Kolaya Invoice',0,0,'C');
 $pdf->SetFont('Arial','',15);
+$pdf->SetTextColor(0,0,0);
 
+$pdf->SetTextColor(87,87,87);
 
 $pdf->Cell(59 ,20,'',0,1);
 //cell width , height, value, [0-same line,1-new line]
@@ -74,6 +77,7 @@ $pdf->Cell(13 ,15,'',0,1);
 $pdf->SetFont('Arial','',10);
 
 // ******* boxes
+$pdf->SetTextColor(87,87,87);
 $pdf->SetFont('Arial','B',10);
 // $pdf->Multicell(40 ,8,"Gross Income\n Rs.".$data[0]['income'],1,'C',FALSE);
 // $pdf->Multicell(40 ,8,"Gross Income\n Rs.".$data[0]['income'],1,'C');
@@ -81,7 +85,7 @@ $pdf->SetFont('Arial','B',10);
 // $pdf->multicell(40, 8, "Gross Income\n Rs.".$data[0]['income'], 1, 'C', false);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
-$pdf->SetDrawColor(1,255,1);
+$pdf->SetDrawColor(1,1,1);
 $pdf->SetLineWidth(0.4);
 $pdf->multicell(38,8,"Gross Income\n Rs.".$data[0]['income'],1,'C');
 $pdf->SetXY($x + 40, $y);
@@ -101,7 +105,7 @@ $pdf->SetTextColor(255,0,0); // font color red
 $pdf->SetDrawColor(255,1,1);// set border color to black
 $pdf->multicell(40,8,"Final Payment\n Rs.".$data[0]['final_payment'],1,'C');
 $pdf->SetTextColor(0,0,0);// set font color back to black
-$pdf->SetDrawColor(0,0,0);// set border color back to black
+$pdf->SetDrawColor(80,80,80);// set border color back to black
 
 // $pdf->multicell(40, 8, "Advance Expenses\n Rs.".$data[0]['advance_expenses'], 1, 'C', false);
 
@@ -118,13 +122,18 @@ $pdf->SetFont('Arial','B',10);
 // $pdf->Cell(30 ,10,'',0,1);
 
 $pdf->Cell(20 ,10,'',0,1);
-$pdf->SetFont('Arial','B',10);
-$pdf->Cell(50 ,10,'Tea Suppliment Details',0,1);
+$pdf->SetFont('Arial','B',15);
+$pdf->SetTextColor(178,190,181);
+$pdf->Cell(50 ,10,'Tea Supply Details',0,1);
+$pdf->SetTextColor(0,0,0);
+
 
 $pdf->SetFont('Arial','B',10);
 
 // ************ Table ************
 /*Heading Of the table*/
+$pdf->SetTextColor(80,80,80);
+
 $pdf->SetLineWidth(0.2);
 $pdf->Cell(10 ,8,'No',1,0,'L');
 $pdf->Cell(22 ,8,'Date',1,0,'L');
