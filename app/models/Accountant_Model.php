@@ -530,12 +530,32 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-    function genPDF(){
+    function genLandownersMPayment(){
         $lid=$_POST['lid'];
-        $year=$_POST['Year'];
-        $month=$_POST['Month'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
         // return $lid;
         $sql="SELECT * FROM monthly_payment WHERE  lid='{$lid}' AND year='{$year}' AND month='{$month}' ";
+        // $sql="SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC ";
+        $row=$this->db->runQuery($sql);
+        // return $row[0]['lid'] ?? 'default value';
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function genLandownersTeaDetails(){
+        $lid=$_POST['lid'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
+        // return $lid;
+        $date= strtotime($year."-".$month."-01" );
+        $first = date('Y-m-01',$date); // hard-coded '01' for first day
+        $last  = date('Y-m-t',$date);
+        $sql="SELECT * FROM `tea` WHERE lid='{$lid}' AND date BETWEEN '{$first}' AND '{$last}'";
         // $sql="SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC ";
         $row=$this->db->runQuery($sql);
         // return $row[0]['lid'] ?? 'default value';
