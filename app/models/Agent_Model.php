@@ -74,14 +74,15 @@ class Agent_Model extends Model{
         $pre_query="SELECT  assigned_routes FROM agent WHERE emp_id='$agent_id'";
         $isassigned = $this->db->runQuery($pre_query);
         // print_r($isassigned);
+        $assigned = $isassigned[0]['assigned_routes'];
+        // print_r("assigned".$assigned);
 
-        if($isassigned[0]['assigned_routes'] == 'NULL'){
-            $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no='$route_no' AND landowner_type='indirect_landowner' AND tea_availability=1 ";            
-        }
-        else{
-            $assigned = $isassigned[0]['assigned_routes'];
-            $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no='$route_no' OR route_no = '$assigned' AND landowner_type='indirect_landowner' AND tea_availability=1 ";
-        }
+        // if($isassigned[0]['assigned_routes'] == ''){
+        //     $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no='$route_no' AND landowner_type='indirect_landowner' AND tea_availability=1 ";            
+        // }
+        // else{            
+        $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE (route_no='$route_no' OR route_no = '$assigned') AND landowner_type='indirect_landowner' AND tea_availability=1 ";
+        // }
         $row = $this->db->runQuery($query);
                 
         if($row) {
