@@ -8,15 +8,33 @@ class Agent extends Controller
     }
 
     function index()
-    {
+     {
         $this->getNotificationCount(); //This for get Notification count
-        // take the available landowners count to collect tea and to deliver requests to be 
-        // displayed on the dashboard
-        $available_res = $this->model->availablelistTable();
-        $fert_res = $this->model->fertilizerdeliveryListTable();
-        $adv_res = $this->model->advancedeliveryListTable();
-        // $this->view->showPage('Agent/unavailableNotice');
-        $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);
+        $result=$this->model->checkAvailability();
+        // print_r($result);
+
+        if($result[0]['availability'] == 1){
+            // print_r("Agent available");
+            // take the available landowners count to collect tea and to deliver requests
+            // to be displayed on the dashboard
+            $available_res = $this->model->availablelistTable();
+            $fert_res = $this->model->fertilizerdeliveryListTable();
+            $adv_res = $this->model->advancedeliveryListTable();
+            // $this->view->showPage('Agent/unavailableNotice');
+            $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);
+        }
+
+        else if($result[0]['availability'] == 0){
+            // print_r("agent unavailable");
+            $this->view->showPage('Agent/availabilityOn');
+        }
+       
+    }
+
+    //make the agent available after toggle 
+    function makeAvailable(){
+        $this->model->availableAgent();
+        $this->index();
     }
 
     function availableLandownerList()
@@ -243,6 +261,9 @@ class Agent extends Controller
                         break;
                     case 'request':
                         $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                        break;
+                    case 'emergency':
+                        $imgPath = URL . '/vendors/images/notifications/emergency.jpg';
                         break;
                 }
 

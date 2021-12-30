@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style2.css">
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/notification.css">
   <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name"><img src="<?php echo URL?>vendors/images/thekolaya-white.png" alt=""></div>
@@ -95,6 +96,15 @@
                 </div>
               </div>
             </div>
+            <div class="noti-modal">
+              <div class="noti-modal-content">
+                <span class="noti-modal-close-button">×</span>
+                <div class="inputfield" id="btnset">
+                <button class="assignconfirm" id="assignconfirm" onclick="confirmassign()"> Confirm</button>
+                <button class="assignreject" onclick="rejectassign()">Reject</button>               
+            </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- ------------------------------ -->
@@ -102,3 +112,13 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function rejectassign(){
+
+    }
+
+    function confirmassign(){
+      location.replace("agent");
+    }
+    </script>

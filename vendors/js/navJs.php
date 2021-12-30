@@ -6,7 +6,7 @@
     });
 
     var channel = pusher.subscribe('my-channel');
-    channel.bind("<?php echo $_SESSION['user_type']?>_notification", function(data) {
+    channel.bind("<?php echo $_SESSION['user_type'] ?>_notification", function(data) {
         var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotificationCount";
         $.ajax({
             url: url,
@@ -47,6 +47,7 @@
         var darkGreen = "#27ae60";
         var lightGreen = "#7cdd84";
         var notificationType = '';
+        var isNotificationsSlided = false;
 
         function changeNotificationBtn(color1, color2) {
             unreadNotificationBtn.css('background-color', color1);
@@ -113,12 +114,12 @@
             } else {
                 x = 1;
                 hoverIcon(notificationBell, darkGreen, 'black');
-
             }
 
             $('.notiBox').slideToggle();
             $(".profile_dd").hide();
 
+            isNotificationsSlided = false;
 
             hoverIcon(navProfile, darkGreen, 'black');
             var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotification";
@@ -202,14 +203,37 @@
         //         }
         //     });
         // });
+        var notiModal = document.querySelector(".noti-modal");
+        var notiModalCloseButton = document.querySelector(".noti-modal-close-button");
 
-        // $(".close").click(function() {
-        //     $(".popup").hide();
-        // });
+        function toggleNotiModal() {
+            notiModal.classList.toggle("show-noti-modal");
+            if ($('.notiBox').is(':visible')) {
+                $('.notiBox').slideUp();
+                isNotificationsSlided = true;
+            } else {
+                if (typeof isNotificationsSlided === 'undefined') {
 
+                } else if (isNotificationsSlided == true) {
+                    $('.notiBox').slideDown();
+                    isNotificationsSlided = false;
+                }
+            }
+        }
 
+        function windowOnClick(event) {
+            if (event.target === notiModal) {
+                toggleNotiModal();
+            }
+        }
+        notiModalCloseButton.addEventListener("click", toggleNotiModal);
+        window.addEventListener("click", windowOnClick);
         $(".notiBox").click(function(event) {
             var notificationId = event.target.parentNode;
+            if ($(notificationId).hasClass('emergency')) {
+                toggleNotiModal();
+                console.log('hello world !');
+            }
             if ($(notificationId).hasClass('profCont')) {
                 notificationId = notificationId.parentNode;
             }
@@ -217,7 +241,6 @@
             notificationId = notificationId.match(/\d+/g);
             notificationId = String(notificationId);
             if (notificationId !== 'null') {
-                // console.log(notificationId);
                 // console.log(notificationType);
 
                 var url = "<?php echo URL . "/" . $_SESSION['user_type'] ?>/getNotification";
