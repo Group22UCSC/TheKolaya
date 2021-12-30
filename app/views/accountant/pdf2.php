@@ -1,6 +1,7 @@
 <?php
 require('../app/libs/fpdf/fpdf.php');
 
+
 //db connection
 // $con = mysqli_connect('localhost','root','');
 // mysqli_select_db($con,'thekolaya');
@@ -22,6 +23,13 @@ $pdf = new FPDF('P','mm','A4');
 
 $pdf->AddPage();
 
+// ******** calculating the bill period
+$year=$data[0]['year'];
+$month=$data[0]['month'];
+$date= strtotime($year."-".$month."-01" );
+$first = date('Y-m-01',$date); // hard-coded '01' for first day
+$last  = date('Y-m-t',$date);
+// echo $last;
 //set font to arial, bold, 14pt
 $pdf->Cell(10 ,7,'',0,0);
 $pdf->Image('images/thekolaya.png',10,6,30);
@@ -33,7 +41,7 @@ $pdf->SetFont('Arial','',15);
 
 
 $pdf->Cell(59 ,20,'',0,1);
-
+//cell width , height, value, [0-same line,1-new line]
 $pdf->SetFont('Arial','B',15);
 $pdf->Cell(71 ,5,'Samrin Tea Factory',0,0);
 $pdf->Cell(59 ,5,'',0,0);
@@ -48,14 +56,56 @@ $pdf->Cell(34 ,5,$data[0]['lid'],0,1);
 $pdf->SetFont('Arial','',10);
 
 $pdf->Cell(130 ,5,'Nakiyadeniya,',0,0);
-$pdf->Cell(25 ,5,'Invoice Date:',0,0);
+$pdf->Cell(25 ,5,'Payment Date:',0,0);
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(34 ,5,$data[0]['Date'],0,1);
 $pdf->SetFont('Arial','',10);
  
 $pdf->Cell(130 ,5,'Sri Lanka.',0,0);
-$pdf->Cell(25 ,5,'Invoice No:',0,0);
+$pdf->Cell(25 ,5,'Invoice No     :',0,0);
 $pdf->Cell(34 ,5,'INV001',0,1);
+
+$pdf->Cell(130 ,5,'091-2245345',0,0);
+$pdf->Cell(189 ,5,'',0,1);
+$pdf->Cell(30 ,10,'Payment Period :',0,0);
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(18 ,10,$first.' - '.$last,0,0);
+$pdf->Cell(13 ,15,'',0,1);
+$pdf->SetFont('Arial','',10);
+
+// ******* boxes
+$pdf->SetFont('Arial','B',10);
+// $pdf->Multicell(40 ,8,"Gross Income\n Rs.".$data[0]['income'],1,'C',FALSE);
+// $pdf->Multicell(40 ,8,"Gross Income\n Rs.".$data[0]['income'],1,'C');
+
+// $pdf->multicell(40, 8, "Gross Income\n Rs.".$data[0]['income'], 1, 'C', false);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->multicell(38,8,"Gross Income\n Rs.".$data[0]['income'],1,'C');
+$pdf->SetXY($x + 40, $y);
+$pdf->Cell(5 ,10,'- ',0,0);
+$pdf->multicell(44,8,"Advance Expenses\n Rs.".$data[0]['advance_expenses'],1,'C');
+// $x = $pdf->GetX();
+// $y = $pdf->GetY();
+$pdf->SetXY($x + 89, $y);
+$pdf->Cell(6 ,10,' - ',0,0);
+$pdf->multicell(42,8,"Fertilizer Expenses\n Rs.".$data[0]['fertilizer_expenses'],1,'C');
+
+
+$pdf->SetXY($x + 139, $y);
+$pdf->Cell(9 ,10,' = ',0,0);
+$pdf->SetTextColor(255,0,0); // font color red
+$pdf->SetDrawColor(255,1,1);// set border color to black
+$pdf->multicell(40,8,"Final Payment\n Rs.".$data[0]['final_payment'],1,'C');
+$pdf->SetTextColor(0,0,0);// set font color back to black
+$pdf->SetDrawColor(0,0,0);// set border color back to black
+
+// $pdf->multicell(40, 8, "Advance Expenses\n Rs.".$data[0]['advance_expenses'], 1, 'C', false);
+
+// $pdf->Cell(70, -5, '  sds ' , 0, 'l', false);
+
+
+
 
 
 $pdf->SetFont('Arial','B',15);
@@ -63,8 +113,6 @@ $pdf->Cell(130 ,5,'',0,0);
 $pdf->Cell(59 ,5,'',0,0);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(189 ,10,'',0,1);
-
-
 
 $pdf->Cell(50 ,10,'',0,1);
 
@@ -173,5 +221,5 @@ $pdf->Output();
 
 
 
-$pdf->Output();
+// $pdf->Output();
 ?>
