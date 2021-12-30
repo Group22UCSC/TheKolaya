@@ -47,9 +47,21 @@ class Manager extends Controller
 
     public function viewTeaQuality()
     {
-        $result = $this->model->availablelistTable_landowners();
-        // print_r($result);
-        $this->view->render('Manager/viewTeaQuality', $result);
+        
+        // $result = $this->model->availablelistTable_landowners();
+        // // print_r($result);
+        // $this->view->render('Manager/viewTeaQuality', $result);
+
+
+
+         $this->getNotificationCount(); //This for get Notification count
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->model->manageRequests1($_POST);
+        } else {
+            $request = $this->model->getRequests1();
+            $this->view->render('Manager/viewTeaQuality', $request);
+        }
     }
 
     public function viewTeaQuality1()
@@ -128,16 +140,16 @@ class Manager extends Controller
         $this->view->render('user/profile/enterPassword');
     }
 
-     function manageRequests()
-    {
-        $this->getNotificationCount(); //This for get Notification count
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->model->manageRequests($_POST);
-        } else {
-            $request = $this->model->getRequests();
-            $this->view->render('Supervisor/manageRequests', $request);
-        }
-    }
+    //  function manageRequests()
+    // {
+    //     $this->getNotificationCount(); //This for get Notification count
+    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //         $this->model->manageRequests($_POST);
+    //     } else {
+    //         $request = $this->model->getRequests();
+    //         $this->view->render('Supervisor/manageRequests', $request);
+    //     }
+    // }
 
 
 
