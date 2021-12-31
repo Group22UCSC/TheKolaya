@@ -99,6 +99,13 @@
             <div class="noti-modal">
               <div class="noti-modal-content">
                 <span class="noti-modal-close-button">×</span>
+                <div class="title">
+                  Emergency Agent Assign
+               </div>  
+               <label class="msg">You have been assigned to route  
+                 <!-- <input type="text" id="route_no" name="route_no" value="2" class="input" readonly>  -->
+                 <label id="routeno"><?php echo $_SESSION['route']?></label>
+                   by the manager due to an emergency.</label>                      
                 <div class="inputfield" id="btnset">
                 <button class="assignconfirm" id="assignconfirm" onclick="confirmassign()"> Confirm</button>
                 <button class="assignreject" onclick="rejectassign()">Reject</button>               
