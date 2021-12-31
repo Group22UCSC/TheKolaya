@@ -245,6 +245,18 @@ class Manager_Model extends Model {
         }
     }
 
+    
+      function buyerTable(){
+        $query = "SELECT * FROM buyer ";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
 
 
 }

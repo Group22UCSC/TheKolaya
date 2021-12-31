@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title><?php echo TITLE ?></title>
   <?php include 'styles-titleIcon-included.php' ?>
+    <?php include 'script-included.php' ?>
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/manager/viewTeaQuality.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -117,7 +118,7 @@
     </div>
 
   </div>
-  <?php include 'script-included.php' ?>
+
   <script>
 
   </script>

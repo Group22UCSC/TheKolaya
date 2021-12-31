@@ -69,8 +69,15 @@
        </a>
        <span class="tooltip">Emergency</span>
      </li>
-     <li>
      
+      <li>
+      <a href="<?php echo URL?>manager/viewbuyer">
+      <i class="fas fa-user-tie fa-2x"></i>
+         <span class="links_name">View buyer details</span>
+       </a>
+       <span class="tooltip">View buyer details</span>
+     </li>
+    
     </ul>
   </div>
   <section class="home-section">
