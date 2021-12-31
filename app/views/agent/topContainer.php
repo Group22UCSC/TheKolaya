@@ -105,7 +105,7 @@
                <label class="msg">You have been assigned to the following route due to an emergency. </label>   
                  <!-- <input type="text" id="route_no" name="route_no" value="2" class="input" readonly>  -->
                  <br>
-                 <label id="routeno"> Route No  : <?php echo $_SESSION['route']?></label>
+                 <label id="routeno"> Route No  : 2</label>
                                       
                 <div class="inputfield" id="btnset">
                 <button class="assignconfirm" id="assignconfirm" onclick="confirmassign()"> Confirm</button>
@@ -123,7 +123,7 @@
 
   <script>
     function rejectassign(){
-
+      location.replace("agent/rejectAssign");  
     }
 
     function confirmassign(){

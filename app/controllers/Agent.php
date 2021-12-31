@@ -14,13 +14,11 @@ class Agent extends Controller
         // print_r($result);
 
         if($result[0]['availability'] == 1){
-            // print_r("Agent available");
-            // take the available landowners count to collect tea and to deliver requests
-            // to be displayed on the dashboard
+           
+            // take the available landowners count to collect tea and to deliver requests to be displayed on the dashboard            
             $available_res = $this->model->availablelistTable();
             $fert_res = $this->model->fertilizerdeliveryListTable();
-            $adv_res = $this->model->advancedeliveryListTable();
-            // $this->view->showPage('Agent/unavailableNotice');
+            $adv_res = $this->model->advancedeliveryListTable();           
             $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);
         }
 
