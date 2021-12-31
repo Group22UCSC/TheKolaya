@@ -54,7 +54,7 @@ class Manager extends Controller
 
 
 
-         $this->getNotificationCount(); //This for get Notification count
+         $this->model->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->model->manageRequests1($_POST);
