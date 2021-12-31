@@ -46,8 +46,8 @@ class Agent_Model extends Model{
     }
 
     //check whether the agent is available
-    function checkAvailability(){
-        $agent_id = $_SESSION['user_id'];
+    function checkAvailability($agent_id){  
+        // print_r($agent_id)      ;
         $query = "SELECT availability FROM agent WHERE emp_id='$agent_id'";
         $row = $this->db->runQuery($query);
 
@@ -70,19 +70,12 @@ class Agent_Model extends Model{
     function availableListTable(){
         $route_no=$_SESSION['route']; 
         $agent_id = $_SESSION['user_id'];
-
-        $pre_query="SELECT  assigned_routes FROM agent WHERE emp_id='$agent_id'";
-        $isassigned = $this->db->runQuery($pre_query);
-        // print_r($isassigned);
-        $assigned = $isassigned[0]['assigned_routes'];
-        // print_r("assigned".$assigned);
-
-        // if($isassigned[0]['assigned_routes'] == ''){
-        //     $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no='$route_no' AND landowner_type='indirect_landowner' AND tea_availability=1 ";            
-        // }
-        // else{            
-        $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE (route_no='$route_no' OR route_no = '$assigned') AND landowner_type='indirect_landowner' AND tea_availability=1 ";
-        // }
+        
+                  
+        $query = "SELECT user_id, no_of_estimated_containers FROM landowner 
+                WHERE route_no='$route_no' AND landowner_type='indirect_landowner' 
+                AND tea_availability=1 ";
+       
         $row = $this->db->runQuery($query);
                 
         if($row) {
@@ -90,6 +83,95 @@ class Agent_Model extends Model{
         }else {
             return 0;
         }
+    }
+
+    //assign default values when not appended assigned routes
+    function setAssignDefault(){
+    $agent_id = $_SESSION['user_id'];
+
+    $query = "UPDATE agent SET is_rejected = '-1', assigned_routes = '-1' WHERE emp_id = '$agent_id'";
+    $this->db->runQuery($query);
+
+    }
+    
+    //get the agent id incharge of the assigned route
+    function getAssignedRouteAgent(){
+        $assign_route = $_SESSION['assign_route'];
+        
+        $query = "SELECT emp_id FROM agent WHERE route_no = '$assign_route'";
+        $row = $this->db->runQuery($query);
+                
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+
+    }
+
+    //appending available landowner list of assigned route
+    function assignAvailableListTable(){
+        $assign_route = $_SESSION['assign_route'];
+        $route_no=$_SESSION['route']; 
+
+        $query = "SELECT user_id, no_of_estimated_containers FROM landowner 
+        WHERE (route_no='$route_no' OR route_no='$assign_route') AND landowner_type='indirect_landowner' 
+        AND tea_availability=1";
+
+        $row = $this->db->runQuery($query);
+                        
+        if($row) {
+            return $row;
+        }else {
+            return 0;            
+        }
+
+    }
+
+     //appending fertilizer delivery list of assigned route
+    function assignFertilizerdeliveryListTable(){
+        $route_no=$_SESSION['route'];   
+        $assign_route = $_SESSION['assign_route'];
+
+        $query = "SELECT request.request_id, request.request_type, request.lid, 
+                 fertilizer_request.amount FROM request 
+                  INNER JOIN fertilizer_request
+                  ON  request.request_id = fertilizer_request.request_id                   
+                 WHERE request.lid IN 
+                (SELECT user_id FROM landowner WHERE route_no = '$route_no' OR route_no = '$assign_route') 
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
+                
+        $row = $this->db->runQuery($query);
+        // return $row;
+        // print_r($row);
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+
+     //appending advance delivery list of assigned route
+    function assignAdvancedeliveryListTable(){
+        $route_no=$_SESSION['route'];   
+        $assign_route = $_SESSION['assign_route'];
+
+        $query = "SELECT request.request_id, request.request_type, request.lid, 
+                 advance_request.amount_rs FROM request 
+                  INNER JOIN advance_request
+                  ON  request.request_id = advance_request.request_id                   
+                 WHERE request.lid IN 
+                (SELECT user_id FROM landowner WHERE route_no = '$route_no' OR route_no = '$assign_route') 
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
+                
+        $row = $this->db->runQuery($query);
+        // return $row;
+        // print_r($row);
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }                       
     }
 
     //add initial tea weight by agent
@@ -129,7 +211,7 @@ class Agent_Model extends Model{
 
     //get details to display advance requests table
     function advancedeliveryListTable(){
-        $route_no=$_SESSION['route'];        
+         $route_no=$_SESSION['route'];        
         $query = "SELECT request.request_id, request.request_type, request.lid, 
                  advance_request.amount_rs FROM request 
                   INNER JOIN advance_request
@@ -145,7 +227,7 @@ class Agent_Model extends Model{
             return $row;
         }else {
             return 0;
-        }
+        }                       
     }
 
     //add fertilizer requests when completed
