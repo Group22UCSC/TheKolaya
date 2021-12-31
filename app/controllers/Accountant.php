@@ -79,9 +79,9 @@ class Accountant extends Controller{
         $result = $this->model->genLandownersMPayment();//get the details from the monthly payment table
         $result2 = $this->model->genLandownersTeaDetails();
         $monthlyTPrice=$this->model->getmonthlyTPrice();
-        $arr=array_merge($result);
+        //$arr=array_merge($result);
         
-        $json_arr=json_encode($arr);
+        //$json_arr=json_encode($arr);
         $this->view->render('accountant/pdf2',$result,$result2,$monthlyTPrice);
     }
     function landownersGraphpage() {
@@ -156,6 +156,15 @@ class Accountant extends Controller{
     // income card - dashboard
     function AuctionIncome30(){
         $tblResult = $this->model->AuctionIncome30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    } 
+    // tot tea sales for last 30 days
+    function totSales30(){
+        $tblResult = $this->model->totSales30();
         // print_r($tblResult);
         $json_arr=json_encode($tblResult);
         //print_r($json_arr);

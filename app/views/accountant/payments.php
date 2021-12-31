@@ -97,6 +97,7 @@
         <table class="teapricetable" id="paymentTable">
             <thead class="threadcls">
                 <tr class="trcls">
+                    <th class="thcls">Inv</th>
                     <th class="thcls">Date</th>
                     <th class="thcls">Lid(Rs)</th>
                     <th class="thcls">Year</th>
