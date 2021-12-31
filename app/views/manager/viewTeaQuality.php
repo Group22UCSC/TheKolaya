@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -6,13 +6,14 @@
   <title><?php echo TITLE ?></title>
   <?php include 'styles-titleIcon-included.php' ?>
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/manageRequests.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/manager/viewTeaQuality.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+ -->
 
-<body>
-  <?php include 'top-container.php'; ?>
+<?php include 'top-container.php';?>
+    <link rel="stylesheet" href="<?php echo URL ?>vendors/css/manager/viewTeaQuality.css">
   <div class="title-container">
     <h2>Manage Request</h2>
   </div>
@@ -114,37 +115,13 @@
 
       </div>
     </div>
-    <!-- <div class="from-container-outside">
-      <div class="form-container">
-        <div class="title">Request Confirmation Form</div>
-        <form action="#" id="request_confirm_form">
-          <div class="form">
-            <div class="inputfield">
-              <label>Landowner ID</label>
-              <input type="text" class="input" id="landowner-id" name="landowner_id">
-            </div>
-            <div class="inputfield">
-              <label>Comment</label>
-              <textarea class="textarea" name="comment"></textarea>
-            </div>
-            <div class="inputfield">
-              <input type="submit" value="Accept" class="accept-btn confirmBtn" name="accept_btn" id="request_accept_btn">
-            </div>
-            <div class="inputfield">
-              <input type="submit" value="Decline" class="decline-btn confirmBtn" name="decline_btn" id="request_decline_btn">
-            </div>
-          </div>
-        </form>
-      </div>
-    </div> -->
-
 
   </div>
   <?php include 'script-included.php' ?>
   <script>
 
   </script>
- <!--  <script>
+  <script>
     $('.landowner_tea_rate').click(function() {
       $('.Landowner-details').hide();
       $('.from-container-outside').hide();
@@ -162,8 +139,8 @@
       $('.landowner-rate-outside').hide();
       $('.from-container-outside').show();
     });
-  </script> -->
+  </script>
 
-  <?php include 'js/supervisor/manageRequestJs.php' ?>
-  <?php include 'js/supervisor/table2-js.php' ?>
+  <?php include 'js/manager/manageRequestJs.php' ?>
+  <?php include 'js/manager/table2-js.php' ?>
   <?php include 'bottom-container.php'; ?>

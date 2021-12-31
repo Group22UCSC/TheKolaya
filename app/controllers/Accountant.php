@@ -74,14 +74,15 @@ class Accountant extends Controller{
     function pdf($lid,$year,$month) { //payment pdf 
         //$this->getNotificationCount();
         $_POST['lid']=$lid;
-        $_POST['Year']=$year;
-        $_POST['Month']=$month;
-        $result = $this->model->genPDF();
-        $result2 = $this->model->genPDF();
-        $arr=array_merge($result,$result2);
+        $_POST['year']=$year;
+        $_POST['month']=$month;
+        $result = $this->model->genLandownersMPayment();//get the details from the monthly payment table
+        $result2 = $this->model->genLandownersTeaDetails();
+        $monthlyTPrice=$this->model->getmonthlyTPrice();
+        $arr=array_merge($result);
         
         $json_arr=json_encode($arr);
-        $this->view->render('accountant/pdf2',$arr);
+        $this->view->render('accountant/pdf2',$result,$result2,$monthlyTPrice);
     }
     function landownersGraphpage() {
         $this->getNotificationCount();
