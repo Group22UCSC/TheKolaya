@@ -18,9 +18,9 @@
                     tot=tot+parseFloat(data[i].sold_amount*data[i].sold_price)
                     
                 }
-                
+                let n=tot.toFixed(2);
                 //auctionDash
-                var s=document.getElementById("auctionDash").innerHTML=tot;
+                var s=document.getElementById("auctionDash").innerHTML=n;
                 // console.log(tot);
                 expenses30();
                 //console.log(data);
@@ -56,8 +56,9 @@
                     //tot=tot+(data[i].sold_amount*data[i].sold_price)
                     
                 }
+                let n=tot.toFixed(2);
                 //console.log(tot);
-                document.getElementById("auctionExpenses").innerHTML=tot;
+                document.getElementById("auctionExpenses").innerHTML=n;
                 // var profit=income-tot;
                 profit30();
             }
@@ -73,6 +74,7 @@
         var auctionIncome=parseFloat(document.getElementById("auctionDash").textContent);
         //console.log(exp);
         prof=auctionIncome-exp;
-        document.getElementById("totProfit").innerHTML=prof;
+        let n=prof.toFixed(2);
+        document.getElementById("totProfit").innerHTML=n;
     }
 </script>
