@@ -159,10 +159,11 @@ class Manager_Model extends Model {
     function storeEmergencyMessage($data=[]){
         $message = $data['message'];
         $receiver_id = $data['emp_id'];
+        $sender_id = $data['user_id'];
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
          receiver_type,sender_id, receiver_id) VALUES
-         ('0','0','$message','Agent','Manager','$receiver_id')"; 
+         ('0','0','$message','Agent','$sender_id','$receiver_id')"; 
          //have not added receiver_id and receive_datetime,Check into that.
          $this->db->runQuery($query);
          //add the query to make the agent unavailable         
