@@ -162,6 +162,15 @@ class Accountant extends Controller{
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
     } 
+    // tot tea sales for last 30 days
+    function totSales30(){
+        $tblResult = $this->model->totSales30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    } 
 
     function expenses30(){ // NOT DEVELOPED
         $result1 = $this->model->instockExp30();

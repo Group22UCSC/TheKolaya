@@ -4,7 +4,7 @@
         // var pid = $('#pid').val();
         // var amount = $('#amount').val();
         // var availableStock = 0;
-        var url = "http://localhost/Thekolaya/accountant/AuctionIncome30";
+        var url = "<?php echo URL ?>accountant/AuctionIncome30";
         var tot=0.0;
         $.ajax({
             url: url,
@@ -29,13 +29,36 @@
         
     }
 
-
+    function totSales30(){
+        var url="<?php echo URL ?>accountant/totSales30";
+        var totTea=0.0;
+        $.ajax({
+            url:url,
+            type:"GET",
+            dataType:"JSON",
+            success: function(data) {
+                // console.log(data);
+                var len = data.length;
+                for (var i = 0; i < len; i++) {
+                    if(data[i].sold_amount){
+                        totTea=totTea+parseFloat(data[i].sold_amount);
+                    }
+                    
+                    //tot=tot+(data[i].sold_amount*data[i].sold_price)
+                    
+                }
+                
+                document.getElementById("totSales").innerHTML=totTea;
+                
+            }
+        })
+    }
     function expenses30() { //get the total expences of last 30 days for the dashboard box
         // console.log(income);
         // var pid = $('#pid').val();
         // var amount = $('#amount').val();
         // var availableStock = 0;
-        var url = "http://localhost/Thekolaya/accountant/expenses30";
+        var url = "<?php echo URL ?>accountant/expenses30";
         var tot=0.0;
         $.ajax({
             url: url,
