@@ -245,48 +245,15 @@ class Manager_Model extends Model {
         }
     }
 
-    // view tea quality
-
-    function getLastRequestDate($landowner_id)
-    {
-        $query = "SELECT DATE(request_date) As request_date FROM request 
-                WHERE lid = '$landowner_id' 
-                AND request_type = 'fertilizer' 
-                AND response_status = 'accept'";
+    
+      function buyerTable(){
+        $query = "SELECT * FROM buyer ";
         $row = $this->db->runQuery($query);
-        if (count($row)) {
+        
+        if($row) {
             return $row;
-        } else {
+        }else {
             return false;
-        }
-    }
-
-
-    function getTeaQuality($landowner_id)
-    {
-        $query = "SELECT quality FROM tea WHERE lid='$landowner_id'";
-        $row = $this->db->runQuery($query);
-
-        if (count($row)) {
-            return $row;
-        } else {
-            false;
-        }
-    }
-
-     function getMonthTeaWeight($month, $landowner_id)
-    {
-        $monthlyTeaAmount = 0;
-        $query = "SELECT * FROM tea WHERE MONTH(date) = '$month' AND lid='$landowner_id'";
-        $row = $this->db->runQuery($query);
-
-        if (count($row)) {
-            for ($i = 0; $i < count($row); $i++) {
-                $monthlyTeaAmount += $row[$i]['net_weight'];
-            }
-            return $monthlyTeaAmount / count($row);
-        } else {
-            return '<b style="color:red;">No data found for ' . date('F', strtotime("2001-$month-1")) . '</b>';
         }
     }
 
