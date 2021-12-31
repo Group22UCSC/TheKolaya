@@ -13,16 +13,25 @@
   text-align: center;
 }
 
+#routeno{
+  color: #01830c;
+  margin-top: 20px;
+  padding-top: 10px;
+  margin-left: 70px;
+  font-size: 18px;
+
+}
+
 .msg{
   width: 100%;   
- margin: 10px auto 10px auto; 
+ margin: 10px auto 20px auto; 
  text-align: center;
  font-size: 18px;
 }
 .inputfield .assignconfirm, .assignreject{
     width: 50%;
     padding: 8px 10px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 70px;
     font-size: 15px; 
     border: 0px;
@@ -44,7 +53,7 @@
   .assignreject{
          
     background:  #ff3300; 
-    margin-bottom: 50px; 
+    margin-bottom: 20px; 
     
   }
   
@@ -54,4 +63,9 @@
     cursor: pointer;
     transform: scale(1.03);
     z-index: 5;
+  }
+
+  #btnset{
+    margin-top: 20px;
+   
   }
