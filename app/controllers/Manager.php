@@ -187,4 +187,87 @@ class Manager extends Controller
 
     }
 
+
+
+      function landownerDetails()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $month = date('m') - 1;
+            $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
+            $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
+            if (!empty($lastRequests)) {
+
+                echo '<div id="previous_details">';
+                echo '<div class="manage-request-row tabel-header">
+                        <div class="manage-request-cell">Previous Request Date</div>
+                        <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
+                    </div>';
+                for ($i = 0; $i < count($lastRequests); $i++) {
+                    $monthNum  = $month - 1;
+                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                    $monthName = $dateObj->format('F'); // March
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']). 'Kg for '. $monthName . '</div>
+                        </div>';
+                }
+                echo '</div>';
+            } else {
+                echo '<div id="previous_details">';
+                // echo '<div class="manage-request-row tabel-header">
+                //         <div class="manage-request-cell">Previous Request Date</div>
+                //         <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
+                //     </div>';
+                for ($i = 0; $i < 2; $i++) {
+                    $monthNum  = $month - 1;
+                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                    $monthName = $dateObj->format('F');
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests for ' . $monthName .'</b>' . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']). 'Kg for '. $monthName . '</div>
+                        </div>';
+                }
+                echo '</div>';
+            }
+
+            if ($teaQuality) {
+                $quality = [
+                    '1_star' => 0,
+                    '2_star' => 0,
+                    '3_star' => 0,
+                    '4_star' => 0,
+                    '5_star' => 0,
+                ];
+                for ($i = 0; $i < count($teaQuality); $i++) {
+                    // if($teaQuality[$i]['quality'] != '') {
+                    //     echo $teaQuality[$i]['quality'];
+                    // }
+                    $tempQuality = $teaQuality[$i]['quality'] / 20;
+                    switch ($tempQuality) {
+                        case 1:
+                            $quality['1_star'] += 1;
+                            break;
+                        case 2:
+                            $quality['2_star'] += 1;
+                            break;
+                        case 3:
+                            $quality['3_star'] += 1;
+                            break;
+                        case 4:
+                            $quality['4_star'] += 1;
+                            break;
+                        case 5:
+                            $quality['5_star'] += 1;
+                            break;
+                    }
+                }
+                // print_r($quality);
+                $allStars = 0;
+                for ($i = 1; $i <= 5; $i++)
+                    $allStars += $quality[$i . '_star'];
+                $this->view->render('manager/teaQuality', $quality, $allStars);
+            }
+        }
+    }
+
 }
