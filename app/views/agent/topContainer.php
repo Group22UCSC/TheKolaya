@@ -102,10 +102,11 @@
                 <div class="title">
                   Emergency Agent Assign
                </div>  
-               <label class="msg">You have been assigned to route  
+               <label class="msg">You have been assigned to the following route due to an emergency. </label>   
                  <!-- <input type="text" id="route_no" name="route_no" value="2" class="input" readonly>  -->
-                 <label id="routeno"><?php echo $_SESSION['route']?></label>
-                   by the manager due to an emergency.</label>                      
+                 <br>
+                 <label id="routeno"> Route No  : <?php echo $_SESSION['route']?></label>
+                                      
                 <div class="inputfield" id="btnset">
                 <button class="assignconfirm" id="assignconfirm" onclick="confirmassign()"> Confirm</button>
                 <button class="assignreject" onclick="rejectassign()">Reject</button>               
