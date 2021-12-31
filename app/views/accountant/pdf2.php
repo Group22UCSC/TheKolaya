@@ -66,7 +66,10 @@ $pdf->SetFont('Arial','',10);
  
 $pdf->Cell(130 ,5,'Sri Lanka.',0,0);
 $pdf->Cell(25 ,5,'Invoice No     :',0,0);
-$pdf->Cell(34 ,5,'INV001',0,1);
+$pdf->SetFont('Arial','B',12);
+$pdf->Cell(34 ,5,'INV-0'.$data[0]['invoice_no'],0,1);
+$pdf->SetFont('Arial','',10);
+
 
 $pdf->Cell(130 ,5,'091-2245345',0,0);
 $pdf->Cell(189 ,5,'',0,1);

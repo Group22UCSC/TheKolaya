@@ -79,9 +79,9 @@ class Accountant extends Controller{
         $result = $this->model->genLandownersMPayment();//get the details from the monthly payment table
         $result2 = $this->model->genLandownersTeaDetails();
         $monthlyTPrice=$this->model->getmonthlyTPrice();
-        $arr=array_merge($result);
+        //$arr=array_merge($result);
         
-        $json_arr=json_encode($arr);
+        //$json_arr=json_encode($arr);
         $this->view->render('accountant/pdf2',$result,$result2,$monthlyTPrice);
     }
     function landownersGraphpage() {

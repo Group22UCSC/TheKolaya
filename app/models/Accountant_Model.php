@@ -509,7 +509,7 @@ class Accountant_Model extends Model {
         $final = $_POST['final'];
         $emp_id = $_SESSION['user_id'];
 
-        $query = "INSERT INTO monthly_payment VALUES ('{$date}','{$lid}','{$year}','{$month}','{$fertilizer}','{$advance}','{$gIncome}','{$final}','{$cheque}','{$emp_id}')";
+        $query = "INSERT INTO monthly_payment (`Date`, `lid`, `year`, `month`, `fertilizer_expenses`, `advance_expenses`, `income`, `final_payment`, `cheque_Ref_No`, `emp_id`)VALUES ('{$date}','{$lid}','{$year}','{$month}','{$fertilizer}','{$advance}','{$gIncome}','{$final}','{$cheque}','{$emp_id}')";
         $row = $this->db->insertQuery($query);
         //print_r($row);
         if ($row) {
