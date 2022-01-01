@@ -87,7 +87,20 @@ class Manager_Model extends Model {
 
 
      function view_payments_table(){
-        $query = "SELECT * FROM monthly_payment";
+       $query = "SELECT monthly_payment.toDate, 
+       monthly_payment.fromDate,
+       monthly_payment.fertilizer_expenses,
+       monthly_payment.advance_expenses, 
+       monthly_payment.income, 
+       monthly_payment.final_payment, 
+       monthly_payment.emp_id,  
+       monthly_payment.lid ,
+       user.user_id, 
+       user.name
+       FROM monthly_payment
+       INNER JOIN user ON monthly_payment.lid = user.user_id";
+
+        // $query = "SELECT * FROM monthly_payment";
         $row = $this->db->runQuery($query);
         
         if($row) {
