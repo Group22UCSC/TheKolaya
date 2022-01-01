@@ -73,12 +73,6 @@ class Manager extends Controller
     }
 
 
-    public function viewPayments1()
-    {
-        $this->view->showPage('Manager/viewPayments1');
-    }
-
-
     public function viewStock()
     {
         $this->view->showPage('Manager/viewStock');
