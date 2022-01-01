@@ -168,7 +168,7 @@ class Manager_Model extends Model {
         }
     }
 
-
+             // emergency 
     function storeEmergencyMessage($data=[]){
         $message = $data['message'];
         $receiver_id = $data['emp_id'];
@@ -183,7 +183,14 @@ class Manager_Model extends Model {
     }
 
      function emergencyTable(){
-        $query = "SELECT * FROM agent WHERE availability=1";
+         $query = "SELECT agent.emp_id, 
+       agent.route_no,
+       agent.availability,
+       user.user_id, 
+       user.name
+       FROM agent
+       INNER JOIN user ON agent.emp_id = user.user_id";
+
         $row = $this->db->runQuery($query);
         
         if($row) {
