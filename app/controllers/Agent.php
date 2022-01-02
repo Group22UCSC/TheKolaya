@@ -54,17 +54,29 @@ class Agent extends Controller
     }
 
     function availableLandownerList()
-    {
+    {                     
         $this->getNotificationCount(); //This for get Notification count
-        $result = $this->model->availablelistTable();
-        // if($result != 0){
-            $this->view->render('Agent/availableList', $result);
-        // }
-        // else {
-        //     $this->view->showPage('Agent/unavailableNotice');
-        // }
-        // //    print_r($result);
-        
+        $agent_id = $_SESSION['user_id'];
+        $result=$this->model->checkAvailability($agent_id);
+        // print_r($result);
+        $isreject = $_SESSION['assign_reject'];
+         // take the available landowners count to collect tea and to deliver requests to be displayed on the dashboard        
+            if($isreject == -1 || $isreject == 1){                
+                $available_res = $this->model->availablelistTable();               
+                $this->model->setAssignDefault();                         
+            }
+            else if ($isreject == 0){
+                $agent_of_assign_route =  $this->model->getAssignedRouteAgent();
+                $agent_availability_of_assign_route = $this->model->checkAvailability($agent_of_assign_route[0]['emp_id']);
+                if($agent_availability_of_assign_route[0]['availability'] == 0){
+                    $available_res = $this->model->assignAvailableListTable();                    
+                }
+                else if($agent_availability_of_assign_route[0]['availability'] == 1){
+                    $available_res = $this->model->availablelistTable();                   
+                    $this->model->setAssignDefault();  
+                }                                       
+            }  
+            $this->view->render('Agent/availableList', $available_res);                
     }
 
     function updateTeaWeight()
