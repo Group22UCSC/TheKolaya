@@ -87,7 +87,20 @@ class Manager_Model extends Model {
 
 
      function view_payments_table(){
-        $query = "SELECT * FROM monthly_payment";
+       $query = "SELECT monthly_payment.toDate, 
+       monthly_payment.fromDate,
+       monthly_payment.fertilizer_expenses,
+       monthly_payment.advance_expenses, 
+       monthly_payment.income, 
+       monthly_payment.final_payment, 
+       monthly_payment.emp_id,  
+       monthly_payment.lid ,
+       user.user_id, 
+       user.name
+       FROM monthly_payment
+       INNER JOIN user ON monthly_payment.lid = user.user_id";
+
+        // $query = "SELECT * FROM monthly_payment";
         $row = $this->db->runQuery($query);
         
         if($row) {
@@ -155,21 +168,29 @@ class Manager_Model extends Model {
         }
     }
 
-
+             // emergency 
     function storeEmergencyMessage($data=[]){
         $message = $data['message'];
         $receiver_id = $data['emp_id'];
+        $sender_id = $data['user_id'];
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
          receiver_type,sender_id, receiver_id) VALUES
-         ('0','0','$message','Agent','Manager','$receiver_id')"; 
+         ('0','0','$message','Agent','$sender_id','$receiver_id')"; 
          //have not added receiver_id and receive_datetime,Check into that.
          $this->db->runQuery($query);
          //add the query to make the agent unavailable         
     }
 
      function emergencyTable(){
-        $query = "SELECT * FROM agent WHERE availability=1";
+         $query = "SELECT agent.emp_id, 
+       agent.route_no,
+       agent.availability,
+       user.user_id, 
+       user.name
+       FROM agent
+       INNER JOIN user ON agent.emp_id = user.user_id";
+
         $row = $this->db->runQuery($query);
         
         if($row) {
@@ -241,6 +262,18 @@ class Manager_Model extends Model {
         if ($row) {
             return $row;
         } else {
+            return false;
+        }
+    }
+
+    
+      function buyerTable(){
+        $query = "SELECT * FROM buyer ";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
             return false;
         }
     }

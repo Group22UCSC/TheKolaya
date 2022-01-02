@@ -392,6 +392,9 @@
           var str =
             "<tr class='row'>" +
             "<td>" +
+            data[i].invoice_no+
+            "</td>" +
+            "<td>" +
             data[i].Date +
             "</td>" +
             "<td>" +
@@ -454,10 +457,10 @@
 
 
       var $row = $(this).closest("tr"), // Finds the closest row <tr> 
-        $date = $row.find("td:nth-child(1)"); // ist COLUMN(Date,Lid,Year,....) value
-      $lid = $row.find("td:nth-child(2)");
-      $year = $row.find("td:nth-child(3)");
-      $month = $row.find("td:nth-child(4)");
+        $date = $row.find("td:nth-child(2)"); // ist COLUMN(Date,Lid,Year,....) value
+      $lid = $row.find("td:nth-child(3)");
+      $year = $row.find("td:nth-child(4)");
+      $month = $row.find("td:nth-child(5)");
 
 
       var date2 = $date.text(); // date as a javascript variable

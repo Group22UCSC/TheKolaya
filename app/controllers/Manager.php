@@ -47,13 +47,7 @@ class Manager extends Controller
 
     public function viewTeaQuality()
     {
-        
-        // $result = $this->model->availablelistTable_landowners();
-        // // print_r($result);
-        // $this->view->render('Manager/viewTeaQuality', $result);
-
-
-
+      
          $this->model->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -77,18 +71,6 @@ class Manager extends Controller
         // print_r($result);
         $this->view->render('Manager/viewPayments', $result);
     }
-
-
-    public function viewPayments1()
-    {
-        $this->view->showPage('Manager/viewPayments1');
-    }
-
-
-    // public function emergency()
-    // {
-    //     $this->view->showPage('Manager/emergency');
-    // }
 
 
     public function viewStock()
@@ -140,21 +122,8 @@ class Manager extends Controller
         $this->view->render('user/profile/enterPassword');
     }
 
-    //  function manageRequests()
-    // {
-    //     $this->getNotificationCount(); //This for get Notification count
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         $this->model->manageRequests($_POST);
-    //     } else {
-    //         $request = $this->model->getRequests();
-    //         $this->view->render('Supervisor/manageRequests', $request);
-    //     }
-    // }
-
-
-
-        
-     //send emergency message to manager
+   
+//send emergency message to agent
     function emergency(){
    
      
@@ -166,16 +135,15 @@ class Manager extends Controller
 
             $data = [
             'message' => '',           
-            'emp_id' => ''
+            'emp_id' => '',
+            'user_id'=> ''
         ]; 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->data['message'] = trim($_POST['message']);
             $this->data['emp_id'] =trim($_POST['emp_id']);
+            $this->data['user_id'] = $_SESSION['user_id'];
             $result = $this->model->storeEmergencyMessage($this->data);
-            // print_r($this->msg_data);
-            // $this->view->showPage('Manager/emergency');
-
-            // $this->view->render('Manager/emergency', $result);
+            
         }else{
 
               $data = [
@@ -185,6 +153,80 @@ class Manager extends Controller
            
         }
 
+    }
+
+
+// view buyer
+
+ public function viewbuyer()
+    {
+        $result = $this->model->buyerTable();
+        $this->view->render('Manager/viewbuyer', $result);
+    }
+
+
+//Get Notification
+    function setNotification($notification)
+    {
+        if (!empty($notification)) {
+            echo '<div id="all_notifications">';
+            for ($i = 0; $i < count($notification); $i++) {
+                switch ($notification[$i]['notification_type']) {
+                    case 'warning':
+                        $imgPath = URL . '/vendors/images/notifications/warning.jpg';
+                        break;
+                    case 'request':
+                        $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                        break;
+                    case 'emergency':
+                        $imgPath = URL . '/vendors/images/notifications/emergency.jpg';
+                        break;
+                }
+
+                switch ($notification[$i]['read_unread']) {
+                    case 0:
+                        $notificationStatus = "unread";
+                        break;
+                    case 1:
+                        $notificationStatus = "read";
+                        break;
+                }
+                $dateTime = $notification[$i]['receive_datetime'];
+                echo
+                '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
+                        <div class = "profCont">
+                            <img class = "notification_profile" src = "' . $imgPath . '">
+                        </div>
+                        <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                        <div class="txt sub">' . $dateTime . '</div>
+                    </div>';
+            }
+            echo '</div>';
+        } else {
+            echo
+            '<div id="all_notifications">
+                <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                </div>
+            </div>';
+        }
+    }
+
+    public function getNotificationCount()
+    {
+        $notificationCount = $this->model->getNotificationCount($_GET);
+        return $notificationCount;
+    }
+
+    function getNotification()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['notification_type'])) {
+                $notification = $this->model->getNotification($_POST);
+                $this->setNotification($notification);
+            }
+        }
     }
 
 }
