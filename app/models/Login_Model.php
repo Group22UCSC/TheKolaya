@@ -91,9 +91,7 @@ class Login_Model extends Model {
         else if($user_type = 'LandOwner')
             $query = "SELECT * FROM landowner WHERE user_id='$user_id'";
         $row = $this->db->runQuery($query);
-        $_SESSION['route'] = $row[0]['route_no'];
-        $_SESSION['assign_route']=$row[0]['assigned_routes'];
-        $_SESSION['assign_reject']=$row[0]['is_rejected'];
+        $_SESSION['route'] = $row[0]['route_no'];           
     }
 
     function getNotSeenNotificationCount($user_type) {
