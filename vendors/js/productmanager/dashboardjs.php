@@ -53,4 +53,25 @@
             }
         })
     }
+
+    //total tea stock avialble - dashboard box
+    function totTeaStockNow(){
+        var url="<?php echo URL ?>productmanager/totTeaStockNow";
+        var totTea=0.0;
+        $.ajax({
+            url:url,
+            type:"GET",
+            dataType:"JSON",
+            success: function(data) {
+                console.log(data);
+                var len = data.length;
+                for (var i = 0; i < len; i++) {
+                    totTea=totTea+parseFloat(data[i].stock);
+                }                
+                document.getElementById("totTeaStock").innerHTML=totTea;
+                
+            }
+        })
+    }
+
 </script>

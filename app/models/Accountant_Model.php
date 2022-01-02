@@ -115,7 +115,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-
+    // *********** dashbboard boxes  *******************
 
     //get the auction income of the last 30 days
     function AuctionIncome30(){
@@ -168,6 +168,8 @@ class Accountant_Model extends Model {
         }
     }
     
+    // *********** END OF  dashbboard boxes  *******************
+
 
     //get the payment expenses of the last 30 days
     function  paymentExp30(){
@@ -185,7 +187,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-   
+    
 
     function getAdvanceRequests(){
         $sql="SELECT request.request_id,request.request_date,request.lid,advance_request.amount_rs,user.name

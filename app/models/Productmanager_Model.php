@@ -201,6 +201,8 @@ class Productmanager_Model extends Model {
         }
     }
 
+    // *********** dashbboard boxes  *******************
+
     //get the auction income of the last 30 days
     function AuctionIncome30(){
         // $from=date('Y-m-d',strtotime($_POST['from']));GGG
@@ -237,6 +239,18 @@ class Productmanager_Model extends Model {
             return false;
         }
     }
-    
+
+    function totTeaStockNow(){
+        $query="SELECT `stock`FROM `product`";
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    // *********** END OF  dashbboard boxes  *******************
 }
 ?>

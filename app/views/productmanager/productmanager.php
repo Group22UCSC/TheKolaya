@@ -1,6 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top dashboard home content -->
-<body onload="AuctionIncome30();totSales30();"></body>
+<body onload="AuctionIncome30();totSales30();totTeaStockNow();"></body>
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-queries.css">
@@ -22,10 +22,10 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Total Tea Stock(Kg)</div>
-          <div class="number">38,876</div>
+          <div class="number"><p id="totTeaStock"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
-            <span class="text">Last 30 Days</span>
+            <span class="text">Available Now</span>
           </div>
         </div>
         <i class='bx bxs-cart-add cart two'></i>
@@ -33,7 +33,7 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Sold Tea Stock(Kg)</div>
-          <div class="number"><p id="soldtea30"</div>
+          <div class="number"><p id="soldtea30"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
