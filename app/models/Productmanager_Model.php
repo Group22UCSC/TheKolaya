@@ -220,6 +220,23 @@ class Productmanager_Model extends Model {
             return false;
         }
     }
+
+    //dashboard sold teta stock of last 30 days
+    function totSales30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `sold_amount`FROM `auction` WHERE date>= '$dateBack30' AND date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
     
 }
 ?>
