@@ -262,7 +262,7 @@ class Supervisor extends Controller
             $_SESSION['search'] = 1;
         }
         $instock = $this->model->stock($data);
-        $this->view->render('supervisor/fertilizerInStock', $instock);
+        $this->view->render('supervisor/fertilizerInstock', $instock);
     }
 
     function firewoodInStock()

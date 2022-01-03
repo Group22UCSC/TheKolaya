@@ -28,8 +28,9 @@
 
     <form class="search-form" action="#">
         <label for="date">Date :</label>
-        <input type="date" id="date" placeholder="Select a date" name="date">
-        <button type="submit">Search</button>
+        <input type="date" id="auctiondate" onkeyup="searchByDate()" placeholder="Select a date" name="date">
+        <button type="button" onclick="searchByDate()">Search</button>
+        <button type="button" onclick="clearDate()">Clear</button>
         <!-- <label for="lname">Landowner's name:</label>
         <input type="text" id="lname" placeholder="Landowner's Name" name="lname">
         <button type="submit">Search</button> -->
@@ -38,7 +39,7 @@
 <!-- ********************** Table container  ***********************-->
 <div class="table-container">
     <div class="table-section">
-        <table class="teapricetable">
+        <table class="teapricetable" id="auctionDetailsTble">
             
                 <tr class="trcls">
                     <th class="thcls">Date</th>
@@ -82,14 +83,5 @@
 
 
 </div>
-<!-- <script>
-                function loadLandowner() {
-                   var x=document.getElementsByClassName('.barChartSection');  
-                   
-                   let btn=document.querySelector('button');
-                    btn.addEventListener('click',()=>{
-                        x.style.display='block';
-                    })
-                }
-            </script> -->
+<?php include 'js/accountant/auctionjs.php';?>
 <?php include 'bottom-container.php'; ?>

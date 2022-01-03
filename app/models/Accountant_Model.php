@@ -115,7 +115,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-
+    // *********** dashbboard boxes  *******************
 
     //get the auction income of the last 30 days
     function AuctionIncome30(){
@@ -151,6 +151,26 @@ class Accountant_Model extends Model {
         }
     }
 
+
+    function totSales30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `sold_amount`FROM `auction` WHERE date>= '$dateBack30' AND date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+    
+    // *********** END OF  dashbboard boxes  *******************
+
+
     //get the payment expenses of the last 30 days
     function  paymentExp30(){
         // $from=date('Y-m-d',strtotime($_POST['from']));GGG
@@ -167,7 +187,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-   
+    
 
     function getAdvanceRequests(){
         $sql="SELECT request.request_id,request.request_date,request.lid,advance_request.amount_rs,user.name
@@ -509,7 +529,7 @@ class Accountant_Model extends Model {
         $final = $_POST['final'];
         $emp_id = $_SESSION['user_id'];
 
-        $query = "INSERT INTO monthly_payment VALUES ('{$date}','{$lid}','{$year}','{$month}','{$fertilizer}','{$advance}','{$gIncome}','{$final}','{$cheque}','{$emp_id}')";
+        $query = "INSERT INTO monthly_payment (`Date`, `lid`, `year`, `month`, `fertilizer_expenses`, `advance_expenses`, `income`, `final_payment`, `cheque_Ref_No`, `emp_id`)VALUES ('{$date}','{$lid}','{$year}','{$month}','{$fertilizer}','{$advance}','{$gIncome}','{$final}','{$cheque}','{$emp_id}')";
         $row = $this->db->insertQuery($query);
         //print_r($row);
         if ($row) {
