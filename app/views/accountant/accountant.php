@@ -1,6 +1,6 @@
 <?php include 'top-container.php'; ?>
 <!-- Top dashboard home content -->
-<body onload="AuctionIncome30();"></body>
+<body onload="AuctionIncome30();totSales30();"></body>
 <div class="home-content">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/<?php echo $_SESSION['user_type'] ?>/<?php echo $_SESSION['user_type'] ?>-style.css">
   <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
@@ -13,6 +13,7 @@
         <div class="right-side">
           <div class="box-topic">Total Income(Rs)</div>
           <div class="number"> <p id="auctionDash"></p></div>
+          <!-- <input type="text" class="number" > -->
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
@@ -23,7 +24,7 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Total Expenses(Rs)</div>
-          <div class="number">38,876</div>
+          <div class="number"><p id="auctionExpenses"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
@@ -34,7 +35,7 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Total Profit(Rs)</div>
-          <div class="number">12,876</div>
+          <div class="number"><p id="totProfit"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>
@@ -45,7 +46,7 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Total Sales(Kg)</div>
-          <div class="number">11,086</div>
+          <div class="number"><p id="totSales"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>

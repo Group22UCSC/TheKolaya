@@ -18,6 +18,7 @@
                       <table id="myTable">
                            <tr class="header">
                                 <th style="width:33.33%;">ID</th>
+                                <th style="width:33.33%;">Name</th>
                                 <th style="width:33.33%;">Route number</th>
                                 <th style="width:33.33%;" id="hide">Availability</th>
                             </tr>
@@ -28,6 +29,7 @@
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">
                                            <td>'.$data[$i]['emp_id'].'</td>
+                                           <td>'.$data[$i]['name'].'</td>
                                            <td>'.$data[$i]['route_no'].'</td>
                                            <td style id="hide">'.$data[$i]['availability'].'</td>
                                        </tr>';                

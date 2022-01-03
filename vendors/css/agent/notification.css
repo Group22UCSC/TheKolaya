@@ -1,0 +1,71 @@
+.noti-modal-content{
+  height: 60%;
+  width:30%;
+}
+
+.title{
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  color: #01830c;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#routeno{
+  color: #01830c;
+  margin-top: 20px;
+  padding-top: 10px;
+  margin-left: 70px;
+  font-size: 18px;
+
+}
+
+.msg{
+  width: 100%;   
+ margin: 10px auto 20px auto; 
+ text-align: center;
+ font-size: 18px;
+}
+.inputfield .assignconfirm, .assignreject{
+    width: 50%;
+    padding: 8px 10px;
+    margin-top: 10px;
+    margin-left: 70px;
+    font-size: 15px; 
+    border: 0px;
+    background:  #01830c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .inputfield .assignconfirm:hover{
+    background: #01830c73;
+    color:#01830c;
+    cursor: pointer;
+    transform: scale(1.03);
+    z-index: 5;
+  }
+  
+  .assignreject{
+         
+    background:  #ff3300; 
+    margin-bottom: 20px; 
+    
+  }
+  
+  .assignreject:hover{
+    background-color: #ffc2b3;
+    color: #ff3300;
+    cursor: pointer;
+    transform: scale(1.03);
+    z-index: 5;
+  }
+
+  #btnset{
+    margin-top: 20px;
+   
+  }

@@ -31,7 +31,7 @@
 <!-- hidden feild in order to calculate the payment -->
 
 <div class="formSection">
-<form action="" method="post" target="_blank" id="paymentForm">
+<form action="<?php echo URL?>accountant/pdf" method="post" target="_blank" id="paymentForm">
 		<!-- <h2>CSS Form</h2> -->
 		<div class="large-group">
 			<div class="small-group">
@@ -97,6 +97,7 @@
         <table class="teapricetable" id="paymentTable">
             <thead class="threadcls">
                 <tr class="trcls">
+                    <th class="thcls">Inv</th>
                     <th class="thcls">Date</th>
                     <th class="thcls">Lid(Rs)</th>
                     <th class="thcls">Year</th>

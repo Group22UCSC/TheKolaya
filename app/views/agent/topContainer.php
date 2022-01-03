@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style2.css">
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/notification.css">
   <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name"><img src="<?php echo URL?>vendors/images/thekolaya-white.png" alt=""></div>
@@ -98,7 +99,18 @@
             <div class="noti-modal">
               <div class="noti-modal-content">
                 <span class="noti-modal-close-button">×</span>
-                <div>Add Your Content Here !</div>
+                <div class="title">
+                  Emergency Agent Assign
+               </div>  
+               <label class="msg">You have been assigned to the following route due to an emergency. </label>   
+                 <!-- <input type="text" id="route_no" name="route_no" value="2" class="input" readonly>  -->
+                 <br>
+                 <label id="routeno"> Route No  : 2</label>
+                                      
+                <div class="inputfield" id="btnset">
+                <button class="assignconfirm" id="assignconfirm" onclick="confirmassign()"> Confirm</button>
+                <button class="assignreject" onclick="rejectassign()">Reject</button>               
+            </div>
               </div>
             </div>
           </div>
@@ -108,3 +120,13 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function rejectassign(){
+      location.replace("agent/rejectAssign");  
+    }
+
+    function confirmassign(){
+      location.replace("agent");
+    }
+    </script>

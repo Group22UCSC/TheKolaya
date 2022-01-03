@@ -2,62 +2,6 @@
   /// loading the pid for the first form
 
 
-  //  form submit - INSERT
-  $(document).ready(function() {
-    $('#submitbtn').click(function(event) {
-      //   event.preventDefault();
-
-      Swal.fire({
-        title: 'Confirm Update ',
-        icon: 'warning',
-        //   html:'<div>Line0<br />Line1<br /></div>',
-        html: '<pre>' + str + '</pre>',
-        //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
-        confirmButtonColor: '#4DD101',
-        cancelButtonColor: '#FF2400',
-        confirmButtonText: 'Confirm!',
-        showCancelButton: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $("#auctionForm").trigger("reset");
-
-          $.ajax({
-            type: "POST",
-            url: "http://localhost/Thekolaya/productmanager/updateAuction",
-
-            data: {
-              action: action,
-              amount: amount,
-              pid: pid,
-              price: price,
-              bid: bid,
-            },
-            success: function(data) {
-
-              Swal.fire(
-                'Updated!',
-                'Your file has been updated.',
-                'success'
-              )
-              clearTable();
-              getTable();
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
-                // footer: '<a href="">Why do I have this issue?</a>'
-              })
-            }
-          })
-        }
-      })
-
-
-    })
-  })
-
 
   document.querySelector('#lid').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
@@ -75,7 +19,7 @@
     //alert(lid);
 
     // get the name of the landowner
-    var url1 = "http://localhost/Thekolaya/accountant/checkPayment"; //check whether the customer is already paid
+    var url1 = "<?php echo URL ?>accountant/checkPayment"; //check whether the customer is already paid
     $.ajax({
       url: url1,
       type: "POST",
@@ -168,7 +112,7 @@
     //alert(lid);
 
     // get the name of the landowner
-    var url1 = "http://localhost/Thekolaya/accountant/loadPayment"; //load details
+    var url1 = "<?php echo URL ?>accountant/loadPayment"; //load details
     $.ajax({
       url: url1,
       type: "POST",
@@ -232,7 +176,7 @@
         Swal.fire({
           icon: 'error',
           title: 'Payment Error',
-          text: 'Invalid Lid or no payments to pay',
+          text: 'No payments to pay or Tea price is not set',
           // footer: '<a href="">Why do I have this issue?</a>'
         })
       }
@@ -242,8 +186,8 @@
 
 
   //  form submit - INSERT payment
-    $(document).ready(function() {
-    
+  $(document).ready(function() {
+
     $('#paymentSubmitbtn').click(function(event) {
       event.preventDefault();
       var form = $('#paymentForm').serializeArray();
@@ -252,25 +196,25 @@
 
       var Year = $('#year').val();
       var Month = $('#month').val();
-      var lid=$("#lid").val();
-     // var price = $('#price').val();
-      var lname=$("#lname").val();
-      var gIncome=$("#grossIncome").val();
-      var fertilizer=$("#fertilizer").val();
-      var advance=$("#advance").val();
-      var cheque=$("#chequeRef").val();
-      var final=$("#final").val();
-      
+      var lid = $("#lid").val();
+      // var price = $('#price').val();
+      var lname = $("#lname").val();
+      var gIncome = $("#grossIncome").val();
+      var fertilizer = $("#fertilizer").val();
+      var advance = $("#advance").val();
+      var cheque = $("#chequeRef").val();
+      var final = $("#final").val();
+
       //console.log(amount+pid+price+bid);
       var action = 'save';
 
-      if(cheque==''){
+      if (cheque == '') {
         document.getElementById("chequeRef").value = "Enter A Valid Cheque No";
         $("#chequeRef").css("color", "red");
         $('#chequeRef').focus(
           function() {
             // $(this).val='';
-            document.getElementById("chequeRef").value = "";//clear year feild to fill it
+            document.getElementById("chequeRef").value = ""; //clear year feild to fill it
             $(this).css({
               'color': 'black' //make inyear feild black
             });
@@ -278,7 +222,7 @@
       }
 
 
-      
+
 
       //***** Validation of Year feild ****** */
       if (Year == '') {
@@ -287,19 +231,20 @@
         $('#year').focus(
           function() {
             // $(this).val='';
-            document.getElementById("year").value = "";//clear year feild to fill it
+            document.getElementById("year").value = ""; //clear year feild to fill it
             $(this).css({
               'color': 'black' //make inyear feild black
             });
           });
-       
-      }if (!(Year > 1998 && Year < 2100)) {
+
+      }
+      if (!(Year > 1998 && Year < 2100)) {
         document.getElementById("year").value = "Enter A Valid Year";
         $("#year").css("color", "red");
         $('#year').focus(
           function() {
             // $(this).val='';
-            document.getElementById("year").value = "";//clear year feild to fill it
+            document.getElementById("year").value = ""; //clear year feild to fill it
             $(this).css({
               'color': 'black' //make inyear feild black
             });
@@ -313,19 +258,20 @@
         $('#month').focus(
           function() {
             // $(this).val='';
-            document.getElementById("month").value = "";//clear year feild to fill it
+            document.getElementById("month").value = ""; //clear year feild to fill it
             $(this).css({
               'color': 'black' //make inyear feild black
             });
           });
-       
-      }if (!(Month >= 1 && Month <= 12)) {
+
+      }
+      if (!(Month >= 1 && Month <= 12)) {
         document.getElementById("month").value = "Enter A Valid Month";
         $("#month").css("color", "red");
         $('#month').focus(
           function() {
             // $(this).val='';
-            document.getElementById("month").value = "";//clear year feild to fill it
+            document.getElementById("month").value = ""; //clear year feild to fill it
             $(this).css({
               'color': 'black' //make inyear feild black
             });
@@ -335,7 +281,7 @@
 
 
       // return to the form without submitting  if any error
-      if ( cheque=='Enter A Valid Cheque No'|| cheque==''|| Year == '' || (!(Year > 1998 && Year < 2100)) || (!(Month >= 1 && Month <= 12)) || gIncome=='' ) {
+      if (cheque == 'Enter A Valid Cheque No' || cheque == '' || Year == '' || (!(Year > 1998 && Year < 2100)) || (!(Month >= 1 && Month <= 12)) || gIncome == '') {
         return;
       }
       var str = "Landowner :" + lname + "\n" +
@@ -360,7 +306,7 @@
 
           $.ajax({
             type: "POST",
-            url: "http://localhost/Thekolaya/accountant/setPayment",
+            url: "<?php echo URL ?>accountant/setPayment",
 
             data: {
               year: Year,
@@ -381,6 +327,9 @@
               )
               clearTable();
               getPayment();
+              
+              window.open("<?php echo URL ?>accountant/pdf/"+lid+"/"+Year+"/"+Month+"", "_blank");
+              //callPdf();
               // checkForm();
             },
             error: function(xhr, ajaxOptions, thrownError) {
@@ -398,167 +347,185 @@
   })
   // payment set 
 
-  //get payment details to the table
-function getPayment(){
-    var url="http://localhost/Thekolaya/accountant/getPayment";
+  function callPdf() {
+    console.log("sd");
+    // url: "http://localhost/Thekolaya/accountant/setTeaPrice",
+    var url = "<?php echo URL ?>accountant/pdf";
     $.ajax({
-        url:url,
-        type:"GET",
-        dataType:"JSON",
-        success:function(data){
-            console.log(data);
-            var len=data.length;
-            var action="";
-            // var todaysDate=new Date();
-            // var thisYear=todaysDate.getFullYear();
-            // var thisMonth=todaysDate.getMonth()+1;
-            // var thisDate=todaysDate.getDate();
-            
+      url: url,
+      type: "POST",
+      dataType: "JSON",
+      success: function(data) {
+        console.log(data);
 
-            for(var i=0;i<len;i++){
-                // var date=new Date(data[i].date);
-                // var month=date.getMonth()+1;
-                // var year=date.getFullYear();
-                // var date2=date.getDate();
+      }
+    })
+  }
 
-                var deleteBtn=$("<button>Delete</button>");
-              
-                
-                var str=
-                "<tr class='row'>"+
-                "<td>"+
-                    data[i].Date+
-                "</td>"+   
-                "<td>"+
-                    data[i].lid+
-                "</td>"+   
-                "<td>"+
-                    data[i].year+
-                "</td>"+
-              
-                "<td>"+
-                    data[i].month+
-                "</td>"+
-                "<td>"+
-                    data[i].income+
-                "</td>"+
-                "<td>"+
-                    data[i].fertilizer_expenses+
-                "</td>"+
-                "<td>"+
-                    data[i].advance_expenses+
-                "</td>"+
-                "<td>"+
-                    data[i].final_payment+
-                "</td>"+
-                "<td>"+
-                    data[i].cheque_Ref_No+
-                "</td>"+
-                
-                "<td class='actionCol'>"+
-               // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
-                    
-               "<button type='button' id='editbutton' onclick='deleteRow()' >" +
-                 "Delete"+
-                "</button>" +
 
-                "</td>"+
-                "</tr>";
-                $("#paymentTable tbody").append(str);
-                // there in the table DO NOT DEFINE <tbody> MANULLY
-                //IF SO IT WILL SHOW THE RESULTS TWICE
-            }
-            
+  //get payment details to the table
+  function getPayment() {
+    var url = "<?php echo URL ?>accountant/getPayment";
+    $.ajax({
+      url: url,
+      type: "GET",
+      dataType: "JSON",
+      success: function(data) {
+        console.log(data);
+        var len = data.length;
+        var action = "";
+        // var todaysDate=new Date();
+        // var thisYear=todaysDate.getFullYear();
+        // var thisMonth=todaysDate.getMonth()+1;
+        // var thisDate=todaysDate.getDate();
+
+
+        for (var i = 0; i < len; i++) {
+          // var date=new Date(data[i].date);
+          // var month=date.getMonth()+1;
+          // var year=date.getFullYear();
+          // var date2=date.getDate();
+
+          var deleteBtn = $("<button>Delete</button>");
+
+
+          var str =
+            "<tr class='row'>" +
+            "<td>" +
+            data[i].invoice_no+
+            "</td>" +
+            "<td>" +
+            data[i].Date +
+            "</td>" +
+            "<td>" +
+            data[i].lid +
+            "</td>" +
+            "<td>" +
+            data[i].year +
+            "</td>" +
+
+            "<td>" +
+            data[i].month +
+            "</td>" +
+            "<td>" +
+            data[i].income +
+            "</td>" +
+            "<td>" +
+            data[i].fertilizer_expenses +
+            "</td>" +
+            "<td>" +
+            data[i].advance_expenses +
+            "</td>" +
+            "<td>" +
+            data[i].final_payment +
+            "</td>" +
+            "<td>" +
+            data[i].cheque_Ref_No +
+            "</td>" +
+
+            "<td class='actionCol'>" +
+            // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
+
+            "<button type='button' id='editbutton' onclick='deleteRow()' >" +
+            "Delete" +
+            "</button>" +
+
+            "</td>" +
+            "</tr>";
+          $("#paymentTable tbody").append(str);
+          // there in the table DO NOT DEFINE <tbody> MANULLY
+          //IF SO IT WILL SHOW THE RESULTS TWICE
         }
-    }) 
-}  
+
+      }
+    })
+  }
 
 
-function clearTable(){
+  function clearTable() {
     // $("#updateAuctionTable tr").remove();
     $('.row ').remove(); // removing the previus rows in the ui
-}
+  }
 
 
 
-function deleteRow(){
+  function deleteRow() {
     // remobe the row from ui
-    $('#paymentTable tbody').on('click','#editbutton',function(){
-    // remobe the row from ui
-    //$(this).closest('tr').remove();
+    $('#paymentTable tbody').on('click', '#editbutton', function() {
+      // remobe the row from ui
+      //$(this).closest('tr').remove();
 
 
-    var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
-    $date = $row.find("td:nth-child(1)"); // ist COLUMN(Date,Lid,Year,....) value
-    $lid= $row.find("td:nth-child(2)");
-    $year= $row.find("td:nth-child(3)");
-    $month= $row.find("td:nth-child(4)");
+      var $row = $(this).closest("tr"), // Finds the closest row <tr> 
+        $date = $row.find("td:nth-child(2)"); // ist COLUMN(Date,Lid,Year,....) value
+      $lid = $row.find("td:nth-child(3)");
+      $year = $row.find("td:nth-child(4)");
+      $month = $row.find("td:nth-child(5)");
 
 
-    var date2=$date.text(); // date as a javascript variable
-    var lid=$lid.text();
-    var year=$year.text();
-    var month=$month.text();
-    console.log(date2);
-    
-    //check date and delete
-    var todaysDate=new Date();        
-    var thisMonth=todaysDate.getMonth()+1;
-    var thisYear=todaysDate.getFullYear();
+      var date2 = $date.text(); // date as a javascript variable
+      var lid = $lid.text();
+      var year = $year.text();
+      var month = $month.text();
+      console.log(date2);
+
+      //check date and delete
+      var todaysDate = new Date();
+      var thisMonth = todaysDate.getMonth() + 1;
+      var thisYear = todaysDate.getFullYear();
 
 
 
-    var str="Delete payment of "+lid+" for \n year : "+year+" month : "+month+" ?";
-    Swal.fire({
-      title: 'Are You Sure ?',
-      icon: 'warning',
-    //   html:'<div>Line0<br />Line1<br /></div>',
-    html: '<pre>' + str + '</pre>',
-      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
-      confirmButtonColor: '#FF2400',
-      cancelButtonColor: '#4DD101',
-      confirmButtonText: 'Delete!',
-      showCancelButton: true
+      var str = "Delete payment of " + lid + " for \n year : " + year + " month : " + month + " ?";
+      Swal.fire({
+        title: 'Are You Sure ?',
+        icon: 'warning',
+        //   html:'<div>Line0<br />Line1<br /></div>',
+        html: '<pre>' + str + '</pre>',
+        //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
+        confirmButtonColor: '#FF2400',
+        cancelButtonColor: '#4DD101',
+        confirmButtonText: 'Delete!',
+        showCancelButton: true
       }).then((result) => {
-          if (result.isConfirmed) {
-              $("#setTeaPriceForm").trigger("reset");
-              
-              $.ajax({
-                  type: "POST",
-                  url: "http://localhost/Thekolaya/accountant/deletePayment",
-                  
-                  data: {
-                    lid:lid,
-                    year:year,
-                    month:month,
-                  },
-                  success: function(data) {
-                      console.log(data);
-                      Swal.fire(
-                      'Deleted!',
-                      'Your Record Was Deleted Succesfully.',
-                      'success'
-                      )
-                      clearTable();
-                      getPayment();
-                      // checkForm();
-                  },
-                  error : function (xhr, ajaxOptions, thrownError) {
-                      Swal.fire({
-                          icon: 'error',
-                          title: 'Oops...',
-                          text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
-                          // footer: '<a href="">Why do I have this issue?</a>'
-                      })
-                  }
+        if (result.isConfirmed) {
+          $("#setTeaPriceForm").trigger("reset");
+
+          $.ajax({
+            type: "POST",
+            url: "<?php echo URL ?>accountant/deletePayment",
+
+            data: {
+              lid: lid,
+              year: year,
+              month: month,
+            },
+            success: function(data) {
+              console.log(data);
+              Swal.fire(
+                'Deleted!',
+                'Your Record Was Deleted Succesfully.',
+                'success'
+              )
+              clearTable();
+              getPayment();
+              // checkForm();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                // footer: '<a href="">Why do I have this issue?</a>'
               })
-          }
+            }
+          })
+        }
       })
 
 
 
     });
-   
-}
 
+  }
 </script>
