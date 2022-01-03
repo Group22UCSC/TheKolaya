@@ -12,8 +12,9 @@
 <div class="searchbar">
     <form class="search-form" action="#">
         <label for="lname">Date : </label>
-        <input type="date" id="searchDate"  name="searchDate">
-        <button type="submit">Search</button>
+        <input type="date" id="searchDate" onkeyup="searchByDate()" name="searchDate">
+        <button type="button" onclick="searchByDate()">Search</button>
+        <button type="button" onclick="clearDate()">Clear</button>
     </form>
 </div>
 <!--  Table COntent -->
