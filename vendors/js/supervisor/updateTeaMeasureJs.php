@@ -73,7 +73,6 @@
                 Swal.fire({
                     title: 'Are you sure?',
                     // html: '<div>' + str + '</div>',
-                    // text: "hello",
                     // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
                     icon: 'warning',
                     showCancelButton: true,
