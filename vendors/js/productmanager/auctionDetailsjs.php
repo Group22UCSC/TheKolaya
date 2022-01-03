@@ -53,4 +53,35 @@ function getTable(){
     })
 
 }
+
+
+
+
+function searchByDate(){
+        // Declare variables
+        // alert("sdd");
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchDate");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("updateAuctionTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function clearDate(){
+        input = document.getElementById("searchDate").value='';
+        searchByDate();
+    }
 </script>
