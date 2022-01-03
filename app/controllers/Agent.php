@@ -278,10 +278,8 @@ class Agent extends Controller
 
     //Check the route assign is rejected
     function isRejected() {
-        $agentIsReject = $this->model->isReject();
         $notificationIsAccepted = $this->model->isNotificationRejected($_POST['notification_id']);
         $popup = [
-            'is_rejected' => $agentIsReject[0][0],
             'is_accepted' => $notificationIsAccepted[0][0]
         ];
         echo json_encode($popup);
