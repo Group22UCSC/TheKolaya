@@ -144,6 +144,23 @@ class Manager_Model extends Model {
         }
     }
 
+// tea quality table
+    function teaQualityTable(){
+        $query = "SELECT landowner.user_id, 
+        landowner.landowner_type,user.user_id, 
+       user.name
+       FROM landowner
+       INNER JOIN user ON landowner.user_id = user.user_id";
+
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
 
       function getStock()
     {
@@ -213,56 +230,6 @@ class Manager_Model extends Model {
                 echo $_SESSION['NotSeenCount'];
         } else {
             $_SESSION['NotSeenCount'] = 0;
-        }
-    }
-
-
-        function manageRequests1($data)
-    {
-        $request_id = $data['request_id'];
-        $response_status = $data['response_status'];
-        $comment = $data['comment'];
-        $query = "UPDATE request SET response_status='$response_status' WHERE request_id='$request_id'";
-
-        if ($response_status == 'accept') {
-            $message = "Your Request accepted, Agent will diliver your fertilizer amount.";
-        } else if ($response_status == 'decline') {
-            $message = "Your Request declined, For more details contact Supervisor " . $_SESSION['name'];
-            if ($comment != '') {
-                $message = "Your Request declined, " . $comment . " For more details contact Supervisor " . $_SESSION['name'];
-            }
-        }
-        $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id)
-        VALUES(0, 0, '$message', 'Landowner', 'request', '" . $_SESSION['user_id'] . "')";
-
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        try {
-            $this->db->beginTransaction();
-            $this->db->runQuery($query);
-            $this->db->runQuery($notificationQuery);
-            $this->db->commit();
-        } catch (PDOException $e) {
-            $this->db->rollback();
-            throw $e;
-        }
-    }
-
-
-      function getRequests1()
-    {
-        $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
-                FROM user 
-                INNER JOIN request 
-                ON user.user_id=request.lid 
-                INNER JOIN fertilizer_request 
-                ON fertilizer_request.request_id=request.request_id 
-                WHERE request.response_status='receive'";
-        $row = $this->db->runQuery($query);
-
-        if ($row) {
-            return $row;
-        } else {
-            return false;
         }
     }
 
