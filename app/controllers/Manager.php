@@ -1,6 +1,6 @@
 <?php
 
-class Manager extends Controller
+class manager extends Controller
 {
     function __construct()
     {
@@ -31,16 +31,15 @@ class Manager extends Controller
 
 
 
-        $this->view->render('Manager/Manager', $stock, $stock2);
-         // $this->view->render('Manager/Manager', $stock, $teaCollection, $todayRequests);
+        $this->view->render('manager/manager', $stock, $stock2);
+
     }
 
     public function viewAccount()
     {
-        // $this->view->showPage('Manager/viewAccount');
+       
         $result = $this->model->availablelistTable();
-        // print_r($result);
-        $this->view->render('Manager/viewAccount', $result);
+        $this->view->render('manager/viewAccount', $result);
     }
 
 
@@ -48,59 +47,54 @@ class Manager extends Controller
     public function viewTeaQuality()
     {
       
-         $this->model->getNotificationCount(); //This for get Notification count
+         // $this->model->getNotificationCount(); //This for get Notification count
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->model->manageRequests1($_POST);
         } else {
             $request = $this->model->getRequests1();
-            $this->view->render('Manager/viewTeaQuality', $request);
+            $this->view->render('manager/viewTeaQuality', $request);
         }
     }
 
-    public function viewTeaQuality1()
-    {
-        $this->view->showPage('Manager/viewTeaQuality1');
-    }
-
+  
 
     public function viewPayments()
     {
-        // $this->view->showPage('Manager/viewPayments');
+      
         $result = $this->model->view_payments_table();
-        // print_r($result);
-        $this->view->render('Manager/viewPayments', $result);
+        $this->view->render('manager/viewPayments', $result);
     }
 
 
     public function viewStock()
     {
-        $this->view->showPage('Manager/viewStock');
+        $this->view->showPage('manager/viewStock');
     }
 
     public function viewProduct()
     {
         $result=$this->model->viewProduct_instock();
-        $this->view->render('Manager/viewProduct', $result);
+        $this->view->render('manager/viewProduct', $result);
     }
 
      public function instock()
     {
         $result = $this->model->view_instock();
         // print_r($result);
-        $this->view->render('Manager/in_stock', $result);
+        $this->view->render('manager/in_stock', $result);
     }
 
 
     public function outstock()
     {
         $result = $this->model->view_outstock();
-        $this->view->render('Manager/outstock',$result);
+        $this->view->render('manager/outstock',$result);
     }
 
     public function manager()
     {
-        $this->view->showPage('Manager/Manager');
+        $this->view->showPage('manager/manager');
     }
 
     //Manage Profile
@@ -129,7 +123,7 @@ class Manager extends Controller
      
          
          $result = $this->model->emergencyTable();
-        $this->view->render('Manager/emergency', $result);
+        $this->view->render('manager/emergency', $result);
        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -161,7 +155,7 @@ class Manager extends Controller
  public function viewbuyer()
     {
         $result = $this->model->buyerTable();
-        $this->view->render('Manager/viewbuyer', $result);
+        $this->view->render('manager/viewbuyer', $result);
     }
 
 
