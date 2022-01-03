@@ -26,56 +26,83 @@
                             showCancelButton: true,
                             confirmButtonColor: '#01830c',
                             cancelButtonColor: '#FF2400',
-                            confirmButtonText: 'Yes, Update it!'
+                            confirmButtonText: 'Accept',
+                            cancelButtonText: 'Decline'
                         }).then((result) => {
                             console.log(result)
                             if (result.isConfirmed) {
-                                isRejected = 1;
-                                $.ajax({
-                                    url: "<?php echo URL ?>Agent/confirmRouteAssign",
-                                    type: "POST",
-                                    data: "isRejected=" + isRejected,
-                                    success: function(data) {
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Accepted !',
-                                            text: 'Your Confirmation updated!',
-                                            confirmButtonColor: '#01830c'
+                                Swal.fire({
+                                    title: 'Are You Sure to <b style="color:green">Accecpt?</b>',
+                                    text:'You won\'t be able to revert this!',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#01830c',
+                                    cancelButtonColor: '#FF2400',
+                                    confirmButtonText: 'Yes, Confirm',
+                                    cancelButtonText: 'Cancel'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        isRejected = 1;
+                                        $.ajax({
+                                            url: "<?php echo URL ?>Agent/confirmRouteAssign",
+                                            type: "POST",
+                                            data: "isRejected=" + isRejected,
+                                            success: function(data) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Accepted !',
+                                                    text: 'Your Confirmation updated!',
+                                                    confirmButtonColor: '#01830c'
+                                                });
+                                            },
+                                            error: function(xhr, ajaxOptions, thrownError) {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                                                    confirmButtonColor: '#FF2400'
+                                                })
+                                            }
                                         });
-                                    },
-                                    error: function(xhr, ajaxOptions, thrownError) {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
-                                            confirmButtonColor: '#FF2400'
-                                        })
                                     }
-                                });
-                            } else if (result.dismiss == 'cancel') {
-                                isRejected = 0;
-                                $.ajax({
-                                    url: "<?php echo URL ?>Agent/confirmRouteAssign",
-                                    type: "POST",
-                                    data: "isRejected=" + isRejected,
-                                    success: function(data) {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Rejected',
-                                            text: 'Your Confirmation updated!',
-                                            confirmButtonColor: '#FF2400'
-                                        });
-                                    },
-                                    error: function(xhr, ajaxOptions, thrownError) {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
-                                            confirmButtonColor: '#FF2400'
-                                        })
-                                    }
-                                });
+                                })
 
+                            } else if (result.dismiss == 'cancel') {
+                                Swal.fire({
+                                    title: 'Are You Sure to <b style="color:red">Decline?</b>',
+                                    text:'You won\'t be able to revert this!',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#01830c',
+                                    cancelButtonColor: '#FF2400',
+                                    confirmButtonText: 'Yes, Confirm',
+                                    cancelButtonText: 'Cancel'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        isRejected = 0;
+                                        $.ajax({
+                                            url: "<?php echo URL ?>Agent/confirmRouteAssign",
+                                            type: "POST",
+                                            data: "isRejected=" + isRejected,
+                                            success: function(data) {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Rejected',
+                                                    text: 'Your Confirmation updated!',
+                                                    confirmButtonColor: '#FF2400'
+                                                });
+                                            },
+                                            error: function(xhr, ajaxOptions, thrownError) {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                                                    confirmButtonColor: '#FF2400'
+                                                })
+                                            }
+                                        });
+                                    }
+                                })
                             }
                         })
                     }
