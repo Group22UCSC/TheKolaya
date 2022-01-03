@@ -10,10 +10,6 @@
             name: 'isCollected',
             value: false
         });
-        // landowner_id.push({
-        //     name: 'method_name',
-        //     value: 'isCollected'
-        // });
 
         function showError(number, error) {
             inputField[number].value = '';
