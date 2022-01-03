@@ -230,12 +230,12 @@
         window.addEventListener("click", windowOnClick);
         $(".notiBox").click(function(event) {
             var notificationId = event.target.parentNode;
-            if ($(notificationId).hasClass('emergency')) {
-                toggleNotiModal();
-                console.log('hello world !');
-            }
+
             if ($(notificationId).hasClass('profCont')) {
                 notificationId = notificationId.parentNode;
+            }
+            if ($(notificationId).hasClass('emergency')) {
+                // toggleNotiModal();
             }
             notificationId = notificationId.id;
             notificationId = notificationId.match(/\d+/g);
@@ -258,7 +258,6 @@
                 });
                 // console.log(typeof(notificationId));
             }
-
         });
     });
 </script>
