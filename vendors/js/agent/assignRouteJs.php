@@ -13,13 +13,16 @@
             var messageDiv = "#" + notificationId + " .emergency";
             var message = $(messageDiv).html();
             var isRejected = -1;
-
+            notificationId = notificationId.match(/\d+/g);
+            notificationId = String(notificationId);
             $.ajax({
                 url: '<?php echo URL ?>Agent/isRejected',
                 type: 'POST',
                 dataType: 'JSON',
+                data: "notification_id=" + notificationId,
                 success: function(responseText) {
-                    if (responseText[0]['is_rejected'] == -1) {
+                    console.log(responseText);
+                    if (responseText['is_rejected'] == -1 && responseText['is_accepted'] == 0) {
                         Swal.fire({
                             html: '<div>' + message + '</div>',
                             icon: 'warning',
@@ -46,7 +49,7 @@
                                         $.ajax({
                                             url: "<?php echo URL ?>Agent/confirmRouteAssign",
                                             type: "POST",
-                                            data: "isRejected=" + isRejected,
+                                            data: "isRejected=" + isRejected + "&notification_id=" + notificationId,
                                             success: function(data) {
                                                 Swal.fire({
                                                     icon: 'success',
@@ -85,7 +88,7 @@
                                         $.ajax({
                                             url: "<?php echo URL ?>Agent/confirmRouteAssign",
                                             type: "POST",
-                                            data: "isRejected=" + isRejected,
+                                            data: "isRejected=" + isRejected + "&notification_id=" + notificationId,
                                             success: function(data) {
                                                 Swal.fire({
                                                     icon: 'error',
