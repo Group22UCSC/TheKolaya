@@ -22,7 +22,7 @@
                 data: "notification_id=" + notificationId,
                 success: function(responseText) {
                     console.log(responseText);
-                    if (responseText['is_rejected'] == -1 && responseText['is_accepted'] == 0) {
+                    if (responseText['is_accepted'] == 0) {
                         Swal.fire({
                             html: '<div>' + message + '</div>',
                             icon: 'warning',
