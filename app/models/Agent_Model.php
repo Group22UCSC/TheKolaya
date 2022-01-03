@@ -119,12 +119,29 @@ class Agent_Model extends Model{
         }
     }
 
+    //get the notification confirmation
+    function isNotificationRejected($notification_id) {
+        $query = "SELECT is_accepted FROM notification WHERE notification_id = '$notification_id'";
+        $row = $this->db->runQuery($query);
+        return $row;
+    }
+
     //Confirm the route Assign
     function confirmRouteAssign($data) {
         $isRejected = $data['isRejected'];
+        $notification_id = $data['notification_id'];
         $agent_id = $_SESSION['user_id'];
         $query = "UPDATE agent SET is_rejected='$isRejected' WHERE emp_id = '$agent_id'";
         $this->db->runQuery($query);
+        if($isRejected == 0) {
+            //Reject athoer agents
+            $query = "UPDATE agent SET assigned_routes='-1' WHERE is_rejected='-1'";
+            $this->db->runQuery($query);
+
+            //Accept the notification
+            $query = "UPDATE notification SET is_accepted='1' WHERE notification_id='$notification_id'";
+            $this->db->runQuery($query);
+        }
     }
     //get assign route for the agent (if there are any)
     function getAssignedRoute(){

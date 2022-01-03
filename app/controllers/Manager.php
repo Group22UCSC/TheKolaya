@@ -1,6 +1,6 @@
 <?php
 
-class manager extends Controller
+class Manager extends Controller
 {
     function __construct()
     {
@@ -46,15 +46,8 @@ class manager extends Controller
 
     public function viewTeaQuality()
     {
-      
-         // $this->model->getNotificationCount(); //This for get Notification count
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->model->manageRequests1($_POST);
-        } else {
-            $request = $this->model->getRequests1();
-            $this->view->render('manager/viewTeaQuality', $request);
-        }
+      $result = $this->model->teaQualityTable();
+        $this->view->render('manager/viewTeaQuality', $result);
     }
 
   

@@ -1,209 +1,345 @@
-.middle-container {
-  grid-template-columns: 1fr;
+*{ margin: 0; padding: 0; }
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+#hide{
+  display: none;
 }
 
-#allRequest {
-  background: #fff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
 
-.trigger {
-  text-align: center;
-  padding: 7px 13px;
-  background: #3e3e3e;
-  color: #fff;
-  font-size: 15px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  font-family: cursive;
-}
-
-.modal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(1.1);
-  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-}
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 57%;
-  transform: translate(-50%, -50%);
+.middle{
+  border: 1px solid #d5dbd9;
+  margin-top: 15px;
+  height: 50px;
+  width: 90%;
   background-color: white;
-  padding: 1rem 1.5rem;
-  width: 450px;
-  height: 510px;
-  border-radius: 0.5rem;
-}
-
-.modal-btn-container {
-  position: absolute;
-  bottom: 1%;
-  transform: translate(5%);
-}
-
-.modal-btn-container button {
-  outline: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 10px 0px;
-  width: 180px;
-  background-color: #4DD101;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.modal-btn-container button:hover {
-  background-color: #089633;
-}
-
-.close-button {
-  float: right;
-  width: 1.5rem;
-  line-height: 1.5rem;
+  margin-left: 5%;
   text-align: center;
-  cursor: pointer;
-  border-radius: 0.25rem;
-  background-color: lightgray;
-}
-.close-button:hover {
-  background-color: darkgray;
-}
-.show-modal {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 13px;
 }
 
-.table-row {
-  grid-template-columns: 1fr 1fr;
+.name1{
+  padding-top: 10px;
+  width: 80%;
+  padding-left: 20%;
 }
 
-.table-row-2 {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+
+.middle-conatiner {
+   background-image: url("../../images/admin/24.jpg");
+   background-repeat: no-repeat;
+    background-size: 100% 100%;
+   /* margin: 25px 0px;*/
+   margin-top: 15px;
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
 }
 
-.table-head > div {
-  background-color: #8ff058;
+
+
+
+
+* {
+  box-sizing: border-box;
 }
 
-.table-name {
-  background-color: yellow;
-  grid-column: 1/5;
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 }
 
-.landowner-rate {
-  margin: 10px;
-  animation: fadeIn 1.8s;
-  -webkit-animation: fadeIn 1.8s;
-  -moz-animation: fadeIn 1.8s;
-  -o-animation: fadeIn 1.8s;
-  -ms-animation: fadeIn 1.8s;
+#myTable {
+  background-color: white;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+ display: block;
+  height: 500px;
+  overflow-y: auto;
+
 }
 
-.tea-rate-row {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: 15% 70% 15%;
-  margin-bottom: 15px;
-}
-.middle {
-  margin-top: 2px;
+#myTable th, #myTable td {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
 }
 
-/* The bar container */
-.bar-container {
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
 
-/* Individual bars */
-.bar-5 {
-  /* width: 60%; */
-  height: 18px;
-  background-color: #78ff78;
+/*#myTable .vertical{
+  display: block;
+  height: 600px;
+  overflow-y: auto;
 }
-.bar-4 {
-  /* width: 30%; */
-  height: 18px;
-  background-color: #3ff73f;
-}
-.bar-3 {
-  /* width: 10%; */
-  height: 18px;
-  background-color: #00e000;
-}
-.bar-2 {
-  /* width: 4%; */
-  height: 18px;
-  background-color: #0db60d;
-}
-.bar-1 {
-  /* width: 15%; */
-  height: 18px;
-  background-color: #00a300;
+*/
+#myTable.vertical tr{
+  display: block;
 }
 
-.form-container {
-  margin: 4px auto;
+
+/*update form*////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.k1 {
+ /* background: whitesmoke;*/
+  margin-top: 15px;
+  background-image: url("../../images/admin/12.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.middle1{
+  border: 1px solid #d5dbd9;
+  margin-top: 15px;
+  height: 50px;
+  width: 90%;
+  background-color: white;
+  margin-left: 5%;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 13px;
+}
+
+.last{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.wrapper1 .form .inputfield a{
+  color: green;
+ 
+  margin-left: 85px;
+}
+
+.wrapper1{
+    margin-top: 7px;
+  max-width: 500px;
+  width: 100%;
+  background: whitesmoke;
+
+  margin: 20px auto;
+
+   border: 1px solid;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
   padding: 30px;
 }
 
-/* Responsive layout - make the columns stack on top of each other instead of next to each other */
-@media (max-width: 400px) {
-  .side,
-  .middle {
-    width: 100%;
-  }
-  /* Hide the right column on small screens */
-  .right {
-    display: none;
-  }
+.wrapper1 .title{
+
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+ /* color: #fec107;*/
+  color: green;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-/*------------------Form Container-----------------*/
+.wrapper1 .form{
+  width: 100%;
+}
 
-@media screen and (max-width: 540px) {
-  /* .form-container .form .inputfield {
+.wrapper1 .form .inputfield{
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper1 .form .inputfield label{
+   width: 200px;
+   color: #757575;
+   margin-right: 10px;
+  font-size: 14px;
+}
+
+.wrapper1 .form .inputfield .input,
+.wrapper1 .form .inputfield .textarea{
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.wrapper1 .form .inputfield .textarea{
+  width: 100%;
+  height: 125px;
+  resize: none;
+}
+
+.wrapper1 .form .inputfield .custom_select{
+  position: relative;
+  width: 100%;
+  height: 37px;
+}
+
+.wrapper1 .form .inputfield .custom_select:before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  border: 8px solid;
+  border-color: #d5dbd9 transparent transparent transparent;
+  pointer-events: none;
+}
+
+.wrapper1 .form .inputfield .custom_select select{
+  -webkit-appearance: none;
+  -moz-appearance:   none;
+  appearance:        none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #d5dbd9;
+  border-radius: 3px;
+}
+
+
+.wrapper1 .form .inputfield .input:focus,
+.wrapper1 .form .inputfield .textarea:focus,
+.wrapper1 .form .inputfield .custom_select select:focus{
+  border: 1px solid #fec107;
+}
+
+.wrapper1 .form .inputfield p{
+   font-size: 14px;
+   color: #757575;
+}
+.wrapper1 .form .inputfield .check{
+  width: 15px;
+  height: 15px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.wrapper1 .form .inputfield .check input[type="checkbox"]{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.wrapper1 .form .inputfield .check .checkmark{
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fec107;
+  display: block;
+  position: relative;
+}
+.wrapper1 .form .inputfield .check .checkmark:before{
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  width: 5px;
+  height: 2px;
+  border: 2px solid;
+  border-color: transparent transparent #fff #fff;
+  transform: rotate(-45deg);
+  display: none;
+}
+.wrapper1 .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
+  background: #fec107;
+}
+
+.wrapper1 .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
+  display: block;
+}
+
+.wrapper1 .form .a .btn{
+  width: 100%;
+   padding: 8px 10px;
+  font-size: 15px; 
+  border: 0px;
+  background:  green;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+
+.wrapper1 .form .b .btn{
+  width: 100%;
+   padding: 8px 10px;
+  font-size: 15px; 
+  border: 0px;
+  background:  green;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+.wrapper1 .form .inputfield .btn:hover{
+  background: #ffd658;
+}
+
+.wrapper1 .form .inputfield:last-child{
+  margin-bottom: 0;
+}
+
+.wrapper1 .form .inputfield .type{
+  width: 100%;
+  height: 40px;
+   border: 1px solid #d5dbd9;
+  
+  border-radius: 3px;
+}
+
+@media (max-width:420px) {
+  .wrapper1 .form .inputfield{
     flex-direction: column;
     align-items: flex-start;
   }
-  .form-container .form .inputfield label {
+  .wrapper1 .form .inputfield label{
     margin-bottom: 5px;
   }
-  .form-container .form .inputfield.terms {
+  .wrapper1 .form .inputfield.terms{
     flex-direction: row;
-  } */
-  .modal-content {
-    /* padding:1rem 0.5rem; */
-    width: 400px;
-  }
-  .modal-btn-container {
-    transform: translate(3%);
-  }
-  .modal-btn-container button {
-    font-size: 12px;
-    width: 165px;
-  }
-  .form-container {
-    padding: 30px 10px;
-  }
-  .tea-rate-row {
-    grid-template-columns: 20% 70% 10%;
-    grid-gap: 0.7rem;
   }
 }
