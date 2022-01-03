@@ -42,7 +42,7 @@
                                     cancelButtonText: 'Cancel'
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        isRejected = 1;
+                                        isRejected = 0;
                                         $.ajax({
                                             url: "<?php echo URL ?>Agent/confirmRouteAssign",
                                             type: "POST",
@@ -53,6 +53,8 @@
                                                     title: 'Accepted !',
                                                     text: 'Your Confirmation updated!',
                                                     confirmButtonColor: '#01830c'
+                                                }).then(() => {
+                                                    location.reload();
                                                 });
                                             },
                                             error: function(xhr, ajaxOptions, thrownError) {
@@ -79,7 +81,7 @@
                                     cancelButtonText: 'Cancel'
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        isRejected = 0;
+                                        isRejected = 1;
                                         $.ajax({
                                             url: "<?php echo URL ?>Agent/confirmRouteAssign",
                                             type: "POST",

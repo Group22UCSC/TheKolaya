@@ -125,6 +125,10 @@ class Agent_Model extends Model{
         $agent_id = $_SESSION['user_id'];
         $query = "UPDATE agent SET is_rejected='$isRejected' WHERE emp_id = '$agent_id'";
         $this->db->runQuery($query);
+        if($isRejected == 0) {
+            $query = "UPDATE agent SET is_rejected='1', assigned_routes='-1' WHERE is_rejected='-1'";
+            $this->db->runQuery($query);
+        }
     }
     //get assign route for the agent (if there are any)
     function getAssignedRoute(){
