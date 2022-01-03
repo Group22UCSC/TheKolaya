@@ -10,18 +10,35 @@ class Agent extends Controller
     function index()
      {
         $this->getNotificationCount(); //This for get Notification count
-        $result=$this->model->checkAvailability();
-        // print_r($result);
-
-        if($result[0]['availability'] == 1){
-            // print_r("Agent available");
-            // take the available landowners count to collect tea and to deliver requests
-            // to be displayed on the dashboard
-            $available_res = $this->model->availablelistTable();
-            $fert_res = $this->model->fertilizerdeliveryListTable();
-            $adv_res = $this->model->advancedeliveryListTable();
-            // $this->view->showPage('Agent/unavailableNotice');
-            $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);
+        $agent_id = $_SESSION['user_id'];
+        $result=$this->model->checkAvailability($agent_id);
+      
+        $isreject =$this->model->isReject();
+         // take the available landowners count to collect tea and to deliver requests to be displayed on the dashboard 
+        if($result[0]['availability'] == 1){           
+            if($isreject[0]['is_rejected'] == -1 || $isreject[0]['is_rejected']  == 1){                          
+                $available_res = $this->model->availablelistTable();
+                $fert_res = $this->model->fertilizerdeliveryListTable();
+                $adv_res = $this->model->advancedeliveryListTable();
+                $this->model->setAssignDefault();                         
+            }
+            else if ($isreject[0]['is_rejected']  == 0){               
+                $agent_of_assign_route =  $this->model->getAssignedRouteAgent();                
+                $agent_availability_of_assign_route = $this->model->checkAvailability($agent_of_assign_route[0]['emp_id']);
+                
+                if($agent_availability_of_assign_route[0]['availability'] == 0){                                       
+                    $available_res = $this->model->assignAvailableListTable();
+                    $fert_res = $this->model->assignFertilizerdeliveryListTable();
+                    $adv_res = $this->model->assignAdvancedeliveryListTable(); 
+                }
+                else if($agent_availability_of_assign_route[0]['availability'] == 1){                                        
+                    $available_res = $this->model->availablelistTable();
+                    $fert_res = $this->model->fertilizerdeliveryListTable();
+                    $adv_res = $this->model->advancedeliveryListTable();
+                    $this->model->setAssignDefault();  
+                }                                       
+            }  
+            $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);          
         }
 
         else if($result[0]['availability'] == 0){
@@ -38,17 +55,29 @@ class Agent extends Controller
     }
 
     function availableLandownerList()
-    {
+    {                     
         $this->getNotificationCount(); //This for get Notification count
-        $result = $this->model->availablelistTable();
-        // if($result != 0){
-            $this->view->render('Agent/availableList', $result);
-        // }
-        // else {
-        //     $this->view->showPage('Agent/unavailableNotice');
-        // }
-        // //    print_r($result);
-        
+        $agent_id = $_SESSION['user_id'];
+        $result=$this->model->checkAvailability($agent_id);
+        // print_r($result);
+        $isreject = $_SESSION['assign_reject'];
+         // take the available landowners count to collect tea to be displayed      
+            if($isreject == -1 || $isreject == 1){                
+                $available_res = $this->model->availablelistTable();               
+                $this->model->setAssignDefault();                         
+            }
+            else if ($isreject == 0){
+                $agent_of_assign_route =  $this->model->getAssignedRouteAgent();
+                $agent_availability_of_assign_route = $this->model->checkAvailability($agent_of_assign_route[0]['emp_id']);
+                if($agent_availability_of_assign_route[0]['availability'] == 0){
+                    $available_res = $this->model->assignAvailableListTable();                    
+                }
+                else if($agent_availability_of_assign_route[0]['availability'] == 1){
+                    $available_res = $this->model->availablelistTable();                   
+                    $this->model->setAssignDefault();  
+                }                                       
+            }  
+            $this->view->render('Agent/availableList', $available_res);                
     }
 
     function updateTeaWeight()
@@ -133,13 +162,32 @@ class Agent extends Controller
     }
 
     function confirmDeliverables()
-    {
+    {               
         $this->getNotificationCount(); //This for get Notification count
-        $result1 = $this->model->fertilizerdeliveryListTable();
-        $result2 = $this->model->advancedeliveryListTable();
+        $agent_id = $_SESSION['user_id'];
+        $result=$this->model->checkAvailability($agent_id);
         // print_r($result);
-        $this->view->render2('Agent/DeliveryList', $result1, $result2);
-        // $this->view->showPage('Agent/DeliveryList');
+        $isreject = $_SESSION['assign_reject'];
+         // take the  landowners count to deliver requests to be displayed        
+            if($isreject == -1 || $isreject == 1){                                
+                $fert_res = $this->model->fertilizerdeliveryListTable();
+                $adv_res = $this->model->advancedeliveryListTable();
+                $this->model->setAssignDefault();                         
+            }
+            else if ($isreject == 0){
+                $agent_of_assign_route =  $this->model->getAssignedRouteAgent();
+                $agent_availability_of_assign_route = $this->model->checkAvailability($agent_of_assign_route[0]['emp_id']);
+                if($agent_availability_of_assign_route[0]['availability'] == 0){                    
+                    $fert_res = $this->model->assignFertilizerdeliveryListTable();
+                    $adv_res = $this->model->assignAdvancedeliveryListTable(); 
+                }
+                else if($agent_availability_of_assign_route[0]['availability'] == 1){                    
+                    $fert_res = $this->model->fertilizerdeliveryListTable();
+                    $adv_res = $this->model->advancedeliveryListTable();
+                    $this->model->setAssignDefault();  
+                }                                       
+            }  
+            $this->view->render2('Agent/DeliveryList', $fert_res, $adv_res);
     }
 
     function updateRequest()

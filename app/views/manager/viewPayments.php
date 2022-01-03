@@ -19,6 +19,7 @@
                            <tr class="header">
                                
                                 <th style="width:12.5%;">Landowner ID</th>
+                                <th style="width:12.5%;">Landowner Name</th>
                                 <th style="width:12.5%;" id="hide">To Date</th>
                                 <th style="width:12.5%;" id="hide">From Date</th>
                                 <th style="width:12.5%;" id="hide">Fertilizer Expenses</th>
@@ -36,6 +37,7 @@
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">
                                            <td>'.$data[$i]['lid'].'</td>
+                                           <td>'.$data[$i]['name'].'</td>
                                            <td style id="hide">'.$data[$i]['toDate'].'</td>
                                            <td style id="hide">'.$data[$i]['fromDate'].'</td>
                                            <td style id="hide">'.$data[$i]['fertilizer_expenses'].'</td>

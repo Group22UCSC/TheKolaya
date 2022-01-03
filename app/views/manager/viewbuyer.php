@@ -2,12 +2,12 @@
 
 <?php include 'top-container.php';?>
 
-<link rel="stylesheet" href="<?php echo URL?>vendors/css/admin/addbuyer.css">
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewbuyer.css">
 
 
 
     
-   <div class="middle">ADD NEW BUYER</div>
+   <div class="middle">VIEW BUYER</div>
 
    <div class="middle-conatiner">
 
@@ -45,27 +45,6 @@
   
                       </table>
 
-            <!-- table data get auto filled form -->
-            <script>
-
-              var table=document.getElementById('myTable'),rIndex;
-              for (var i = 1; i < table.rows.length; i++) {
-                   table.rows[i].onclick=function()
-                   {
-                    //rIndex=this.rowIndex;
-                    document.getElementById("buyer_id").value=this.cells[0].innerHTML;
-                    
-                      
-                   };
-                 }
-
-
-            </script>          
-
-
-
-
-
 
              <!--  // script for filtering -->
                <script>
@@ -96,47 +75,4 @@
 
 
 
-
-    <div class="middle1"> 
-     <a >ADD NEW BUYER</a> 
-   </div>
-  
-
-<div class="k1">  
-<div class="wrapper1">
-    <div class="title">  Add new buyer form  </div>
-      <form action="<?php echo URL?>admin/addbuyer" method="POST"  id="buyerForm">
-       <div class="form">
-              
-               <div class="inputfield">
-                 <label>Buyer ID</label>
-                 <input type="text" name="buyer_id" id="buyer_id" class="input" >
-               </div> 
-
-
-               <div class="inputfield">
-                 <label> Name</label>
-                 <input type="text" name="name" id="name" class="input">
-               </div> 
-
-               <div class="inputfield">
-                 <label>Phone number</label>
-                 <input type="text" name="contact_no" id="contact_no" class="input" >
-               </div>
-
-
-      
-               <div class="last">
-                  <div class="b">
-                   <input type="submit" value="Add Buyer" class="btn" id="addbuyerBtn">
-                  </div>
-         
-     </form>
-    </div>
-  </div> 
-</div>
-
-
-<?php include 'js/admin/addbuyerjs.php';?>
-<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 <?php include 'bottom-container.php';?>

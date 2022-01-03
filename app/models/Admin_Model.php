@@ -177,18 +177,9 @@ class Admin_Model extends Model {
         }
     }
 
-      function deleteTable(){
-        $query = "SELECT name,user_id,contact_number FROM user WHERE verify=1";
-        $row = $this->db->runQuery($query);
-        
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
+     
 
-////////////////////// update accounts/////////////////////////////
+ // update accounts
 
         function userUpdate($data = []) {
         $name = $data['name'];
@@ -217,10 +208,44 @@ class Admin_Model extends Model {
     function userDelete($data = []) {
 
         $user_id = $data['reg_id'];
-
-        $query= "DELETE FROM user WHERE user_id='$user_id'";
-        $this->db->runQuery($query);        
+        $query = $next_query = "UPDATE user SET is_delete='1' WHERE user_id='$user_id'";
+         $this->db->runQuery($query);
+            
     }
 
+     function deleteTable(){
+        $query = "SELECT name,user_id,contact_number FROM user WHERE verify=1 AND is_delete=0";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+
+      function buyerTable(){
+        $query = "SELECT * FROM buyer ";
+        $row = $this->db->runQuery($query);
+        
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+    function buyerRegistration($data = []) {
+         $buyer_id = $data['reg_id'];
+        $name = $data['name'];
+        $contact_no = $data['mobile_number'];
+       
+
+
+        $query = "INSERT INTO buyer(buyer_id, name, contact_no) values('$buyer_id', '$name', '$contact_no')";
+            $this->db->runQuery($query);
+        }
+        
 
 }
