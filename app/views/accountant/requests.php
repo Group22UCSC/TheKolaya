@@ -18,7 +18,7 @@
 <div class="searchbar">
     <form class="search-form" action="#">
         <label for="lname">Landowner's name:</label>
-        <input type="text" id="lname" placeholder="Landowner's Name" name="lname">
+        <input type="text" id="lname" onkeyup="searchName()" placeholder="Landowner's Name" name="lname">
         <button type="submit">Search</button>
     </form>
 </div>

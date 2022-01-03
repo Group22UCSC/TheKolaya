@@ -13,11 +13,11 @@
 
     <form class="search-form" action="#">
         <label for="lid">Landowner's ID:</label>
-        <input type="text" id="lid" placeholder="Lid" name="lid">
-        <button type="submit">Search</button>
+        <input type="text" id="lid" onkeyup="searchByLid()" placeholder="Lid" name="lid">
+        <button type="button" onclick="searchByLid()">Search</button>
         <label for="lname">Landowner's name:</label>
-        <input type="text" id="lname" placeholder="Landowner's Name" name="lname">
-        <button type="submit">Search</button>
+        <input type="text" id="lname"onkeyup="searchByName()" placeholder="Landowner's Name" name="lname">
+        <button type="button" onclick="searchByName()">Search</button>
     </form>
 </div>
 <!-- ********************** Table container  ***********************-->
