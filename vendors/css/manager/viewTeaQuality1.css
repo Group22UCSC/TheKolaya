@@ -1,115 +1,155 @@
-*{ margin: 0; padding: 0; }
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+.page{
+  max-width: 50%;
+  width: 50%;
+  background: white;
+  margin: 50px;
+ border-radius: 25px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  padding: 50px;
+}
 
-.middle{
-  border: 1px solid #d5dbd9;
-  margin-top: 15px;
-  height: 50px;
-  width: 90%;
-  background-color: white;
-  margin-left: 5%;
+.page .title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #01830c;
+  text-transform: uppercase;
   text-align: center;
-  color: green;
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 13px;
+}
+.page .form{
+  width: 100%; 
+  height: 400px;
+}
+.page .form .inputfield{
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.page .form .inputfield label{
+   width: 200px;
+   color: #01830c;
+   margin-right: 10px;
+  font-size: 14px;
+}
+
+
+.page .form .inputfield .input,
+.page .form .inputfield .textarea{
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.page .form .inputfield .textarea{
+  width: 100%;
+  height: 125px;
+  resize: none;
 }
 
 
 
-.table{
-
-   background-image: url("../../images/manager/16.jpg");
-   background-repeat: no-repeat;
-    background-size: 100% 100%;
-    margin-top: 25px;
-  padding-top: 125px;
-  padding-bottom: 150px;
-  height: 600px;
-    width: 90%;
- margin-left: 5%;
- padding-left: 13%;
-
+.page .form .inputfield .input:focus,
+.page .form .inputfield .textarea:focus,
+.page .form .inputfield .custom_select select:focus{
+  border: 1px solid #01830c;
 }
 
 
 
-.table-container{
-    font-family: 'Poppins', sans-serif;
-  display: grid;
-  padding: 40px;
-  color: #4f546c;
-  font-size: 0.9rem;
- /* background-color: #f9fbff;*/
+
+.page .form .inputfield .btn, .back{
+  width: 50%;
+  padding: 8px 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  font-size: 15px; 
+  border: 0px;
+  background:  #01830c;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
 }
-.teapricetable {
-    border-collapse: collapse;
-  /*  box-shadow: 0 5px 10px #e1e5ee;*/
-    background-color: white;
-    text-align: left;
-    overflow: hidden;
-    width: 90%;
-  }
-  .teapricetable tbody{
-    /* Set the height of table body */
-    height: 20px; 
-              
-    /* Set vertical scroll */
-    overflow-y: auto;
-      
-    /* Hide the horizontal scroll */
-    overflow-x: hidden; 
-  }
+
+.page .form .inputfield .btn:hover{
+  background: #01830c73;
+  color:#01830c;
+  cursor: pointer;
+  transform: scale(1.03);
+  z-index: 5;
+}
+
+.back{
   
-    .threadcls {
-      box-shadow: 0 5px 10px #e1e5ee;
+  margin-left:30px;  
+  background:  #ff3300;  
+  
+}
+
+.back:hover{
+  background-color: #ffc2b3;
+  color: #ff3300;
+  cursor: pointer;
+  transform: scale(1.03);
+  z-index: 5;
+}
+.page .form .inputfield:last-child{
+  margin-bottom: 0;
+}
+
+ .page .form .inputfield .back{
+  margin-top: 400px;
+  margin-left: 25%;
+ }
+
+  @media (max-width:420px) {
+    .page{
+      height:50%;
+      padding:20px;
+      width: 100%;
     }
-  
-    .thcls   {
-      padding: 1rem 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      font-size: 0.7rem;
-      font-weight: 900;
+
+    .page .title{
+      font-size: 18px;
     }
-  
-    .tdcls {
-      padding: 1rem 2rem;
+
+    .page .form .inputfield{
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 12px;
+      width:100px;
+      height: 50px;
+      margin:20px auto;
     }
-  
-    .acls {
-      text-decoration: none;
-      color:#2962ff;
+
+    .page .form .inputfield label{
+      margin-bottom: 5px;
     }
-  
-    .status {
-      border-radius:  0.2rem;
-      background-color: red;
-      padding: 0.2rem 1rem;
-      text-align: center;
-  }
-     .status-pending {
-        background-color: #fff0c2;
-        color: #a68b00;
-      }
-      
-        
-       .status-paid {
-        background-color: #c8e6c9;
-        color:  #388e3c;
-      }
-  
-        .status-notupdated {
-        background-color: #ffcdd2;
-        color: #c62828;
-      }
+
+    .page .form .inputfield.terms{
+      flex-direction: row;
+    }
+
+    .page .form #btnset{
+      /* background: #ffc2b3; */
+      flex-direction: row;
+      margin-left: 0px;
+      font-size: 15px;
+    }
+
+     
     
-  
-    .amount {
-      text-align: right;
+
+    .page .form .inputfield .btn span{
+      display:none;
     }
-  
-   
-    tr:nth-child(even) {
-      background-color: #f4f6fb;
-    }
+
+  }
