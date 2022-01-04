@@ -206,7 +206,7 @@ class Manager_Model extends Model {
        user.user_id, 
        user.name
        FROM agent
-       INNER JOIN user ON agent.emp_id = user.user_id";
+       INNER JOIN user ON agent.emp_id = user.user_id WHERE availability=1 AND is_rejected=-1";
 
         $row = $this->db->runQuery($query);
         

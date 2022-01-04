@@ -8,6 +8,17 @@
 }
 
 
+
+.page{
+    position:fixed;
+    top:45%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    display: none;
+    z-index: 5;
+}
+
+
 .middle{
   border: 1px solid #d5dbd9;
   margin-top: 15px;
@@ -342,4 +353,15 @@
   .wrapper1 .form .inputfield.terms{
     flex-direction: row;
   }
+}
+
+
+
+.landowner-rate {
+  margin: 10px;
+  animation: fadeIn 1.8s;
+  -webkit-animation: fadeIn 1.8s;
+  -moz-animation: fadeIn 1.8s;
+  -o-animation: fadeIn 1.8s;
+  -ms-animation: fadeIn 1.8s;
 }
