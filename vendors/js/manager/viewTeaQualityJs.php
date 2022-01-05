@@ -10,7 +10,7 @@
                     url: "<?php echo URL?>Manager/viewTeaQuality",
                     data: "landowner_id="+landownerId,
                     success: function(responseText) {
-                        console.log(responseText);
+                        $("#tea-rate").html(responseText);
                     }
                 })
                 openteaform();

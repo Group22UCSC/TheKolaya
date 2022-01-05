@@ -14,7 +14,7 @@ $starPrecentage = [
             <div class="side">
                 <div>5 stars</div>
             </div>
-            <div class="middle">
+            <div class="rate-middle">
                 <div class="bar-container">
                     <div class="bar-5" style="width: <?php echo $starPrecentage['5_star']; ?>%"></div>
                 </div>
@@ -27,7 +27,7 @@ $starPrecentage = [
             <div class="side">
                 <div>4 stars</div>
             </div>
-            <div class="middle">
+            <div class="rate-middle">
                 <div class="bar-container">
                     <div class="bar-4" style="width: <?php echo $starPrecentage['4_star']; ?>%"></div>
                 </div>
@@ -40,7 +40,7 @@ $starPrecentage = [
             <div class="side">
                 <div>3 stars</div>
             </div>
-            <div class="middle">
+            <div class="rate-middle">
                 <div class="bar-container">
                     <div class="bar-3" style="width: <?php echo $starPrecentage['3_star']; ?>%"></div>
                 </div>
@@ -53,7 +53,7 @@ $starPrecentage = [
             <div class="side">
                 <div>2 stars</div>
             </div>
-            <div class="middle">
+            <div class="rate-middle">
                 <div class="bar-container">
                     <div class="bar-2" style="width: <?php echo $starPrecentage['2_star']; ?>%"></div>
                 </div>
@@ -66,7 +66,7 @@ $starPrecentage = [
             <div class="side">
                 <div>1 star</div>
             </div>
-            <div class="middle">
+            <div class="rate-middle">
                 <div class="bar-container">
                     <div class="bar-1" style="width: <?php echo $starPrecentage['1_star']; ?>%"></div>
                 </div>
