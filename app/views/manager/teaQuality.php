@@ -8,7 +8,6 @@ $starPrecentage = [
 ];
 ?>
 <div id="get_tea_rate">
-    <h2 style="color: #4DD101; text-align:center; margin-bottom:40px;">Tea Quality</h2>
     <div class="rating-row">
         <div class="tea-rate-row">
             <div class="side">
