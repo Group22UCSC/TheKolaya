@@ -11,6 +11,7 @@
     <div class="backbtnsection">
         <button class="backbtn" onclick="goBack()">Back</button>
     </div>
+    
     <div class="labelsection">
         <span class="">Landowner's ID:</span>
         <label class="label info" for=""> <?php echo($data[0]['user_id']);?> </label>
@@ -22,7 +23,11 @@
     </div>
 
 </div>
+<?php 
 
+print_r($data1);
+
+?>
 <!-- ****** landowner details bar chart ******** -->
 <div class="barChartAndRatingSection">
 

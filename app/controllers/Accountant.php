@@ -88,7 +88,8 @@ class Accountant extends Controller{
         $this->getNotificationCount();
         $_POST['lid']=$lid;
         $name=$this->model->getLandownersName();
-        $this->view->render('accountant/landownersGraphpage',$name);
+        $getLandownerTeaSupply=$this->model->getLandownerTeaSupply();
+        $this->view->render('accountant/landownersGraphpage',$name,$getLandownerTeaSupply);
     }
     function requests(){ //advance requests
         if(($_SERVER['REQUEST_METHOD']=='POST')){
