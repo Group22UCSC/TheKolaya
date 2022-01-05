@@ -63,7 +63,7 @@ class Supervisor extends Controller
                     $monthName = $dateObj->format('F'); // March
                     echo '<div class="manage-request-row">
                             <div class="manage-request-cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
-                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']). 'Kg for '. $monthName . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']). '</div>
                         </div>';
                 }
                 echo '</div>';
@@ -74,7 +74,7 @@ class Supervisor extends Controller
                 //         <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
                 //     </div>';
                 for ($i = 0; $i < 2; $i++) {
-                    $monthNum  = $month - 1;
+                    $monthNum  = $month;
                     $dateObj   = DateTime::createFromFormat('!m', $monthNum);
                     $monthName = $dateObj->format('F');
                     echo '<div class="manage-request-row">
