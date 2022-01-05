@@ -1,5 +1,4 @@
 <?php
-
 class Manager extends Controller
 {
     function __construct()
@@ -27,34 +26,74 @@ class Manager extends Controller
         $_SESSION['Matcha_Tea_stock'] = $stock2[6]['stock'];
         $_SESSION['Oolang_Tea_stock'] = $stock2[7]['stock'];
         $_SESSION['Sencha_Tea_stock'] = $stock2[8]['stock'];
-        
+
 
 
 
         $this->view->render('manager/manager', $stock, $stock2);
-
     }
 
     public function viewAccount()
     {
-       
+
         $result = $this->model->availablelistTable();
         $this->view->render('manager/viewAccount', $result);
     }
 
-
-
     public function viewTeaQuality()
     {
-      $result = $this->model->teaQualityTable();
-        $this->view->render('manager/viewTeaQuality', $result);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
+            if ($teaQuality) {
+                $quality = [
+                    '1_star' => 0,
+                    '2_star' => 0,
+                    '3_star' => 0,
+                    '4_star' => 0,
+                    '5_star' => 0,
+                ];
+                for ($i = 0; $i < count($teaQuality); $i++) {
+                    // if($teaQuality[$i]['quality'] != '') {
+                    //     echo $teaQuality[$i]['quality'];
+                    // }
+                    $tempQuality = $teaQuality[$i]['quality'] / 20;
+                    switch ($tempQuality) {
+                        case 1:
+                            $quality['1_star'] += 1;
+                            break;
+                        case 2:
+                            $quality['2_star'] += 1;
+                            break;
+                        case 3:
+                            $quality['3_star'] += 1;
+                            break;
+                        case 4:
+                            $quality['4_star'] += 1;
+                            break;
+                        case 5:
+                            $quality['5_star'] += 1;
+                            break;
+                    }
+                }
+                // print_r($quality);
+                $allStars = 0;
+                for ($i = 1; $i <= 5; $i++)
+                    $allStars += $quality[$i . '_star'];
+                $this->view->render('manager/teaQuality', $quality, $allStars);
+            }
+        } else {
+            $result = $this->model->teaQualityTable();
+            $this->view->render('manager/viewTeaQuality', $result);
+        }
+        
     }
 
-  
+
 
     public function viewPayments()
     {
-      
+
         $result = $this->model->view_payments_table();
         $this->view->render('manager/viewPayments', $result);
     }
@@ -67,11 +106,11 @@ class Manager extends Controller
 
     public function viewProduct()
     {
-        $result=$this->model->viewProduct_instock();
+        $result = $this->model->viewProduct_instock();
         $this->view->render('manager/viewProduct', $result);
     }
 
-     public function instock()
+    public function instock()
     {
         $result = $this->model->view_instock();
         // print_r($result);
@@ -82,7 +121,7 @@ class Manager extends Controller
     public function outstock()
     {
         $result = $this->model->view_outstock();
-        $this->view->render('manager/outstock',$result);
+        $this->view->render('manager/outstock', $result);
     }
 
     public function manager()
@@ -109,50 +148,48 @@ class Manager extends Controller
         $this->view->render('user/profile/enterPassword');
     }
 
-   
-//send emergency message to agent
-    function emergency(){
-   
-     
-         
-         $result = $this->model->emergencyTable();
+
+    //send emergency message to agent
+    function emergency()
+    {
+
+
+
+        $result = $this->model->emergencyTable();
         $this->view->render('manager/emergency', $result);
-       
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
-            'message' => '',           
-            'emp_id' => '',
-            'user_id'=> ''
-        ]; 
+                'message' => '',
+                'emp_id' => '',
+                'user_id' => ''
+            ];
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->data['message'] = trim($_POST['message']);
-            $this->data['emp_id'] =trim($_POST['emp_id']);
+            $this->data['emp_id'] = trim($_POST['emp_id']);
             $this->data['user_id'] = $_SESSION['user_id'];
             $result = $this->model->storeEmergencyMessage($this->data);
-            
-        }else{
+        } else {
 
-              $data = [
-                'message' => '',           
+            $data = [
+                'message' => '',
                 'emp_id' => ''
             ];
-           
         }
-
     }
 
 
-// view buyer
+    // view buyer
 
- public function viewbuyer()
+    public function viewbuyer()
     {
         $result = $this->model->buyerTable();
         $this->view->render('manager/viewbuyer', $result);
     }
 
 
-//Get Notification
+    //Get Notification
     function setNotification($notification)
     {
         if (!empty($notification)) {
@@ -215,5 +252,4 @@ class Manager extends Controller
             }
         }
     }
-
 }

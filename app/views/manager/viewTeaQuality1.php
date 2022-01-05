@@ -6,19 +6,15 @@
     </div>
 
     <div class="form">
-        <form action="#" method="POST" id="teaUpdateForm">
-            
-            <div class="inputfield" id="btnset">
-                
-                <button class="back" onclick="closeteaform()">Back</button>
-               
-                <!-- <input type="submit" value="Add Weight" class="btn" id="myBtn"  onclick="openpopup()" >             -->
-            </div>
-        </form>
-
-
+        <div class="inputfield" id="btnset">
+            <button type="button" class="back" onclick="closeteaform()">Back</button>
+        </div>
     </div>
 </div>
 
-<script></script>
+<script>
+    function closeteaform() {
+        document.getElementById('teapopup').style.display = "none";
+    }
+</script>
 <!-- onclick="openpopup()" -->
