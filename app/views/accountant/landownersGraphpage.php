@@ -13,7 +13,7 @@
     </div>
     <div class="labelsection">
         <span class="">Landowner's ID:</span>
-        <label class="label info" for=""><?php echo($data[0]['user_id']);?></label>
+        <label class="label info" for=""> <?php echo($data[0]['user_id']);?> </label>
         <span class="">Landowner's Name:</span>
         <label class="label info" for="lid"><?php echo($data[0]['name']);?></label>
     </div>
