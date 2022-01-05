@@ -39,7 +39,7 @@
                         <div class="avatar-upload">
                             <div class="avatar-edit">
                                 <input type="file" id="imageUpload" name="image_file" accept=".png, .jpg, .jpeg" />
-                                <label for="imageUpload"></label>
+                                <label for="imageUpload"><i class="fas fa-camera" style="margin-left: 6px; margin-top: 6px; font-size: 20px; color: #706363;"></i></label>
                             </div>
                             <div class="avatar-preview">
                                 <div id="imagePreview" style="background-image: url('<?php echo URL . 'vendors/images/' . $_SESSION['profile_picture'] ?>');">

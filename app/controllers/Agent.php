@@ -38,12 +38,12 @@ class Agent extends Controller
                     $this->model->setAssignDefault();  
                 }                                       
             }  
-            $this->view->render3('Agent/zero_dashboard', $available_res, $fert_res, $adv_res);          
+            $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res);          
         }
 
         else if($result[0]['availability'] == 0){
             // print_r("agent unavailable");
-            $this->view->showPage('Agent/availabilityOn');
+            $this->view->showPage('agent/availabilityOn');
         }
        
     }
@@ -276,6 +276,23 @@ class Agent extends Controller
         $this->view->showPage('Agent/popup');
     }
 
+    //Check the route assign is rejected
+    function isRejected() {
+        $notificationIsAccepted = $this->model->isNotificationRejected($_POST['notification_id']);
+        $popup = [
+            'is_accepted' => $notificationIsAccepted[0][0]
+        ];
+        echo json_encode($popup);
+    }
+
+    //Confirm the route Assign
+    function confirmRouteAssign() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->model->confirmRouteAssign($_POST);
+        }
+
+    }
+
     //manage profile
     function profile()
     {
@@ -325,7 +342,7 @@ class Agent extends Controller
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
                 echo
-                '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
+                    '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
                         <div class = "profCont">
                             <img class = "notification_profile" src = "' . $imgPath . '">
                         </div>
