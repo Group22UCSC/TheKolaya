@@ -6,19 +6,20 @@
     </div>
 
     <div class="form">
-        <form action="#" method="POST" id="teaUpdateForm">
-            
-            <div class="inputfield" id="btnset">
-                
-                <button class="back" onclick="closeteaform()">Back</button>
-               
-                <!-- <input type="submit" value="Add Weight" class="btn" id="myBtn"  onclick="openpopup()" >             -->
+        <div class="landowner-rate-outside" style="display: none; margin-top:40px;">
+            <div class="landowner-rate" id="tea-rate">
+                <!-- here replace the data comes form ajax -->
             </div>
-        </form>
-
-
+        </div>
+        <div class="inputfield" id="btnset">
+            <button type="button" class="back" onclick="closeteaform()">Back</button>
+        </div>
     </div>
 </div>
 
-<script></script>
+<script>
+    function closeteaform() {
+        document.getElementById('teapopup').style.display = "none";
+    }
+</script>
 <!-- onclick="openpopup()" -->
