@@ -597,5 +597,12 @@ class Accountant_Model extends Model {
         echo $result;
     }
 
+
+    function getLandownersName(){
+        $lid=$_POST['lid'];
+        $query = "SELECT user_id,name FROM `user` WHERE user_id='{$lid}'";
+        $result=$this->db->selectQuery($query);
+        return $result;
+    }
 }
 ?>

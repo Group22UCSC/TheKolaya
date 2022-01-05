@@ -5,6 +5,7 @@
 <div class="top-container">
     <p>Landowner's Details</p>
 </div>
+
 <!-- *********** Landowners details section ******** -->
 <div class="labelSection">
     <div class="backbtnsection">
@@ -12,9 +13,9 @@
     </div>
     <div class="labelsection">
         <span class="">Landowner's ID:</span>
-        <label class="label info" for="">L25</label>
+        <label class="label info" for=""><?php echo($data[0]['user_id']);?></label>
         <span class="">Landowner's Name:</span>
-        <label class="label info" for="lid">Kamal Jayawardane</label>
+        <label class="label info" for="lid"><?php echo($data[0]['name']);?></label>
     </div>
     <div class="requestsbtnsection">
         <button class="requestsbtn" onclick="location.href='<?php echo URL ?>/accountant/requests';">Advance Requests</button>
