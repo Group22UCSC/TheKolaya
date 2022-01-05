@@ -7,6 +7,7 @@
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
+     <script src="<?php echo URL ?>vendors/js/manager/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">

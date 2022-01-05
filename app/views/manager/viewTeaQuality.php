@@ -3,7 +3,7 @@
 <?php include 'top-container.php';?>
 
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/viewTeaQuality.css">
-
+ 
 
     
    <div class="middle">VIEW TEA QUALITY</div>
@@ -12,7 +12,7 @@
 
      <div class="name1">
      
-  
+          
           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
                       <table id="myTable">
@@ -27,7 +27,7 @@
                                <?php
                                $x=count($data);
                                for($i=0;$i<$x;$i++){
-                                 echo '<tr id="tea" data-href="">
+                                  echo '<tr id="tea" data-href-tea="">
                                            <td>'.$data[$i]['name'].'</td>
                                            <td>'.$data[$i]['user_id'].'</td>
                                            <td>'.$data[$i]['landowner_type'].'</td>
@@ -43,8 +43,7 @@
   
                       </table>
 
-
-         
+           
 
 
             <!--  // script for filtering -->
@@ -71,16 +70,15 @@
               </script>
                                   
 
-
-
+          
+         
 
     </div>
     
   </div>
 
 
-
-
-
-
+<div class="forms">
+    <?php include 'viewTeaQuality1.php'; ?>      
+</div>
 <?php include 'bottom-container.php';?>
