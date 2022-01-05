@@ -11,8 +11,9 @@
                 <!-- here replace the data comes form ajax -->
             </div>
         </div>
+        
         <button type="button" class="back" onclick="closeteaform()">Back</button>
-    </div>
+       
 </div>
 
 <script>
