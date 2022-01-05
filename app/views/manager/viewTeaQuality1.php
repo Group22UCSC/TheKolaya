@@ -6,14 +6,12 @@
     </div>
 
     <div class="form">
-        <div class="landowner-rate-outside" style="display: none; margin-top:40px;">
+        <div class="landowner-rate-outside" margin-top:40px;>
             <div class="landowner-rate" id="tea-rate">
                 <!-- here replace the data comes form ajax -->
             </div>
         </div>
-        <div class="inputfield" id="btnset">
-            <button type="button" class="back" onclick="closeteaform()">Back</button>
-        </div>
+        <button type="button" class="back" onclick="closeteaform()">Back</button>
     </div>
 </div>
 
