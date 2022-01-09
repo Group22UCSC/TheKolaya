@@ -9,7 +9,7 @@ class Admin extends Controller
 
     function index()
     {
-        $this->view->showPage('Admin/Admin');
+        $this->view->showPage('admin/admin');
     }
 
     public function viewAccount()
@@ -17,19 +17,19 @@ class Admin extends Controller
         // $this->view->showPage('Manager/viewAccount');
         $result = $this->model->availablelistTable();
         // print_r($result);
-        $this->view->render('Admin/viewAccount', $result);
+        $this->view->render('admin/viewAccount', $result);
     }
 
     public function viewAccount1()
     {
-        $this->view->showPage('Admin/viewAccount1');
+        $this->view->showPage('admin/viewAccount1');
     }
 
     public function updateAccount()
     {
         
         $result = $this->model->availablelistTable();
-        $this->view->render('Admin/updateAccount', $result);
+        $this->view->render('admin/updateAccount', $result);
 
 
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -108,7 +108,7 @@ class Admin extends Controller
     {
         
         $result = $this->model->deleteTable();
-        $this->view->render('Admin/deleteAccount', $result);
+        $this->view->render('admin/deleteAccount', $result);
 
 
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -141,19 +141,19 @@ class Admin extends Controller
 
     public function admin()
     {
-        $this->view->showPage('Admin/Admin');
+        $this->view->showPage('admin/Admin');
     }
 
     public function setTeaPrice()
     {
-        $this->view->showPage('Admin/setteaprice');
+        $this->view->showPage('admin/setteaprice');
     }
 
     //Create Accounts
 
     public function createAccountSelect()
     {
-        $this->view->showPage('Admin/createAccountSelect');
+        $this->view->showPage('admin/createAccountSelect');
     }
 
   
@@ -299,7 +299,7 @@ class Admin extends Controller
      public function addbuyer()
     {
         $result = $this->model->buyerTable();
-        $this->view->render('Admin/addbuyer', $result);
+        $this->view->render('admin/addbuyer', $result);
 
          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

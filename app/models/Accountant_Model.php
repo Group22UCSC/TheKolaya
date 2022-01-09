@@ -597,5 +597,20 @@ class Accountant_Model extends Model {
         echo $result;
     }
 
+
+    function getLandownersName(){//name of the landowner for landowner graph page
+        $lid=$_POST['lid'];
+        $query = "SELECT user_id,name FROM `user` WHERE user_id='{$lid}'";
+        $result=$this->db->selectQuery($query);
+        return $result;
+    }
+
+    //tea supply of the landowner for landowner graph page
+    function getLandownerTeaSupply(){
+        $lid=$_POST['lid'];
+        $query = "SELECT date,net_weight,quality FROM `tea` WHERE lid='{$lid}'";
+        $result=$this->db->selectQuery($query);
+        return $result;
+    }
 }
 ?>
