@@ -67,9 +67,10 @@
 /* ************  bar chart section and rating section ******** */
 .barChartAndRatingSection{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     background-color: white;
     margin-top: 30px;
+    height: 350px;
 }
 /* bar chart secction */
 .barChartSection{
@@ -79,13 +80,13 @@
 #myChart1{
     width: 50%;
     float: left;
-    margin-left: 25px;
+    margin-left: 65px;
 }
 /* rating section */
 #myChart2{
     width: 50%;
     /* float: right; */
-    margin-left: 30px;
+    margin-left: 80px;
 }
 ul{
     display: inline;
@@ -93,6 +94,7 @@ ul{
 .list{
     padding: 40px;
     padding-top: 100px;
+    padding-left: 100px;
     align-items: center;
     justify-content: center;
 }

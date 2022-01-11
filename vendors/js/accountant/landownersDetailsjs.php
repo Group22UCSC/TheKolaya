@@ -31,7 +31,7 @@
                         "<td class='actionCol'>" +
                         // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
 
-                        "<button type='button' id='editbutton' onclick='deleteRow()' >" +
+                        "<button type='button' id='editbutton' onclick='loadLandGraphPage()' >" +
                         "View Details" +
                         "</button>" +
 
@@ -96,4 +96,25 @@
             }
         }
     }
+
+    function loadLandGraphPage(){
+        // alert("dsd");
+        // var lid = $("#lid").val();
+        $('#teapricetable tbody').on('click', 'tr', function() {
+            // alert("dd");
+            var $row = $(this).closest("tr"), // Finds the closest row <tr> 
+                $rid = $row.find("td:nth-child(1)"); // ist column value
+            $lid = $row.find("td:nth-child(1)");
+
+        
+            var Lid = $lid.text();
+            // alert(Lid);
+        window.open("<?php echo URL ?>accountant/landownersGraphpage/"+Lid+"","_self");
+
+        });
+        // window.open("<?php echo URL ?>accountant/pdf/"+lid+"/"+Year+"/"+Month+"", "_blank");
+
+
+    }
+    
 </script>

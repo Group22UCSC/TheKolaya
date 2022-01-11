@@ -84,9 +84,19 @@ class Accountant extends Controller{
         //$json_arr=json_encode($arr);
         $this->view->render('accountant/pdf2',$result,$result2,$monthlyTPrice);
     }
-    function landownersGraphpage() {
+    function landownersGraphpage($lid){
         $this->getNotificationCount();
-        $this->view->showPage('accountant/landownersGraphpage');
+        $_POST['lid']=$lid;
+        $name=$this->model->getLandownersName();
+        $getLandownerTeaSupply=$this->model->getLandownerTeaSupply();
+        $this->view->render('accountant/landownersGraphpage',$name,$getLandownerTeaSupply);
+    }
+    function getTeaDeatilsforBarchart($lid){
+        $_POST['lid']=$lid;
+        $getLandownerTeaSupply=$this->model->getLandownerTeaSupply();
+        $json_arr=json_encode($getLandownerTeaSupply);
+        //print_r($json_arr);
+        echo $json_arr;
     }
     function requests(){ //advance requests
         if(($_SERVER['REQUEST_METHOD']=='POST')){
