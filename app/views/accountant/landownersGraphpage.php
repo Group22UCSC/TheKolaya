@@ -193,14 +193,14 @@ for ($i = 0; $i < $len; $i++) {
         </script>
     </div>
 
-    <div class="list">
+    <!-- <div class="list">
         <ul>
             <li>Best Quality</li>
             <li>Good Quality</li>
             <li>Average Quality</li>
             <li>Poor Quality</li>
         </ul>
-    </div>
+    </div> -->
 
 </div>
 <script>
