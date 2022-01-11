@@ -169,7 +169,7 @@ for ($i = 0; $i < $len; $i++) {
             console.log("starts: "+starts3);
             var xValues = ["Best", "Good", "Medium","Poor", "Not Acceptable"];
             var yValues = [starts5, starts4, starts3, starts2,starts1];
-            var barColors = ["#2BD47D", "#91f084", "#ffc233", "#91f084","#e05260"];
+            var barColors = ["#0AF331","#0BAD61", "#DAEA11", "#F19806","#F13806"];
 
             new Chart("myChart2", {
                 type: "doughnut",
