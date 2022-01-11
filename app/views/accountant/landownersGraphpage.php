@@ -49,7 +49,13 @@ $tea = array('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');//
 // (int)$tea[11]=(int)$tea[11]+5;
 // echo (int)$tea[11];
 // echo $len;
-$tea6=0.0;
+$tea6=0.0; // this month tea quantity
+$tea5=0.0; // previous month tea quantity
+$tea4=0.0; // 2 months ago tea quantity
+$tea3=0.0;
+$tea2=0.0;
+$tea1=0.0;
+
 for ($i = 0; $i < $len; $i++) {
     
     $dateTest = $data1[$i]['date']; //get the date of which the net weight was added
