@@ -43,7 +43,8 @@ class Agent extends Controller
 
         else if($result[0]['availability'] == 0){
             // print_r("agent unavailable");
-            $this->view->showPage('agent/availabilityOn');
+            // $this->view->showPage('agent/availabilityOn');
+            $this->viewEmergencyMessage();
         }
        
     }
@@ -341,7 +342,22 @@ class Agent extends Controller
                         break;
                 }
                 $dateTime = $notification[$i]['receive_datetime'];
-                echo
+                if($notification[$i]['notification_type']=='emergency'){
+                    ?><script>console.log("emergency");</script><?php
+                    if($_SESSION['availability'] == 1){
+                        echo
+                        '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
+                            <div class = "profCont">
+                                <img class = "notification_profile" src = "' . $imgPath . '">
+                            </div>
+                            <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                            <div class="txt sub">' . $dateTime . '</div>
+                        </div>';
+                    }
+                   
+                }
+                else{
+                    echo
                     '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
                         <div class = "profCont">
                             <img class = "notification_profile" src = "' . $imgPath . '">
@@ -349,6 +365,8 @@ class Agent extends Controller
                         <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
                         <div class="txt sub">' . $dateTime . '</div>
                     </div>';
+                }
+               
             }
             echo '</div>';
         } else {
