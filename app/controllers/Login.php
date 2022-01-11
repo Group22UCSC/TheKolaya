@@ -78,7 +78,7 @@ class Login extends Controller
 
         $_SESSION['user_type'] = ucwords(strtolower($_SESSION['user_type']));
         if ($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'Landowner') {
-            $this->model->getRoute($_SESSION['user_type']);
+            $this->model->getRoute();
         }
         $_SESSION['NotSeenCount'] = $this->model->getNotSeenNotificationCount($_SESSION['user_type']);
     }
