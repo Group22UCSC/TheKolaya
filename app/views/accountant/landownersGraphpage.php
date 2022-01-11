@@ -52,6 +52,12 @@ $tea3 = 0.0;
 $tea2 = 0.0;
 $tea1 = 0.0;
 
+// tea quality variables
+$starts5=0;
+$starts4=0;
+$starts3=0;
+$starts2=0;
+$starts1=0;
 for ($i = 0; $i < $len; $i++) {
 
     $dateTest = $data1[$i]['date']; //get the date of which the net weight was added
@@ -73,11 +79,26 @@ for ($i = 0; $i < $len; $i++) {
         $tea1 += (float)$data1[$i]['net_weight'];
     } else {
     }
-    // if (($dateTest >= $month05start) && ($dateTest <= $month05end)) {
-    //     // echo $data1[$i]['date'];
-    //     (int)$tea[$month] += (int)$data1[$i]['net_weight'];
-    //     // array_push($tea,$data1[$i]['net_weight']);
-    // }
+
+    // pie chart calculation
+    if($data1[$i]['quality']>=80){
+        $starts5+=1;
+    }
+    else if($data1[$i]['quality']>=60){
+        $starts4+=1;
+    }
+    else if($data1[$i]['quality']>=40){
+        $starts3+=1;
+    }
+    else if($data1[$i]['quality']>=20){
+        $starts2+=1;
+    }
+    else if($data1[$i]['quality']>=0){
+        $starts1+=1;
+    }
+    else{
+
+    }
 }
 // print_r($tea);
 // echo "Tea 5 :".$tea2;
@@ -140,9 +161,15 @@ for ($i = 0; $i < $len; $i++) {
         <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
 
         <script>
-            var xValues = ["Best", "Good", "Average", "Poor"];
-            var yValues = [60, 20, 10, 10];
-            var barColors = ["#2BD47D", "#91f084", "#ffc233", "#e05260"];
+            starts5 = '<?php echo $starts5; ?>';
+            starts4 = '<?php echo $starts4; ?>';
+            starts3 = '<?php echo $starts3; ?>';
+            starts2 = '<?php echo $starts2; ?>';
+            starts1 = '<?php echo $starts1; ?>';
+            console.log("starts: "+starts3);
+            var xValues = ["Best", "Good", "Medium","Poor", "Not Acceptable"];
+            var yValues = [starts5, starts4, starts3, starts2,starts1];
+            var barColors = ["#2BD47D", "#91f084", "#ffc233", "#91f084","#e05260"];
 
             new Chart("myChart2", {
                 type: "doughnut",
