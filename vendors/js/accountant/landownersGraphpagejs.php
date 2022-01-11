@@ -66,7 +66,6 @@ m4=m4.getMonth()+1;
                 }
                 // console.log("tea5 "+tea5);
 
-                document.getElementById("tea6").value = tea6;
 
             } 
         })

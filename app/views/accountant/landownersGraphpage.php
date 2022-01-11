@@ -1,4 +1,5 @@
 <?php include 'top-container.php'; ?>
+
 <body onload="getTeaDetailsforBarchart();"></body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/accountant/landownersGraphpage.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -36,33 +37,41 @@ $month06start = date('m', strtotime("0 month"));  // this month
 $month05start = date('m', strtotime("-1 month"));  //  prev month
 $month04start = date('m', strtotime("-2 month")); // 2 onths ago
 $month03start = date('m', strtotime("-3 month")); // 3months ago
-$month02start = date('Y-m-01', strtotime("-4 month")); // 4 months ago
-$month01start = date('Y-m-01', strtotime("-5 month")); // 5 months ago
+$month02start = date('m', strtotime("-4 month")); // 4 months ago
+$month01start = date('m', strtotime("-5 month")); // 5 months ago
 
 // echo $month04start;
-$tea = array('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');// array to store tea net weights of each month
+$tea = array('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'); // array to store tea net weights of each month
 // (int)$tea[11]=(int)$tea[11]+5;
 // echo (int)$tea[11];
 // echo $len;
-$tea6=0.0; // this month tea quantity
-$tea5=0.0; // previous month tea quantity
-$tea4=0.0; // 2 months ago tea quantity
-$tea3=0.0;
-$tea2=0.0;
-$tea1=0.0;
+$tea6 = 0.0; // this month tea quantity
+$tea5 = 0.0; // previous month tea quantity
+$tea4 = 0.0; // 2 months ago tea quantity
+$tea3 = 0.0;
+$tea2 = 0.0;
+$tea1 = 0.0;
 
 for ($i = 0; $i < $len; $i++) {
-    
+
     $dateTest = $data1[$i]['date']; //get the date of which the net weight was added
     $dateTest2 = date('Y-m-d', strtotime($dateTest));
     $month = date('m', strtotime($dateTest2));
-    echo $month;
-    (int)$tea[$month] += (int)$data1[$i]['net_weight'];
-    if($month==$month06start){
-        $tea6+=(float)$data1[$i]['net_weight'];
-    }
-    else if($month==$month05start){
-        $tea6+=(float)$data1[$i]['net_weight'];
+    // echo $month;
+    // (int)$tea[$month] += (int)$data1[$i]['net_weight'];
+    if ($month == $month06start) {  // if date is this month's date
+        $tea6 += (float)$data1[$i]['net_weight'];
+    } else if ($month == $month05start) { // if date is previous month's date
+        $tea5 += (float)$data1[$i]['net_weight'];
+    } else if ($month == $month04start) {
+        $tea4 += (float)$data1[$i]['net_weight'];
+    } else if ($month == $month03start) {
+        $tea3 += (float)$data1[$i]['net_weight'];
+    } else if ($month == $month02start) {
+        $tea2 += (float)$data1[$i]['net_weight'];
+    } else if ($month == $month01start) {
+        $tea1 += (float)$data1[$i]['net_weight'];
+    } else {
     }
     // if (($dateTest >= $month05start) && ($dateTest <= $month05end)) {
     //     // echo $data1[$i]['date'];
@@ -71,7 +80,7 @@ for ($i = 0; $i < $len; $i++) {
     // }
 }
 // print_r($tea);
-echo $tea6;
+// echo "Tea 5 :".$tea2;
 
 ?>
 <!-- ****** landowner details bar chart ******** -->
@@ -79,16 +88,28 @@ echo $tea6;
 
     <div class="barChartSection">
         <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
-        <input type="text" id="tea6" value="8">
+        <input type="text" id="tea6" value="8" hidden>
         <script>
-            var tea6=document.getElementById("tea6").value;
+            // var tea6=document.getElementById("tea6").value;
+            // console.log(tea6);
+            val06 = '<?php echo $tea6; ?>'; // get the valu from php to js
+            val05 = '<?php echo $tea5; ?>';
+            val04 = '<?php echo $tea4; ?>';
+            val03 = '<?php echo $tea3; ?>';
+            val02 = '<?php echo $tea2; ?>';
+            val01 = '<?php echo $tea1; ?>';
             console.log(tea6);
-            val05 = '<?php echo $tea[12]; ?>'; // get the valu from php to js
-            
             console.log(val05);
-            var xValues = ["January", "February", "March", "April", "May"];
-            var yValues = [120, 490, 340, val05, 250];
-            var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff"];
+            var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            var last_n_months = []
+            var d = new Date()
+            for (var i = 5; i >= 0; i--) {
+                last_n_months[i] = m[d.getMonth()] 
+                d.setMonth(d.getMonth() - 1)
+            }
+            var xValues = last_n_months;
+            var yValues = [val01, val02, val03, val04, val05, val06];
+            var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff", "#ffc233"];
 
             new Chart("myChart1", {
                 type: "bar",
@@ -160,6 +181,6 @@ echo $tea6;
         window.history.back();
     }
 </script>
-<?php include 'js/accountant/landownersGraphpagejs.php';?>
-<script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
+<?php include 'js/accountant/landownersGraphpagejs.php'; ?>
+<script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
