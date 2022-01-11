@@ -27,10 +27,10 @@ m4=m4.getMonth()+1;
         // console.log(m6);
 
         //tea values of each month
-        var tea6 = 0.0;
-        var tea5 = 0.0;
-        var tea4 = 0.0;
-        var tea3 = 0.0;
+        var tea6 = 0;
+        var tea5 = 0;
+        var tea4 = 0;
+        var tea3 = 0;
         var tea2 = 0.0;
         var tea1 = 0.0;
         $.ajax({
@@ -64,10 +64,11 @@ m4=m4.getMonth()+1;
                     }
                     //tot=tot+(data[i].sold_amount*data[i].sold_price)
                 }
-                // console.log("tea5 "+tea5);    
+                // console.log("tea5 "+tea5);
+
                 document.getElementById("tea6").value = tea6;
 
-            }
+            } 
         })
     }
 </script>
