@@ -121,7 +121,7 @@
     </div>
   </div>
 
-  <script>
+  <!-- <script>
     function rejectassign(){
       location.replace("agent/rejectAssign");  
     }
@@ -129,4 +129,4 @@
     function confirmassign(){
       location.replace("agent");
     }
-    </script>
+    </script> -->
