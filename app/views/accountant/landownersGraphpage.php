@@ -33,17 +33,12 @@ $len = sizeof($data1);
 // $date = $data1[0]['date'];
 // echo date('F, Y');
 $month06start = date('m', strtotime("0 month"));  // this month
-$month06end = date('Y-m-t', strtotime("0 month"));
 $month05start = date('m', strtotime("-1 month"));  //  prev month
-$month05end = date('Y-m-t', strtotime("-1 month"));
 $month04start = date('m', strtotime("-2 month")); // 2 onths ago
-$month04end = date('Y-m-t', strtotime("-2 month"));
 $month03start = date('m', strtotime("-3 month")); // 3months ago
-$month03end = date('Y-m-t', strtotime("-3 month"));
 $month02start = date('Y-m-01', strtotime("-4 month")); // 4 months ago
-$month02end = date('Y-m-t', strtotime("-4 month"));
 $month01start = date('Y-m-01', strtotime("-5 month")); // 5 months ago
-$month01end = date('Y-m-t', strtotime("-5 month"));
+
 // echo $month04start;
 $tea = array('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');// array to store tea net weights of each month
 // (int)$tea[11]=(int)$tea[11]+5;
@@ -64,6 +59,9 @@ for ($i = 0; $i < $len; $i++) {
     echo $month;
     (int)$tea[$month] += (int)$data1[$i]['net_weight'];
     if($month==$month06start){
+        $tea6+=(float)$data1[$i]['net_weight'];
+    }
+    else if($month==$month05start){
         $tea6+=(float)$data1[$i]['net_weight'];
     }
     // if (($dateTest >= $month05start) && ($dateTest <= $month05end)) {
