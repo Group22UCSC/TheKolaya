@@ -43,7 +43,8 @@ class Agent extends Controller
 
         else if($result[0]['availability'] == 0){
             // print_r("agent unavailable");
-            $this->view->showPage('agent/availabilityOn');
+            // $this->view->showPage('agent/availabilityOn');
+            $this->viewEmergencyMessage();
         }
        
     }
