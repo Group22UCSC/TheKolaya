@@ -65,15 +65,17 @@ class Login extends Controller
         $_SESSION['name'] = $user[0]['name'];
         $_SESSION['address'] = $user[0]['address'];
         $_SESSION['profile_picture'] = $user[0]['profile_picture'];
-        if ($_SESSION['profile_picture'] == null) {
+        $profile_location = "images/".strtolower($_SESSION['user_type']) . "/" . $_SESSION['profile_picture'];
+        if(!file_exists($profile_location)) {
             $_SESSION['profile_picture'] = "default_profile/profile.jpg";
-        } else {
-            $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"]) . "/" . $_SESSION['profile_picture'];
+        }else {
+            if ($_SESSION['profile_picture'] == null) {
+                $_SESSION['profile_picture'] = "default_profile/profile.jpg";
+            } else {
+                $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"]) . "/" . $_SESSION['profile_picture'];
+            }
         }
 
-        // switch($_SESSION['user_type']) {
-        //     case 'LandOwner' : $_SESSION['user_type'] = 
-        // }
         $_SESSION['user_type'] = ucwords(strtolower($_SESSION['user_type']));
         if ($_SESSION['user_type'] == 'Agent' || $_SESSION['user_type'] == 'Landowner') {
             $this->model->getRoute($_SESSION['user_type']);

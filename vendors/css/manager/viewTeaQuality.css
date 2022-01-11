@@ -8,6 +8,17 @@
 }
 
 
+
+.page{
+    position:fixed;
+    top:45%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    display: none;
+    z-index: 3;
+}
+
+
 .middle{
   border: 1px solid #d5dbd9;
   margin-top: 15px;
@@ -331,6 +342,59 @@
   border-radius: 3px;
 }
 
+/* lanadowner tea rate */
+.landowner-rate {
+  margin: 10px;
+  animation: fadeIn 1.8s;
+  -webkit-animation: fadeIn 1.8s;
+  -moz-animation: fadeIn 1.8s;
+  -o-animation: fadeIn 1.8s;
+  -ms-animation: fadeIn 1.8s;
+}
+
+.tea-rate-row {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 15% 70% 15%;
+  margin-bottom: 15px;
+}
+.rate-middle {
+  margin-top: 2px;
+}
+
+/* The bar container */
+.bar-container {
+  background-color: #f1f1f1;
+}
+
+/* Individual bars */
+.bar-5 {
+  /* width: 60%; */
+  height: 18px;
+  background-color: #78ff78;
+}
+.bar-4 {
+  /* width: 30%; */
+  height: 18px;
+  background-color: #3ff73f;
+}
+.bar-3 {
+  /* width: 10%; */
+  height: 18px;
+  background-color: #00e000;
+}
+.bar-2 {
+  /* width: 4%; */
+  height: 18px;
+  background-color: #0db60d;
+}
+.bar-1 {
+  /* width: 15%; */
+  height: 18px;
+  background-color: #00a300;
+}
+/* ------------------------ */
+
 @media (max-width:420px) {
   .wrapper1 .form .inputfield{
     flex-direction: column;
@@ -343,3 +407,4 @@
     flex-direction: row;
   }
 }
+
