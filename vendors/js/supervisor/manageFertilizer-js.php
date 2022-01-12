@@ -43,7 +43,7 @@
                 // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#4DD101',
+                confirmButtonColor: '#01830c',
                 cancelButtonColor: '#FF2400',
                 confirmButtonText: 'Yes, Update it!'
             }).then((result) => {
