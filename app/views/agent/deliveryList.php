@@ -18,6 +18,7 @@
 <?php include 'topContainer.php';?>
 <div class="topic">Request  Delivery  List </div>
 <?php include 'unavailableNotice.php';?>
+<?php include 'agentUnavailableNotice.php';?>
 <div class="deliverylist" id="deliveryList">
     <div class = fertilizer_topic id="fertilizer_topic"> Fertilizer </div>    
     <form class="searchform" id="fertilizersearchform">    
@@ -113,6 +114,19 @@
         $('#unavailable_notice').show();
         $('#note').html("Sorry, No fertilizer requests to deliver!");
       }
+
+      if(<?php echo $_SESSION['availability']?> == '0'){
+        console.log('zero landowners');
+        $('#fertilizersearchform').hide();
+        $('#advancesearchform').hide();
+        $('#fertilizer_delivery_table').hide();
+        $('#advance_delivery_table').hide();
+        $('#advance_topic').hide();
+        $('#fertilizer_topic').hide();
+        $('#unavailable_notice').hide();
+        $('#agent_unavailable_notice').show();
+      }
+      
       $('#myBtn').click(function(event) {
         event.preventDefault();
         var form = $('#deliveryUpdateForm').serializeArray();
