@@ -186,6 +186,7 @@ class Manager_Model extends Model
         }
     }
 
+
     function getStock()
     {
         $query = "SELECT * FROM stock";
@@ -213,12 +214,11 @@ class Manager_Model extends Model
     function storeEmergencyMessage($data = [])
     {
         $message = $data['message'];
-        $receiver_id = $data['emp_id'];
         $sender_id = $data['user_id'];
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
-         receiver_type,sender_id, receiver_id) VALUES
-         ('0','0','$message','Agent','$sender_id','$receiver_id')";
+         receiver_type, notification_type,sender_id) VALUES
+         ('0','0','$message','Agent','emergency','$sender_id')";
         //have not added receiver_id and receive_datetime,Check into that.
         $this->db->runQuery($query);
         //add the query to make the agent unavailable         
@@ -243,23 +243,6 @@ class Manager_Model extends Model
         }
     }
 
-
-    function getNotificationCount()
-    {
-        $query = "SELECT * FROM notification 
-        WHERE receiver_type='Supervisor' AND seen_not_seen=0";
-        $row = $this->db->runQuery($query);
-
-        if (count($row)) {
-            $_SESSION['NotSeenCount'] = count($row);
-            if (isset($_GET['getCount']))
-                echo $_SESSION['NotSeenCount'];
-        } else {
-            $_SESSION['NotSeenCount'] = 0;
-        }
-    }
-
-
     function buyerTable()
     {
         $query = "SELECT * FROM buyer ";
@@ -269,6 +252,75 @@ class Manager_Model extends Model
             return $row;
         } else {
             return false;
+        }
+    }
+
+    //Get Notification
+    function getNotification($data = [])
+    {
+        $notification_type = $data['notification_type'];
+        if (isset($data['notification_id'])) {
+            $notification_id = $data['notification_id'];
+            $query = "UPDATE notification 
+            SET read_unread=1 WHERE notification_id='$notification_id'";
+            $this->db->runQuery($query);
+        }
+        if ($notification_type == 'full') {
+            $query = "SELECT * FROM notification 
+            WHERE receiver_type='Manager' ORDER BY read_unread ASC, notification_id DESC";
+        } else if ($notification_type == 'half') {
+            $query = "SELECT * FROM notification 
+            WHERE receiver_type='Manager' AND read_unread=0 ORDER BY notification_id DESC";
+        }
+
+        $row = $this->db->runQuery($query);
+
+        if (isset($data['notification_id'])) {
+            if (count($row)) {
+                return $row;
+            } else {
+                return false;
+            }
+        }
+
+        $query = "UPDATE notification
+                SET seen_not_seen=1 WHERE seen_not_seen=0";
+        $this->db->runQuery($query);
+        $_SESSION['NotSeenCount'] = '';
+        echo '<p>' . $_SESSION["NotSeenCount"] . '</p>';
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function updateReadNotification($notification_id)
+    {
+        $query = "UPDATE notification 
+        SET read_unread=1 WHERE notification_id='$notification_id'";
+        $this->db->runQuery($query);
+
+        $query = "SELECT * FROM notification 
+            WHERE receiver_type='Manager' ORDER BY notification_id DESC";
+
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        }
+    }
+    function getNotificationCount()
+    {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='Manager' AND seen_not_seen=0";
+        $row = $this->db->runQuery($query);
+
+        if (count($row)) {
+            $_SESSION['NotSeenCount'] = count($row);
+            if (isset($_GET['getCount']))
+                echo $_SESSION['NotSeenCount'];
+        } else {
+            $_SESSION['NotSeenCount'] = 0;
         }
     }
 }
