@@ -130,17 +130,39 @@ class Agent_Model extends Model{
     function confirmRouteAssign($data) {
         $isRejected = $data['isRejected'];
         $notification_id = $data['notification_id'];
+        $assigned_route = $data['assign_route'];
         $agent_id = $_SESSION['user_id'];
+    
+        
         $query = "UPDATE agent SET is_rejected='$isRejected' WHERE emp_id = '$agent_id'";
         $this->db->runQuery($query);
         if($isRejected == 0) {
-            //Reject athoer agents
+            //Reject other agents
             $query = "UPDATE agent SET assigned_routes='-1' WHERE is_rejected='-1'";
             $this->db->runQuery($query);
 
-            //Accept the notification
+            //update the notification table that an agent accepted it
             $query = "UPDATE notification SET is_accepted='1' WHERE notification_id='$notification_id'";
             $this->db->runQuery($query);
+
+            //set assigned route for agent who accepted
+            $query = "UPDATE agent SET assigned_routes ='$assigned_route' WHERE emp_id='$agent_id'";
+            $this->db->runQuery($query);
+
+            //send notification to manager that agent accepted
+            $message = $agent_id." accepted the assigned route no. ".$assigned_route;
+            $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
+            receiver_type, notification_type, sender_id) VALUES
+            ('0','0','$message','manager','request','$agent_id')";
+            $this->db->runQuery($query);
+        }
+        else if($isRejected == 1){
+             //send notification to manager that agent rejected
+             $message = $agent_id." rejected the assigned route no. ".$assigned_route;
+             $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
+             receiver_type, notification_type, sender_id) VALUES
+             ('0','0','$message','manager','warning','$agent_id')";
+             $this->db->runQuery($query);
         }
     }
     //get assign route for the agent (if there are any)
