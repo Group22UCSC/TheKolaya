@@ -51,6 +51,7 @@ class Agent extends Controller
         $this->index();
     }
 
+    //view available landowner list
     function availableLandownerList()
     {
         $this->getNotificationCount(); //This for get Notification count
@@ -75,6 +76,7 @@ class Agent extends Controller
         $this->view->render('Agent/availableList', $available_res);
     }
 
+    //add agent initial tea weight by agent
     function updateTeaWeight()
     {
         $weight_data = [
@@ -139,24 +141,28 @@ class Agent extends Controller
         }
     }
 
+    //view previous updates dash page
     function viewPreviousUpdates()
     {
         $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/previousUpdates');
     }
 
+    //view previous tea updates
     function viewTeaUpdates()
     {
         $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/previousTeaUpdates');
     }
 
+    //view previous request updates
     function ViewRequestUpdates()
     {
         $this->getNotificationCount(); //This for get Notification count
         $this->view->showPage('Agent/previousRequestUpdates');
     }
 
+    //view fertilizer or advance delivery requests
     function confirmDeliverables()
     {
         $this->getNotificationCount(); //This for get Notification count
@@ -184,6 +190,7 @@ class Agent extends Controller
         $this->view->render2('Agent/DeliveryList', $fert_res, $adv_res);
     }
 
+    //add completed fertilizer or advance delivery details
     function updateRequest()
     {
         $this->getNotificationCount(); //This for get Notification count
@@ -218,6 +225,7 @@ class Agent extends Controller
         }
     }
 
+    //search previous tea updates
     function searchPreviousTeaUpdates()
     {
         $this->getNotificationCount(); //This for get Notification count
@@ -237,6 +245,7 @@ class Agent extends Controller
         }
     }
 
+    //search previous advance and fertilizer request updates
     function searchPreviousRequestUpdates()
     {
         $this->getNotificationCount(); //This for get Notification count
@@ -264,6 +273,7 @@ class Agent extends Controller
         }
     }
 
+    //loading popup
     function loadPopup()
     {
         $this->getNotificationCount(); //This for get Notification count
