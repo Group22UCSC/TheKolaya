@@ -71,15 +71,34 @@ class Accountant extends Controller{
         $this->getNotificationCount();
         $this->view->showPage('accountant/landowners');
     }
-    function pdf() {
-        $this->getNotificationCount();
-        $this->view->showPage('accountant/pdf');
+    function pdf($lid,$year,$month) { //payment pdf 
+        //$this->getNotificationCount();
+        $_POST['lid']=$lid;
+        $_POST['year']=$year;
+        $_POST['month']=$month;
+        $result = $this->model->genLandownersMPayment();//get the details from the monthly payment table
+        $result2 = $this->model->genLandownersTeaDetails();
+        $monthlyTPrice=$this->model->getmonthlyTPrice();
+        //$arr=array_merge($result);
+        
+        //$json_arr=json_encode($arr);
+        $this->view->render('accountant/pdf2',$result,$result2,$monthlyTPrice);
     }
-    function landownersGraphpage() {
+    function landownersGraphpage($lid){
         $this->getNotificationCount();
-        $this->view->showPage('accountant/landownersGraphpage');
+        $_POST['lid']=$lid;
+        $name=$this->model->getLandownersName();
+        $getLandownerTeaSupply=$this->model->getLandownerTeaSupply();
+        $this->view->render('accountant/landownersGraphpage',$name,$getLandownerTeaSupply);
     }
-    function requests(){
+    function getTeaDeatilsforBarchart($lid){
+        $_POST['lid']=$lid;
+        $getLandownerTeaSupply=$this->model->getLandownerTeaSupply();
+        $json_arr=json_encode($getLandownerTeaSupply);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+    function requests(){ //advance requests
         if(($_SERVER['REQUEST_METHOD']=='POST')){
             if($_POST['action']=='Reject'){
                 $result=$this->model->rejecttAdvanceRequest();
@@ -153,6 +172,25 @@ class Accountant extends Controller{
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
     } 
+    // tot tea sales for last 30 days
+    function totSales30(){
+        $tblResult = $this->model->totSales30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    } 
+
+    function expenses30(){ // NOT DEVELOPED
+        $result1 = $this->model->instockExp30();
+        $result2 = $this->model->paymentExp30();
+        $arr=array_merge($result1,$result2);
+        // print_r($tblResult);
+        $json_arr=json_encode($arr);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
     // get advacne request details 
     function getAdvanceRequests(){
         $reslt=$this->model->getAdvanceRequests();
@@ -225,13 +263,14 @@ class Accountant extends Controller{
     //get all the details to the payment form 
     function loadPayment(){
         $names=$this->model->getLandownerNamePayment();//get the name of the landowner for the payment form 
-        //$lastPaymentDate=$this->model->getLastPaymentDate();
+        
         $teaCollection=$this->model->getteaCollection();//get the details of the tea handed over to the factory by lid in that month
         $monthlyTPrice=$this->model->getmonthlyTPrice();
         $fertilizer=$this->model->getFertilizer();
         $fertilizerPrice=$this->model->getFertilizerPrice();
         $advance=$this->model->getAdvance();
         $arr=array_merge($names,$teaCollection,$monthlyTPrice,$fertilizer,$fertilizerPrice,$advance);
+        
         $json_arr=json_encode($arr);
         // $json_arr2=json_encode($reslt);
         //echo gettype($lastPaymentDate);
@@ -267,6 +306,8 @@ class Accountant extends Controller{
         if(($_SERVER['REQUEST_METHOD']=='POST')){
             $result = $this->model->setPayment();
             if($result==true){
+                //$this->getNotificationCount();
+                //$this->view->showPage('accountant/pdf');
                 $_POST['success']=1;
             }
             else{
@@ -277,6 +318,29 @@ class Accountant extends Controller{
             echo "failed to add POST not set";
         }
         
+    }
+
+    function getPayment(){ // get the details of payments to payment form of make payment
+        $reslt=$this->model->getPayment();
+        $json_arr=json_encode($reslt);
+        echo $json_arr;
+    }
+
+    function deletePayment(){//delete a row from payment table
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $result = $this->model->deletePayment();
+            if($result==true){
+                
+            }
+            else{
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to delete";
+            }
+        }
+        else{
+            echo "Data was not passed to the controller";
+        }
     }
 }
 

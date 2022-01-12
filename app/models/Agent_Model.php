@@ -7,6 +7,7 @@ class Agent_Model extends Model{
         parent::__construct();
     }
     
+    //edit profile
     function editProfile() {
         $contact_number = $_SESSION['contact_number'];
         $name = $_SESSION['name'];
@@ -15,6 +16,7 @@ class Agent_Model extends Model{
         $this->db->runQuery($query);
     }
 
+    //check password
     function checkPassword($data) {
         $user_id = $_SESSION['user_id'];
         $query = "SELECT * FROM user WHERE user_id='$user_id'";
@@ -29,6 +31,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //change password
     function changePassword($data = []) {
         $new_password = $data['new_password'];
         $contact_number = $_SESSION['contact_number'];
@@ -42,11 +45,12 @@ class Agent_Model extends Model{
         }
     }
 
-    function availableListTable(){
-        $route_no=$_SESSION['route']; 
-        $query = "SELECT user_id, no_of_estimated_containers FROM landowner WHERE route_no='$route_no' AND landowner_type='indirect_landowner' AND tea_availability=1 ";
+    //check whether the agent is available
+    function checkAvailability($agent_id){  
+        // print_r($agent_id)      ;
+        $query = "SELECT availability FROM agent WHERE emp_id='$agent_id'";
         $row = $this->db->runQuery($query);
-        
+
         if($row) {
             return $row;
         }else {
@@ -54,6 +58,193 @@ class Agent_Model extends Model{
         }
     }
 
+    //make the unavailable agent available
+    function availableAgent(){
+        $agent_id = $_SESSION['user_id'];
+        $query = $next_query = "UPDATE agent SET availability='1' WHERE emp_id='$agent_id'";
+         $this->db->runQuery($query);
+
+    }
+
+    //get details to display tea available list
+    function availableListTable(){
+        $route_no=$_SESSION['route']; 
+        $agent_id = $_SESSION['user_id'];
+        
+                  
+        $query = "SELECT landowner.user_id, landowner.no_of_estimated_containers, 
+        landowner.route_no, user.address
+                 FROM landowner INNER JOIN user 
+                 ON landowner.user_id = user.user_id                
+                 WHERE landowner.route_no='$route_no' AND landowner.landowner_type='indirect_landowner' 
+                AND landowner.tea_availability=1 ";
+       
+    //    SELECT request.request_id, request.request_type, request.lid, 
+    //              fertilizer_request.amount FROM request 
+    //               INNER JOIN fertilizer_request
+    //               ON  request.request_id = fertilizer_request.request_id                   
+    //              WHERE request.lid IN 
+    //             (SELECT user_id FROM landowner WHERE route_no = '$route_no' OR route_no = '$assign_route') 
+    //             AND request.response_status = 'accept' AND request.complete_status = 0
+
+        $row = $this->db->runQuery($query);
+                
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+
+    //assign default values when not appended assigned routes
+    function setAssignDefault(){
+    $agent_id = $_SESSION['user_id'];
+
+    $query = "UPDATE agent SET is_rejected = '-1', assigned_routes = '-1' WHERE emp_id = '$agent_id'";
+    $this->db->runQuery($query);
+
+    }
+
+    //get the is_rejected value
+    function isReject(){
+        $agent_id = $_SESSION['user_id'];
+
+        $query = "SELECT is_rejected FROM agent WHERE emp_id= '$agent_id'";
+        $row=$this->db->runQuery($query);
+
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+
+    //get the notification confirmation
+    function isNotificationRejected($notification_id) {
+        $query = "SELECT is_accepted FROM notification WHERE notification_id = '$notification_id'";
+        $row = $this->db->runQuery($query);
+        return $row;
+    }
+
+    //Confirm the route Assign
+    function confirmRouteAssign($data) {
+        $isRejected = $data['isRejected'];
+        $notification_id = $data['notification_id'];
+        $agent_id = $_SESSION['user_id'];
+        $query = "UPDATE agent SET is_rejected='$isRejected' WHERE emp_id = '$agent_id'";
+        $this->db->runQuery($query);
+        if($isRejected == 0) {
+            //Reject athoer agents
+            $query = "UPDATE agent SET assigned_routes='-1' WHERE is_rejected='-1'";
+            $this->db->runQuery($query);
+
+            //Accept the notification
+            $query = "UPDATE notification SET is_accepted='1' WHERE notification_id='$notification_id'";
+            $this->db->runQuery($query);
+        }
+    }
+    //get assign route for the agent (if there are any)
+    function getAssignedRoute(){
+        $agent_id = $_SESSION['user_id'];
+
+        $query = "SELECT assigned_routes FROM agent WHERE emp_id= '$agent_id'";
+        $row=$this->db->runQuery($query);
+
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+    
+    //get the agent id incharge of the assigned route
+    function getAssignedRouteAgent(){
+        $assign_route_res = $this->getAssignedRoute();
+        $assign_route=$assign_route_res[0]['assigned_routes'];
+        
+        $query = "SELECT emp_id FROM agent WHERE route_no = '$assign_route'";
+        $row = $this->db->runQuery($query);
+                
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+
+    }
+
+    //appending available landowner list of assigned route
+    function assignAvailableListTable(){
+        $assign_route_res = $this->getAssignedRoute();
+        $assign_route=$assign_route_res[0]['assigned_routes'];       
+        $route_no=$_SESSION['route']; 
+       
+        $query = "SELECT landowner.user_id, landowner.no_of_estimated_containers, 
+                 landowner.route_no, user.address
+                 FROM landowner INNER JOIN user 
+                 ON landowner.user_id = user.user_id                
+                 WHERE (landowner.route_no='$route_no' OR landowner.route_no='$assign_route')  AND landowner.landowner_type='indirect_landowner' 
+                 AND landowner.tea_availability=1";
+
+        $row = $this->db->runQuery($query);
+                        
+        if($row) {
+            return $row;
+        }else {
+            return 0;            
+        }
+
+    }
+
+     //appending fertilizer delivery list of assigned route
+    function assignFertilizerdeliveryListTable(){
+        $route_no=$_SESSION['route'];   
+        $assign_route_res = $this->getAssignedRoute();
+        $assign_route=$assign_route_res[0]['assigned_routes'];  
+
+        $query = "SELECT request.request_id, request.request_type, request.lid, 
+                 fertilizer_request.amount FROM request 
+                  INNER JOIN fertilizer_request
+                  ON  request.request_id = fertilizer_request.request_id                   
+                 WHERE request.lid IN 
+                (SELECT user_id FROM landowner WHERE route_no = '$route_no' OR route_no = '$assign_route') 
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
+                
+        $row = $this->db->runQuery($query);
+        // return $row;
+        // print_r($row);
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }
+    }
+
+     //appending advance delivery list of assigned route
+    function assignAdvancedeliveryListTable(){
+        $route_no=$_SESSION['route'];   
+        $assign_route_res = $this->getAssignedRoute();
+        $assign_route=$assign_route_res[0]['assigned_routes'];  
+
+        $query = "SELECT request.request_id, request.request_type, request.lid, 
+                 advance_request.amount_rs FROM request 
+                  INNER JOIN advance_request
+                  ON  request.request_id = advance_request.request_id                   
+                 WHERE request.lid IN 
+                (SELECT user_id FROM landowner WHERE route_no = '$route_no' OR route_no = '$assign_route') 
+                AND request.response_status = 'accept' AND request.complete_status = 0 ";
+                
+        $row = $this->db->runQuery($query);
+        // return $row;
+        // print_r($row);
+        if($row) {
+            return $row;
+        }else {
+            return 0;
+        }                       
+    }
+
+    //add initial tea weight by agent
     function updateWeight($data = []){
         $landowner_id = $data['lid'];
         $weight = $data['initial_weight'];
@@ -67,6 +258,7 @@ class Agent_Model extends Model{
 
     }
 
+    //get details to display in fertilizer request table
     function fertilizerdeliveryListTable(){
         $route_no=$_SESSION['route'];        
         $query = "SELECT request.request_id, request.request_type, request.lid, 
@@ -87,8 +279,9 @@ class Agent_Model extends Model{
         }
     }
 
+    //get details to display advance requests table
     function advancedeliveryListTable(){
-        $route_no=$_SESSION['route'];        
+         $route_no=$_SESSION['route'];        
         $query = "SELECT request.request_id, request.request_type, request.lid, 
                  advance_request.amount_rs FROM request 
                   INNER JOIN advance_request
@@ -104,9 +297,10 @@ class Agent_Model extends Model{
             return $row;
         }else {
             return 0;
-        }
+        }                       
     }
 
+    //add fertilizer requests when completed
     function updateFertilizerRequest($data = []){
         $date = $data['date'];
         $request_id = $data['rid'];        
@@ -119,6 +313,7 @@ class Agent_Model extends Model{
         $this->db->runQuery($query2);
     }
 
+//add advance requests when completed
     function updateAdvanceRequest($data = []){
         $date = $data['date'];
         $request_id = $data['rid'];        
@@ -132,6 +327,7 @@ class Agent_Model extends Model{
 
     }
 
+    //search previous tea updates
     function searchTeaUpdates($data=[]){
         $date = $data['date'];
         $lid = $data['lid'];
@@ -146,6 +342,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //search previous fertilizer deliveries
     function searchFertilizerUpdates($data=[]){
         $date = $data['date'];
         $lid = $data['lid'];
@@ -166,6 +363,7 @@ class Agent_Model extends Model{
         }
     }
 
+    //search previous advance deliveries
     function searchAdvanceUpdates($data=[]){
         $date = $data['date'];
         $lid = $data['lid'];
@@ -186,7 +384,7 @@ class Agent_Model extends Model{
         }
     }
  
-
+    //storing the emergency message needed to be sent to the manager
     function storeEmergencyMessage($data=[]){
         $message = $data['message'];
         $sender_id = $data['agent_id'];
@@ -195,9 +393,80 @@ class Agent_Model extends Model{
          receiver_type, notification_type, sender_id) VALUES
          ('0','0','$message','manager','emergency','$sender_id')"; 
          //have not added receiver_id and receive_datetime,Check into that.
+         $query1 = "UPDATE agent SET availability='0' WHERE emp_id='$sender_id'";
          $this->db->runQuery($query);
+         $this->db->runQuery($query1);
          //add the query to make the agent unavailable         
     }
+
+     //Get Notification
+     function getNotification($data = [])
+     {
+         $notification_type = $data['notification_type'];
+         if (isset($data['notification_id'])) {
+             $notification_id = $data['notification_id'];
+             $query = "UPDATE notification 
+             SET read_unread=1 WHERE notification_id='$notification_id'";
+             $this->db->runQuery($query);
+         }
+         if ($notification_type == 'full') {
+             $query = "SELECT * FROM notification 
+             WHERE receiver_type='Agent' ORDER BY read_unread ASC, notification_id DESC";
+         } else if ($notification_type == 'half') {
+             $query = "SELECT * FROM notification 
+             WHERE receiver_type='Agent' AND read_unread=0 ORDER BY notification_id DESC";
+         }
+ 
+         $row = $this->db->runQuery($query);
+ 
+         if (isset($data['notification_id'])) {
+             if (count($row)) {
+                 return $row;
+             } else {
+                 return false;
+             }
+         }
+ 
+         $query = "UPDATE notification
+                 SET seen_not_seen=1 WHERE seen_not_seen=0";
+         $this->db->runQuery($query);
+         $_SESSION['NotSeenCount'] = '';
+         echo '<p>' . $_SESSION["NotSeenCount"] . '</p>';
+         if (count($row)) {
+             return $row;
+         } else {
+             return false;
+         }
+     }
+ 
+     function updateReadNotification($notification_id)
+     {
+         $query = "UPDATE notification 
+         SET read_unread=1 WHERE notification_id='$notification_id'";
+         $this->db->runQuery($query);
+ 
+         $query = "SELECT * FROM notification 
+             WHERE receiver_type='Agent' ORDER BY notification_id DESC";
+ 
+         $row = $this->db->runQuery($query);
+         if (count($row)) {
+             return $row;
+         }
+     }
+     function getNotificationCount()
+     {
+         $query = "SELECT * FROM notification 
+         WHERE receiver_type='Agent' AND seen_not_seen=0";
+         $row = $this->db->runQuery($query);
+ 
+         if (count($row)) {
+             $_SESSION['NotSeenCount'] = count($row);
+             if (isset($_GET['getCount']))
+                 echo $_SESSION['NotSeenCount'];
+         } else {
+             $_SESSION['NotSeenCount'] = 0;
+         }
+     }
 }
 
 

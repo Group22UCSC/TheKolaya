@@ -1,5 +1,5 @@
 .middle-container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 .middle-container > div {

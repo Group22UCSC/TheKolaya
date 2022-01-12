@@ -9,7 +9,7 @@ class Admin extends Controller
 
     function index()
     {
-        $this->view->showPage('Admin/Admin');
+        $this->view->showPage('admin/admin');
     }
 
     public function viewAccount()
@@ -17,15 +17,19 @@ class Admin extends Controller
         // $this->view->showPage('Manager/viewAccount');
         $result = $this->model->availablelistTable();
         // print_r($result);
-        $this->view->render('Admin/viewAccount', $result);
+        $this->view->render('admin/viewAccount', $result);
     }
 
-   
+    public function viewAccount1()
+    {
+        $this->view->showPage('admin/viewAccount1');
+    }
+
     public function updateAccount()
     {
         
         $result = $this->model->availablelistTable();
-        $this->view->render('Admin/updateAccount', $result);
+        $this->view->render('admin/updateAccount', $result);
 
 
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -38,13 +42,13 @@ class Admin extends Controller
                 'mobile_number' => trim($_POST['contact_number']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
-
-
-                'contact_number_err' => '',
+                'password_err' => '',
                 'confirm_password_err' => ''
+
+
             ];
 
-
+             
              if (strlen($data['password']) < 6) {
                     $data['password_err'] = "Please enter at least 6 characters";
                 }
@@ -104,7 +108,7 @@ class Admin extends Controller
     {
         
         $result = $this->model->deleteTable();
-        $this->view->render('Admin/deleteAccount', $result);
+        $this->view->render('admin/deleteAccount', $result);
 
 
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -137,19 +141,19 @@ class Admin extends Controller
 
     public function admin()
     {
-        $this->view->showPage('Admin/Admin');
+        $this->view->showPage('admin/Admin');
     }
 
     public function setTeaPrice()
     {
-        $this->view->showPage('Admin/setteaprice');
+        $this->view->showPage('admin/setteaprice');
     }
 
     //Create Accounts
 
     public function createAccountSelect()
     {
-        $this->view->showPage('Admin/createAccountSelect');
+        $this->view->showPage('admin/createAccountSelect');
     }
 
   
@@ -274,5 +278,38 @@ class Admin extends Controller
     function enterPassword()
     {
         $this->view->render('user/profile/enterPassword');
+    }
+
+
+
+
+      public $buyer = [
+        'name' => '',
+        'reg_id' => '',
+
+        'mobile_number' => '',
+
+        'password' => '',
+        'confirm_password' => '',
+
+        'confirm_password_err' => '',
+        'reg_id_err' => '',
+        'mobile_number_err' => '',
+    ];
+     public function addbuyer()
+    {
+        $result = $this->model->buyerTable();
+        $this->view->render('admin/addbuyer', $result);
+
+         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->buyer['reg_id'] = trim($_POST['buyer_id']);
+            $this->buyer['name'] = trim($_POST['name']);
+            $this->buyer['mobile_number'] = trim($_POST['contact_no']);
+
+             $this->model->buyerRegistration($this->buyer);
+           }
+
+
     }
 }

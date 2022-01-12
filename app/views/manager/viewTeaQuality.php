@@ -1,169 +1,80 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<?php include 'top-container.php'; ?>
 
-<head>
-  <meta charset="UTF-8">
-  <title><?php echo TITLE ?></title>
-  <?php include 'styles-titleIcon-included.php' ?>
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/form-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/manageRequests.css">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/manager/viewTeaQuality.css">
 
-<body>
-  <?php include 'top-container.php'; ?>
-  <div class="title-container">
-    <h2>Manage Request</h2>
-  </div>
-  <!-- .middle-container .request-table .get-id .table-element -->
-  <div class="middle-container">
-    <div class="request-table hello" id="allRequest">
-      <div class="table-wrapper" style="margin-top: 30px;">
-        <div class="table_header">Fertilizer Request</div>
-        <div class="table">
-          <div class="row tabel-header">
-            <div class="cell">Date</div>
-            <div class="cell">Landowner ID</div>
-            <div class="cell">Name</div>
-            <div class="cell">Amount(kg)</div>
-          </div>
-          <?php
-          if (!empty($data)) {
-            for ($i = 0; $i < count($data); $i++) {
-              echo '<div class="row table_row" id="' . $data[$i]['request_id'] . '">
-                      <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
-                      <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
-                      <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
-                      <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
-                    </div>';
+
+
+<div class="middle">VIEW TEA QUALITY</div>
+
+<div class="middle-conatiner">
+
+  <div class="name1">
+
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+    <table id="myTable">
+      <tr class="header">
+        <th style="width:16.66%;">Name</th>
+        <th style="width:16.66%;">ID</th>
+        <th style="width:16.66%;">Type</th>
+
+      </tr>
+      <div class="vertical">
+
+        <?php
+        $x = count($data);
+        for ($i = 0; $i < $x; $i++) {
+          echo '<tr id="tea" data-href-tea="">
+                <td>' . $data[$i]['name'] . '</td>
+                <td>' . $data[$i]['user_id'] . '</td>
+                <td>' . $data[$i]['landowner_type'] . '</td>
+              </tr>';
+        }
+        ?>
+
+
+
+      </div>
+
+    </table>
+
+
+
+
+    <!--  // script for filtering -->
+    <script>
+      function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
             }
           }
-          ?>
-        </div>
-      </div>
-      <?php
-      if (empty($data)) {
-        echo '<div id="not_display_request_yet" style="border-radius: 0px; color:red; background-color: white; margin-bottom:50px" class="table_header" >There is no Request to update</div>';
+        }
       }
+    </script>
 
-      ?>
 
 
-    </div>
-
-    <div class="modal">
-      <div class="modal-content">
-        <span class="close-button">×</span>
-        <div class="Landowner-details" style="margin-top:70px;">
-          <div class="table-wrapper">
-            <div class="table_header">Previous Fertilizer Request</div>
-            <div class="table" id="lanowner_details_table">
-              <!-- <div class="row tabel-header">
-                <div class="cell">Previous Request Date</div>
-                <div class="cell">Monthly Tea Amount(kg)</div>
-              </div>
-              <div id="landowner_details">
-              </div> -->
-            </div>
-          </div>
-          <div class="modal-btn-container">
-            <button class="landowner_tea_rate">Lanadowner's Tea Rate</button>
-            <button class="confirm_form">Confirm Request</button>
-          </div>
-        </div>
-
-        <div class="landowner-rate-outside" style="display: none; margin-top:100px;">
-          <div class="landowner-rate" id="tea-rate">
-            <!-- here replace the data comes form ajax -->
-          </div>
-          <div class="modal-btn-container">
-            <button class="previous_requests">Previous Requests</button>
-            <button class="confirm_form">Confirm Request</button>
-          </div>
-        </div>
-
-        <div class="from-container-outside" style="display: none;">
-          <div class="form-container">
-            <div class="title">Request Confirmation Form</div>
-            <form action="#" id="request_confirm_form">
-              <div class="form">
-                <div class="inputfield">
-                  <label>Landowner ID</label>
-                  <input type="text" class="input" id="landowner-id" name="landowner_id">
-                </div>
-                <div class="inputfield">
-                  <label>Comment</label>
-                  <textarea class="textarea" name="comment"></textarea>
-                </div>
-                <div class="inputfield">
-                  <input type="submit" value="Accept" class="accept-btn confirmBtn" name="accept_btn" id="request_accept_btn">
-                </div>
-                <div class="inputfield">
-                  <input type="submit" value="Decline" class="decline-btn confirmBtn" name="decline_btn" id="request_decline_btn">
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal-btn-container">
-            <button class="previous_requests">Previous Requests</button>
-            <button class="landowner_tea_rate">Lanadowner's Tea Rate</button>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-    <!-- <div class="from-container-outside">
-      <div class="form-container">
-        <div class="title">Request Confirmation Form</div>
-        <form action="#" id="request_confirm_form">
-          <div class="form">
-            <div class="inputfield">
-              <label>Landowner ID</label>
-              <input type="text" class="input" id="landowner-id" name="landowner_id">
-            </div>
-            <div class="inputfield">
-              <label>Comment</label>
-              <textarea class="textarea" name="comment"></textarea>
-            </div>
-            <div class="inputfield">
-              <input type="submit" value="Accept" class="accept-btn confirmBtn" name="accept_btn" id="request_accept_btn">
-            </div>
-            <div class="inputfield">
-              <input type="submit" value="Decline" class="decline-btn confirmBtn" name="decline_btn" id="request_decline_btn">
-            </div>
-          </div>
-        </form>
-      </div>
-    </div> -->
 
 
   </div>
-  <?php include 'script-included.php' ?>
-  <script>
 
-  </script>
- <!--  <script>
-    $('.landowner_tea_rate').click(function() {
-      $('.Landowner-details').hide();
-      $('.from-container-outside').hide();
-      $('.landowner-rate-outside').show();
-    });
+</div>
 
-    $('.previous_requests').click(function() {
-      $('.from-container-outside').hide();
-      $('.landowner-rate-outside').hide();
-      $('.Landowner-details').show();
-    });
 
-    $('.confirm_form').click(function() {
-      $('.Landowner-details').hide();
-      $('.landowner-rate-outside').hide();
-      $('.from-container-outside').show();
-    });
-  </script> -->
-
-  <?php include 'js/supervisor/manageRequestJs.php' ?>
-  <?php include 'js/supervisor/table2-js.php' ?>
-  <?php include 'bottom-container.php'; ?>
+<div class="forms">
+  <?php include 'viewTeaQuality1.php'; ?>
+</div>
+<?php include 'js/manager/viewTeaQualityJs.php'?>
+<?php include 'bottom-container.php'; ?>

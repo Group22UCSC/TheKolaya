@@ -115,7 +115,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-
+    // *********** dashbboard boxes  *******************
 
     //get the auction income of the last 30 days
     function AuctionIncome30(){
@@ -127,9 +127,6 @@ class Accountant_Model extends Model {
         //details are not coming for 30 days
         $row = $this->db->selectQuery($query);
         
-        
-        //echo gettype($row);
-        //$var1 = json_encode($row, JSON_FORCE_OBJECT);
         if($row){
             return $row;
         }else {
@@ -137,6 +134,61 @@ class Accountant_Model extends Model {
         }
     }
     
+    //get the in-stock(fertilizer,firewood) expenses of the last 30 days
+    function instockExp30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `price_for_amount` FROM `in_stock` WHERE in_date>= '$dateBack30' AND in_date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+
+
+    function totSales30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `sold_amount`FROM `auction` WHERE date>= '$dateBack30' AND date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+    
+    // *********** END OF  dashbboard boxes  *******************
+
+
+    //get the payment expenses of the last 30 days
+    function  paymentExp30(){
+        // $from=date('Y-m-d',strtotime($_POST['from']));GGG
+		// 		$to=date('Y-m-d',strtotime($_POST['to']));
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT `final_payment` FROM `monthly_payment` WHERE Date>= '$dateBack30' AND Date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
+        
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
+    
+
     function getAdvanceRequests(){
         $sql="SELECT request.request_id,request.request_date,request.lid,advance_request.amount_rs,user.name
         FROM request 
@@ -402,7 +454,7 @@ class Accountant_Model extends Model {
         $last  = date('Y-m-t',$date);
         $sql="SELECT fertilizer_request.amount FROM fertilizer_request
             INNER JOIN request ON request.request_id=fertilizer_request.request_id
-         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='fertilizer' ";
+         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='fertilizer' AND request.response_status='accept'";
         $row=$this->db->selectQuery($sql);
         $arr=array();
         $arr[0]["amount"]=0; //default amount of fertilizer = 0
@@ -444,7 +496,7 @@ class Accountant_Model extends Model {
         $last  = date('Y-m-t',$date);
         $sql="SELECT advance_request.amount_rs FROM advance_request
             INNER JOIN request ON request.request_id=advance_request.request_id
-         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='advance' ";
+         WHERE request.lid='{$user_id}' AND (request.confirm_date BETWEEN '{$first}' AND '{$last}') AND request.complete_status=1 AND request.request_type='advance' AND request.response_status='accept' ";
         $row=$this->db->selectQuery($sql);
         $arr=array();
         $arr[0]["amount"]=0; //default amount of fertilizer = 0
@@ -477,7 +529,7 @@ class Accountant_Model extends Model {
         $final = $_POST['final'];
         $emp_id = $_SESSION['user_id'];
 
-        $query = "INSERT INTO monthly_payment VALUES ('{$date}','{$lid}','{$year}','{$month}','{$fertilizer}','{$advance}','{$gIncome}','{$final}','{$cheque}','{$emp_id}')";
+        $query = "INSERT INTO monthly_payment (`Date`, `lid`, `year`, `month`, `fertilizer_expenses`, `advance_expenses`, `income`, `final_payment`, `cheque_Ref_No`, `emp_id`)VALUES ('{$date}','{$lid}','{$year}','{$month}','{$fertilizer}','{$advance}','{$gIncome}','{$final}','{$cheque}','{$emp_id}')";
         $row = $this->db->insertQuery($query);
         //print_r($row);
         if ($row) {
@@ -487,8 +539,78 @@ class Accountant_Model extends Model {
         }
     }
 
+    //getting payment details
+    function getPayment(){
+        $sql="SELECT * FROM monthly_payment ORDER BY Date DESC";
+        $row=$this->db->selectQuery($sql);
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+    function genLandownersMPayment(){
+        $lid=$_POST['lid'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
+        // return $lid;
+        $sql="SELECT * FROM monthly_payment WHERE  lid='{$lid}' AND year='{$year}' AND month='{$month}' ";
+        // $sql="SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC ";
+        $row=$this->db->runQuery($sql);
+        // return $row[0]['lid'] ?? 'default value';
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function genLandownersTeaDetails(){
+        $lid=$_POST['lid'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
+        // return $lid;
+        $date= strtotime($year."-".$month."-01" );
+        $first = date('Y-m-01',$date); // hard-coded '01' for first day
+        $last  = date('Y-m-t',$date);
+        $sql="SELECT * FROM `tea` WHERE lid='{$lid}' AND date BETWEEN '{$first}' AND '{$last}'";
+        // $sql="SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC ";
+        $row=$this->db->runQuery($sql);
+        // return $row[0]['lid'] ?? 'default value';
+        if($row){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function deletePayment(){
+        $date=$_POST['date'];
+        $lid=$_POST['lid'];
+        $year=$_POST['year'];
+        $month=$_POST['month'];
+        $query = " DELETE FROM `monthly_payment` WHERE lid='{$lid}' AND year='{$year}' AND month='{$month}' ";
+        $result=$this->db->deleteQuery($query);
+        echo $result;
+    }
 
 
+    function getLandownersName(){//name of the landowner for landowner graph page
+        $lid=$_POST['lid'];
+        $query = "SELECT user_id,name FROM `user` WHERE user_id='{$lid}'";
+        $result=$this->db->selectQuery($query);
+        return $result;
+    }
 
+    //tea supply of the landowner for landowner graph page
+    function getLandownerTeaSupply(){
+        $lid=$_POST['lid'];
+        $query = "SELECT date,net_weight,quality FROM `tea` WHERE lid='{$lid}'";
+        $result=$this->db->selectQuery($query);
+        return $result;
+    }
 }
 ?>

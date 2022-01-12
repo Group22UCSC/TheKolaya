@@ -1,3 +1,4 @@
 function goBack(){
-    location.replace("agent/viewPreviousUpdates");
+    location.replace("viewPreviousUpdates");
+    //hello world
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/agent.css">  
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/deliverylist.css">
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/unavailableNotice.css">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/searchbar.css">  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>                
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -16,9 +17,11 @@
 <body>
 <?php include 'topContainer.php';?>
 <div class="topic">Request  Delivery  List </div>
-<div class="deliverylist">
-    <div class = fertilizer_topic> Fertilizer </div>
-    <form class="searchform">    
+<?php include 'unavailableNotice.php';?>
+<?php include 'agentUnavailableNotice.php';?>
+<div class="deliverylist" id="deliveryList">
+    <div class = fertilizer_topic id="fertilizer_topic"> Fertilizer </div>    
+    <form class="searchform" id="fertilizersearchform">    
     <input type="text" id="searchf" placeholder="Enter Landowner ID.." onkeyup="searchFertilizerTable()">
     <!-- <input type="submit" value="search" id="submit"> -->
 </form>
@@ -48,9 +51,9 @@
       ?>
     </table>
       </div>
-      <div class="deliverylist">
-      <div class = advance_topic> Advance </div>
-      <form class="searchform">    
+      <div class="deliverylist" id="deliveryList">
+      <div class = "advance_topic" id="advance_topic"> Advance </div>     
+      <form class="searchform" id="advancesearchform">    
     <input type="text" id="searcha" placeholder="Enter Landowner ID.." onkeyup="searchAdvanceTable()">
     <!-- <input type="submit" value="search" id="submit"> -->
 </form>
@@ -86,6 +89,44 @@
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
+      if(<?php echo $a?> == '0' && <?php echo $f?> == '0'){
+        // console.log('zero landowners');
+        $('#fertilizersearchform').hide();
+        $('#advancesearchform').hide();
+        $('#fertilizer_delivery_table').hide();
+        $('#advance_delivery_table').hide();
+        $('#advance_topic').hide();
+        $('#fertilizer_topic').hide();
+        $('#unavailable_notice').show();
+        $('#note').html("Sorry, No fertilizer or advance requests to deliver!");
+      }
+      else if(<?php echo $a?> == '0' && <?php echo $f?> != '0'){              
+        $('#advancesearchform').hide();       
+        $('#advance_delivery_table').hide();    
+        $('#advance_topic').hide();     
+        $('#unavailable_notice').show();
+        $('#note').html("Sorry, No advance requests to deliver!");
+      }
+      else if(<?php echo $a?> != '0' && <?php echo $f?> == '0') {               
+        $('#fertilizersearchform').hide();       
+        $('#fertilizer_delivery_table').hide();             
+        $('#fertilizer_topic').hide();
+        $('#unavailable_notice').show();
+        $('#note').html("Sorry, No fertilizer requests to deliver!");
+      }
+
+      if(<?php echo $_SESSION['availability']?> == '0'){
+        console.log('zero landowners');
+        $('#fertilizersearchform').hide();
+        $('#advancesearchform').hide();
+        $('#fertilizer_delivery_table').hide();
+        $('#advance_delivery_table').hide();
+        $('#advance_topic').hide();
+        $('#fertilizer_topic').hide();
+        $('#unavailable_notice').hide();
+        $('#agent_unavailable_notice').show();
+      }
+      
       $('#myBtn').click(function(event) {
         event.preventDefault();
         var form = $('#deliveryUpdateForm').serializeArray();

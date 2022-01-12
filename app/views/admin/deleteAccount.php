@@ -106,7 +106,7 @@
 <div class="k1">  
 <div class="wrapper1">
     <div class="title">  Delete Form  </div>
-      <form action="<?php echo URL?>admin/deleteAccount" method="POST">
+      <form action="<?php echo URL?>admin/deleteAccount" method="POST"  id="deleteForm">
        <div class="form">
                <div class="inputfield">
                  <label> Name</label>
@@ -131,20 +131,22 @@
       
                <div class="last">
                   <div class="b">
-                  <input type="submit" value="Delete" class="btn">
+                   <input type="submit" value="Delete" class="btn" id="deleteAccountBtn">
                   </div>
            
 
-                  <div class="a">
+              <!--     <div class="a">
                     <a href="<?php echo URL?>admin/admin"><input type="submit" value="Discard" class="btn"></a>
                   </div>
 
               </div>
-
+ -->
      </form>
     </div>
   </div> 
 </div>
 
 
+<?php include 'js/admin/deletejs.php';?>
+<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 <?php include 'bottom-container.php';?>

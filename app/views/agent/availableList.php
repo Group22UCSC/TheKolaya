@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/agent.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/availablelist.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/unavailableNotice.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/searchbar.css">
   <script src="<?php echo URL ?>vendors/js/agent/dashboard.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -26,24 +27,30 @@
   } else {
     $x = "0";
   }
+  // $x = count($data);
   ?>
   <div class="topic">Tea Available Landowner List </div>
-  <form class="searchform">
+  <form class="searchform" id="searchform">
     <input type="text" id="search" placeholder="Enter Landowner ID.." onkeyup="searchTable()">
     <!-- <input type="submit" value="search" id="submit"> -->
   </form>
-  <div class="availablelist">
+  <div class="availablelist">    
+    <?php include 'unavailableNotice.php';?>
+    <?php include 'agentUnavailableNotice.php';?>
     <table class="availabletable" id="availabletable">
       <tr>
         <td class="th">Landowner ID</td>
         <td class="th">Container Estimation</td>
+        <td class="th">Address</td>
+        <td class="th">Route</td>
       </tr>
       <?php
-
       for ($i = 0; $i < $x; $i++) {
         echo '<tr id="tea" data-href-tea="">
                     <td>' . $data[$i]['user_id'] . '</td>
                     <td>' . $data[$i]['no_of_estimated_containers'] . '</td>
+                    <td>' . $data[$i]['address'] . '</td>
+                    <td>' . $data[$i]['route_no'] . '</td>
                     
                 </tr>';
       }
@@ -51,12 +58,25 @@
     </table>
   </div>
   <div class="forms">
-    <?php include 'teaCollection.php'; ?>
+    <?php include 'teaCollection.php'; ?>      
   </div>
   <script src="<?php echo URL ?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
+      if(<?php echo $x?> == '0'){
+        console.log('zero landowners');
+        $('#searchform').hide();
+        $('#availabletable').hide();
+        $('#unavailable_notice').show();
+      }
+      if(<?php echo $_SESSION['availability']?> == '0'){
+        console.log('zero landowners');
+        $('#searchform').hide();
+        $('#availabletable').hide();
+        $('#unavailable_notice').hide();
+        $('#agent_unavailable_notice').show();
+      }
       $('#myBtn').click(function(event) {
         event.preventDefault();
         var form = $('#teaUpdateForm').serializeArray();
@@ -137,14 +157,15 @@
 
   <script>
     var table = document.getElementById('availabletable');
-
+    
+    //when a table row is clicked, the landowner gets autofilled in the form
     for (var i = 1; i < table.rows.length; i++) {
       table.rows[i].onclick = function() {
         //rIndex = this.rowIndex;
         document.getElementById("lid").value = this.cells[0].innerHTML;
       };
     }
-
+    //search for a landowner
     function searchTable() {
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("search");

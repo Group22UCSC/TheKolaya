@@ -1,13 +1,15 @@
 <?php
 
-class Manager_Model extends Model {
+class Manager_Model extends Model
+{
 
     function __construct()
     {
         parent::__construct();
     }
-    
-    function editProfile() {
+
+    function editProfile()
+    {
         $contact_number = $_SESSION['contact_number'];
         $name = $_SESSION['name'];
         $user_id = $_SESSION['user_id'];
@@ -15,133 +17,61 @@ class Manager_Model extends Model {
         $this->db->runQuery($query);
     }
 
-    function checkPassword($data) {
+    function checkPassword($data)
+    {
         $user_id = $_SESSION['user_id'];
         $query = "SELECT * FROM user WHERE user_id='$user_id'";
-        
+
         $row = $this->db->runQuery($query);
         $hashed_password = $row[0]['password'];
 
-        if(password_verify($data['password'], $hashed_password)) {
+        if (password_verify($data['password'], $hashed_password)) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
 
-    function changePassword($data = []) {
+    function changePassword($data = [])
+    {
         $new_password = $data['new_password'];
         $contact_number = $_SESSION['contact_number'];
-        
+
         $query = "UPDATE user SET password='$new_password' WHERE contact_number='$contact_number'";
         $row = $this->db->runQuery($query);
-        if($row) {
+        if ($row) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     //Create Account
-    function searchUserContact($contact_number) {
+    function searchUserContact($contact_number)
+    {
         $query = "SELECT * FROM user WHERE contact_number='$contact_number'";
         $row = $this->db->runQuery($query);
-        if($row) {
+        if ($row) {
             return $row[0]['contact_number'];
-        }else {
+        } else {
             return false;
         }
     }
 
-    function searchUserId($user_id) {
+    function searchUserId($user_id)
+    {
         $query = "SELECT * FROM user WHERE user_id='$user_id'";
         $row = $this->db->runQuery($query);
-        if($row) {
+        if ($row) {
             return $row[0]['user_id'];
-        }else {
+        } else {
             return false;
         }
     }
 
-     function availableListTable_landowners(){
-        $query = "SELECT * FROM user WHERE user_type='Land_Owner' AND verify=1";
-        $row = $this->db->runQuery($query);
-        
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
-
-     function viewProduct_instock(){
-        $query = "SELECT * FROM products_in";
-        $row = $this->db->runQuery($query);
-        
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
-
-
-     function view_payments_table(){
-        $query = "SELECT * FROM monthly_payment";
-        $row = $this->db->runQuery($query);
-        
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
-
-
-    function view_instock(){
-        $query = "SELECT * FROM in_stock";
-        $row = $this->db->runQuery($query);
-        
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
-
-      function view_outstock(){
-        $query = "SELECT * FROM out_stock";
-        $row = $this->db->runQuery($query);
-        
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
-
-      function availableListTable(){
-        $query = "SELECT *FROM user WHERE verify=1";
-        $row = $this->db->runQuery($query);
-        
-        if($row) {
-            return $row;
-        }else {
-            return false;
-        }
-    }
-
-
-
-    function getRequests()
+    function availableListTable_landowners()
     {
-        $query = "SELECT request.request_id, request.lid, DATE(request.request_date) AS request_date, user.name, fertilizer_request.amount 
-                FROM user 
-                INNER JOIN request 
-                ON user.user_id=request.lid 
-                INNER JOIN fertilizer_request 
-                ON fertilizer_request.request_id=request.request_id 
-                WHERE request.response_status='receive'";
+        $query = "SELECT * FROM user WHERE user_type='Land_Owner' AND verify=1";
         $row = $this->db->runQuery($query);
 
         if ($row) {
@@ -151,17 +81,113 @@ class Manager_Model extends Model {
         }
     }
 
-    function manageRequests($data)
+    function viewProduct_instock()
     {
-        $request_id = $data['request_id'];
-        $response_status = $data['response_status'];
-        $query = "UPDATE request SET response_status='$response_status' WHERE request_id='$request_id'";
+        $query = "SELECT * FROM products_in";
+        $row = $this->db->runQuery($query);
 
-        $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
     }
 
 
-      function getStock()
+    function view_payments_table()
+    {
+        $query = "SELECT monthly_payment.toDate, 
+       monthly_payment.fromDate,
+       monthly_payment.fertilizer_expenses,
+       monthly_payment.advance_expenses, 
+       monthly_payment.income, 
+       monthly_payment.final_payment, 
+       monthly_payment.emp_id,  
+       monthly_payment.lid ,
+       user.user_id, 
+       user.name
+       FROM monthly_payment
+       INNER JOIN user ON monthly_payment.lid = user.user_id";
+
+        // $query = "SELECT * FROM monthly_payment";
+        $row = $this->db->runQuery($query);
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+    function view_instock()
+    {
+        $query = "SELECT * FROM in_stock";
+        $row = $this->db->runQuery($query);
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function view_outstock()
+    {
+        $query = "SELECT * FROM out_stock";
+        $row = $this->db->runQuery($query);
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function availableListTable()
+    {
+        $query = "SELECT *FROM user WHERE verify=1";
+        $row = $this->db->runQuery($query);
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    // tea quality table
+    function teaQualityTable()
+    {
+        $query = "SELECT landowner.user_id, 
+        landowner.landowner_type,user.user_id, 
+       user.name
+       FROM landowner
+       INNER JOIN user ON landowner.user_id = user.user_id";
+
+        $row = $this->db->runQuery($query);
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function getTeaQuality($landowner_id)
+    {
+        $query = "SELECT quality FROM tea WHERE lid='$landowner_id'";
+        $row = $this->db->runQuery($query);
+
+        if (count($row)) {
+            return $row;
+        } else {
+            false;
+        }
+    }
+
+
+    function getStock()
     {
         $query = "SELECT * FROM stock";
         $row = $this->db->runQuery($query);
@@ -173,7 +199,7 @@ class Manager_Model extends Model {
     }
 
 
-      function getStock2()
+    function getStock2()
     {
         $query = "SELECT * FROM product";
         $row = $this->db->runQuery($query);
@@ -184,29 +210,117 @@ class Manager_Model extends Model {
         }
     }
 
-
-    function storeEmergencyMessage($data=[]){
+    // emergency 
+    function storeEmergencyMessage($data = [])
+    {
         $message = $data['message'];
-        $receiver_id = $data['emp_id'];
-    
+        $sender_id = $data['user_id'];
+
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
-         receiver_type, notification_type, receiver_id) VALUES
-         ('0','0','$message','Agent','emergency root','$receiver_id')"; 
-         //have not added receiver_id and receive_datetime,Check into that.
-         $this->db->runQuery($query);
-         //add the query to make the agent unavailable         
+         receiver_type, notification_type,sender_id) VALUES
+         ('0','0','$message','Agent','emergency','$sender_id')";
+        //have not added receiver_id and receive_datetime,Check into that.
+        $this->db->runQuery($query);
+        //add the query to make the agent unavailable         
     }
 
-     function emergencyTable(){
-        $query = "SELECT * FROM agent WHERE availability=1";
+    function emergencyTable()
+    {
+        $query = "SELECT agent.emp_id, 
+       agent.route_no,
+       agent.availability,
+       user.user_id, 
+       user.name
+       FROM agent
+       INNER JOIN user ON agent.emp_id = user.user_id WHERE availability=1 AND is_rejected=-1";
+
         $row = $this->db->runQuery($query);
-        
-        if($row) {
+
+        if ($row) {
             return $row;
-        }else {
+        } else {
             return false;
         }
     }
 
+    function buyerTable()
+    {
+        $query = "SELECT * FROM buyer ";
+        $row = $this->db->runQuery($query);
 
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //Get Notification
+    function getNotification($data = [])
+    {
+        $notification_type = $data['notification_type'];
+        if (isset($data['notification_id'])) {
+            $notification_id = $data['notification_id'];
+            $query = "UPDATE notification 
+            SET read_unread=1 WHERE notification_id='$notification_id'";
+            $this->db->runQuery($query);
+        }
+        if ($notification_type == 'full') {
+            $query = "SELECT * FROM notification 
+            WHERE receiver_type='Manager' ORDER BY read_unread ASC, notification_id DESC";
+        } else if ($notification_type == 'half') {
+            $query = "SELECT * FROM notification 
+            WHERE receiver_type='Manager' AND read_unread=0 ORDER BY notification_id DESC";
+        }
+
+        $row = $this->db->runQuery($query);
+
+        if (isset($data['notification_id'])) {
+            if (count($row)) {
+                return $row;
+            } else {
+                return false;
+            }
+        }
+
+        $query = "UPDATE notification
+                SET seen_not_seen=1 WHERE seen_not_seen=0";
+        $this->db->runQuery($query);
+        $_SESSION['NotSeenCount'] = '';
+        echo '<p>' . $_SESSION["NotSeenCount"] . '</p>';
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function updateReadNotification($notification_id)
+    {
+        $query = "UPDATE notification 
+        SET read_unread=1 WHERE notification_id='$notification_id'";
+        $this->db->runQuery($query);
+
+        $query = "SELECT * FROM notification 
+            WHERE receiver_type='Manager' ORDER BY notification_id DESC";
+
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        }
+    }
+    function getNotificationCount()
+    {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='Manager' AND seen_not_seen=0";
+        $row = $this->db->runQuery($query);
+
+        if (count($row)) {
+            $_SESSION['NotSeenCount'] = count($row);
+            if (isset($_GET['getCount']))
+                echo $_SESSION['NotSeenCount'];
+        } else {
+            $_SESSION['NotSeenCount'] = 0;
+        }
+    }
 }

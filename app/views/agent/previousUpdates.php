@@ -5,8 +5,7 @@
     <title><?php echo TITLE?></title>
     <link rel = "icon" href = "<?php echo URL?>vendors/images/thekolaya2.png" type = "image/x-icon">
     <link rel="stylesheet" href="<?php echo URL?>vendors/css/style.css">
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">       
-    <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/preupdates.css">  
+    <link rel="stylesheet" href="<?php echo URL?>vendors/css/nav-style.css">           
     <script src="<?php echo URL?>vendors/js/agent/preupdates.js"></script>    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -14,6 +13,7 @@
    </head>
 <body>
 <?php include 'topContainer.php';?>
+<link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/preupdates.css"> 
 <div class="topic">View Previous Updates</div>
 
 <div class="update_buttons">

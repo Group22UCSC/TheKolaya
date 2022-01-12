@@ -9,8 +9,16 @@ class Supervisor extends Controller
     function index()
     {
         $stock = $this->model->getStock();
-        $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
-        $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
+        if (!empty($stock[0]['full_stock'])) {
+            $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
+        }else {
+            $_SESSION['fertilizer_stock'] = 0;
+        }
+        if (!empty($stock[1]['full_stock'])) {
+            $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
+        }else {
+            $_SESSION['firewood_stock'] = 0;
+        }
         $teaCollection = $this->model->getTeaCollection();
         $todayRequests = $this->model->getTodayFertilizerRequest();
 
@@ -53,27 +61,33 @@ class Supervisor extends Controller
             if (!empty($lastRequests)) {
 
                 echo '<div id="previous_details">';
-                echo '<div class="row tabel-header">
-                        <div class="cell">Previous Request Date</div>
-                        <div class="cell">Monthly Tea Amount(kg)</div>
+                echo '<div class="manage-request-row tabel-header">
+                        <div class="manage-request-cell">Previous Request Date</div>
+                        <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
                     </div>';
                 for ($i = 0; $i < count($lastRequests); $i++) {
-                    echo '<div class="row">
-                            <div class="cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
-                            <div class="cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
+                    $monthNum  = $month - 1;
+                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                    $monthName = $dateObj->format('F'); // March
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
                         </div>';
                 }
                 echo '</div>';
             } else {
                 echo '<div id="previous_details">';
-                echo '<div class="row tabel-header">
-                        <div class="cell">Previous Request Date</div>
-                        <div class="cell">Monthly Tea Amount(kg)</div>
-                    </div>';
+                // echo '<div class="manage-request-row tabel-header">
+                //         <div class="manage-request-cell">Previous Request Date</div>
+                //         <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
+                //     </div>';
                 for ($i = 0; $i < 2; $i++) {
-                    echo '<div class="row">
-                            <div class="cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests</b>' . '</div>
-                            <div class="cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
+                    $monthNum  = $month;
+                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                    $monthName = $dateObj->format('F');
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests for ' . $monthName . '</b>' . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
                         </div>';
                 }
                 echo '</div>';
@@ -256,7 +270,7 @@ class Supervisor extends Controller
             $_SESSION['search'] = 1;
         }
         $instock = $this->model->stock($data);
-        $this->view->render('supervisor/fertilizerInStock', $instock);
+        $this->view->render('supervisor/fertilizerInstock', $instock);
     }
 
     function firewoodInStock()

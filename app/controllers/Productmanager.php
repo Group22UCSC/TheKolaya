@@ -146,6 +146,24 @@ class ProductManager extends Controller{
         echo $json_arr;// echo passes the data to updateAuctionjs.php
         
     } 
+    
+
+    // tot tea sales for last 30 days
+    function totSales30(){
+        $tblResult = $this->model->totSales30();
+        // print_r($tblResult);
+        $json_arr=json_encode($tblResult);
+        //print_r($json_arr);
+        echo $json_arr;// echo passes the data to updateAuctionjs.php
+        
+    }
+
+    //get the tot tea stock available for the dashboard box
+    function totTeaStockNow(){
+        $tblResult = $this->model->totTeaStockNow();
+        $json_arr=json_encode($tblResult);
+        echo $json_arr;
+    }
 }
 
 ?>
