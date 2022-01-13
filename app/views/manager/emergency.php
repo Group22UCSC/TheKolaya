@@ -11,7 +11,7 @@
 
 <div class="k1">  
  <div class="wrapper1">
-  <div class="title">  EMERGENCY DETAILS FORM </div>
+  <div class="title">  ASSIGN ROUTES DETAILS FORM </div>
      <form action="<?php echo URL?>manager/emergency" method="POST" id="emergencyForm">
       <div class="form">
 
