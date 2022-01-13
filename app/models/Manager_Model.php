@@ -213,8 +213,10 @@ class Manager_Model extends Model
     // emergency 
     function storeEmergencyMessage($data = [])
     {
-        $message = $data['message'];
+        // $message = $data['message'];
+        $message = "You are assigned to route number " .  $data['route_number'];
         $sender_id = $data['user_id'];
+       
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
          receiver_type, notification_type,sender_id) VALUES
