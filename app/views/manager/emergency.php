@@ -15,11 +15,10 @@
      <form action="<?php echo URL?>manager/emergency" method="POST" id="emergencyForm">
       <div class="form">
 
-
         <div class="inputfield">
-            <label>Message</label>
-            <textarea class="input" rows=5 columns=50 id="message" name="message" placeholder="Type your message here."></textarea>
-        </div>      
+          <label>Route Number</label>
+           <input type="number" class="input" name="route_number">
+       </div> 
 
 
        <div class="inputfield">
