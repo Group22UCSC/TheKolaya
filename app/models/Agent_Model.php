@@ -161,6 +161,20 @@ class Agent_Model extends Model
             receiver_type, notification_type, sender_id) VALUES
             ('0','0','$message','manager','request','$agent_id')";
             $this->db->runQuery($query);
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Manager_notification', $data);
+            //-------------------------------------------//
         } else if ($isRejected == 1) {
             //send notification to manager that agent rejected
             $message = $agent_name . " rejected the assigned route no. " . $assigned_route;
@@ -168,6 +182,20 @@ class Agent_Model extends Model
              receiver_type, notification_type, sender_id) VALUES
              ('0','0','$message','manager','warning','$agent_id')";
             $this->db->runQuery($query);
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Manager_notification', $data);
+            //-------------------------------------------//
         }
     }
     //get assign route for the agent (if there are any)
@@ -433,6 +461,20 @@ class Agent_Model extends Model
         $query1 = "UPDATE agent SET availability='0' WHERE emp_id='$sender_id'";
         $this->db->runQuery($query);
         $this->db->runQuery($query1);
+        //----------------Pusher API------------------//
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'ef64da0120ca27fe19a3',
+            'd5033393ff3b228540f7',
+            '1290222',
+            $options
+        );
+
+        $pusher->trigger('my-channel', 'Manager_notification', $data);
+        //-------------------------------------------//
         //add the query to make the agent unavailable         
     }
 
