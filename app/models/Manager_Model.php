@@ -213,15 +213,31 @@ class Manager_Model extends Model
     // emergency 
     function storeEmergencyMessage($data = [])
     {
-        $message = $data['message'];
+        // $message = $data['message'];
+        $message = "You are assigned to route number " .  $data['route_number'];
         $sender_id = $data['user_id'];
+       
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
          receiver_type, notification_type,sender_id) VALUES
          ('0','0','$message','Agent','emergency','$sender_id')";
         //have not added receiver_id and receive_datetime,Check into that.
         $this->db->runQuery($query);
-        //add the query to make the agent unavailable         
+        //add the query to make the agent unavailable  
+                                    //----------------Pusher API------------------//
+                            $options = array(
+                                'cluster' => 'ap1',
+                                'useTLS' => true
+                            );
+                            $pusher = new Pusher\Pusher(
+                                'ef64da0120ca27fe19a3',
+                                'd5033393ff3b228540f7',
+                                '1290222',
+                                $options
+                            );
+
+                            $pusher->trigger('my-channel', 'Agent_notification', $data);
+                            //-------------------------------------------//       
     }
 
     function emergencyTable()
