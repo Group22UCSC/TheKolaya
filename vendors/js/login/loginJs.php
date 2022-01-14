@@ -5,14 +5,18 @@
         var inputField = $('#loginForm input');
         var user_id = '';
         var form = '';
-        // console.log(options);
         var icon = $('#loginForm i');
         var url = "<?php echo URL ?>Login/controllCheckData";
         var noErrors = 0;
+        var holderName = '';
+        var keyChange = {
+            mobileNumber: 0,
+            password: 0
+        }
 
         var errors = {
-            'mobile_number': '',
-            'password': '',
+            mobile_number: '',
+            password: '',
         };
 
         function hasNumber(string) {
@@ -33,8 +37,9 @@
             }
         }
 
-        function removeError(number) {
+        function removeError(number, placeholderName) {
             SerializeData();
+            inputField[number].placeholder = placeholderName;
             $(inputField[number]).removeClass('is-invalid');
             $(inputField[number].parentNode).removeClass('is-invalid');
             if (number > 2) {
@@ -66,6 +71,7 @@
                 return false;
             }
         }
+        //verify the mobile number
         $(inputField[0]).change(function() {
             if (inputField[0].value.length > 10) {
                 errors.mobile_number = "More than 10 charchters";
@@ -85,29 +91,27 @@
                     data: form,
                     success: function(responseText) {
                         if (responseText == 'Verified') {
-                            removeError(0);
+                            holderName = "mobile number*";
+                            removeError(0, holderName);
+                            errors.mobile_number = '';
                         } else if (responseText == 'Registered') {
                             errors.mobile_number = "Not Verified User";
                             showError(0, errors.mobile_number);
                         } else if (responseText == 'notRegistered') {
                             errors.mobile_number = "Not Registered User";
                             showError(0, errors.mobile_number);
+                        } else {
+                            holderName = "mobile number*";
+                            removeError(0, holderName);
                         }
                     }
                 })
-            } else {
-                errors.mobile_number = '';
-                removeError(0);
-            }
-            console.log(errors);
+            } 
         });
 
-        //validate the password
+        // validate the password
         $(inputField[1]).change(function() {
-            if (inputField[1].value == '') {
-                errors.password = "This must be filled !";
-                showError(1, errors.password);
-            } else if (errors.mobile_number == '') {
+            if (errors.mobile_number == '') {
                 SerializeData();
                 form.push({
                     name: 'function_name',
@@ -122,58 +126,38 @@
                             errors.password = "Password is wrong!";
                             showError(1, errors.password);
                         } else {
-                            removeError(1);
+                            holderName = "password*";
+                            removeError(1, holderName);
+                            errors.password = '';
                         }
                     }
                 });
-            } else {
-                errors.password = '';
-                removeError(1);
             }
         });
 
         $('#login_btn').click(function(event) {
-            SerializeData();
-            var notFilled = 0;
-            //Check is filled mobile number
-            if (inputField[0].value.length < 10) {
+            //validate the mobile number after clicked the login button
+            if (inputField[0].value == '' && errors.mobile_number == '') {
                 event.preventDefault();
-                errors.mobile_number = "Less than 10 characters";
+                errors.mobile_number = "This must be filled";
                 showError(0, errors.mobile_number);
-                notFilled = 1;
-            }else if (inputField[0].value == '') {
+            } else if (inputField[0].value.length < 10  && errors.mobile_number == '') {
                 event.preventDefault();
-                errors.mobile_number = "This is must filled";
+                errors.mobile_number = "Less than 10 charchters";
                 showError(0, errors.mobile_number);
-                notFilled = 1;
             }
+
             //check is filled password
             if (inputField[1].value == '') {
                 event.preventDefault();
                 errors.password = "This is must filled";
                 showError(1, errors.password);
-                notFilled = 1;
             }
 
-            // if(notFilled == 0) {
-            //     form.push({
-            //         name: 'function_name',
-            //         value: 'nowLogin'
-            //     });
-            //     $.ajax({
-            //         url: url,
-            //         type: "POST",
-            //         data: form,
-            //         success: function(responseText) {
-            //             if (responseText == 'wrongPassword') {
-            //                 errors.password = "Password is wrong!";
-            //                 showError(1, errors.password);
-            //             } else {
-            //                 removeError(1);
-            //             }
-            //         }
-            //     });
-            // }
+            //check is there errors
+            if (errors.mobile_number != '' || errors.password != '') {
+                event.preventDefault();
+            }
         });
     });
 </script>
