@@ -228,6 +228,22 @@ class Accountant_Model extends Model {
             $row = $this->db->insertQuery($query1);
             $row2 = $this->db->insertQuery($query2);
             $row3=$this->db->runQuery($notificationQuery);
+
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Landowner_notification', $data);
+            //-------------------------------------------//
+
             //print_r($row);
             $this->db->commit();
             if($row2){
@@ -260,7 +276,7 @@ class Accountant_Model extends Model {
             $message = "Dear customer, we regret to inform that your advance request of Rs." . $amount." is rejected due to an unavoidable reason. Contact us for more details. Thank you for being with තේ කොළය ( Comment :". $comment." )";
         }
         $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
-            VALUES(0, 0, '$message', 'Landowner', 'request', '" . $_SESSION['user_id'] . "')";
+            VALUES(0, 0, '$message', 'Supervisor', 'request', '" . $_SESSION['user_id'] . "')";
         
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try{ 
@@ -269,6 +285,21 @@ class Accountant_Model extends Model {
             $row2 = $this->db->insertQuery($query2); // updating the request table
             $row3=$this->db->runQuery($notificationQuery);
             //print_r($row);
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Supervisor_notification', $data);
+            //-------------------------------------------//
+
             $this->db->commit();
             if($row2){
                 return true;
