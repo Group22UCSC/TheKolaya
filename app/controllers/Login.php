@@ -21,6 +21,8 @@ class Login extends Controller
             if ($loggedInUser) {
                 $this->createUserSession($loggedInUser);
                 redirect($_SESSION['user_type']);
+            }else {
+                $this->view->render('user/login');
             }
         } else {
             $this->view->render('user/login');
