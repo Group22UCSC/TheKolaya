@@ -36,6 +36,7 @@
   </form>
   <div class="availablelist">    
     <?php include 'unavailableNotice.php';?>
+    <?php include 'agentUnavailableNotice.php';?>
     <table class="availabletable" id="availabletable">
       <tr>
         <td class="th">Landowner ID</td>
@@ -68,6 +69,13 @@
         $('#searchform').hide();
         $('#availabletable').hide();
         $('#unavailable_notice').show();
+      }
+      if(<?php echo $_SESSION['availability']?> == '0'){
+        console.log('zero landowners');
+        $('#searchform').hide();
+        $('#availabletable').hide();
+        $('#unavailable_notice').hide();
+        $('#agent_unavailable_notice').show();
       }
       $('#myBtn').click(function(event) {
         event.preventDefault();

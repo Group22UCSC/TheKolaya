@@ -1,5 +1,4 @@
 <?php
-
 class Manager extends Controller
 {
     function __construct()
@@ -27,80 +26,107 @@ class Manager extends Controller
         $_SESSION['Matcha_Tea_stock'] = $stock2[6]['stock'];
         $_SESSION['Oolang_Tea_stock'] = $stock2[7]['stock'];
         $_SESSION['Sencha_Tea_stock'] = $stock2[8]['stock'];
-        
 
 
 
-        $this->view->render('Manager/Manager', $stock, $stock2);
-         // $this->view->render('Manager/Manager', $stock, $teaCollection, $todayRequests);
+
+        $this->view->render('manager/manager', $stock, $stock2);
     }
 
     public function viewAccount()
     {
-        // $this->view->showPage('Manager/viewAccount');
+
         $result = $this->model->availablelistTable();
-        // print_r($result);
-        $this->view->render('Manager/viewAccount', $result);
+        $this->view->render('manager/viewAccount', $result);
     }
-
-
 
     public function viewTeaQuality()
     {
-      
-         $this->model->getNotificationCount(); //This for get Notification count
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->model->manageRequests1($_POST);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // $_POST = filter_input_array(INPUT_POST, FIviewTeaSTRING);
+            $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
+            if ($teaQuality) {
+                $quality = [
+                    '1_star' => 0,
+                    '2_star' => 0,
+                    '3_star' => 0,
+                    '4_star' => 0,
+                    '5_star' => 0,
+                ];
+                for ($i = 0; $i < count($teaQuality); $i++) {
+                    // if($teaQuality[$i]['quality'] != '') {
+                    //     echo $teaQuality[$i]['quality'];
+                    // }
+                    $tempQuality = $teaQuality[$i]['quality'] / 20;
+                    switch ($tempQuality) {
+                        case 1:
+                            $quality['1_star'] += 1;
+                            break;
+                        case 2:
+                            $quality['2_star'] += 1;
+                            break;
+                        case 3:
+                            $quality['3_star'] += 1;
+                            break;
+                        case 4:
+                            $quality['4_star'] += 1;
+                            break;
+                        case 5:
+                            $quality['5_star'] += 1;
+                            break;
+                    }
+                }
+                // print_r($quality);
+                $allStars = 0;
+                for ($i = 1; $i <= 5; $i++)
+                    $allStars += $quality[$i . '_star'];
+                $this->view->render('manager/teaQuality', $quality, $allStars);
+            }
         } else {
-            $request = $this->model->getRequests1();
-            $this->view->render('Manager/viewTeaQuality', $request);
+            $result = $this->model->teaQualityTable();
+            $this->view->render('manager/viewTeaQuality', $result);
         }
+        
     }
 
-    public function viewTeaQuality1()
-    {
-        $this->view->showPage('Manager/viewTeaQuality1');
-    }
 
 
     public function viewPayments()
     {
-        // $this->view->showPage('Manager/viewPayments');
+
         $result = $this->model->view_payments_table();
-        // print_r($result);
-        $this->view->render('Manager/viewPayments', $result);
+        $this->view->render('manager/viewPayments', $result);
     }
 
 
     public function viewStock()
     {
-        $this->view->showPage('Manager/viewStock');
+        $this->view->showPage('manager/viewStock');
     }
 
     public function viewProduct()
     {
-        $result=$this->model->viewProduct_instock();
-        $this->view->render('Manager/viewProduct', $result);
+        $result = $this->model->viewProduct_instock();
+        $this->view->render('manager/viewProduct', $result);
     }
 
-     public function instock()
+    public function instock()
     {
         $result = $this->model->view_instock();
         // print_r($result);
-        $this->view->render('Manager/in_stock', $result);
+        $this->view->render('manager/in_stock', $result);
     }
 
 
     public function outstock()
     {
         $result = $this->model->view_outstock();
-        $this->view->render('Manager/outstock',$result);
+        $this->view->render('manager/outstock', $result);
     }
 
     public function manager()
     {
-        $this->view->showPage('Manager/Manager');
+        $this->view->showPage('manager/manager');
     }
 
     //Manage Profile
@@ -122,50 +148,45 @@ class Manager extends Controller
         $this->view->render('user/profile/enterPassword');
     }
 
-   
-//send emergency message to agent
-    function emergency(){
-   
-     
-         
-         $result = $this->model->emergencyTable();
-        $this->view->render('Manager/emergency', $result);
-       
+
+    //send emergency message to agent
+    function emergency()
+    {
+
+        // $result = $this->model->emergencyTable();
+        $this->view->render('manager/emergency');
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
-            'message' => '',           
-            'emp_id' => '',
-            'user_id'=> ''
-        ]; 
+                // 'message' => '',
+                'user_id' => '',
+                'route_number' => ''
+            ];
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->data['message'] = trim($_POST['message']);
-            $this->data['emp_id'] =trim($_POST['emp_id']);
+            $this->data['route_number'] = trim($_POST['route_number']);
             $this->data['user_id'] = $_SESSION['user_id'];
             $result = $this->model->storeEmergencyMessage($this->data);
-            
-        }else{
+        } else {
 
-              $data = [
-                'message' => '',           
-                'emp_id' => ''
+            $data = [
+                // 'message' => '',
+                'route_number' => '',
             ];
-           
         }
-
     }
 
 
-// view buyer
+    // view buyer
 
- public function viewbuyer()
+    public function viewbuyer()
     {
         $result = $this->model->buyerTable();
-        $this->view->render('Manager/viewbuyer', $result);
+        $this->view->render('manager/viewbuyer', $result);
     }
 
 
-//Get Notification
+    //Get Notification
     function setNotification($notification)
     {
         if (!empty($notification)) {
@@ -228,5 +249,4 @@ class Manager extends Controller
             }
         }
     }
-
 }

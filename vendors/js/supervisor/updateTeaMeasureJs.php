@@ -10,10 +10,6 @@
             name: 'isCollected',
             value: false
         });
-        // landowner_id.push({
-        //     name: 'method_name',
-        //     value: 'isCollected'
-        // });
 
         function showError(number, error) {
             inputField[number].value = '';
@@ -77,7 +73,6 @@
                 Swal.fire({
                     title: 'Are you sure?',
                     // html: '<div>' + str + '</div>',
-                    // text: "hello",
                     // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
                     icon: 'warning',
                     showCancelButton: true,

@@ -120,11 +120,10 @@ h1 small {
   border-color: #d6d6d6;
 }
 .avatar-upload .avatar-edit input + label:after {
-  content: "\1F3A5";
   font-family: "FontAwesome";
   color: #757575;
   position: absolute;
-  top: 10px;
+  top: 6px;
   left: 0;
   right: 0;
   text-align: center;
