@@ -12,10 +12,12 @@ class Agent extends Controller
         $this->getNotificationCount(); //This for get Notification count
         $agent_id = $_SESSION['user_id'];
         $result = $this->model->checkAvailability($agent_id);
+        $is_requested = $this->model->availabilityRequested($agent_id);
 
         $isreject = $this->model->isReject();
         // take the available landowners count to collect tea and to deliver requests to be displayed on the dashboard 
         if ($result[0]['availability'] == 1) {
+            $_SESSION['availability']=1;
             if ($isreject[0]['is_rejected'] == -1 || $isreject[0]['is_rejected']  == 1) {
                 $available_res = $this->model->availablelistTable();
                 $fert_res = $this->model->fertilizerdeliveryListTable();
@@ -38,18 +40,29 @@ class Agent extends Controller
             }
             $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res);
         } else if ($result[0]['availability'] == 0) {
-            // print_r("agent unavailable");
-            // $this->view->showPage('agent/availabilityOn');
-            $this->viewEmergencyMessage();
+            if($is_requested[0]['availability_requested'] == 1){
+                $this->view->showPage('agent/availabilityRequested');
+            }
+            else{
+                $this->view->showPage('agent/availabilityOn');
+            }
+            
+           
         }
     }
 
-    //make the agent available after toggle 
-    function makeAvailable()
-    {
-        $this->model->availableAgent();
-        $this->index();
+    //request availability from manager
+    function requestManager(){
+        $this->model->requestManager();
+        $this->view->showPage('agent/availabilityRequested');
     }
+
+    //make the agent available after toggle 
+    // function makeAvailable()
+    // {
+    //     $this->model->availableAgent();
+    //     $this->index();
+    // }
 
     //view available landowner list
     function availableLandownerList()
@@ -335,6 +348,8 @@ class Agent extends Controller
                     case 'emergency':
                         $imgPath = URL . '/vendors/images/notifications/emergency.jpg';
                         break;
+                    case 'available_request':
+                        $imgPath = URL . '/vendors/images/notifications/available.jpg';
                 }
 
                 switch ($notification[$i]['read_unread']) {
