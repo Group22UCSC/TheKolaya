@@ -276,7 +276,7 @@ class Accountant_Model extends Model {
             $message = "Dear customer, we regret to inform that your advance request of Rs." . $amount." is rejected due to an unavoidable reason. Contact us for more details. Thank you for being with තේ කොළය ( Comment :". $comment." )";
         }
         $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
-            VALUES(0, 0, '$message', 'Supervisor', 'request', '" . $_SESSION['user_id'] . "')";
+            VALUES(0, 0, '$message', 'Landowner', 'request', '" . $_SESSION['user_id'] . "')";
         
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try{ 
@@ -297,7 +297,7 @@ class Accountant_Model extends Model {
                 $options
             );
 
-            $pusher->trigger('my-channel', 'Supervisor_notification', $data);
+            $pusher->trigger('my-channel', 'Landowner_notification', $data);
             //-------------------------------------------//
 
             $this->db->commit();
