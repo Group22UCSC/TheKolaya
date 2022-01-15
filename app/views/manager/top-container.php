@@ -48,7 +48,7 @@
      </li>
      <li>
        <a href="<?php echo URL?>manager/viewTeaQuality">
-      <i class="fas fa-book"></i>
+      <i class="fas fa-star"></i>
          <span class="links_name">Tea Quality</span>
        </a>
        <span class="tooltip">Tea Quality</span>
@@ -64,10 +64,10 @@
       
       <li>
       <a href="<?php echo URL?>manager/emergency">
-      <i class="fa fa-envelope"></i>
-         <span class="links_name">Emergency</span>
+      <i class="fab fa-atlassian"></i>
+         <span class="links_name">Assign Routes</span>
        </a>
-       <span class="tooltip">Emergency</span>
+       <span class="tooltip">Assign Routes</span>
      </li>
      
       <li>
