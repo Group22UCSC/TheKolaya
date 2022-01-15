@@ -66,7 +66,22 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-
+    function incomeBarChart(){//details of the income to the factory for the bar chart of accountant dashboard
+        
+         $year=date('Y');
+         $month=date('m')-1;
+        // return $month;
+        $date= date('Y-m-01', strtotime("-7 month"));// 7 months ago date
+        // $first = date('Y-m-01',$date);
+        // return $date;
+        $query = "SELECT date,sold_price,sold_amount FROM auction where date >='{$date}'";
+        $row = $this->db->selectQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
     
     function getEmpId(){
         //$query="SELECT * FROM "
