@@ -8,7 +8,8 @@ class Accountant extends Controller{
 
     function index() {
         $this->getNotificationCount();
-        $this->view->showPage('accountant/accountant');
+        $incomeBarChart = $this->model->incomeBarChart();
+        $this->view->render('accountant/accountant',$incomeBarChart);
     }  
 
     function getTeaPrice(){
