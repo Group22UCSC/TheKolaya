@@ -236,7 +236,7 @@ class landowner_Model extends Model
     {
         $user_id = $_SESSION['user_id'];
 
-        $date = strtotime(date('Y') . "-" . date('m') . "-01");
+
         $first = date('Y-m-01');
         $last  = date('Y-m-t');
         $sql = "SELECT quality FROM tea WHERE lid='{$user_id}' AND date <='{$last}' AND date >= '{$first}' ";
@@ -256,6 +256,21 @@ class landowner_Model extends Model
         INNER JOIN advance_request ON request.request_id=advance_request.request_id 
         INNER JOIN user ON user.user_id=request.lid
         WHERE request.request_type='advance' AND request.response_status='receive' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    function getFertilizerKilos()
+    {
+        $first = date('Y-m-01');
+        $last  = date('Y-m-t');
+        $sql = "SELECT fertilizer_request.amount
+        FROM fertilizer_request 
+        INNER JOIN request ON request.request_id=fertilizer_request.request_id 
+        WHERE fertilizer_request.date_delivered BETWEEN '{$first}'AND '{$last}' ";
         $row = $this->db->selectQuery($sql);
         if ($row) {
             return $row;
