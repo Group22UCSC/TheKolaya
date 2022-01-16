@@ -68,7 +68,7 @@
 
   <?php 
 
-  print_r($data2);
+  // print_r($data2);
   // print_r($data);
   $today = date("Y-m-d");
   $len = sizeof($data);
