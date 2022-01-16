@@ -191,4 +191,60 @@ class landowner_Model extends Model
 
     //monthly tea price end 
 
+    // get last date weight details
+    function getLandonwerTable()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' ORDER BY date DESC LIMIT 1";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    //get search date weight details
+    function searchDailyDetails()
+    {
+        $lid = $_SESSION['user_id'];
+
+        $date = $_POST['searchDate'];
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' AND date='{$date}'  ";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //get last month income and advance to dashboard card
+    function lastMonthIncomeAndAdvance()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 1 ";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //get last month tea qulity to dashboard card
+    function getTeaQulity()
+    {
+        $user_id = $_SESSION['user_id'];
+
+        $date = strtotime(date('Y') . "-" . date('m') . "-01");
+        $first = date('Y-m-01');
+        $last  = date('Y-m-t');
+        $sql = "SELECT quality FROM tea WHERE lid='{$user_id}' AND date <='{$last}' AND date >= '{$first}' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }

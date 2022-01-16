@@ -14,10 +14,11 @@
 
         <!-- <div class="wrap"> -->
         <div class="search">
-            <input type="text" class="searchTerm" placeholder="Enter month Name?">
-            <a href="#"><button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button></a>
+            <form action="/action_page.php">
+                <label for="bdaymonth">Birthday (month and year):</label>
+                <input type="month" id="bdaymonth" name="bdaymonth">
+                <input type="submit">
+            </form>
         </div>
     </div>
 
