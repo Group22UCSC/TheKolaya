@@ -219,6 +219,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
+
     function acceptAdvanceRequest(){ // when the requested is accepted 
         $user_id = $_SESSION['user_id'];
         $comment=$_POST['comment'];

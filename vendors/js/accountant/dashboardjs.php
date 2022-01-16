@@ -1,5 +1,6 @@
 <script>
     var income=0;
+    var n=0;
     function AuctionIncome30() { //get the income of last 30 days for the dashboard box
         // var pid = $('#pid').val();
         // var amount = $('#amount').val();

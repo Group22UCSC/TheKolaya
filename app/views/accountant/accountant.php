@@ -68,10 +68,19 @@
 
   <?php 
 
-  // print_r($data);
+  print_r($data1);
   // print_r($data);
   $today = date("Y-m-d");
   $len = sizeof($data);
+  $lenData1 = sizeof($data1);
+  $lenData2 = sizeof($data2);
+
+
+  // calculate payment expenses for the pie chart
+  $payExp=0.0;
+  for($i=0;$i<$lenData1;$i++){
+    $payExp+=(float)$data1[$i]['final_payment'];
+  }
   // $month=date("m");
   // $date = $data[0]['date'];
   // echo date('F, Y');
@@ -207,10 +216,12 @@
       <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
 
       <script>
+        val06 = '<?php echo $tea6; ?>';
+        payExp= '<?php echo $payExp; ?>';
         var xValues = ["Income", "Expences"];
-        var yValues = [60, 30];
+        var yValues = [val06, payExp];
         var barColors = ["#2BD47D", "#ffc233"];
-
+        
         new Chart("myChart2", {
           type: "doughnut",
           data: {
@@ -232,14 +243,14 @@
         });
       </script>
     </div>
-    <div class="list">
+    <!-- <div class="list">
       <ul>
         <li>Best Quality</li>
         <li>Good Quality</li>
         <li>Average Quality</li>
         <li>Poor Quality</li>
       </ul>
-    </div>
+    </div> -->
   </div>
   <!-- bar chart 2 -->
   <?php include 'js/accountant/dashboardjs.php'; ?>
