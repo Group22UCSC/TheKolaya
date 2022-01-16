@@ -67,20 +67,4 @@
         })
 
     }
-    //add chart values to dashbord
-    function chartValuse() {
-
-        var totMass = 0.0;
-        var url = "<?php echo URL ?>landowner/chartValuse";
-        $.ajax({
-            url: url,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data) {
-                console.log(data);;
-
-            }
-        })
-
-    }
 </script>

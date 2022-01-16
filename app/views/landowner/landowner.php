@@ -1,11 +1,14 @@
 <?php include 'top-container.php'; ?>
 <?php include 'js/landowner/dashboardjs.php"'; ?>
+<?php
+print_r($data);
+?>
 
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();chartValuse();"></body>
+<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
 
 
 <!-- middle grid -->
