@@ -10,7 +10,7 @@ class Accountant extends Controller{
         $this->getNotificationCount();
         $incomeBarChart = $this->model->incomeBarChart();//for the bar chart
         $paymentExp30 = $this->model->paymentExp30();
-        $instockExp30 = $this->model->incomeBarChart();
+        $instockExp30 = $this->model->instockExp30(); // fertilizer expenses
         $this->view->render('accountant/accountant',$incomeBarChart,$paymentExp30,$instockExp30 );
     }  
 

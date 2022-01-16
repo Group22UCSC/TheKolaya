@@ -218,7 +218,7 @@
       <script>
         val06 = '<?php echo $tea6; ?>';
         payExp= '<?php echo $payExp; ?>';
-        var xValues = ["Income", "Expences"];
+        var xValues = ["Income", "Payments"];
         var yValues = [val06, payExp];
         var barColors = ["#2BD47D", "#ffc233"];
         
