@@ -1,4 +1,5 @@
 <script>
+    //add advance and monthly income to dashbord
     function lastMonthIncomeAndAdvance() {
         var url = "<?php echo URL ?>landowner/lastMonthIncomeAndAdvance";
         $.ajax({
@@ -18,7 +19,7 @@
         })
 
     }
-
+    // add tea rating to dashbord
     function getTeaQulity() {
 
         var totRating = 0.0;
@@ -40,6 +41,28 @@
                 var rounded = Math.round(rating * 10) / 10; //convert to single desimal point number
                 console.log(rounded);
                 document.getElementById("rating").innerHTML = rounded;
+            }
+        })
+
+    }
+
+
+    //add fertilizer usage  to dashbord
+    function fertilizerUsage() {
+
+        var totMass = 0.0;
+        var url = "<?php echo URL ?>landowner/fertilizerUsage";
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data) {
+                console.log(data);;
+                var len = data.length;
+                for (var i = 0; i < len; i++) {
+                    totMass = totMass + parseFloat(data[i].amount);
+                }
+                document.getElementById("totMass").innerHTML = totMass + " Kg";
             }
         })
 

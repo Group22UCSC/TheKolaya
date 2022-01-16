@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-<body onload="lastMonthIncomeAndAdvance();getTeaQulity();"></body>
+<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
 
 
 <!-- middle grid -->
@@ -17,7 +17,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Last Month Income</div>
-        <div class="number" id="income">40,876</div>
+        <div class="number" id="income"></div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Up from previous month</span>
@@ -31,7 +31,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Last Month Fertilizer Usage</div>
-        <div class="number">100kg</div>
+        <div class="number" id="totMass"></div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Up from previous month</span>
