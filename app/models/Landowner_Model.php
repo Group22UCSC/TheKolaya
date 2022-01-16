@@ -264,4 +264,17 @@ class landowner_Model extends Model
             return false;
         }
     }
+
+    //CHART VALUES FOR DASHBOARD
+    function chartValuse()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 7";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }

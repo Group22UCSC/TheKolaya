@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
+<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();chartValuse();"></body>
 
 
 <!-- middle grid -->

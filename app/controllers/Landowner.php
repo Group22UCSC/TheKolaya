@@ -152,4 +152,13 @@ class Landowner extends Controller
         //print_r($json_arr);
         echo $json_arr;
     }
+
+    //get fertilizer usage to the dash board
+    function chartValuse()
+    {
+        $result = $this->model->chartValuse();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
 }
