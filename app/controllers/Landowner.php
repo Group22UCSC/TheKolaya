@@ -16,7 +16,7 @@ class Landowner extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->model->insertRequest($_POST);
-            
+
             // $this->view->render('landowner/Make_Requests');
             // print_r($result);
         } else {
@@ -52,7 +52,23 @@ class Landowner extends Controller
 
     function Daily_Net_Weight()
     {
-        $this->view->showPage('landowner/Daily_Net_Weight');
+        if (!empty($_POST)) {
+
+
+            $result = $this->model->searchDailyDetails();
+            if ($result) {
+                // print_r($result);
+                $this->view->render('landowner/Daily_Net_Weight', $result);
+            } else {
+                $_POST['Error'] = "Search date not found";
+                $result = $this->model->getLandonwerTable();
+                $this->view->render('landowner/Daily_Net_Weight', $result);
+                return false;
+            }
+        } else {
+            $result = $this->model->getLandonwerTable();
+            $this->view->render('landowner/Daily_Net_Weight', $result);
+        }
     }
 
     function Monthly_Tea_Price()
@@ -65,10 +81,18 @@ class Landowner extends Controller
     {
         if (!empty($_POST)) {
 
-            $result = $this->model->insertRequest();
-            print_r($result);
+
+            $result = $this->model->searchDailyDetails();
+            if ($result) {
+                // print_r($result);
+                $this->view->render('landowner/Test', $result);
+            } else {
+                $this->view->render('landowner/Test?', $result);
+                return false;
+            }
         } else {
-            $this->view->render('landowner/Test');
+            $result = $this->model->getLandonwerTable();
+            $this->view->render('landowner/Test', $result);
         }
     }
 
@@ -92,10 +116,29 @@ class Landowner extends Controller
     }
 
     //monthly tea price
-
     function getTeaPrice()
     {
         $result = $this->model->teaPriceTable();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+
+    //dashbord cards
+
+    function lastMonthIncomeAndAdvance()
+    {
+        $result = $this->model->lastMonthIncomeAndAdvance();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+
+    function getTeaQulity()
+    {
+        $result = $this->model->getTeaQulity();
         $json_arr = json_encode($result);
         //print_r($json_arr);
         echo $json_arr;
