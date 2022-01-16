@@ -47,7 +47,7 @@
                     //tot=tot+(data[i].sold_amount*data[i].sold_price)
                     
                 }
-                
+                // console.log(totTea);
                 document.getElementById("totSales").innerHTML=totTea;
                 
             }
@@ -65,22 +65,21 @@
             type: "GET",
             dataType: "JSON",
             // pass the pid to the controller and get the available stock for that product pid
-            
             success: function(data) {
-                // console.log(data);
+                console.log(data);
                 var len = data.length;
                 for (var i = 0; i < len; i++) {
-                    if(data[i].price_for_amount){
+                    if(data[i].price_for_amount){ // adding fertilizer expenses
                         tot=tot+parseFloat(data[i].price_for_amount);
                     }
-                    if(data[i].final_payment){
+                    if(data[i].final_payment){ // adding payments 
                         tot=tot+parseFloat(data[i].final_payment);
                     }
                     //tot=tot+(data[i].sold_amount*data[i].sold_price)
                     
                 }
                 let n=tot.toFixed(2);
-                //console.log(tot);
+                console.log(n);
                 document.getElementById("auctionExpenses").innerHTML=n;
                 // var profit=income-tot;
                 profit30();
