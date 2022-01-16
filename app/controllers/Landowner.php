@@ -157,8 +157,6 @@ class Landowner extends Controller
     function chartValuse()
     {
         $result = $this->model->chartValuse();
-        $json_arr = json_encode($result);
-        //print_r($json_arr);
-        echo $json_arr;
+        $this->view->render('landowner/landowner', $result);
     }
 }
