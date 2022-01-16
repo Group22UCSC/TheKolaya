@@ -6,21 +6,7 @@
     <p>Auction Details</p>
 </div>
 <!--  Details Bar -->
-<div class="home-content">
-    <div class="overview-boxes">
-      <div class="box">
-        <div class="right-side">
-          <div class="box-topic">Total Income </div>
-          <div class="number">Rs.40,876</div>
-          <div class="indicator">
-            <i class='bx bx-up-arrow-alt'></i>
-            <span class="text">Last Month</span>
-          </div>
-        </div>
-        <i class='bx bxs-cart-add cart one'></i>
-      </div>
-    </div>
-</div>
+
 
 <!-- ***************** search bar **************** -->
 <div id="landownerdetails" class="form-container">

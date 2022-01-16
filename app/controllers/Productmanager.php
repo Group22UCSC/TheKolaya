@@ -6,8 +6,8 @@ class ProductManager extends Controller{
         parent::__construct();
     }
     function index() {
-
-        $this->view->showPage('Productmanager/Productmanager');
+        $incomeBarChart = $this->model->incomeBarChart();//for the bar chart
+        $this->view->render('Productmanager/Productmanager',$incomeBarChart);
     }
     
     function products() {
