@@ -68,7 +68,7 @@
 
   <?php 
 
-  print_r($data1);
+  print_r($data2);
   // print_r($data);
   $today = date("Y-m-d");
   $len = sizeof($data);
@@ -81,6 +81,14 @@
   for($i=0;$i<$lenData1;$i++){
     $payExp+=(float)$data1[$i]['final_payment'];
   }
+
+  // calculate fertilizer expenses for the pie chart
+  $fertilizerExp=0.0;
+  for($i=0;$i<$lenData2;$i++){
+    $fertilizerExp+=(float)$data2[$i]['price_for_amount'];
+  }
+
+
   // $month=date("m");
   // $date = $data[0]['date'];
   // echo date('F, Y');
@@ -218,9 +226,10 @@
       <script>
         val06 = '<?php echo $tea6; ?>';
         payExp= '<?php echo $payExp; ?>';
-        var xValues = ["Income", "Payments"];
-        var yValues = [val06, payExp];
-        var barColors = ["#2BD47D", "#ffc233"];
+        fertilizerExp= '<?php echo $fertilizerExp; ?>';
+        var xValues = ["Income", "Payments","Fertilizer Expenses"];
+        var yValues = [val06, payExp,fertilizerExp];
+        var barColors = ["#d934eb", "#ebc934","#eb8334"];
         
         new Chart("myChart2", {
           type: "doughnut",
@@ -237,7 +246,7 @@
             },
             title: {
               display: true,
-              text: "Tea Quality Rating"
+              text: "Income And Expenses"
             }
           }
         });
