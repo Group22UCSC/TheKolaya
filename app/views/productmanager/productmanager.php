@@ -7,7 +7,7 @@
    
   <?php 
 
-print_r($data);
+// print_r($data);
 // print_r($data);
 $today = date("Y-m-d");
 $len = sizeof($data);
