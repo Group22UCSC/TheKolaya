@@ -247,4 +247,20 @@ class landowner_Model extends Model
             return false;
         }
     }
+
+    //get last month fertilizer usage to dashboard card
+    function fertilizerUsage()
+    {
+        $sql = "SELECT request.request_id,request.request_date,request.lid,advance_request.amount_rs,user.name
+        FROM request 
+        INNER JOIN advance_request ON request.request_id=advance_request.request_id 
+        INNER JOIN user ON user.user_id=request.lid
+        WHERE request.request_type='advance' AND request.response_status='receive' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }

@@ -135,10 +135,19 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
-
+    //get tea qulity to dashboard
     function getTeaQulity()
     {
         $result = $this->model->getTeaQulity();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+    //get fertilizer usage to the dash board
+    function fertilizerUsage()
+    {
+        $result = $this->model->fertilizerUsage();
         $json_arr = json_encode($result);
         //print_r($json_arr);
         echo $json_arr;
