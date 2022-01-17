@@ -96,8 +96,9 @@ class Manager_Model extends Model
 
     function view_payments_table()
     {
-        $query = "SELECT monthly_payment.toDate, 
-       monthly_payment.fromDate,
+        $query = "SELECT monthly_payment.Date, 
+       monthly_payment.year,
+       monthly_payment.month, 
        monthly_payment.fertilizer_expenses,
        monthly_payment.advance_expenses, 
        monthly_payment.income, 

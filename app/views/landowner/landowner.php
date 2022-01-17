@@ -1,7 +1,14 @@
 <?php include 'top-container.php'; ?>
+<?php include 'js/landowner/dashboardjs.php"'; ?>
+<?php
+print_r($data);
+?>
+
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
 
 
 <!-- middle grid -->
@@ -13,7 +20,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Last Month Income</div>
-        <div class="number">40,876</div>
+        <div class="number" id="income"></div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Up from previous month</span>
@@ -27,7 +34,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Last Month Fertilizer Usage</div>
-        <div class="number">100kg</div>
+        <div class="number" id="totMass"></div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Up from previous month</span>
@@ -41,7 +48,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">This Month Advance</div>
-        <div class="number">2,876</div>
+        <div class="number" id="advance">2,876</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Up from yesterday</span>
@@ -55,7 +62,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">This Month Tea Rating</div>
-        <div class="number">4.9</div>
+        <div class="number" id="rating"></div>
         <div class="indicator">
           <i class='bx bx-down-arrow-alt down'></i>
           <span class="text">Down from
@@ -132,5 +139,6 @@
     </script>
   </div>
 </div>
-
+<?php include 'js/landowner/dashboardjs.php'; ?>
+<script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>

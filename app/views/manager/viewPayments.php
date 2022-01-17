@@ -20,8 +20,9 @@
                                
                                 <th style="width:12.5%;">Landowner ID</th>
                                 <th style="width:12.5%;">Landowner Name</th>
-                                <th style="width:12.5%;" id="hide">To Date</th>
-                                <th style="width:12.5%;" id="hide">From Date</th>
+                                <th style="width:12.5%;">Year</th>
+                                <th style="width:12.5%;">Month</th>
+                                <th style="width:12.5%;" id="hide">Date</th>
                                 <th style="width:12.5%;" id="hide">Fertilizer Expenses</th>
                                 <th style="width:12.5%;" id="hide">Advance Expenses</th>
                                 <th style="width:12.5%;" id="hide">Income</th>
@@ -38,8 +39,9 @@
                                  echo '<tr id="tea" data-href="">
                                            <td>'.$data[$i]['lid'].'</td>
                                            <td>'.$data[$i]['name'].'</td>
-                                           <td style id="hide">'.$data[$i]['toDate'].'</td>
-                                           <td style id="hide">'.$data[$i]['fromDate'].'</td>
+                                            <td>'.$data[$i]['year'].'</td>
+                                           <td>'.$data[$i]['month'].'</td>
+                                           <td style id="hide">'.$data[$i]['Date'].'</td>
                                            <td style id="hide">'.$data[$i]['fertilizer_expenses'].'</td>
                                            <td style id="hide">'.$data[$i]['advance_expenses'].'</td>
                                            <td style id="hide">'.$data[$i]['income'].'</td>
@@ -67,13 +69,15 @@
                     //rIndex=this.rowIndex;
                       
                       document.getElementById("id").value=this.cells[0].innerHTML;
-                      document.getElementById("toDate").value=this.cells[1].innerHTML;
-                      document.getElementById("fromDate").value=this.cells[2].innerHTML;
-                      document.getElementById("fertilizer_expenses").value=this.cells[3].innerHTML;
-                      document.getElementById("advance_expenses").value=this.cells[4].innerHTML;
-                      document.getElementById("income").value=this.cells[5].innerHTML;
-                      document.getElementById("final_payment").value=this.cells[6].innerHTML;
-                      document.getElementById("emp_id").value=this.cells[7].innerHTML;
+                      document.getElementById("name").value=this.cells[1].innerHTML;
+                      document.getElementById("year").value=this.cells[2].innerHTML;
+                      document.getElementById("month").value=this.cells[3].innerHTML;
+                      document.getElementById("Date").value=this.cells[4].innerHTML;
+                      document.getElementById("fertilizer_expenses").value=this.cells[5].innerHTML;
+                      document.getElementById("advance_expenses").value=this.cells[6].innerHTML;
+                      document.getElementById("income").value=this.cells[7].innerHTML;
+                      document.getElementById("final_payment").value=this.cells[8].innerHTML;
+                      document.getElementById("emp_id").value=this.cells[9].innerHTML;
                  
                    };
                  }
@@ -131,16 +135,26 @@
         <div class="inputfield">
           <label>LandOwner ID</label>
           <input type="text" class="input" name="lid" id="id" required readonly>
+       </div>
+
+       <div class="inputfield">
+          <label>Name</label>
+               <input type="text" class="input" name="name" id="name" required readonly>  
        </div> 
 
        <div class="inputfield">
-          <label>To Date</label>
-               <input type="text" class="input" name="toDate" id="toDate" required readonly>  
-       </div>
+          <label>Year</label>
+               <input type="text" class="input" name="year" id="year" required readonly>  
+       </div> 
 
-        <div class="inputfield">
-          <label>From Date</label>
-               <input type="text" class="input" name="fromDate" id="fromDate" required readonly>  
+       <div class="inputfield">
+          <label>Month</label>
+               <input type="text" class="input" name="month" id="month" required readonly>  
+       </div> 
+
+       <div class="inputfield">
+          <label>Date</label>
+               <input type="text" class="input" name="Date" id="Date" required readonly>  
        </div>
 
         <div class="inputfield">

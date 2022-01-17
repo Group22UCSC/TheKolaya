@@ -161,6 +161,20 @@ class Agent_Model extends Model
             receiver_type, notification_type, sender_id) VALUES
             ('0','0','$message','manager','request','$agent_id')";
             $this->db->runQuery($query);
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Manager_notification', $data);
+            //-------------------------------------------//
         } else if ($isRejected == 1) {
             //send notification to manager that agent rejected
             $message = $agent_name . " rejected the assigned route no. " . $assigned_route;
@@ -168,6 +182,20 @@ class Agent_Model extends Model
              receiver_type, notification_type, sender_id) VALUES
              ('0','0','$message','manager','warning','$agent_id')";
             $this->db->runQuery($query);
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Manager_notification', $data);
+            //-------------------------------------------//
         }
     }
     //get assign route for the agent (if there are any)
@@ -249,6 +277,36 @@ class Agent_Model extends Model
         }
     }
 
+    //requesting availability from manager
+    function requestManager(){
+        $agent_id = $_SESSION['user_id'];
+        $agent_name = $_SESSION['name'];
+        $route_no = $_SESSION['route'];
+        $message = $agent_name . " requested to make him/her available for  route no. " . $route_no;
+
+        $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
+        receiver_type, notification_type, sender_id) VALUES
+        ('0','0','$message','manager','available_request','$agent_id')";
+       $this->db->runQuery($query);
+
+       $query = "UPDATE agent SET availability_requested='1' WHERE emp_id='$agent_id'";
+       $this->db->runQuery($query);
+       //----------------Pusher API------------------//
+    //    $options = array(
+    //        'cluster' => 'ap1',
+    //        'useTLS' => true
+    //    );
+    //    $pusher = new Pusher\Pusher(
+    //        'ef64da0120ca27fe19a3',
+    //        'd5033393ff3b228540f7',
+    //        '1290222',
+    //        $options
+    //    );
+
+    //    $pusher->trigger('my-channel', 'Manager_notification', $data);
+       //-------------------------------------------//  
+    }
+
     //appending advance delivery list of assigned route
     function assignAdvancedeliveryListTable()
     {
@@ -299,6 +357,20 @@ class Agent_Model extends Model
                  WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
                 AND request.response_status = 'accept' AND request.complete_status = 0 ";
+
+        $row = $this->db->runQuery($query);
+        // return $row;
+        // print_r($row);
+        if ($row) {
+            return $row;
+        } else {
+            return 0;
+        }
+    }
+
+    //check whether the agent has requested availability from manager
+    function availabilityRequested($agent_id){
+        $query = "SELECT availability_requested FROM agent WHERE emp_id='$agent_id'";
 
         $row = $this->db->runQuery($query);
         // return $row;
@@ -433,6 +505,20 @@ class Agent_Model extends Model
         $query1 = "UPDATE agent SET availability='0' WHERE emp_id='$sender_id'";
         $this->db->runQuery($query);
         $this->db->runQuery($query1);
+        //----------------Pusher API------------------//
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'ef64da0120ca27fe19a3',
+            'd5033393ff3b228540f7',
+            '1290222',
+            $options
+        );
+
+        $pusher->trigger('my-channel', 'Manager_notification', $data);
+        //-------------------------------------------//
         //add the query to make the agent unavailable         
     }
 

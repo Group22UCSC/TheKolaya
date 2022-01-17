@@ -192,3 +192,7 @@ table tr:not(:first-child):hover {
     opacity: 1;
   }
 }
+
+text {
+  border: none;
+}
