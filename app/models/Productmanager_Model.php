@@ -222,7 +222,22 @@ class Productmanager_Model extends Model {
             return false;
         }
     }
+    function last30ProductSales(){// for the pie chart 
+        $dateTomorow=date('Y-m-d',strtotime("+1 day")); // todays date
+        $dateBack30 = date('Y-m-d',strtotime('-30 days')); // 30 days ago
+        $query="SELECT auction.product_id, auction.sold_amount,product.product_name 
+        FROM `auction` 
+        INNER JOIN product ON product.product_id=auction.product_id
+        WHERE auction.date>= '$dateBack30' AND auction.date <'$dateTomorow'";
+        //details are not coming for 30 days
+        $row = $this->db->selectQuery($query);
 
+        if($row){
+            return $row;
+        }else {
+            return false;
+        }
+    }
     //dashboard sold teta stock of last 30 days
     function totSales30(){
         // $from=date('Y-m-d',strtotime($_POST['from']));GGG

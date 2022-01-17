@@ -7,7 +7,7 @@
    
   <?php 
 
-// print_r($data);
+print_r($data0);
 // print_r($data);
 $today = date("Y-m-d");
 $len = sizeof($data);
@@ -65,6 +65,30 @@ for ($i = 0; $i < $len; $i++) {
 
 }
 
+$len2=sizeof($data1); //pie chart data1 length
+for($i=0;$i<$len2;$i++){
+  // pie chart calculation
+    // if($data[$i]['quality']>=80){
+    //     $starts5+=1;
+    // }
+    // else if($data[$i]['quality']>=60){
+    //     $starts4+=1;
+    // }
+    // else if($data[$i]['quality']>=40){
+    //     $starts3+=1;
+    // }
+    // else if($data[$i]['quality']>=20){
+    //     $starts2+=1;
+    // }
+    // else if($data[$i]['quality']>=0){
+    //     $starts1+=1;
+    // }
+    // else{
+
+    // }
+}
+
+ 
 ?>
 
 

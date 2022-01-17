@@ -7,7 +7,8 @@ class ProductManager extends Controller{
     }
     function index() {
         $incomeBarChart = $this->model->incomeBarChart();//for the bar chart
-        $this->view->render('Productmanager/Productmanager',$incomeBarChart);
+        $last30ProductSales=$this->model->last30ProductSales();//sold product categories of the last 30 days for the pie chart
+        $this->view->render('Productmanager/Productmanager',$incomeBarChart,$last30ProductSales);
     }
     
     function products() {
