@@ -7,7 +7,7 @@
    
   <?php 
 
-print_r($data0);
+// print_r($data1);
 // print_r($data);
 $today = date("Y-m-d");
 $len = sizeof($data);
@@ -36,11 +36,7 @@ $tea2 = 0.0;
 $tea1 = 0.0;
 
 // tea quality variables
-$starts5 = 0;
-$starts4 = 0;
-$starts3 = 0;
-$starts2 = 0;
-$starts1 = 0;
+
 for ($i = 0; $i < $len; $i++) {
 
   $dateTest = $data[$i]['date']; //get the date of which the net weight was added
@@ -64,28 +60,51 @@ for ($i = 0; $i < $len; $i++) {
   }
 
 }
+$prdct1 = 0;
+$prdct3 = 0;
+$prdct4 = 0;
+$prdct5 = 0;
+$prdct6 = 0;
+$prdct7 = 0;
+$prdct8 = 0;
+$prdct9 = 0;
+$prdct10 = 0;
+
 
 $len2=sizeof($data1); //pie chart data1 length
 for($i=0;$i<$len2;$i++){
   // pie chart calculation
-    // if($data[$i]['quality']>=80){
-    //     $starts5+=1;
-    // }
-    // else if($data[$i]['quality']>=60){
-    //     $starts4+=1;
-    // }
-    // else if($data[$i]['quality']>=40){
-    //     $starts3+=1;
-    // }
-    // else if($data[$i]['quality']>=20){
-    //     $starts2+=1;
-    // }
-    // else if($data[$i]['quality']>=0){
-    //     $starts1+=1;
-    // }
-    // else{
+    if($data1[$i]['product_id']=='P001'){
+      $prdct1+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P003'){
+      $prdct3+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P004'){
+      $prdct4+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P005'){
+      $prdct5+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P006'){
+      $prdct6+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P007'){
+      $prdct7+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P008'){
+      $prdct8+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P009'){
+      $prdct9+=(float)$data1[$i]['sold_amount'];
+    }
+    else if($data1[$i]['product_id']=='P010'){
+      $prdct10+=(float)$data1[$i]['sold_amount'];
+    }
+    
+    else{
 
-    // }
+    }
 }
 
  
@@ -196,10 +215,20 @@ for($i=0;$i<$len2;$i++){
       <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
 
       <script>
-        var xValues = ["Green Tea", "Black Tea", "N Black Tea", "Matcha Tea"];
-        var yValues = [60000, 20000, 10500, 10100];
-        var barColors = ["#2BD47D", "#ffc233", "#e05260"];
-
+      
+        prdct1 = '<?php echo $prdct1; ?>';
+        prdct3 = '<?php echo $prdct3; ?>';
+        prdct4 = '<?php echo $prdct4; ?>';
+        prdct5 = '<?php echo $prdct5; ?>';
+        prdct6 = '<?php echo $prdct6; ?>';
+        prdct7 = '<?php echo $prdct7; ?>';
+        prdct8 = '<?php echo $prdct8; ?>';
+        prdct9 = '<?php echo $prdct9; ?>';
+        prdct10 = '<?php echo $prdct10; ?>';
+        var xValues = ["Green Tea", "White Tea", "B-100 Black Tea", "N Black Tea","Early Black Tea","Masala Chai","Matcha Tea","Oolang Tea","Sencha Tea"];
+        var yValues = [prdct1, prdct3, prdct4, prdct5,prdct6,prdct7,prdct8,prdct9,prdct10];
+        var barColors = ["#42f5a7", "#ffc233", "#e05260", "#66b0ff", "#ffc233",'#2BD47D',"#ADFF2F","#9FE2BF","#40E0D0"];
+        
         new Chart("myChart2", {
           type: "doughnut",
           data: {
@@ -215,7 +244,7 @@ for($i=0;$i<$len2;$i++){
             },
             title: {
               display: true,
-              text: "Sales from the last auction(Kg)"
+              text: "Product Sales Last 30 days(Kg)"
             }
           }
         });
