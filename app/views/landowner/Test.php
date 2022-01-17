@@ -1,73 +1,145 @@
 <?php include 'top-container.php'; ?>
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Test.css">
-<?php print_r($data); ?>
-<!-- Title -->
+<?php include 'js/landowner/dashboardjs.php"'; ?>
 
-<div class="top-container">
-  <p>Daily Net Weight</p>
-</div>
+<?php
+print_r($data);
+?>
+
+<!-- Top dashboard home content -->
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
 
 
-<!-- grid -->
-<div class="wrapperdiv">
-  <div class="container">
+<!-- middle grid -->
 
-    <div class="search-container">
-      <div class="searchbar">
-        <form class="search-form" action="<?php echo URL ?>Landowner/Test" method="post">
-          <label for="lname">Date : </label>
-          <input type="date" id="searchDate" name="searchDate">
-          <button type="submit">Search</button>
-        </form>
+<div class="container">
+
+  <!-- first four boxes -->
+  <div class="box-one">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">Last Month Income</div>
+        <div class="number" id="income"></div>
+        <div class="indicator">
+          <i class='bx bx-up-arrow-alt'></i>
+          <span class="text">Up from previous month</span>
+        </div>
       </div>
+      <i class='bx bxs-cart-add cart one'></i>
     </div>
+  </div>
 
-    <div class="table-container">
-
-      <table class="teapricetable">
-
-        <tr>
-          <th class="thcls">Date</th>
-          <td class="tdcls"><?php echo $data[0]['date']; ?></td>
-        </tr>
-
-        <tr>
-          <th class="thcls">Initial Weight</th>
-          <td class="tdcls"><?php echo $data[0]['initial_weight_agent']; ?> Kg</td>
-        </tr>
-        <!-- there is no field called Container Count -->
-        <!-- <tr>
-          <th class="thcls">Container Count</th>
-          <td class="tdcls"><?php echo $data[0]['date']; ?></td>
-        </tr> -->
-        <tr>
-          <th class="thcls">Container Reduced Weight</th>
-          <td class="tdcls"><?php echo $data[0]['container_precentage']; ?> Kg</td>
-        </tr>
-        <tr>
-          <th class="thcls">Water Reduce Weight</th>
-          <td class="tdcls"><?php echo $data[0]['water_precentage']; ?> Kg</td>
-        </tr>
-
-        <tr>
-          <th class="thcls">Mature Reduced Weight</th>
-          <td class="tdcls"><?php echo $data[0]['matured_precentage']; ?> Kg</td>
-        </tr>
-        <tr>
-          <th class="thcls">Net Weight</th>
-          <td class="tdcls"><?php echo $data[0]['net_weight']; ?> Kg</td>
-        </tr>
-
-
-
-      </table>
-
+  <div class="box-two">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">Last Month Fertilizer Usage</div>
+        <div class="number" id="totMass"></div>
+        <div class="indicator">
+          <i class='bx bx-up-arrow-alt'></i>
+          <span class="text">Up from previous month</span>
+        </div>
+      </div>
+      <i class='bx bxs-cart-add cart two'></i>
     </div>
+  </div>
 
+  <div class="box-tree">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">This Month Advance</div>
+        <div class="number" id="advance">2,876</div>
+        <div class="indicator">
+          <i class='bx bx-up-arrow-alt'></i>
+          <span class="text">Up from yesterday</span>
+        </div>
+      </div>
+      <i class='bx bx-cart cart three'></i>
+    </div>
+  </div>
+
+  <div class="box-four">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">This Month Tea Rating</div>
+        <div class="number" id="rating"></div>
+        <div class="indicator">
+          <i class='bx bx-down-arrow-alt down'></i>
+          <span class="text">Down from
+            Previous month</span>
+        </div>
+      </div>
+      <i class='bx bxs-cart-download cart four'></i>
+    </div>
+  </div>
+
+  <!-- chart hedding -->
+
+  <div class="chart-head">
+    <h1>TEA SUPPLY DURING LAST 7 DAYS</h1>
+  </div>
+
+  <!-- chart -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <div class="chart">
+    <div class="chartplace">
+      <canvas id="myChart1" style="width:100%;max-width:1000px"></canvas>
+    </div>
+    <script>
+      var xValues = ["10/01", "10/03", "10/10", "10/06", "10/12", "10/16", "10/20"];
+      var yValues = [50, 25, 35, 44, 37, 80, 77];
+      var barColors = ['rgba(255, 99, 132, 0.8)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ];
+      var borderColor = [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ];
+      var graphName;
+      for (var i = 1; i <= 3; i++) {
+        switch (i) {
+          case 1:
+            graphName = "Weight"
+            break
+
+        }
+        var chartNum = "myChart" + i
+        new Chart(chartNum, {
+          type: "bar",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues,
+              borderWidth: 2,
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: graphName
+            }
+          }
+        });
+      }
+    </script>
   </div>
 </div>
-
-
-
-
+<?php include 'js/landowner/dashboardjs.php'; ?>
+<script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
