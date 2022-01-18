@@ -291,19 +291,19 @@ class Agent_Model extends Model
 
        $query = "UPDATE agent SET availability_requested='1' WHERE emp_id='$agent_id'";
        $this->db->runQuery($query);
-       //----------------Pusher API------------------//
-       $options = array(
-           'cluster' => 'ap1',
-           'useTLS' => true
-       );
-       $pusher = new Pusher\Pusher(
-           'ef64da0120ca27fe19a3',
-           'd5033393ff3b228540f7',
-           '1290222',
-           $options
-       );
+    //    //----------------Pusher API------------------//
+    //    $options = array(
+    //        'cluster' => 'ap1',
+    //        'useTLS' => true
+    //    );
+    //    $pusher = new Pusher\Pusher(
+    //        'ef64da0120ca27fe19a3',
+    //        'd5033393ff3b228540f7',
+    //        '1290222',
+    //        $options
+    //    );
 
-       $pusher->trigger('my-channel', 'Manager_notification');
+    //    $pusher->trigger('my-channel', 'Manager_notification',$data);
        //-------------------------------------------//  
     }
 

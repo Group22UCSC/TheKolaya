@@ -22,7 +22,7 @@ class Agent extends Controller
                 $available_res = $this->model->availablelistTable();
                 $fert_res = $this->model->fertilizerdeliveryListTable();
                 $adv_res = $this->model->advancedeliveryListTable();
-                $this->model->setAssignDefault();
+                // $this->model->setAssignDefault();
             } else if ($isreject[0]['is_rejected']  == 0) {
                 $agent_of_assign_route =  $this->model->getAssignedRouteAgent();
                 $agent_availability_of_assign_route = $this->model->checkAvailability($agent_of_assign_route[0]['emp_id']);
