@@ -9,7 +9,7 @@ class Landowner extends Controller
 
     function index()
     {
-        //get fertilizer usage to the dash board
+        //get fertilizer usage to the dash board chart
         $result = $this->model->chartValuse();
         $this->view->render('landowner/landowner', $result);
     }
@@ -88,14 +88,14 @@ class Landowner extends Controller
             $result = $this->model->searchDailyDetails();
             if ($result) {
                 // print_r($result);
-                $this->view->render('landowner/Test', $result);
+                $this->view->render('landowner/test', $result);
             } else {
-                $this->view->render('landowner/Test?', $result);
+                $this->view->render('landowner/test?', $result);
                 return false;
             }
         } else {
             $result = $this->model->getLandonwerTable();
-            $this->view->render('landowner/Monthly_Income', $result);
+            $this->view->render('landowner/test', $result);
         }
     }
 
@@ -154,5 +154,10 @@ class Landowner extends Controller
         $json_arr = json_encode($result);
         //print_r($json_arr);
         echo $json_arr;
+    }
+
+    function abc()
+    {
+        $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
     }
 }

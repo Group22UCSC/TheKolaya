@@ -1,22 +1,20 @@
 <?php include 'top-container.php'; ?>
 <?php include 'js/landowner/dashboardjs.php"'; ?>
 
-<?php
-print_r($data);
-?>
+
 
 <!-- Top dashboard home content -->
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/test.css">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-<body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
+<!-- <body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body> -->
 
 
 <!-- middle grid -->
 
 <div class="container">
 
-  <!-- first four boxes -->
+  <!-- first two boxes -->
   <div class="box-one">
     <div class="box">
       <div class="right-side">
@@ -34,7 +32,7 @@ print_r($data);
   <div class="box-two">
     <div class="box">
       <div class="right-side">
-        <div class="box-topic">Last Month Fertilizer Usage</div>
+        <div class="box-topic">Last Month Tea Price</div>
         <div class="number" id="totMass"></div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
@@ -45,101 +43,79 @@ print_r($data);
     </div>
   </div>
 
-  <div class="box-tree">
-    <div class="box">
-      <div class="right-side">
-        <div class="box-topic">This Month Advance</div>
-        <div class="number" id="advance">2,876</div>
-        <div class="indicator">
-          <i class='bx bx-up-arrow-alt'></i>
-          <span class="text">Up from yesterday</span>
-        </div>
-      </div>
-      <i class='bx bx-cart cart three'></i>
-    </div>
+
+  <!-- search area -->
+
+  <div class="search">
+    <form action="/action_page.php">
+      <input type="month" id="selectedMonth" name="selectedMonth">
+      <input type="submit" value="search">
+    </form>
   </div>
 
-  <div class="box-four">
-    <div class="box">
-      <div class="right-side">
-        <div class="box-topic">This Month Tea Rating</div>
-        <div class="number" id="rating"></div>
-        <div class="indicator">
-          <i class='bx bx-down-arrow-alt down'></i>
-          <span class="text">Down from
-            Previous month</span>
-        </div>
-      </div>
-      <i class='bx bxs-cart-download cart four'></i>
-    </div>
+
+
+  <!-- table head -->
+  <div class="table-head">
+    <h1>JANUARY MONTH DETAILS</h1>
   </div>
+  <!-- neeeded -->
 
-  <!-- chart hedding -->
 
-  <div class="chart-head">
-    <h1>TEA SUPPLY DURING LAST 7 DAYS</h1>
-  </div>
+  <!-- table for monthly details  -->
 
-  <!-- chart -->
+  <div class="table tableplace">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-  <div class="chart">
-    <div class="chartplace">
-      <canvas id="myChart1" style="width:100%;max-width:1000px"></canvas>
-    </div>
-    <script>
-      var xValues = ["10/01", "10/03", "10/10", "10/06", "10/12", "10/16", "10/20"];
-      var yValues = [50, 25, 35, 44, 37, 80, 77];
-      var barColors = ['rgba(255, 99, 132, 0.8)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
-      ];
-      var borderColor = [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ];
-      var graphName;
-      for (var i = 1; i <= 3; i++) {
-        switch (i) {
-          case 1:
-            graphName = "Weight"
-            break
 
-        }
-        var chartNum = "myChart" + i
-        new Chart(chartNum, {
-          type: "bar",
-          data: {
-            labels: xValues,
-            datasets: [{
-              backgroundColor: barColors,
-              data: yValues,
-              borderWidth: 2,
-            }]
-          },
-          options: {
-            legend: {
-              display: false
-            },
-            title: {
-              display: true,
-              text: graphName
-            }
-          }
-        });
-      }
-    </script>
+    <table class="teapricetable">
+      <thead class="threadcls">
+
+        <tr class="trcls">
+          <th class="thcls">Date</th>
+          <th class="thcls">Initial Weight</th>
+          <th class="thcls">Net Weight</th>
+        </tr>
+
+      </thead>
+      <tbody>
+
+
+        <tr>
+          <td class="tdcls"><a class="acls" href="#">10/6/2021</a></td>
+          <td class="tdcls">50kg</td>
+          <td class="tdcls">48kg</td>
+        </tr>
+
+        <tr>
+          <td class="tdcls"><a class="acls" href="#">10/1/2021</a></td>
+          <td class="tdcls">55kg</td>
+          <td class="tdcls">52kg</td>
+        </tr>
+
+        <tr>
+          <td class="tdcls"><a class="acls" href="#">09/24/2021</a></td>
+          <td class="tdcls">40kg</td>
+          <td class="tdcls">38kg</td>
+        </tr>
+
+        <tr>
+          <td class="tdcls"><a class="acls" href="#">09/17/2021</a></td>
+          <td class="tdcls">47kg</td>
+          <td class="tdcls">44kg</td>
+        </tr>
+
+        <tr>
+          <td class="tdcls"><a class="acls" href="#">09/9/2021</a></td>
+          <td class="tdcls">53kg</td>
+          <td class="tdcls">50kg</td>
+        </tr>
+
+      </tbody>
+    </table>
   </div>
 </div>
+
+
 <?php include 'js/landowner/dashboardjs.php'; ?>
 <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>
