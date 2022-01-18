@@ -72,7 +72,8 @@
 
         <tr class="trcls">
           <th class="thcls">Date</th>
-          <th class="thcls">Initial Weight</th>
+          <th class="thcls">Initial Weight From Agent</th>
+          <th class="thcls">Initial Weight From Supervisor</th>
           <th class="thcls">Net Weight</th>
         </tr>
 
@@ -84,30 +85,35 @@
           <td class="tdcls"><a class="acls" href="#">10/6/2021</a></td>
           <td class="tdcls">50kg</td>
           <td class="tdcls">48kg</td>
+          <td class="tdcls">56kg</td>
         </tr>
 
         <tr>
           <td class="tdcls"><a class="acls" href="#">10/1/2021</a></td>
           <td class="tdcls">55kg</td>
           <td class="tdcls">52kg</td>
+          <td class="tdcls">56kg</td>
         </tr>
 
         <tr>
           <td class="tdcls"><a class="acls" href="#">09/24/2021</a></td>
           <td class="tdcls">40kg</td>
           <td class="tdcls">38kg</td>
+          <td class="tdcls">56kg</td>
         </tr>
 
         <tr>
           <td class="tdcls"><a class="acls" href="#">09/17/2021</a></td>
           <td class="tdcls">47kg</td>
           <td class="tdcls">44kg</td>
+          <td class="tdcls">56kg</td>
         </tr>
 
         <tr>
           <td class="tdcls"><a class="acls" href="#">09/9/2021</a></td>
           <td class="tdcls">53kg</td>
           <td class="tdcls">50kg</td>
+          <td class="tdcls">56kg</td>
         </tr>
 
       </tbody>

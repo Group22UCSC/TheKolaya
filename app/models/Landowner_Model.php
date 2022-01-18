@@ -277,4 +277,19 @@ class landowner_Model extends Model
             return false;
         }
     }
+
+
+
+    //get VALUES to monthly_income
+    function getMonthlyIncome()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM tea WHERE lid='{$lid}'";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }
