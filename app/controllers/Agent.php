@@ -253,8 +253,14 @@ class Agent extends Controller
             $this->pre_tea_data['lid'] = trim($_POST['searchlid']);
 
             $result = $this->model->searchTeaUpdates($this->pre_tea_data);
-            $this->view->render('Agent/preTeaUpdatesResults', $result);
-            // print_r($result);
+            if($result == 0){
+                $this->view->showPage('agent/noSearchUpdates');
+            }
+            else{
+                $this->view->render('Agent/preTeaUpdatesResults', $result);
+            }
+           
+           
         }
     }
 
