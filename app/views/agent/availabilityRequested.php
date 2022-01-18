@@ -16,12 +16,12 @@
 <?php include 'topContainer.php'; ?>   
   <!-- <div class="modal"> -->
     <div class="toggle-div" id="toggle-div">
-    <button class="backbtn" onclick="backToLogout()">Logout </button>
+    <button class="backbtn" onclick="back()">Logout </button>
         <div class="note">You are unavailable at the moment.Please wait for the manager to make you available.</div>        
     </div>
 
     <script>
-        function backToLogout(){
+        function back(){
         location.replace("login");
         }
     </script>
