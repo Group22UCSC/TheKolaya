@@ -229,7 +229,9 @@
         fertilizerExp= '<?php echo $fertilizerExp; ?>';
         var xValues = ["Income", "Payments","Fertilizer Expenses"];
         var yValues = [val06, payExp,fertilizerExp];
-        var barColors = ["#d934eb", "#ebc934","#eb8334"];
+        // var barColors = ["#d934eb", "#ebc934","#eb8334"];
+        var barColors = [ "#ffc233", "#e05260", "#66b0ff", "#ffc233",'#2BD47D',"#ADFF2F","#9FE2BF","#40E0D0"];
+
         
         new Chart("myChart2", {
           type: "doughnut",
