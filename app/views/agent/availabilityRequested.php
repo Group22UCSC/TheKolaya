@@ -22,7 +22,7 @@
 
     <script>
         function back(){
-        location.replace("login");
+        window.location.replace("<?php echo URL ?>Login/logout");
         }
     </script>
     <?php include 'bottomContainer.php'; ?>
