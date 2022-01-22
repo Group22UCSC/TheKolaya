@@ -65,7 +65,7 @@ class Supervisor extends Controller
                     $monthNum = ($monthNum + 12) % 13;
                     $monthName = date('F', strtotime("2001-$monthNum-1"));
                     echo '<div class="manage-request-row">
-                            <div class="manage-request-cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
+                            <div class="manage-request-cell" data-title="Previous Request Date"><b>' . $lastRequests[$i]['request_date'] . '</b></div>
                             <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month, $_POST['landowner_id']) . '</div>
                         </div>';
                 }
