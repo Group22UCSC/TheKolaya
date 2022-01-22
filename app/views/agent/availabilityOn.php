@@ -12,37 +12,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>   
+<body>
+<?php include 'topContainer.php'; ?>   
   <!-- <div class="modal"> -->
     <div class="toggle-div" id="toggle-div">
     <button class="backbtn" onclick="backToLogout()">Logout </button>
-        <div class="note">Currently you are unavailable.Please switch on your availability</div>
-          <label class="switch">
+        <div class="note">Sorry, you are unavailable at the moment. Please request the manager.</div>
+        <button class="requestbtn" id ="requestbtn" onclick="requestManager()">Request </button>
+          <!-- <label class="switch">
           <input type="checkbox" id="togglebtn">
           <span class="slider round"></span>
-          </label>          
+          </label>           -->
     </div>
   <!-- </div> -->
 
 <script>
-  var switchStatus = false;
-  $("#togglebtn").on('change', function() {
-    if ($(this).is(':checked')) {
-        switchStatus = $(this).is(':checked');
-        // console.log("this is if part");
-        // console.log(switchStatus);// To verify
-        location.replace("agent/makeAvailable");
-    }
-    else {
-       switchStatus = $(this).is(':checked');
-       console.log("this is else part");
-       console.log(switchStatus);// To verify
+  //toggle button function
+//   var switchStatus = false;
+//   $("#togglebtn").on('change', function() {
+//     if ($(this).is(':checked')) {
+//         switchStatus = $(this).is(':checked');
+//         // console.log("this is if part");
+//         // console.log(switchStatus);// To verify
+//         location.replace("agent/makeAvailable");
+//     }
+//     else {
+//        switchStatus = $(this).is(':checked');
+//        console.log("this is else part");
+//        console.log(switchStatus);// To verify
       
-    }
-});
+//     }
+// });
 
 function backToLogout(){
   location.replace("login");
 }
+
+// document.getElementById("requestbtn").addEventListener("click", function() {
+//   $('#requestbtn').hide();
+// });
+
+function requestManager(){
+  location.replace("agent/requestManager");    
+}
+
+
   </script>
+   <?php include 'bottomContainer.php'; ?>
  

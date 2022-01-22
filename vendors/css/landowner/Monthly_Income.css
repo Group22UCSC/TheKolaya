@@ -1,120 +1,208 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   font-family: sans-serif;
 }
 
-/* @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
+/* main grid */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.6fr 0.3fr 0.1fr 2fr;
+  gap: 1rem 1rem;
+  height: 100%;
+  margin: 1rem;
+  grid-template-areas:
+    "box-one box-two"
+    "search search "
+    "table-head table-head"
+    "chart chart";
+}
+
+/* chart heading */
+
+.table-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  grid-area: table-head;
+  background-color: #ffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+}
+.table-head form {
+  display: flex;
+}
+.table-head input {
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 30px;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.table-head input[type="month"] {
+  width: 80%;
+  border: 2px solid;
+}
+
+.table-head input[type="submit"] {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+}
+
+/* table head */
 
 .search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  grid-area: search;
+  background-color: #ffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+}
+.search form {
+  display: flex;
+}
+.search input {
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 30px;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.search input[type="month"] {
+  width: 80%;
+  border: 2px solid;
+}
+
+.search input[type="submit"] {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+}
+
+/* table*/
+
+.table {
+  display: flex;
+  flex: 1;
+  margin-bottom: 10px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  grid-area: chart;
+  border-radius: 8px;
+  background-color: rgb(252, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+.tableplace {
   width: 100%;
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  padding: 40px;
+  color: #4f546c;
+  font-size: 0.9rem;
 }
 
-.searchTerm {
-  width: 100%;
-  border: 3px solid green;
-  border-right: none;
-  padding: 5px;
-  height: 50px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9dbfaf;
-}
+/* first four boxes*/
 
-.searchTerm:focus {
-  color: #00b4cc;
-}
-
-.searchButton {
-  width: 40px;
-  height: 50px;
-  border: 1px solid #00b4cc;
-  background: green;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap {
-  width: 30%;
-  /* position: absolute;*/
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.middle {
-  border: 1px solid #d5dbd9;
-  margin-top: 15px;
-  height: 50px;
-  width: 90%;
-  background-color: white;
-  margin-left: 5%;
-  text-align: center;
-  color: green;
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 13px;
-}
-
-.teaPrice {
-  border: 1px solid #d5dbd9;
-  margin-top: 15px;
-  height: 50px;
-  width: 60%;
-  background-color: white;
-  margin-left: 20%;
-  text-align: center;
-  color: green;
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 13px;
-}
-
-.income {
-  border: 1px solid #d5dbd9;
-  margin-top: 15px;
-  height: 50px;
-  width: 60%;
-  background-color: white;
-  margin-left: 20%;
-
-  text-align: center;
-  color: green;
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 13px;
-}
-
-.name1 {
-  padding-top: 10px;
-  width: 80%;
-  padding-left: 20%;
-}
-
-.middle-conatiner {
-  background-image: url("../../images/landowner/12.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  /* margin: 25px 0px;*/
-  margin-top: 15px;
-  text-align: center;
-  width: 90%;
-  margin-left: 5%;
+.box-one {
+  grid-area: box-one;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
-.table {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-left: 15%;
-  width: 60%;
+.box-two {
+  grid-area: box-two;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.box-topic {
+  font-size: 20px;
+  font-weight: 500;
+}
+.box .number {
+  display: inline-block;
+  font-size: 35px;
+  margin-top: -6px;
+  font-weight: 500;
+}
+.box .indicator {
+  display: flex;
+  align-items: center;
+}
+.box .indicator i {
+  height: 20px;
+  width: 20px;
+  background: #8fdacb;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.box .indicator i.down {
+  background: #e87d88;
+}
+.box .indicator .text {
+  font-size: 12px;
+}
+.box .cart {
+  display: inline-block;
+  font-size: 32px;
+  height: 50px;
+  width: 50px;
+  background: #cce5ff;
+  line-height: 50px;
+  text-align: center;
+  color: #66b0ff;
+  border-radius: 12px;
+  margin: -15px 0 0 6px;
+}
+.box .cart.two {
+  color: #2bd47d;
+  background: #c0f2d8;
+}
+
+.total-order {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .table-container {
@@ -159,37 +247,6 @@
 .tdcls {
   padding: 1rem 7rem;
 }
-
-.acls {
-  text-decoration: none;
-  color: #2962ff;
-}
-
-.status {
-  border-radius: 0.2rem;
-  background-color: red;
-  padding: 0.2rem 1rem;
-  text-align: center;
-}
-.status-pending {
-  background-color: #fff0c2;
-  color: #a68b00;
-}
-
-.status-paid {
-  background-color: #c8e6c9;
-  color: #388e3c;
-}
-
-.status-notupdated {
-  background-color: #ffcdd2;
-  color: #c62828;
-}
-
-.amount {
-  text-align: right;
-}
-
 tr:nth-child(even) {
   background-color: #f4f6fb;
 }

@@ -9,14 +9,16 @@ class Landowner extends Controller
 
     function index()
     {
-        $this->view->showPage('landowner/landowner');
+        //get fertilizer usage to the dash board chart
+        $result = $this->model->chartValuse();
+        $this->view->render('landowner/landowner', $result);
     }
 
     function Make_Requests()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->model->insertRequest($_POST);
-            
+
             // $this->view->render('landowner/Make_Requests');
             // print_r($result);
         } else {
@@ -47,17 +49,34 @@ class Landowner extends Controller
 
     function Monthly_Income()
     {
+
         $this->view->showPage('landowner/Monthly_Income');
     }
 
     function Daily_Net_Weight()
     {
-        $this->view->showPage('landowner/Daily_Net_Weight');
+        if (!empty($_POST)) {
+            $result = $this->model->searchDailyDetails();
+            if ($result) {
+                // print_r($result);
+                $this->view->render('landowner/Daily_Net_Weight', $result);
+            } else {
+                $_POST['Error'] = "Search date not found";
+                $result = $this->model->getLandonwerTable();
+                $this->view->render('landowner/Daily_Net_Weight', $result);
+                return false;
+            }
+        } else {
+
+            $result = $this->model->getLandonwerTable();
+            $this->view->render('landowner/Daily_Net_Weight', $result);
+        }
     }
 
     function Monthly_Tea_Price()
     {
-        $this->view->showPage('landowner/Monthly_Tea_Price');
+        $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+        $this->view->showPage('landowner/Monthly_Tea_Price', $result);
     }
 
     //test
@@ -65,10 +84,18 @@ class Landowner extends Controller
     {
         if (!empty($_POST)) {
 
-            $result = $this->model->insertRequest();
-            print_r($result);
+
+            $result = $this->model->searchDailyDetails();
+            if ($result) {
+                // print_r($result);
+                $this->view->render('landowner/test', $result);
+            } else {
+                $this->view->render('landowner/test?', $result);
+                return false;
+            }
         } else {
-            $this->view->render('landowner/Test');
+            $result = $this->model->getLandonwerTable();
+            $this->view->render('landowner/test', $result);
         }
     }
 
@@ -92,12 +119,45 @@ class Landowner extends Controller
     }
 
     //monthly tea price
-
     function getTeaPrice()
     {
         $result = $this->model->teaPriceTable();
         $json_arr = json_encode($result);
         //print_r($json_arr);
         echo $json_arr;
+    }
+
+
+    //dashbord cards
+
+    function lastMonthIncomeAndAdvance()
+    {
+        $result = $this->model->lastMonthIncomeAndAdvance();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+    //get tea qulity to dashboard
+    function getTeaQulity()
+    {
+        $result = $this->model->getTeaQulity();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+    //get fertilizer usage to the dash board
+    function fertilizerUsage()
+    {
+        $result = $this->model->fertilizerUsage();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+    function abc()
+    {
+        $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
     }
 }

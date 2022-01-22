@@ -5,7 +5,7 @@
 }
 
 /* main grid */
-
+/* if overlaping happening change height ro 100% change grit fr value  */
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

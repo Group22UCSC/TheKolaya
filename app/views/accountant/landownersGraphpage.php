@@ -147,7 +147,7 @@ for ($i = 0; $i < $len; $i++) {
                     },
                     title: {
                         display: true,
-                        text: "Income to the factory in Rs   "
+                        text: "Supplied Tea Amount (Kg) "
                     }
                 }
             });

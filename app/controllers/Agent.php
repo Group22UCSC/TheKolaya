@@ -12,15 +12,17 @@ class Agent extends Controller
         $this->getNotificationCount(); //This for get Notification count
         $agent_id = $_SESSION['user_id'];
         $result = $this->model->checkAvailability($agent_id);
+        $is_requested = $this->model->availabilityRequested($agent_id);
 
         $isreject = $this->model->isReject();
         // take the available landowners count to collect tea and to deliver requests to be displayed on the dashboard 
         if ($result[0]['availability'] == 1) {
+            $_SESSION['availability']=1;
             if ($isreject[0]['is_rejected'] == -1 || $isreject[0]['is_rejected']  == 1) {
                 $available_res = $this->model->availablelistTable();
                 $fert_res = $this->model->fertilizerdeliveryListTable();
                 $adv_res = $this->model->advancedeliveryListTable();
-                $this->model->setAssignDefault();
+                // $this->model->setAssignDefault();
             } else if ($isreject[0]['is_rejected']  == 0) {
                 $agent_of_assign_route =  $this->model->getAssignedRouteAgent();
                 $agent_availability_of_assign_route = $this->model->checkAvailability($agent_of_assign_route[0]['emp_id']);
@@ -38,18 +40,29 @@ class Agent extends Controller
             }
             $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res);
         } else if ($result[0]['availability'] == 0) {
-            // print_r("agent unavailable");
-            // $this->view->showPage('agent/availabilityOn');
-            $this->viewEmergencyMessage();
+            if($is_requested[0]['availability_requested'] == 1){
+                $this->view->showPage('agent/availabilityRequested');
+            }
+            else{
+                $this->view->showPage('agent/availabilityOn');
+            }
+            
+           
         }
     }
 
-    //make the agent available after toggle 
-    function makeAvailable()
-    {
-        $this->model->availableAgent();
-        $this->index();
+    //request availability from manager
+    function requestManager(){
+        $this->model->requestManager();
+        $this->view->showPage('agent/availabilityRequested');
     }
+
+    //make the agent available after toggle 
+    // function makeAvailable()
+    // {
+    //     $this->model->availableAgent();
+    //     $this->index();
+    // }
 
     //view available landowner list
     function availableLandownerList()
@@ -136,6 +149,7 @@ class Agent extends Controller
             $this->msg_data['message'] = trim($_POST['message']);
             $this->msg_data['agent_id'] = $_SESSION['user_id'];
             $this->model->storeEmergencyMessage($this->msg_data);
+            $_SESSION['availability']=0;
             print_r($this->msg_data);
             $this->view->showPage('Agent/EmergencyMessage');
         }
@@ -240,8 +254,14 @@ class Agent extends Controller
             $this->pre_tea_data['lid'] = trim($_POST['searchlid']);
 
             $result = $this->model->searchTeaUpdates($this->pre_tea_data);
-            $this->view->render('Agent/preTeaUpdatesResults', $result);
-            // print_r($result);
+            if($result == 0){
+                $this->view->showPage('agent/noSearchUpdates');
+            }
+            else{
+                $this->view->render('Agent/preTeaUpdatesResults', $result);
+            }
+           
+           
         }
     }
 
@@ -263,11 +283,21 @@ class Agent extends Controller
 
             if ($this->pre_request_data['rtype'] == "Fertilizer") {
                 $result = $this->model->searchFertilizerUpdates($this->pre_request_data);
-                $this->view->render('Agent/preFertilizerRequestsResults', $result);
+                if($result == 0){
+                    $this->view->showPage('agent/noSearchUpdates');
+                }
+                else{
+                    $this->view->render('Agent/preFertilizerRequestsResults', $result);
+                }               
                 //print_r($result);
             } else if ($this->pre_request_data['rtype'] == "Advance") {
                 $result = $this->model->searchAdvanceUpdates($this->pre_request_data);
-                $this->view->render('Agent/preAdvanceRequestsResults', $result);
+                if($result == 0){
+                    $this->view->showPage('agent/noSearchUpdates');
+                }
+                else{
+                    $this->view->render('Agent/preAdvanceRequestsResults', $result);
+                }                           
                 // print_r($result);
             }
         }
@@ -335,6 +365,8 @@ class Agent extends Controller
                     case 'emergency':
                         $imgPath = URL . '/vendors/images/notifications/emergency.jpg';
                         break;
+                    case 'available_request':
+                        $imgPath = URL . '/vendors/images/notifications/available.jpg';
                 }
 
                 switch ($notification[$i]['read_unread']) {

@@ -191,4 +191,105 @@ class landowner_Model extends Model
 
     //monthly tea price end 
 
+    // get last date weight details
+    function getLandonwerTable()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' ORDER BY date DESC LIMIT 1";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    //get search date weight details
+    function searchDailyDetails()
+    {
+        $lid = $_SESSION['user_id'];
+
+        $date = $_POST['searchDate'];
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' AND date='{$date}'  ";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //get last month income and advance to dashboard card
+    function lastMonthIncomeAndAdvance()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 1 ";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //get last month tea qulity to dashboard card
+    function getTeaQulity()
+    {
+        $user_id = $_SESSION['user_id'];
+
+
+        $first = date('Y-m-01');
+        $last  = date('Y-m-t');
+        $sql = "SELECT quality FROM tea WHERE lid='{$user_id}' AND date <='{$last}' AND date >= '{$first}' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //get last month fertilizer usage to dashboard card
+    function fertilizerUsage()
+    {
+        $first = date('Y-m-01');
+        $last  = date('Y-m-t');
+        $sql = "SELECT fertilizer_request.amount
+        FROM fertilizer_request 
+        INNER JOIN request ON request.request_id=fertilizer_request.request_id 
+        WHERE fertilizer_request.date_delivered BETWEEN '{$first}'AND '{$last}' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //CHART VALUES FOR DASHBOARD
+    function chartValuse()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT date,net_weight FROM tea WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 7";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+
+    //get VALUES to monthly_income
+    function getMonthlyIncome()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM tea WHERE lid='{$lid}'";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }

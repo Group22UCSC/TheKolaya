@@ -86,15 +86,16 @@
       data: form,
     }).done(function (response) {      
       console.log("success");
-      // console.log(response);
+      console.log(response);      
       $("#resultform").show();
       $('#resultform').html(response);
       
     });
     console.log('date'+date);
-    console.log('lid'+landownerId);
+    console.log('lid'+landownerId);    
     event.preventDefault();
   });
+ 
 });
 </script>
   <?php include 'bottomContainer.php';?>
