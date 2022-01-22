@@ -79,39 +79,48 @@
             <div class="cell">Net-Weight(kg)</div>
             <div class="cell">Tea Quality</div>
           </div>
+          
           <?php
-          if (!empty($data)) {
-
-            for ($i = 0; $i < count($data); $i++) {
-              if ($data[$i]['quality'] <= 20) {
-                $teaQuality = 'Too Bad';
-              } else if ($data[$i]['quality'] > 20 && $data[$i]['quality'] <= 40) {
-                $teaQuality = 'Bad';
-              } else if ($data[$i]['quality'] > 40 && $data[$i]['quality'] <= 60) {
-                $teaQuality = 'Average';
-              } else if ($data[$i]['quality'] > 60 && $data[$i]['quality'] <= 80) {
-                $teaQuality = 'Good';
-              } else if ($data[$i]['quality'] > 80 && $data[$i]['quality'] <= 100) {
-                $teaQuality = 'Excellent';
-              }
-              $reductions = $data[$i]['water_precentage'] + $data[$i]['container_precentage'] + $data[$i]['matured_precentage'];
-              if ($data[$i]['sup_id'])
-                echo '<div class="row">
-                          <div class="cell" data-title="Landowener Id">' . $data[$i]['lid'] . '</div>
-                          <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
-                          <div class="cell" data-title="Net-Weight(kg)">' . $data[$i]['net_weight'] . '</div>
-                          <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
-                        </div>';
-            }
+          for($i = 0; $i < 10; $i++) {
+            echo '<div class="row">
+                    <div class="cell" data-title="Landowener Id">1</div>
+                    <div class="cell" data-title="Reductions(kg)">1</div>
+                    <div class="cell" data-title="Net-Weight(kg)">1</div>
+                    <div class="cell" data-title="Tea Quality">1</div>
+                  </div>';
           }
+          // if (!empty($data)) {
+
+          //   for ($i = 0; $i < count($data); $i++) {
+          //     if ($data[$i]['quality'] <= 20) {
+          //       $teaQuality = 'Too Bad';
+          //     } else if ($data[$i]['quality'] > 20 && $data[$i]['quality'] <= 40) {
+          //       $teaQuality = 'Bad';
+          //     } else if ($data[$i]['quality'] > 40 && $data[$i]['quality'] <= 60) {
+          //       $teaQuality = 'Average';
+          //     } else if ($data[$i]['quality'] > 60 && $data[$i]['quality'] <= 80) {
+          //       $teaQuality = 'Good';
+          //     } else if ($data[$i]['quality'] > 80 && $data[$i]['quality'] <= 100) {
+          //       $teaQuality = 'Excellent';
+          //     }
+          //     $reductions = $data[$i]['water_precentage'] + $data[$i]['container_precentage'] + $data[$i]['matured_precentage'];
+          //     if ($data[$i]['sup_id'])
+          //       echo '<div class="row">
+          //                 <div class="cell" data-title="Landowener Id">' . $data[$i]['lid'] . '</div>
+          //                 <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
+          //                 <div class="cell" data-title="Net-Weight(kg)">' . $data[$i]['net_weight'] . '</div>
+          //                 <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
+          //               </div>';
+          //   }
+          // }
 
           ?>
         </div>
       </div>
       <?php
-      if (empty($data)) {
-        echo '<div id="not_display_yet" style="border-radius: 0px; margin-top:10px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
-      }
+      // if (empty($data)) {
+      //   echo '<div id="not_display_yet" style="border-radius: 0px; margin-top:10px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
+      // }
       ?>
     </div>
   </div>
