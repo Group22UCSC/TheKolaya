@@ -69,7 +69,7 @@ class Supervisor_Model extends Model
             for ($i = 0; $i < count($row); $i++) {
                 $monthlyTeaAmount += $row[$i]['net_weight'];
             }
-            return $monthlyTeaAmount / count($row) .'Kg for '. date('F', strtotime("2001-$month-1"));
+            return '<b>'.$monthlyTeaAmount / count($row) .'Kg for '. date('F', strtotime("2001-$month-1")) . '</b>';
         } else {
             return '<b style="color:red;">No data found for ' . date('F', strtotime("2001-$month-1")) . '</b>';
         }
