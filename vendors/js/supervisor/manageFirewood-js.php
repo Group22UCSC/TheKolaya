@@ -11,7 +11,6 @@
                 name: 'type',
                 value: 'firewood'
             });
-            console.log(form);
             $('.error').remove();
             var inAmount = $('#in_amount').val();
             var pricePerUnit = $('#price_per_unit').val();
@@ -61,7 +60,6 @@
                                 text: 'Your file has been updated.',
                                 confirmButtonColor: '#01830c'
                             })
-                            console.log(data);
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
                             Swal.fire({
@@ -87,7 +85,6 @@
                 name: 'type',
                 value: 'firewood'
             });
-            console.log(form);
             $('.error').remove();
             var outAmount = $('#out_amount').val();
             var str = "<div style=\"display:flex; justify-content:center;\">" +
@@ -127,8 +124,6 @@
                                 text: 'Your file has been updated.',
                                 confirmButtonColor: '#01830c'
                             })
-                            console.log(data);
-
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
                             Swal.fire({
