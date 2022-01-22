@@ -88,7 +88,6 @@
 
 @media (max-width: 1000px) {
   .middle-container {
-    /* grid-template-columns: 1fr; */
     display: block;
   }
 
@@ -99,12 +98,4 @@
   #myChart {
     margin: 10px auto;
   }
-  /* .agent-tea-table {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .graph-container {
-    grid-row: auto;
-  } */
 }
