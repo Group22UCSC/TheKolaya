@@ -183,7 +183,7 @@ class Supervisor extends Controller
                         } else if ($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
                             $teaQuality = 'Excellent';
                         }
-                        $reductions = $updateTable[$countData]['water_precentage'] + $updateTable[$countData]['container_precentage'] + $updateTable[$countData]['matured_precentage'];
+                        $reductions = $updateTable[$countData]['water_percentage'] + $updateTable[$countData]['container_percentage'] + $updateTable[$countData]['matured_percentage'];
                         echo '<div class="row">
                                   <div class="cell" data-title="Landowener Id">' . $updateTable[$countData]['lid'] . '</div>
                                   <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>

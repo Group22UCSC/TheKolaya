@@ -34,7 +34,7 @@
               <input type="number" class="input" name="weight" required>
             </div>
             <div class="inputfield">
-              <label>Reductions(kg)</label>
+              <label>Reductions(%)</label>
               <input type="number" class="input" placeholder="Water" name="water">
             </div>
             <div class="inputfield">
@@ -82,7 +82,6 @@
           
           <?php
           if (!empty($data)) {
-
             for ($i = 0; $i < count($data); $i++) {
               if ($data[$i]['quality'] <= 20) {
                 $teaQuality = 'Too Bad';
@@ -95,7 +94,7 @@
               } else if ($data[$i]['quality'] > 80 && $data[$i]['quality'] <= 100) {
                 $teaQuality = 'Excellent';
               }
-              $reductions = $data[$i]['water_precentage'] + $data[$i]['container_precentage'] + $data[$i]['matured_precentage'];
+              $reductions = $data[$i]['water_percentage'] + $data[$i]['container_percentage'] + $data[$i]['matured_percentage'];
               if ($data[$i]['sup_id'])
                 echo '<div class="row">
                           <div class="cell" data-title="Landowener Id">' . $data[$i]['lid'] . '</div>
