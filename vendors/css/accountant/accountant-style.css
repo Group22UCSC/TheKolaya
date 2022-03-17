@@ -143,3 +143,11 @@ h1 {
     list-style: square;
     
 }
+
+#not_display_collection_yet{
+  padding-top: 140px;
+  justify-content: end;
+  text-align: center;
+  font-size: larger;
+  color: red;
+}
