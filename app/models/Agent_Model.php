@@ -63,7 +63,7 @@ class Agent_Model extends Model
         }
     }
 
-    //make the unavailable agent available
+    //make the unavailable agent, availables
     function availableAgent()
     {
         $agent_id = $_SESSION['user_id'];
@@ -79,7 +79,7 @@ class Agent_Model extends Model
 
 
         $query = "SELECT landowner.user_id, landowner.no_of_estimated_containers, 
-        landowner.route_no, user.address
+        landowner.route_no, user.address, user.name
                  FROM landowner INNER JOIN user 
                  ON landowner.user_id = user.user_id                
                  WHERE landowner.route_no='$route_no' AND landowner.landowner_type='indirect_landowner' 
