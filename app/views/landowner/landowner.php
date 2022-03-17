@@ -1,8 +1,7 @@
 <?php include 'top-container.php'; ?>
 <?php include 'js/landowner/dashboardjs.php"'; ?>
-<?php
-print_r($data);
-?>
+
+
 
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
@@ -87,8 +86,8 @@ print_r($data);
       <canvas id="myChart1" style="width:100%;max-width:1000px"></canvas>
     </div>
     <script>
-      var xValues = ["10/01", "10/03", "10/10", "10/06", "10/12", "10/16", "10/20"];
-      var yValues = [50, 25, 35, 44, 37, 80, 77];
+      var xValues = ["<?php echo $data[0]['date']; ?>", "<?php echo $data[1]['date']; ?>", "<?php echo $data[2]['date']; ?>", "<?php echo $data[3]['date']; ?>", "<?php echo $data[4]['date']; ?>", "<?php echo $data[5]['date']; ?>", "<?php echo $data[6]['date']; ?>"];
+      var yValues = [<?php echo $data[0]['net_weight']; ?>, <?php echo $data[1]['net_weight']; ?>, <?php echo $data[2]['net_weight']; ?>, <?php echo $data[3]['net_weight']; ?>, <?php echo $data[4]['net_weight']; ?>, <?php echo $data[5]['net_weight']; ?>, <?php echo $data[6]['net_weight']; ?>];
       var barColors = ['rgba(255, 99, 132, 0.8)',
         'rgba(255, 159, 64, 0.2)',
         'rgba(255, 205, 86, 0.2)',

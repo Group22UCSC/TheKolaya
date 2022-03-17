@@ -2,6 +2,7 @@
 <?php include 'js/landowner/Daily_Net_Weightjs.php"'; ?>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Daily_Net_Weight.css">
 <script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
+
 <?php
 if (isset($_POST['Error'])) {
     echo '<script type="text/javascript">',

@@ -9,7 +9,9 @@ class Landowner extends Controller
 
     function index()
     {
-        $this->view->showPage('landowner/landowner');
+        //get fertilizer usage to the dash board chart
+        $result = $this->model->chartValuse();
+        $this->view->render('landowner/landowner', $result);
     }
 
     function Make_Requests()
@@ -47,14 +49,13 @@ class Landowner extends Controller
 
     function Monthly_Income()
     {
+
         $this->view->showPage('landowner/Monthly_Income');
     }
 
     function Daily_Net_Weight()
     {
         if (!empty($_POST)) {
-
-
             $result = $this->model->searchDailyDetails();
             if ($result) {
                 // print_r($result);
@@ -66,6 +67,7 @@ class Landowner extends Controller
                 return false;
             }
         } else {
+
             $result = $this->model->getLandonwerTable();
             $this->view->render('landowner/Daily_Net_Weight', $result);
         }
@@ -73,7 +75,8 @@ class Landowner extends Controller
 
     function Monthly_Tea_Price()
     {
-        $this->view->showPage('landowner/Monthly_Tea_Price');
+        $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+        $this->view->showPage('landowner/Monthly_Tea_Price', $result);
     }
 
     //test
@@ -85,14 +88,14 @@ class Landowner extends Controller
             $result = $this->model->searchDailyDetails();
             if ($result) {
                 // print_r($result);
-                $this->view->render('landowner/Test', $result);
+                $this->view->render('landowner/test', $result);
             } else {
-                $this->view->render('landowner/Test?', $result);
+                $this->view->render('landowner/test?', $result);
                 return false;
             }
         } else {
             $result = $this->model->getLandonwerTable();
-            $this->view->render('landowner/Test', $result);
+            $this->view->render('landowner/test', $result);
         }
     }
 
@@ -153,10 +156,8 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
-    //get fertilizer usage to the dash board
-    function chartValuse()
+    function abc()
     {
-        $result = $this->model->chartValuse();
-        $this->view->render('landowner/landowner', $result);
+        $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
     }
 }

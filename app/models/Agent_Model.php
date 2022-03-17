@@ -291,7 +291,7 @@ class Agent_Model extends Model
 
        $query = "UPDATE agent SET availability_requested='1' WHERE emp_id='$agent_id'";
        $this->db->runQuery($query);
-       //----------------Pusher API------------------//
+    //    //----------------Pusher API------------------//
     //    $options = array(
     //        'cluster' => 'ap1',
     //        'useTLS' => true
@@ -303,7 +303,7 @@ class Agent_Model extends Model
     //        $options
     //    );
 
-    //    $pusher->trigger('my-channel', 'Manager_notification', $data);
+    //    $pusher->trigger('my-channel', 'Manager_notification',$data);
        //-------------------------------------------//  
     }
 
