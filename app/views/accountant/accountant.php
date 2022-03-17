@@ -71,9 +71,26 @@
   // print_r($data2);
   // print_r($data);
   $today = date("Y-m-d");
-  $len = sizeof($data);
-  $lenData1 = sizeof($data1);
+  if($data==0){  //check whethere there is no data in $data array
+    echo "DFff";
+  }
+  else{
+    $len = sizeof($data);
+  }
+
+  if($data1==0){//check whethere there is no data in $data1 array
+    echo "No data to display";
+  }
+  else{
+    $lenData1 = sizeof($data1);
+  }
+  
+  if($data2==0){//check whethere there is no data in $data1 array
+    echo "No data to display";
+  }
+  else{
   $lenData2 = sizeof($data2);
+  }
 
 
   // calculate payment expenses for the pie chart
@@ -173,6 +190,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <div class="barChartSection">
 
+  <?php  
+  if (empty($data1)) {
+        echo '<div id="not_display_collection_yet" style="border-radius: 0px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
+      }
+      ?>
     <div class="barchar1">
       <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
 
