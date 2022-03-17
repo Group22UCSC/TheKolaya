@@ -71,41 +71,35 @@
   // print_r($data2);
   // print_r($data);
   $today = date("Y-m-d");
-  if($data==0){  //check whethere there is no data in $data array
-    echo "DFff";
-  }
-  else{
+  if(!$data==0){  //check whethere there is no data in $data array
     $len = sizeof($data);
   }
-
-  if($data1==0){//check whethere there is no data in $data1 array
-    echo "No data to display";
-  }
-  else{
+  if(!$data1==0){//check whethere there is no data in $data1 array
     $lenData1 = sizeof($data1);
   }
   
-  if($data2==0){//check whethere there is no data in $data1 array
-    echo "No data to display";
+  if(!$data2==0){//check whethere there is no data in $data1 array
+   $lenData2 = sizeof($data2);
   }
-  else{
-  $lenData2 = sizeof($data2);
-  }
-
+  
+  
 
   // calculate payment expenses for the pie chart
-  $payExp=0.0;
-  for($i=0;$i<$lenData1;$i++){
-    $payExp+=(float)$data1[$i]['final_payment'];
+  if(!empty($data1)){
+    $payExp=0.0;
+    for($i=0;$i<$lenData1;$i++){
+      $payExp+=(float)$data1[$i]['final_payment'];
+    }
   }
+  
 
-  // calculate fertilizer expenses for the pie chart
+  // calculate fertilizer expenses for the pie 
+  if(!empty($data2)){
   $fertilizerExp=0.0;
   for($i=0;$i<$lenData2;$i++){
     $fertilizerExp+=(float)$data2[$i]['price_for_amount'];
   }
-
-
+  }
   // $month=date("m");
   // $date = $data[0]['date'];
   // echo date('F, Y');
@@ -156,6 +150,9 @@
     } else {
     }
 
+    if($tea1==0 && $tea2 && $tea3 && $tea4 && $tea5 && $tea6){
+      
+    }
     // pie chart calculation
     // if($data[$i]['quality']>=80){
     //     $starts5+=1;
@@ -190,12 +187,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <div class="barChartSection">
 
-  <?php  
-  if (empty($data1)) {
-        echo '<div id="not_display_collection_yet" style="border-radius: 0px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
-      }
-      ?>
+    
     <div class="barchar1">
+    <?php
+    if(empty($data)){
+      echo '<div id="not_display_collection_yet" style="border-radius: 0px; background-color: white;" class="table_header" > No Income Or Expenses Details To Display</div>';
+  
+    }
+    ?>
       <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
 
       <script>
@@ -237,12 +236,17 @@
           }
         });
       </script>
-
+    
     </div>
     <!-- ********* Rating Section ********* -->
     <div class="ratingSection">
       <!-- <p> Tea Quality Rating</p> -->
-
+      <?php
+    if(empty($data1) || empty($data2)){
+      echo '<div id="not_display_collection_yet" style="border-radius: 0px; background-color: white;" class="table_header" > No Rating Details To Display</div>';
+  
+    }
+    ?>
       <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
 
       <script>
