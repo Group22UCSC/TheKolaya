@@ -53,6 +53,7 @@
         cache: false,
         data: "landowner_id=" + requestDetails.landownerId,
         success: function(responseText) {
+          // console.log(responseText);
           var parser = new DOMParser();
           var xmlDoc = parser.parseFromString(responseText, "text/html");
           var myHtml = xmlDoc.getElementById("previous_details").innerHTML;
