@@ -72,7 +72,15 @@ body{
   
   
   /* responsive */
- 
+  @media screen and (max-width: 1600px){
+    .sad img{
+      max-width: 20%;
+      height: auto;
+      margin-left:250px;
+      margin-right: auto;
+  
+    }    
+  }
 
   @media screen and (max-width: 1246px){
     .toggle-div{      
@@ -98,10 +106,105 @@ body{
   }
   @media screen and (max-width: 985px){
     .sad img{     
-      margin-left:10px;
+      margin-left:180px;
       margin-right: auto;
   
     }    
+  }
+
+  @media screen and (max-width: 850px){
+    .sad img{     
+      margin-left:150px;
+      margin-right: auto;
+  
+    }  
+    .toggle-div .note{
+      font-size: 22px;
+    }  
+  }
+
+  @media screen and (max-width: 780px){
+    .sad img{     
+      margin-left:100px;
+      margin-right: auto;
+      margin-top: 10px;
+  
+    }  
+    .toggle-div .note{
+      font-size: 20px;
+      margin: 0px;
+    }  
+
+    button{      
+      padding: 10px auto;     
+      font-size: 18px;              
+      width:100px; 
+      height: 40px;  
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 530px){
+    .sad img{     
+      margin-left:80px;
+      margin-right: auto;
+      margin-top: 20px;
+  
+    }  
+    .toggle-div .note{
+      font-size: 18px;
+      margin: 0px;
+    }  
+    
+  }
+
+  @media screen and (max-width: 470px){
+    .sad img{     
+      margin-left:70px;
+      margin-right: auto;
+      margin-top: 20px;  
+    }  
+
+    button{      
+      padding: 10px auto;     
+      font-size: 15px;              
+      width:80px; 
+      height: 30px;  
+      margin-left: 50px;
+      margin-top: 10px;
+    } 
+    
+  }
+
+  @media screen and (max-width: 420px){
+    .toggle-div{      
+      margin:150px auto;  
+      max-width: 70%; 
+      height:50%;      
+    }
+    .toggle-div .note{
+      font-size: 12px;
+      font-weight: 400;          
+      padding: 20px;
+      color: #01830c;    
+      text-align: center;
+    }
+    .sad img{   
+      max-width: 25%; 
+      margin-left:50px;
+      margin-right: auto;
+      margin-top: 20px;  
+    }  
+
+    button{      
+      padding: 10px auto;     
+      font-size: 12px;              
+      width:70px; 
+      height: 30px;  
+      margin-left: 20px;
+      margin-top: 10px;
+    } 
+    
   }
   
   /* @media(max-width:400px){
