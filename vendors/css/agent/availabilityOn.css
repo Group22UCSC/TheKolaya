@@ -84,7 +84,7 @@ body{
 
   @media screen and (max-width: 1246px){
     .toggle-div{      
-      margin:150px auto;   
+      margin:100px auto;   
       height:50%;      
     }
     .toggle-div .note{
@@ -99,7 +99,7 @@ body{
       .sad img{
         max-width: 20%;
         height: auto;
-        margin-left:200px;
+        margin-left:180px;
         margin-right: auto;
     
       }    
@@ -125,7 +125,7 @@ body{
 
   @media screen and (max-width: 780px){
     .sad img{     
-      margin-left:100px;
+      margin-left:120px;
       margin-right: auto;
       margin-top: 10px;
   
@@ -159,8 +159,13 @@ body{
   }
 
   @media screen and (max-width: 470px){
-    .sad img{     
-      margin-left:70px;
+    .toggle-div .note{
+      font-size: 15px;
+      margin: 0px;
+    } 
+    .sad img{
+      max-width: 30%;    
+      margin-left:50px;
       margin-right: auto;
       margin-top: 20px;  
     }  
@@ -170,7 +175,7 @@ body{
       font-size: 15px;              
       width:80px; 
       height: 30px;  
-      margin-left: 50px;
+      margin-left: 40px;
       margin-top: 10px;
     } 
     
@@ -178,20 +183,46 @@ body{
 
   @media screen and (max-width: 420px){
     .toggle-div{      
-      margin:150px auto;  
+      margin:110px auto;  
       max-width: 70%; 
       height:50%;      
     }
     .toggle-div .note{
       font-size: 12px;
       font-weight: 400;          
-      padding: 20px;
-      color: #01830c;    
-      text-align: center;
+      padding: 20px;     
     }
     .sad img{   
-      max-width: 25%; 
+      max-width: 30%; 
       margin-left:50px;
+      margin-right: auto;
+      margin-top: 20px;  
+    }  
+
+    button{      
+      padding: 10px auto;     
+      font-size: 12px;              
+      width:70px; 
+      height: 30px;  
+      margin-left: 30px;
+      margin-top: 10px;
+    } 
+    
+  }
+  @media screen and (max-width: 321px){
+    .toggle-div{      
+      margin:100px auto;  
+      max-width: 90%; 
+      height:40%;      
+    }  
+    .toggle-div .note{
+      font-size: 12px;
+      font-weight: 400;          
+      padding: 10px;     
+    }  
+    .sad img{   
+      max-width: 40%; 
+      margin-left:35px;
       margin-right: auto;
       margin-top: 20px;  
     }  
@@ -206,7 +237,6 @@ body{
     } 
     
   }
-  
   /* @media(max-width:400px){
     .toggle-div{
       max-width: 100%;
