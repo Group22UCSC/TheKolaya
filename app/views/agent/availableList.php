@@ -40,6 +40,7 @@
     <table class="availabletable" id="availabletable">
       <tr>
         <td class="th">Landowner ID</td>
+        <td class="th">Name</td>
         <td class="th">Container Estimation</td>
         <td class="th">Address</td>
         <td class="th">Route</td>
@@ -48,6 +49,7 @@
       for ($i = 0; $i < $x; $i++) {
         echo '<tr id="tea" data-href-tea="">
                     <td>' . $data[$i]['user_id'] . '</td>
+                    <td>' . $data[$i]['name'] . '</td>
                     <td>' . $data[$i]['no_of_estimated_containers'] . '</td>
                     <td>' . $data[$i]['address'] . '</td>
                     <td>' . $data[$i]['route_no'] . '</td>
