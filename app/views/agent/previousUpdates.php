@@ -14,7 +14,7 @@
 <body>
 <?php include 'topContainer.php';?>
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/agent/preupdates.css"> 
-<div class="topic">View Previous Updates</div>
+<div class="topic">View Previous <br>Updates</div>
 
 <div class="update_buttons">
 <button class="tea" onclick="loadTeaUpdates()"> Tea Updates </button>
