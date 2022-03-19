@@ -27,7 +27,7 @@ body{
 
   .toggle-div .note{
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     /* margin-bottom: 25px; */
     margin: 5px 10px auto;
     padding: 20px;
@@ -193,7 +193,7 @@ body{
       height:50%;      
     }
     .toggle-div .note{
-      font-size: 12px;
+      font-size: 15px;
       font-weight: 400;          
       padding: 20px;     
     }
