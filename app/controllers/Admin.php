@@ -170,6 +170,7 @@ class Admin extends Controller
         'confirm_password_err' => '',
         'reg_id_err' => '',
         'mobile_number_err' => '',
+        'name_err' => '',
     ];
 
     public function create_account()
@@ -181,6 +182,12 @@ class Admin extends Controller
             $this->user_data['reg_id'] = trim($_POST['user_id']);
             $this->user_data['mobile_number'] = trim($_POST['contact_number']);
             $this->user_data['reg_type'] = trim($_POST['user_type']);
+
+             
+            if (!preg_match ("/^[a-zA-z]*$/", $this->user_data['name']) ) {  
+            $this->user_data['name_err'] = "Only alphabets are allowed";     
+            }  
+
 
             $account_type = $_SESSION['account_type'];
 
@@ -211,13 +218,13 @@ class Admin extends Controller
                 }
             }
 
-            if (empty($this->user_data['mobile_number_err']) && empty($this->user_data['confirm_password_err']) && empty($this->user_data['user_id_err']) && empty($this->user_data['password_err'])) {
+            if (empty($this->user_data['mobile_number_err']) && empty($this->user_data['confirm_password_err']) && empty($this->user_data['user_id_err']) && empty($this->user_data['name_err']) && empty($this->user_data['password_err'])) {
                 if ($account_type == 'full') {
                     $this->user_data['password'] = password_hash($this->user_data['password'], PASSWORD_DEFAULT);
 
                     $this->model->userRegistration($this->user_data);
                     $this->createAccount();
-                } else {
+                } elseif ($account_type == 'temp') {
                     $this->model->userRegistration($this->user_data);
                     // if ($account_type == 'temp') {
                     //     $contact_number = $this->user_data['mobile_number'];
