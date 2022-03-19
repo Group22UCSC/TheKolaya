@@ -12,7 +12,7 @@
   
   .page1 .note{
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     /* margin-bottom: 25px; */
     margin: 10px 10px auto;
     color: #01830c;
@@ -32,7 +32,7 @@
   .sad img{
     max-width: 30%;
     height: auto;
-    margin-left:200px;
+    margin-left:180px;
     margin-right: auto;
 
   }    

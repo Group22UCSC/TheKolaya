@@ -198,7 +198,7 @@ button{
   }
   }
   
-  @media screen and (max-width: 325px){
+  @media screen and (max-width: 330px){
     .topic{
       text-align: center;      
         font-size: 22px;  
