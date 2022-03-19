@@ -1,5 +1,15 @@
 <?php include 'top-container.php'; ?>
-<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Daily_net_Weight.css">
+<?php include 'js/landowner/Daily_Net_Weightjs.php"'; ?>
+<link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Daily_Net_Weight.css">
+<script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
+
+<?php
+if (isset($_POST['Error'])) {
+    echo '<script type="text/javascript">',
+    'dateNotFound();',
+    '</script>';
+}
+?>
 
 <!-- Title -->
 
@@ -14,9 +24,9 @@
 
         <div class="search-container">
             <div class="searchbar">
-                <form class="search-form" action="#">
+                <form class="search-form" action="<?php echo URL ?>Landowner/Daily_Net_Weight" method="post">
                     <label for="lname">Date : </label>
-                    <input type="date" id="searchDate" name="searchDate" value="<?php echo date('Y-m-d'); ?>">
+                    <input type="date" id="searchDate" name="searchDate">
                     <button type="submit">Search</button>
                 </form>
             </div>
@@ -28,33 +38,34 @@
 
                 <tr>
                     <th class="thcls">Date</th>
-                    <td class="tdcls"><?php echo date('d/m/Y'); ?></td>
+                    <td class="tdcls"><?php echo $data[0]['date']; ?></td>
                 </tr>
 
                 <tr>
                     <th class="thcls">Initial Weight</th>
-                    <td class="tdcls">145 kg</td>
+                    <td class="tdcls"><?php echo $data[0]['initial_weight_agent']; ?> Kg</td>
                 </tr>
-                <tr>
-                    <th class="thcls">Container Count</th>
-                    <td class="tdcls">4</td>
-                </tr>
+                <!-- there is no field called Container Count -->
+                <!-- <tr>
+          <th class="thcls">Container Count</th>
+          <td class="tdcls"><?php echo $data[0]['date']; ?></td>
+        </tr> -->
                 <tr>
                     <th class="thcls">Container Reduced Weight</th>
-                    <td class="tdcls">12 kg</td>
+                    <td class="tdcls"><?php echo $data[0]['container_precentage']; ?> Kg</td>
                 </tr>
                 <tr>
                     <th class="thcls">Water Reduce Weight</th>
-                    <td class="tdcls">10 kg</td>
+                    <td class="tdcls"><?php echo $data[0]['water_precentage']; ?> Kg</td>
                 </tr>
 
                 <tr>
                     <th class="thcls">Mature Reduced Weight</th>
-                    <td class="tdcls">6 kg</td>
+                    <td class="tdcls"><?php echo $data[0]['matured_precentage']; ?> Kg</td>
                 </tr>
                 <tr>
                     <th class="thcls">Net Weight</th>
-                    <td class="tdcls">117 kg</td>
+                    <td class="tdcls"><?php echo $data[0]['net_weight']; ?> Kg</td>
                 </tr>
 
 

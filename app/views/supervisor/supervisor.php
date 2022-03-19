@@ -53,7 +53,7 @@
     </div>
 
     <div class="request-table">
-      <div class="table-wrapper">
+      <div class="table-wrapper" style="max-height:250px">
         <div class="table_header">Today Fertilizer Requests</div>
         <div class="table" id="today_request_table">
           <div class="row tabel-header">

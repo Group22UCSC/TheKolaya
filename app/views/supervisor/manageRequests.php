@@ -56,7 +56,7 @@
       <div class="modal-content">
         <span class="close-button">×</span>
         <div class="Landowner-details" style="margin-top:40px;">
-          <div class="table-wrapper">
+          <div class="table-wrapper previous_request-table">
             <div class="table_header">Previous Fertilizer Request</div>
             <div class="table" id="lanowner_details_table">
               <!-- here replace the data comes form ajax -->

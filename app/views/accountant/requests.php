@@ -65,7 +65,8 @@
             <!-- <textarea id="Comment" type="text" placeholder="Comment" name="comment" </textarea> -->
             <textarea name="" id="Comment" cols="30" rows="10" placeholder="Please Enter Your Comment Here" name="coment"></textarea>
            
-            <a class="btn viewlandowner" href="<?php echo URL?>/accountant/landownersGraphpage">View Landowner</a>
+            <a class="btn viewlandowner" id="viewLandowner" >View Landowner</a> 
+            <!-- href="<?php echo URL?>/accountant/landownersGraphpage/" -->
             <a class="btn accept" id="acceptBtn">Accept</a>
             <a class="btn cancel" id="reject">Reject</a>
             <!-- <input type="submit" value="accept " class="btn" name="submit" id="acceptBtn"> -->

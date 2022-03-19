@@ -52,87 +52,6 @@ class Supervisor extends Controller
         }
     }
 
-    function landownerDetails()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $month = date('m') - 1;
-            $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
-            $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
-            if (!empty($lastRequests)) {
-
-                echo '<div id="previous_details">';
-                echo '<div class="manage-request-row tabel-header">
-                        <div class="manage-request-cell">Previous Request Date</div>
-                        <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
-                    </div>';
-                for ($i = 0; $i < count($lastRequests); $i++) {
-                    $monthNum  = $month - 1;
-                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
-                    $monthName = $dateObj->format('F'); // March
-                    echo '<div class="manage-request-row">
-                            <div class="manage-request-cell" data-title="Previous Request Date">' . $lastRequests[$i]['request_date'] . '</div>
-                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
-                        </div>';
-                }
-                echo '</div>';
-            } else {
-                echo '<div id="previous_details">';
-                // echo '<div class="manage-request-row tabel-header">
-                //         <div class="manage-request-cell">Previous Request Date</div>
-                //         <div class="manage-request-cell">Monthly Tea Amount(kg)</div>
-                //     </div>';
-                for ($i = 0; $i < 2; $i++) {
-                    $monthNum  = $month;
-                    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
-                    $monthName = $dateObj->format('F');
-                    echo '<div class="manage-request-row">
-                            <div class="manage-request-cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests for ' . $monthName . '</b>' . '</div>
-                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month - $i, $_POST['landowner_id']) . '</div>
-                        </div>';
-                }
-                echo '</div>';
-            }
-
-            if ($teaQuality) {
-                $quality = [
-                    '1_star' => 0,
-                    '2_star' => 0,
-                    '3_star' => 0,
-                    '4_star' => 0,
-                    '5_star' => 0,
-                ];
-                for ($i = 0; $i < count($teaQuality); $i++) {
-                    // if($teaQuality[$i]['quality'] != '') {
-                    //     echo $teaQuality[$i]['quality'];
-                    // }
-                    $tempQuality = $teaQuality[$i]['quality'] / 20;
-                    switch ($tempQuality) {
-                        case 1:
-                            $quality['1_star'] += 1;
-                            break;
-                        case 2:
-                            $quality['2_star'] += 1;
-                            break;
-                        case 3:
-                            $quality['3_star'] += 1;
-                            break;
-                        case 4:
-                            $quality['4_star'] += 1;
-                            break;
-                        case 5:
-                            $quality['5_star'] += 1;
-                            break;
-                    }
-                }
-                // print_r($quality);
-                $allStars = 0;
-                for ($i = 1; $i <= 5; $i++)
-                    $allStars += $quality[$i . '_star'];
-                $this->view->render('supervisor/teaQuality', $quality, $allStars);
-            }
-        }
-    }
-
     function updateTeaMeasure()
     {
         $this->getNotificationCount(); //This for get Notification count
@@ -189,7 +108,7 @@ class Supervisor extends Controller
                         } else if ($updateTable[$countData]['quality'] > 80 && $updateTable[$countData]['quality'] <= 100) {
                             $teaQuality = 'Excellent';
                         }
-                        $reductions = $updateTable[$countData]['water_precentage'] + $updateTable[$countData]['container_precentage'] + $updateTable[$countData]['matured_precentage'];
+                        $reductions = $updateTable[$countData]['water_percentage'] + $updateTable[$countData]['container_percentage'] + $updateTable[$countData]['matured_percentage'];
                         echo '<div class="row">
                                   <div class="cell" data-title="Landowener Id">' . $updateTable[$countData]['lid'] . '</div>
                                   <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
@@ -214,6 +133,82 @@ class Supervisor extends Controller
         } else {
             $request = $this->model->getRequests();
             $this->view->render('supervisor/manageRequests', $request);
+        }
+    }
+
+    function landownerDetails()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $month = date('m');
+            $lastRequests = $this->model->getLastRequestDate($_POST['landowner_id']);
+            $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
+
+            if (!empty($lastRequests)) {
+                echo '<div id="previous_details">';
+                for ($i = 0; $i < count($lastRequests); $i++) {
+                    $monthNum  = $month - $i - 1;
+                    $monthNum = ($monthNum + 12) % 12;
+                    $monthName = date('F', strtotime("2001-$monthNum-1"));
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date"><b>' . $lastRequests[$i]['request_date'] . '</b></div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month, $_POST['landowner_id']) . '</div>
+                        </div>';
+                }
+                echo '</div>';
+            } else {
+                echo '<div id="previous_details">';
+                for ($i = 0; $i < 3; $i++) {
+                    $monthNum  = $month - $i - 1;
+                    $monthNum = ($monthNum + 12) % 12;
+                    $monthName = date('F', strtotime("2001-$monthNum-1"));
+                    echo '<div class="manage-request-row">
+                            <div class="manage-request-cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests for ' . $monthName . '</b>' . '</div>
+                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($monthNum, $_POST['landowner_id']) . '</div>
+                        </div>';
+                }
+                echo '</div>';
+            }
+
+            if (!empty($teaQuality)) {
+                $quality = [
+                    '1_star' => 0,
+                    '2_star' => 0,
+                    '3_star' => 0,
+                    '4_star' => 0,
+                    '5_star' => 0,
+                ];
+                for ($i = 0; $i < count($teaQuality); $i++) {
+                    $tempQuality = round($teaQuality[$i]['quality'] / 20);
+                    switch ($tempQuality) {
+                        case 1:
+                            $quality['1_star'] += 1;
+                            break;
+                        case 2:
+                            $quality['2_star'] += 1;
+                            break;
+                        case 3:
+                            $quality['3_star'] += 1;
+                            break;
+                        case 4:
+                            $quality['4_star'] += 1;
+                            break;
+                        case 5:
+                            $quality['5_star'] += 1;
+                            break;
+                    }
+                }
+                $allStars = 0;
+                for ($i = 1; $i <= 5; $i++) {
+                    $allStars += $quality[$i . '_star'];
+                }
+                $this->view->render('supervisor/teaQuality', $quality, $allStars);
+            }else {
+                echo 
+                '<div id="get_tea_rate">
+                    <div style="border-radius: 0px; color:red; background-color: white; position: absolute; top:40%" class="table_header" >There is no tea Rate to update</div>;
+                </div>';
+            }
+            
         }
     }
 

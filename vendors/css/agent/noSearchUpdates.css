@@ -1,0 +1,10 @@
+
+ .note{
+    font-size: 24px;
+    font-weight: 700;
+    /* margin-bottom: 25px; */
+    margin: 10px 10px auto;
+    color: #01830c;
+    text-transform: uppercase;
+    text-align: center;
+  }

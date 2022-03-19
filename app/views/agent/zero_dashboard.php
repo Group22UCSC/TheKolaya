@@ -24,7 +24,7 @@
     $x = count($data1);
   }
   else{
-    $x = "Sorry, No";
+    $x = "Sorry,hello No";
   }
   ?>
     <div class="flip-box-front" id = "availableflipfront">

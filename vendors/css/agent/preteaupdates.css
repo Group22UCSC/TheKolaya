@@ -83,7 +83,32 @@ button:hover{
     }
   }
 
-  @media(max-width:400px){
+/* responsive */
+@media screen and (max-width: 1246px){
+  button{    
+    padding: 4px 26px;
+    font-size: 15px;   
+    width:70px; 
+    height: 30px;  
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+ 
+}
+
+@media screen and (max-width: 780px){
+ 
+}
+
+@media screen and (max-width: 510px){
+ 
+}
+
+@media screen and (max-width: 390px){
+ 
+}
+
+  /* @media(max-width:400px){
     .topic{
       height:75px;
       font-size: 26px;
@@ -114,4 +139,4 @@ button:hover{
       width:100px; 
      height: 50px;
     }
-  }
+  } */
