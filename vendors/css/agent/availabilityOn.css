@@ -160,12 +160,17 @@ body{
 
   @media screen and (max-width: 470px){
     .toggle-div .note{
-      font-size: 15px;
+      font-size: 18px;
       margin: 0px;
     } 
+
+    .toggle-div{
+      max-width: 90%;
+      width: 60%;            
+    }
     .sad img{
       max-width: 30%;    
-      margin-left:50px;
+      margin-left:65px;
       margin-right: auto;
       margin-top: 20px;  
     }  
