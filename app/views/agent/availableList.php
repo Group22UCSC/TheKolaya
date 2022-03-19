@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/agent.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/availablelist.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/unavailableNotice.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/availablelist.css"> 
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/searchbar.css">
   <script src="<?php echo URL ?>vendors/js/agent/dashboard.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
