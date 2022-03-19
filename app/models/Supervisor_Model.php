@@ -69,7 +69,7 @@ class Supervisor_Model extends Model
             for ($i = 0; $i < count($row); $i++) {
                 $monthlyTeaAmount += $row[$i]['net_weight'];
             }
-            return $monthlyTeaAmount / count($row) .'Kg for '. date('F', strtotime("2001-$month-1"));
+            return '<b>'.$monthlyTeaAmount / count($row) .'Kg for '. date('F', strtotime("2001-$month-1")) . '</b>';
         } else {
             return '<b style="color:red;">No data found for ' . date('F', strtotime("2001-$month-1")) . '</b>';
         }
@@ -134,9 +134,9 @@ class Supervisor_Model extends Model
         $rate = $data['rate'];
         $date = date('Y-m-d');
 
-        $query = "UPDATE tea SET initial_weight_sup = '$weight', water_precentage = '$water', 
-        container_precentage = '$container', matured_precentage = '$mature_leaves', 
-        net_weight = '$net_weight', sup_id = '$supervisor_id', quality = '$rate' 
+        $query = "UPDATE tea SET initial_weight_sup = $weight, water_percentage = $water, 
+        container_percentage = $container, matured_percentage = $mature_leaves, 
+        net_weight = $net_weight, sup_id = '$supervisor_id', quality = $rate 
         WHERE lid = '$landowner_id' AND date='$date'";
         $this->db->runQuery($query);
         return true;

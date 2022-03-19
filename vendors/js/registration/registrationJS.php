@@ -7,11 +7,14 @@
         var options = $('#registration_form option');
         var user_id = '';
         var form = '';
-        console.log(options);
+
+        // console.log(options);
+        console.log(inputField)
         var icon = $('#registration_form i');
         var url = "<?php echo URL ?>Registration/controllCheckData";
         var noErrors = 0;
 
+        var placeHolderNames = ['name*', 'mobile number*', 'user id*', 'address*', 'password*', 'confirm password*']
         var errors = {
             'name': '',
             'mobile_number': '',
@@ -22,6 +25,7 @@
             'confirm_password': ''
         };
 
+        // $(inputField[0]).hover() = "Enter your name";
         function hasNumber(string) {
             return /\d/.test(string);
         }
@@ -32,7 +36,7 @@
             $(inputField[number]).removeClass('input-field input')
             $(inputField[number]).addClass('is-invalid');
             $(inputField[number].parentNode).addClass('is-invalid');
-            if (number > 2) {
+            if (number >= 2) {
                 number++;
                 $(icon[number]).addClass('is-invalid');
             } else {
@@ -44,6 +48,7 @@
             SerializeData();
             $(inputField[number]).removeClass('is-invalid');
             $(inputField[number].parentNode).removeClass('is-invalid');
+            inputField[number].placeholder = placeHolderNames[number]
             if (number > 2) {
                 number++;
                 $(icon[number]).removeClass('is-invalid');
@@ -78,6 +83,10 @@
                 removeError(0);
             }
         });
+
+        $(inputField[0]).keypress(function() {
+            removeError(0);
+        })
 
         //Validate The mobile
         function phonenumber(inputtxt) {
@@ -130,6 +139,20 @@
             // console.log(errors);
         });
 
+        $(inputField[1]).keypress(function() {
+            removeError(1);
+        })
+
+        //Validate the address
+        $(inputField[3]).keypress(function() {
+            removeError(3);
+        })
+
+        //Validate the password
+        $(inputField[4]).keypress(function() {
+            removeError(4);
+        })
+
         //validate the confirm password
         $(inputField[5]).change(function() {
             if (inputField[5].value != inputField[4].value) {
@@ -140,6 +163,9 @@
                 removeError(5);
             }
         });
+        $(inputField[5]).keypress(function() {
+            removeError(5);
+        })
 
         // console.log(inputField);
 
@@ -171,13 +197,13 @@
                             errors.mobile_number = "This is must filled";
                             showError(1, errors.mobile_number);
                             break;
-                        case 2:
-                            errors.user_type = "This is must filled";
-                            showError(2, errors.user_type);
-                            break;
+                        // case 2:
+                        //     errors.user_type = "This is must filled";
+                        //     showError(2, errors.user_type);
+                        //     break;
                         case 3:
                             errors.user_id = "This is must filled";
-                            // showError(3, errors.user_id);
+                            showError(2, errors.user_id);
                             break;
                         case 4:
                             errors.address = "This is must filled";

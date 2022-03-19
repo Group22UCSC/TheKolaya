@@ -40,4 +40,4 @@
     <input type="text" id="ramount"  size="6" value="<?php echo $data[0]['quality'] ;?>" readonly>
     </div> 
     <button id="ok">OK</button>   
-    
+  

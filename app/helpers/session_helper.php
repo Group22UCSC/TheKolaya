@@ -33,10 +33,10 @@
     $_SESSION['flash_message'] = 'hello';
     switch($name) {
       case 'session_destroied':
-        $_SESSION['flash_message'] = "Session is Destroied !";
+        $_SESSION['flash_message'] = "Session Is Destroyed !";
         break;
       case 'OTP':
-        $_SESSION['flash_message'] = "OTP Session is Destroied, Try Again !";
+        $_SESSION['flash_message'] = "OTP Session Is Destroyed, Try Again !";
         break;
     }
     return $_SESSION['flash_message'];
