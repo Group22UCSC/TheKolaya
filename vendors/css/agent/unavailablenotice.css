@@ -30,32 +30,30 @@
  /* responsive */
  @media screen and (max-width: 1600px){
   .sad img{
-    max-width: 20%;
+    max-width: 30%;
     height: auto;
-    margin-left:250px;
+    margin-left:200px;
     margin-right: auto;
 
   }    
 }
 
 @media screen and (max-width: 1246px){
-  .toggle-div{      
+  .page1{      
     margin:100px auto;   
     height:50%;      
   }
-  .toggle-div .note{
-    font-size: 24px;
-    font-weight: 500;    
-    margin: 5px 10px auto;
-    padding: 20px;
-    color: #01830c;    
-    text-align: center;
+  .page1 .note{
+    font-size: 20px;
+    font-weight: 600;    
+    margin: 0px 0px auto;
+    padding: 10px;    
   }
   
     .sad img{
-      max-width: 20%;
+      max-width: 25%;
       height: auto;
-      margin-left:180px;
+      margin-left:140px;
       margin-right: auto;
   
     }    
@@ -68,41 +66,36 @@
   }    
 } */
 
-/* @media screen and (max-width: 850px){
+@media screen and (max-width: 850px){
   .sad img{     
-    margin-left:150px;
+    margin-left:100px;
     margin-right: auto;
 
   }  
   .toggle-div .note{
     font-size: 22px;
   }  
-} */
+}
 
 @media screen and (max-width: 780px){
   .sad img{     
-    margin-left:130px;
+    margin-left:80px;
     margin-right: auto;
     margin-top: 10px;
 
   }  
-  .toggle-div .note{
+  
+  .page1 .note{
     font-size: 20px;
-    margin: 0px;
-  }  
-
-  button{      
-    padding: 10px auto;     
-    font-size: 18px;              
-    width:100px; 
-    height: 40px;  
-    margin-left: 10px;
-    margin-top: 10px;
-  }
+    font-weight: 500;
+    margin: 0px 0px auto;
+  } 
+  
 }
-/* @media screen and (max-width: 530px){
-  .sad img{     
-    margin-left:80px;
+@media screen and (max-width: 650px){
+  .sad img{  
+    max-width: 50%;   
+    margin-left:40px;
     margin-right: auto;
     margin-top: 20px;
 
@@ -112,28 +105,30 @@
     margin: 0px;
   }  
   
-} */
+}
 
-@media screen and (max-width: 470px){
-  .toggle-div .note{
-    font-size: 15px;
-    margin: 0px;
+@media screen and (max-width: 500px){ 
+
+  .page1{
+    max-width: 80%;
+    width: 60%;    
+    padding: 10px;
+    display: none;
+    
+  }
+
+  .page1 .note{
+    font-size: 18px;
+    margin: 10px;
+    padding: 5px;
   } 
   .sad img{
-    max-width: 30%;    
-    margin-left:50px;
+    max-width: 40%;    
+    margin-left:45px;
     margin-right: auto;
     margin-top: 20px;  
   }  
 
-  button{      
-    padding: 10px auto;     
-    font-size: 15px;              
-    width:80px; 
-    height: 30px;  
-    margin-left: 35px;
-    margin-top: 10px;
-  } 
   
 }
 
@@ -165,32 +160,17 @@
   } 
   
 }
-@media screen and (max-width: 321px){
-  .toggle-div{      
-    margin:100px auto;  
-    max-width: 90%; 
-    height:40%;      
-  }  
-  .toggle-div .note{
+@media screen and (max-width: 321px){  
+  .page1 .note{
     font-size: 12px;
     font-weight: 400;          
     padding: 10px;     
   }  
   .sad img{   
     max-width: 40%; 
-    margin-left:35px;
+    margin-left:30px;
     margin-right: auto;
     margin-top: 20px;  
   }  
-
-  button{      
-    padding: 10px auto;     
-    font-size: 12px;              
-    width:70px; 
-    height: 30px;  
-    margin-left: 20px;
-    margin-top: 10px;
-  } 
-  
 }
   
