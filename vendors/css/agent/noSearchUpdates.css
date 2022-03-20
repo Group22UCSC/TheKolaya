@@ -1,10 +1,88 @@
 
  .note{
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     /* margin-bottom: 25px; */
     margin: 10px 10px auto;
     color: #01830c;
     text-transform: uppercase;
     text-align: center;
+  }
+
+  .sad img{
+    width: 20%;
+    margin-left: 250px;
+  }
+
+  /* responsive */
+
+  @media screen and (max-width: 1246px){
+    .note{
+      font-size: 20px;
+      font-weight: 550;      
+      margin: 10px 10px auto;     
+    }
+  
+    .sad img{
+      width: 18%;
+      margin-left: 190px;
+    }
+   
+  }
+  
+@media screen and (max-width: 850px){
+    .note{
+      font-size: 18px;
+      font-weight: 500;     
+      margin: 15px 10px auto;     
+    }
+  
+    .sad img{
+      width: 15%;
+      margin-left: 130px;
+    }
+  }
+  
+  @media screen and (max-width: 600px){
+    .sad img{
+      width: 30%;
+      margin-left: 70px;
+    }
+  }
+
+  @media screen and (max-width: 510px){
+    .note{
+      font-size: 15px;
+      font-weight: 450;     
+      margin: 10px 10px auto;
+    }
+  
+    .sad img{
+      width: 30%;
+      margin-left: 50px;
+    }
+  }
+  
+ @media screen and (max-width: 390px){
+    .note{
+      font-size: 15px;
+      font-weight: 400;      
+    }
+  
+    .sad img{
+      width: 30%;
+      margin-left: 40px;
+    }
+  }
+
+  @media screen and (max-width: 325px){
+    .note{
+      font-size: 12px;
+      font-weight: 400;      
+    }
+  
+    .sad img{
+      width: 40%;
+      margin-left: 25px;
+    }
   }
