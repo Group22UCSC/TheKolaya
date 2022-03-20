@@ -84,32 +84,27 @@
         // form.push({name:'stock_type', value: 'in_stock'});
         // form.push({name:'type', value: 'fertilizer'});
         // // console.log(form);
-        // $('.error').remove();
+        $('.error').remove();
         var landownerId = $('#lid').val();
         var initialTeaWeight = $('#weight').val();
         // var priceForAmount = pricePerUnit*inAmount;
         var str = "<div style=\"display:flex; justify-content:center;\">" +
-          "<div style=\"text-align:left;\">" +
-          "<div>Landowner ID: <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
-          "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
-          "</div>" +
-          "</div>";
-        console.log('lid' + landownerId);
-        console.log('initialweight' + initialTeaWeight);
-        // if(inAmount == 0) {
-        //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
-        // }else if(inAmount < 0) {
-        //     $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        // } 
-        // if(pricePerUnit < 0) {
-        //     $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        // }else if(pricePerUnit == 0) {
-        //     $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
-        // }
+                    "<div style=\"text-align:left;\">" +
+                    "<div>Landowner ID: <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
+                    "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
+                    "</div>" +
+                  "</div>";
+        // console.log('lid' + landownerId);
+        // console.log('initialweight' + initialTeaWeight);
+        if(initialTeaWeight == 0) {
+            $('#weight').parent().after("<p class=\"error\">*Please insert the initial tea weight</p>")
+        }else if(initialTeaWeight < 0) {
+            $('#weight').parent().after("<p class=\"error\">*Can't Insert minus values</p>");
+        }
 
-        // if(pricePerUnit <= 0 || inAmount <= 0) {
-        //     return;
-        // }
+        if(initialTeaWeight <= 0) {
+            return;
+        }
         Swal.fire({
           title: 'Are you sure?',
           html: '<div>' + str + '</div>',
