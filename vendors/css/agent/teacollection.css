@@ -108,7 +108,48 @@
   margin-bottom: 0;
 }
 
+/* responsive */
+@media screen and (max-width: 550px){
+  .page{
+    height:60%;
+    padding:15px;
+    width: 100%;
+  }
 
+  .page .title{
+    font-size: 18px;
+  }
+
+  .page .form .inputfield{
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    width:100px;
+    height: 50px;
+    margin:20px auto;
+  }
+
+  .page .form .inputfield label{
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield.terms{
+    flex-direction: row;
+  }
+
+  .page .form #btnset{
+    /* background: #ffc2b3; */
+    flex-direction: row;
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+ 
+
+  .page .form .inputfield .btn span{
+    display:none;
+  }
+}
 
   @media (max-width:420px) {
     .page{
