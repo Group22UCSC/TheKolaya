@@ -125,7 +125,7 @@
 
         <div class="inputfield">
            <label> Name</label>
-           <input type="text" class="input" name="name" id="name" required>
+           <input type="text" class="input" name="name" id="name"  placeholder="<?php (!empty($data['name_err'])) ? print $data['name_err'] : print ''; ?>"  required>
        </div> 
 
         <div class="inputfield">

@@ -38,7 +38,7 @@
     font: 20px ;
     height: 40px;
     padding: 10px;
-    width: 320px;
+    width: 220px;
     margin: auto;
     margin-bottom: 5px;
 }
@@ -87,7 +87,7 @@
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
     color: #fafafa;
     cursor: pointer;
-    height: 42px;
+    height: 40px;
     float: right;
     font: 15px Arial, Helvetica;
     padding: 0;
@@ -131,40 +131,103 @@
     }
   }
 
+  /* responsive */
+@media screen and (max-width: 1246px){
+  .searchform{
+    width: 450px;
+    margin:5px auto;      
+  }
   
-  @media(max-width:400px){
-    
-    .searchform{
-      width: 200px;
-      margin:20px auto;      
-    }
+  .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #searchdate,.searchform #dropdown{
+    width:300px;
+    font: 12px ;
+  }
+ 
+  .searchform #submit{
+    font-size: 15px;
+    height: 38px;
+    width: 100px;
+  }
 
-    .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #searchdate,.searchform #dropdown{
-      width:160px;
-      font: 12px ;
-    }
+
+}
+@media screen and (max-width: 780px){
    
-    ::-webkit-input-placeholder { /* Edge */      
-      font-size: 12px;
-    }
+  .searchform{
+    width: 400px;
+    margin:10px auto;      
+  }
 
-    .searchform #submit{
-      font-size: 10px;
-      height: 22px;
-      width: 60px;
-    }
+  .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #searchdate,.searchform #dropdown{
+    width:250px;
+    font: 12px ;
+  }
+ 
+  /* ::-webkit-input-placeholder { 
+    font-size: 12px;
+  } */ 
 
-    .searchform #dropdown span{
-      display:none;
-    }
+  /* .searchform #dropdown span{
+    display:none;
+  }
 
-    .searchform option{     
-      font-size:12px ;
-    }
+  .searchform option{     
+    font-size:12px ;
+  } */
 
-    .searchform #date, .searchform #dropdown {
-      background: #fff;
-    }
-    
- }
+  /* .searchform #date, .searchform #dropdown {
+    background: #fff;
+  } */
   
+  .searchform #submit{
+    font-size: 15px;
+    height: 38px;
+    width: 100px;
+  }
+
+}
+@media screen and (max-width: 510px){
+  .searchform{
+    width: 300px;
+    margin:10px auto;      
+  }
+  
+  .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #searchdate,.searchform #dropdown{
+    width:200px;
+    height:30px;
+    font: 12px ;
+  }
+ 
+  .searchform #submit{
+    font-size: 12px;
+    height: 30px;
+    width: 65px;
+  }
+
+
+} 
+ 
+@media screen and (max-width: 390px){
+  .searchform{
+    width: 200px;
+    margin:10px auto;      
+  }
+  
+  .searchform #search, .searchform #searchf,.searchform #searcha, .searchform #searchdate,.searchform #dropdown{
+    width:120px;
+    height:30px;
+    font: 10px ;
+  }
+ 
+  .searchform #submit{
+    font-size: 10px;
+    height: 28px;
+    width: 50px;
+  }
+
+
+} 
+ 
+
+  
+   

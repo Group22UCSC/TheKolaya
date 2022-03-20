@@ -75,48 +75,82 @@ button:hover {
     opacity: 0;
   }
 
-  100% {
-    transform: translateX(0px);
-    opacity: 1;
+/* responsive */
+@media screen and (max-width: 1600px){
+  button{    
+    padding: 4px 25px;
+    font-size: 20px;   
+    width:90px; 
+    height: 50px;  
+    margin-top: 10px;
+    margin-left: 10px;
   }
 }
 
-.error {
-  color: red;
-  font-size: 14px;
+@media screen and (max-width: 1246px){
+  button{    
+    padding: 4px 20px;
+    font-size: 15px;   
+    width:80px; 
+    height: 40px;  
+  }
+ 
 }
 
-@media (max-width: 400px) {
-  .topic {
-    height: 75px;
-    font-size: 26px;
-  }
-
-  .resultform {
-    width: 90%;
-    padding: 10px;
-    margin: 10px auto;
-  }
-
-  .resultform label {
-    font-size: 12px;
-    width: 100px;
-    margin-right: 10px;
-  }
-
-  .resultform input {
-    font-size: 12px;
-  }
-
-  .resultform #cdate,
-  .resultform #rdate,
-  .resultform #date {
-    background: #fff;
-  }
-
-  button {
-    font-size: 18px;
-    width: 100px;
-    height: 50px;
-  }
+@media screen and (max-width: 780px){
+  .topic{  
+      font-size: 26px;      
+     
+} 
 }
+
+@media screen and (max-width: 510px){
+ 
+}
+
+@media screen and (max-width: 390px){
+  button{    
+    padding: 4px 15px;
+    font-size: 12px;   
+    width:60px; 
+    height: 30px;  
+  }
+
+  .topic{  
+    font-size: 24px;      
+   
+} 
+}
+
+  /* @media(max-width:400px){
+    .topic{
+      height:75px;
+      font-size: 26px;
+    }
+
+    .resultform{
+      width:90%;    
+      padding:10px;
+      margin: 10px auto;
+    }
+
+    .resultform label{
+        font-size: 12px;
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .resultform input{
+      font-size: 12px;     
+    }
+
+    .resultform #cdate, .resultform #rdate, .resultform #date{
+      background: #fff;
+    }
+
+    button{
+      font-size: 18px;
+      width:100px; 
+     height: 50px;
+    }
+  } */
