@@ -43,10 +43,14 @@ class Admin extends Controller
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
                 'password_err' => '',
-                'confirm_password_err' => ''
-
+                'confirm_password_err' => '',
+                'name_err' => '',
 
             ];
+
+            if (!preg_match ("/^[a-zA-z]*$/", $this->user_data['name']) ) {  
+            $data['name_err'] = "Only alphabets are allowed";     
+            }  
 
              
              if (strlen($data['password']) < 6) {
@@ -57,7 +61,7 @@ class Admin extends Controller
                 $data['confirm_password_err'] = "confirmation not matching";
             }
 
-            if (empty($data['password_err']) && empty($data['confirm_password_err'])) {
+            if (empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['name_err'] )) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $this->model->userUpdate($data);
                 // $this->view->render('admin/updateAccount', $data);
@@ -188,7 +192,6 @@ class Admin extends Controller
             $this->user_data['name_err'] = "Only alphabets are allowed";     
             }  
 
-
             $account_type = $_SESSION['account_type'];
 
             if ($account_type == 'full') {
@@ -212,9 +215,15 @@ class Admin extends Controller
             if ($this->model->searchUserId($this->user_data['reg_id'])) {
                 $this->user_data['user_id_err'] = "This user_id is already Taken";
             }
-            if ($account_type == 'full') {
-                if (strlen($this->user_data['password']) < 6) {
-                    $this->user_data['password_err'] = "Please enter at least 6 characters";
+            // if ($account_type == 'full') {
+            //     if (strlen($this->user_data['password']) < 6) {
+            //         $this->user_data['password_err'] = "Please enter at least 6 characters";
+            //     }
+            // }
+
+             if ($account_type == 'full') {
+                 if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$this->user_data['password'])) {
+                    $this->user_data['password_err'] = "Please enter strong password";
                 }
             }
 
