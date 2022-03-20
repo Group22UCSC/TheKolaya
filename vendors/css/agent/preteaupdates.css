@@ -1,86 +1,78 @@
-.form-container{
-    display: flex;
-    flex-direction:column;
+.form-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.resultform{
-    display:none;
-    flex-direction: column;
-    margin: 10px auto;
-    width:50%;    
-    padding:20px;
-    background-color: #fff;
-    border-radius: 10px;
-    justify-content: center;
-    animation: result-load 500ms ease-in;
-    animation-fill-mode: forwards;
-    transform: translateX(-100px);
-    opacity: 0;
+.resultform {
+  display: none;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 50%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  justify-content: center;
+  animation: result-load 500ms ease-in;
+  animation-fill-mode: forwards;
+  transform: translateX(-100px);
+  opacity: 0;
 }
 
-.resultform label{
-    color:#01830c;
-    font-size: 20px;
-    width: 200px;
-    margin-right: 10px;
+.resultform label {
+  color: #01830c;
+  font-size: 20px;
+  width: 200px;
+  margin-right: 10px;
 }
 
-.resultform input{
-    border: none;
-    font-size: 20px;
+.resultform input {
+  border: none;
+  font-size: 20px;
 }
 
-.inputfield{
-margin-bottom: 15px;
+.inputfield {
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
-    
 }
-.topic{
-    text-align: center;      
-      font-size: 30px;      
-      background-color: rgb(211, 243, 190);
-      color: rgba(1, 131, 12,1);
-} 
+.topic {
+  text-align: center;
+  font-size: 30px;
+  background-color: rgb(211, 243, 190);
+  color: rgba(1, 131, 12, 1);
+}
 
-button{
+button {
   border: none;
-  background-color: rgba(1, 131, 12,1);
+  background-color: rgba(1, 131, 12, 1);
   color: white;
   padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;   
+  font-size: 20px;
   border-radius: 12px;
-  transition-duration: 0.4s; 
-  width:100px; 
-  height: 50px;  
+  transition-duration: 0.4s;
+  width: 100px;
+  height: 50px;
   margin-top: 10px;
   margin-left: 10px;
 }
 
-#ok{
-  margin-left:150px;
+#ok {
+  margin-left: 150px;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
-  color: rgba(1, 131, 12,1);
-  background-color:#cdfed1;  
+  color: rgba(1, 131, 12, 1);
+  background-color: #cdfed1;
 }
- 
 
-  @keyframes result-load {
-    0%{
-      transform: translateX(-100px);
-      opacity: 0;
-    }
-  
-    100%{
-      transform: translateX(0px);
-      opacity: 1;
-    }
+@keyframes result-load {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
   }
 
 /* responsive */

@@ -13,7 +13,7 @@
             </div>
             <div class="inputfield">
                 <label>Initial Tea Weight</label>
-                <input type="text" class="input" name="weight" id="weight" required>
+                <input type="number" class="input" name="weight" id="weight" required>
             </div>
             <div class="inputfield" id="btnset">
                 <button class="btn" id="myBtn"> Add<span> Weight</span> </button>

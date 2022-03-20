@@ -176,6 +176,15 @@ class Agent extends Controller
         $this->view->showPage('Agent/previousRequestUpdates');
     }
 
+    function checkLandowner() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->model->checkLandowner($_POST)){
+                echo 'true';
+            }else {
+                echo 'false';
+            }
+        }
+    }
     //view fertilizer or advance delivery requests
     function confirmDeliverables()
     {
