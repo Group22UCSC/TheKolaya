@@ -109,6 +109,14 @@
 }
 
 /* responsive */
+
+@media screen and (max-width: 685px){
+.page .form .inputfield .btn span{
+  display:none;
+}
+
+}
+
 @media screen and (max-width: 550px){
   .page{
     height:60%;
@@ -140,7 +148,7 @@
   .page .form #btnset{
     /* background: #ffc2b3; */
     flex-direction: row;
-    margin-left: 10px;
+    margin-left: 50px;
     font-size: 12px;
   }
 
