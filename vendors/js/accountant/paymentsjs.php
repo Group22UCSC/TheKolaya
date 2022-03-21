@@ -160,12 +160,13 @@
               advanceExpenses += parseFloat(data[i].amount_rs);
             }
           }
-          var grossIncome = parseFloat(monthlyPrice * tot);
-          var fertilizerExpenses = parseFloat(fertilizerPrice * fertilizerAmount);
-          document.getElementById("grossIncome").value = grossIncome; // after adding all print it to form
+          var grossIncome = parseFloat(monthlyPrice * tot).toFixed(2);
+          var fertilizerExpenses = parseFloat(fertilizerPrice * fertilizerAmount).toFixed(2);
+          document.getElementById("grossIncome").value = grossIncome; // after adding all print it to form 
+
           document.getElementById("fertilizer").value = fertilizerExpenses; // after adding all print it to form
           document.getElementById("advance").value = advanceExpenses; // after adding all advance expenses
-          var finalPayment = parseFloat(grossIncome) - parseFloat(fertilizerExpenses) - parseFloat(advanceExpenses);
+          var finalPayment = (parseFloat(grossIncome) - parseFloat(fertilizerExpenses) - parseFloat(advanceExpenses)).toFixed(2);
           document.getElementById("final").value = finalPayment; // after adding 
         }
 
