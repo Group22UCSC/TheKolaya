@@ -130,4 +130,8 @@ class User extends Controller
             $this->view->render('Errors/Errors');
         }
     }
+
+    function privacyPolicy() {
+        $this->view->render('user/privacyPolicy');
+    }
 }

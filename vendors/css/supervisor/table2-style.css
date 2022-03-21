@@ -62,12 +62,31 @@
 }
 
 .table-wrapper {
+  max-height: 600px;
+  overflow-y: scroll;
   padding: 10px;
   animation: fadeIn 1.8s;
   -webkit-animation: fadeIn 1.8s;
   -moz-animation: fadeIn 1.8s;
   -o-animation: fadeIn 1.8s;
   -ms-animation: fadeIn 1.8s;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: none;
+  border-radius: 5px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 4px;
+  background: none;
+  border-radius: 5px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: #27ae60;
+  border: 2px solid #14a14f;
+  border-radius: 5px;
 }
 
 .table {
