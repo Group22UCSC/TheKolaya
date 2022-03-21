@@ -1,20 +1,17 @@
 /* Google Font Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-.page{
+.page {
   max-width: 50%;
   width: 50%;
   background: white;
   margin: 50px;
- border-radius: 25px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  border-radius: 25px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
   padding: 50px;
-  
- 
-  
 }
 
-.page .title{
+.page .title {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 25px;
@@ -22,26 +19,24 @@
   text-transform: uppercase;
   text-align: center;
 }
-.page .form{
-  width: 100%; 
-  
+.page .form {
+  width: 100%;
 }
-.page .form .inputfield{
+.page .form .inputfield {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
-.page .form .inputfield label{
-   width: 200px;
-   color: #01830c;
-   margin-right: 10px;
+.page .form .inputfield label {
+  width: 200px;
+  color: #01830c;
+  margin-right: 10px;
   font-size: 14px;
 }
 
-
 .page .form .inputfield .input,
-.page .form .inputfield .textarea{
+.page .form .inputfield .textarea {
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
@@ -51,153 +46,222 @@
   transition: all 0.3s ease;
 }
 
-.page .form .inputfield .textarea{
+.page .form .inputfield .textarea {
   width: 100%;
   height: 125px;
   resize: none;
 }
 
-
-
 .page .form .inputfield .input:focus,
 .page .form .inputfield .textarea:focus,
-.page .form .inputfield .custom_select select:focus{
+.page .form .inputfield .custom_select select:focus {
   border: 1px solid #01830c;
 }
 
-
-
-
-.page .form .inputfield .btn, .back{
+.page .form .inputfield .btn,
+.back {
   width: 50%;
   padding: 8px 10px;
   margin-top: 20px;
   margin-left: auto;
-  font-size: 15px; 
+  font-size: 15px;
   border: 0px;
-  background:  #01830c;
+  background: #01830c;
   color: #fff;
   cursor: pointer;
   border-radius: 3px;
   outline: none;
 }
 
-.page .form .inputfield .btn:hover{
+.page .form .inputfield .btn:hover {
   background: #01830c73;
-  color:#01830c;
+  color: #01830c;
   cursor: pointer;
   transform: scale(1.03);
   z-index: 5;
 }
 
-.back{
-  
-  margin-left:30px;  
-  background:  #ff3300;  
-  
+.back {
+  margin-left: 30px;
+  background: #ff3300;
 }
 
-.back:hover{
+.back:hover {
   background-color: #ffc2b3;
   color: #ff3300;
   cursor: pointer;
   transform: scale(1.03);
   z-index: 5;
 }
-.page .form .inputfield:last-child{
+.page .form .inputfield:last-child {
   margin-bottom: 0;
 }
 
 /* responsive */
 
-@media screen and (max-width: 685px){
-.page .form .inputfield .btn span{
-  display:none;
+@media screen and (max-width: 685px) {
+  .page .form .inputfield .btn  #weightbtn{
+    display: none;
+  }
 }
 
-}
-
-@media screen and (max-width: 550px){
-  .page{
-    height:60%;
-    padding:15px;
+@media screen and (max-width: 550px) {
+  .page {
+    height: 60%;
+    padding: 15px;
     width: 100%;
   }
 
-  .page .title{
+  .page .title {
     font-size: 18px;
   }
 
-  .page .form .inputfield{
+  .page .form .inputfield {
     flex-direction: column;
     align-items: flex-start;
     font-size: 12px;
-    width:100px;
+    width: 100px;
     height: 50px;
-    margin:20px auto;
+    margin: 20px auto;
   }
 
-  .page .form .inputfield label{
+  .page .form .inputfield label {
     margin-bottom: 5px;
   }
 
-  .page .form .inputfield.terms{
+  .page .form .inputfield.terms {
     flex-direction: row;
   }
 
-  .page .form #btnset{
+  .page .form #btnset {
     /* background: #ffc2b3; */
     flex-direction: row;
     margin-left: 50px;
     font-size: 12px;
   }
+}
 
- 
+@media screen and (max-width: 450px) {
+  .page .form #btnset {
+    margin-left: 20px;
+    font-size: 12px;
+  }
 
-  .page .form .inputfield .btn span{
-    display:none;
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 20px;
+  }
+}
+@media (max-width: 420px) {
+  .page {
+    height: 60%;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .page .title {
+    font-size: 18px;
+  }
+
+  .page .form .inputfield {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+  }
+
+  .page .form .inputfield label {
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield.terms {
+    flex-direction: row;
+  }
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 20px;
+  }
+
+  .page .form #btnset {
+    margin-left: 10px;
   }
 }
 
-  @media (max-width:420px) {
-    .page{
-      height:50%;
-      padding:20px;
-      width: 100%;
-    }
-
-    .page .title{
-      font-size: 18px;
-    }
-
-    .page .form .inputfield{
-      flex-direction: column;
-      align-items: flex-start;
-      font-size: 12px;
-      width:100px;
-      height: 50px;
-      margin:20px auto;
-    }
-
-    .page .form .inputfield label{
-      margin-bottom: 5px;
-    }
-
-    .page .form .inputfield.terms{
-      flex-direction: row;
-    }
-
-    .page .form #btnset{
-      /* background: #ffc2b3; */
-      flex-direction: row;
-      margin-left: 0px;
-      font-size: 15px;
-    }
-
-   
-
-    .page .form .inputfield .btn span{
-      display:none;
-    }
-
+@media (max-width: 380px) {
+  .page {
+    height: 60%;
+    padding: 20px;
+    width: 100%;
   }
+
+  .page .title {
+    font-size: 18px;
+  }
+
+  .page .form .inputfield {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10px;
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+  }
+
+  .page .form .inputfield label {
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield.terms {
+    flex-direction: row;
+  }
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 20px;
+  }
+
+  .page .form #btnset {
+    margin-left: 5px;
+  }
+
+  .page .form #tea {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) {
+  .page {
+   margin-left: 30px;
+  }
+
+  .page .title {
+    font-size: 15px;
+  }
+
+  .page .form .inputfield {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10px;
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+  }
+
+  .page .form .inputfield label {
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+
+  .page .form #btnset {
+    margin-left: 2px;
+  }
+}
