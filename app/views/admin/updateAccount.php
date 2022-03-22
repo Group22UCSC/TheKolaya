@@ -124,9 +124,15 @@
       <div class="form">
 
         <div class="inputfield">
-           <label> Name</label>
-           <input type="text" class="input" name="name" id="name"  placeholder="<?php (!empty($data1['name_err'])) ? print $data1['name_err'] : print ''; ?>"  required>
+           <label>First Name</label>
+           <input type="text" class="input" name="name1" id="name"  placeholder="<?php (!empty($data1['name_err'])) ? print $data1['name_err'] : print ''; ?>"  required>
        </div> 
+
+         <div class="inputfield">
+           <label>Last Name</label>
+           <input type="text" class="input" name="name2" id="name"  placeholder="<?php (!empty($data1['name_err'])) ? print $data1['name_err'] : print ''; ?>"  required>
+       </div> 
+
 
         <div class="inputfield">
           <label>ID</label>
