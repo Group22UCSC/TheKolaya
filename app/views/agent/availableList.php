@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
 <html lang="en" dir="ltr">
 
 <head>
@@ -31,9 +30,11 @@
   // $x = count($data);
   ?>
   <div class="topic">Tea Available Landowner List </div>
+
+  
+
   <form class="searchform" id="searchform">
-    <input type="text" id="search" placeholder="Enter Landowner ID.." onkeyup="searchTable()">
-    <!-- <input type="submit" value="search" id="submit"> -->
+    <input type="text" id="search" placeholder="Search Here ...">
   </form>
   <div class="availablelist">
     <?php include 'unavailableNotice.php'; ?>
@@ -52,7 +53,7 @@
 
         if (!empty($data)) {
           for ($i = 0; $i < count($data); $i++) {
-            echo '<div class="row">
+            echo '<div class="row table2-row">
                       <div class="cell" data-title="Landowener_id">' . $data[$i]['user_id'] . '</div>
                       <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
                       <div class="cell" data-title="Container Estimation">' . $data[$i]['no_of_estimated_containers'] . '</div>
@@ -64,27 +65,7 @@
         ?>
       </div>
     </div>
-    <!-- <table class="availabletable" id="availabletable">
-      <tr>
-        <td class="th">Landowner ID</td>
-        <td class="th">Name</td>
-        <td class="th">Container Estimation</td>
-        <td class="th">Address</td>
-        <td class="th">Route</td>
-      </tr>
-      <?php
-      // for ($i = 0; $i < $x; $i++) {
-      //   echo '<tr id="tea" data-href-tea="">
-      //               <td>' . $data[$i]['user_id'] . '</td>
-      //               <td>' . $data[$i]['name'] . '</td>
-      //               <td>' . $data[$i]['no_of_estimated_containers'] . '</td>
-      //               <td>' . $data[$i]['address'] . '</td>
-      //               <td>' . $data[$i]['route_no'] . '</td>
 
-      //           </tr>';
-      // }
-      ?>
-    </table> -->
   </div>
   <div class="forms">
     <?php include 'teaCollection.php'; ?>
@@ -109,21 +90,16 @@
       $('#myBtn').click(function(event) {
         event.preventDefault();
         var form = $('#teaUpdateForm').serializeArray();
-        // form.push({name:'stock_type', value: 'in_stock'});
-        // form.push({name:'type', value: 'fertilizer'});
-        // // console.log(form);
         $('.error').remove();
         var landownerId = $('#lid').val();
         var initialTeaWeight = $('#weight').val();
-        // var priceForAmount = pricePerUnit*inAmount;
         var str = "<div style=\"display:flex; justify-content:center;\">" +
           "<div style=\"text-align:left;\">" +
           "<div>Landowner ID: <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
           "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
           "</div>" +
           "</div>";
-        // console.log('lid' + landownerId);
-        // console.log('initialweight' + initialTeaWeight);
+
         if (initialTeaWeight == 0) {
           $('#weight').parent().after("<p class=\"error\">*Please insert the initial tea weight</p>")
         } else if (initialTeaWeight < 0) {
@@ -136,7 +112,6 @@
         Swal.fire({
           title: 'Are you sure?',
           html: '<div>' + str + '</div>',
-          // text: "Price Per Unit: "+form[0]['value']+" "+"Amount: "+form[1]['value']+" "+"Price For Amount: "+priceForAmount,
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#01830c',
@@ -159,32 +134,33 @@
                 }).then((result) => {
                   location.reload();
                 })
-                // console.log(data);
               },
               error: function(xhr, ajaxOptions, thrownError) {
                 Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
                   text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
-                  // footer: '<a href="">Why do I have this issue?</a>'
                 })
               }
             })
           }
         })
       })
+
+      //search for a landowner
+      $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#today_collection_table .table2-row").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+      });
     })
   </script>
-  <?php include 'bottomContainer.php'; ?>
-
-  <!-- include 'popup.php';  -->
-
   <script>
     var table = $("#today_collection_table");
     table.click(function(event) {
       if (!$(event.target.parentNode).hasClass("tabel-header")) {
         document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
-        console.log(event.target.parentNode.firstElementChild.innerHTML);
         openteaform()
       }
     })
@@ -232,24 +208,5 @@
       document.getElementById("myModal").style.display = "none";
       closeteaform();
     }
-    
-    //search for a landowner
-    function searchTable() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("search");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("availabletable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    }
   </script>
+  <?php include 'bottomContainer.php'; ?>
