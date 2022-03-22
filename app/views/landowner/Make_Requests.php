@@ -70,7 +70,14 @@
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
 
+
+
+
 <!--  **********   view previous details   *** -->
+
+<div class="previousDetails">
+    <button onclick="previousPrices()+scrollFunc();">Previous Tea Prices</button>
+</div>
 
 <script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
@@ -160,11 +167,6 @@
 
 
 
-<!--  **********   view previous details   *** -->
-
-<div class="previousDetails">
-    <button onclick="previousPrices();scrollFunc();">Previous Tea Prices</button>
-</div>
 
 <!-- **************   Table container   *********-->
 <div class="table-container" id="pricetbl">
@@ -172,11 +174,9 @@
         <table class="teapricetable" id="teapricetable">
 
             <tr class="trcls">
-                <th class="thcls">Updated On</th>
-                <th class="thcls">Year</th>
-                <th class="thcls">Month</th>
-                <th class="thcls">Price(Rs)</th>
-                <th class="thcls">Action</th>
+                <th class="thcls">Received date</th>
+                <th class="thcls">Request type </th>
+                <th class="thcls">Response</th>
             </tr>
 
 

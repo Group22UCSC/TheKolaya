@@ -628,6 +628,7 @@ tr:nth-child(even) {
 }
 
 .thcls {
+  text-align: center;
   padding: 1rem 2rem;
   text-transform: uppercase;
   letter-spacing: 0.1rem;

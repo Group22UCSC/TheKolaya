@@ -323,7 +323,7 @@ class landowner_Model extends Model
     //Delete requsests 
     function requestTable()
     {
-        $query = "SELECT * FROM request";
+        $query = "SELECT * FROM request WHERE response_status = 'receive'";
         $row = $this->db->selectQuery($query);
         if ($row) {
             return $row;
