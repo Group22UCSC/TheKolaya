@@ -67,7 +67,7 @@
     <!-- <table class="availabletable" id="availabletable">
       <tr>
         <td class="th">Landowner ID</td>
-        <td class="th">Name</td>
+        <td class="th"><span>Name</span></td>
         <td class="th">Container Estimation</td>
         <td class="th">Address</td>
         <td class="th">Route</td>
@@ -83,6 +83,7 @@
 
       //           </tr>';
       // }
+
       ?>
     </table> -->
   </div>
