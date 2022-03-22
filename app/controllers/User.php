@@ -131,7 +131,7 @@ class User extends Controller
         }
     }
 
-    function privacyPolicy() {
-        $this->view->render('user/privacyPolicy');
+    function termsConditions() {
+        $this->view->render('user/termsConditions');
     }
 }

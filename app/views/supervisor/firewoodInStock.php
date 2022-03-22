@@ -22,7 +22,7 @@
       if (!empty($data)) {
         echo '<div class="search-container">
                 <div class="search-wrapper">
-                  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                  <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
                 </div>
               </div>';
       }

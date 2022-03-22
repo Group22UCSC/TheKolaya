@@ -106,7 +106,12 @@
                         }
                     }
                 })
-            } 
+            }
+        });
+
+        $(inputField[0]).keypress(function() {
+            holderName = "mobile number*";
+            removeError(0, holderName);
         });
 
         // validate the password
@@ -125,6 +130,7 @@
                         if (responseText == 'wrongPassword') {
                             errors.password = "Password is wrong!";
                             showError(1, errors.password);
+                            // event.preventDefault()
                         } else {
                             holderName = "password*";
                             removeError(1, holderName);
@@ -135,13 +141,18 @@
             }
         });
 
+        $(inputField[1]).keypress(function() {
+            holderName = "password*";
+            removeError(1, holderName);
+        });
+
         $('#login_btn').click(function(event) {
             //validate the mobile number after clicked the login button
             if (inputField[0].value == '' && errors.mobile_number == '') {
                 event.preventDefault();
                 errors.mobile_number = "This must be filled";
                 showError(0, errors.mobile_number);
-            } else if (inputField[0].value.length < 10  && errors.mobile_number == '') {
+            } else if (inputField[0].value.length < 10 && errors.mobile_number == '') {
                 event.preventDefault();
                 errors.mobile_number = "Less than 10 charchters";
                 showError(0, errors.mobile_number);

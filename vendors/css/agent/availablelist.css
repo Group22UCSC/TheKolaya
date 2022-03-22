@@ -111,6 +111,10 @@
     td{
       font-size: 15px;
     }
+
+    span{
+      display: none;
+    }
     
 
     
