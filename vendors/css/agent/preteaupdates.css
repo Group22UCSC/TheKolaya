@@ -81,53 +81,49 @@ button:hover {
   font-size: 14px;
 }
 /* responsive */
-@media screen and (max-width: 1600px){
-  button{    
+@media screen and (max-width: 1600px) {
+  button {
     padding: 4px 25px;
-    font-size: 20px;   
-    width:90px; 
-    height: 50px;  
+    font-size: 20px;
+    width: 90px;
+    height: 50px;
     margin-top: 10px;
     margin-left: 10px;
   }
 }
 
-@media screen and (max-width: 1246px){
-  button{    
+@media screen and (max-width: 1246px) {
+  button {
     padding: 4px 20px;
-    font-size: 15px;   
-    width:80px; 
-    height: 40px;  
+    font-size: 15px;
+    width: 80px;
+    height: 40px;
   }
- 
 }
 
-@media screen and (max-width: 780px){
-  .topic{  
-      font-size: 26px;      
-     
-} 
+@media screen and (max-width: 780px) {
+  .topic {
+    font-size: 26px;
+  }
 }
 
-@media screen and (max-width: 510px){
- 
+@media screen and (max-width: 510px) {
 }
 
-@media screen and (max-width: 390px){
-  button{    
+@media screen and (max-width: 390px) {
+  button {
     padding: 4px 15px;
-    font-size: 12px;   
-    width:60px; 
-    height: 30px;  
+    font-size: 12px;
+    width: 60px;
+    height: 30px;
   }
 
-  .topic{  
-    font-size: 24px;      
-   
-} 
+  .topic {
+    font-size: 24px;
+  }
 }
 
-  /* @media(max-width:400px){
+/* @media(max-width:400px){
     .topic{
       height:75px;
       font-size: 26px;
