@@ -37,6 +37,7 @@ if (!empty($data)) {
   for ($i = 0; $i < count($data); $i++) {
     echo '<div class="row table2-row">
             <div class="cell" data-title="Date">' . $data[$i]['out_date'] . '</div>
+            <hr class="horizontal-line">
             <div class="cell" data-title="Amount(kg)">' . $data[$i]['out_quantity'] . '</div>
           </div>';
   }

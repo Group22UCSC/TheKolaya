@@ -33,11 +33,14 @@
           if (!empty($data)) {
             for ($i = 0; $i < count($data); $i++) {
               echo '<div class="row table_row" id="' . $data[$i]['request_id'] . '">
-                      <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
-                      <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
-                      <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
-                      <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
-                    </div>';
+                    <div class="cell" data-title="Request_date">' . $data[$i]['request_date'] . '</div>
+                    <hr class="horizontal-line">
+                    <div class="cell lid" data-title="Landowner_id">' . $data[$i]['lid'] . '</div>
+                    <hr class="horizontal-line">
+                    <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
+                    <hr class="horizontal-line">
+                    <div class="cell" data-title="Amount">' . $data[$i]['amount'] . '</div>
+                  </div>';
             }
           }
           ?>
