@@ -106,9 +106,175 @@
   margin-bottom: 0;
 }
 
+/* responsive */
 
+/* @media screen and (max-width: 685px) {
+  .page .form .inputfield .btn  #weightbtn{
+    display: none;
+  }
+}
 
-  @media (max-width:420px) {
+@media screen and (max-width: 550px) {
+  .page {
+    height: 60%;
+    padding: 15px;
+    width: 100%;
+  }
+
+  .page .title {
+    font-size: 18px;
+  }
+
+  .page .form .inputfield {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+  }
+
+  .page .form .inputfield label {
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield.terms {
+    flex-direction: row;
+  }
+
+  .page .form #btnset {
+    flex-direction: row;
+    margin-left: 50px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .page .form #btnset {
+    margin-left: 20px;
+    font-size: 12px;
+  }
+
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 20px;
+  }
+}
+@media (max-width: 420px) {
+  .page {
+    height: 60%;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .page .title {
+    font-size: 18px;
+  }
+
+  .page .form .inputfield {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+  }
+
+  .page .form .inputfield label {
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield.terms {
+    flex-direction: row;
+  }
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 20px;
+  }
+
+  .page .form #btnset {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .page {
+    height: 60%;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .page .title {
+    font-size: 18px;
+  }
+
+  .page .form .inputfield {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10px;
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+  }
+
+  .page .form .inputfield label {
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield.terms {
+    flex-direction: row;
+  }
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 20px;
+  }
+
+  .page .form #btnset {
+    margin-left: 5px;
+  }
+
+  .page .form #tea {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) {
+  .page {
+   margin-left: 30px;
+  }
+
+  .page .title {
+    font-size: 15px;
+  }
+
+  .page .form .inputfield {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10px;
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+  }
+
+  .page .form .inputfield label {
+    margin-bottom: 5px;
+  }
+
+  .page .form .inputfield .btn,
+  .back {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+
+  .page .form #btnset {
+    margin-left: 2px;
+  }
+} */
+
+  /* @media (max-width:420px) {
     .page{
       height:75%;
       padding:20px;
@@ -139,7 +305,6 @@
     }
 
     .page .form #btnset{
-      /* background: #ffc2b3; */
       flex-direction: row;      
       font-size: 15px; 
       margin-left: 0px; 
@@ -160,4 +325,4 @@
         margin-left: 10px;
     }
 
-  }
+  } */
