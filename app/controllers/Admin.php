@@ -29,7 +29,7 @@ class Admin extends Controller
     {
         
         $result = $this->model->availablelistTable();
-        $this->view->render('admin/updateAccount', $result);
+        // $this->view->render('admin/updateAccount', $result);
 
 
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,29 +42,39 @@ class Admin extends Controller
                 'mobile_number' => trim($_POST['contact_number']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
+
                 'password_err' => '',
                 'confirm_password_err' => '',
                 'name_err' => '',
-
+                
             ];
-
-            if (!preg_match ("/^[a-zA-z]*$/", $this->user_data['name']) ) {  
-            $data['name_err'] = "Only alphabets are allowed";     
-            }  
-
-             
-             if (strlen($data['password']) < 6) {
-                    $data['password_err'] = "Please enter at least 6 characters";
-                }
 
             if ($data['password'] != $data['confirm_password']) {
                 $data['confirm_password_err'] = "confirmation not matching";
             }
 
-            if (empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['name_err'] )) {
+            if (!preg_match ("/[^A-Za-z0-9_-\s]/", $data['name']) ) {  
+                $data['name_err'] = "Only alphabets are allowed";     
+            }
+
+             
+             // if (strlen($data['password']) < 6) {
+             //        $data['password_err'] = "Please enter at least 6 characters";
+             //    }
+
+
+            if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$data['password'])) {
+                    $data['password_err'] = "Please enter strong password";
+            }
+
+            if (empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['name_err'])) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                $this->model->userUpdate($data);
-                // $this->view->render('admin/updateAccount', $data);
+                if($this->model->userUpdate($data)){
+                    $result = $this->model->availablelistTable();
+                    $this->view->render('admin/updateAccount',$result, $data);
+                }
+            }else {
+                $this->view->render('admin/updateAccount',$result, $data);
             }
         } else {
             $data = [
@@ -79,13 +89,11 @@ class Admin extends Controller
 
 
                 'contact_number_err' => '',
-                'confirm_password_err' => ''
+                'confirm_password_err' => '',
+                'name_err' => ''
             ];
-            // $this->view->render('admin/updateAccount', $data);
+            $this->view->render('admin/updateAccount', $result, $data);
         }
-        
-
-
     }
 
 
@@ -182,14 +190,14 @@ class Admin extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->user_data['name'] = trim($_POST['name']);
+            $this->user_data['name'] = join("" ,explode(" " , trim($_POST['name'])));
             $this->user_data['reg_id'] = trim($_POST['user_id']);
             $this->user_data['mobile_number'] = trim($_POST['contact_number']);
             $this->user_data['reg_type'] = trim($_POST['user_type']);
 
              
-            if (!preg_match ("/^[a-zA-z]*$/", $this->user_data['name']) ) {  
-            $this->user_data['name_err'] = "Only alphabets are allowed";     
+            if (preg_match("/^[0-9]+$/", $this->user_data['name']) ) {  
+                $this->user_data['name_err'] = "Please enter valid name";     
             }  
 
             $account_type = $_SESSION['account_type'];
