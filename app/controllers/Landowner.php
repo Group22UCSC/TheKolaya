@@ -2,10 +2,12 @@
 
 class Landowner extends Controller
 {
+
     function __construct()
     {
         parent::__construct();
     }
+
 
     function index()
     {
@@ -13,6 +15,7 @@ class Landowner extends Controller
         $result = $this->model->chartValuse();
         $this->view->render('landowner/landowner', $result);
     }
+
 
     function Make_Requests()
     {
@@ -25,6 +28,8 @@ class Landowner extends Controller
             $this->view->render('landowner/Make_Requests');
         }
     }
+
+
 
     function Update_Tea_Availability()
     {
@@ -47,11 +52,15 @@ class Landowner extends Controller
         }
     }
 
+
+
     function Monthly_Income()
     {
 
         $this->view->showPage('landowner/Monthly_Income');
     }
+
+
 
     function Daily_Net_Weight()
     {
@@ -73,11 +82,15 @@ class Landowner extends Controller
         }
     }
 
+
+
     function Monthly_Tea_Price()
     {
         $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
         $this->view->showPage('landowner/Monthly_Tea_Price', $result);
     }
+
+
 
     //test
     public function Test()
@@ -99,6 +112,8 @@ class Landowner extends Controller
         }
     }
 
+
+
     //Manage Profile
     function profile()
     {
@@ -118,6 +133,8 @@ class Landowner extends Controller
         $this->view->render('user/profile/enterPassword');
     }
 
+
+
     //monthly tea price
     function getTeaPrice()
     {
@@ -126,6 +143,8 @@ class Landowner extends Controller
         //print_r($json_arr);
         echo $json_arr;
     }
+
+
 
 
     //dashbord cards
@@ -138,6 +157,8 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
+
+
     //get tea qulity to dashboard
     function getTeaQulity()
     {
@@ -146,6 +167,9 @@ class Landowner extends Controller
         //print_r($json_arr);
         echo $json_arr;
     }
+
+
+
 
     //get fertilizer usage to the dash board
     function fertilizerUsage()
@@ -156,8 +180,34 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
+
+
     function abc()
     {
         $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+    }
+
+
+    function getRequest()
+    {
+        $result = $this->model->requestTable();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+    function deleteRequestRow()
+    {
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
+            $result = $this->model->deleteRequestRow();
+            if ($result == true) {
+            } else {
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        } else {
+            echo "Data was not passed to the controller";
+        }
     }
 }
