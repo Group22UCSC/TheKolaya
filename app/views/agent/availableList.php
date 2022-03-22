@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/searchbar.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table2-style.css">
-  <script src="<?php echo URL ?>vendors/js/agent/dashboard.js"></script>
+  <!-- <script src="<?php echo URL ?>vendors/js/agent/dashboard.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Boxicons CDN Link -->
   <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -80,7 +80,7 @@
       //               <td>' . $data[$i]['no_of_estimated_containers'] . '</td>
       //               <td>' . $data[$i]['address'] . '</td>
       //               <td>' . $data[$i]['route_no'] . '</td>
-                    
+
       //           </tr>';
       // }
       ?>
@@ -181,20 +181,58 @@
 
   <script>
     var table = $("#today_collection_table");
-    table.click(function(event){
-      if(!$(event.target.parentNode).hasClass("tabel-header")) {
+    table.click(function(event) {
+      if (!$(event.target.parentNode).hasClass("tabel-header")) {
         document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
         console.log(event.target.parentNode.firstElementChild.innerHTML);
+        openteaform()
       }
     })
 
-    //when a table row is clicked, the landowner gets autofilled in the form
-    // for (var i = 1; i < table.rows.length; i++) {
-    //   table.rows[i].onclick = function() {
-    //     //rIndex = this.rowIndex;
-    //     document.getElementById("lid").value = this.cells[0].innerHTML;
-    //   };
-    // }
+    function openteaform() {
+      document.getElementById("teapopup").style.display = "block";
+    }
+
+    function closeteaform() {
+      document.getElementById("teapopup").style.display = "none";
+    }
+
+    function openrequestform() {
+      document.getElementById("requestpopup").style.display = "block";
+    }
+
+    function closerequestform() {
+      document.getElementById("requestpopup").style.display = "none";
+    }
+
+    function openpopup() {
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+
+      modal.style.display = "block";
+      var x = document.getElementById("lid").value;
+      document.getElementById("lid-pop").value = x;
+      var y = document.getElementById("weight").value;
+      document.getElementById("weight-pop").value = y;
+    }
+
+    function closepopup() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    function closeformpopup() {
+      document.getElementById("myModal").style.display = "none";
+      closeteaform();
+    }
+    
     //search for a landowner
     function searchTable() {
       var input, filter, table, tr, td, i, txtValue;
