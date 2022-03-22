@@ -199,7 +199,7 @@ class Admin extends Controller
             $this->user_data['reg_type'] = trim($_POST['user_type']);
 
              
-            if (!preg_match("/^[A-Za-z]/", $this->user_data['name']) ) {  
+            if (!preg_match("/^[a-zA-Z\s]+$/", $this->user_data['name']) ) {  
                 $this->user_data['name_err'] = "Please enter valid name";     
             }  
 
