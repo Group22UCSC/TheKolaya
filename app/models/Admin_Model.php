@@ -198,7 +198,8 @@ class Admin_Model extends Model {
         WHERE user_id='$user_id'";
 
 
-        $this->db->runQuery($query);        
+        $this->db->runQuery($query);
+        return true;      
     }
  
 
