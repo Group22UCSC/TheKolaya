@@ -94,8 +94,6 @@
 
             $.ajax({
 
-
-
               success: function() {
 
                 Swal.fire(
@@ -129,10 +127,11 @@
 
 
   // * get auction table - SELECT
+
   <?php $dateToday = date("Y-m-d"); ?>
 
   function getTable() {
-    var url = "http://localhost/Thekolaya/accountant/getTeaPrice";
+    var url = "http://localhost/Thekolaya/landowner/getRequest";
     $.ajax({
       url: url,
       type: "GET",
@@ -141,58 +140,22 @@
         console.log(data);
         var len = data.length;
         var action = "";
-        var todaysDate = new Date();
-        var thisYear = todaysDate.getFullYear();
-        var thisMonth = todaysDate.getMonth() + 1;
-        var thisDate = todaysDate.getDate();
-        // console.log("Todays Date : "+todaysDate);
-        // console.log("This year :"+thisYear+"This month :"+thisMonth+"This date :"+thisDate);
 
+        console.log()
 
-        //    $('#updateAuctionTable not(tbody)').empty();
-        //$("#updateAuctionTable").trigger("reset");
-        // $('updateAuctionTable').children( 'tr:not(:first)' ).remove();
         for (var i = 0; i < len; i++) {
-          var date = new Date(data[i].date);
-          var month = date.getMonth() + 1;
-          var year = date.getFullYear();
-          var date2 = date.getDate();
 
           var deleteBtn = $("<button>Delete</button>");
-          //console.log("year :"+year+"month :"+month+"date :"+date2);
 
-
-
-          // Check Date and Set DELETE BUTTONS TO THE TABLE
-          // if(thisYear==year && thisMonth==month && thisDate==date2){
-          //     deleteBtn.appendTo("#actionCol");
-          // }else{
-          //     $("#actionCol").append("<td>No Action</td>");
-          // }
-
-
-
-
-          // const month=data.getMonth()+1
-          // console.log(date);
           var str =
             "<tr class='row'>" +
             "<td>" +
-            data[i].date +
+            data[i].request_date.substring(0, data[i].request_date.indexOf(' ')) +
             "</td>" +
             "<td>" +
-            year +
-            "</td>" +
-            "<td>" +
-            month +
-            "</td>" +
-
-            "<td>" +
-            data[i].price +
+            data[i].request_type +
             "</td>" +
             "<td class='actionCol'>" +
-            // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
-
             "<button type='button' id='editbutton' onclick='deleteRow()' >" +
             "Delete" +
             "</button>" +
@@ -200,57 +163,55 @@
             "</td>" +
             "</tr>";
           $("#teapricetable tbody").append(str);
-          // there in the table DO NOT DEFINE <tbody> MANULLY
-          //IF SO IT WILL SHOW THE RESULTS TWICE
         }
 
       }
     })
   }
 
-  function checkForm() {
-    var url = "http://localhost/Thekolaya/landowner/getRequest";
-    var todaysDate = new Date();
-    var thisMonth = todaysDate.getMonth() + 1;
-    var thisYear = todaysDate.getFullYear();
-    document.getElementById("year").value = thisYear;
-    document.getElementById("month").value = thisMonth;
-    var isPriceSet = 0;
-    $.ajax({
-      url: url,
-      type: "GET",
-      dataType: "JSON",
-      success: function(data) {
-        //console.log(data);
-        var len = data.length;
+  // function checkForm() {
+  //   var url = "http://localhost/Thekolaya/landowner/getRequest";
+  //   var todaysDate = new Date();
+  //   var thisMonth = todaysDate.getMonth() + 1;
+  //   var thisYear = todaysDate.getFullYear();
+  //   document.getElementById("year").value = thisYear;
+  //   document.getElementById("month").value = thisMonth;
+  //   var isPriceSet = 0;
+  //   $.ajax({
+  //     url: url,
+  //     type: "GET",
+  //     dataType: "JSON",
+  //     success: function(data) {
+  //       //console.log(data);
+  //       var len = data.length;
 
-        for (var i = 0; i < len; i++) {
-          var date = new Date(data[i].date);
-          var month = date.getMonth() + 1;
-          var year = date.getFullYear();
-          if (month == thisMonth && year == thisYear) {
-            isPriceSet = 1;
-          }
-        }
-        if (isPriceSet == 1) {
-          document.getElementById("setPriceBtn").disabled = true;
-          document.getElementById("price").value = "Tea Price Already Set";
-          document.getElementById("price").readOnly = true;
-          document.getElementById("price").className = "input-set";
-        }
-        if (isPriceSet == 0) {
-          document.getElementById("setPriceBtn").disabled = false;
-          document.getElementById("price").readOnly = false;
-          document.getElementById("price").className = "input";
-        }
+  //       for (var i = 0; i < len; i++) {
+  //         var date = new Date(data[i].date);
+  //         var month = date.getMonth() + 1;
+  //         var year = date.getFullYear();
+  //         if (month == thisMonth && year == thisYear) {
+  //           isPriceSet = 1;
+  //         }
+  //       }
+  //       if (isPriceSet == 1) {
+  //         document.getElementById("setPriceBtn").disabled = true;
+  //         document.getElementById("price").value = "Tea Price Already Set";
+  //         document.getElementById("price").readOnly = true;
+  //         document.getElementById("price").className = "input-set";
+  //       }
+  //       if (isPriceSet == 0) {
+  //         document.getElementById("setPriceBtn").disabled = false;
+  //         document.getElementById("price").readOnly = false;
+  //         document.getElementById("price").className = "input";
+  //       }
 
-      }
-    })
+  //     }
+  //   })
 
-  }
+  // }
 
   function deleteRow() {
-    // remobe the row from ui
+    // remove the row from ui
     $('#teapricetable tbody').on('click', '#editbutton', function() {
       // remobe the row from ui
       //$(this).closest('tr').remove();
