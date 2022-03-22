@@ -8,11 +8,13 @@
             type: "GET",
             dataType: "JSON",
             success: function(data) {
-                console.log(data);
+                // console.log(data);
                 var len = data.length;
-                if (len == 0) {
-
+                if (data == false) {
+                    console.log("if"+data);
                 } else {
+                    document.getElementById("noreqstsrow").style.display="none";    
+
                     for (var i = 0; i < len; i++) {
 
                         var deleteBtn = $("<button>Delete</button>");

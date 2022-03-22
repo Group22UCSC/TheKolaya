@@ -307,6 +307,16 @@ class Agent_Model extends Model
        //-------------------------------------------//  
     }
 
+    function checkLandowner() {
+        $landowner_id = $_POST['landowner_id'];
+        $query = "SELECT * FROM user WHERE user_id='$landowner_id' AND is_delete=0";
+        $row = $this->db->runQuery($query);
+
+        if(count($row))
+            return true;
+        else
+            return false;
+    }
     //appending advance delivery list of assigned route
     function assignAdvancedeliveryListTable()
     {

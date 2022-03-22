@@ -1,7 +1,7 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
 
-<body onload="changeFormBody()">
+<body onload="changeFormBody();getTable();checkForm()">
 
 </body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Make_Requests.css">
@@ -72,7 +72,6 @@
 
 <!--  **********   view previous details   *** -->
 
-<?php include 'js/landowner/Make_Requestsjs.php"'; ?>
 <script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <script>
@@ -93,7 +92,7 @@
                     "<div>Amount :  <span style=\"color:#4DD101;\"><b> " + form[1]['value'] + "kg</b></span></div>" +
                     "</div>" +
                     "</div>";
-            }else if(form[0]['value'] == 'Advance') {
+            } else if (form[0]['value'] == 'Advance') {
                 var str = "<div style=\"display:flex; justify-content:center;\">" +
                     "<div style=\"text-align:left;\">" +
                     "<div>Request Type: <span style=\"color:#4DD101;\"><b> Advance</b></span></div>" +
@@ -116,6 +115,7 @@
             // if (pricePerUnit <= 0 || inAmount <= 0) {
             //     return;
             // }
+
             Swal.fire({
                 title: 'Are you sure?',
                 html: '<div>' + str + '</div>',
@@ -156,4 +156,34 @@
     })
 </script>
 
-<?php include 'bottom-container.php'; ?>
+
+
+
+
+<!--  **********   view previous details   *** -->
+
+<div class="previousDetails">
+    <button onclick="previousPrices();scrollFunc();">Previous Tea Prices</button>
+</div>
+
+<!-- **************   Table container   *********-->
+<div class="table-container" id="pricetbl">
+    <div class="table-section">
+        <table class="teapricetable" id="teapricetable">
+
+            <tr class="trcls">
+                <th class="thcls">Updated On</th>
+                <th class="thcls">Year</th>
+                <th class="thcls">Month</th>
+                <th class="thcls">Price(Rs)</th>
+                <th class="thcls">Action</th>
+            </tr>
+
+
+        </table>
+    </div>
+
+    <?php include 'js/landowner/Make_Requestsjs.php"'; ?>
+
+
+    <?php include 'bottom-container.php'; ?>

@@ -52,14 +52,14 @@
 
   @media screen and (max-width: 510px){
     .note{
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 450;     
       margin: 10px 10px auto;
     }
   
     .sad img{
-      width: 30%;
-      margin-left: 50px;
+      width: 40%;
+      margin-left: 40px;
     }
   }
   

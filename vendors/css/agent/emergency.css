@@ -160,6 +160,9 @@
 }
 
 @media screen and (max-width: 510px){
+  .page{
+    width: 80%;
+  }
   .topic{  
     font-size: 24px;      
    
@@ -195,8 +198,20 @@ font-size: 15px;
 
   .page .form .inputfield .btn{
     margin-top: 0px;
-   margin-left: 100px;
+   margin-left: 130px;
   }
+}
+
+@media screen and (max-width: 325px){ 
+  .page{
+    width: 85%;
+    padding: 10px;
+  }
+  .page .form .inputfield label{
+    margin-right: 10px;
+    font-size: 12px;
+    }
+    
 }
   /* @media (max-width:420px) {
     .topic{
