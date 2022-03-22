@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/agent.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/availablelist.css"> 
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/availablelist.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/searchbar.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table-style.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table2-style.css">
   <script src="<?php echo URL ?>vendors/js/agent/dashboard.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Boxicons CDN Link -->
@@ -33,10 +35,36 @@
     <input type="text" id="search" placeholder="Enter Landowner ID.." onkeyup="searchTable()">
     <!-- <input type="submit" value="search" id="submit"> -->
   </form>
-  <div class="availablelist">    
-    <?php include 'unavailableNotice.php';?>
-    <?php include 'agentUnavailableNotice.php';?>
-    <table class="availabletable" id="availabletable">
+  <div class="availablelist">
+    <?php include 'unavailableNotice.php'; ?>
+    <?php include 'agentUnavailableNotice.php'; ?>
+    <div class="table-wrapper">
+      <div class="table_header">Today Available landowners</div>
+      <div class="table" id="today_collection_table">
+        <div class="row tabel-header">
+          <div class="cell">Landowner ID</div>
+          <div class="cell">Name</div>
+          <div class="cell">Container Estimation</div>
+          <div class="cell">Address</div>
+          <div class="cell">Route</div>
+        </div>
+        <?php
+
+        if (!empty($data)) {
+          for ($i = 0; $i < count($data); $i++) {
+            echo '<div class="row">
+                      <div class="cell" data-title="Landowener_id">' . $data[$i]['user_id'] . '</div>
+                      <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
+                      <div class="cell" data-title="Container Estimation">' . $data[$i]['no_of_estimated_containers'] . '</div>
+                      <div class="cell" data-title="Address">' . $data[$i]['address'] . '</div>
+                      <div class="cell" data-title="Route">' . $data[$i]['route_no'] . '</div>
+                    </div>';
+          }
+        }
+        ?>
+      </div>
+    </div>
+    <!-- <table class="availabletable" id="availabletable">
       <tr>
         <td class="th">Landowner ID</td>
         <td class="th">Name</td>
@@ -45,33 +73,33 @@
         <td class="th">Route</td>
       </tr>
       <?php
-      for ($i = 0; $i < $x; $i++) {
-        echo '<tr id="tea" data-href-tea="">
-                    <td>' . $data[$i]['user_id'] . '</td>
-                    <td>' . $data[$i]['name'] . '</td>
-                    <td>' . $data[$i]['no_of_estimated_containers'] . '</td>
-                    <td>' . $data[$i]['address'] . '</td>
-                    <td>' . $data[$i]['route_no'] . '</td>
+      // for ($i = 0; $i < $x; $i++) {
+      //   echo '<tr id="tea" data-href-tea="">
+      //               <td>' . $data[$i]['user_id'] . '</td>
+      //               <td>' . $data[$i]['name'] . '</td>
+      //               <td>' . $data[$i]['no_of_estimated_containers'] . '</td>
+      //               <td>' . $data[$i]['address'] . '</td>
+      //               <td>' . $data[$i]['route_no'] . '</td>
                     
-                </tr>';
-      }
+      //           </tr>';
+      // }
       ?>
-    </table>
+    </table> -->
   </div>
   <div class="forms">
-    <?php include 'teaCollection.php'; ?>      
+    <?php include 'teaCollection.php'; ?>
   </div>
   <script src="<?php echo URL ?>vendors/js/supervisor/sweetalert2.all.min.js"></script>
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
-      if(<?php echo $x?> == '0'){
+      if (<?php echo $x ?> == '0') {
         console.log('zero landowners');
         $('#searchform').hide();
         $('#availabletable').hide();
         $('#unavailable_notice').show();
       }
-      if(<?php echo $_SESSION['availability']?> == '0'){
+      if (<?php echo $_SESSION['availability'] ?> == '0') {
         console.log('zero landowners');
         $('#searchform').hide();
         $('#availabletable').hide();
@@ -89,21 +117,21 @@
         var initialTeaWeight = $('#weight').val();
         // var priceForAmount = pricePerUnit*inAmount;
         var str = "<div style=\"display:flex; justify-content:center;\">" +
-                    "<div style=\"text-align:left;\">" +
-                    "<div>Landowner ID: <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
-                    "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
-                    "</div>" +
-                  "</div>";
+          "<div style=\"text-align:left;\">" +
+          "<div>Landowner ID: <span style=\"color:#01830c;\"><b>" + landownerId + "</b></span></div>" +
+          "<div>Intial Tea Weight :  <span style=\"color:#01830c;\"><b> " + initialTeaWeight + "kg</b></span></div>" +
+          "</div>" +
+          "</div>";
         // console.log('lid' + landownerId);
         // console.log('initialweight' + initialTeaWeight);
-        if(initialTeaWeight == 0) {
-            $('#weight').parent().after("<p class=\"error\">*Please insert the initial tea weight</p>")
-        }else if(initialTeaWeight < 0) {
-            $('#weight').parent().after("<p class=\"error\">*Can't Insert minus values</p>");
+        if (initialTeaWeight == 0) {
+          $('#weight').parent().after("<p class=\"error\">*Please insert the initial tea weight</p>")
+        } else if (initialTeaWeight < 0) {
+          $('#weight').parent().after("<p class=\"error\">*Can't Insert minus values</p>");
         }
 
-        if(initialTeaWeight <= 0) {
-            return;
+        if (initialTeaWeight <= 0) {
+          return;
         }
         Swal.fire({
           title: 'Are you sure?',
@@ -152,15 +180,21 @@
   <!-- include 'popup.php';  -->
 
   <script>
-    var table = document.getElementById('availabletable');
-    
+    var table = $("#today_collection_table");
+    table.click(function(event){
+      if(!$(event.target.parentNode).hasClass("tabel-header")) {
+        document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
+        console.log(event.target.parentNode.firstElementChild.innerHTML);
+      }
+    })
+
     //when a table row is clicked, the landowner gets autofilled in the form
-    for (var i = 1; i < table.rows.length; i++) {
-      table.rows[i].onclick = function() {
-        //rIndex = this.rowIndex;
-        document.getElementById("lid").value = this.cells[0].innerHTML;
-      };
-    }
+    // for (var i = 1; i < table.rows.length; i++) {
+    //   table.rows[i].onclick = function() {
+    //     //rIndex = this.rowIndex;
+    //     document.getElementById("lid").value = this.cells[0].innerHTML;
+    //   };
+    // }
     //search for a landowner
     function searchTable() {
       var input, filter, table, tr, td, i, txtValue;
