@@ -35,7 +35,7 @@ class Admin extends Controller
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
-                'name' => trim($_POST['name']),
+                'name' => join("" ,explode(" " , trim($_POST['name']))),
                 'reg_id' => trim($_POST['user_id']),
                 'reg_type' => trim($_POST['user_type']),
                 'address' => trim($_POST['address']),
@@ -53,7 +53,7 @@ class Admin extends Controller
                 $data['confirm_password_err'] = "confirmation not matching";
             }
 
-            if (!preg_match ("/[^A-Za-z0-9_-\s]/", $data['name']) ) {  
+            if (!preg_match ("/^[A-Za-z]/", $data['name']) ) {  
                 $data['name_err'] = "Only alphabets are allowed";     
             }
 
@@ -190,13 +190,16 @@ class Admin extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->user_data['name'] = join("" ,explode(" " , trim($_POST['name'])));
+            // $this->user_data['name'] = join("" ,explode(" " , trim($_POST['name'])));
+            $a = trim($_POST['name1']);
+            $b = trim($_POST['name2']);
+            $this->user_data['name']= $a." ".$b;
             $this->user_data['reg_id'] = trim($_POST['user_id']);
             $this->user_data['mobile_number'] = trim($_POST['contact_number']);
             $this->user_data['reg_type'] = trim($_POST['user_type']);
 
              
-            if (preg_match("/^[A-Za-z]/", $this->user_data['name']) ) {  
+            if (!preg_match("/^[A-Za-z]/", $this->user_data['name']) ) {  
                 $this->user_data['name_err'] = "Please enter valid name";     
             }  
 
