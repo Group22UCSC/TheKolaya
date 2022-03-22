@@ -159,17 +159,19 @@ class Manager extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
-                'message' => '',
-                'user_id' => ''
+                // 'message' => '',
+                'user_id' => '',
+                'route_number' => ''
             ];
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->data['message'] = trim($_POST['message']);
+            $this->data['route_number'] = trim($_POST['route_number']);
             $this->data['user_id'] = $_SESSION['user_id'];
             $result = $this->model->storeEmergencyMessage($this->data);
         } else {
 
             $data = [
-                'message' => '',
+                // 'message' => '',
+                'route_number' => '',
             ];
         }
     }

@@ -287,4 +287,15 @@
             }
         }
     }
+
+    // viewLandowner details in requests page
+    $(document).ready(function() {
+        $('#viewLandowner').click(function(event) {
+            event.preventDefault();
+        var Lid = $("#lid").val();
+        if(!Lid==''){ //if the Lid feild is empty. ignore them
+        window.open("<?php echo URL ?>accountant/landownersGraphpage/"+Lid+"","_self");    
+        }
+    })
+    })
 </script>

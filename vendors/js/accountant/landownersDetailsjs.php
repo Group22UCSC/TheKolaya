@@ -3,7 +3,7 @@
     <?php $dateToday = date("Y-m-d"); ?>
 
     function getLandonwerTable() {
-        var url = "http://localhost/Thekolaya/accountant/getLandonwerTable";
+        var url = "<?php echo URL ?>/accountant/getLandonwerTable";
         $.ajax({
             url: url,
             type: "GET",

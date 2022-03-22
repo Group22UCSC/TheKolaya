@@ -66,7 +66,22 @@ class Accountant_Model extends Model {
             return false;
         }
     }
-
+    function incomeBarChart(){//details of the income to the factory for the bar chart of accountant dashboard
+        
+         $year=date('Y');
+         $month=date('m')-1;
+        // return $month;
+        $date= date('Y-m-01', strtotime("-7 month"));// 7 months ago date
+        // $first = date('Y-m-01',$date);
+        // return $date;
+        $query = "SELECT date,sold_price,sold_amount FROM auction where date >='{$date}'";
+        $row = $this->db->selectQuery($query);
+        if($row) {
+            return $row;
+        }else {
+            return false;
+        }
+    }
     
     function getEmpId(){
         //$query="SELECT * FROM "
@@ -186,6 +201,7 @@ class Accountant_Model extends Model {
         }else {
             return false;
         }
+        
     }
     
 
@@ -203,6 +219,7 @@ class Accountant_Model extends Model {
             return false;
         }
     }
+
     function acceptAdvanceRequest(){ // when the requested is accepted 
         $user_id = $_SESSION['user_id'];
         $comment=$_POST['comment'];
@@ -228,6 +245,22 @@ class Accountant_Model extends Model {
             $row = $this->db->insertQuery($query1);
             $row2 = $this->db->insertQuery($query2);
             $row3=$this->db->runQuery($notificationQuery);
+
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Landowner_notification', $data);
+            //-------------------------------------------//
+
             //print_r($row);
             $this->db->commit();
             if($row2){
@@ -269,6 +302,21 @@ class Accountant_Model extends Model {
             $row2 = $this->db->insertQuery($query2); // updating the request table
             $row3=$this->db->runQuery($notificationQuery);
             //print_r($row);
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $pusher->trigger('my-channel', 'Landowner_notification', $data);
+            //-------------------------------------------//
+
             $this->db->commit();
             if($row2){
                 return true;

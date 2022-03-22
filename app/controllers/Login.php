@@ -21,6 +21,8 @@ class Login extends Controller
             if ($loggedInUser) {
                 $this->createUserSession($loggedInUser);
                 redirect($_SESSION['user_type']);
+            }else {
+                $this->view->render('user/login');
             }
         } else {
             $this->view->render('user/login');
@@ -113,7 +115,7 @@ class Login extends Controller
                 'controller' => 'login'
             ];
 
-            if ($this->model->isRegisteredUser($data['contact_number'])) {
+            if ($this->model->isVerifiedUser($data['contact_number'])) {
                 // $otp = new OtpVerify;
                 // $otp->otpSend($data);
                 $_SESSION['contact_number'] = $data['contact_number'];
