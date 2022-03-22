@@ -33,11 +33,12 @@
                     <th class="thcls">Name</th>
                     <th class="thcls">Request Date(Rs)</th>
                     <th class="thcls">Amount</th>
-                   
+
 
                 </tr>
             
-
+                <tr><td id="noreqstsrow" colspan=100% style="color: red; font-size: larger; padding: 30px;">No Requests To Display</td></tr>
+            
         </table>
     </div>
 
