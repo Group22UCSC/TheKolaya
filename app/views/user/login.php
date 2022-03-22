@@ -58,7 +58,7 @@
             <input class="input" type="password" placeholder="password*" name="password" />
           </div>
 
-          <input type="button" value="Login" name="login" class="btn solid" id="login_btn"/>
+          <input type="submit" value="Login" name="login" class="btn solid" id="login_btn"/>
 
         </form>
         <div style="text-align: center;" class="forget-password">
