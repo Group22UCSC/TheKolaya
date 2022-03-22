@@ -44,8 +44,11 @@ if (!empty($data)) {
   for ($i = 0; $i < count($data); $i++) {
     echo '<div class="row table2-row">
             <div class="cell" data-title="Date">' . $data[$i]['in_date'] . '</div>
+            <hr class="horizontal-line">
             <div class="cell" data-title="Price Per Unit(Rs)">' . $data[$i]['price_per_unit'] . '</div>
+            <hr class="horizontal-line">
             <div class="cell" data-title="Amount(kg)">' . $data[$i]['in_quantity'] . '</div>
+            <hr class="horizontal-line">
             <div class="cell" data-title="Price For Amount(Rs)">' . $data[$i]['price_for_amount'] . '</div>
           </div>';
   }

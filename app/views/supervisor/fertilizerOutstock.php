@@ -49,7 +49,9 @@
         for ($i = 0; $i < 1; $i++) {
           echo '<div class="row">
                   <div class="cell" data-title="Landowener_id">' . $i . '</div>
+                  <hr class="horizontal-line">
                   <div class="cell" data-title="Agent_id">' . $i . '</div>
+                  <hr class="horizontal-line">
                   <div class="cell" data-title="Tea_weight">' . $i . '</div>
                 </div>';
         }
