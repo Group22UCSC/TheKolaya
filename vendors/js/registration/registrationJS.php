@@ -15,6 +15,7 @@
         var noErrors = 0;
 
         var placeHolderNames = ['name*', 'mobile number*', 'user id*', 'address*', 'password*', 'confirm password*']
+        var hasErrors = [false, false, false, false, false, false, false];
         var errors = {
             'name': '',
             'mobile_number': '',
@@ -33,6 +34,7 @@
         function showError(number, error) {
             inputField[number].value = '';
             inputField[number].placeholder = error;
+            hasErrors[number] = true;
             $(inputField[number]).removeClass('input-field input')
             $(inputField[number]).addClass('is-invalid');
             $(inputField[number].parentNode).addClass('is-invalid');
@@ -48,7 +50,8 @@
             SerializeData();
             $(inputField[number]).removeClass('is-invalid');
             $(inputField[number].parentNode).removeClass('is-invalid');
-            inputField[number].placeholder = placeHolderNames[number]
+            inputField[number].placeholder = placeHolderNames[number];
+            hasErrors[number] = false;
             if (number > 2) {
                 number++;
                 $(icon[number]).removeClass('is-invalid');
@@ -106,7 +109,7 @@
             } else if (!phonenumber(inputField[1].value)) {
                 errors.mobile_number = "Can't include characters";
                 showError(1, errors.mobile_number);
-            }  else if (inputField[1].value >= 10 && phonenumber(inputField[1].value)) {
+            } else if (inputField[1].value >= 10 && phonenumber(inputField[1].value)) {
                 SerializeData();
                 form.push({
                     name: 'function_name',
@@ -181,7 +184,7 @@
 
         $('#registrationBtn').click(function(event) {
             event.preventDefault();
-            if (inputField[1].value.length < 10) {
+            if (inputField[1].value != '' && inputField[1].value.length < 10) {
                 errors.mobile_number = "Less than 10 characters";
                 showError(1, errors.mobile_number);
             }
@@ -190,36 +193,46 @@
                 if (hasError(form[i]['value'])) {
                     switch (i) {
                         case 0:
-                            errors.name = "This is must filled";
-                            showError(0, errors.name);
+                            if (hasErrors[0] == false ) {
+                                errors.name = "This is must filled";
+                                showError(0, errors.name);
+                            }
                             break;
                         case 1:
-                            errors.mobile_number = "This is must filled";
-                            showError(1, errors.mobile_number);
+                            if (hasErrors[1] == false) {
+                                errors.mobile_number = "This is must filled";
+                                showError(1, errors.mobile_number);
+                            }
                             break;
-                        // case 2:
-                        //     errors.user_type = "This is must filled";
-                        //     showError(2, errors.user_type);
-                        //     break;
                         case 3:
-                            errors.user_id = "This is must filled";
-                            showError(2, errors.user_id);
+                            if (hasErrors[2] == false) {
+                                errors.user_id = "This is must filled";
+                                showError(2, errors.user_id);
+                            }
                             break;
                         case 4:
-                            errors.address = "This is must filled";
-                            showError(3, errors.address);
+                            if (hasErrors[3] == false) {
+                                errors.address = "This is must filled";
+                                showError(3, errors.address);
+                            }
                             break;
                         case 5:
-                            errors.password = "This is must filled";
-                            showError(4, errors.password);
+                            if (hasErrors[4] == false) {
+                                errors.password = "This is must filled";
+                                showError(4, errors.password);
+                            }
                             break;
                         case 6:
-                            errors.confirm_password = "This is must filled";
-                            showError(5, errors.confirm_password);
+                            if (hasErrors[5] == false) {
+                                errors.confirm_password = "This is must filled";
+                                showError(5, errors.confirm_password);
+                            }
                             break;
                     }
                 }
             }
+            console.log("hi")
+            console.log(errors[0])
             if (noErrors == 7) {
                 form.push({
                     name: 'function_name',
