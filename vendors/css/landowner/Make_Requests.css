@@ -324,6 +324,35 @@
   background-color: royalblue;
 }
 
+.deleteButtonFlex {
+  display: inline;
+}
+
+.deleteButton {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  animation: fadeIn 2.5s;
+  -webkit-animation: fadeIn 2.5s;
+  -moz-animation: fadeIn 2.5s;
+  -o-animation: fadeIn 2.5s;
+  -ms-animation: fadeIn 2.5s;
+}
+.deleteButton button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.deleteButton button:hover {
+  background-color: royalblue;
+}
+
 /* **************** table container ********************** */
 #pricetbl {
   font-family: "Poppins", sans-serif;

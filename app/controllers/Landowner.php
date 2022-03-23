@@ -210,4 +210,15 @@ class Landowner extends Controller
             echo "Data was not passed to the controller";
         }
     }
+
+
+    public function deleteFertilizerRequests()
+    {
+        $this->view->showPage('landowner/deleteFertilizerRequests');
+    }
+
+    public function deleteAdvanceRequests()
+    {
+        $this->view->showPage('landowner/deleteAdvanceRequests');
+    }
 }

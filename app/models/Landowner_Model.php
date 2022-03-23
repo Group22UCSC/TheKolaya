@@ -335,7 +335,7 @@ class landowner_Model extends Model
     function deleteRequestRow()
     {
         $date = $_POST['date'];
-        $query = " DELETE FROM `monthly_tea_price` WHERE date='{$date}'";
+        $query = " DELETE FROM `request` WHERE date='{$date}'";
         $row = $this->db->insertQuery($query);
         $result = $this->db->deleteQuery($query);
         echo $result;
