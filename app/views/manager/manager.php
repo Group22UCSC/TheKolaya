@@ -2,7 +2,8 @@
 <link rel="stylesheet" href="<?php echo URL?>vendors/css/manager/manager-style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
- <div class="title-container">
+<div class="main">
+       <div class="title-container">
     <h2>Fertilier and Firewood Stock details</h2>
   </div>
  <!--  <div class="middle-container"> -->
@@ -26,7 +27,6 @@
     </div>
 
 
-
-
-
+</div>
+ 
 <?php include 'bottom-container.php';?>

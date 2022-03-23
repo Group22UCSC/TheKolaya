@@ -98,8 +98,11 @@
               if ($data[$i]['sup_id'])
                 echo '<div class="row">
                           <div class="cell" data-title="Landowener Id">' . $data[$i]['lid'] . '</div>
+                          <hr class="horizontal-line">
                           <div class="cell" data-title="Reductions(kg)">' . $reductions . '</div>
+                          <hr class="horizontal-line">
                           <div class="cell" data-title="Net-Weight(kg)">' . $data[$i]['net_weight'] . '</div>
+                          <hr class="horizontal-line">
                           <div class="cell" data-title="Tea Quality">' . $teaQuality . '</div>
                         </div>';
             }
