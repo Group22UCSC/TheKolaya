@@ -31,12 +31,13 @@
     </form>
     <div class="table-wrapper">
       <!-- <div class="table_header">Today Available landowners</div> -->
-      <div class="table" id="today_delivery_table">
+      <div class="table" id="today_fertilizer_table">
         <div class="row tabel-header">
           <div class="cell" id="th">Landowner ID</div>
           <div class="cell" id="th">Name</div>
-          <div class="cell" id="th">Request ID</div>          
-          <div class="cell" id="th">Address</div>
+          <div class="cell" id="th">Request ID</div>  
+          <div class="cell" id="th">Amount</div>        
+          <div class="cell" id="th">Address</div>         
           <div class="cell" id="th">Route</div>
         </div>
         <?php
@@ -49,6 +50,8 @@
                       <div class="cell" id="tr" data-title="Name">' . $data1[$i]['name'] . '</div>
                       <hr class="horizontal-line">
                       <div class="cell" id="tr" data-title="Request ID">' . $data1[$i]['request_id'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Request ID">' . $data1[$i]['amount'] . '</div>
                       <hr class="horizontal-line">
                       <div class="cell" id="tr" data-title="Address">' . $data1[$i]['address'] . '</div>
                       <hr class="horizontal-line">
@@ -66,35 +69,39 @@
       <input type="text" id="searcha" placeholder="Enter Landowner ID.." onkeyup="searchAdvanceTable()">
       <!-- <input type="submit" value="search" id="submit"> -->
     </form>
-    <table class="advance_delivery_table" id="advance_delivery_table">
-      <tr>
-        <td class="th">Landowner ID</td>
-        <td class="th">Name</td>
-        <td class="th">Request ID</td>
-        <td class="th">Amount</td>
-        <td class="th">Address</td>
-        <td class="th">Route</td>
-      </tr>
+    <div class="table-wrapper">
+      <!-- <div class="table_header">Today Available landowners</div> -->
+      <div class="table" id="today_advance_table">
+        <div class="row tabel-header">
+          <div class="cell" id="th">Landowner ID</div>
+          <div class="cell" id="th">Name</div>
+          <div class="cell" id="th">Request ID</div>
+          <div class="cell" id="th">Amount</div>          
+          <div class="cell" id="th">Address</div>
+          <div class="cell" id="th">Route</div>
+        </div>
+        <?php
 
-      <?php
-      if ($data2 != 0) {
-        $a = count($data2);
-      } else {
-        $a = "0";
-      }
-      // print_r($y);
-      for ($i = 0; $i < $a; $i++) {
-        echo '<tr  id = "request" data-href-request="" >
-          <td>' . $data2[$i]['lid'] . '</td>   
-          <td>' . $data2[$i]['name'] . '</td>                
-          <td>' . $data2[$i]['request_id'] . '</td>
-          <td>' . $data2[$i]['amount_rs'] . '</td> 
-          <td>' . $data2[$i]['address'] . '</td>
-          <td>' . $data2[$i]['route_no'] . '</td>
-                </tr>';
-      }
-      ?>
-    </table>
+        if (!empty($data2)) {
+          for ($i = 0; $i < count($data2); $i++) {
+            echo '<div class="row table2-row" id="fullrow">
+                      <div class="cell" id="tr"data-title="Landowner_id">' . $data2[$i]['lid'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Name">' . $data2[$i]['name'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Request ID">' . $data2[$i]['request_id'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Request ID">' . $data2[$i]['amount_rs'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Address">' . $data2[$i]['address'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Route">' . $data2[$i]['route_no'] . '</div>
+                    </div>';
+          }
+        }
+        ?>
+      </div>
+    </div>    
   </div>
 
   <?php include 'deliveryform.php'; ?>
@@ -229,15 +236,46 @@
   </script>
   <?php include 'bottomContainer.php'; ?>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const rows = document.querySelectorAll("tr[data-href-request]");
-      rows.forEach(row => {
-        row.addEventListener("click", () => {
-          openrequestform();
-        });
-      });
-    });
+    // document.addEventListener("DOMContentLoaded", () => {
+    //   const rows = document.querySelectorAll("tr[data-href-request]");
+    //   rows.forEach(row => {
+    //     row.addEventListener("click", () => {
+    //       openrequestform();
+    //     });
+    //   });
+    // });
 
+    var table = $("#today_fertilizer_table");
+    table.click(function(event) {
+      if (!$(event.target.parentNode).hasClass("tabel-header")) {
+        document.getElementById("rid").value = event.target.parentNode.firstElementChild.innerHTML;
+        document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
+        document.getElementById("rtype").value ="Fertilizer"; 
+        document.getElementById("amount").value = event.target.parentNode.firstElementChild.innerHTML;
+
+        // document.getElementById("rid").value = this.cells[1].innerHTML;
+        // document.getElementById("lid").value = this.cells[0].innerHTML;
+        // document.getElementById("rtype").value = "Fertilizer";
+        // document.getElementById("amount").value = this.cells[2].innerHTML;
+        openrequestform()
+      }
+    })
+
+    var table = $("#today_advance_table");
+    table.click(function(event) {
+      if (!$(event.target.parentNode).hasClass("tabel-header")) {
+        document.getElementById("rid").value = event.target.parentNode.firstElementChild.innerHTML;
+        document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
+        document.getElementById("rtype").value ="Advance"; 
+        document.getElementById("amount").value = event.target.parentNode.firstElementChild.innerHTML;
+
+        // document.getElementById("rid").value = this.cells[1].innerHTML;
+        // document.getElementById("lid").value = this.cells[0].innerHTML;
+        // document.getElementById("rtype").value = "Fertilizer";
+        // document.getElementById("amount").value = this.cells[2].innerHTML;
+        openrequestform()
+      }
+    })
     function openrequestform() {
       document.getElementById("requestpopup").style.display = "block";
       // var blur = document.getElementById('blur');
@@ -249,31 +287,31 @@
       // var blur = document.getElementById('blur');
       // blur.classList.toggle('close');
     }
-    var table1 = document.getElementById('fertilizer_delivery_table');
+    // var table1 = document.getElementById('fertilizer_delivery_table');
 
-    for (var i = 1; i < table1.rows.length; i++) {
-      table1.rows[i].onclick = function() {
-        //rIndex = this.rowIndex;
-        document.getElementById("rid").value = this.cells[1].innerHTML;
-        document.getElementById("lid").value = this.cells[0].innerHTML;
-        document.getElementById("rtype").value = "Fertilizer";
-        document.getElementById("amount").value = this.cells[2].innerHTML;
+    // for (var i = 1; i < table1.rows.length; i++) {
+    //   table1.rows[i].onclick = function() {
+    //     //rIndex = this.rowIndex;
+    //     document.getElementById("rid").value = this.cells[1].innerHTML;
+    //     document.getElementById("lid").value = this.cells[0].innerHTML;
+    //     document.getElementById("rtype").value = "Fertilizer";
+    //     document.getElementById("amount").value = this.cells[2].innerHTML;
 
-      };
-    }
+    //   };
+    // }
 
-    var table2 = document.getElementById('advance_delivery_table');
+    // var table2 = document.getElementById('advance_delivery_table');
 
-    for (var i = 1; i < table2.rows.length; i++) {
-      table2.rows[i].onclick = function() {
-        //rIndex = this.rowIndex;
-        document.getElementById("rid").value = this.cells[1].innerHTML;
-        document.getElementById("lid").value = this.cells[0].innerHTML;
-        document.getElementById("rtype").value = "Advance";
-        document.getElementById("amount").value = this.cells[2].innerHTML;
+    // for (var i = 1; i < table2.rows.length; i++) {
+    //   table2.rows[i].onclick = function() {
+    //     //rIndex = this.rowIndex;
+    //     document.getElementById("rid").value = this.cells[1].innerHTML;
+    //     document.getElementById("lid").value = this.cells[0].innerHTML;
+    //     document.getElementById("rtype").value = "Advance";
+    //     document.getElementById("amount").value = this.cells[2].innerHTML;
 
-      };
-    }
+    //   };
+    // }
 
     function openpopup() {
       // Get the modal
