@@ -31,7 +31,7 @@
 
 
 .middle-conatiner {
-   background-image: url("../../images/admin/24.jpg");
+   background-image: url("../../images/admin/38.jpg");
    background-repeat: no-repeat;
     background-size: 100% 100%;
    /* margin: 25px 0px;*/
@@ -115,12 +115,13 @@
 .k1 {
  /* background: whitesmoke;*/
   margin-top: 15px;
-  background-image: url("../../images/admin/12.jpg");
+  background-image: url("../../images/admin/38.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding-top: 10px;
   padding-bottom: 10px;
   width: 90%;
+  height: 600px;
   margin-left: 5%;
 }
 
