@@ -55,9 +55,13 @@
           for ($i = 0; $i < count($data); $i++) {
             echo '<div class="row table2-row" id="fullrow">
                       <div class="cell" id="tr"data-title="Landowner_id">' . $data[$i]['user_id'] . '</div>
+                      <hr class="horizontal-line">
                       <div class="cell" id="tr" data-title="Name">' . $data[$i]['name'] . '</div>
+                      <hr class="horizontal-line">
                       <div class="cell" id="tr" data-title="Container Estimation">' . $data[$i]['no_of_estimated_containers'] . '</div>
+                      <hr class="horizontal-line">
                       <div class="cell" id="tr" data-title="Address">' . $data[$i]['address'] . '</div>
+                      <hr class="horizontal-line">
                       <div class="cell" id="tr" data-title="Route">' . $data[$i]['route_no'] . '</div>
                     </div>';
           }
