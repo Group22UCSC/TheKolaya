@@ -54,19 +54,19 @@
   #th{
       background-color:#01830c ;
       color: #fff;
-      font-size: 18px;
+      font-size: 20px;
   }
 
-
-  /* tr:nth-child(even) {
+/* 
+  #tr:nth-child(even) {
     background-color: #f2f2f2;
   }
-  tr:nth-child(odd) {
+  #tr:nth-child(odd) {
     background-color: #fff;
   } */
 
    #tr:hover{
-      background-color: #cccccc;
+      /* background-color: #cccccc; */
       cursor: pointer;
   }
 
@@ -93,8 +93,7 @@
     }
   }
   
-  
-  @media(max-width:400px){
+  /* @media(max-width:400px){
     
     .topic{
       height:75px;
@@ -118,5 +117,5 @@
     
 
     
-  }
+  } */
   

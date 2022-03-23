@@ -25,6 +25,22 @@ class Admin extends Controller
         $this->view->showPage('admin/viewAccount1');
     }
 
+
+
+    public $data = [
+        'name' => '',
+        'reg_id' => '',
+        'reg_type' => '',
+        'address' => '',
+        'mobile_number' => '',
+        'password' => '',
+        'confirm_password' => '',
+
+        'password_err' => '',
+        'confirm_password_err' => '',
+        'name_err' => '',
+    ];
+
     public function updateAccount()
     {
         
@@ -34,27 +50,23 @@ class Admin extends Controller
 
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'name' => join("" ,explode(" " , trim($_POST['name']))),
-                'reg_id' => trim($_POST['user_id']),
-                'reg_type' => trim($_POST['user_type']),
-                'address' => trim($_POST['address']),
-                'mobile_number' => trim($_POST['contact_number']),
-                'password' => trim($_POST['password']),
-                'confirm_password' => trim($_POST['confirm_password']),
+                $a = trim($_POST['name1']);
+                $b = trim($_POST['name2']);
+                $this->data['name']= $a." ".$b;
+                $this->data['reg_id'] = trim($_POST['user_id']);
+                $this->data['reg_type'] = trim($_POST['user_type']);
+                $this->data['address'] = trim($_POST['address']);
+                $this->data['mobile_number'] = trim($_POST['contact_number']);
+                $this->data['password'] = trim($_POST['password']);
+                $this->data['confirm_password'] = trim($_POST['confirm_password']);
 
-                'password_err' => '',
-                'confirm_password_err' => '',
-                'name_err' => '',
-                
-            ];
 
-            if ($data['password'] != $data['confirm_password']) {
-                $data['confirm_password_err'] = "confirmation not matching";
+            if ($this->data['password'] != $this->data['confirm_password']) {
+                $this->data['confirm_password_err'] = "confirmation not matching";
             }
 
-            if (!preg_match ("/^[A-Za-z]/", $data['name']) ) {  
-                $data['name_err'] = "Only alphabets are allowed";     
+            if (!preg_match ("/^[a-zA-Z\s]+$/", $this->data['name']) ) {  
+                $this->data['name_err'] = "Only alphabets are allowed";     
             }
 
              
@@ -63,18 +75,18 @@ class Admin extends Controller
              //    }
 
 
-            if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$data['password'])) {
-                    $data['password_err'] = "Please enter strong password";
+            if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$this->data['password'])) {
+                    $this->data['password_err'] = "Please enter strong password";
             }
 
-            if (empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['name_err'])) {
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                if($this->model->userUpdate($data)){
+            if (empty($this->data['password_err']) && empty($this->data['confirm_password_err']) && empty($this->data['name_err'])) {
+                $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+                if($this->model->userUpdate($this->data)){
                     $result = $this->model->availablelistTable();
-                    $this->view->render('admin/updateAccount',$result, $data);
+                    $this->view->render('admin/updateAccount',$result, $this->data);
                 }
             }else {
-                $this->view->render('admin/updateAccount',$result, $data);
+                $this->view->render('admin/updateAccount',$result, $this->data);
             }
         } else {
             $data = [
@@ -92,7 +104,7 @@ class Admin extends Controller
                 'confirm_password_err' => '',
                 'name_err' => ''
             ];
-            $this->view->render('admin/updateAccount', $result, $data);
+            $this->view->render('admin/updateAccount', $result, $this->data);
         }
     }
 
@@ -100,20 +112,20 @@ class Admin extends Controller
 
 // delete account
 
- public $data = [
-        'name' => '',
-        'reg_id' => '',
-        'reg_type' => '',
-        'address' => '',
-        'mobile_number' => '',
-        'route_number' => '',
-        'password' => '',
-        'confirm_password' => '',
+ // public $data = [
+ //        'name' => '',
+ //        'reg_id' => '',
+ //        'reg_type' => '',
+ //        'address' => '',
+ //        'mobile_number' => '',
+ //        'route_number' => '',
+ //        'password' => '',
+ //        'confirm_password' => '',
 
-        'confirm_password_err' => '',
-        'reg_id_err' => '',
-        'mobile_number_err' => '',
-    ];
+ //        'confirm_password_err' => '',
+ //        'reg_id_err' => '',
+ //        'mobile_number_err' => '',
+ //    ];
 
 
   public function deleteAccount()
@@ -199,7 +211,7 @@ class Admin extends Controller
             $this->user_data['reg_type'] = trim($_POST['user_type']);
 
              
-            if (!preg_match("/^[A-Za-z]/", $this->user_data['name']) ) {  
+            if (!preg_match("/^[a-zA-Z\s]+$/", $this->user_data['name']) ) {  
                 $this->user_data['name_err'] = "Please enter valid name";     
             }  
 

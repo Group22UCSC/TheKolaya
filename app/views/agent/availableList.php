@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/agent.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/availablelist.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/searchbar.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table-style.css">
-  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/supervisor/table2-style.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/available-table.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/agent/available-table2.css">
   <!-- <script src="<?php echo URL ?>vendors/js/agent/dashboard.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Boxicons CDN Link -->
@@ -40,25 +40,29 @@
     <?php include 'unavailableNotice.php'; ?>
     <?php include 'agentUnavailableNotice.php'; ?>
     <div class="table-wrapper">
-      <div class="table_header">Today Available landowners</div>
+      <!-- <div class="table_header">Today Available landowners</div> -->
       <div class="table" id="today_collection_table">
         <div class="row tabel-header">
-          <div class="cell">Landowner ID</div>
-          <div class="cell">Name</div>
-          <div class="cell">Container Estimation</div>
-          <div class="cell">Address</div>
-          <div class="cell">Route</div>
+          <div class="cell" id="th">Landowner ID</div>
+          <div class="cell" id="th">Name</div>
+          <div class="cell" id="th">Container Estimation</div>
+          <div class="cell" id="th">Address</div>
+          <div class="cell" id="th">Route</div>
         </div>
         <?php
 
         if (!empty($data)) {
           for ($i = 0; $i < count($data); $i++) {
-            echo '<div class="row table2-row">
-                      <div class="cell" data-title="Landowener_id">' . $data[$i]['user_id'] . '</div>
-                      <div class="cell" data-title="Name">' . $data[$i]['name'] . '</div>
-                      <div class="cell" data-title="Container Estimation">' . $data[$i]['no_of_estimated_containers'] . '</div>
-                      <div class="cell" data-title="Address">' . $data[$i]['address'] . '</div>
-                      <div class="cell" data-title="Route">' . $data[$i]['route_no'] . '</div>
+            echo '<div class="row table2-row" id="fullrow">
+                      <div class="cell" id="tr"data-title="Landowner_id">' . $data[$i]['user_id'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Name">' . $data[$i]['name'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Container Estimation">' . $data[$i]['no_of_estimated_containers'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Address">' . $data[$i]['address'] . '</div>
+                      <hr class="horizontal-line">
+                      <div class="cell" id="tr" data-title="Route">' . $data[$i]['route_no'] . '</div>
                     </div>';
           }
         }

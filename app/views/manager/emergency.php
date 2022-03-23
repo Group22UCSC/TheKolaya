@@ -33,7 +33,7 @@
     </div>
 
   </div> 
- </div> 
+  
 
 <?php include 'js/manager/emergencyjs.php';?>
 <script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
