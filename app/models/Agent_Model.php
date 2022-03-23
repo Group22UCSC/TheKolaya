@@ -407,17 +407,17 @@ class Agent_Model extends Model
     {
         $route_no = $_SESSION['route'];
         $query = "SELECT request.request_id, request.request_type, request.lid, 
-                 advance_request.amount_rs,
-                 landowner.route_no, 
-                 user.address, user.name
-                 FROM landowner 
-                 INNER JOIN user
-                 ON landowner.user_id = user.user_id
-                 INNER JOIN request
-                 ON request.lid=landowner.user_id
-                  INNER JOIN advance_request
-                  ON  request.request_id = advance_request.request_id                   
-                 WHERE request.lid IN 
+                advance_request.amount_rs,
+                landowner.route_no, 
+                user.address, user.name
+                FROM landowner 
+                INNER JOIN user
+                ON landowner.user_id = user.user_id
+                INNER JOIN request
+                ON request.lid=landowner.user_id
+                INNER JOIN advance_request
+                ON  request.request_id = advance_request.request_id                   
+                WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
                 AND request.response_status = 'accept' AND request.complete_status = 0 ";
 

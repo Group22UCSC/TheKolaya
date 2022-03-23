@@ -117,6 +117,9 @@
     display: table-cell;
     text-align: center;
   }
+  .horizontal-line {
+    display: none;
+  }
 
 /* responsive */
 @media screen and (max-width: 780px) {
@@ -167,6 +170,9 @@
       display: block;
       text-align: left;
     }
+    .horizontal-line {
+      display: block;
+    }
   }
   @media screen and (max-width: 380px) {
     .row {
@@ -199,6 +205,9 @@
       padding: 2px 16px;
       display: block;
       text-align: left;
+    }
+    .horizontal-line {
+      display: block;
     }
   }
   
