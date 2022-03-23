@@ -17,7 +17,7 @@
                 <th class="thcls">Received date</th>
                 <th class="thcls">Received Time</th>
                 <th class="thcls">Requests Type</th>
-                <th class="thcls">Quntity</th>
+                <th class="thcls">Quntity(Kg)</th>
                 <th class="thcls">Response</th>
             </tr>
 

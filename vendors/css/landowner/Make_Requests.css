@@ -325,11 +325,14 @@
 }
 
 .deleteButtonFlex {
-  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .deleteButton {
-  display: grid;
+  margin: 1rem;
+  display: inline-block;
   align-items: center;
   justify-content: center;
 

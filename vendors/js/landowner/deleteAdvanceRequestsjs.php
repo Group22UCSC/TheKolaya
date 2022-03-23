@@ -78,7 +78,7 @@
 
 
 
-            var str = "Delete tea price set on " + date2 + " ?";
+            var str = "Delete Requests On Requests Id " + date2 + " ?";
             Swal.fire({
                 title: 'Are You Sure ?',
                 icon: 'warning',
