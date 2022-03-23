@@ -2,7 +2,7 @@
     <?php $dateToday = date("Y-m-d"); ?>
 
     function getTable() {
-        var url = "http://localhost/Thekolaya/landowner/getRequest";
+        var url = "http://localhost/Thekolaya/landowner/getAdvanceRequest";
         $.ajax({
             url: url,
             type: "GET",
@@ -21,17 +21,32 @@
                     var str =
                         "<tr class='row'>" +
                         "<td>" +
+                        data[i].request_id +
+                        "</td>" +
+
+                        "<td>" +
                         data[i].request_date.substring(0, data[i].request_date.indexOf(' ')) +
                         "</td>" +
+
+                        "<td>" +
+                        data[i].request_date.substring(data[i].request_date.indexOf(' ') + 1) +
+                        "</td>" +
+
                         "<td>" +
                         data[i].request_type +
                         "</td>" +
+
+                        "<td>" +
+                        data[i].amount_rs +
+                        "</td>" +
+
                         "<td class='actionCol'>" +
                         "<button type='button' id='editbutton' onclick='deleteRow()' >" +
                         "Delete" +
                         "</button>" +
-
                         "</td>" +
+
+
                         "</tr>";
                     $("#teapricetable tbody").append(str);
                 }
@@ -43,6 +58,7 @@
 
 
     function deleteRow() {
+        console.log(10)
         // remove the row from ui
         $('#teapricetable tbody').on('click', '#editbutton', function() {
             // remobe the row from ui
