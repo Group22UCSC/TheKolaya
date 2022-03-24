@@ -39,7 +39,11 @@
                                }       
                                ?>         
 
-
+                          <?php
+      if (empty($data)) {
+        echo '<div id="not_display_collection_yet" style="border-radius: 0px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
+      }
+      ?>
 
                         </div>
   
