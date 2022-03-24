@@ -29,7 +29,7 @@
     
                                <?php
                                $x=count($data);
-                               if (!empty($data1)) {
+                               if (!empty($data)) {
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">     
                                            <td>'.$data[$i]['buyer_id'].'</td>
