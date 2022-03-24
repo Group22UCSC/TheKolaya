@@ -57,9 +57,16 @@ class Landowner extends Controller
     function Monthly_Income()
     {
 
-        $this->view->showPage('landowner/Monthly_Income');
+        $this->view->render('landowner/Monthly_Income');
     }
 
+    function getMonthlyIncome()
+    {
+        $result = $this->model->getMonthlyIncome();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
 
 
     function Daily_Net_Weight()
@@ -188,18 +195,26 @@ class Landowner extends Controller
     }
 
 
-    function getRequest()
+
+
+    //deleteFertilizerRequestsInMakeRequests
+
+    public function deleteFertilizerRequests()
     {
-        $result = $this->model->requestTable();
+        $this->view->showPage('landowner/deleteFertilizerRequests');
+    }
+
+    function getFertilizerRequest()
+    {
+        $result = $this->model->requestTableFertilizer();
         $json_arr = json_encode($result);
-        //print_r($json_arr);
         echo $json_arr;
     }
 
     function deleteRequestRow()
     {
         if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
-            $result = $this->model->deleteRequestRow();
+            $result = $this->model->deleteRow();
             if ($result == true) {
             } else {
                 // un successfull pop up 
@@ -209,5 +224,24 @@ class Landowner extends Controller
         } else {
             echo "Data was not passed to the controller";
         }
+    }
+
+
+
+
+
+    //deleteAdvanceRequestsInMakeRequests
+
+    public function deleteAdvanceRequests()
+    {
+        $this->view->showPage('landowner/deleteAdvanceRequests');
+    }
+
+
+    function getAdvanceRequest()
+    {
+        $result = $this->model->requestTableAdvance();
+        $json_arr = json_encode($result);
+        echo $json_arr;
     }
 }
