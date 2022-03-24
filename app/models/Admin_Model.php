@@ -209,7 +209,7 @@ class Admin_Model extends Model {
     function userDelete($data = []) {
 
         $user_id = $data['reg_id'];
-        $query = $next_query = "UPDATE user SET is_delete='1' WHERE user_id='$user_id'";
+        $query = $next_query = "UPDATE user SET is_delete='1',verify='0' WHERE user_id='$user_id'";
          $this->db->runQuery($query);
             
     }
