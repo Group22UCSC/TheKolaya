@@ -57,9 +57,16 @@ class Landowner extends Controller
     function Monthly_Income()
     {
 
-        $this->view->showPage('landowner/Monthly_Income');
+        $this->view->render('landowner/Monthly_Income');
     }
 
+    function getMonthlyIncome()
+    {
+        $result = $this->model->getMonthlyIncome();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
 
 
     function Daily_Net_Weight()
