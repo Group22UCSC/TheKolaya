@@ -40,13 +40,33 @@ class Login extends Controller
             $function_name = $_POST['function_name'];
             switch ($function_name) {
                 case 'checkUser':
-                    if ($this->model->isVerifiedUser($data['contact_number'])) {
-                        echo 'Verified';
-                    } else if ($this->model->isRegisteredUser($data['contact_number'])) {
-                        echo 'Registered';
-                    } else {
-                        echo 'notRegistered';
+                    if($this->model->getUser($data['contact_number'])) {
+                        $userVerify = $this->model->getUser($data['contact_number']);
+                    }else {
+                        $userVerify = false;
                     }
+                    if($this->model->getUser($data['contact_number'])) {
+                        $userVerify = $this->model->getUser($data['contact_number']);
+                    }else {
+                        $userVerify = false;
+                    }
+                    if ($userVerify[0]['verify'] == 1 && $userVerify[0]['is_delete'] == 0) {
+                        echo 'Verified';
+                    } else if ($userVerify[0]['is_delete'] == 1 && $userVerify[0]['verify'] == 0) {
+                        echo 'Deleted';
+                    } else if (!$userVerify) {
+                        echo 'notRegistered';
+                    } else {
+                        echo 'Registered';
+                    }
+
+                    // if ($this->model->isVerifiedUser($data['contact_number'])) {
+                    //     echo 'Verified';
+                    // } else if ($this->model->isRegisteredUser($data['contact_number'])) {
+                    //     echo 'Registered';
+                    // } else {
+                    //     echo 'notRegistered';
+                    // }
                     break;
                 case 'login':
                     $loggedInUser = $this->model->login($data['contact_number'], $data['password']);
