@@ -90,6 +90,7 @@
                     type: 'POST',
                     data: form,
                     success: function(responseText) {
+                        console.log(responseText)
                         if (responseText == 'Verified') {
                             holderName = "mobile number*";
                             removeError(0, holderName);
