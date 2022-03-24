@@ -38,7 +38,7 @@ class Agent extends Controller
                     $this->model->setAssignDefault();
                 }
             }
-            $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res);
+           $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res); // 
         } else if ($result[0]['availability'] == 0) {
             if($is_requested[0]['availability_requested'] == 1){
                 $this->view->showPage('agent/availabilityRequested');
@@ -75,18 +75,24 @@ class Agent extends Controller
         // take the available landowners count to collect tea to be displayed      
         if ($isreject[0]['is_rejected'] == -1 || $isreject[0]['is_rejected']  == 1) {
             $available_res = $this->model->availablelistTable();
+            // print_r("he has not accepted");
+            //  print_r($available_res);
             $this->model->setAssignDefault();
         } else if ($isreject[0]['is_rejected'] == 0) {
             $agent_of_assign_route =  $this->model->getAssignedRouteAgent();
             $agent_availability_of_assign_route = $this->model->checkAvailability($agent_of_assign_route[0]['emp_id']);
             if ($agent_availability_of_assign_route[0]['availability'] == 0) {
                 $available_res = $this->model->assignAvailableListTable();
+                // print_r("append available list");
+                // print_r($result);
             } else if ($agent_availability_of_assign_route[0]['availability'] == 1) {
                 $available_res = $this->model->availablelistTable();
+                // print_r("assign route agent came");
+                // print_r($result);
                 $this->model->setAssignDefault();
             }
         }
-        $this->view->render('Agent/availableList', $available_res);
+         $this->view->render('Agent/availableList', $available_res);
     }
 
     //add agent initial tea weight by agent

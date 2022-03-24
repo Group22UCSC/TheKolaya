@@ -13,7 +13,14 @@
 
      <div class="name1">
      
-            
+             <?php
+  if ($data != 0) {
+    $x = count($data);
+  } else {
+    $x = "0";
+  }
+  // $x = count($data);
+  ?>
           
    
           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
@@ -28,8 +35,8 @@
                        <div class="vertical">
     
                                <?php
-                               $x=count($data);
-                               if (!empty($data1)) {
+                              
+                               if (!empty($data)) {
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">     
                                            <td>'.$data[$i]['buyer_id'].'</td>
@@ -40,15 +47,21 @@
                                }}       
                                ?>         
 
-                          <?php
-      if (empty($data)) {
-        echo '<div id="not_display_collection_yet" style="border-radius: 0px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
-      }
-      ?>
 
                         </div>
   
                       </table>
+
+
+    <script>
+    $(document).ready(function() {
+      if (<?php echo $x ?> == '0') {
+        console.log('zero landowners');
+        $('#myTable').hide();
+        $('#buyerForm').hide();
+        $('#unavailable_notice').show();
+      }
+    </script>
 
             <!-- table data get auto filled form -->
             <script>

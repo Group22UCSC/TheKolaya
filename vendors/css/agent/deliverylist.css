@@ -1,4 +1,4 @@
-.deliverylist  {
+ .deliverylist  {
     display: block;
     position: relative;
     padding: 5px;
@@ -52,7 +52,7 @@
     padding: 10px;
   }
 
-  .th{
+  #th{
       background-color:#01830c ;
       color: #fff;
   }
