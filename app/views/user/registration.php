@@ -87,7 +87,6 @@
 
           <div class="input-field <?php echo (!empty($data['user_type_err'])) ? 'is-invalid' : ''; ?>">
             <i class="fas fa-chevron-circle-right icon <?php echo (!empty($data['user_type_err'])) ? 'is-invalid' : ''; ?>"></i>
-            <!-- <label width for=""></label> -->
             <select name="user_type" id="landowner_type">
               <option value="accountant">Accountant</option>
               <option value="agent">Agent</option>
