@@ -39,13 +39,15 @@
     amount: ''
   };
   $('#allRequest').click(function(event) {
-    if ($(event.target.parentNode.childNodes[3]).hasClass('lid')) {
+    console.log(event.target.parentNode.childNodes)
+    if ($(event.target.parentNode.childNodes[5]).hasClass('lid')) {
       // requestDetails.landownerId = event.target.parentNode.childNodes[3].innerHTML;
       requestDetails = {
-        landownerId: event.target.parentNode.childNodes[3].innerHTML,
-        name: event.target.parentNode.childNodes[5].innerHTML,
-        amount: event.target.parentNode.childNodes[7].innerHTML
+        landownerId: event.target.parentNode.childNodes[5].innerHTML,
+        name: event.target.parentNode.childNodes[9].innerHTML,
+        amount: event.target.parentNode.childNodes[13].innerHTML
       };
+      console.log(requestDetails)
       //Get the Previous requests
       $.ajax({
         type: "POST",
@@ -53,6 +55,7 @@
         cache: false,
         data: "landowner_id=" + requestDetails.landownerId,
         success: function(responseText) {
+          // console.log(responseText);
           var parser = new DOMParser();
           var xmlDoc = parser.parseFromString(responseText, "text/html");
           var myHtml = xmlDoc.getElementById("previous_details").innerHTML;

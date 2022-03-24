@@ -83,32 +83,144 @@ button{
     }
   }
   
-  
-
-
-  @media(max-width:400px){
-    .topic{
-      height:75px;
-      font-size: 26px;
-    }
-
+  /* responsive */
+  @media screen and (max-width: 1250px){
     .update_buttons{
-        flex-direction: column;
-        margin:50px;
-    }
-    .tea{
-        margin-top: 0px;
-        color: rgba(1, 131, 12,1);
-        background-color:white;
-    }
-
-    .request{
-        margin-top: 100px;
-        margin-left: auto;
-        color: rgba(1, 131, 12,1);
-        background-color:white;
-    }
-
-
-
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin:180px auto;
   }
+  
+  button{
+      background-color: white;
+      color: rgba(1, 131, 12,1);
+      font-size: 20px; 
+      font-weight: 400;  
+    }
+  }
+
+  @media screen and (max-width: 780px){
+    .update_buttons{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin:160px 200px auto;
+  }
+  
+  button{
+      background-color: white;
+      color: rgba(1, 131, 12,1);
+      font-size: 20px; 
+      font-weight: 400;  
+    }
+  }
+  @media screen and (max-width: 570px){
+   
+    .update_buttons{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin:100px  auto;
+  }
+  
+ 
+    .tea{
+      margin-left: 130px; 
+      margin-bottom: 60px;     
+  }
+
+  .request{
+      margin-left: 130px;      
+  }
+  }
+
+  @media screen and (max-width: 450px){
+    .topic{
+      text-align: center;      
+        font-size: 24px;      
+        background-color: rgb(211, 243, 190);
+        color: rgba(1, 131, 12,1);
+  } 
+    .update_buttons{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin:100px  auto;
+  }
+  
+  button{
+      background-color: white;
+      color: rgba(1, 131, 12,1);
+      font-size: 18px; 
+      font-weight: 350;
+      width:150px; 
+      height: 100px;    
+    }
+
+    .tea{
+      margin-left: 100px; 
+      margin-bottom: 50px;     
+  }
+
+  .request{
+      margin-left: 100px;      
+  }
+  }
+
+  @media screen and (max-width: 380px){
+    .topic{
+      text-align: center;      
+        font-size: 22px;  
+        height:40px;            
+  }   
+    .update_buttons{
+      margin:80px  auto;
+  }
+  
+  button{
+      background-color: white;
+      color: rgba(1, 131, 12,1);
+      font-size: 18px; 
+      font-weight: 350;
+      width:130px; 
+      height: 90px; 
+        
+    }
+
+    .tea{
+      margin-left: 80px; 
+      margin-bottom: 60px;     
+  }
+
+  .request{
+      margin-left: 80px;      
+  }
+  }
+  
+  @media screen and (max-width: 330px){
+    .topic{
+      text-align: center;      
+        font-size: 22px;  
+        height:75px;            
+  }   
+  
+  button{     
+      font-size: 16px; 
+      font-weight: 350;
+      width:130px; 
+      height: 90px; 
+        
+    }
+
+    .tea{
+      margin-left: 50px; 
+      margin-bottom: 60px;     
+  }
+
+  .request{
+      margin-left: 50px;      
+  }
+  }
+
+  

@@ -324,6 +324,38 @@
   background-color: royalblue;
 }
 
+.deleteButtonFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteButton {
+  margin: 1rem;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+
+  animation: fadeIn 2.5s;
+  -webkit-animation: fadeIn 2.5s;
+  -moz-animation: fadeIn 2.5s;
+  -o-animation: fadeIn 2.5s;
+  -ms-animation: fadeIn 2.5s;
+}
+.deleteButton button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.deleteButton button:hover {
+  background-color: royalblue;
+}
+
 /* **************** table container ********************** */
 #pricetbl {
   font-family: "Poppins", sans-serif;
@@ -449,3 +481,239 @@ tr:nth-child(even) {
     align-items: stretch;
   }
 }
+
+/*  **** set button pop up ******** */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 3px solid rgb(182, 15, 15);
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 320px;
+  max-width: 80%;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid black;
+  color: rgb(35, 173, 104);
+}
+
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: red;
+}
+
+.modal-body {
+  padding: 30px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.confirmbtn {
+  padding: 10px 20px;
+  background-color: rgb(255, 83, 30);
+  border: 1px solid #ddd;
+  color: rgb(255, 249, 249);
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 30px;
+}
+.confirmbtn:hover {
+  background-color: rgb(204, 76, 71);
+}
+.editbtn {
+  padding: 10px 20px;
+  background-color: rgb(16, 216, 116);
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.editbtn:hover {
+  background-color: rgb(51, 155, 103);
+}
+.model-input {
+  color: #00000073;
+  border: none;
+  max-width: 70px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.model-input:focus {
+  outline: none;
+}
+/*  ************* view previous details button ********** */
+.previousDetails {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  animation: fadeIn 2.5s;
+  -webkit-animation: fadeIn 2.5s;
+  -moz-animation: fadeIn 2.5s;
+  -o-animation: fadeIn 2.5s;
+  -ms-animation: fadeIn 2.5s;
+}
+.previousDetails button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.previousDetails button:hover {
+  background-color: royalblue;
+}
+
+/* **************** table container ********************** */
+
+/* edit button of the table */
+.actionCol button {
+  padding: 5px 10px;
+  background-color: rgb(255, 83, 16);
+  border: 5px solid;
+  color: white;
+  border-radius: 12px;
+  width: 40%;
+  text-decoration: none;
+  cursor: pointer;
+}
+.actionCol button:hover {
+  background-color: rgb(133, 39, 3);
+
+  cursor: pointer;
+}
+#pricetbl {
+  font-family: "Poppins", sans-serif;
+  display: none;
+  padding: 40px;
+  color: #4f546c;
+  font-size: 0.9rem;
+  background-color: #f9fbff;
+  margin-top: 20px;
+  animation: fadeIn 1.6s;
+  -webkit-animation: fadeIn 1.6s;
+  -moz-animation: fadeIn 1.6;
+  -o-animation: fadeIn 1.6s;
+  -ms-animation: fadeIn 1.6s;
+}
+.teapricetable {
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px #e1e5ee;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+}
+.threadcls {
+  box-shadow: 0 5px 10px #e1e5ee;
+}
+
+.thcls {
+  text-align: center;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+.teapricetable td {
+  text-align: center;
+}
+.tdcls {
+  padding: 1rem 2rem;
+}
+
+.acls {
+  text-decoration: none;
+  color: #2962ff;
+}
+
+.status {
+  border-radius: 0.2rem;
+  background-color: red;
+  padding: 0.2rem 1rem;
+  text-align: center;
+}
+.status-pending {
+  background-color: #fff0c2;
+  color: #a68b00;
+}
+
+.status-paid {
+  background-color: #c8e6c9;
+  color: #388e3c;
+}
+
+.status-notupdated {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.amount {
+  text-align: right;
+}
+
+tr:nth-child(even) {
+  background-color: #f4f6fb;
+}
+
+#teapricetable tr:not(:first-child) {
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+#teapricetable tr:not(:first-child):hover {
+  background-color: #ddd;
+}
+
+/* ********** table section over ********** */

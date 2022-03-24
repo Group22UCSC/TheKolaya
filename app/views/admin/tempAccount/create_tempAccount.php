@@ -60,8 +60,13 @@
             </div> -->
 
             <div class="inputfield">
-               <label> Name</label>
-               <input type="text" class="input" name="name" required>
+               <label>First Name</label>
+               <input type="text" class="input" name="name1" placeholder="<?php (!empty($user_data['name_err'])) ? print $user_data['name_err'] : print ''; ?>" required>
+            </div>
+
+             <div class="inputfield">
+               <label>Last Name</label>
+               <input type="text" class="input" name="name2" placeholder="<?php (!empty($user_data['name_err'])) ? print $user_data['name_err'] : print ''; ?>" required>
             </div>
 
             <div class="inputfield">

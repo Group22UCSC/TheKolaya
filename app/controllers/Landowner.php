@@ -2,10 +2,12 @@
 
 class Landowner extends Controller
 {
+
     function __construct()
     {
         parent::__construct();
     }
+
 
     function index()
     {
@@ -13,6 +15,7 @@ class Landowner extends Controller
         $result = $this->model->chartValuse();
         $this->view->render('landowner/landowner', $result);
     }
+
 
     function Make_Requests()
     {
@@ -25,6 +28,8 @@ class Landowner extends Controller
             $this->view->render('landowner/Make_Requests');
         }
     }
+
+
 
     function Update_Tea_Availability()
     {
@@ -47,11 +52,22 @@ class Landowner extends Controller
         }
     }
 
+
+
     function Monthly_Income()
     {
 
-        $this->view->showPage('landowner/Monthly_Income');
+        $this->view->render('landowner/Monthly_Income');
     }
+
+    function getMonthlyIncome()
+    {
+        $result = $this->model->getMonthlyIncome();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
 
     function Daily_Net_Weight()
     {
@@ -73,11 +89,15 @@ class Landowner extends Controller
         }
     }
 
+
+
     function Monthly_Tea_Price()
     {
         $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
         $this->view->showPage('landowner/Monthly_Tea_Price', $result);
     }
+
+
 
     //test
     public function Test()
@@ -99,6 +119,8 @@ class Landowner extends Controller
         }
     }
 
+
+
     //Manage Profile
     function profile()
     {
@@ -118,6 +140,8 @@ class Landowner extends Controller
         $this->view->render('user/profile/enterPassword');
     }
 
+
+
     //monthly tea price
     function getTeaPrice()
     {
@@ -126,6 +150,8 @@ class Landowner extends Controller
         //print_r($json_arr);
         echo $json_arr;
     }
+
+
 
 
     //dashbord cards
@@ -138,6 +164,8 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
+
+
     //get tea qulity to dashboard
     function getTeaQulity()
     {
@@ -146,6 +174,9 @@ class Landowner extends Controller
         //print_r($json_arr);
         echo $json_arr;
     }
+
+
+
 
     //get fertilizer usage to the dash board
     function fertilizerUsage()
@@ -156,8 +187,122 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
+
+
     function abc()
     {
         $result = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+    }
+
+
+
+
+    //deleteFertilizerRequestsInMakeRequests
+
+    public function deleteFertilizerRequests()
+    {
+        $this->view->showPage('landowner/deleteFertilizerRequests');
+    }
+
+    function getFertilizerRequest()
+    {
+        $result = $this->model->requestTableFertilizer();
+        $json_arr = json_encode($result);
+        echo $json_arr;
+    }
+
+    function deleteRequestRow()
+    {
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
+            $result = $this->model->deleteRow();
+            if ($result == true) {
+            } else {
+                // un successfull pop up 
+                // first check using a alert ()
+                echo "failed to add";
+            }
+        } else {
+            echo "Data was not passed to the controller";
+        }
+    }
+
+
+
+
+
+    //deleteAdvanceRequestsInMakeRequests
+
+    public function deleteAdvanceRequests()
+    {
+        $this->view->showPage('landowner/deleteAdvanceRequests');
+    }
+
+
+    function getAdvanceRequest()
+    {
+        $result = $this->model->requestTableAdvance();
+        $json_arr = json_encode($result);
+        echo $json_arr;
+    }
+
+    //Get Notification
+    function setNotification($notification)
+    {
+        if (!empty($notification)) {
+            echo '<div id="all_notifications">';
+            for ($i = 0; $i < count($notification); $i++) {
+                switch ($notification[$i]['notification_type']) {
+                    case 'warning':
+                        $imgPath = URL . '/vendors/images/notifications/warning.jpg';
+                        break;
+                    case 'request':
+                        $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                        break;
+                }
+
+                switch ($notification[$i]['read_unread']) {
+                    case 0:
+                        $notificationStatus = "unread";
+                        break;
+                    case 1:
+                        $notificationStatus = "read";
+                        break;
+                }
+                $dateTime = $notification[$i]['receive_datetime'];
+                echo
+                '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
+                        <div class = "profCont">
+                            <img class = "notification_profile" src = "' . $imgPath . '">
+                        </div>
+                        <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                        <div class="txt sub">' . $dateTime . '</div>
+                    </div>';
+            }
+            echo '</div>';
+        } else {
+            echo
+            '<div id="all_notifications">
+                <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                </div>
+            </div>';
+        }
+    }
+
+    public function getNotificationCount()
+    {
+        $notificationCount = $this->model->getNotificationCount($_GET);
+        return $notificationCount;
+    }
+
+    function getNotification()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['notification_type'])) {
+                $notification = $this->model->getNotification($_POST);
+                $this->setNotification($notification);
+            }
+        }
     }
 }

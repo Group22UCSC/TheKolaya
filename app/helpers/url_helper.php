@@ -9,8 +9,8 @@ function otpSend() {
     $_SESSION['OTP'] = $OTPcode;
 
     // $OTPcode = rand(1000, 9999);
-    // $_SESSION['OTP'] = $OTPcode;
-    // // $data['OTP'] = $OTPcode;
+    $_SESSION['OTP'] = $OTPcode;
+    // $data['OTP'] = $OTPcode;
     // $contact_number = $_SESSION['contact_number'];
     // $user = "94701826475";
     // $password = "7027";

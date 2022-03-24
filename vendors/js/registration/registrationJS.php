@@ -7,11 +7,13 @@
         var options = $('#registration_form option');
         var user_id = '';
         var form = '';
-        console.log(options);
+
         var icon = $('#registration_form i');
         var url = "<?php echo URL ?>Registration/controllCheckData";
         var noErrors = 0;
 
+        var placeHolderNames = ['name*', 'mobile number*', 'user id*', 'address*', 'password*', 'confirm password*']
+        var hasErrors = [false, false, false, false, false, false, false];
         var errors = {
             'name': '',
             'mobile_number': '',
@@ -22,6 +24,7 @@
             'confirm_password': ''
         };
 
+        // $(inputField[0]).hover() = "Enter your name";
         function hasNumber(string) {
             return /\d/.test(string);
         }
@@ -29,10 +32,11 @@
         function showError(number, error) {
             inputField[number].value = '';
             inputField[number].placeholder = error;
+            hasErrors[number] = true;
             $(inputField[number]).removeClass('input-field input')
             $(inputField[number]).addClass('is-invalid');
             $(inputField[number].parentNode).addClass('is-invalid');
-            if (number > 2) {
+            if (number >= 2) {
                 number++;
                 $(icon[number]).addClass('is-invalid');
             } else {
@@ -44,6 +48,8 @@
             SerializeData();
             $(inputField[number]).removeClass('is-invalid');
             $(inputField[number].parentNode).removeClass('is-invalid');
+            inputField[number].placeholder = placeHolderNames[number];
+            hasErrors[number] = false;
             if (number > 2) {
                 number++;
                 $(icon[number]).removeClass('is-invalid');
@@ -71,13 +77,17 @@
                 showError(0, errors.name);
             } else if (isEmpty(0)) {
                 errors.name = "The must be filled";
-                console.log('hi')
+                // console.log('hi')
                 showError(0, errors.name);
             } else {
                 errors.name = '';
                 removeError(0);
             }
         });
+
+        $(inputField[0]).keypress(function() {
+            removeError(0);
+        })
 
         //Validate The mobile
         function phonenumber(inputtxt) {
@@ -89,6 +99,8 @@
             }
         }
         $(inputField[1]).change(function() {
+            $("#landowner_type").prop('disabled', false);
+
             if (inputField[1].value.length > 10) {
                 errors.mobile_number = "More than 10 charcters";
                 showError(1, errors.mobile_number);
@@ -97,7 +109,7 @@
             } else if (!phonenumber(inputField[1].value)) {
                 errors.mobile_number = "Can't include characters";
                 showError(1, errors.mobile_number);
-            }  else if (inputField[1].value >= 10 && phonenumber(inputField[1].value)) {
+            } else if (inputField[1].value >= 10 && phonenumber(inputField[1].value)) {
                 SerializeData();
                 form.push({
                     name: 'function_name',
@@ -107,16 +119,18 @@
                     url: url,
                     type: 'POST',
                     data: form,
+                    dataType: 'JSON',
                     success: function(responseText) {
                         if (responseText == 'Verified') {
-                            console.log('verified');
                             errors.mobile_number = "Mobile Numuber is already Taken";
                             showError(1, errors.mobile_number);
                         } else if (responseText == 'notRegistered') {
                             errors.mobile_number = "Not Registered Mobile Number";
                             showError(1, errors.mobile_number);
                         } else {
-                            inputField[2].value = responseText;
+                            inputField[2].value = responseText['user_id'];
+                            $("#landowner_type").val(responseText['user_type'].toLowerCase());
+                            $("#landowner_type").prop('disabled', true);
                             $(inputField[2]).attr('readonly', 'readonly');
                             removeError(1);
                         }
@@ -130,6 +144,20 @@
             // console.log(errors);
         });
 
+        $(inputField[1]).keypress(function() {
+            removeError(1);
+        })
+
+        //Validate the address
+        $(inputField[3]).keypress(function() {
+            removeError(3);
+        })
+
+        //Validate the password
+        $(inputField[4]).keypress(function() {
+            removeError(4);
+        })
+
         //validate the confirm password
         $(inputField[5]).change(function() {
             if (inputField[5].value != inputField[4].value) {
@@ -140,6 +168,9 @@
                 removeError(5);
             }
         });
+        $(inputField[5]).keypress(function() {
+            removeError(5);
+        })
 
         // console.log(inputField);
 
@@ -155,7 +186,8 @@
 
         $('#registrationBtn').click(function(event) {
             event.preventDefault();
-            if (inputField[1].value.length < 10) {
+            $("#landowner_type").prop('disabled', false);
+            if (inputField[1].value != '' && inputField[1].value.length < 10) {
                 errors.mobile_number = "Less than 10 characters";
                 showError(1, errors.mobile_number);
             }
@@ -164,36 +196,46 @@
                 if (hasError(form[i]['value'])) {
                     switch (i) {
                         case 0:
-                            errors.name = "This is must filled";
-                            showError(0, errors.name);
+                            if (hasErrors[0] == false ) {
+                                errors.name = "This is must filled";
+                                showError(0, errors.name);
+                            }
                             break;
                         case 1:
-                            errors.mobile_number = "This is must filled";
-                            showError(1, errors.mobile_number);
-                            break;
-                        case 2:
-                            errors.user_type = "This is must filled";
-                            showError(2, errors.user_type);
+                            if (hasErrors[1] == false) {
+                                errors.mobile_number = "This is must filled";
+                                showError(1, errors.mobile_number);
+                            }
                             break;
                         case 3:
-                            errors.user_id = "This is must filled";
-                            // showError(3, errors.user_id);
+                            if (hasErrors[2] == false) {
+                                errors.user_id = "This is must filled";
+                                showError(2, errors.user_id);
+                            }
                             break;
                         case 4:
-                            errors.address = "This is must filled";
-                            showError(3, errors.address);
+                            if (hasErrors[3] == false) {
+                                errors.address = "This is must filled";
+                                showError(3, errors.address);
+                            }
                             break;
                         case 5:
-                            errors.password = "This is must filled";
-                            showError(4, errors.password);
+                            if (hasErrors[4] == false) {
+                                errors.password = "This is must filled";
+                                showError(4, errors.password);
+                            }
                             break;
                         case 6:
-                            errors.confirm_password = "This is must filled";
-                            showError(5, errors.confirm_password);
+                            if (hasErrors[5] == false) {
+                                errors.confirm_password = "This is must filled";
+                                showError(5, errors.confirm_password);
+                            }
                             break;
                     }
                 }
             }
+            // console.log("hi")
+            console.log(errors)
             if (noErrors == 7) {
                 form.push({
                     name: 'function_name',
@@ -206,19 +248,19 @@
                     success: function(data) {
                         // console.log('success');
                         // console.log(form);
-                        console.log('data' + data);
+                        // console.log('data' + data);
                         Swal.fire(
                             'Validated!',
                             'To login you have to verify your account',
                             'success'
                         ).then((result) => {
                             location.replace("<?php echo URL ?>OtpVerify");
-                            console.log("Swal called");
+                            // console.log("Swal called");
                         });
                     }
                 });
             }
-            console.log(noErrors);
+            // console.log(noErrors);
         });
     });
 </script>

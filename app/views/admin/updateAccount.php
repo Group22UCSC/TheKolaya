@@ -124,9 +124,15 @@
       <div class="form">
 
         <div class="inputfield">
-           <label> Name</label>
-           <input type="text" class="input" name="name" id="name" required>
+           <label>First Name</label>
+           <input type="text" class="input" name="name1" id="name"  placeholder="<?php (!empty($data1['name_err'])) ? print $data1['name_err'] : print ''; ?>"  required>
        </div> 
+
+         <div class="inputfield">
+           <label>Last Name</label>
+           <input type="text" class="input" name="name2" id="name"  placeholder="<?php (!empty($data1['name_err'])) ? print $data1['name_err'] : print ''; ?>"  required>
+       </div> 
+
 
         <div class="inputfield">
           <label>ID</label>
@@ -151,12 +157,12 @@
 
        <div class="inputfield">
           <label>Password</label>
-          <input type="password" class="input" name="password" id="password" placeholder="<?php (!empty($data['password_err'])) ? print $data['password_err'] : print ''; ?>" required>
+          <input type="password" class="input" name="password" id="password" placeholder="<?php (!empty($data1['password_err'])) ? print $data1['password_err'] : print ''; ?>" required>
        </div>  
 
        <div class="inputfield">
             <label>Confirm Password</label>
-            <input type="password" class="input" name="confirm_password" id="confirm_password"  placeholder="<?php (!empty($data['confirm_password_err'])) ? print $data['confirm_password_err'] : print ''; ?>" required>
+            <input type="password" class="input" name="confirm_password" id="confirm_password"  placeholder="<?php (!empty($data1['confirm_password_err'])) ? print $data1['confirm_password_err'] : print ''; ?>" required>
          </div>
 
        <div class="inputfield">
@@ -187,6 +193,4 @@
 </div>
 
 
-<?php include 'js/admin/updatejs.php';?>
-<script type="text/javascript" src="<?php echo URL?>vendors/js/sweetalert2.all.min.js"></script>
 <?php include 'bottom-container.php';?>

@@ -16,7 +16,10 @@
 <?php include 'topContainer.php'; ?>   
   <!-- <div class="modal"> -->
     <div class="toggle-div" id="toggle-div">
-    <button class="backbtn" onclick="back()">Logout </button>
+    <button class="backbtn" onclick="back()">Logout </button><br>
+    <div class="sad">
+    <img src="<?php echo URL?>vendors/images/agent/sad.jpg" alt="sad">
+    </div>
         <div class="note">You are unavailable at the moment.Please wait for the manager to make you available.</div>        
     </div>
 

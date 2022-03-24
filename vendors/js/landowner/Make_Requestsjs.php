@@ -94,8 +94,6 @@
 
             $.ajax({
 
-
-
               success: function() {
 
                 Swal.fire(

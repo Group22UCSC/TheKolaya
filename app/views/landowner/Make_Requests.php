@@ -1,7 +1,7 @@
 <?php include 'top-container.php'; ?>
 <!-- Top container -->
 
-<body onload="changeFormBody()">
+<body onload="changeFormBody();getTable();checkForm()">
 
 </body>
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Make_Requests.css">
@@ -65,14 +65,21 @@
             </form>
 
         </div>
+
+    </div>
+    <div class="deleteButtonFlex">
+        <div class="deleteButton">
+            <a href="<?php echo URL ?>landowner/deleteFertilizerRequests"><button>Previous Fertilizer Requests</button>
+        </div>
+        <div class="deleteButton">
+            <a href="<?php echo URL ?>landowner/deleteAdvanceRequests"> <button onclick="previousPrices();">Previous Advance Requests</button>
+        </div>
     </div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
 
-<!--  **********   view previous details   *** -->
 
-<?php include 'js/landowner/Make_Requestsjs.php"'; ?>
 <script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <script>
@@ -93,7 +100,7 @@
                     "<div>Amount :  <span style=\"color:#4DD101;\"><b> " + form[1]['value'] + "kg</b></span></div>" +
                     "</div>" +
                     "</div>";
-            }else if(form[0]['value'] == 'Advance') {
+            } else if (form[0]['value'] == 'Advance') {
                 var str = "<div style=\"display:flex; justify-content:center;\">" +
                     "<div style=\"text-align:left;\">" +
                     "<div>Request Type: <span style=\"color:#4DD101;\"><b> Advance</b></span></div>" +
@@ -116,6 +123,7 @@
             // if (pricePerUnit <= 0 || inAmount <= 0) {
             //     return;
             // }
+
             Swal.fire({
                 title: 'Are you sure?',
                 html: '<div>' + str + '</div>',
@@ -155,5 +163,15 @@
         })
     })
 </script>
+
+
+
+
+
+
+
+
+<?php include 'js/landowner/Make_Requestsjs.php'; ?>
+
 
 <?php include 'bottom-container.php'; ?>

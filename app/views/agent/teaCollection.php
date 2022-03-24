@@ -12,11 +12,11 @@
                 <input type="text" class="input" id="lid" name="lid" readonly>
             </div>
             <div class="inputfield">
-                <label>Initial Tea Weight</label>
-                <input type="text" class="input" name="weight" id="weight" required>
+                <label><span id="tea">Initial</span> Tea Weight</label>
+                <input type="number" class="input" name="weight" id="weight">
             </div>
             <div class="inputfield" id="btnset">
-                <button class="btn" id="myBtn"> Add<span> Weight</span> </button>
+                <button class="btn" id="myBtn"> Add<span id="weightbtn"> Weight</span> </button>
                 <button class="back" onclick="closeteaform()">Back</button>
                
                 <!-- <input type="submit" value="Add Weight" class="btn" id="myBtn"  onclick="openpopup()" >             -->
