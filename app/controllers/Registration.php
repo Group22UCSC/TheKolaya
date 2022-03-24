@@ -31,13 +31,16 @@ class Registration extends Controller
             switch ($function_name) {
                 case 'checkUser':
                     if ($this->model->isVerifiedUser($data['contact_number'])) {
-                        echo 'Verified';
+                        echo json_encode('Verified');
                     } else if (!$this->model->isRegisteredUser($data['contact_number'])) {
-                        echo 'notRegistered';
+                        echo json_encode('notRegistered');
                     } else {
-                        $user_id = $this->model->isRegisteredUser($data['contact_number']);
-                        $user_id = $user_id[0]['user_id'];
-                        echo $user_id;
+                        $registered_User = $this->model->isRegisteredUser($data['contact_number']);
+                        $userFilter = [
+                            'user_id' => $registered_User[0]['user_id'],
+                            'user_type' => $registered_User[0]['user_type']
+                        ];
+                        echo json_encode($userFilter);
                     }
                     break;
 
