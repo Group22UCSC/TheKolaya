@@ -80,7 +80,8 @@ class Agent_Model extends Model
 
         $query = "SELECT landowner.user_id, landowner.no_of_estimated_containers, 
         landowner.route_no, user.address, user.name
-                 FROM landowner INNER JOIN user 
+                 FROM landowner 
+                 INNER JOIN user 
                  ON landowner.user_id = user.user_id                
                  WHERE landowner.route_no='$route_no' AND landowner.landowner_type='indirect_landowner' 
                 AND landowner.tea_availability=1 ";
