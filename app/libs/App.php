@@ -25,7 +25,11 @@ class App
         $controller = ucwords($url[0]);
         if ($controller == $users[0] || $controller == $users[1] || $controller == $users[2] || $controller == $users[3] || $controller == $users[4] || $controller == $users[5] || $controller == $users[6]) {
           if (isLoggedIn()) {
-            $this->currentController = ucwords($url[0]);
+            $previsous_userType = $_SESSION['user_type'];
+            if($previsous_userType == ucwords($url[0]))
+              $this->currentController = ucwords($url[0]);
+            else
+              $this->currentController = 'Login';
           }else {
             $this->currentController = 'Login';
           }
