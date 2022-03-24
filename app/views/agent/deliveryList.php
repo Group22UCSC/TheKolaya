@@ -41,6 +41,12 @@
           <div class="cell" id="th">Route</div>
         </div>
         <?php
+        if ($data1!=0){
+          $f = count($data1);
+        }
+        else{
+          $f="0";
+        }
 
         if (!empty($data1)) {
           for ($i = 0; $i < count($data1); $i++) {
@@ -81,6 +87,12 @@
           <div class="cell" id="th">Route</div>
         </div>
         <?php
+          if ($data2!=0){
+            $a = count($data2);
+          }
+          else{
+            $a="0";
+          }
 
         if (!empty($data2)) {
           for ($i = 0; $i < count($data2); $i++) {
@@ -114,8 +126,8 @@
         // console.log('zero landowners');
         $('#fertilizersearchform').hide();
         $('#advancesearchform').hide();
-        $('#fertilizer_delivery_table').hide();
-        $('#advance_delivery_table').hide();
+        $('#today_fertilizer_table').hide();
+        $('#today_advance_table').hide();
         $('#advance_topic').hide();
         $('#fertilizer_topic').hide();
         $('#unavailable_notice').show();

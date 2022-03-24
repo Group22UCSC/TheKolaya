@@ -50,9 +50,9 @@
           <div class="cell" id="th">Route</div>
         </div>
         <?php
-
         if (!empty($data)) {
           for ($i = 0; $i < count($data); $i++) {
+            // echo $data[$i]['name'];
             echo '<div class="row table2-row" id="fullrow">
                       <div class="cell" id="tr"data-title="Landowner_id">' . $data[$i]['user_id'] . '</div>
                       <hr class="horizontal-line">
