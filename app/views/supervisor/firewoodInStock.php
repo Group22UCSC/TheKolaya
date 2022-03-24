@@ -22,7 +22,7 @@
       if (!empty($data)) {
         echo '<div class="search-container">
                 <div class="search-wrapper">
-                  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                  <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
                 </div>
               </div>';
       }
@@ -44,8 +44,11 @@ if (!empty($data)) {
   for ($i = 0; $i < count($data); $i++) {
     echo '<div class="row table2-row">
             <div class="cell" data-title="Date">' . $data[$i]['in_date'] . '</div>
+            <hr class="horizontal-line">
             <div class="cell" data-title="Price per unit(Rs)">' . $data[$i]['price_per_unit'] . '</div>
+            <hr class="horizontal-line">
             <div class="cell" data-title="Amount(Rs)">' . $data[$i]['in_quantity'] . '</div>
+            <hr class="horizontal-line">
             <div class="cell" data-title="Price For Amount(Rs)">' . $data[$i]['price_for_amount'] . '</div>
           </div>';
   }

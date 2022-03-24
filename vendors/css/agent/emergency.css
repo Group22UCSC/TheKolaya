@@ -26,7 +26,7 @@
 
 .page .title{
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 25px;
   color: #01830c;
   text-transform: uppercase;
@@ -127,8 +127,93 @@
     opacity: 1;
   }
 }
+/* responsive */
 
-  @media (max-width:420px) {
+@media screen and (max-width: 1246px){
+  .page{
+    margin:25px auto;
+    width: 60%;
+    padding:20px;
+    height:80%;
+  }
+
+  .page .form .inputfield .btn{
+    width: 30%;
+  }
+ 
+}
+
+@media screen and (max-width: 780px){
+  .topic{  
+      font-size: 26px;      
+     
+} 
+
+.page .title{
+  font-size: 20px;
+}
+.page .form .inputfield label{
+  margin-right: 15px;
+ font-size: 18px;
+}
+
+}
+
+@media screen and (max-width: 510px){
+  .page{
+    width: 80%;
+  }
+  .topic{  
+    font-size: 24px;      
+   
+} 
+
+.page .title{
+font-size: 18px;
+}
+.page .form .inputfield label{
+margin-right: 15px;
+font-size: 15px;
+}
+
+.page .form .inputfield .btn{
+  width: 40%;
+  font-size: 12px;
+}
+}
+
+@media screen and (max-width: 390px){ 
+  .topic{  
+    font-size: 20px;         
+} 
+
+.page{
+  width: 85%;
+  padding: 10px;
+}
+.page .title{
+  font-weight: 500;
+  font-size: 19px;
+  }
+
+  .page .form .inputfield .btn{
+    margin-top: 0px;
+   margin-left: 130px;
+  }
+}
+
+@media screen and (max-width: 325px){ 
+  .page{
+    width: 85%;
+    padding: 10px;
+  }
+  .page .form .inputfield label{
+    margin-right: 10px;
+    font-size: 12px;
+    }
+    
+}
+  /* @media (max-width:420px) {
     .topic{
       height:75px;
       font-size: 26px;
@@ -157,4 +242,4 @@
       flex-direction: row;
     }
     
-  }
+  } */

@@ -29,6 +29,7 @@
     
                                <?php
                                $x=count($data);
+                               if (!empty($data1)) {
                                for($i=0;$i<$x;$i++){
                                  echo '<tr id="tea" data-href="">     
                                            <td>'.$data[$i]['buyer_id'].'</td>
@@ -36,10 +37,14 @@
                                            <td>'.$data[$i]['contact_no'].'</td>
                                            
                                        </tr>';                
-                               }       
+                               }}       
                                ?>         
 
-
+                          <?php
+      if (empty($data)) {
+        echo '<div id="not_display_collection_yet" style="border-radius: 0px; color:red; background-color: white;" class="table_header" >There is no tea collection to update</div>';
+      }
+      ?>
 
                         </div>
   

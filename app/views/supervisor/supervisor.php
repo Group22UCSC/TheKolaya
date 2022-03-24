@@ -37,7 +37,9 @@
             for ($i = 0; $i < count($data1); $i++) {
               echo '<div class="row">
                       <div class="cell" data-title="Landowener_id">' . $data1[$i]['lid'] . '</div>
+                      <hr class="horizontal-line">
                       <div class="cell" data-title="Tea_weight">' . $data1[$i]['initial_weight_agent'] . '</div>
+                      <hr class="horizontal-line">
                       <div class="cell" data-title="Agent_id">' . $data1[$i]['agent_id'] . '</div>
                     </div>';
             }
@@ -66,7 +68,9 @@
             for ($i = 0; $i < count($data2); $i++) {
               echo '<div class="row">
                     <div class="cell" data-title="Landowener ID">' . $data2[$i]['user_id'] . '</div>
+                    <hr class="horizontal-line">
                     <div class="cell" data-title="Name">' . $data2[$i]['name'] . '</div>
+                    <hr class="horizontal-line">
                     <div class="cell" data-title="Request Amount">' . $data2[$i]['amount'] . '</div>
                   </div>';
             }

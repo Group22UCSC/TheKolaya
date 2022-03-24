@@ -12,11 +12,11 @@
   
   .page1 .note{
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     /* margin-bottom: 25px; */
     margin: 10px 10px auto;
     color: #01830c;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     text-align: center;
   }
   .sad img{
@@ -32,7 +32,7 @@
   .sad img{
     max-width: 30%;
     height: auto;
-    margin-left:200px;
+    margin-left:180px;
     margin-right: auto;
 
   }    
@@ -53,7 +53,7 @@
     .sad img{
       max-width: 25%;
       height: auto;
-      margin-left:140px;
+      margin-left:135px;
       margin-right: auto;
   
     }    
@@ -79,7 +79,7 @@
 
 @media screen and (max-width: 780px){
   .sad img{     
-    margin-left:80px;
+    margin-left:85px;
     margin-right: auto;
     margin-top: 10px;
 
@@ -124,7 +124,7 @@
   } 
   .sad img{
     max-width: 40%;    
-    margin-left:45px;
+    margin-left:50px;
     margin-right: auto;
     margin-top: 20px;  
   }  
@@ -133,15 +133,18 @@
 }
 
 @media screen and (max-width: 420px){
-  .toggle-div{      
-    margin:110px auto;  
-    max-width: 70%; 
-    height:50%;      
+  .topic{
+    height: 40%;
   }
-  .toggle-div .note{
-    font-size: 12px;
+  .page1{      
+    margin:80px auto;  
+    max-width: 70%; 
+    height:30%;      
+  }
+  .page1 .note{
+    font-size: 15px;
     font-weight: 400;          
-    padding: 20px;     
+    padding: 10px;     
   }
   .sad img{   
     max-width: 30%; 
@@ -168,7 +171,7 @@
   }  
   .sad img{   
     max-width: 40%; 
-    margin-left:30px;
+    margin-left:35px;
     margin-right: auto;
     margin-top: 20px;  
   }  

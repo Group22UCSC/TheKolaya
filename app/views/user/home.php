@@ -39,7 +39,7 @@
     <div class="bottom-container">
         <ul>
             <li>
-                <a href="#">PRIVACY POLICY</a>
+                <a href="<?php echo URL?>User/termsConditions">TERMS & CONDITIONS</a>
             </li>
 
             <li>

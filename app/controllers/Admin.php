@@ -25,42 +25,68 @@ class Admin extends Controller
         $this->view->showPage('admin/viewAccount1');
     }
 
+
+
+    public $data = [
+        'name' => '',
+        'reg_id' => '',
+        'reg_type' => '',
+        'address' => '',
+        'mobile_number' => '',
+        'password' => '',
+        'confirm_password' => '',
+
+        'password_err' => '',
+        'confirm_password_err' => '',
+        'name_err' => '',
+    ];
+
     public function updateAccount()
     {
         
         $result = $this->model->availablelistTable();
-        $this->view->render('admin/updateAccount', $result);
+        // $this->view->render('admin/updateAccount', $result);
 
 
            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'name' => trim($_POST['name']),
-                'reg_id' => trim($_POST['user_id']),
-                'reg_type' => trim($_POST['user_type']),
-                'address' => trim($_POST['address']),
-                'mobile_number' => trim($_POST['contact_number']),
-                'password' => trim($_POST['password']),
-                'confirm_password' => trim($_POST['confirm_password']),
-                'password_err' => '',
-                'confirm_password_err' => ''
+                $a = trim($_POST['name1']);
+                $b = trim($_POST['name2']);
+                $this->data['name']= $a." ".$b;
+                $this->data['reg_id'] = trim($_POST['user_id']);
+                $this->data['reg_type'] = trim($_POST['user_type']);
+                $this->data['address'] = trim($_POST['address']);
+                $this->data['mobile_number'] = trim($_POST['contact_number']);
+                $this->data['password'] = trim($_POST['password']);
+                $this->data['confirm_password'] = trim($_POST['confirm_password']);
 
 
-            ];
-
-             
-             if (strlen($data['password']) < 6) {
-                    $data['password_err'] = "Please enter at least 6 characters";
-                }
-
-            if ($data['password'] != $data['confirm_password']) {
-                $data['confirm_password_err'] = "confirmation not matching";
+            if ($this->data['password'] != $this->data['confirm_password']) {
+                $this->data['confirm_password_err'] = "confirmation not matching";
             }
 
-            if (empty($data['password_err']) && empty($data['confirm_password_err'])) {
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                $this->model->userUpdate($data);
-                // $this->view->render('admin/updateAccount', $data);
+            if (!preg_match ("/^[a-zA-Z\s]+$/", $this->data['name']) ) {  
+                $this->data['name_err'] = "Only alphabets are allowed";     
+            }
+
+             
+             // if (strlen($data['password']) < 6) {
+             //        $data['password_err'] = "Please enter at least 6 characters";
+             //    }
+
+
+            if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$this->data['password'])) {
+                    $this->data['password_err'] = "Please enter strong password";
+            }
+
+            if (empty($this->data['password_err']) && empty($this->data['confirm_password_err']) && empty($this->data['name_err'])) {
+                $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+                if($this->model->userUpdate($this->data)){
+                    $result = $this->model->availablelistTable();
+                    $this->view->render('admin/updateAccount',$result, $this->data);
+                }
+            }else {
+                $this->view->render('admin/updateAccount',$result, $this->data);
             }
         } else {
             $data = [
@@ -75,33 +101,31 @@ class Admin extends Controller
 
 
                 'contact_number_err' => '',
-                'confirm_password_err' => ''
+                'confirm_password_err' => '',
+                'name_err' => ''
             ];
-            // $this->view->render('admin/updateAccount', $data);
+            $this->view->render('admin/updateAccount', $result, $this->data);
         }
-        
-
-
     }
 
 
 
 // delete account
 
- public $data = [
-        'name' => '',
-        'reg_id' => '',
-        'reg_type' => '',
-        'address' => '',
-        'mobile_number' => '',
-        'route_number' => '',
-        'password' => '',
-        'confirm_password' => '',
+ // public $data = [
+ //        'name' => '',
+ //        'reg_id' => '',
+ //        'reg_type' => '',
+ //        'address' => '',
+ //        'mobile_number' => '',
+ //        'route_number' => '',
+ //        'password' => '',
+ //        'confirm_password' => '',
 
-        'confirm_password_err' => '',
-        'reg_id_err' => '',
-        'mobile_number_err' => '',
-    ];
+ //        'confirm_password_err' => '',
+ //        'reg_id_err' => '',
+ //        'mobile_number_err' => '',
+ //    ];
 
 
   public function deleteAccount()
@@ -133,7 +157,7 @@ class Admin extends Controller
                  'contact_number_err' => '',
                 'confirm_password_err' => ''
             ];
-            $this->view->render('admin/deleteTable', $data);
+            // $this->view->render('admin/deleteTable', $data);
         }
 
     }
@@ -170,6 +194,7 @@ class Admin extends Controller
         'confirm_password_err' => '',
         'reg_id_err' => '',
         'mobile_number_err' => '',
+        'name_err' => '',
     ];
 
     public function create_account()
@@ -177,10 +202,18 @@ class Admin extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->user_data['name'] = trim($_POST['name']);
+            // $this->user_data['name'] = join("" ,explode(" " , trim($_POST['name'])));
+            $a = trim($_POST['name1']);
+            $b = trim($_POST['name2']);
+            $this->user_data['name']= $a." ".$b;
             $this->user_data['reg_id'] = trim($_POST['user_id']);
             $this->user_data['mobile_number'] = trim($_POST['contact_number']);
             $this->user_data['reg_type'] = trim($_POST['user_type']);
+
+             
+            if (!preg_match("/^[a-zA-Z\s]+$/", $this->user_data['name']) ) {  
+                $this->user_data['name_err'] = "Please enter valid name";     
+            }  
 
             $account_type = $_SESSION['account_type'];
 
@@ -205,34 +238,40 @@ class Admin extends Controller
             if ($this->model->searchUserId($this->user_data['reg_id'])) {
                 $this->user_data['user_id_err'] = "This user_id is already Taken";
             }
-            if ($account_type == 'full') {
-                if (strlen($this->user_data['password']) < 6) {
-                    $this->user_data['password_err'] = "Please enter at least 6 characters";
+            // if ($account_type == 'full') {
+            //     if (strlen($this->user_data['password']) < 6) {
+            //         $this->user_data['password_err'] = "Please enter at least 6 characters";
+            //     }
+            // }
+
+             if ($account_type == 'full') {
+                 if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$this->user_data['password'])) {
+                    $this->user_data['password_err'] = "Please enter strong password";
                 }
             }
 
-            if (empty($this->user_data['mobile_number_err']) && empty($this->user_data['confirm_password_err']) && empty($this->user_data['user_id_err']) && empty($this->user_data['password_err'])) {
+            if (empty($this->user_data['mobile_number_err']) && empty($this->user_data['confirm_password_err']) && empty($this->user_data['user_id_err']) && empty($this->user_data['name_err']) && empty($this->user_data['password_err'])) {
                 if ($account_type == 'full') {
                     $this->user_data['password'] = password_hash($this->user_data['password'], PASSWORD_DEFAULT);
 
                     $this->model->userRegistration($this->user_data);
                     $this->createAccount();
-                } else {
+                } elseif ($account_type == 'temp') {
                     $this->model->userRegistration($this->user_data);
-                    // if ($account_type == 'temp') {
-                    //     $contact_number = $this->user_data['mobile_number'];
-                    //     $user = "94701826475";
-                    //     $password = "7027";
-                    //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
-                    //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number);
-                    //     $to = "$contact_number";
+                    if ($account_type == 'temp') {
+                        $contact_number = $this->user_data['mobile_number'];
+                        $user = "94701826475";
+                        $password = "7027";
+                        // $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
+                        $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number);
+                        $to = "$contact_number";
 
-                    //     $baseurl = "http://www.textit.biz/sendmsg";
-                    //     $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-                    //     $ret = file($url);
+                        $baseurl = "http://www.textit.biz/sendmsg";
+                        $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
+                        $ret = file($url);
 
-                    //     $res = explode(":", $ret[0]);
-                    // }
+                        $res = explode(":", $ret[0]);
+                    }
                     $this->createTempAccount();
                 }
             } else {
