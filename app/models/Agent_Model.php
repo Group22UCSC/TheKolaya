@@ -278,7 +278,8 @@ class Agent_Model extends Model
     }
 
     //requesting availability from manager
-    function requestManager(){
+    function requestManager()
+    {
         $agent_id = $_SESSION['user_id'];
         $agent_name = $_SESSION['name'];
         $route_no = $_SESSION['route'];
@@ -287,32 +288,33 @@ class Agent_Model extends Model
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
         receiver_type, notification_type, sender_id) VALUES
         ('0','0','$message','manager','available_request','$agent_id')";
-       $this->db->runQuery($query);
+        $this->db->runQuery($query);
 
-       $query = "UPDATE agent SET availability_requested='1' WHERE emp_id='$agent_id'";
-       $this->db->runQuery($query);
-    //    //----------------Pusher API------------------//
-    //    $options = array(
-    //        'cluster' => 'ap1',
-    //        'useTLS' => true
-    //    );
-    //    $pusher = new Pusher\Pusher(
-    //        'ef64da0120ca27fe19a3',
-    //        'd5033393ff3b228540f7',
-    //        '1290222',
-    //        $options
-    //    );
+        $query = "UPDATE agent SET availability_requested='1' WHERE emp_id='$agent_id'";
+        $this->db->runQuery($query);
+        //    //----------------Pusher API------------------//
+        //    $options = array(
+        //        'cluster' => 'ap1',
+        //        'useTLS' => true
+        //    );
+        //    $pusher = new Pusher\Pusher(
+        //        'ef64da0120ca27fe19a3',
+        //        'd5033393ff3b228540f7',
+        //        '1290222',
+        //        $options
+        //    );
 
-    //    $pusher->trigger('my-channel', 'Manager_notification',$data);
-       //-------------------------------------------//  
+        //    $pusher->trigger('my-channel', 'Manager_notification',$data);
+        //-------------------------------------------//  
     }
 
-    function checkLandowner() {
+    function checkLandowner()
+    {
         $landowner_id = $_POST['landowner_id'];
         $query = "SELECT * FROM user WHERE user_id='$landowner_id' AND is_delete=0";
         $row = $this->db->runQuery($query);
 
-        if(count($row))
+        if (count($row))
             return true;
         else
             return false;
@@ -361,7 +363,14 @@ class Agent_Model extends Model
     {
         $route_no = $_SESSION['route'];
         $query = "SELECT request.request_id, request.request_type, request.lid, 
-                 fertilizer_request.amount FROM request 
+                 fertilizer_request.amount, 
+                 landowner.route_no, 
+                 user.address, user.name
+                 FROM landowner 
+                 INNER JOIN user
+                 ON landowner.user_id = user.user_id
+                 INNER JOIN request
+                 ON request.lid=landowner.user_id
                   INNER JOIN fertilizer_request
                   ON  request.request_id = fertilizer_request.request_id                   
                  WHERE request.lid IN 
@@ -379,7 +388,8 @@ class Agent_Model extends Model
     }
 
     //check whether the agent has requested availability from manager
-    function availabilityRequested($agent_id){
+    function availabilityRequested($agent_id)
+    {
         $query = "SELECT availability_requested FROM agent WHERE emp_id='$agent_id'";
 
         $row = $this->db->runQuery($query);
@@ -397,10 +407,17 @@ class Agent_Model extends Model
     {
         $route_no = $_SESSION['route'];
         $query = "SELECT request.request_id, request.request_type, request.lid, 
-                 advance_request.amount_rs FROM request 
-                  INNER JOIN advance_request
-                  ON  request.request_id = advance_request.request_id                   
-                 WHERE request.lid IN 
+                advance_request.amount_rs,
+                landowner.route_no, 
+                user.address, user.name
+                FROM landowner 
+                INNER JOIN user
+                ON landowner.user_id = user.user_id
+                INNER JOIN request
+                ON request.lid=landowner.user_id
+                INNER JOIN advance_request
+                ON  request.request_id = advance_request.request_id                   
+                WHERE request.lid IN 
                 (SELECT user_id FROM landowner WHERE route_no = '$route_no') 
                 AND request.response_status = 'accept' AND request.complete_status = 0 ";
 
