@@ -195,6 +195,7 @@
                             )
                             clearTable();
                             getTable();
+                            checkoutofstock(pid);
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
                             Swal.fire({
@@ -356,6 +357,69 @@
     //         }
 
     // }
+
+    //checking out of stock
+    function checkoutofstock(pid){
+        var pid = pid
+        var limit = 100
+        var availableStock = 0;
+        var url = "http://localhost/Thekolaya/productmanager/getProductStock";
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "JSON",
+            // pass the pid to the controller and get the available stock for that product pid
+            data: {
+                pid: pid
+            },
+            success: function(data) {
+                availableStock = parseInt(data[0].stock); // from JSON object we get the
+                // availableStock as a string. So we need to convert it an int
+                console.log("Limit A:" + limit);
+                console.log("availableStock A:" + availableStock);
+                if (limit > availableStock) {
+                    console.log("Limit 100 exceeded");
+                    sendOutOfStockNoti(pid);
+                    // $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
+                    check = 0;
+                } else {
+                    console.log("available stock",availableStock);
+                    check = 1;
+                }
+                console.log("FUNCTION" + data[0].stock);
+            }
+        })
+    }
+
+    function sendOutOfStockNoti(pid){
+        var pid=pid;
+        var url = "http://localhost/Thekolaya/productmanager/getProductStock";
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "JSON",
+            // pass the pid to the controller and get the available stock for that product pid
+            data: {
+                pid: pid
+            },
+            success: function(data) {
+                availableStock = parseInt(data[0].stock); // from JSON object we get the
+                // availableStock as a string. So we need to convert it an int
+                console.log("amount A:" + amount);
+                console.log("availableStock A:" + availableStock);
+                if (amount > availableStock) {
+                    console.log("if");
+                    $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
+                    check = 0;
+                } else {
+                    console.log("else");
+                    check = 1;
+                }
+                console.log("FUNCTION" + data[0].stock);
+            }
+        })
+    }
+
     function validateAmount() {
         var pid = $('#pid').val();
         var amount = $('#amount').val();

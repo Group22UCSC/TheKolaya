@@ -9,7 +9,7 @@
 
 <!-- <body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body> -->
 
-<?php print_r($data); ?>
+
 <!-- middle grid -->
 
 <div class="container">
@@ -49,14 +49,14 @@
     <div class="search">
         <form action="/action_page.php">
             <input type="month" id="selectedMonth" name="selectedMonth">
-            <input type="submit" value="search">
+            <input type="button" value="search" onclick="searchByDate()">
         </form>
     </div>
 
 
 
     <!-- table head -->
-    <div class="table-head">
+    <div class=" table-head">
         <h1>JANUARY MONTH DETAILS</h1>
     </div>
     <!-- neeeded -->
@@ -67,12 +67,13 @@
     <div class="table tableplace">
 
 
-        <table class="teapricetable">
+        <table class="teapricetable" id="teapricetable">
             <thead class="threadcls">
 
                 <tr class="trcls">
                     <th class="thcls">Date</th>
                     <th class="thcls">Initial Weight From Agent</th>
+                    <th class="thcls">Initial Weight From Supervisor</th>
                     <th class="thcls">Initial Weight From Supervisor</th>
                     <th class="thcls">Net Weight</th>
                 </tr>
