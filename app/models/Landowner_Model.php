@@ -320,10 +320,27 @@ class landowner_Model extends Model
         }
     }
 
-    //Delete requsests 
-    function requestTable()
+    //Delete fertilizer requsests 
+    function requestTableFertilizer()
     {
-        $query = "SELECT * FROM request";
+        // $query = "SELECT * FROM request WHERE response_status = 'receive'";
+        $query = "SELECT request.request_id,request.request_date,request.request_type,fertilizer_request.amount
+        FROM request 
+        INNER JOIN fertilizer_request ON request.request_id=fertilizer_request.request_id  WHERE request.response_status = 'receive'";
+        $row = $this->db->selectQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    //Delete advance requsests 
+    function requestTableAdvance()
+    {
+        // $query = "SELECT * FROM request WHERE response_status = 'receive'";
+        $query = "SELECT request.request_id,request.request_date,request.request_type,advance_request.amount_rs 
+        FROM request 
+        INNER JOIN advance_request ON request.request_id=advance_request.request_id  WHERE request.response_status = 'receive'";
         $row = $this->db->selectQuery($query);
         if ($row) {
             return $row;
@@ -332,10 +349,10 @@ class landowner_Model extends Model
         }
     }
 
-    function deleteRequestRow()
+    function deleteRow()
     {
         $date = $_POST['date'];
-        $query = " DELETE FROM `monthly_tea_price` WHERE date='{$date}'";
+        $query = " DELETE FROM `request` WHERE request_id='{$date}'";
         $row = $this->db->insertQuery($query);
         $result = $this->db->deleteQuery($query);
         echo $result;
