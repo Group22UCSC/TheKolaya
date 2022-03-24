@@ -65,12 +65,20 @@
             </form>
 
         </div>
+
+    </div>
+    <div class="deleteButtonFlex">
+        <div class="deleteButton">
+            <a href="<?php echo URL ?>landowner/deleteFertilizerRequests"><button>Previous Fertilizer Requests</button>
+        </div>
+        <div class="deleteButton">
+            <a href="<?php echo URL ?>landowner/deleteAdvanceRequests"> <button onclick="previousPrices();">Previous Advance Requests</button>
+        </div>
     </div>
 </div>
 <!--  **** Pop up section ***  -->
 <!-- <button data-modal-target="#modal">Open Modal</button> -->
 
-<!--  **********   view previous details   *** -->
 
 <script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
@@ -160,30 +168,10 @@
 
 
 
-<!--  **********   view previous details   *** -->
-
-<div class="previousDetails">
-    <button onclick="previousPrices();scrollFunc();">Previous Tea Prices</button>
-</div>
-
-<!-- **************   Table container   *********-->
-<div class="table-container" id="pricetbl">
-    <div class="table-section">
-        <table class="teapricetable" id="teapricetable">
-
-            <tr class="trcls">
-                <th class="thcls">Updated On</th>
-                <th class="thcls">Year</th>
-                <th class="thcls">Month</th>
-                <th class="thcls">Price(Rs)</th>
-                <th class="thcls">Action</th>
-            </tr>
 
 
-        </table>
-    </div>
 
-    <?php include 'js/landowner/Make_Requestsjs.php"'; ?>
+<?php include 'js/landowner/Make_Requestsjs.php'; ?>
 
 
-    <?php include 'bottom-container.php'; ?>
+<?php include 'bottom-container.php'; ?>

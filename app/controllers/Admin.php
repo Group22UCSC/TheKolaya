@@ -157,7 +157,7 @@ class Admin extends Controller
                  'contact_number_err' => '',
                 'confirm_password_err' => ''
             ];
-            $this->view->render('admin/deleteTable', $data);
+            // $this->view->render('admin/deleteTable', $data);
         }
 
     }
@@ -258,20 +258,20 @@ class Admin extends Controller
                     $this->createAccount();
                 } elseif ($account_type == 'temp') {
                     $this->model->userRegistration($this->user_data);
-                    // if ($account_type == 'temp') {
-                    //     $contact_number = $this->user_data['mobile_number'];
-                    //     $user = "94701826475";
-                    //     $password = "7027";
-                    //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
-                    //     $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number);
-                    //     $to = "$contact_number";
+                    if ($account_type == 'temp') {
+                        $contact_number = $this->user_data['mobile_number'];
+                        $user = "94701826475";
+                        $password = "7027";
+                        // $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number .". Register from Here".URL."/registration");
+                        $text = urlencode("Your තේ කොළය user id is: " . $this->user_data['reg_id']. ". Registered Mobile Number is: ". $contact_number);
+                        $to = "$contact_number";
 
-                    //     $baseurl = "http://www.textit.biz/sendmsg";
-                    //     $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-                    //     $ret = file($url);
+                        $baseurl = "http://www.textit.biz/sendmsg";
+                        $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
+                        $ret = file($url);
 
-                    //     $res = explode(":", $ret[0]);
-                    // }
+                        $res = explode(":", $ret[0]);
+                    }
                     $this->createTempAccount();
                 }
             } else {
