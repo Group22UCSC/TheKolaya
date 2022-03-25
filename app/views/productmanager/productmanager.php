@@ -156,7 +156,7 @@ for($i=0;$i<$len2;$i++){
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Most Beneficial Product</div>
-          <div class="number">Green Tea</div>
+          <div class="number" ><p id="Benificial_Product"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
             <span class="text">Last 30 Days</span>

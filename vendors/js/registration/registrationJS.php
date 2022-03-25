@@ -73,10 +73,10 @@
         //Validate The Name
         $(inputField[0]).change(function() {
             if (hasNumber(inputField[0].value)) {
-                errors.name = "The name Can't contain Numbers";
+                errors.name = "Name cannot contain numbers";
                 showError(0, errors.name);
             } else if (isEmpty(0)) {
-                errors.name = "The must be filled";
+                errors.name = "Name must be filled";
                 // console.log('hi')
                 showError(0, errors.name);
             } else {
@@ -125,7 +125,7 @@
                             errors.mobile_number = "Mobile Numuber is already Taken";
                             showError(1, errors.mobile_number);
                         } else if (responseText == 'notRegistered') {
-                            errors.mobile_number = "Not Registered Mobile Number";
+                            errors.mobile_number = "Unregistered Mobile Number";
                             showError(1, errors.mobile_number);
                         } else {
                             inputField[2].value = responseText['user_id'];
