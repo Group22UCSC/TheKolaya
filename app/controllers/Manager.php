@@ -8,28 +8,40 @@ class Manager extends Controller
 
     function index()
     {
-        $stock = $this->model->getStock();
-        $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
-        $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
-        // $teaCollection = $this->model->getTeaCollection();
-        // $todayRequests = $this->model->getTodayFertilizerRequest();
+        $this->getNotificationCount(); //This for get Notification count
 
-        // $this->getNotificationCount(); //This for get Notification count
+        $stock = $this->model->getStock();
+        if($stock) {
+            $_SESSION['fertilizer_stock'] = $stock[0]['full_stock'];
+            $_SESSION['firewood_stock'] = $stock[1]['full_stock'];
+        } else {
+            $_SESSION['fertilizer_stock'] = 0;
+            $_SESSION['firewood_stock'] = 0;
+        }
 
         $stock2 = $this->model->getStock2();
-        $_SESSION['Green_Tea_stock'] = $stock2[0]['stock'];
-        $_SESSION['White_Tea_stock'] = $stock2[1]['stock'];
-        $_SESSION['B-100_Black_Tea_stock'] = $stock2[2]['stock'];
-        $_SESSION['N_Black_Tea_stock'] = $stock2[3]['stock'];
-        $_SESSION['Early_Black_Tea_stock'] = $stock2[4]['stock'];
-        $_SESSION['Masala_chai_stock'] = $stock2[5]['stock'];
-        $_SESSION['Matcha_Tea_stock'] = $stock2[6]['stock'];
-        $_SESSION['Oolang_Tea_stock'] = $stock2[7]['stock'];
-        $_SESSION['Sencha_Tea_stock'] = $stock2[8]['stock'];
-
-
-
-
+        if($stock2) {
+            $_SESSION['Green_Tea_stock'] = $stock2[0]['stock'];
+            $_SESSION['White_Tea_stock'] = $stock2[1]['stock'];
+            $_SESSION['B-100_Black_Tea_stock'] = $stock2[2]['stock'];
+            $_SESSION['N_Black_Tea_stock'] = $stock2[3]['stock'];
+            $_SESSION['Early_Black_Tea_stock'] = $stock2[4]['stock'];
+            $_SESSION['Masala_chai_stock'] = $stock2[5]['stock'];
+            $_SESSION['Matcha_Tea_stock'] = $stock2[6]['stock'];
+            $_SESSION['Oolang_Tea_stock'] = $stock2[7]['stock'];
+            $_SESSION['Sencha_Tea_stock'] = $stock2[8]['stock'];
+        } else {
+            $_SESSION['Green_Tea_stock'] = 0;
+            $_SESSION['White_Tea_stock'] = 0;
+            $_SESSION['B-100_Black_Tea_stock'] = 0;
+            $_SESSION['N_Black_Tea_stock'] = 0;
+            $_SESSION['Early_Black_Tea_stock'] = 0;
+            $_SESSION['Masala_chai_stock'] = 0;
+            $_SESSION['Matcha_Tea_stock'] = 0;
+            $_SESSION['Oolang_Tea_stock'] = 0;
+            $_SESSION['Sencha_Tea_stock'] = 0;
+        }
+        
         $this->view->render('manager/manager', $stock, $stock2);
     }
 
