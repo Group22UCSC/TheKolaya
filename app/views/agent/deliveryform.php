@@ -6,7 +6,7 @@
      Confirm Deliverables
   </div>
   <div class="form">
-  <form action="" method="POST" id="deliveryUpdateForm">
+  <form method="POST" id="deliveryUpdateForm">
       <div class="inputfield">
           <label>Request ID</label>
           <input type="text" class="input" name ="rid" id="rid" readonly>
@@ -28,8 +28,8 @@
             </div>        
             
       <div class="inputfield" id="btnset">
-      <button class  = "btn" id="myBtn"> Confirm </button>
-      <button class="back" onclick="closerequestform()">Back</button> 
+      <button type="button" class= "btn" id="myBtn"> Confirm </button>
+      <button type="button" class="back" onclick="closerequestform()">Back</button> 
       
          
       </div>

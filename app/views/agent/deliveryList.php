@@ -26,26 +26,23 @@
   <div class="deliverylist" id="deliveryList">
     <div class=fertilizer_topic id="fertilizer_topic"> Fertilizer </div>
     <form class="searchform" id="fertilizersearchform">
-      <input type="text" id="searchf" placeholder="Enter Landowner ID.." onkeyup="searchFertilizerTable()">
-      <!-- <input type="submit" value="search" id="submit"> -->
+      <input type="text" id="searchf" placeholder="Enter Here.." onkeyup="searchFertilizerTable()">
     </form>
     <div class="table-wrapper">
-      <!-- <div class="table_header">Today Available landowners</div> -->
       <div class="table" id="today_fertilizer_table">
         <div class="row tabel-header">
           <div class="cell" id="th">Landowner ID</div>
           <div class="cell" id="th">Name</div>
-          <div class="cell" id="th">Request ID</div>  
-          <div class="cell" id="th">Amount</div>        
-          <div class="cell" id="th">Address</div>         
+          <div class="cell" id="th">Request ID</div>
+          <div class="cell" id="th">Amount</div>
+          <div class="cell" id="th">Address</div>
           <div class="cell" id="th">Route</div>
         </div>
         <?php
-        if ($data1!=0){
+        if ($data1 != 0) {
           $f = count($data1);
-        }
-        else{
-          $f="0";
+        } else {
+          $f = "0";
         }
 
         if (!empty($data1)) {
@@ -69,30 +66,28 @@
       </div>
     </div>
   </div>
+  
   <div class="deliverylist" id="deliveryList">
     <div class="advance_topic" id="advance_topic"> Advance </div>
     <form class="searchform" id="advancesearchform">
-      <input type="text" id="searcha" placeholder="Enter Landowner ID.." onkeyup="searchAdvanceTable()">
-      <!-- <input type="submit" value="search" id="submit"> -->
+      <input type="text" id="searcha" placeholder="Enter Here.." onkeyup="searchAdvanceTable()">
     </form>
     <div class="table-wrapper">
-      <!-- <div class="table_header">Today Available landowners</div> -->
       <div class="table" id="today_advance_table">
         <div class="row tabel-header">
           <div class="cell" id="th">Landowner ID</div>
           <div class="cell" id="th">Name</div>
           <div class="cell" id="th">Request ID</div>
-          <div class="cell" id="th">Amount</div>          
+          <div class="cell" id="th">Amount</div>
           <div class="cell" id="th">Address</div>
           <div class="cell" id="th">Route</div>
         </div>
         <?php
-          if ($data2!=0){
-            $a = count($data2);
-          }
-          else{
-            $a="0";
-          }
+        if ($data2 != 0) {
+          $a = count($data2);
+        } else {
+          $a = "0";
+        }
 
         if (!empty($data2)) {
           for ($i = 0; $i < count($data2); $i++) {
@@ -113,7 +108,7 @@
         }
         ?>
       </div>
-    </div>    
+    </div>
   </div>
 
   <?php include 'deliveryform.php'; ?>
@@ -161,15 +156,12 @@
       $('#myBtn').click(function(event) {
         event.preventDefault();
         var form = $('#deliveryUpdateForm').serializeArray();
-        // form.push({name:'stock_type', value: 'in_stock'});
-        // form.push({name:'type', value: 'fertilizer'});
-        // // console.log(form);
-        // $('.error').remove();
         var requestId = $('#rid').val();
         var landownerId = $('#lid').val();
         var requestType = $('#rtype').val();
         var amount = $('#amount').val();
         // var priceForAmount = pricePerUnit*inAmount;
+
         if (requestType == 'Fertilizer') {
           var str = "<div style=\"display:flex; justify-content:center;\">" +
             "<div style=\"text-align:left;\">" +
@@ -189,22 +181,7 @@
             "</div>" +
             "</div>";
         }
-
-        console.log('requestid' + requestId);
-        // if(inAmount == 0) {
-        //     $('#in_amount').parent().after("<p class=\"error\">Please insert the amount</p>")
-        // }else if(inAmount < 0) {
-        //     $('#in_amount').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        // } 
-        // if(pricePerUnit < 0) {
-        //     $('#price_per_unit').parent().after("<p class=\"error\">Can't Insert minus values</p>");
-        // }else if(pricePerUnit == 0) {
-        //     $('#price_per_unit').parent().after("<p class=\"error\">Please insert the price per unit</p>");
-        // }
-
-        // if(pricePerUnit <= 0 || inAmount <= 0) {
-        //     return;
-        // }
+        // console.log('requestid' + requestId);
         Swal.fire({
           title: 'Are you sure?',
           html: '<div>' + str + '</div>',
@@ -248,82 +225,29 @@
   </script>
   <?php include 'bottomContainer.php'; ?>
   <script>
-    // document.addEventListener("DOMContentLoaded", () => {
-    //   const rows = document.querySelectorAll("tr[data-href-request]");
-    //   rows.forEach(row => {
-    //     row.addEventListener("click", () => {
-    //       openrequestform();
-    //     });
-    //   });
-    // });
-
-    var table = $("#today_fertilizer_table");
+    var table = $("#today_collection_table");
     table.click(function(event) {
       if (!$(event.target.parentNode).hasClass("tabel-header")) {
-        document.getElementById("rid").value = event.target.parentNode.firstElementChild.innerHTML;
         document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
-        document.getElementById("rtype").value ="Fertilizer"; 
-        document.getElementById("amount").value = event.target.parentNode.firstElementChild.innerHTML;
-
-        // document.getElementById("rid").value = this.cells[1].innerHTML;
-        // document.getElementById("lid").value = this.cells[0].innerHTML;
-        // document.getElementById("rtype").value = "Fertilizer";
-        // document.getElementById("amount").value = this.cells[2].innerHTML;
-        openrequestform()
+        openteaform()
       }
     })
 
-    var table = $("#today_advance_table");
-    table.click(function(event) {
-      if (!$(event.target.parentNode).hasClass("tabel-header")) {
-        document.getElementById("rid").value = event.target.parentNode.firstElementChild.innerHTML;
-        document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
-        document.getElementById("rtype").value ="Advance"; 
-        document.getElementById("amount").value = event.target.parentNode.firstElementChild.innerHTML;
+    function openteaform() {
+      document.getElementById("teapopup").style.display = "block";
+    }
 
-        // document.getElementById("rid").value = this.cells[1].innerHTML;
-        // document.getElementById("lid").value = this.cells[0].innerHTML;
-        // document.getElementById("rtype").value = "Fertilizer";
-        // document.getElementById("amount").value = this.cells[2].innerHTML;
-        openrequestform()
-      }
-    })
+    function closeteaform() {
+      document.getElementById("teapopup").style.display = "none";
+    }
+
     function openrequestform() {
       document.getElementById("requestpopup").style.display = "block";
-      // var blur = document.getElementById('blur');
-      // blur.classList.toggle('active');
     }
 
     function closerequestform() {
       document.getElementById("requestpopup").style.display = "none";
-      // var blur = document.getElementById('blur');
-      // blur.classList.toggle('close');
     }
-    // var table1 = document.getElementById('fertilizer_delivery_table');
-
-    // for (var i = 1; i < table1.rows.length; i++) {
-    //   table1.rows[i].onclick = function() {
-    //     //rIndex = this.rowIndex;
-    //     document.getElementById("rid").value = this.cells[1].innerHTML;
-    //     document.getElementById("lid").value = this.cells[0].innerHTML;
-    //     document.getElementById("rtype").value = "Fertilizer";
-    //     document.getElementById("amount").value = this.cells[2].innerHTML;
-
-    //   };
-    // }
-
-    // var table2 = document.getElementById('advance_delivery_table');
-
-    // for (var i = 1; i < table2.rows.length; i++) {
-    //   table2.rows[i].onclick = function() {
-    //     //rIndex = this.rowIndex;
-    //     document.getElementById("rid").value = this.cells[1].innerHTML;
-    //     document.getElementById("lid").value = this.cells[0].innerHTML;
-    //     document.getElementById("rtype").value = "Advance";
-    //     document.getElementById("amount").value = this.cells[2].innerHTML;
-
-    //   };
-    // }
 
     function openpopup() {
       // Get the modal
@@ -336,85 +260,76 @@
       var span = document.getElementsByClassName("close")[0];
 
       // When the user clicks the button, open the modal 
-
       modal.style.display = "block";
-      var a = document.getElementById("rid").value;
-      document.getElementById("rid-pop").value = a;
-      var b = document.getElementById("lid").value;
-      document.getElementById("lid-pop").value = b;
-      var c = document.getElementById("rtype").value;
-      document.getElementById("rtype-pop").value = c;
-      var d = document.getElementById("amount").value;
-      document.getElementById("amount-pop").value = d;
+      var x = document.getElementById("lid").value;
+      document.getElementById("lid-pop").value = x;
+      var y = document.getElementById("weight").value;
+      document.getElementById("weight-pop").value = y;
+    }
 
+    var table = $("#today_fertilizer_table");
+    table.click(function(event) {
+      if (!$(event.target.parentNode).hasClass("tabel-header")) {
+        document.getElementById("rid").value = event.target.parentNode.childNodes[9].innerHTML;
+        document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
+        document.getElementById("rtype").value = "Fertilizer";
+        document.getElementById("amount").value = event.target.parentNode.childNodes[13].innerHTML;
+        openrequestform()
+      }
+    })
 
-      // When the user clicks on <span> (x), close the modal
-      // span.onclick = function() {
-      //   modal.style.display = "none";
-      // }
+    var table = $("#today_advance_table");
+    table.click(function(event) {
+      if (!$(event.target.parentNode).hasClass("tabel-header")) {
+        document.getElementById("rid").value = event.target.parentNode.childNodes[9].innerHTML;
+        document.getElementById("lid").value = event.target.parentNode.firstElementChild.innerHTML;
+        document.getElementById("rtype").value = "Advance";
+        document.getElementById("amount").value = event.target.parentNode.childNodes[13].innerHTML;
+        openrequestform()
+      }
+    })
 
-      // When the user clicks anywhere outside of the modal, close it
-      // window.onclick = function(event) {
-      //   if (event.target == modal) {
-      //     modal.style.display = "none";
-      //   }
+    function openrequestform() {
+      document.getElementById("requestpopup").style.display = "block";
+      // var blur = document.getElementById('blur');
+      // blur.classList.toggle('active');
+    }
 
+    function closerequestform() {
+      document.getElementById("requestpopup").style.display = "none";
+      // var blur = document.getElementById('blur');
+      // blur.classList.toggle('close');
     }
 
     function closepopup() {
       document.getElementById("myModal").style.display = "none";
-      //  var blur = document.getElementById('blur');
+      // var blur = document.getElementById('blur');
       // blur.classList.toggle('maindiv');
-
     }
 
     function closeformpopup() {
       document.getElementById("myModal").style.display = "none";
       closerequestform();
-
       //document.getElementById("availableTable").deleteRow(1);
-
     }
 
     // function clearWeight(){   
     //     document.getElementById("weight").value=" ";
-    //   }
+    // }
 
-    function searchAdvanceTable() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("searcha");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("advance_delivery_table");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    }
+    //search of fertilizer request
+    $("#searchf").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#today_fertilizer_table .table2-row").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
 
-    function searchFertilizerTable() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("searchf");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("fertilizer_delivery_table");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    }
+    //search of advance request
+    $("#searcha").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#today_advance_table .table2-row").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
   </script>
