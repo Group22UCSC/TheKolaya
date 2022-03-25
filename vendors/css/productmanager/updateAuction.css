@@ -330,7 +330,7 @@ justify-self: center;
   font-family: 'Poppins', sans-serif;
 display: grid;
 /* grid-template-columns: 1fr 1fr; */
-padding: 40px;
+padding: 10px;
 color: #4f546c;
 font-size: 0.9rem;
 background-color: #f9fbff;;
@@ -361,7 +361,7 @@ animation: fadeIn 2.5s;
   } */
   .thcls   {
     
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-size: 0.7rem;
@@ -372,7 +372,7 @@ animation: fadeIn 2.5s;
   }
 
   .tdcls {
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
   }
 
   .acls {
@@ -390,18 +390,7 @@ animation: fadeIn 2.5s;
   .tdcls .tblbutton:hover{
     background-color: rgb(221, 119, 51);
   }
-/* Delete button in the auction table */
-.deleteBtn{
-    padding: 10px 20px;
-    background-color: rgb(255, 101, 30);
-    border: 1px solid #ddd;
-    color: white;
-    text-decoration: none;
-}
-  
-  .deleteBtn button:hover {
-    background-color: rgb(241, 44, 37);
-  }
+
 
   
 
@@ -498,3 +487,21 @@ animation: fadeIn 2.5s;
       align-items: stretch;
     }
   }
+
+  /* Delete button button of the table */
+.actionCol button{ 
+  padding: 5px 5px;
+  background-color: rgb(255, 83, 16);
+  border: 1px solid ;
+  color: white;
+  border-radius: 12px;
+  width: 40%;
+  text-decoration: none;
+  cursor: pointer;
+}
+.actionCol button:hover{
+  
+  background-color:  rgb(133, 39, 3);
+
+  cursor: pointer;
+}
