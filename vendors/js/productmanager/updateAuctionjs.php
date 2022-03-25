@@ -88,7 +88,7 @@
             event.preventDefault();
             //validateAmount();
             validateAmount();
-            
+
             console.log("update click");
             var form = $('#auctionForm').serializeArray();
             // form.push({name:'stock_type', value: 'in_stock'});
@@ -253,8 +253,14 @@
                         data[i].sold_amount * data[i].sold_price +
                         "</td>" +
 
-                        "<td>" +
-                        // (date==date)? "Hi":"Bye";
+
+                        "<td class='actionCol'>" +
+                        // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
+
+                        "<button type='button' id='editbutton' onclick='deleteRow()' >" +
+                        "Delete" +
+                        "</button>" +
+
                         "</td>" +
                         "</tr>";
                     $("#updateAuctionTable tbody").append(str);
@@ -266,6 +272,81 @@
         })
 
     }
+    function deleteRow(){ // delete auction details row from update auction UI
+    // remobe the row from ui
+    $('#updateAuctionTable tbody').on('click','#editbutton',function(){
+    // remobe the row from ui
+    //$(this).closest('tr').remove();
+
+
+    var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
+    $date = $row.find("td:nth-child(1)"); // ist column value
+    var date2=$date.text(); // date as a javascript variable
+ 
+    $pid = $row.find("td:nth-child(2)"); // ist column value
+    var pid=$pid.text();
+    console.log(date2);
+    
+    // //check date and delete
+    // var todaysDate=new Date();        
+    // var thisMonth=todaysDate.getMonth()+1;
+    // var thisYear=todaysDate.getFullYear();
+
+
+
+    var str="Delete Auction Detail set on "+date2+"\n for "+pid+"?";
+    Swal.fire({
+      title: 'Are You Sure ?',  
+      icon: 'warning',
+    //   html:'<div>Line0<br />Line1<br /></div>',
+    html: '<pre>' + str + '</pre>',
+      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
+      confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
+      confirmButtonText: 'Delete!',
+      showCancelButton: true
+      }).then((result) => {
+          if (result.isConfirmed) {
+              $("#setTeaPriceForm").trigger("reset");
+              
+              $.ajax({
+                  type: "POST",
+                  url: "http://localhost/Thekolaya/productmanager/deleteAuctionDetail",
+                  
+                  data: {
+                    date:date2,
+                    pid:pid
+                  },
+                  success: function(data) {
+                      console.log(data);
+                      Swal.fire(
+                      'Deleted!',
+                      'Your Record Was Deleted Succesfully.',
+                      'success'
+                      )
+                      clearTable();
+                      getTable();
+                  },
+                  error : function (xhr, ajaxOptions, thrownError) {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Oops...',
+                          text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                          // footer: '<a href="">Why do I have this issue?</a>'
+                      })
+                  }
+              })
+          }
+      })
+
+
+
+    });
+   
+}
+
+
+
     // last row of auction table
 
     function clearTable() {
@@ -359,7 +440,7 @@
     // }
 
     //checking out of stock
-    function checkoutofstock(pid){
+    function checkoutofstock(pid) {
         var pid = pid
         var limit = 100
         var availableStock = 0;
@@ -379,11 +460,11 @@
                 console.log("availableStock A:" + availableStock);
                 if (limit > availableStock) {
                     console.log("Limit 100 exceeded");
-                    sendOutOfStockNoti(pid);
+                    sendOutOfStockNoti(pid, availableStock);
                     // $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
                     check = 0;
                 } else {
-                    console.log("available stock",availableStock);
+                    console.log("available stock", availableStock);
                     check = 1;
                 }
                 console.log("FUNCTION" + data[0].stock);
@@ -391,31 +472,22 @@
         })
     }
 
-    function sendOutOfStockNoti(pid){
-        var pid=pid;
-        var url = "http://localhost/Thekolaya/productmanager/getProductStock";
+    function sendOutOfStockNoti(pid, availableStock) {
+        var pid = pid;
+
+        var url = "http://localhost/Thekolaya/productmanager/sendOutOfStockNoti";
         $.ajax({
             url: url,
-            type: "GET",
+            type: "POST",
             dataType: "JSON",
             // pass the pid to the controller and get the available stock for that product pid
             data: {
-                pid: pid
+                pid: pid,
+                availableStock: availableStock
             },
             success: function(data) {
-                availableStock = parseInt(data[0].stock); // from JSON object we get the
-                // availableStock as a string. So we need to convert it an int
-                console.log("amount A:" + amount);
-                console.log("availableStock A:" + availableStock);
-                if (amount > availableStock) {
-                    console.log("if");
-                    $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
-                    check = 0;
-                } else {
-                    console.log("else");
-                    check = 1;
-                }
-                console.log("FUNCTION" + data[0].stock);
+                console.log(data);
+
             }
         })
     }
@@ -450,4 +522,8 @@
             }
         })
     }
+
+
+
+    
 </script>

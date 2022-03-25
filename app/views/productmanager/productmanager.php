@@ -10,7 +10,13 @@
 // print_r($data1);
 // print_r($data);
 $today = date("Y-m-d");
-$len = sizeof($data);
+if(!$data==false){
+  $len = sizeof($data);
+}
+else{
+  $len=0;
+}
+
 
 
 // $month=date("m");
