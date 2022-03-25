@@ -30,7 +30,7 @@
             </div>  
             <div class="inputfield">
                 <label>Message</label>
-               <textarea class="input" rows=5 columns=50 id="message" name="message" readonly>Please  make me unavailable</textarea>
+               <textarea class="input" rows=5 columns=50 id="message" name="message" readonly></textarea>
             </div>        
             <div class="inputfield">
             <input type="submit" value="Send" class="btn" id="link">
