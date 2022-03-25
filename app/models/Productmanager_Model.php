@@ -374,7 +374,20 @@ class Productmanager_Model extends Model
             VALUES(0, 0, '$message', 'ProductManager', 'warning', '" . $_SESSION['user_id'] . "')";
         
         $row = $this->db->insertQuery($notificationQuery);
+        //----------------Pusher API------------------//
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'ef64da0120ca27fe19a3',
+            'd5033393ff3b228540f7',
+            '1290222',
+            $options
+        );
 
+        $pusher->trigger('my-channel', 'Productmanager_notification',$message);
+        //-------------------------------------------//
         if ($row) {
             return $row;
         } else {
