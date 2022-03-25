@@ -90,7 +90,7 @@
     }
   }
 
-  @media (max-width:420px) {
+  /* @media (max-width:420px) {
     .topic{
       height:75px;
       font-size: 26px;
@@ -126,4 +126,29 @@
   
 
 
-  }
+  } */
+  /* responsive */
+ @media screen and (max-width: 1230px){
+  .fertilizer_topic, .advance_topic{
+    width:20%;
+}
+ }
+@media screen and (max-width: 600px){
+  .fertilizer_topic, .advance_topic{
+    width:30%;
+}
+}
+@media screen and (max-width: 380px){
+  .fertilizer_topic, .advance_topic{
+    width:50%;
+}
+}
+@media screen and (max-width: 340px){
+  .fertilizer_topic, .advance_topic{
+    margin:10px auto;
+    width:60%;
+}
+
+
+}
+ 

@@ -205,48 +205,102 @@
   font-weight: 500;
 }
 
-.table-container {
+.actionCol button {
+  padding: 5px 10px;
+  background-color: rgb(255, 83, 16);
+  border: 5px solid;
+  color: white;
+  border-radius: 12px;
+  width: 40%;
+  text-decoration: none;
+  cursor: pointer;
+}
+.actionCol button:hover {
+  background-color: rgb(133, 39, 3);
+
+  cursor: pointer;
+}
+
+#pricetbl {
   font-family: "Poppins", sans-serif;
-  display: grid;
+  /* display: none; */
   padding: 40px;
   color: #4f546c;
   font-size: 0.9rem;
-  /* background-color: #f9fbff;*/
+  background-color: #f9fbff;
+  margin-top: 20px;
+  animation: fadeIn 1.6s;
+  -webkit-animation: fadeIn 1.6s;
+  -moz-animation: fadeIn 1.6;
+  -o-animation: fadeIn 1.6s;
+  -ms-animation: fadeIn 1.6s;
 }
 .teapricetable {
   border-collapse: collapse;
-  /*  box-shadow: 0 5px 10px #e1e5ee;*/
+  box-shadow: 0 5px 10px #e1e5ee;
   background-color: white;
   text-align: left;
   overflow: hidden;
-  width: 90%;
+  width: 100%;
 }
-.teapricetable tbody {
-  /* Set the height of table body */
-  height: 20px;
-
-  /* Set vertical scroll */
-  overflow-y: auto;
-
-  /* Hide the horizontal scroll */
-  overflow-x: hidden;
-}
-
 .threadcls {
   box-shadow: 0 5px 10px #e1e5ee;
 }
 
 .thcls {
-  padding: 1rem 7rem;
+  text-align: center;
+  padding: 1rem 2rem;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-size: 0.7rem;
   font-weight: 900;
 }
 
-.tdcls {
-  padding: 1rem 7rem;
+.teapricetable td {
+  text-align: center;
 }
+.tdcls {
+  padding: 1rem 2rem;
+}
+
+.acls {
+  text-decoration: none;
+  color: #2962ff;
+}
+
+.status {
+  border-radius: 0.2rem;
+  background-color: red;
+  padding: 0.2rem 1rem;
+  text-align: center;
+}
+.status-pending {
+  background-color: #fff0c2;
+  color: #a68b00;
+}
+
+.status-paid {
+  background-color: #c8e6c9;
+  color: #388e3c;
+}
+
+.status-notupdated {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.amount {
+  text-align: right;
+}
+
 tr:nth-child(even) {
   background-color: #f4f6fb;
+}
+
+#teapricetable tr:not(:first-child) {
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+#teapricetable tr:not(:first-child):hover {
+  background-color: #ddd;
 }

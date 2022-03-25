@@ -404,4 +404,14 @@ class Productmanager_Model extends Model
             return false;
         }
     }
+
+    function deleteProductDetail($pid,$date){
+        $query = "DELETE FROM `products_in` WHERE date='{$date}' AND products_id='{$pid}'";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }

@@ -361,7 +361,7 @@ animation: fadeIn 2.5s;
   } */
   .thcls   {
     
-    padding: 1rem 6rem;
+    padding: 1rem 5rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-size: 0.7rem;
@@ -498,3 +498,22 @@ animation: fadeIn 2.5s;
       align-items: stretch;
     }
   }
+
+
+   /* Delete button button of the table */
+.actionCol button{ 
+  padding: 5px 5px;
+  background-color: rgb(255, 83, 16);
+  border: 1px solid ;
+  color: white;
+  border-radius: 12px;
+  width: 40%;
+  text-decoration: none;
+  cursor: pointer;
+}
+.actionCol button:hover{
+  
+  background-color:  rgb(133, 39, 3);
+
+  cursor: pointer;
+}

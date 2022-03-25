@@ -16,7 +16,7 @@
 <?php include 'topContainer.php'; ?>   
   <!-- <div class="modal"> -->
     <div class="toggle-div" id="toggle-div">
-    <button class="backbtn" onclick="back()">Logout </button><br>
+    <!-- <button class="backbtn" onclick="back()">Logout </button><br> -->
     <div class="sad">
     <img src="<?php echo URL?>vendors/images/agent/sad.jpg" alt="sad">
     </div>

@@ -5,7 +5,11 @@
 
 </body>
 <!-- **************   Table container   *********-->
-<h1>Advance</h1>
+<div class="top-container">
+    <p>Delete Advance Request</p>
+</div>
+
+
 <div class="table-container" id="pricetbl">
     <div class="table-section">
         <table class="teapricetable" id="teapricetable">
@@ -22,6 +26,10 @@
 
         </table>
     </div>
+
+</div>
+<div class="backButton">
+    <a href="<?php echo URL ?>landowner/Make_Requests"> <button onclick="previousPrices();"><i class="fas fa-hand-point-left"></i> Make Requests</button>
 </div>
 
 <?php include 'js/landowner/deleteAdvanceRequestsjs.php'; ?>
