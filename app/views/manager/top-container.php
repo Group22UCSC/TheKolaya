@@ -24,7 +24,7 @@
          <span class="tooltip">Search</span>
       </li> -->
       <li>
-        <a href="<?php echo URL?>manager/manager">
+        <a href="<?php echo URL?>manager">
           <i class="fas fa-th-large"></i>
           <span class="links_name">Dashboard</span>
         </a>
