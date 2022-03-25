@@ -266,6 +266,17 @@ class landowner_Model extends Model
             return false;
         }
     }
+    //get last month tea qulity to dashboard card
+    function lastMonthTeaPrice()
+    {
+        $sql = "SELECT price FROM `monthly_tea_price` ORDER BY date DESC LIMIT 1";
+        $row = $this->db->runQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 
 
 
@@ -311,7 +322,21 @@ class landowner_Model extends Model
     function getMonthlyIncome()
     {
         $lid = $_SESSION['user_id'];
-        $query = "SELECT * FROM tea WHERE lid='{$lid}'";
+        $yearMonth = date('Y-m');
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' and date LIKE '%{$yearMonth}%'";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function getSearchMonthDetails($date)
+    {
+        $lid = $_SESSION['user_id'];
+
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' and date LIKE '%{$date}%'";
         $row = $this->db->runQuery($query);
         if ($row) {
             return $row;
@@ -370,7 +395,7 @@ class landowner_Model extends Model
         }
         if ($notification_type == 'full') {
             $query = "SELECT * FROM notification 
-            WHERE receiver_type='Lanowner' ORDER BY read_unread ASC, notification_id DESC";
+            WHERE receiver_type='Landowner' ORDER BY read_unread ASC, notification_id DESC";
         } else if ($notification_type == 'half') {
             $query = "SELECT * FROM notification 
             WHERE receiver_type='Landowner' AND read_unread=0 ORDER BY notification_id DESC";
