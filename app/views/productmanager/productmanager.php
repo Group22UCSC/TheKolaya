@@ -76,8 +76,13 @@ $prdct8 = 0;
 $prdct9 = 0;
 $prdct10 = 0;
 
+if(!$data==0){  //check
+  $len2=sizeof($data1); //pie chart data1 length
+}
+else{
+  $len2=0;
+}
 
-$len2=sizeof($data1); //pie chart data1 length
 for($i=0;$i<$len2;$i++){
   // pie chart calculation
     if($data1[$i]['product_id']=='P001'){
