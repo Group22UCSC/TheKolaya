@@ -151,7 +151,7 @@ class Supervisor extends Controller
                     $monthName = date('F', strtotime("2001-$monthNum-1"));
                     echo '<div class="manage-request-row">
                             <div class="manage-request-cell" data-title="Previous Request Date"><b>' . $lastRequests[$i]['request_date'] . '</b></div>
-                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month, $_POST['landowner_id']) . '</div>
+                            <div class="manage-request-cell" data-title="Monthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($month, $_POST['landowner_id']) . '</div>
                         </div>';
                 }
                 echo '</div>';
@@ -163,7 +163,7 @@ class Supervisor extends Controller
                     $monthName = date('F', strtotime("2001-$monthNum-1"));
                     echo '<div class="manage-request-row">
                             <div class="manage-request-cell" data-title="Previous Request Date">' . '<b style="color: #4DD101;">No Previously requests for ' . $monthName . '</b>' . '</div>
-                            <div class="manage-request-cell" data-title="Mounthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($monthNum, $_POST['landowner_id']) . '</div>
+                            <div class="manage-request-cell" data-title="Monthly Tea Amount(kg)">' . $this->model->getMonthTeaWeight($monthNum, $_POST['landowner_id']) . '</div>
                         </div>';
                 }
                 echo '</div>';

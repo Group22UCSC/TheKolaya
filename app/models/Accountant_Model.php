@@ -660,5 +660,7 @@ class Accountant_Model extends Model {
         $result=$this->db->selectQuery($query);
         return $result;
     }
+
+    
 }
 ?>

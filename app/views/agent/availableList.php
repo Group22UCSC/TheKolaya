@@ -39,7 +39,7 @@
   <div class="availablelist">
     <?php include 'unavailableNotice.php'; ?>
     <?php include 'agentUnavailableNotice.php'; ?>
-    <div class="table-wrapper">
+    <div class="table-wrapper" id="table_wrapper">
       <!-- <div class="table_header">Today Available landowners</div> -->
       <div class="table" id="today_collection_table">
         <div class="row tabel-header">
@@ -81,13 +81,13 @@
       if (<?php echo $x ?> == '0') {
         console.log('zero landowners');
         $('#searchform').hide();
-        $('#availabletable').hide();
+        $('#today_collection_table').hide();
         $('#unavailable_notice').show();
       }
       if (<?php echo $_SESSION['availability'] ?> == '0') {
         console.log('zero landowners');
         $('#searchform').hide();
-        $('#availabletable').hide();
+        $('#today_collection_table').hide();
         $('#unavailable_notice').hide();
         $('#agent_unavailable_notice').show();
       }

@@ -30,17 +30,24 @@ class Registration extends Controller
             $function_name = $_POST['function_name'];
             switch ($function_name) {
                 case 'checkUser':
-                    if ($this->model->isVerifiedUser($data['contact_number'])) {
-                        echo json_encode('Verified');
-                    } else if (!$this->model->isRegisteredUser($data['contact_number'])) {
-                        echo json_encode('notRegistered');
+                    if ($this->model->getUser($data['contact_number'])) {
+                        $userVerify = $this->model->getUser($data['contact_number']);
+                        if ($userVerify[0]['verify'] == 1) {
+                            echo json_encode('Verified');
+                        } else if ($userVerify[0]['is_delete'] == 1 && $userVerify[0]['verify'] == 0) {
+                            echo json_encode('Deleted');
+                        } else {
+                            $userFilter = [
+                                'user_id' => $userVerify[0]['user_id'],
+                                'user_type' => $userVerify[0]['user_type']
+                            ];
+                            echo json_encode($userFilter);
+                        }
                     } else {
-                        $registered_User = $this->model->isRegisteredUser($data['contact_number']);
-                        $userFilter = [
-                            'user_id' => $registered_User[0]['user_id'],
-                            'user_type' => $registered_User[0]['user_type']
-                        ];
-                        echo json_encode($userFilter);
+                        $userVerify = false;
+                        if (!$userVerify) {
+                            echo json_encode('notRegistered');
+                        }
                     }
                     break;
 

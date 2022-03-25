@@ -10,7 +10,13 @@
 // print_r($data1);
 // print_r($data);
 $today = date("Y-m-d");
-$len = sizeof($data);
+if(!$data==false){
+  $len = sizeof($data);
+}
+else{
+  $len=0;
+}
+
 
 
 // $month=date("m");
@@ -225,6 +231,7 @@ for($i=0;$i<$len2;$i++){
         prdct8 = '<?php echo $prdct8; ?>';
         prdct9 = '<?php echo $prdct9; ?>';
         prdct10 = '<?php echo $prdct10; ?>';
+        console.log("Max:",Math.max(prdct1,prdct3,prdct4,prdct5,prdct6,prdct7,prdct8,prdct9,prdct10))
         var xValues = ["Green Tea", "White Tea", "B-100 Black Tea", "N Black Tea","Early Black Tea","Masala Chai","Matcha Tea","Oolang Tea","Sencha Tea"];
         var yValues = [prdct1, prdct3, prdct4, prdct5,prdct6,prdct7,prdct8,prdct9,prdct10];
         var barColors = ["#42f5a7", "#ffc233", "#e05260", "#66b0ff", "#ffc233",'#2BD47D',"#ADFF2F","#9FE2BF","#40E0D0"];
