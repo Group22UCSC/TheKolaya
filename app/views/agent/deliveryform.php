@@ -6,7 +6,7 @@
      Confirm Deliverables
   </div>
   <div class="form">
-  <form action="#" method="POST" id="deliveryUpdateForm">
+  <form action="" method="POST" id="deliveryUpdateForm">
       <div class="inputfield">
           <label>Request ID</label>
           <input type="text" class="input" name ="rid" id="rid" readonly>
