@@ -190,7 +190,79 @@ $(document).ready(function() {
 
     }
 
+    // delete product details row from update product UI
+    function deleteRow(){ 
+    // remobe the row from ui
+    $('#updateProductsTable tbody').on('click','#editbutton',function(){
+    // remobe the row from ui
+    //$(this).closest('tr').remove();
 
+
+    var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
+    $date = $row.find("td:nth-child(1)"); // ist column value
+    var date2=$date.text(); // date as a javascript variable
+ 
+    $pid = $row.find("td:nth-child(2)"); // ist column value
+    var pid=$pid.text();
+    console.log(date2);
+    
+    // //check date and delete
+    // var todaysDate=new Date();        
+    // var thisMonth=todaysDate.getMonth()+1;
+    // var thisYear=todaysDate.getFullYear();
+
+
+
+    var str="Delete Product Detail set on "+date2+"\n for "+pid+"?";
+    Swal.fire({
+      title: 'Are You Sure ?',  
+      icon: 'warning',
+    //   html:'<div>Line0<br />Line1<br /></div>',
+    html: '<pre>' + str + '</pre>',
+      //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
+      confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
+      confirmButtonText: 'Delete!',
+      showCancelButton: true
+      }).then((result) => {
+          if (result.isConfirmed) {
+              $("#setTeaPriceForm").trigger("reset");
+              
+              $.ajax({
+                  type: "POST",
+                  url: "http://localhost/Thekolaya/productmanager/deleteProductDetail",
+                  
+                  data: {
+                    date:date2,
+                    pid:pid
+                  },
+                  success: function(data) {
+                      console.log(data);
+                      Swal.fire(
+                      'Deleted!',
+                      'Your Record Was Deleted Succesfully.',
+                      'success'
+                      )
+                      clearTable();
+                      getTable();
+                  },
+                  error : function (xhr, ajaxOptions, thrownError) {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Oops...',
+                          text: 'Something went wrong! ' + xhr.status + ' ' + thrownError,
+                          // footer: '<a href="">Why do I have this issue?</a>'
+                      })
+                  }
+              })
+          }
+      })
+
+
+
+    });
+   
+}
     //=======clear the excisting values of the table=========
 
     function clearTable() {
