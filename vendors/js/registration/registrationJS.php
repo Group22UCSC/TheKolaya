@@ -127,6 +127,9 @@
                         } else if (responseText == 'notRegistered') {
                             errors.mobile_number = "Unregistered Mobile Number";
                             showError(1, errors.mobile_number);
+                        } else if (responseText == 'Deleted') {
+                            errors.mobile_number = "This user is deleted!";
+                            showError(1, errors.mobile_number);
                         } else {
                             inputField[2].value = responseText['user_id'];
                             $("#landowner_type").val(responseText['user_type'].toLowerCase());
