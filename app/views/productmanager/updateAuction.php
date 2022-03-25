@@ -5,6 +5,7 @@
 
 <div class="top-container" >
     <p>Update Auction Details</p>
+    
 </div>
 
 

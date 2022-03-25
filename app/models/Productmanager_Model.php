@@ -368,4 +368,40 @@ class Productmanager_Model extends Model
             $_SESSION['NotSeenCount'] = 0;
         }
     }
+    function sendOutOfStockNoti($pid,$availableStock){
+        $message="Product $pid is running out of stock !. Available amount is : $availableStock Kg";
+        $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
+            VALUES(0, 0, '$message', 'ProductManager', 'warning', '" . $_SESSION['user_id'] . "')";
+        
+        $row = $this->db->insertQuery($notificationQuery);
+        //----------------Pusher API------------------//
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'ef64da0120ca27fe19a3',
+            'd5033393ff3b228540f7',
+            '1290222',
+            $options
+        );
+
+        $pusher->trigger('my-channel', 'Productmanager_notification',$message);
+        //-------------------------------------------//
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function deleteAuctionDetail($pid,$date){
+        $query = "DELETE FROM `auction` WHERE date='{$date}' AND product_id='{$pid}'";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }
