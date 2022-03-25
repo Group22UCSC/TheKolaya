@@ -254,4 +254,27 @@ function sendOutOfStockNoti(){
         
     }
 }
+
+
+    function deleteAuctionDetail(){ //delete details of the auction from auction details table
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $pid=$_POST['pid'];
+            $date=$_POST['date'];
+            $result = $this->model->deleteAuctionDetail($pid,$date);
+            if($result==true){
+                // if there is a result which mean query is executed - > success pop up
+                $_POST['success']=1;
+                //$result = $this->model->teaPriceTable();
+                //$this->view->render('accountant/setTeaPrice',$result);
+                //echo "successfuly added";
+            }
+            else{
+                // first check using a alert ()
+                $_POST['success']=0;
+            }
+        }
+        else{
+            
+        }
+    }
 }

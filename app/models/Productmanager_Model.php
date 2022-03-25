@@ -394,4 +394,14 @@ class Productmanager_Model extends Model
             return false;
         }
     }
+
+    function deleteAuctionDetail($pid,$date){
+        $query = "DELETE FROM `auction` WHERE date='{$date}' AND product_id='{$pid}'";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }
