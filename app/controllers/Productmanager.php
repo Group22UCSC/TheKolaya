@@ -6,16 +6,19 @@ class ProductManager extends Controller{
         parent::__construct();
     }
     function index() {
+        $this->getNotificationCount();
         $incomeBarChart = $this->model->incomeBarChart();//for the bar chart
         $last30ProductSales=$this->model->last30ProductSales();//sold product categories of the last 30 days for the pie chart
         $this->view->render('Productmanager/Productmanager',$incomeBarChart,$last30ProductSales);
     }
     
     function products() {
+        $this->getNotificationCount();
         $productResults = $this->model->getProductDetails();
         $this->view->render('Productmanager/products',$productResults);
     }
     function auctionDetails() {
+        $this->getNotificationCount();
         $tblResult = $this->model->auction();
         $this->view->render('Productmanager/auctionDetails',$tblResult);
     }
@@ -40,6 +43,7 @@ class ProductManager extends Controller{
             }
         }
         else{
+            $this->getNotificationCount();
             $productResults = $this->model->getProductDetails();
             $this->view->render('Productmanager/updateProducts',$productResults);   
         }
@@ -69,6 +73,7 @@ class ProductManager extends Controller{
             }
         }
         else{
+            $this->getNotificationCount();
             $buyers=$this->model->getBuyersDetails();
             $tblResult = $this->model->auction();
             $productResults = $this->model->getProductDetails();
@@ -112,6 +117,7 @@ class ProductManager extends Controller{
     //Manage Profile
     function profile()
     {
+        $this->getNotificationCount();  
         $this->view->render('user/profile/profile');
     }
     
@@ -165,6 +171,131 @@ class ProductManager extends Controller{
         $json_arr=json_encode($tblResult);
         echo $json_arr;
     }
+
+    //Get Notification
+function setNotification($notification)
+{
+    if (!empty($notification)) {
+        echo '<div id="all_notifications">';
+        for ($i = 0; $i < count($notification); $i++) {
+            switch ($notification[$i]['notification_type']) {
+                case 'warning':
+                    $imgPath = URL . '/vendors/images/notifications/warning.jpg';
+                    break;
+                case 'request':
+                    $imgPath = URL . '/vendors/images/notifications/request.jpg';
+                    break;
+            }
+
+            switch ($notification[$i]['read_unread']) {
+                case 0:
+                    $notificationStatus = "unread";
+                    break;
+                case 1:
+                    $notificationStatus = "read";
+                    break;
+            }
+            $dateTime = $notification[$i]['receive_datetime'];
+            echo
+            '<div class="sec new ' . $notification[$i]['notification_type'] . ' ' . $notificationStatus . '" id="n-' . $notification[$i]['notification_id'] . '">
+                    <div class = "profCont">
+                        <img class = "notification_profile" src = "' . $imgPath . '">
+                    </div>
+                    <div class="txt ' . $notification[$i]['notification_type'] . '">' . $notification[$i]['message'] . '</div>
+                    <div class="txt sub">' . $dateTime . '</div>
+                </div>';
+        }
+        echo '</div>';
+    } else {
+        echo
+        '<div id="all_notifications">
+            <div class="nothing">
+                <i class="fas fa-child stick"></i>
+                <div class="cent">Looks Like your all caught up!</div>
+            </div>
+        </div>';
+    }
 }
 
-?>
+public function getNotificationCount()
+{
+    $notificationCount = $this->model->getNotificationCount($_GET);
+    return $notificationCount;
+}
+
+function getNotification()
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['notification_type'])) {
+            $notification = $this->model->getNotification($_POST);
+            $this->setNotification($notification);
+        }
+    }
+}
+
+function sendOutOfStockNoti(){
+    if(($_SERVER['REQUEST_METHOD']=='POST')){
+        $pid=$_POST['pid'];
+        $availableStock=$_POST['availableStock'];
+        $result = $this->model->sendOutOfStockNoti($pid,$availableStock);
+        if($result==true){
+            // if there is a result which mean query is executed - > success pop up
+            $_POST['success']=1;
+            //$result = $this->model->teaPriceTable();
+            //$this->view->render('accountant/setTeaPrice',$result);
+            //echo "successfuly added";
+        }
+        else{
+            // first check using a alert ()
+            $_POST['success']=0;
+        }
+    }
+    else{
+        
+    }
+}
+
+
+    function deleteAuctionDetail(){ //delete details of the auction from auction details table
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $pid=$_POST['pid'];
+            $date=$_POST['date'];
+            $result = $this->model->deleteAuctionDetail($pid,$date);
+            if($result==true){
+                // if there is a result which mean query is executed - > success pop up
+                $_POST['success']=1;
+                //$result = $this->model->teaPriceTable();
+                //$this->view->render('accountant/setTeaPrice',$result);
+                //echo "successfuly added";
+            }
+            else{
+                // first check using a alert ()
+                $_POST['success']=0;
+            }
+        }
+        else{
+            
+        }
+    }
+
+    //delete prdouct details from product table
+    function deleteProductDetail(){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $pid=$_POST['pid'];
+            $date=$_POST['date'];
+            $result = $this->model->deleteProductDetail($pid,$date);
+            if($result==true){
+            
+                $_POST['success']=1;
+                
+            }
+            else{
+                
+                $_POST['success']=0;
+            }
+        }
+        else{
+            
+        }
+    }
+}

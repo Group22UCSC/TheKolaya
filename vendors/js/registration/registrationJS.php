@@ -8,8 +8,6 @@
         var user_id = '';
         var form = '';
 
-        // console.log(options);
-        console.log(inputField)
         var icon = $('#registration_form i');
         var url = "<?php echo URL ?>Registration/controllCheckData";
         var noErrors = 0;
@@ -75,11 +73,11 @@
         //Validate The Name
         $(inputField[0]).change(function() {
             if (hasNumber(inputField[0].value)) {
-                errors.name = "The name Can't contain Numbers";
+                errors.name = "Name cannot contain numbers";
                 showError(0, errors.name);
             } else if (isEmpty(0)) {
-                errors.name = "The must be filled";
-                console.log('hi')
+                errors.name = "Name must be filled";
+                // console.log('hi')
                 showError(0, errors.name);
             } else {
                 errors.name = '';
@@ -101,6 +99,8 @@
             }
         }
         $(inputField[1]).change(function() {
+            $("#landowner_type").prop('disabled', false);
+
             if (inputField[1].value.length > 10) {
                 errors.mobile_number = "More than 10 charcters";
                 showError(1, errors.mobile_number);
@@ -119,16 +119,21 @@
                     url: url,
                     type: 'POST',
                     data: form,
+                    dataType: 'JSON',
                     success: function(responseText) {
                         if (responseText == 'Verified') {
-                            console.log('verified');
                             errors.mobile_number = "Mobile Numuber is already Taken";
                             showError(1, errors.mobile_number);
                         } else if (responseText == 'notRegistered') {
-                            errors.mobile_number = "Not Registered Mobile Number";
+                            errors.mobile_number = "Unregistered Mobile Number";
+                            showError(1, errors.mobile_number);
+                        } else if (responseText == 'Deleted') {
+                            errors.mobile_number = "This user is deleted!";
                             showError(1, errors.mobile_number);
                         } else {
-                            inputField[2].value = responseText;
+                            inputField[2].value = responseText['user_id'];
+                            $("#landowner_type").val(responseText['user_type'].toLowerCase());
+                            $("#landowner_type").prop('disabled', true);
                             $(inputField[2]).attr('readonly', 'readonly');
                             removeError(1);
                         }
@@ -184,6 +189,7 @@
 
         $('#registrationBtn').click(function(event) {
             event.preventDefault();
+            $("#landowner_type").prop('disabled', false);
             if (inputField[1].value != '' && inputField[1].value.length < 10) {
                 errors.mobile_number = "Less than 10 characters";
                 showError(1, errors.mobile_number);
@@ -231,8 +237,8 @@
                     }
                 }
             }
-            console.log("hi")
-            console.log(errors[0])
+            // console.log("hi")
+            console.log(errors)
             if (noErrors == 7) {
                 form.push({
                     name: 'function_name',
@@ -244,20 +250,19 @@
                     data: form,
                     success: function(data) {
                         // console.log('success');
-                        // console.log(form);
-                        console.log('data' + data);
+                        
                         Swal.fire(
                             'Validated!',
                             'To login you have to verify your account',
                             'success'
                         ).then((result) => {
                             location.replace("<?php echo URL ?>OtpVerify");
-                            console.log("Swal called");
+                            // console.log("Swal called");
                         });
                     }
                 });
             }
-            console.log(noErrors);
+            // console.log(noErrors);
         });
     });
 </script>

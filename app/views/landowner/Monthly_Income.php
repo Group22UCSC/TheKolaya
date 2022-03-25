@@ -1,7 +1,7 @@
 <?php include 'top-container.php'; ?>
 
 
-
+<body onload="getTable();lastMonthIncomeAndAdvance();lastMonthTeaPrice();"></body>
 
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Monthly_income.css">
@@ -33,7 +33,7 @@
         <div class="box">
             <div class="right-side">
                 <div class="box-topic">Last Month Tea Price</div>
-                <div class="number" id="totMass"></div>
+                <div class="number" id="teaPrice"></div>
                 <div class="indicator">
                     <i class='bx bx-up-arrow-alt'></i>
                     <span class="text">Up from previous month</span>
@@ -47,17 +47,18 @@
     <!-- search area -->
 
     <div class="search">
-        <form action="/action_page.php">
-            <input type="month" id="selectedMonth" name="selectedMonth">
-            <input type="submit" value="search">
-        </form>
+        <!-- <form action="/action_page.php" method="post"> -->
+        <input type="month" id="selectedMonth" name="selectedMonth">
+        <!-- <input type="button" value="search" onclick="searchByDate()"> -->
+        <button onclick="searchByDate()">search</button>
+        <!-- </form> -->
     </div>
 
 
 
     <!-- table head -->
-    <div class="table-head">
-        <h1>JANUARY MONTH DETAILS</h1>
+    <div class=" table-head">
+        <h1 id="month"></h1>
     </div>
     <!-- neeeded -->
 
@@ -67,13 +68,15 @@
     <div class="table tableplace">
 
 
-        <table class="teapricetable">
+        <table class="teapricetable" id="teapricetable">
             <thead class="threadcls">
 
                 <tr class="trcls">
                     <th class="thcls">Date</th>
                     <th class="thcls">Initial Weight From Agent</th>
                     <th class="thcls">Initial Weight From Supervisor</th>
+                    <th class="thcls">Container Precentage</th>
+                    <th class="thcls">Water Precentage</th>
                     <th class="thcls">Net Weight</th>
                 </tr>
 
@@ -81,47 +84,12 @@
             <tbody>
 
 
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">10/6/2021</a></td>
-                    <td class="tdcls">50kg</td>
-                    <td class="tdcls">48kg</td>
-                    <td class="tdcls">56kg</td>
-                </tr>
-
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">10/1/2021</a></td>
-                    <td class="tdcls">55kg</td>
-                    <td class="tdcls">52kg</td>
-                    <td class="tdcls">56kg</td>
-                </tr>
-
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">09/24/2021</a></td>
-                    <td class="tdcls">40kg</td>
-                    <td class="tdcls">38kg</td>
-                    <td class="tdcls">56kg</td>
-                </tr>
-
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">09/17/2021</a></td>
-                    <td class="tdcls">47kg</td>
-                    <td class="tdcls">44kg</td>
-                    <td class="tdcls">56kg</td>
-                </tr>
-
-                <tr>
-                    <td class="tdcls"><a class="acls" href="#">09/9/2021</a></td>
-                    <td class="tdcls">53kg</td>
-                    <td class="tdcls">50kg</td>
-                    <td class="tdcls">56kg</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
 </div>
 
 
-<?php include 'js/landowner/dashboardjs.php'; ?>
+<?php include 'js/landowner/Monthly_Incomejs.php'; ?>
 <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>

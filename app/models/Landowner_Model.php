@@ -266,6 +266,17 @@ class landowner_Model extends Model
             return false;
         }
     }
+    //get last month tea qulity to dashboard card
+    function lastMonthTeaPrice()
+    {
+        $sql = "SELECT price FROM `monthly_tea_price` ORDER BY date DESC LIMIT 1";
+        $row = $this->db->runQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 
 
 
@@ -311,7 +322,8 @@ class landowner_Model extends Model
     function getMonthlyIncome()
     {
         $lid = $_SESSION['user_id'];
-        $query = "SELECT * FROM tea WHERE lid='{$lid}'";
+        $yearMonth = date('Y-m');
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' and date LIKE '%{$yearMonth}%'";
         $row = $this->db->runQuery($query);
         if ($row) {
             return $row;
@@ -320,10 +332,40 @@ class landowner_Model extends Model
         }
     }
 
-    //Delete requsests 
-    function requestTable()
+    function getSearchMonthDetails($date)
     {
-        $query = "SELECT * FROM request";
+        $lid = $_SESSION['user_id'];
+
+        $query = "SELECT * FROM tea WHERE lid='{$lid}' and date LIKE '%{$date}%'";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //Delete fertilizer requsests 
+    function requestTableFertilizer()
+    {
+        // $query = "SELECT * FROM request WHERE response_status = 'receive'";
+        $query = "SELECT request.request_id,request.request_date,request.request_type,fertilizer_request.amount
+        FROM request 
+        INNER JOIN fertilizer_request ON request.request_id=fertilizer_request.request_id  WHERE request.response_status = 'receive'";
+        $row = $this->db->selectQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    //Delete advance requsests 
+    function requestTableAdvance()
+    {
+        // $query = "SELECT * FROM request WHERE response_status = 'receive'";
+        $query = "SELECT request.request_id,request.request_date,request.request_type,advance_request.amount_rs 
+        FROM request 
+        INNER JOIN advance_request ON request.request_id=advance_request.request_id  WHERE request.response_status = 'receive'";
         $row = $this->db->selectQuery($query);
         if ($row) {
             return $row;
@@ -332,12 +374,81 @@ class landowner_Model extends Model
         }
     }
 
-    function deleteRequestRow()
+    function deleteRow()
     {
         $date = $_POST['date'];
-        $query = " DELETE FROM `monthly_tea_price` WHERE date='{$date}'";
+        $query = " DELETE FROM `request` WHERE request_id='{$date}'";
         $row = $this->db->insertQuery($query);
         $result = $this->db->deleteQuery($query);
         echo $result;
+    }
+
+    //Get Notification
+    function getNotification($data = [])
+    {
+        $notification_type = $data['notification_type'];
+        if (isset($data['notification_id'])) {
+            $notification_id = $data['notification_id'];
+            $query = "UPDATE notification 
+            SET read_unread=1 WHERE notification_id='$notification_id'";
+            $this->db->runQuery($query);
+        }
+        if ($notification_type == 'full') {
+            $query = "SELECT * FROM notification 
+            WHERE receiver_type='Landowner' ORDER BY read_unread ASC, notification_id DESC";
+        } else if ($notification_type == 'half') {
+            $query = "SELECT * FROM notification 
+            WHERE receiver_type='Landowner' AND read_unread=0 ORDER BY notification_id DESC";
+        }
+
+        $row = $this->db->runQuery($query);
+
+        if (isset($data['notification_id'])) {
+            if (count($row)) {
+                return $row;
+            } else {
+                return false;
+            }
+        }
+
+        $query = "UPDATE notification
+                SET seen_not_seen=1 WHERE seen_not_seen=0";
+        $this->db->runQuery($query);
+        $_SESSION['NotSeenCount'] = '';
+        echo '<p>' . $_SESSION["NotSeenCount"] . '</p>';
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    function updateReadNotification($notification_id)
+    {
+        $query = "UPDATE notification 
+        SET read_unread=1 WHERE notification_id='$notification_id'";
+        $this->db->runQuery($query);
+
+        $query = "SELECT * FROM notification 
+            WHERE receiver_type='Landowner' ORDER BY notification_id DESC";
+
+        $row = $this->db->runQuery($query);
+        if (count($row)) {
+            return $row;
+        }
+    }
+    function getNotificationCount()
+    {
+        $query = "SELECT * FROM notification 
+        WHERE receiver_type='Landowner' AND seen_not_seen=0";
+        $row = $this->db->runQuery($query);
+
+        if (count($row)) {
+            $_SESSION['NotSeenCount'] = count($row);
+            if (isset($_GET['getCount']))
+                echo $_SESSION['NotSeenCount'];
+        } else {
+            $_SESSION['NotSeenCount'] = 0;
+        }
     }
 }

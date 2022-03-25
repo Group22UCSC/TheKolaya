@@ -90,15 +90,19 @@
                     type: 'POST',
                     data: form,
                     success: function(responseText) {
+                        console.log(responseText)
                         if (responseText == 'Verified') {
                             holderName = "mobile number*";
                             removeError(0, holderName);
                             errors.mobile_number = '';
                         } else if (responseText == 'Registered') {
-                            errors.mobile_number = "Not Verified User";
+                            errors.mobile_number = "Not Verified User!";
                             showError(0, errors.mobile_number);
                         } else if (responseText == 'notRegistered') {
-                            errors.mobile_number = "Not Registered User";
+                            errors.mobile_number = "Not Registered User!";
+                            showError(0, errors.mobile_number);
+                        } else if (responseText == 'Deleted') {
+                            errors.mobile_number = "This user is deleted!";
                             showError(0, errors.mobile_number);
                         } else {
                             holderName = "mobile number*";

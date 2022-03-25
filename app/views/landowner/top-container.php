@@ -8,7 +8,9 @@
   <link rel="icon" href="<?php echo URL ?>vendors/images/thekolaya2.png" type="image/x-icon">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
+  <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style2.css">
   <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/9a8bd1ae44.js" crossorigin="anonymous"></script> -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -74,6 +76,15 @@
         </a>
         <span class="tooltip">Make Requests</span>
       </li>
+
+      <li>
+        <a href="<?php echo URL ?>landowner/viewEmergencyMessage">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <span class="links_name">Emergency Message</span>
+        </a>
+        <span class="tooltip">Emergency Message</span>
+      </li>
+
       <li>
         <a href="<?php echo URL ?>landowner/test">
           <i class="fas fa-vial fa-2x"></i>
@@ -104,75 +115,48 @@
         </div>
 
         <div class="navbar_right">
-          <div class="notifications">
-            <div id="bell" class="icon_wrap"><i class="far fa-bell"></i></div>
-
-            <div class="notification_dd">
-              <ul class="notification_ul">
+          <!-- Newly added -->
+          <div class="icons">
+            <div class="notification">
+              <div class="notBtn">
                 <?php
-                for ($i = 0; $i < 4; $i++) {
-                  echo '<li class="starbucks success">
-                                  <div class="notify_icon">
-                                    <span class="icon"><i class="fas fa-bell"></i></span>  
-                                  </div>
-                                  <div class="notify_data">
-                                      <div class="title">
-                                          Lorem, ipsum dolor.  
-                                      </div>
-                                      <div class="sub_title">
-                                        Lorem ipsum dolor sit amet consectetur.
-                                    </div>
-                                  </div>
-                                  <div class="notify_status">
-                                      <p>Success</p>  
-                                  </div>
-                                </li>';
+                $notificationCount = '';
+                if ($_SESSION['NotSeenCount'] >= 100) {
+                  $notificationCount = 99;
+                } else if ($_SESSION['NotSeenCount']) {
+                  $notificationCount = $_SESSION['NotSeenCount'];
                 }
                 ?>
-                <li class="show_all">
-                  <p class="link">Show All Activities</p>
-                </li>
-              </ul>
-            </div>
+                <!-- Using AJAX Update notification_count -->
+                <div class="notiNumber" id="notification_count"><?php echo $notificationCount; ?></div>
 
+                <i class="fas fa-bell notification_bell"></i>
+                <div class="notiBox">
+                  <!-- <div style="padding: 15px 0 15px 30px; font-size: 1.5rem; font-weight:bold; background-color:#27ae60;">
+                  Notifications
+                </div> -->
+                  <div class="notification_header">
+                    <div class="notification_top">Notifications</div>
+                    <button id="notification_all_btn">All</button>
+                    <button id="notification_unread_btn">Unread</button>
+                  </div>
+                  <div class="display">
+                    <div class="cont" id="get_nofication">
+                      <!-- Get Notification to here Using AJAX-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="noti-modal">
+                <div class="noti-modal-content">
+                  <span class="noti-modal-close-button">×</span>
+                  <div>Add Your Content Here !</div>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- ------------------------------ -->
           <?php include '../app/views/user/profile/navBarProfile.php'; ?>
         </div>
       </div>
-    </div>
-
-    <div class="popup">
-      <div class="shadow"></div>
-      <div class="inner_popup">
-        <div class="notification_dd">
-          <ul class="notification_ul">
-            <li class="title">
-              <p>All Notifications</p>
-              <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
-            </li>
-            <?php
-            for ($i = 0; $i < 6; $i++) {
-              echo '<li class="starbucks success">
-                                  <div class="notify_icon">
-                                    <span class="icon"><i class="fas fa-bell"></i></span>  
-                                  </div>
-                                  <div class="notify_data">
-                                      <div class="title">
-                                          Lorem, ipsum dolor.  
-                                      </div>
-                                      <div class="sub_title">
-                                        Lorem ipsum dolor sit amet consectetur.
-                                    </div>
-                                  </div>
-                                  <div class="notify_status">
-                                      <p>Success</p>  
-                                  </div>
-                                </li>';
-            }
-            ?>
-          </ul>
-        </div>
-      </div>
-    </div>
-
     </div>

@@ -60,6 +60,19 @@ class Login_Model extends Model
         }
     }
 
+    public function getUser($contact_number)
+    {
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
+
+        $row = $this->db->runQuery($query);
+
+        if (count($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
     //Login a user
     public function login($contact_number, $password)
     {
