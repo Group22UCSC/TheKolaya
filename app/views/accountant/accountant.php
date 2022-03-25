@@ -74,12 +74,20 @@
   if(!$data==0){  //check whethere there is no data in $data array
     $len = sizeof($data);
   }
+  else{
+    $len=0;
+  }
   if(!$data1==0){//check whethere there is no data in $data1 array
     $lenData1 = sizeof($data1);
   }
-  
+  else{
+    $lenData1=0;
+  }
   if(!$data2==0){//check whethere there is no data in $data1 array
    $lenData2 = sizeof($data2);
+  }
+  else{
+    $lenData2=0;
   }
   
   

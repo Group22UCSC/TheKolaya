@@ -29,7 +29,13 @@
 // print_r($data);
 // print_r($data1);
 $today = date("Y-m-d");
-$len = sizeof($data1);
+if($data1){
+    $len = sizeof($data1);
+}
+else{
+    $len=0;
+}
+
 // $month=date("m");
 // $date = $data1[0]['date'];
 // echo date('F, Y');

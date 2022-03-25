@@ -247,8 +247,7 @@
                     data: form,
                     success: function(data) {
                         // console.log('success');
-                        // console.log(form);
-                        // console.log('data' + data);
+                        
                         Swal.fire(
                             'Validated!',
                             'To login you have to verify your account',

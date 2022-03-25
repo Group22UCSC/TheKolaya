@@ -40,16 +40,15 @@
                 </tr>
            
                 <?php
-            $x = count($data);
+                if($data){
+                    $x = count($data);
+                }
+                else{
+                    $x=0;
+                }
+            
             for($i = 0; $i < $x; $i++) {
-            //   echo '<div class="table-row-2 get-id">
-            //           <div class="table-element">'.$data[$i]['request_date'].'</div>
-            //           <div class="table-element user-id">'.$data[$i]['lid'].'</div>
-            //           <div class="table-element">'.$data[$i]['name'].'</div>
-            //           <div class="table-element">'.$data[$i]['amount'].'</div>
-            //         </div>';
-            // auction.date,product.product_id, product.product_name, 
-            // auction.sold_amount, auction.sold_price,buyer.name
+            
                  echo'<tr>
                     <td class="tdcls">'.$data[$i]['date'].'</td>
                     <td class="tdcls">'.$data[$i]['product_id'].'</td>
