@@ -41,8 +41,8 @@ class Manager extends Controller
             $_SESSION['Oolang_Tea_stock'] = 0;
             $_SESSION['Sencha_Tea_stock'] = 0;
         }
-        
-        $this->view->render('manager/manager', $stock, $stock2);
+
+        $this->view->render('manager/manager');
     }
 
     public function viewAccount()
@@ -54,7 +54,7 @@ class Manager extends Controller
 
     public function viewTeaQuality()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // $_POST = filter_input_array(INPUT_POST, FIviewTeaSTRING);
             $teaQuality = $this->model->getTeaQuality($_POST['landowner_id']);
             if ($teaQuality) {
@@ -98,7 +98,6 @@ class Manager extends Controller
             $result = $this->model->teaQualityTable();
             $this->view->render('manager/viewTeaQuality', $result);
         }
-        
     }
 
 
@@ -160,18 +159,65 @@ class Manager extends Controller
         $this->view->render('user/profile/enterPassword');
     }
 
+    // view buyer
+    function viewbuyer()
+    {
+        $result = $this->model->buyerTable();
+        $this->view->render('manager/viewbuyer', $result);
+    }
 
-    //send emergency message to agent
+
+    // emergency assign route
+    function isAssigned()
+    {
+        if ($_SERVER['REQUEST_METHOD'] = "POST") {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $result = $this->model->isAssigned($_POST['route_number']);
+            echo json_encode($result);
+        }
+    }
+
+    function requestAssignRoute()
+    {
+        if ($_SERVER['REQUEST_METHOD'] = "POST") {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $this->model->requestAssignRoute($_POST['route_number']);
+        }
+    }
+
+    function getUnavailableAgentId($notification_id)
+    {
+        if (isLoggedIn()) {
+            return $this->model->getUnavailableAgentId($notification_id);
+        }
+    }
+
+    function makeAgentAvailable()
+    {
+        if ($_SERVER['REQUEST_METHOD'] = "POST") {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $agent_id = $this->getUnavailableAgentId($_POST['notification_id']);
+            $this->model->makeAgentAvailable($agent_id);
+            $this->model->confirmTheNotification($_POST['notification_id']);
+        }
+    }
+
+    function is_accepted()
+    {
+        $notificationIsAccepted = $this->model->isNotificationRejected($_POST['notification_id']);
+        $popup = [
+            'is_accepted' => $notificationIsAccepted[0][0]
+        ];
+        echo json_encode($popup);
+    }
     function emergency()
     {
-
         // $result = $this->model->emergencyTable();
         $this->view->render('manager/emergency');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
-                // 'message' => '',
                 'user_id' => '',
                 'route_number' => ''
             ];
@@ -188,16 +234,6 @@ class Manager extends Controller
         }
     }
 
-
-    // view buyer
-
-    public function viewbuyer()
-    {
-        $result = $this->model->buyerTable();
-        $this->view->render('manager/viewbuyer', $result);
-    }
-
-
     //Get Notification
     function setNotification($notification)
     {
@@ -213,6 +249,9 @@ class Manager extends Controller
                         break;
                     case 'emergency':
                         $imgPath = URL . '/vendors/images/notifications/emergency.jpg';
+                        break;
+                    case 'available_request':
+                        $imgPath = URL . '/vendors/images/notifications/available.jpg';
                         break;
                 }
 
@@ -246,7 +285,7 @@ class Manager extends Controller
         }
     }
 
-    public function getNotificationCount()
+    function getNotificationCount()
     {
         $notificationCount = $this->model->getNotificationCount($_GET);
         return $notificationCount;
