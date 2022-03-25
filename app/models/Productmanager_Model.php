@@ -368,4 +368,17 @@ class Productmanager_Model extends Model
             $_SESSION['NotSeenCount'] = 0;
         }
     }
+    function sendOutOfStockNoti($pid,$availableStock){
+        $message="Product $pid is running out of stock !. Available amount is : $availableStock Kg";
+        $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
+            VALUES(0, 0, '$message', 'ProductManager', 'warning', '" . $_SESSION['user_id'] . "')";
+        
+        $row = $this->db->insertQuery($notificationQuery);
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }

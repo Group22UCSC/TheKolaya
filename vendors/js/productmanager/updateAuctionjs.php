@@ -379,7 +379,7 @@
                 console.log("availableStock A:" + availableStock);
                 if (limit > availableStock) {
                     console.log("Limit 100 exceeded");
-                    sendOutOfStockNoti(pid);
+                    sendOutOfStockNoti(pid,availableStock);
                     // $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
                     check = 0;
                 } else {
@@ -391,31 +391,34 @@
         })
     }
 
-    function sendOutOfStockNoti(pid){
+    function sendOutOfStockNoti(pid,availableStock){
         var pid=pid;
-        var url = "http://localhost/Thekolaya/productmanager/getProductStock";
+
+        var url = "http://localhost/Thekolaya/productmanager/sendOutOfStockNoti";
         $.ajax({
             url: url,
-            type: "GET",
+            type: "POST",
             dataType: "JSON",
             // pass the pid to the controller and get the available stock for that product pid
             data: {
-                pid: pid
+                pid: pid,
+                availableStock:availableStock
             },
             success: function(data) {
-                availableStock = parseInt(data[0].stock); // from JSON object we get the
-                // availableStock as a string. So we need to convert it an int
-                console.log("amount A:" + amount);
-                console.log("availableStock A:" + availableStock);
-                if (amount > availableStock) {
-                    console.log("if");
-                    $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
-                    check = 0;
-                } else {
-                    console.log("else");
-                    check = 1;
-                }
-                console.log("FUNCTION" + data[0].stock);
+                console.log(data);
+                // availableStock = parseInt(data[0].stock); // from JSON object we get the
+                // // availableStock as a string. So we need to convert it an int
+                // console.log("amount A:" + amount);
+                // console.log("availableStock A:" + availableStock);
+                // if (amount > availableStock) {
+                //     console.log("if");
+                //     $('#amount').parent().after("<p class=\"error\">*Cannot Exceed the stock</p>")
+                //     check = 0;
+                // } else {
+                //     console.log("else");
+                //     check = 1;
+                // }
+                // console.log("FUNCTION" + data[0].stock);
             }
         })
     }
