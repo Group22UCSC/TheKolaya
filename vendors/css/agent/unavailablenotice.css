@@ -19,6 +19,8 @@
     color: #01830c;
     /* text-transform: uppercase; */
     text-align: center;
+    position:absolute;
+    transform:translate(30%, -80%)
   }
   .sad img{
     max-width: 20%;
@@ -28,7 +30,7 @@
     position:absolute;
     top:50%;
     left: 50%;
-    transform:translate(-50%, -100%);
+    transform:translate(-50%, -80%);
     
 
   }
@@ -56,7 +58,6 @@
     font-weight: 600;    
     /* margin: 0px 0px auto; */
     /* padding: 0px;     */
-    top:10%;
   }
   
       

@@ -523,7 +523,8 @@ class Agent_Model extends Model
     //storing the emergency message needed to be sent to the manager
     function storeEmergencyMessage($data = [])
     {
-        $message = $data['message'];
+        $route_no = $_SESSION['route'];        
+        $message = $data['message'].". My route number is  ".$route_no;
         $sender_id = $data['agent_id'];
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
