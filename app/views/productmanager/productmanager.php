@@ -133,7 +133,7 @@ for($i=0;$i<$len2;$i++){
       </div>
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Total Tea Stock(Kg)</div>
+          <div class="box-topic">Available Tea Stock(Kg)</div>
           <div class="number"><p id="totTeaStock"></p></div>
           <div class="indicator">
             <i class='bx bx-up-arrow-alt'></i>
