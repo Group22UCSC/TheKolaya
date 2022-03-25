@@ -345,6 +345,8 @@ class Accountant extends Controller{
             echo "Data was not passed to the controller";
         }
     }
+
+    
 }
 
     
