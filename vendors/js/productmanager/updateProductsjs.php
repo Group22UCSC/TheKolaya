@@ -169,9 +169,16 @@ $(document).ready(function() {
                         data[i].amount +
                         "</td>" +
                     
-                        "<td>" +
-                        // (date==date)? "Hi":"Bye";
+                        
+                        "<td class='actionCol'>" +
+                        // (thisYear==year && thisMonth==month && thisDate==date2)? "Delete":"No Action"; +
+
+                        "<button type='button' id='editbutton' onclick='deleteRow()' >" +
+                        "Delete" +
+                        "</button>" +
+
                         "</td>" +
+                        
                         "</tr>";
                     $("#updateProductsTable tbody").append(str);
                     // there in the table DO NOT DEFINE <tbody> MANULLY
