@@ -45,27 +45,40 @@ if (isset($_POST['Error'])) {
                     <th class="thcls">Initial Weight</th>
                     <td class="tdcls"><?php echo $data[0]['initial_weight_agent']; ?> Kg</td>
                 </tr>
-                <!-- there is no field called Container Count -->
-                <!-- <tr>
-          <th class="thcls">Container Count</th>
-          <td class="tdcls"><?php echo $data[0]['date']; ?></td>
-        </tr> -->
+
                 <tr>
                     <th class="thcls">Container Reduced Weight</th>
-                    <td class="tdcls"><?php echo $data[0]['container_precentage']; ?> Kg</td>
+                    <td class="tdcls"><?php if ($data[0]['container_precentage'] == NULL) {
+                                            echo "Data not Availabale Yet";
+                                        } else {
+                                            echo $data[0]['container_precentage'];
+                                        } ?> Kg</td>
                 </tr>
+
                 <tr>
                     <th class="thcls">Water Reduce Weight</th>
-                    <td class="tdcls"><?php echo $data[0]['water_precentage']; ?> Kg</td>
+                    <td class="tdcls"><?php if ($data[0]['water_precentage'] == NULL) {
+                                            echo "Data not Availabale Yet";
+                                        } else {
+                                            echo $data[0]['water_precentage'];
+                                        } ?> Kg</td>
                 </tr>
 
                 <tr>
                     <th class="thcls">Mature Reduced Weight</th>
-                    <td class="tdcls"><?php echo $data[0]['matured_precentage']; ?> Kg</td>
+                    <td class="tdcls"><?php if ($data[0]['container_precentage'] == NULL) {
+                                            echo "Data not Availabale Yet";
+                                        } else {
+                                            echo $data[0]['matured_precentage'];
+                                        } ?> Kg</td>
                 </tr>
                 <tr>
                     <th class="thcls">Net Weight</th>
-                    <td class="tdcls"><?php echo $data[0]['net_weight']; ?> Kg</td>
+                    <td class="tdcls"><?php if ($data[0]['container_precentage'] == NULL) {
+                                            echo "Data not Availabale Yet";
+                                        } else {
+                                            echo $data[0]['net_weight'];
+                                        } ?> Kg</td>
                 </tr>
 
 
