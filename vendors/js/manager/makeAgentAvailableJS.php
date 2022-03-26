@@ -72,11 +72,12 @@
             notificationId = notificationId.parentNode;
         }
         if ($(notificationId).hasClass('emergency')) {
-            notificationId = getNotificationId(notificationId, "emergency")
-
-            messageDiv = getNotificationMessage(notificationId, "emergency")
+            messageDiv = getNotificationMessage(notificationId, "emergency");
+            notificationId = getNotificationId(notificationId);
             var message = $(messageDiv).html();
             var routeNumber = getRouteFromNotification(message);
+
+            // console.log(routeNumber);
 
             $.ajax({
                 url: "<?php echo URL ?>Manager/isAssigned",
