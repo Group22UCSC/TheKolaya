@@ -19,7 +19,7 @@
 .middle{
  /* position: relative;*/
   
-  background-image: url("../../images/admin/22.jpg");
+  background-image: url("../../images/admin/35.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 90%;
@@ -78,7 +78,7 @@
     position: relative;
     width: 70%;
     height: 500px;
-    background-image: url("../../images/manager/2.jpg");
+    background-image: url("../../images/manager/35.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
