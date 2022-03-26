@@ -1,7 +1,6 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: sans-serif;
 }
 
 /* main grid */
@@ -26,24 +25,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
   grid-area: table-head;
   background-color: #ffff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   text-align: center;
   color: green;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
+  padding: 0.5rem;
 }
-.table-head form {
+/* .table-head form {
   display: flex;
-}
+} */
 .table-head input {
   margin: 5px 10px 5px 0;
   padding: 10px;
   background-color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 5px;
   font-size: 30px;
   font-weight: 100;
   font-family: Arial, Helvetica, sans-serif;
@@ -58,7 +58,7 @@
   background-color: dodgerblue;
   border: 1px solid #ddd;
   color: white;
-  border-radius: 12px;
+  border-radius: 5px;
 }
 
 /* table head */
@@ -67,7 +67,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
   grid-area: search;
   background-color: #ffff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
@@ -76,30 +76,33 @@
   font-weight: bold;
   font-size: 20px;
 }
-.search form {
+/* .search form {
   display: flex;
-}
+} */
 .search input {
   margin: 5px 10px 5px 0;
   padding: 10px;
   background-color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 5px;
   font-size: 30px;
   font-weight: 100;
   font-family: Arial, Helvetica, sans-serif;
 }
 .search input[type="month"] {
-  width: 80%;
-  border: 2px solid;
+  width: 25%;
+  border: 2px solid black;
+  height: 55%;
+  color: green;
 }
 
-.search input[type="submit"] {
+.monthSearch {
   padding: 10px 20px;
   background-color: dodgerblue;
   border: 1px solid #ddd;
   color: white;
-  border-radius: 12px;
+  border-radius: 5px;
+  height: 57%;
 }
 
 /* table*/
@@ -112,7 +115,7 @@
   justify-content: center;
   align-items: center;
   grid-area: chart;
-  border-radius: 8px;
+  border-radius: 5px;
   background-color: rgb(252, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
@@ -149,7 +152,7 @@
   justify-content: center;
   background: #fff;
   padding: 15px 14px;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 .box-topic {
@@ -172,7 +175,7 @@
   background: #8fdacb;
   line-height: 20px;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 5px;
   color: #fff;
   font-size: 20px;
   margin-right: 5px;
@@ -192,7 +195,7 @@
   line-height: 50px;
   text-align: center;
   color: #66b0ff;
-  border-radius: 12px;
+  border-radius: 5px;
   margin: -15px 0 0 6px;
 }
 .box .cart.two {
@@ -210,7 +213,7 @@
   background-color: rgb(255, 83, 16);
   border: 5px solid;
   color: white;
-  border-radius: 12px;
+  border-radius: 5px;
   width: 40%;
   text-decoration: none;
   cursor: pointer;
@@ -228,7 +231,7 @@
   color: #4f546c;
   font-size: 0.9rem;
   background-color: #f9fbff;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   animation: fadeIn 1.6s;
   -webkit-animation: fadeIn 1.6s;
   -moz-animation: fadeIn 1.6;
@@ -258,6 +261,7 @@
 
 .teapricetable td {
   text-align: center;
+  padding: 0.7rem;
 }
 .tdcls {
   padding: 1rem 2rem;
@@ -269,7 +273,7 @@
 }
 
 .status {
-  border-radius: 0.2rem;
+  border-radius: 5rem;
   background-color: red;
   padding: 0.2rem 1rem;
   text-align: center;
