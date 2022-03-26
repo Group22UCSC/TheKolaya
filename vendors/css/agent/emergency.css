@@ -1,30 +1,29 @@
 /* Google Font Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-.topic{      
-      text-align: center;      
-      font-size: 30px;      
-      background-color: rgb(211, 243, 190);
-      color: rgba(1, 131, 12,1);
+.topic {
+  text-align: center;
+  font-size: 30px;
+  background-color: rgb(211, 243, 190);
+  color: rgba(1, 131, 12, 1);
 }
 
-.page{
+.page {
+  position: relative;
   max-width: 100%;
   width: 50%;
   background: white;
-  margin:100px auto;
+  margin: 80px auto;
   border-radius: 25px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
   padding: 50px;
   animation: emergency-load 500ms ease-in;
-    animation-fill-mode: forwards;
-    transform: translateX(-100px);
-    opacity: 0;
-    
-  
+  animation-fill-mode: forwards;
+  transform: translateX(-100px);
+  opacity: 0;
 }
 
-.page .title{
+.page .title {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 25px;
@@ -32,25 +31,24 @@
   text-transform: uppercase;
   text-align: center;
 }
-.page .form{
-  width: 100%; 
-  
+.page .form {
+  width: 100%;
 }
-.page .form .inputfield{
+.page .form .inputfield {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
-.page .form .inputfield label{
-   width: 200px;
-   color: #01830c;
-   margin-right: 10px;
+.page .form .inputfield label {
+  width: 200px;
+  color: #01830c;
+  margin-right: 10px;
   font-size: 20px;
 }
 
 .page .form .inputfield .input,
-.page .form .inputfield .textarea{
+.page .form .inputfield .textarea {
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
@@ -60,165 +58,155 @@
   transition: all 0.3s ease;
 }
 
-.page .form .inputfield .textarea{
+.page .form .inputfield .textarea {
   width: 100%;
   height: 125px;
   resize: none;
 }
 
-
-
 .page .form .inputfield .input:focus,
 .page .form .inputfield .textarea:focus,
-.page .form .inputfield .custom_select select:focus{
+.page .form .inputfield .custom_select select:focus {
   border: 1px solid #01830c;
 }
 
-
-
-
-.page .form .inputfield .btn, .back{
+.page .form .inputfield .btn,
+.back {
   width: 50%;
   padding: 8px 10px;
   margin-top: 20px;
   margin-left: auto;
-  font-size: 15px; 
+  font-size: 15px;
   border: 0px;
-  background:  #01830c;
+  background: #01830c;
   color: #fff;
   cursor: pointer;
   border-radius: 3px;
   outline: none;
 }
 
-.page .form .inputfield .btn:hover{
+.page .form .inputfield .btn:hover {
   background: #01830c73;
-  color:#01830c;
+  color: #01830c;
   cursor: pointer;
   transform: scale(1.03);
   z-index: 5;
 }
 
-.back{
-  
-  margin-right: 30px;  
-  background:  #ff3300;  
+.back {
+  margin-right: 30px;
+  background: #ff3300;
 }
 
-.back:hover{
+.back:hover {
   background-color: #ffc2b3;
   color: #ff3300;
   cursor: pointer;
   transform: scale(1.03);
   z-index: 5;
 }
-.page .form .inputfield:last-child{
+.page .form .inputfield:last-child {
   margin-bottom: 0;
 }
 
 @keyframes emergency-load {
-  0%{
+  0% {
     transform: translateX(-100px);
     opacity: 0;
   }
 
-  100%{
+  100% {
     transform: translateX(0px);
     opacity: 1;
   }
 }
 /* responsive */
 
-@media screen and (max-width: 1246px){
-  .page{
-    margin:25px auto;
+@media screen and (max-width: 1246px) {
+  .page {
+    margin: 25px auto;
     width: 60%;
-    padding:20px;
-    height:80%;
+    padding: 20px;
+    height: 80%;
   }
 
-  .page .form .inputfield .btn{
+  .page .form .inputfield .btn {
     width: 30%;
   }
- 
 }
 
-@media screen and (max-width: 780px){
-  .topic{  
-      font-size: 26px;      
-     
-} 
+@media screen and (max-width: 780px) {
+  .topic {
+    font-size: 26px;
+  }
 
-.page .title{
-  font-size: 20px;
-}
-.page .form .inputfield label{
-  margin-right: 15px;
- font-size: 18px;
-}
-
+  .page .title {
+    font-size: 20px;
+  }
+  .page .form .inputfield label {
+    margin-right: 15px;
+    font-size: 18px;
+  }
 }
 
-@media screen and (max-width: 510px){
-  .page{
+@media screen and (max-width: 510px) {
+  .page {
     width: 80%;
   }
-  .topic{  
-    font-size: 24px;      
-   
-} 
-
-.page .title{
-font-size: 18px;
-}
-.page .form .inputfield label{
-margin-right: 15px;
-font-size: 15px;
-}
-
-.page .form .inputfield .btn{
-  width: 40%;
-  font-size: 12px;
-}
-}
-
-@media screen and (max-width: 390px){ 
-  .topic{  
-    font-size: 20px;         
-} 
-
-.page{
-  width: 85%;
-  padding: 10px;
-}
-.page .title{
-  font-weight: 500;
-  font-size: 19px;
+  .topic {
+    font-size: 24px;
   }
 
-  .page .form .inputfield .btn{
-    margin-top: 0px;
-   margin-left: 130px;
+  .page .title {
+    font-size: 18px;
+  }
+  .page .form .inputfield label {
+    margin-right: 15px;
+    font-size: 15px;
+  }
+
+  .page .form .inputfield .btn {
+    width: 40%;
+    font-size: 12px;
   }
 }
 
-@media screen and (max-width: 325px){ 
-  .page{
+@media screen and (max-width: 390px) {
+  .topic {
+    font-size: 20px;
+  }
+
+  .page {
     width: 85%;
     padding: 10px;
   }
-  .page .form .inputfield label{
+  .page .title {
+    font-weight: 500;
+    font-size: 19px;
+  }
+
+  .page .form .inputfield .btn {
+    margin-top: 0px;
+    margin-left: 130px;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .page {
+    width: 85%;
+    padding: 10px;
+  }
+  .page .form .inputfield label {
     margin-right: 10px;
     font-size: 12px;
-    }
-    
-    .page .form .inputfield textarea{
-      margin-right: 10px;
-      font-size: 10px;
-      }
-      
+  }
+
+  .page .form .inputfield textarea {
+    margin-right: 10px;
+    font-size: 10px;
+  }
 }
-  /* @media (max-width:420px) {
+/* @media (max-width:420px) {
     .topic{
       height:75px;
       font-size: 26px;
