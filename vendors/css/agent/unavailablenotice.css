@@ -4,6 +4,7 @@
     position:relative;
     background: white;
     margin:100px auto;
+    height:80%;
    border-radius: 25px;
     box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
     padding: 50px;
@@ -14,13 +15,13 @@
   .page1 .note{
     font-size: 24px;
     font-weight: 600;
-    /* margin-bottom: 25px; */
+    margin-top: 25px;
     /* margin: 50px 10px auto; */
     color: #01830c;
     /* text-transform: uppercase; */
     text-align: center;
     position:absolute;
-    transform:translate(30%, -80%)
+    /* transform:translate(30%, -80%) */
   }
   .sad img{
     max-width: 20%;
@@ -30,7 +31,7 @@
     position:absolute;
     top:50%;
     left: 50%;
-    transform:translate(-50%, -80%);
+    transform:translate(-50%, -60%);
     
 
   }
