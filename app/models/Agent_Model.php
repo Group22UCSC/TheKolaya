@@ -354,7 +354,7 @@ class Agent_Model extends Model
 
         $query = "INSERT INTO tea(lid, initial_weight_agent, agent_id)         
                     VALUES ('$landowner_id', '$weight','$emp_id')";
-        $next_query = "UPDATE landowner SET tea_availability = '0' WHERE user_id = '$landowner_id'";
+        $next_query = "UPDATE landowner SET tea_availability = '0',  no_of_estimated_containers = '0' WHERE user_id = '$landowner_id'";
         $this->db->runQuery($query);
         $this->db->runQuery($next_query);
     }
