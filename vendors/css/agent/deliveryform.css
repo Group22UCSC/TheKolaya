@@ -214,8 +214,9 @@
 
 @media (max-width: 380px) {
   .page {
-    height: 60%;
+    height: 70%;
     padding: 5px;
+    width:60%;
   }
 
   .page .title {
@@ -226,12 +227,12 @@
     font-size: 10px;
     width: 100px;
     height: 30px;
-    margin: 10px auto;
+    margin: 20px auto 10px auto;
   }
 
-  .page .form .inputfield label {
+  /* .page .form .inputfield label {
     margin: 5px auto;
-  }
+  } */
 
   .page .form .inputfield.terms {
     flex-direction: row;
@@ -243,38 +244,42 @@
   }  
   
   .page .form .inputfield input{
-    height:20px;
+    height:25px;
     margin-top: 5px;
+    padding:0px;
   }
+  .page .form .inputfield label {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
 }
 
 @media (max-width: 340px) {
   .page {
     margin-left: 30px;
+    height: 70%;
   }
 
   .page .title {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .page .form .inputfield {    
     font-size: 10px;
     width: 100px;
-    height: 50px;
+    height: 30px;
     margin: 20px auto;
   }
 
   .page .form .inputfield label {
+    margin-top: 5px;
     margin-bottom: 5px;
   }
 
   .page .form .inputfield .btn,
   .back {
     font-size: 12px;
-    margin-left: 10px;
-  }
-
-  .page .form #btnset {
-    margin-left: 2px;
+    margin-left: 20px;
   }
 }

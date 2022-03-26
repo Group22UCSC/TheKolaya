@@ -17,7 +17,7 @@
    </head>
 <body>
 <?php include 'topContainer.php';?>
-<div class="topic">Send Emergency Message </div>
+<div class="topic">Send Emergency Message</div>
 <div class="page">
         <div class="title">
            Emergency Message
@@ -25,12 +25,12 @@
         <div class="form">
         <form class="emergencyForm" id="emergencyForm">
             <div class="inputfield">
-                <label>Route No</label>
+                <label>Route Number</label>
                 <input type="text" id="route_no" name="route_no" value="<?php echo $_SESSION['route']?>" class="input" readonly>
             </div>  
             <div class="inputfield">
                 <label>Message</label>
-               <textarea class="input" rows=5 columns=50 id="message" name="message" readonly></textarea>
+               <textarea class="input" rows=5 columns=50 id="message" name="message" readonly>Unable to visit landowners today, due to an emergency.</textarea>
             </div>        
             <div class="inputfield">
             <input type="submit" value="Send" class="btn" id="link">

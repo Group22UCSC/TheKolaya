@@ -14,8 +14,8 @@
     //   html:'<div>Line0<br />Line1<br /></div>',
     html: '<pre>' + str + '</pre>',
       //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
-      confirmButtonColor: '#FF2400',
-      cancelButtonColor: '#4DD101',
+      confirmButtonColor: '#4DD101',
+      cancelButtonColor: '#FF2400',
       confirmButtonText: 'Delete!',
       showCancelButton: true
       }).then((result) => {
