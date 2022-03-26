@@ -17,7 +17,7 @@ class Agent extends Controller
         $isreject = $this->model->isReject();
         // take the available landowners count to collect tea and to deliver requests to be displayed on the dashboard 
         if ($result[0]['availability'] == 1) {
-            $_SESSION['availability']=1;
+            $_SESSION['availability'] = 1;
             if ($isreject[0]['is_rejected'] == -1 || $isreject[0]['is_rejected']  == 1) {
                 $available_res = $this->model->availablelistTable();
                 $fert_res = $this->model->fertilizerdeliveryListTable();
@@ -38,21 +38,19 @@ class Agent extends Controller
                     $this->model->setAssignDefault();
                 }
             }
-           $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res); // 
+            $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res); // 
         } else if ($result[0]['availability'] == 0) {
-            if($is_requested[0]['availability_requested'] == 1){
+            if ($is_requested[0]['availability_requested'] == 1) {
+                $this->view->showPage('agent/availabilityOn');
+            } else {
                 $this->view->showPage('agent/availabilityOn');
             }
-            else{
-                $this->view->showPage('agent/availabilityOn');
-            }
-            
-           
         }
     }
 
     //request availability from manager
-    function requestManager(){
+    function requestManager()
+    {
         $this->model->requestManager();
         $this->view->showPage('agent/availabilityOn');
     }
@@ -92,7 +90,7 @@ class Agent extends Controller
                 $this->model->setAssignDefault();
             }
         }
-         $this->view->render('Agent/availableList', $available_res);
+        $this->view->render('Agent/availableList', $available_res);
     }
 
     //add agent initial tea weight by agent
@@ -155,7 +153,7 @@ class Agent extends Controller
             $this->msg_data['message'] = trim($_POST['message']);
             $this->msg_data['agent_id'] = $_SESSION['user_id'];
             $this->model->storeEmergencyMessage($this->msg_data);
-            $_SESSION['availability']=0;
+            $_SESSION['availability'] = 0;
             print_r($this->msg_data);
             $this->view->showPage('Agent/EmergencyMessage');
         }
@@ -182,11 +180,12 @@ class Agent extends Controller
         $this->view->showPage('Agent/previousRequestUpdates');
     }
 
-    function checkLandowner() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if($this->model->checkLandowner($_POST)){
+    function checkLandowner()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($this->model->checkLandowner($_POST)) {
                 echo 'true';
-            }else {
+            } else {
                 echo 'false';
             }
         }
@@ -269,14 +268,11 @@ class Agent extends Controller
             $this->pre_tea_data['lid'] = trim($_POST['searchlid']);
 
             $result = $this->model->searchTeaUpdates($this->pre_tea_data);
-            if($result == 0){
+            if ($result == 0) {
                 $this->view->showPage('agent/noSearchUpdates');
-            }
-            else{
+            } else {
                 $this->view->render('Agent/preTeaUpdatesResults', $result);
             }
-           
-           
         }
     }
 
@@ -298,21 +294,19 @@ class Agent extends Controller
 
             if ($this->pre_request_data['rtype'] == "Fertilizer") {
                 $result = $this->model->searchFertilizerUpdates($this->pre_request_data);
-                if($result == 0){
+                if ($result == 0) {
                     $this->view->showPage('agent/noSearchUpdates');
-                }
-                else{
+                } else {
                     $this->view->render('Agent/preFertilizerRequestsResults', $result);
-                }               
+                }
                 //print_r($result);
             } else if ($this->pre_request_data['rtype'] == "Advance") {
                 $result = $this->model->searchAdvanceUpdates($this->pre_request_data);
-                if($result == 0){
+                if ($result == 0) {
                     $this->view->showPage('agent/noSearchUpdates');
-                }
-                else{
+                } else {
                     $this->view->render('Agent/preAdvanceRequestsResults', $result);
-                }                           
+                }
                 // print_r($result);
             }
         }
