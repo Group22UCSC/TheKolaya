@@ -62,14 +62,14 @@
        <span class="tooltip">View Account</span>
      </li>
       
-      <li>
+    <!--   <li>
       <a href="<?php echo URL?>manager/emergency">
       <i class="fab fa-atlassian"></i>
          <span class="links_name">Assign Routes</span>
        </a>
        <span class="tooltip">Assign Routes</span>
      </li>
-     
+      -->
       <li>
       <a href="<?php echo URL?>manager/viewbuyer">
       <i class="fas fa-user-tie fa-2x"></i>

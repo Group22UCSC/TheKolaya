@@ -11,10 +11,8 @@
                 // console.log(data);
                 var income = data[0].final_payment;
                 var advance = data[0].advance_expenses;
-                document.getElementById("income").innerHTML = income;
-                document.getElementById("advance").innerHTML = advance;
-
-
+                document.getElementById("income").innerHTML = "Rs " + income;
+                document.getElementById("advance").innerHTML = "Rs " + advance;
             }
         })
 

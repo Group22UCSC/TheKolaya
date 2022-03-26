@@ -221,8 +221,8 @@
         }
         var xValues = last_n_months;
         var yValues = [val01, val02, val03, val04, val05, val06];
-        var barColors = ["#42f5a7", "#ffc233", "#e05260", "#66b0ff", "#ffc233",'#2BD47D'];
-        
+        // var barColors = ["#42f5a7", "#ffc233", "#e05260", "#66b0ff", "#ffc233",'#2BD47D'];
+        var barColors = ["#2BD47D", "#ffc233", "#e05260", "#66b0ff", "#3a5ec0"];
 
         new Chart("myChart1", {
           type: "bar",

@@ -60,7 +60,11 @@ button {
 }
 
 #ok {
-  margin-left: 150px;
+  margin-top: 10px;
+  display: inline-block;
+  position: relative;  
+  left: 50%;  
+  transform: translate(-50%, -50%);  
 }
 
 button:hover {
@@ -90,6 +94,15 @@ button:hover {
     margin-top: 10px;
     margin-left: 10px;
   }
+
+  #ok {
+    /* margin-left: 150px; */
+    margin-top: 10px;
+    display: inline-block;
+    position: relative;  
+    left: 50%;  
+    transform: translate(-50%, -50%);  
+  }
 }
 
 @media screen and (max-width: 1246px) {
@@ -99,18 +112,105 @@ button:hover {
     width: 80px;
     height: 40px;
   }
+
+  #ok {
+    /* margin-left: 150px; */
+    margin-top: 10px;
+    display: inline-block;
+    position: relative;  
+    left: 50%;  
+    transform: translate(-50%, -50%);  
+  }
 }
 
 @media screen and (max-width: 780px) {
   .topic {
     font-size: 26px;
   }
+
+  .resultform{
+    width:50%;
+  }
+
+  .resultform label {
+    color: #01830c;
+    font-size: 15px;
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  .resultform input {
+    border: none;
+    font-size: 15px;
+  }
+
+  .resultform input{
+    border: none;
+    font-size: 15px;   
+  }
+  #agentid, #lid, #rtype, #status, #ramount{
+    width:170px;
+  }
+
+  #ok {
+    /* margin-left: 150px; */
+    margin-top: 10px;
+    display: inline-block;
+    position: relative;  
+    left: 50%;  
+    transform: translate(-50%, -50%);  
+  }
+
+
 }
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 745px) {
+  .resultform{
+    width:400px;
+  }
+  .resultform label {    
+    font-size: 15px;
+  }
+
+  .resultform input{   
+    font-size: 15px;   
+  }
+
+  #rdate, #cdate, #ddate{
+    width:180px;
+}
+#ok {
+  /* margin-left: 150px; */
+  font-size: 12px; 
+}
+}
+@media screen and (max-width: 500px) {
+  .resultform{
+    width:300px;
+  }
+
+  .resultform label {    
+    font-size: 12px;
+  }
+
+  .resultform input{   
+    font-size: 12px;   
+  }
 }
 
 @media screen and (max-width: 390px) {
+
+  .resultform{
+    width:220px;
+  }
+  .resultform label {    
+    font-size: 10px;
+  }
+
+  .resultform input{   
+    font-size: 10px;       
+  }
+
   button {
     padding: 4px 15px;
     font-size: 12px;
@@ -121,37 +221,16 @@ button:hover {
   .topic {
     font-size: 24px;
   }
+  #rdate, #cdate, #ddate{
+    width:220px;
 }
 
-/* @media(max-width:400px){
-    .topic{
-      height:75px;
-      font-size: 26px;
-    }
-
-    .resultform{
-      width:90%;    
-      padding:10px;
-      margin: 10px auto;
-    }
-
-    .resultform label{
-        font-size: 12px;
-        width: 100px;
-        margin-right: 10px;
-    }
-
-    .resultform input{
-      font-size: 12px;     
-    }
-
-    .resultform #cdate, .resultform #rdate, .resultform #date{
-      background: #fff;
-    }
-
-    button{
-      font-size: 18px;
-      width:100px; 
-     height: 50px;
-    }
-  } */
+  #ok {
+    /* margin-left: 150px; */
+    margin-top: 10px;
+    display: inline-block;
+    position: relative;  
+    left: 50%;  
+    transform: translate(-50%, -50%);  
+  }
+}
