@@ -48,33 +48,33 @@ if (isset($_POST['Error'])) {
 
                 <tr>
                     <th class="thcls">Container Reduced Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['container_precentage'] == NULL) {
+                    <td class="tdcls"><?php if ($data[0]['container_percentage'] == NULL) {
                                             echo "Data not Availabale Yet";
                                         } else {
-                                            echo $data[0]['container_precentage'];
+                                            echo $data[0]['container_percentage'];
                                         } ?> Kg</td>
                 </tr>
 
                 <tr>
                     <th class="thcls">Water Reduce Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['water_precentage'] == NULL) {
+                    <td class="tdcls"><?php if ($data[0]['water_percentage'] == NULL) {
                                             echo "Data not Availabale Yet";
                                         } else {
-                                            echo $data[0]['water_precentage'];
+                                            echo $data[0]['water_percentage'];
                                         } ?> Kg</td>
                 </tr>
 
                 <tr>
                     <th class="thcls">Mature Reduced Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['container_precentage'] == NULL) {
+                    <td class="tdcls"><?php if ($data[0]['matured_percentag'] == NULL) {
                                             echo "Data not Availabale Yet";
                                         } else {
-                                            echo $data[0]['matured_precentage'];
+                                            echo $data[0]['matured_percentage'];
                                         } ?> Kg</td>
                 </tr>
                 <tr>
                     <th class="thcls">Net Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['container_precentage'] == NULL) {
+                    <td class="tdcls"><?php if ($data[0]['net_weight'] == NULL) {
                                             echo "Data not Availabale Yet";
                                         } else {
                                             echo $data[0]['net_weight'];

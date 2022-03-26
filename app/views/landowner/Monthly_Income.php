@@ -1,11 +1,5 @@
 <?php include 'top-container.php'; ?>
-<?php
-if (isset($_POST['Error'])) {
-    echo '<script type="text/javascript">',
-    'dateNotFound();',
-    '</script>';
-}
-?>
+
 
 <body onload="getTable();lastMonthIncomeAndAdvance();lastMonthTeaPrice();"></body>
 
