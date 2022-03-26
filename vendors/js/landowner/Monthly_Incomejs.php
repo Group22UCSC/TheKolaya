@@ -132,7 +132,7 @@
 
             },
             success: function(data) {
-                console.log(data);
+                // console.log(data);
                 var len = data.length;
                 var action = "";
 
@@ -195,6 +195,14 @@
 
     }
 
+    function dateNotFound() {
+        alert("df");
+        Swal.fire({
+            icon: 'error',
+            title: 'Data Not Found',
+            text: 'Data not found for the searched date'
+        })
+    }
 
 
 

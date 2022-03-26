@@ -53,11 +53,11 @@
 
                 <div class="inputfield" id="Fertilizer">
                     <label for="qnty">Quantity(kg)</label>
-                    <input type="text" id="qnty" class="input" name="fertilizer_amount">
+                    <input type="number" id="qnty" class="input" name="fertilizer_amount">
                 </div>
                 <div class="inputfield" id="Advance">
                     <label for="amount">Amount(Rs)</label>
-                    <input type="text" id="amount" class="input" name="advance_amount">
+                    <input type="number" id="amount" class="input" name="advance_amount">
                 </div>
                 <div class="inputfield">
                     <input type="submit" value="Request" class="btn" name="confirmReq" id="requestBtn">
