@@ -78,14 +78,6 @@
       </li>
 
       <li>
-        <a href="<?php echo URL ?>landowner/viewEmergencyMessage">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-          <span class="links_name">Emergency Message</span>
-        </a>
-        <span class="tooltip">Emergency Message</span>
-      </li>
-
-      <li>
         <a href="<?php echo URL ?>landowner/test">
           <i class="fas fa-vial fa-2x"></i>
           <span class="links_name">Test</span>
