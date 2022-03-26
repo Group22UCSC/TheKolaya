@@ -6,239 +6,242 @@
   font-family: "Poppins", sans-serif;
 }
 
-body{
+body {
   background-image: url("../../images/agent/dashboard.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
- 
 }
 
-.toggle-div{
-    max-width: 50%;
-    width: 50%;
-    background: white;
-    margin:150px auto;
-   border-radius: 25px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
-    padding: 10px;       
+.toggle-div {
+  max-width: 50%;
+  width: 50%;
+  background: white;
+  margin: 150px auto;
+  border-radius: 25px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+  padding: 10px;
+}
+
+.toggle-div .note {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top:0px;
+  padding: 20px;
+  color: #01830c;
+  text-align: center;
+}
+
+button {
+  border: none;
+  background-color: rgba(1, 131, 12, 1);
+  color: white;
+  padding: 10px auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  width: 120px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.backbtn:hover {
+  cursor: pointer;
+  color: rgba(1, 131, 12, 1);
+  background-color: #cdfed1;
+}
+
+.requestbtn {
+  background-color: #ff3300;
+  height: 60px;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.requestbtn:hover {
+  background-color: #ffc2b3;
+  color: #ff3300;
+  cursor: pointer;
+}
+
+/* responsive */
+@media screen and (max-width: 1600px) {
+  .sad img {
+    max-width: 20%;
+    height: auto;    
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    margin-top: 100px;
+    transform: translate(-50%, -50%);
   }
 
-  .toggle-div .note{
+  .sad{
+   height: 180px;
+  }
+}
+
+@media screen and (max-width: 1246px) {
+  .toggle-div {
+    margin: 200px auto;
+    height: 50%;
+  }
+  .toggle-div .note {
     font-size: 24px;
     font-weight: 600;
     margin: 5px 10px auto;
     padding: 20px;
-    color: #01830c;    
+    color: #01830c;
     text-align: center;
   }
 
-  button{
-    border: none;
-    background-color: rgba(1, 131, 12,1);
-    color: white;
+  .sad img {
+    max-width: 20%;
+    height: auto;
+    /* margin-left: 180px;
+    margin-right: auto; */
+  }
+
+  .sad{
+    height:140px;
+  }
+}
+
+@media screen and (max-width: 850px) { 
+  .toggle-div .note {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  
+  .sad{
+    height:0px;
+  }
+  .sad img{
+    max-width:30%;
+  }
+
+  .toggle-div .note {
+    font-size: 20px;
+    margin-top: 120px;
+    margin-bottom: 20px;
+  }
+
+  button {
     padding: 10px auto;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;   
-    border-radius: 12px;
-    transition-duration: 0.4s; 
-    width:120px; 
-    height: 50px;  
+    font-size: 18px;
+    width: 100px;
+    height: 40px;
     margin-left: 10px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 530px) {
+  /* .sad img {
+    margin-left: 80px;
+    margin-right: auto;
     margin-top: 20px;
+  } */
+  .toggle-div{
+    margin-top:100px;
+  }
+  .toggle-div .note {
+    font-size: 18px;
+    margin-top: 120px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .toggle-div{
+    margin-top:100px;
   }
 
-  .backbtn:hover{
-    cursor: pointer;
-    color: rgba(1, 131, 12,1);
-    background-color:#cdfed1;  
+  .toggle-div .note {
+    font-size: 18px;
+    margin: 0px;
   }
 
-  .requestbtn{
-    background-color: #ff3300;
-    height:60px;
-    margin-left: 250px;
+  .toggle-div {
+    max-width: 90%;
+    width: 60%;
+  }
+  .sad img {
+    max-width: 30%;
+    /* margin-left: 65px;
+    margin-right: auto;
+    margin-top: 20px; */
   }
 
-  .requestbtn:hover{
-    background-color: #ffc2b3;
-    color: #ff3300;
-    cursor: pointer;    
+  button {
+    padding: 10px auto;
+    font-size: 15px;
+    width: 80px;
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 10px;
   }
-  
-  
-  /* responsive */
-  @media screen and (max-width: 1600px){
-    .sad img{
-      max-width: 20%;
-      height: auto;
-      margin-left:250px;
-      margin-right: auto;
-  
-    }    
-  }
+}
 
-  @media screen and (max-width: 1246px){
-    .toggle-div{      
-      margin:100px auto;   
-      height:50%;      
-    }
-    .toggle-div .note{
-      font-size: 20px;
-      font-weight: 500;    
-      margin: 5px 10px auto;
-      padding: 20px;
-      color: #01830c;    
-      text-align: center;
-    }
-    
-      .sad img{
-        max-width: 20%;
-        height: auto;
-        margin-left:180px;
-        margin-right: auto;
-    
-      }    
+@media screen and (max-width: 430px) {
+  .toggle-div {
+    margin: 110px auto;
+    max-width: 70%;
+    height: 50%;
   }
-  @media screen and (max-width: 985px){
-    .sad img{     
-      margin-left:180px;
-      margin-right: auto;
-  
-    }    
+  .toggle-div .note {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 20px;
+    margin-top:150px;
+  }
+  .sad img {
+    max-width: 30%;
+    /* margin-left: 50px;
+    margin-right: auto;
+    margin-top: 20px; */
   }
 
-  @media screen and (max-width: 850px){
-    .sad img{     
-      margin-left:150px;
-      margin-right: auto;
-  
-    }  
-    .toggle-div .note{
-      font-size: 22px;
-    }  
+  button {
+    padding: 10px auto;
+    font-size: 12px;
+    width: 70px;
+    height: 30px;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 321px) {
+  .toggle-div {
+    margin: 100px auto;
+    max-width: 90%;
+    height: 40%;
+  }
+  .toggle-div .note {
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10px;
+  }
+  .sad img {
+    max-width: 40%;
+    /* margin-left: 35px;
+    margin-right: auto;
+    margin-top: 20px; */
   }
 
-  @media screen and (max-width: 780px){
-    .sad img{     
-      margin-left:120px;
-      margin-right: auto;
-      margin-top: 10px;
-  
-    }  
-    .toggle-div .note{
-      font-size: 20px;
-      margin: 0px;
-    }  
-
-    button{      
-      padding: 10px auto;     
-      font-size: 18px;              
-      width:100px; 
-      height: 40px;  
-      margin-left: 10px;
-      margin-top: 10px;
-    }
+  button {
+    padding: 10px auto;
+    font-size: 12px;
+    width: 70px;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
   }
-  @media screen and (max-width: 530px){
-    .sad img{     
-      margin-left:80px;
-      margin-right: auto;
-      margin-top: 20px;
-  
-    }  
-    .toggle-div .note{
-      font-size: 18px;
-      margin: 0px;
-    }  
-    
-  }
-
-  @media screen and (max-width: 470px){
-    .toggle-div .note{
-      font-size: 18px;
-      margin: 0px;
-    } 
-
-    .toggle-div{
-      max-width: 90%;
-      width: 60%;            
-    }
-    .sad img{
-      max-width: 30%;    
-      margin-left:65px;
-      margin-right: auto;
-      margin-top: 20px;  
-    }  
-
-    button{      
-      padding: 10px auto;     
-      font-size: 15px;              
-      width:80px; 
-      height: 30px;  
-      margin-left: 40px;
-      margin-top: 10px;
-    } 
-    
-  }
-
-  @media screen and (max-width: 420px){
-    .toggle-div{      
-      margin:110px auto;  
-      max-width: 70%; 
-      height:50%;      
-    }
-    .toggle-div .note{
-      font-size: 15px;
-      font-weight: 400;          
-      padding: 20px;     
-    }
-    .sad img{   
-      max-width: 30%; 
-      margin-left:50px;
-      margin-right: auto;
-      margin-top: 20px;  
-    }  
-
-    button{      
-      padding: 10px auto;     
-      font-size: 12px;              
-      width:70px; 
-      height: 30px;  
-      margin-left: 30px;
-      margin-top: 10px;
-    } 
-    
-  }
-  @media screen and (max-width: 321px){
-    .toggle-div{      
-      margin:100px auto;  
-      max-width: 90%; 
-      height:40%;      
-    }  
-    .toggle-div .note{
-      font-size: 12px;
-      font-weight: 400;          
-      padding: 10px;     
-    }  
-    .sad img{   
-      max-width: 40%; 
-      margin-left:35px;
-      margin-right: auto;
-      margin-top: 20px;  
-    }  
-
-    button{      
-      padding: 10px auto;     
-      font-size: 12px;              
-      width:70px; 
-      height: 30px;  
-      margin-left: 20px;
-      margin-top: 10px;
-    } 
-    
-  }
-  
+}

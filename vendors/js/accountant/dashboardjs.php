@@ -67,7 +67,7 @@
             dataType: "JSON",
             // pass the pid to the controller and get the available stock for that product pid
             success: function(data) {
-                console.log(data);
+                // console.log("EXPENSES"+data[2].price_for_amount);
                 var len = data.length;
                 for (var i = 0; i < len; i++) {
                     if(data[i].price_for_amount){ // adding fertilizer expenses
@@ -75,6 +75,7 @@
                     }
                     if(data[i].final_payment){ // adding payments 
                         tot=tot+parseFloat(data[i].final_payment);
+                        
                     }
                     //tot=tot+(data[i].sold_amount*data[i].sold_price)
                     

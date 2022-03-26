@@ -71,7 +71,7 @@
       $(inputField[1]).keypress(function() {
         removeError(1);
       });
-      
+
       $("#changePasswordSubmit").click(function(event) {
         if (inputField[0].value == "") {
           errors[0] = "*This must be filled !";
@@ -84,7 +84,7 @@
         if (inputField[1].value == "") {
           errors[1] = "*This must be filled !";
           showError(errors[1], event, 1);
-        }else if (inputField[0].value != inputField[1].value) {
+        }else if (inputField[1].value != inputField[1].value) {
           errors[1] = "*Password confirmation is wrong !";
           showError(errors[1], event, 1);
         }

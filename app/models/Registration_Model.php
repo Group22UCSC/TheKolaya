@@ -16,12 +16,12 @@ class Registration_Model extends Model {
         $password = $data['password'];
         $verify = $data['verify'];
         $user_type = $data['user_type'];
-        // $landowner_type = null;
+        $landowner_type = null;
         
-        // if($user_type == 'direct_landowner' || $user_type == 'indirect_landowner') {
-        //     $landowner_type = $user_type;
-        //     $user_type = 'Land_Owner';
-        // }
+        if($user_type == 'direct_landowner' || $user_type == 'indirect_landowner') {
+            $landowner_type = $user_type;
+            $user_type = 'Land_Owner';
+        }
         
         if($user_type && $verify != 0) {
             $query = "UPDATE user SET  name='$name', address='$address', verify='$verify', password='$password' WHERE contact_number='$contact_number'";
@@ -89,6 +89,12 @@ class Registration_Model extends Model {
         }
     }
 
+    function getLandownerType($user_id) {
+        $query = "SELECT landowner_type FROM landowner WHERE user_id='$user_id'";
+        $landowner_type = $this->db->runQuery($query);
+
+        return $landowner_type;
+    }
     public function checkUserByUserType($data) {
         $user_type = $data['user_type'];
         $contact_number = $data['contact_number'];
