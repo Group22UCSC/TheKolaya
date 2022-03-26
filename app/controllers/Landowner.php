@@ -324,31 +324,4 @@ class Landowner extends Controller
             }
         }
     }
-
-    //load emergency message page
-    function viewEmergencyMessage()
-    {
-        $this->getNotificationCount(); //This for get Notification count
-        $this->view->showPage('landowner/EmergencyMessage');
-    }
-
-    //send emergency message to manager
-    function sendEmergencyMessage()
-    {
-        $this->getNotificationCount(); //This for get Notification count
-        $msg_data = [
-            'message' => '',
-            'agent_id' => ''
-        ];
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->msg_data['message'] = trim($_POST['message']);
-            $this->msg_data['agent_id'] = $_SESSION['user_id'];
-            $this->model->storeEmergencyMessage($this->msg_data);
-            $_SESSION['availability'] = 0;
-            print_r($this->msg_data);
-            $this->view->showPage('landowner/EmergencyMessage');
-        }
-    }
 }
