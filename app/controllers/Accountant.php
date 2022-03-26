@@ -188,6 +188,8 @@ class Accountant extends Controller{
     function expenses30(){ // 
         $result1 = $this->model->instockExp30();//fertilizer expenses
         $result2 = $this->model->paymentExp30();//payment expenses
+        
+
         $arr=array_merge($result1,$result2);
         // print_r($tblResult);
         $json_arr=json_encode($arr);
