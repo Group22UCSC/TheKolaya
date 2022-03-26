@@ -70,12 +70,20 @@ class Landowner extends Controller
 
     function getSearchMonthDetails()
     {
-        $date = $_POST['date'];
-        // print_r("dfs");
-        $result = $this->model->getSearchMonthDetails($date);
-        $json_arr = json_encode($result);
-        //print_r($json_arr);
-        echo $json_arr;
+        if (!empty($_POST['date'])) {
+            $date = $_POST['date'];
+            $result = $this->model->getSearchMonthDetails($date);
+            if ($result) {
+                $json_arr = json_encode($result);
+                echo $json_arr;
+            } else {
+
+                print_r("ds");
+                $_POST['Error'] = "You haven't supply tea that month";
+            }
+        } else {
+            $_POST['Error'] = "Enter a valid date";
+        }
     }
 
 

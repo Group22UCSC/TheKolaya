@@ -37,7 +37,7 @@
         <div class="number" id="totMass"></div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
-          <span class="text">Up from previous month</span>
+          <span class="text">Last month</span>
         </div>
       </div>
       <i class='bx bxs-cart-add cart two'></i>
@@ -51,7 +51,7 @@
         <div class="number" id="advance">2,876</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
-          <span class="text">Up from yesterday</span>
+          <span class="text">This month</span>
         </div>
       </div>
       <i class='bx bx-cart cart three'></i>
@@ -65,8 +65,7 @@
         <div class="number" id="rating"></div>
         <div class="indicator">
           <i class='bx bx-down-arrow-alt down'></i>
-          <span class="text">Down from
-            Previous month</span>
+          <span class="text">From five stars</span>
         </div>
       </div>
       <i class='bx bxs-cart-download cart four'></i>

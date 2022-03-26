@@ -13,8 +13,6 @@
                 var advance = data[0].advance_expenses;
                 document.getElementById("income").innerHTML = income + " Rs";
                 document.getElementById("advance").innerHTML = advance + " Rs";
-
-
             }
         })
 
