@@ -55,15 +55,6 @@ class Login extends Controller
                             echo 'notRegistered';
                         }
                     }
-                    // print_r($userVerify);
-
-                    // if ($this->model->isVerifiedUser($data['contact_number'])) {
-                    //     echo 'Verified';
-                    // } else if ($this->model->isRegisteredUser($data['contact_number'])) {
-                    //     echo 'Registered';
-                    // } else {
-                    //     echo 'notRegistered';
-                    // }
                     break;
                 case 'login':
                     $loggedInUser = $this->model->login($data['contact_number'], $data['password']);

@@ -67,6 +67,14 @@ class Registration extends Controller
         }
     }
 
+    function getLandownerType() {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $landownerType = $this->model->getLandownerType($_POST['user_id']);
+
+            echo json_encode($landownerType);
+        }
+    }
     // function checkOtp()
     // {
     //     $verifyOTP = "";
