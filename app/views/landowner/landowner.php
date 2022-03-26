@@ -5,7 +5,7 @@
 
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
 
 <body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
 
@@ -19,10 +19,11 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Last Month Income</div>
-        <div class="number" id="income"></div>
+        <div class="number" id="income">
+        </div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
-          <span class="text">Up from previous month</span>
+          <span class="text">Last month</span>
         </div>
       </div>
       <i class='bx bxs-cart-add cart one'></i>
