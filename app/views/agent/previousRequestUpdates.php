@@ -34,7 +34,7 @@
     <form class="resultform" id="resultform">
       <div class="inputfield">
         <label class="resultlbl">Agent ID</label>
-        <input type="text" id="lid" size="6" readonly>
+        <input type="text" id="agentid" size="6" readonly>
       </div>
       <div class="inputfield">
         <label class="resultlbl">Landowner ID</label>
@@ -50,11 +50,15 @@
       </div>
       <div class="inputfield">
         <label class="resultlbl">Delivered Date</label>
-        <input type="date" id="cdate" name="date" size="6" readonly>
+        <input type="date" id="ddate" name="date" size="6" readonly>
       </div>
       <div class="inputfield">
         <label class="resultlbl">Request Type</label>
         <input type="text" id="rtype" size="6" readonly>
+      </div>
+      <div class="inputfield">
+        <label class="resultlbl">Status</label>
+        <input type="text" id="status" size="6" readonly>
       </div>
       <div class="inputfield">
         <label class="resultlbl">Amount</label>
