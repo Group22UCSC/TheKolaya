@@ -35,7 +35,15 @@ if (isset($_POST['Error'])) {
         <div class="table-container">
 
             <table class="teapricetable">
-
+                <?php if($data==false){ ?>
+                    <tr>
+                    <th class="thcls"></th>
+                    <td class="tdcls" style="color: red; font-size:larger">You haven't supply tea yet </td>
+                </tr>
+                <?php 
+                } 
+                else{
+            ?>
                 <tr>
                     <th class="thcls">Date</th>
                     <td class="tdcls"><?php echo $data[0]['date']; ?></td>
@@ -66,7 +74,7 @@ if (isset($_POST['Error'])) {
 
                 <tr>
                     <th class="thcls">Mature Reduced Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['matured_percentag'] == NULL) {
+                    <td class="tdcls"><?php if ($data[0]['matured_percentage'] == NULL) {
                                             echo "Data not Availabale Yet";
                                         } else {
                                             echo $data[0]['matured_percentage'];
@@ -80,7 +88,9 @@ if (isset($_POST['Error'])) {
                                             echo $data[0]['net_weight'];
                                         } ?> Kg</td>
                 </tr>
-
+                                    <?php } ?>
+                                        
+                                    
 
 
             </table>
