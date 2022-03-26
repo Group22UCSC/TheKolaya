@@ -135,7 +135,7 @@
 
             },
             success: function(data) {
-                // console.log(data);
+                console.log(data);
                 var len = data.length;
                 var action = "";
 
@@ -156,38 +156,41 @@
                     var str =
                         "<tr class='row'>" +
 
-                        "<td>" +
+                        "<td  class='thclsDate'>" +
                         data[i][0] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].initial_weight_agent +
+                        data[i][2] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].initial_weight_sup +
+                        data[i][3] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].container_percentage +
+                        data[i][5] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].water_percentage +
+                        data[i][4] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].matured_percentage +
+                        data[i][6] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].net_weight +
+                        data[i][7] +
                         "</td>" +
 
                         "</tr>";
                     $("#teapricetable tbody").append(str);
                     // there in the table DO NOT DEFINE <tbody> MANULLY
                     //IF SO IT WILL SHOW THE RESULTS TWICE
+                }
+                if (data == "not_found") {
+                    dateNotFound();
                 }
 
 
@@ -201,6 +204,7 @@
         }
 
     }
+
 
     function dateNotFound() {
         alert("df");
