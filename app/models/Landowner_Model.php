@@ -348,10 +348,11 @@ class landowner_Model extends Model
     //Delete fertilizer requsests 
     function requestTableFertilizer()
     {
+        $lid = $_SESSION['user_id'];
         // $query = "SELECT * FROM request WHERE response_status = 'receive'";
         $query = "SELECT request.request_id,request.request_date,request.request_type,fertilizer_request.amount
         FROM request 
-        INNER JOIN fertilizer_request ON request.request_id=fertilizer_request.request_id  WHERE request.response_status = 'receive'";
+        INNER JOIN fertilizer_request ON request.request_id=fertilizer_request.request_id  WHERE request.response_status = 'receive' AND request.lid='{$lid}'";
         $row = $this->db->selectQuery($query);
         if ($row) {
             return $row;
@@ -362,10 +363,11 @@ class landowner_Model extends Model
     //Delete advance requsests 
     function requestTableAdvance()
     {
+        $lid = $_SESSION['user_id'];
         // $query = "SELECT * FROM request WHERE response_status = 'receive'";
         $query = "SELECT request.request_id,request.request_date,request.request_type,advance_request.amount_rs 
         FROM request 
-        INNER JOIN advance_request ON request.request_id=advance_request.request_id  WHERE request.response_status = 'receive'";
+        INNER JOIN advance_request ON request.request_id=advance_request.request_id  WHERE request.response_status = 'receive' AND request.lid='{$lid}'";
         $row = $this->db->selectQuery($query);
         if ($row) {
             return $row;
