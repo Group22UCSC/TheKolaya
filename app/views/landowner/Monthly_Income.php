@@ -1,11 +1,17 @@
 <?php include 'top-container.php'; ?>
-
+<?php
+if (isset($_POST['Error'])) {
+    echo '<script type="text/javascript">',
+    'dateNotFound();',
+    '</script>';
+}
+?>
 
 <body onload="getTable();lastMonthIncomeAndAdvance();lastMonthTeaPrice();"></body>
 
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Monthly_income.css">
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
 
 <!-- <body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body> -->
 
