@@ -41,7 +41,7 @@ class Agent extends Controller
            $this->view->render3('agent/zero_dashboard', $available_res, $fert_res, $adv_res); // 
         } else if ($result[0]['availability'] == 0) {
             if($is_requested[0]['availability_requested'] == 1){
-                $this->view->showPage('agent/availabilityRequested');
+                $this->view->showPage('agent/availabilityOn');
             }
             else{
                 $this->view->showPage('agent/availabilityOn');
@@ -54,7 +54,7 @@ class Agent extends Controller
     //request availability from manager
     function requestManager(){
         $this->model->requestManager();
-        $this->view->showPage('agent/availabilityRequested');
+        $this->view->showPage('agent/availabilityOn');
     }
 
     //make the agent available after toggle 
