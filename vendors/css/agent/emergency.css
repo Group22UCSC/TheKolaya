@@ -212,6 +212,11 @@ font-size: 15px;
     font-size: 12px;
     }
     
+    .page .form .inputfield textarea{
+      margin-right: 10px;
+      font-size: 10px;
+      }
+      
 }
   /* @media (max-width:420px) {
     .topic{

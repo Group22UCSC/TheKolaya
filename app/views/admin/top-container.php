@@ -79,7 +79,7 @@
       
           <div class="navbar_right">
             <div class="notifications">
-              <div id="bell" class="icon_wrap"><i class="far fa-bell"></i></div>
+             <!--  <div id="bell" class="icon_wrap"><i class="far fa-bell"></i></div> -->
               
               <div class="notification_dd">
                   <ul class="notification_ul">

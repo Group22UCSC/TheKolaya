@@ -74,30 +74,33 @@
                     var str =
                         "<tr class='row'>" +
 
-                        "<td>" +
+                        "<td  class='thclsDate'>" +
                         data[i][0] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].initial_weight_agent +
+                        data[i][2] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].initial_weight_sup +
+                        data[i][3] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].container_precentage +
+                        data[i][5] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].water_precentage +
+                        data[i][4] +
                         "</td>" +
 
                         "<td>" +
-                        data[i].net_weight +
+                        data[i][6] +
                         "</td>" +
 
+                        "<td>" +
+                        data[i][7] +
+                        "</td>" +
                         "</tr>";
                     $("#teapricetable tbody").append(str);
                     // there in the table DO NOT DEFINE <tbody> MANULLY
@@ -166,11 +169,15 @@
                         "</td>" +
 
                         "<td>" +
-                        data[i].container_precentage +
+                        data[i].container_percentage +
                         "</td>" +
 
                         "<td>" +
-                        data[i].water_precentage +
+                        data[i].water_percentage +
+                        "</td>" +
+
+                        "<td>" +
+                        data[i].matured_percentage +
                         "</td>" +
 
                         "<td>" +
