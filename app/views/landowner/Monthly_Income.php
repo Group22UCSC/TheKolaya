@@ -47,11 +47,10 @@
     <!-- search area -->
 
     <div class="search">
-        <!-- <form action="/action_page.php" method="post"> -->
-        <input type="month" id="selectedMonth" name="selectedMonth">
-        <!-- <input type="button" value="search" onclick="searchByDate()"> -->
-        <button onclick="searchByDate()">search</button>
-        <!-- </form> -->
+
+        <input type="month" id="selectedMonth" name="selectedMonth" min="2021-09" value="2022-03">
+        <button class="monthSearch" onclick="searchByDate()">search</button>
+
     </div>
 
 
@@ -65,12 +64,9 @@
 
     <!-- table for monthly details  -->
 
-    <div class="table tableplace">
-
-
+    <div class="table tableplace" id="pricetbl">
         <table class="teapricetable" id="teapricetable">
             <thead class="threadcls">
-
                 <tr class="trcls">
                     <th class="thcls">Date</th>
                     <th class="thcls">Initial Weight From Agent</th>
@@ -79,14 +75,14 @@
                     <th class="thcls">Water Precentage</th>
                     <th class="thcls">Net Weight</th>
                 </tr>
-
             </thead>
             <tbody>
-
 
             </tbody>
         </table>
     </div>
+
+
 </div>
 
 
