@@ -165,10 +165,10 @@
             <input type="password" class="input" name="confirm_password" id="confirm_password"  placeholder="<?php (!empty($data1['confirm_password_err'])) ? print $data1['confirm_password_err'] : print ''; ?>" required>
          </div>
 
-       <div class="inputfield">
+      <!--  <div class="inputfield">
           <a>If you want to update the account</a>
       
-       </div> 
+       </div>  -->
 
       
       <div class="last">

@@ -124,10 +124,10 @@
                </div>
 
 
-               <div class="inputfield">
+               <!-- <div class="inputfield">
                   <a>If you want to delete the account</a>
                </div> 
-
+ -->
       
                <div class="last">
                   <div class="b">
