@@ -68,6 +68,16 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
+    function getSearchMonthDetails()
+    {
+        $date = $_POST['date'];
+        // print_r("dfs");
+        $result = $this->model->getSearchMonthDetails($date);
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
 
     function Daily_Net_Weight()
     {
@@ -187,6 +197,15 @@ class Landowner extends Controller
         echo $json_arr;
     }
 
+
+    //last month tea price for mothly details 
+    function lastMonthTeaPrice()
+    {
+        $result = $this->model->lastMonthTeaPrice();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
 
 
     function abc()

@@ -1,7 +1,7 @@
 <?php include 'top-container.php'; ?>
 
 
-<body onload="getTable()"></body>
+<body onload="getTable();lastMonthIncomeAndAdvance();lastMonthTeaPrice();"></body>
 
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Monthly_income.css">
@@ -33,7 +33,7 @@
         <div class="box">
             <div class="right-side">
                 <div class="box-topic">Last Month Tea Price</div>
-                <div class="number" id="totMass"></div>
+                <div class="number" id="teaPrice"></div>
                 <div class="indicator">
                     <i class='bx bx-up-arrow-alt'></i>
                     <span class="text">Up from previous month</span>
@@ -47,44 +47,42 @@
     <!-- search area -->
 
     <div class="search">
-        <form action="/action_page.php">
-            <input type="month" id="selectedMonth" name="selectedMonth">
-            <input type="button" value="search" onclick="searchByDate()">
-        </form>
+
+        <input type="month" id="selectedMonth" name="selectedMonth" min="2021-09" value="2022-03">
+        <button class="monthSearch" onclick="searchByDate()">search</button>
+
     </div>
 
 
 
     <!-- table head -->
     <div class=" table-head">
-        <h1>JANUARY MONTH DETAILS</h1>
+        <h1 id="month"></h1>
     </div>
     <!-- neeeded -->
 
 
     <!-- table for monthly details  -->
 
-    <div class="table tableplace">
-
-
+    <div class="table tableplace" id="pricetbl">
         <table class="teapricetable" id="teapricetable">
             <thead class="threadcls">
-
                 <tr class="trcls">
                     <th class="thcls">Date</th>
                     <th class="thcls">Initial Weight From Agent</th>
                     <th class="thcls">Initial Weight From Supervisor</th>
-                    <th class="thcls">Initial Weight From Supervisor</th>
+                    <th class="thcls">Container Precentage</th>
+                    <th class="thcls">Water Precentage</th>
                     <th class="thcls">Net Weight</th>
                 </tr>
-
             </thead>
             <tbody>
-
 
             </tbody>
         </table>
     </div>
+
+
 </div>
 
 

@@ -26,11 +26,11 @@
         <form class="emergencyForm" id="emergencyForm">
             <div class="inputfield">
                 <label>Route No</label>
-                <input type="text" id="route_no" name="route_no" value="<?php echo $_SESSION['route']?>" class="input" required>
+                <input type="text" id="route_no" name="route_no" value="<?php echo $_SESSION['route']?>" class="input" readonly>
             </div>  
             <div class="inputfield">
                 <label>Message</label>
-               <textarea class="input" rows=5 columns=50 id="message" name="message" placeholder="Type your message here."></textarea>
+               <textarea class="input" rows=5 columns=50 id="message" name="message" readonly></textarea>
             </div>        
             <div class="inputfield">
             <input type="submit" value="Send" class="btn" id="link">

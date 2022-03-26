@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style.css">
   <link rel="stylesheet" href="<?php echo URL ?>vendors/css/nav-style2.css">
   <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/9a8bd1ae44.js" crossorigin="anonymous"></script> -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -75,6 +76,7 @@
         </a>
         <span class="tooltip">Make Requests</span>
       </li>
+
       <li>
         <a href="<?php echo URL ?>landowner/test">
           <i class="fas fa-vial fa-2x"></i>

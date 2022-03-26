@@ -1,5 +1,5 @@
 <?php include 'top-container.php'; ?>
-<h2>Fertilizer</h2>
+
 
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/deleteFertilizerRequests.css">
 
@@ -7,6 +7,9 @@
 
 </body>
 <!-- **************   Table container   *********-->
+<div class="top-container">
+    <p>Delete Fertilizer Requests</p>
+</div>
 
 <div class="table-container" id="pricetbl">
     <div class="table-section">
@@ -24,6 +27,12 @@
 
         </table>
     </div>
+
+</div>
+
+<div class="backButton">
+    <a href="<?php echo URL ?>landowner/Make_Requests"> <button><i class="fas fa-hand-point-left"></i> Make Requests</button>
+
 </div>
 
 <?php include 'js/landowner/deleteFertilizerRequestsjs.php'; ?>
