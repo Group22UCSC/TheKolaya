@@ -211,36 +211,6 @@ class Manager_Model extends Model
         }
     }
 
-    // emergency 
-    function storeEmergencyMessage($data = [])
-    {
-        // $message = $data['message'];
-        $message = "You are assigned to route number " .  $data['route_number'];
-        $sender_id = $data['user_id'];
-       
-
-        $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
-         receiver_type, notification_type,sender_id) VALUES
-         ('0','0','$message','Agent','emergency','$sender_id')";
-        //have not added receiver_id and receive_datetime,Check into that.
-        $this->db->runQuery($query);
-        //add the query to make the agent unavailable  
-                                    //----------------Pusher API------------------//
-                            $options = array(
-                                'cluster' => 'ap1',
-                                'useTLS' => true
-                            );
-                            $pusher = new Pusher\Pusher(
-                                'ef64da0120ca27fe19a3',
-                                'd5033393ff3b228540f7',
-                                '1290222',
-                                $options
-                            );
-
-                            $pusher->trigger('my-channel', 'Agent_notification', $data);
-                            //-------------------------------------------//       
-    }
-
     function emergencyTable()
     {
         $query = "SELECT agent.emp_id, 
@@ -270,6 +240,108 @@ class Manager_Model extends Model
         } else {
             return false;
         }
+    }
+
+    // emergency assign route
+    function isAssigned($route_number)
+    {
+        $query = "SELECT * FROM agent WHERE assigned_routes='$route_number'";
+        $row = $this->db->runQuery($query);
+
+        if (count($row)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function requestAssignRoute($route_number)
+    {
+        $message = "Please Accept if you can collect the tea leaves of route number " .  $route_number;
+        $sender_id = $_SESSION['user_id'];
+
+        $query = "DELETE FROM notification 
+        WHERE message = '$message'";
+
+        $this->db->runQuery($query);
+
+        $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
+         receiver_type, notification_type,sender_id) VALUES
+         ('0','0','$message','Agent','emergency','$sender_id')";
+        //have not added receiver_id and receive_datetime,Check into that.
+        $this->db->runQuery($query);
+        $data = "";
+        //add the query to make the agent unavailable  
+        //----------------Pusher API------------------//
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'ef64da0120ca27fe19a3',
+            'd5033393ff3b228540f7',
+            '1290222',
+            $options
+        );
+
+        $pusher->trigger('my-channel', 'Agent_notification', $data);
+    }
+
+    function getUnavailableAgentId($notification_id)
+    {
+        $query = "SELECT * FROM notification WHERE notification_id='$notification_id'";
+        $row = $this->db->runQuery($query);
+
+        if (count($row)) {
+            return $row[0]['sender_id'];
+        }
+    }
+    function makeAgentAvailable($agent_id)
+    {
+        $query = "UPDATE agent SET availability='1', availability_requested='0' 
+        WHERE emp_id='$agent_id'";
+        $this->db->runQuery($query);
+    }
+
+    function confirmTheNotification($notification_id)
+    {
+        $query = "UPDATE notification SET is_accepted=1 WHERE notification_id='$notification_id'";
+        $this->db->runQuery($query);
+    }
+
+    function isNotificationRejected($notification_id)
+    {
+        $query = "SELECT is_accepted FROM notification WHERE notification_id = '$notification_id'";
+        $row = $this->db->runQuery($query);
+        return $row;
+    }
+    function storeEmergencyMessage($data = [])
+    {
+        // $message = $data['message'];
+        $message = "You are assigned to route number " .  $data['route_number'];
+        $sender_id = $data['user_id'];
+
+
+        $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
+         receiver_type, notification_type,sender_id) VALUES
+         ('0','0','$message','Agent','emergency','$sender_id')";
+        //have not added receiver_id and receive_datetime,Check into that.
+        $this->db->runQuery($query);
+        //add the query to make the agent unavailable  
+        //----------------Pusher API------------------//
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'ef64da0120ca27fe19a3',
+            'd5033393ff3b228540f7',
+            '1290222',
+            $options
+        );
+
+        $pusher->trigger('my-channel', 'Agent_notification', $data);
+        //-------------------------------------------//       
     }
 
     //Get Notification

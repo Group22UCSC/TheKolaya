@@ -59,7 +59,7 @@
                     <th class="thcls">Pid</th>
                     <th class="thcls">Product Name</th>
                     <th class="thcls">Amount(Kg)</th>
-
+                    <th class="thcls">Action</th>
                 </tr>
             
             

@@ -277,4 +277,25 @@ function sendOutOfStockNoti(){
             
         }
     }
+
+    //delete prdouct details from product table
+    function deleteProductDetail(){
+        if(($_SERVER['REQUEST_METHOD']=='POST')){
+            $pid=$_POST['pid'];
+            $date=$_POST['date'];
+            $result = $this->model->deleteProductDetail($pid,$date);
+            if($result==true){
+            
+                $_POST['success']=1;
+                
+            }
+            else{
+                
+                $_POST['success']=0;
+            }
+        }
+        else{
+            
+        }
+    }
 }
