@@ -482,7 +482,9 @@ class Agent_Model extends Model
         $date = $data['date'];
         $lid = $data['lid'];
 
-        $query = "SELECT request.request_id,DATE(request.request_date),DATE(request.confirm_date), request.request_type, request.lid, 
+        $query = "SELECT request.request_id,DATE(request.request_date),
+        DATE(request.confirm_date), request.request_type, request.lid, 
+        request.response_status,
         fertilizer_request.amount, fertilizer_request.agent_id,fertilizer_request.sup_id,
         DATE(fertilizer_request.date_delivered)
          FROM request 
@@ -504,7 +506,8 @@ class Agent_Model extends Model
         $date = $data['date'];
         $lid = $data['lid'];
 
-        $query = "SELECT request.request_id,DATE(request.request_date),DATE(request.confirm_date), request.request_type, request.lid, 
+        $query = "SELECT request.request_id,DATE(request.request_date),
+        DATE(request.confirm_date), request.request_type, request.lid, request.response_status,
         advance_request.amount_rs, advance_request.agent_id,advance_request.acc_id,
         DATE(advance_request.payment_day)
          FROM request 
