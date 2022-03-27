@@ -16,12 +16,12 @@ class Registration_Model extends Model {
         $password = $data['password'];
         $verify = $data['verify'];
         $user_type = $data['user_type'];
-        // $landowner_type = null;
+        $landowner_type = null;
         
-        // if($user_type == 'direct_landowner' || $user_type == 'indirect_landowner') {
-        //     $landowner_type = $user_type;
-        //     $user_type = 'Land_Owner';
-        // }
+        if($user_type == 'direct_landowner' || $user_type == 'indirect_landowner') {
+            $landowner_type = $user_type;
+            $user_type = 'Land_Owner';
+        }
         
         if($user_type && $verify != 0) {
             $query = "UPDATE user SET  name='$name', address='$address', verify='$verify', password='$password' WHERE contact_number='$contact_number'";
@@ -29,7 +29,9 @@ class Registration_Model extends Model {
                 case 'accountant' :
                     $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
                     break;
-                
+                case 'agent' :
+                    $queryUser = "UPDATE agent SET availability=1 WHERE emp_id='$user_id'";
+                    break;
                 case 'admin' :
                     $queryUser = "INSERT INTO admin(emp_id) values('$user_id')";
                     break;
@@ -48,7 +50,7 @@ class Registration_Model extends Model {
                     
             }
             $this->db->runQuery($query);
-            if(!($user_type=='agent' || $user_type=='Land_Owner')){
+            if(!($user_type=='Land_Owner')){
                 $this->db->runQuery($queryUser);
             }
             
@@ -89,6 +91,12 @@ class Registration_Model extends Model {
         }
     }
 
+    function getLandownerType($user_id) {
+        $query = "SELECT landowner_type FROM landowner WHERE user_id='$user_id'";
+        $landowner_type = $this->db->runQuery($query);
+
+        return $landowner_type;
+    }
     public function checkUserByUserType($data) {
         $user_type = $data['user_type'];
         $contact_number = $data['contact_number'];

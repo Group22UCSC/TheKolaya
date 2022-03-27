@@ -74,7 +74,7 @@ class Login_Model extends Model
     }
 
     //Login a user
-    public function login($contact_number, $password)
+    function login($contact_number, $password)
     {
         $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
 

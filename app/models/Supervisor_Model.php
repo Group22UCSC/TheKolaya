@@ -50,7 +50,8 @@ class Supervisor_Model extends Model
         $query = "SELECT DATE(request_date) As request_date FROM request 
                 WHERE lid = '$landowner_id' 
                 AND request_type = 'fertilizer' 
-                AND response_status = 'accept'";
+                AND (response_status = 'accept'
+                OR response_status = 'decline')";
         $row = $this->db->runQuery($query);
         if (count($row)) {
             return $row;
@@ -69,7 +70,7 @@ class Supervisor_Model extends Model
             for ($i = 0; $i < count($row); $i++) {
                 $monthlyTeaAmount += $row[$i]['net_weight'];
             }
-            return '<b>'.$monthlyTeaAmount / count($row) .'Kg for '. date('F', strtotime("2001-$month-1")) . '</b>';
+            return '<b>' . $monthlyTeaAmount / count($row) . 'Kg for ' . date('F', strtotime("2001-$month-1")) . '</b>';
         } else {
             return '<b style="color:red;">No data found for ' . date('F', strtotime("2001-$month-1")) . '</b>';
         }
@@ -209,6 +210,21 @@ class Supervisor_Model extends Model
             $this->db->runQuery($query);
             $this->db->runQuery($notificationQuery);
             $this->db->commit();
+            //----------------Pusher API------------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $data['message'] = 'hello world';
+            $pusher->trigger('my-channel', 'Landowner_notification', $data);
+            //-------------------------------------------//
         } catch (PDOException $e) {
             $this->db->rollback();
             throw $e;

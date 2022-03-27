@@ -147,7 +147,7 @@ class Manager_Model extends Model
 
     function availableListTable()
     {
-        $query = "SELECT *FROM user WHERE verify=1";
+        $query = "SELECT *FROM user WHERE verify=1 AND is_delete=0";
         $row = $this->db->runQuery($query);
 
         if ($row) {

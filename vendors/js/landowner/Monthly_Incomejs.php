@@ -190,7 +190,12 @@
                     //IF SO IT WILL SHOW THE RESULTS TWICE
                 }
                 if (data == "not_found") {
+                    clearTable();
                     dateNotFound();
+                    getTable();
+                    console.log(getFullYear());
+                    getElementById('selectedMonth').innerHTML = d.getFullYear() + "-" + "0" + (d.getMonth() + 1);
+
                 }
 
 
@@ -207,11 +212,10 @@
 
 
     function dateNotFound() {
-        alert("df");
         Swal.fire({
             icon: 'error',
             title: 'Data Not Found',
-            text: 'Data not found for the searched date'
+            text: 'Data not found for the searched Month'
         })
     }
 

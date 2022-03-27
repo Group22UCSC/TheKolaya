@@ -121,6 +121,15 @@ class User extends Controller
         }
     }
 
+    function isPasswordCorrect() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $contact_number = $_SESSION['contact_number'];
+
+            $data = $this->model->isPasswordCorrect($contact_number, $_POST['old_password']);
+            echo json_encode($data);
+        }
+    }
     public function getNotificationCount()
     {
         if (isLoggedIn()) {

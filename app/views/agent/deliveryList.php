@@ -129,13 +129,13 @@
         $('#note').html("Sorry, No fertilizer or advance requests to deliver!");
       } else if (<?php echo $a ?> == '0' && <?php echo $f ?> != '0') {
         $('#advancesearchform').hide();
-        $('#advance_delivery_table').hide();
+        $('#today_advance_table').hide();        
         $('#advance_topic').hide();
         $('#unavailable_notice').show();
         $('#note').html("Sorry, No advance requests to deliver!");
       } else if (<?php echo $a ?> != '0' && <?php echo $f ?> == '0') {
         $('#fertilizersearchform').hide();
-        $('#fertilizer_delivery_table').hide();
+        $('#today_fertilizer_table').hide();        
         $('#fertilizer_topic').hide();
         $('#unavailable_notice').show();
         $('#note').html("Sorry, No fertilizer requests to deliver!");
@@ -145,8 +145,8 @@
         console.log('zero landowners');
         $('#fertilizersearchform').hide();
         $('#advancesearchform').hide();
-        $('#fertilizer_delivery_table').hide();
-        $('#advance_delivery_table').hide();
+        $('#today_fertilizer_table').hide();
+        $('#today_advance_table').hide();
         $('#advance_topic').hide();
         $('#fertilizer_topic').hide();
         $('#unavailable_notice').hide();
@@ -200,11 +200,12 @@
               cache: false,
               data: form,
               success: function(data) {
-                Swal.fire(
-                  'Updated!',
-                  'Your file has been updated.',
-                  'success'
-                ).then((result) => {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Updated !',
+                  text: 'Your file has been updated.',
+                  confirmButtonColor: '#01830c'
+                }).then((result) => {
                   location.reload();
                 })
                 // console.log(data);

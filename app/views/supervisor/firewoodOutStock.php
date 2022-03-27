@@ -24,31 +24,33 @@
     </div>
 
     <div class="table-container">
-          
-<?php
+      <div style="padding: 10px;">
+        <a style="margin-bottom: 10px;" href="<?php echo URL ?>Supervisor/manageFirewood"><button class="table-btn">Back</button></a>
+      </div>
+      <?php
 
-if (!empty($data)) {
-  echo '<div class="table-wrapper">
+      if (!empty($data)) {
+        echo '<div class="table-wrapper">
           <div class="table" id="myTable">
             <div class="row tabel-header">
               <div class="cell">Date</div>
               <div class="cell">Amount(kg)</div>
             </div>';
-  for ($i = 0; $i < count($data); $i++) {
-    echo '<div class="row table2-row">
+        for ($i = 0; $i < count($data); $i++) {
+          echo '<div class="row table2-row">
             <div class="cell" data-title="Date">' . $data[$i]['out_date'] . '</div>
             <hr class="horizontal-line">
             <div class="cell" data-title="Amount(kg)">' . $data[$i]['out_quantity'] . '</div>
           </div>';
-  }
-} else {
-  echo '<p style="color:red; text-align:center; padding: 30px; font-size: 26px;"><b>Opps...! No data found</b></p>';
-}
-?>
-        </div>
-      </div>
+        }
+      } else {
+        echo '<p style="color:red; text-align:center; padding: 30px; font-size: 26px;"><b>Opps...! No data found</b></p>';
+      }
+      ?>
     </div>
   </div>
-  <script src="<?php echo URL?>vendors/js/jquery-3.6.0.min.js"></script>
-  <script src="<?php echo URL?>vendors/js/supervisor/stock-table.js"></script>
+  </div>
+  </div>
+  <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
+  <script src="<?php echo URL ?>vendors/js/supervisor/stock-table.js"></script>
   <?php include 'bottom-container.php'; ?>
