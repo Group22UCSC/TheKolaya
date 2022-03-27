@@ -3,15 +3,19 @@
     font-size: 24px;
     font-weight: 600;
     /* margin-bottom: 25px; */
-    margin: 10px 10px auto;
+    margin:10px auto;
     color: #01830c;
     text-transform: uppercase;
     text-align: center;
   }
 
   .sad img{
-    width: 20%;
-    margin-left: 250px;
+    max-width: 15%;      
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    margin-top: 50px;
+    transform: translate(-50%, -50%);
   }
 
   /* responsive */
@@ -21,12 +25,7 @@
       font-size: 20px;
       font-weight: 550;      
       margin: 10px 10px auto;     
-    }
-  
-    .sad img{
-      width: 18%;
-      margin-left: 190px;
-    }
+    }      
    
   }
   
@@ -36,17 +35,11 @@
       font-weight: 500;     
       margin: 15px 10px auto;     
     }
-  
-    .sad img{
-      width: 15%;
-      margin-left: 130px;
-    }
   }
   
   @media screen and (max-width: 600px){
     .sad img{
-      width: 30%;
-      margin-left: 70px;
+      width: 30%;     
     }
   }
 
@@ -58,8 +51,7 @@
     }
   
     .sad img{
-      width: 40%;
-      margin-left: 40px;
+      width: 40%;     
     }
   }
   
@@ -70,8 +62,7 @@
     }
   
     .sad img{
-      width: 30%;
-      margin-left: 40px;
+      width: 30%;      
     }
   }
 
@@ -82,7 +73,6 @@
     }
   
     .sad img{
-      width: 40%;
-      margin-left: 25px;
+      width: 40%;    
     }
   }
