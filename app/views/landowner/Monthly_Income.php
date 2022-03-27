@@ -1,11 +1,5 @@
 <?php include 'top-container.php'; ?>
-<?php
-if (isset($_POST['Error'])) {
-    echo '<script type="text/javascript">',
-    'dateNotFound();',
-    '</script>';
-}
-?>
+
 
 <body onload="getTable();lastMonthIncomeAndAdvance();lastMonthTeaPrice();"></body>
 
@@ -79,6 +73,7 @@ if (isset($_POST['Error'])) {
                     <th class="thcls">Initial Weight From Supervisor</th>
                     <th class="thcls">Container Precentage</th>
                     <th class="thcls">Water Precentage</th>
+                    <th class="thcls">Matured Tea Precentage</th>
                     <th class="thcls">Net Weight</th>
                 </tr>
             </thead>

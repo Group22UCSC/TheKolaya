@@ -63,7 +63,7 @@ class Agent_Model extends Model
         }
     }
 
-    //make the unavailable agent, availables
+    //make the unavailable agent, available
     function availableAgent()
     {
         $agent_id = $_SESSION['user_id'];
@@ -85,14 +85,6 @@ class Agent_Model extends Model
                  ON landowner.user_id = user.user_id                
                  WHERE landowner.route_no='$route_no' AND landowner.landowner_type='indirect_landowner' 
                 AND landowner.tea_availability=1 ";
-
-        //    SELECT request.request_id, request.request_type, request.lid, 
-        //              fertilizer_request.amount FROM request 
-        //               INNER JOIN fertilizer_request
-        //               ON  request.request_id = fertilizer_request.request_id                   
-        //              WHERE request.lid IN 
-        //             (SELECT user_id FROM landowner WHERE route_no = '$route_no' OR route_no = '$assign_route') 
-        //             AND request.response_status = 'accept' AND request.complete_status = 0
 
         $row = $this->db->runQuery($query);
 
@@ -284,7 +276,7 @@ class Agent_Model extends Model
         $agent_id = $_SESSION['user_id'];
         $agent_name = $_SESSION['name'];
         $route_no = $_SESSION['route'];
-        $message = $agent_name . " requested to make him/her available for  route no. " . $route_no;
+        $message = $agent_name . " requested to make him available for  route no. " . $route_no;
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
         receiver_type, notification_type, sender_id) VALUES
@@ -354,7 +346,7 @@ class Agent_Model extends Model
 
         $query = "INSERT INTO tea(lid, initial_weight_agent, agent_id)         
                     VALUES ('$landowner_id', '$weight','$emp_id')";
-        $next_query = "UPDATE landowner SET tea_availability = '0' WHERE user_id = '$landowner_id'";
+        $next_query = "UPDATE landowner SET tea_availability = '0',  no_of_estimated_containers = '0' WHERE user_id = '$landowner_id'";
         $this->db->runQuery($query);
         $this->db->runQuery($next_query);
     }
@@ -526,8 +518,8 @@ class Agent_Model extends Model
     //storing the emergency message needed to be sent to the manager
     function storeEmergencyMessage($data = [])
     {
-        $route_no = $_SESSION['route'];        
-        $message = $data['message'].". My route number is  ".$route_no;
+        $route_no = $_SESSION['route'];
+        $message = $data['message'] . ". My route number is  " . $route_no;
         $sender_id = $data['agent_id'];
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
@@ -623,14 +615,3 @@ class Agent_Model extends Model
         }
     }
 }
-
-
-
-
-
- // $query = "SELECT request_id, request_type, lid FROM request WHERE lid IN (SELECT user_id FROM landowner WHERE route_no = '$route_no')";
-// advance_request.amount_rs 
-
-
-// INNER JOIN advance_request
-//                   ON  request.request_id = advance_request.request_id 

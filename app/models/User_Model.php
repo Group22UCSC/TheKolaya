@@ -30,6 +30,22 @@ class User_Model extends Model {
         $_SESSION['profile_picture'] = $row[0]['profile_picture'];
         $_SESSION['profile_picture'] = strtolower($_SESSION["user_type"])."/".$_SESSION['profile_picture'];
     }
+
+    function isPasswordCorrect($contact_number, $password)
+    {
+        $query = "SELECT * FROM user WHERE contact_number = '$contact_number'";
+
+        $row = $this->db->runQuery($query);
+
+        $hashed_password = $row[0]['password'];
+
+        if (password_verify($password, $hashed_password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function checkPassword($password) {
         $user_id = $_SESSION['user_id'];
 

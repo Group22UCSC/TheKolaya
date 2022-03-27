@@ -181,6 +181,25 @@
   padding: 30px;
 }
 
+.row:hover {
+  cursor: pointer;
+  background: #dddcdc;
+}
+.row:nth-of-type(odd) {
+  background: #e9e9e9;
+}
+.row:nth-of-type(odd):hover {
+  background: #dddcdc;
+}
+.row.tabel-header {
+  font-weight: 900;
+  color: #ffffff;
+  background: #27ae60;
+}
+.row.tabel-header:hover {
+  cursor: default;
+  background: #27ae60;
+}
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */
 @media (max-width: 400px) {
   .side,
