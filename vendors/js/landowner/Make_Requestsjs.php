@@ -25,6 +25,47 @@
       event.preventDefault();
       var form = $('#makeRequestForm').serializeArray();
 
+
+
+
+
+
+      // $('.error').remove();
+      // var amount = $('#amount').val();
+      // var amount = document.getElementById("amount").val;
+      // var qnty = $('#qnty').val();
+
+      // console.log(amount);
+      // //console.log(amount+pid+price+bid);
+      // var action = 'save';
+
+      // if (amount < 0) {
+      //   $('#amount').parent().after("<p class=\"error\">*Please enter a valid value</p>");
+      // } else if (amount == 0) {
+      //   $('#amount').parent().after("<p class=\"error\">*Please enter a valid value 2</p>");
+      // }
+      // let isnum1 = /^\d*\.?\d*$/.test(amount); //amountvalidation -only numbers
+      // if (!isnum1) {
+      //   $('#amount').parent().after("<p class=\"error\">*Please enter a valid value 3</p>");
+
+      // }
+
+      // if (qnty < 0) {
+      //   $('#qnty').parent().after("<p class=\"error\">*Quantity cannot be negative</p>");
+      // } else if (qnty == 0) {
+      //   $('#qnty').parent().after("<p class=\"error\">*Quantity cannot be zero</p>");
+      // }
+      // let isnum = /^\d*\.?\d*$/.test(qnty); //price validation -only numbers
+      // if (!isnum) {
+      //   $('#qnty').parent().after("<p class=\"error\">*Enter a valid Quantity</p>");
+
+      // }
+      // if (amount <= 0 || !isnum || qnty <= 0) {
+      //   return;
+      // }
+
+
+
       console.log(form);
       if (form[0]['value'] == 'Fertilizer') {
         var str = "<div style=\"display:flex; justify-content:center;\">" +
