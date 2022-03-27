@@ -30,7 +30,7 @@
           <label>No. of Containers Available</label>
           <input type="number" id="priceid" class="input" name="containers" required>
         </div>
-
+        <p id="container_error" style="color: red;"></p>
         <div class="inputfield">
           <label>Update Availability</label>
           <input type="checkbox" class="input" class="btn" id="update_availability" name="availability" <?php if ($data[0]["tea_availability"] == 1 && ($data[0]["no_of_estimated_containers"] != 0 || $data[0]["no_of_estimated_containers"] != null)) {
