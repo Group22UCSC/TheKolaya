@@ -14,7 +14,7 @@ function otpSend() {
     $contact_number = $_SESSION['contact_number'];
     $user = "94701826475";
     $password = "7027";
-    $text = urlencode("Your තේ කොළය verification code is:".$OTPcode);
+    $text = urlencode("Your තේ කොළය verification code is: " . $OTPcode);
     $to = "$contact_number";
 
     $baseurl ="http://www.textit.biz/sendmsg";

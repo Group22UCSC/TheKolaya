@@ -12,9 +12,9 @@ class Otpverify extends Controller
         if (!empty($_SESSION['OTP'])) {
             $this->view->render('otp/OTPverify');
         } else {
-            if(isset($_SESSION['flash_message'])) {
+            if (isset($_SESSION['flash_message'])) {
                 $this->view->render('Errors/Errors');
-            }else {
+            } else {
                 $this->view->render('Errors/Errors');
             }
         }
@@ -70,7 +70,6 @@ class Otpverify extends Controller
                     unset($_SESSION['OTP']);
                     $_SESSION['changePassword'] = true;
                     redirect('User/passwordChange');
-                    
                 } else {
                     $verifyOTP = '';
                     unset($_SESSION['OTP']);
@@ -90,23 +89,20 @@ class Otpverify extends Controller
         // $OTPcode = '1002';
         // $_SESSION['OTP'] = $OTPcode;
         // $data['OTP'] = $OTPcode;
-        
         $OTPcode = rand(1000, 9999);
-        $contact_number = $_SESSION['contact_number'];
         $_SESSION['OTP'] = $OTPcode;
-        $user = "94769372530";
-        $password = "9208";
-        $text = urlencode("Your තේ කොළය verification code is: ".$OTPcode);
+        // $data['OTP'] = $OTPcode;
+        $contact_number = $_SESSION['contact_number'];
+        $user = "94701826475";
+        $password = "7027";
+        $text = urlencode("Your තේ කොළය verification code is: " . $OTPcode);
         $to = "$contact_number";
 
-        $baseurl ="http://www.textit.biz/sendmsg";
+        $baseurl = "http://www.textit.biz/sendmsg";
         $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
         $ret = file($url);
 
-        $res= explode(":",$ret[0]);
-
-        // $_SESSION['controller'] = $controller;
+        $res = explode(":", $ret[0]);
         redirect('OtpVerify');
-        // $this->view->render('otp/OTPverify', $data);
     }
 }
