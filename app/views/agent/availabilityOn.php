@@ -18,7 +18,7 @@
     <div class="toggle-div" id="toggle-div">
     <!-- <button class="backbtn" onclick="backToLogout()">Logout </button> -->
     <div class = "sad">
-<img src="<?php echo URL?>vendors/images/agent/sad.jpg" alt="sad">
+<img src="<?php echo URL?>vendors/images/agent/sad.png" alt="sad">
 </div>
         <div class="note">Sorry, you are unavailable at the moment. Please request the manager.</div>
         <button class="requestbtn" id ="requestbtn" onclick="requestManager()">Request </button>
