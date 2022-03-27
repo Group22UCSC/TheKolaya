@@ -116,25 +116,7 @@ class Landowner extends Controller
 
 
 
-    //test
-    public function Test()
-    {
-        if (!empty($_POST)) {
 
-
-            $result = $this->model->searchDailyDetails();
-            if ($result) {
-                // print_r($result);
-                $this->view->render('landowner/test', $result);
-            } else {
-                $this->view->render('landowner/test?', $result);
-                return false;
-            }
-        } else {
-            $result = $this->model->getLandonwerTable();
-            $this->view->render('landowner/test', $result);
-        }
-    }
 
 
 
