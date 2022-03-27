@@ -29,7 +29,9 @@ class Registration_Model extends Model {
                 case 'accountant' :
                     $queryUser = "INSERT INTO accountant(emp_id) values('$user_id')";
                     break;
-                
+                case 'agent' :
+                    $queryUser = "UPDATE agent SET availability=1 WHERE emp_id='$user_id'";
+                    break;
                 case 'admin' :
                     $queryUser = "INSERT INTO admin(emp_id) values('$user_id')";
                     break;
@@ -48,7 +50,7 @@ class Registration_Model extends Model {
                     
             }
             $this->db->runQuery($query);
-            if(!($user_type=='agent' || $user_type=='Land_Owner')){
+            if(!($user_type=='Land_Owner')){
                 $this->db->runQuery($queryUser);
             }
             
