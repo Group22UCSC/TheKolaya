@@ -30,7 +30,7 @@
 </div>
         <div class="note">Sorry, you are unavailable at the moment. Please request the manager.</div>
         <button class="requestbtn" id ="requestbtn" onclick="requestManager()">Request </button>
-          <!-- <label class="switch">
+          <!-<label class="switch">
 
           <input type="checkbox" id="togglebtn">
           <span class="slider round"></span>
