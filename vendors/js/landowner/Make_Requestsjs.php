@@ -100,8 +100,8 @@
           html: '<div>' + str + '</div>',
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#4DD101',
-          cancelButtonColor: '#FF2400',
+          confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
           confirmButtonText: 'Yes, Update it!'
         }).then((result) => {
           if (result.isConfirmed) {
