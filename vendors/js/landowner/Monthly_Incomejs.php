@@ -190,7 +190,14 @@
                     //IF SO IT WILL SHOW THE RESULTS TWICE
                 }
                 if (data == "not_found") {
+                    clearTable();
                     dateNotFound();
+                    getTable();
+                    // getElementById('selectedMonth').innerHTML = '<?php
+                    //                                                 echo date('Y-m');
+
+                    //                                                 ?>'
+
                 }
 
 
@@ -207,11 +214,10 @@
 
 
     function dateNotFound() {
-        alert("df");
         Swal.fire({
             icon: 'error',
             title: 'Data Not Found',
-            text: 'Data not found for the searched date'
+            text: 'Data not found for the searched Month'
         })
     }
 
