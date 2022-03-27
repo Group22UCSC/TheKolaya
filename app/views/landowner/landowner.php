@@ -48,7 +48,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">This Month Advance</div>
-        <div class="number" id="advance">2,876</div>
+        <div class="number" id="advance"></div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">This month</span>

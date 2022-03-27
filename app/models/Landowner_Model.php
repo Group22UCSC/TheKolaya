@@ -284,12 +284,13 @@ class landowner_Model extends Model
     //get last month fertilizer usage to dashboard card
     function fertilizerUsage()
     {
+        $user_id = $_SESSION['user_id'];
         $first = date('Y-m-01');
         $last  = date('Y-m-t');
         $sql = "SELECT fertilizer_request.amount
         FROM fertilizer_request 
         INNER JOIN request ON request.request_id=fertilizer_request.request_id 
-        WHERE fertilizer_request.date_delivered BETWEEN '{$first}'AND '{$last}' ";
+        WHERE lid='{$user_id}' AND fertilizer_request.date_delivered BETWEEN '{$first}'AND '{$last}' ";
         $row = $this->db->selectQuery($sql);
         if ($row) {
             return $row;
