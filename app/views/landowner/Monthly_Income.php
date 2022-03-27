@@ -45,10 +45,15 @@
 
 
     <!-- search area -->
+    <?php
+    $date = date('Y-m');
+    // echo $date;
+    ?>
+
 
     <div class="search">
 
-        <input type="month" id="selectedMonth" name="selectedMonth" min="2021-09" value="2022-03">
+        <input type="month" id="selectedMonth" name="selectedMonth" min="2021-09" value='<?php echo $date ?>' max='<?php echo $date ?>'>
         <button class="monthSearch" onclick="searchByDate()">search</button>
 
     </div>
@@ -88,5 +93,6 @@
 
 
 <?php include 'js/landowner/Monthly_Incomejs.php'; ?>
+<script type="text/javascript" src="<?php echo URL ?>vendors/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
 <?php include 'bottom-container.php'; ?>

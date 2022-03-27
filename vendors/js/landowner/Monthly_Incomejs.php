@@ -193,10 +193,8 @@
                     clearTable();
                     dateNotFound();
                     getTable();
-                    // getElementById('selectedMonth').innerHTML = '<?php
-                    //                                                 echo date('Y-m');
-
-                    //                                                 ?>'
+                    console.log(getFullYear());
+                    getElementById('selectedMonth').innerHTML = d.getFullYear() + "-" + "0" + (d.getMonth() + 1);
 
                 }
 
