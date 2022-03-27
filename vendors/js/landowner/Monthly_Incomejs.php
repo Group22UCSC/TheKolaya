@@ -192,9 +192,7 @@
                 if (data == "not_found") {
                     clearTable();
                     dateNotFound();
-                    getTable();
-                    console.log(getFullYear());
-                    getElementById('selectedMonth').innerHTML = d.getFullYear() + "-" + "0" + (d.getMonth() + 1);
+
 
                 }
 
@@ -216,6 +214,8 @@
             icon: 'error',
             title: 'Data Not Found',
             text: 'Data not found for the searched Month'
+        }).then(() => {
+            location.reload();
         })
     }
 
