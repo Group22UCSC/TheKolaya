@@ -131,6 +131,23 @@ class landowner_Model extends Model
             $notificationQuery = "INSERT INTO notification(read_unread, seen_not_seen, message, receiver_type, notification_type, sender_id) 
             VALUES(0, 0, '$message', 'Accountant', 'request', '" . $_SESSION['user_id'] . "')";
             $this->db->runQuery($notificationQuery);
+
+            //-------------Pusher API--------------//
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ef64da0120ca27fe19a3',
+                'd5033393ff3b228540f7',
+                '1290222',
+                $options
+            );
+
+            $data['message'] = 'hello world';
+            $pusher->trigger('my-channel', 'Accountant_notification', $data);
+            //--------------------------------------//
+
         }
     }
 

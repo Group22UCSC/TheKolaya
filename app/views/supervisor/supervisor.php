@@ -83,13 +83,28 @@
         echo '<div id="not_display_request_yet" style="border-radius: 0px; color:red; background-color: white;" class="table_header" >There is no Request to update</div>';
       }
       ?>
-      <div style="padding: 10px;">
+      <!-- <div style="padding: 10px;">
         <a style="margin-bottom: 10px;" href="<?php echo URL ?>Supervisor/manageRequests"><button class="table-btn">Go to confirm</button></a>
-      </div>
+      </div> -->
     </div>
 
   </div>
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#today_request_table").click(function(event) {
+        if (!$(event.target.parentNode).hasClass("tabel-header")) {
+          window.location.href = "<?php echo URL?>Supervisor/manageRequests";
+        }
+      });
+
+      $("#today_collection_table").click(function(event) {
+        if (!$(event.target.parentNode).hasClass("tabel-header")) {
+          window.location.href = "<?php echo URL?>Supervisor/updateTeaMeasure";
+        }
+      });
+    })
+  </script>
   <?php include 'js/supervisor/supervisorJs.php' ?>
   <?php include 'bottom-container.php'; ?>

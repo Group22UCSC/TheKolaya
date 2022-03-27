@@ -4,7 +4,11 @@
         var errors = {
             landowner_id: '',
             initial_tea_weight: '',
+            water: '',
+            mature_leaves: '',
+            container: ''
         }
+
         var landowner_id = $(inputField[0]).serializeArray();
         landowner_id.push({
             name: 'isCollected',
@@ -17,10 +21,26 @@
             $(inputField[number]).addClass('is-invalid');
         }
 
-        function removeError(number, error) {
+        function removeError(number, placeholder="") {
             $(inputField[number]).removeClass('is-invalid');
-            inputField[number].placeholder = error;
+            inputField[number].placeholder = placeholder;
         }
+
+        $(inputField[0]).keydown(function(){
+            removeError(0);
+        })
+        $(inputField[1]).keydown(function(){
+            removeError(1);
+        })
+        $(inputField[2]).keydown(function(){
+            removeError(2, "Water");
+        })
+        $(inputField[3]).keydown(function(){
+            removeError(3, "Mature Leaves");
+        })
+        $(inputField[4]).keydown(function(){
+            removeError(5, "Container");
+        })
         //validate Landowner Id
         $(inputField[0]).change(function() {
             var tempLandId = $(this).serializeArray();
@@ -39,7 +59,7 @@
                         } else if (data == 'true') {
                             landowner_id[1]['value'] = true;
                             errors.landowner_id = "";
-                            removeError(0, errors.landowner_id);
+                            removeError(0);
                         } else if (data == 'updated') {
                             landowner_id[1]['value'] = false;
                             // console.log(landowner_id);
@@ -65,11 +85,50 @@
         $('#update_tea_btn').click(function(event) {
             event.preventDefault();
             var form = $('#update_tea_form').serializeArray();
+            // console.log(inputField); 
+            //validate the intial Weight
+            if ($(inputField[1]).val() < 0) {
+                errors.initial_tea_weight = "Can't insert minus values!";
+                showError(1, errors.initial_tea_weight)
+            } else if ($(inputField[1]).val() == 0) {
+                errors.initial_tea_weight = "This must be filled!";
+                showError(1, errors.initial_tea_weight)
+            } else {
+                errors.initial_tea_weight = "";
+                removeError(1)
+            }
+
+
+            //Validate reductions
+            if ($(inputField[2]).val() < 0) {
+                errors.water = "Can't insert minus values!";
+                showError(2, errors.water)
+            } else {
+                errors.water = "";
+                removeError(2, "water")
+            }
+
+            if ($(inputField[3]).val() < 0) {
+                errors.mature_leaves = "Can't insert minus values!";
+                showError(3, errors.mature_leaves)
+            } else {
+                errors.mature_leaves = "";
+                removeError(3, "Mature Leaves")
+            }
+
+            if ($(inputField[4]).val() < 0) {
+                errors.container = "Can't insert minus values!";
+                showError(4, errors.container)
+            } else {
+                errors.container = "";
+                removeError(4, "Container")
+            }
+
             form.push({
                 name: 'isCollected',
                 value: true
             });
-            if (form[0]['value'] && form[1]['value']) {
+            if (errors.landowner_id == "" && errors.initial_tea_weight == "" && errors.container == "" && errors.mature_leaves == "" && errors.water == "" ) {
                 Swal.fire({
                     title: 'Are you sure?',
                     // html: '<div>' + str + '</div>',

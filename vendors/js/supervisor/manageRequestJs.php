@@ -13,7 +13,7 @@
       if(typeof isNotificationsSlided === 'undefined') {
 
       }else if(isNotificationsSlided == true) {
-        console.log('bye' + isNotificationsSlided);
+        // console.log('bye' + isNotificationsSlided);
         $('.notiBox').slideDown();
         isNotificationsSlided == false;
       }
@@ -39,7 +39,7 @@
     amount: ''
   };
   $('#allRequest').click(function(event) {
-    console.log(event.target.parentNode.childNodes)
+    // console.log(event.target.parentNode.childNodes)
     if ($(event.target.parentNode.childNodes[5]).hasClass('lid')) {
       // requestDetails.landownerId = event.target.parentNode.childNodes[3].innerHTML;
       requestDetails = {
@@ -47,7 +47,7 @@
         name: event.target.parentNode.childNodes[9].innerHTML,
         amount: event.target.parentNode.childNodes[13].innerHTML
       };
-      console.log(requestDetails)
+      // console.log(requestDetails)
       //Get the Previous requests
       $.ajax({
         type: "POST",
