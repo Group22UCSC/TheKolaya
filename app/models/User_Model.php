@@ -70,6 +70,12 @@ class User_Model extends Model {
         $this->db->runQuery($query);
     }
 
+    function editName($name, $user_id) {
+        $query = "UPDATE user SET name='$name' WHERE user_id='$user_id'";
+        $this->db->runQuery($query);
+        $_SESSION['name'] = $name;
+    }
+
     function getNotSeenNotification() {
         $user_type = $_SESSION['user_type'];
         $query = "SELECT * FROM notification 

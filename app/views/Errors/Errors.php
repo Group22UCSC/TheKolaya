@@ -15,7 +15,7 @@
         <div class="fof">
             <h1>Error 404</h1>
             <h2>Oops! The requested page was not found !</h2>   
-            <h2 style="color:red;">Session has already destroied</h2>
+            <h2 style="color:red;">Session has already destroyed</h2>
             <br><br><br>
         </div>
 
