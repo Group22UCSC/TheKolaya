@@ -21,9 +21,6 @@ class Landowner extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->model->insertRequest($_POST);
-
-            // $this->view->render('landowner/Make_Requests');
-            // print_r($result);
         } else {
             $this->view->render('landowner/Make_Requests');
         }
@@ -70,12 +67,22 @@ class Landowner extends Controller
 
     function getSearchMonthDetails()
     {
-        $date = $_POST['date'];
-        // print_r("dfs");
-        $result = $this->model->getSearchMonthDetails($date);
-        $json_arr = json_encode($result);
-        //print_r($json_arr);
-        echo $json_arr;
+        if (!empty($_POST['date'])) {
+            $date = $_POST['date'];
+            $result = $this->model->getSearchMonthDetails($date);
+            if ($result) {
+                $json_arr = json_encode($result);
+                echo $json_arr;
+            } else {
+                // echo json_encode("hi");
+                // print_r("ds");
+                $_SESSION['lanowner_monthly_details_error'] = "You haven't supply tea that month";
+                echo json_encode("not_found");
+                // $_POST['Error'] = "You haven't supply tea that month";
+            }
+        } else {
+            $_SESSION['lanowner_monthly_details_error'] = "You haven't supply tea that month";
+        }
     }
 
 

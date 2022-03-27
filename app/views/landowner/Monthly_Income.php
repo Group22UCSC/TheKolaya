@@ -5,7 +5,7 @@
 
 <!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/Monthly_income.css">
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
 
 <!-- <body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body> -->
 
@@ -73,6 +73,7 @@
                     <th class="thcls">Initial Weight From Supervisor</th>
                     <th class="thcls">Container Precentage</th>
                     <th class="thcls">Water Precentage</th>
+                    <th class="thcls">Matured Tea Precentage</th>
                     <th class="thcls">Net Weight</th>
                 </tr>
             </thead>

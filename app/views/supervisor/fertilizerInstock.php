@@ -19,21 +19,24 @@
   </div>
   <div class="middle-container">
     <?php
-      if (!empty($data)) {
-        echo '<div class="search-container">
+    if (!empty($data)) {
+      echo '<div class="search-container">
                 <div class="search-wrapper">
                   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
                 </div>
               </div>';
-      }
+    }
     ?>
-    
+
 
     <div class="tabel-container">
+      <div style="padding: 10px;">
+        <a style="margin-bottom: 10px;" href="<?php echo URL ?>Supervisor/manageFertilizer"><button class="table-btn">Back</button></a>
+      </div>
 
-<?php
-if (!empty($data)) {
-  echo '<div class="table-wrapper">
+      <?php
+      if (!empty($data)) {
+        echo '<div class="table-wrapper">
           <div class="table" id="myTable">
             <div class="row tabel-header">
               <div class="cell">Date</div>
@@ -41,8 +44,8 @@ if (!empty($data)) {
               <div class="cell">Amount(kg)</div>
               <div class="cell">Price For Amount(Rs)</div>
             </div>';
-  for ($i = 0; $i < count($data); $i++) {
-    echo '<div class="row table2-row">
+        for ($i = 0; $i < count($data); $i++) {
+          echo '<div class="row table2-row">
             <div class="cell" data-title="Date">' . $data[$i]['in_date'] . '</div>
             <hr class="horizontal-line">
             <div class="cell" data-title="Price Per Unit(Rs)">' . $data[$i]['price_per_unit'] . '</div>
@@ -51,14 +54,14 @@ if (!empty($data)) {
             <hr class="horizontal-line">
             <div class="cell" data-title="Price For Amount(Rs)">' . $data[$i]['price_for_amount'] . '</div>
           </div>';
-  }
-} else {
-  echo '<p style="color:red; text-align:center; padding: 30px; font-size: 26px;"><b>Opps...! No data found</b></p>';
-}
-?>
-        </div>
-      </div>
+        }
+      } else {
+        echo '<p style="color:red; text-align:center; padding: 30px; font-size: 26px;"><b>Opps...! No data found</b></p>';
+      }
+      ?>
     </div>
+  </div>
+  </div>
   </div>
   <script src="<?php echo URL ?>vendors/js/jquery-3.6.0.min.js"></script>
   <script src="<?php echo URL ?>vendors/js/supervisor/stock-table.js"></script>

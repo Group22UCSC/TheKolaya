@@ -131,11 +131,30 @@
                             errors.mobile_number = "This user is deleted!";
                             showError(1, errors.mobile_number);
                         } else {
-                            inputField[2].value = responseText['user_id'];
-                            $("#landowner_type").val(responseText['user_type'].toLowerCase());
-                            $("#landowner_type").prop('disabled', true);
-                            $(inputField[2]).attr('readonly', 'readonly');
-                            removeError(1);
+                            var userId = responseText['user_id'];
+                            inputField[2].value = userId;
+                            var userType = responseText['user_type'].toLowerCase();
+                            if (userType == 'land_owner') {
+                                $.ajax({
+                                    url: "<?php echo URL ?>Registration/getLandownerType",
+                                    type: 'POST',
+                                    data: "user_id=" + userId,
+                                    dataType: 'JSON',
+                                    success: function(response) {
+                                        userType = response[0]['landowner_type'];
+                                        $("#landowner_type").val(userType);
+                                        $("#landowner_type").prop('disabled', true);
+                                        $(inputField[2]).attr('readonly', 'readonly');
+                                        removeError(1);
+                                    }
+                                })
+                            } else {
+                                $("#landowner_type").val(userType);
+                                $("#landowner_type").prop('disabled', true);
+                                $(inputField[2]).attr('readonly', 'readonly');
+                                removeError(1);
+                            }
+
                         }
                         // console.log(form);
                     }
@@ -147,20 +166,39 @@
             // console.log(errors);
         });
 
-        $(inputField[1]).keypress(function() {
+        $(inputField[1]).keydown(function() {
             removeError(1);
         })
 
         //Validate the address
-        $(inputField[3]).keypress(function() {
+        $(inputField[3]).keydown(function() {
             removeError(3);
         })
 
         //Validate the password
-        $(inputField[4]).keypress(function() {
+        $(inputField[4]).keydown(function() {
             removeError(4);
         })
 
+        //validate the password
+        function CheckPassword(inputtxt) {
+            var decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+            if (inputtxt.match(decimal)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        $(inputField[4]).change(function() {
+            if(!CheckPassword(inputField[4].value)) {
+                errors.password = "Not a Strong Password !";
+                showError(4, errors.password);
+            }else {
+                errors.password = "";
+                removeError(4);
+            }
+        });
         //validate the confirm password
         $(inputField[5]).change(function() {
             if (inputField[5].value != inputField[4].value) {
@@ -171,7 +209,7 @@
                 removeError(5);
             }
         });
-        $(inputField[5]).keypress(function() {
+        $(inputField[5]).keydown(function() {
             removeError(5);
         })
 
@@ -199,7 +237,7 @@
                 if (hasError(form[i]['value'])) {
                     switch (i) {
                         case 0:
-                            if (hasErrors[0] == false ) {
+                            if (hasErrors[0] == false) {
                                 errors.name = "This is must filled";
                                 showError(0, errors.name);
                             }
@@ -250,7 +288,7 @@
                     data: form,
                     success: function(data) {
                         // console.log('success');
-                        
+
                         Swal.fire(
                             'Validated!',
                             'To login you have to verify your account',
