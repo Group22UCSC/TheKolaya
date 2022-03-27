@@ -24,7 +24,7 @@
                     </section>
 
                     <div class="terms-body">
-                        <h4><strong>Welcome to The Main Label. Please review the following basic terms that govern your use of, and purchase of, products from our site. Please note that your use of our site constitutes your agreement to follow and be bound by those terms.</strong></h4>
+                        <h4><strong>Welcome to Samrin Tea Factory. Please review the following basic terms that govern your use of, and purchase of, products from our site. Please note that your use of our site constitutes your agreement to follow and be bound by those terms.</strong></h4>
                         <hr>
                         <h3>General</h3>
                         <p>
