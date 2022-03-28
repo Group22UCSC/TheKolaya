@@ -11,6 +11,11 @@ if (isset($_POST['Error'])) {
 }
 ?>
 
+<!-- <?php
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+        ?> -->
 <!-- Title -->
 
 <div class="top-container">
@@ -35,62 +40,70 @@ if (isset($_POST['Error'])) {
         <div class="table-container">
 
             <table class="teapricetable">
-                <?php if($data==false){ ?>
+                <?php if ($data == false) { ?>
                     <tr>
-                    <th class="thcls"></th>
-                    <td class="tdcls" style="color: red; font-size:larger">You haven't supply tea yet </td>
-                </tr>
-                <?php 
-                } 
-                else{
-            ?>
-                <tr>
-                    <th class="thcls">Date</th>
-                    <td class="tdcls"><?php echo $data[0]['date']; ?></td>
-                </tr>
+                        <th class="thcls"></th>
+                        <td class="tdcls" style="color: red; font-size:larger">You haven't supply tea yet </td>
+                    </tr>
+                <?php
+                } else {
+                ?>
+                    <tr>
+                        <th class="thcls">Date</th>
+                        <td class="tdcls"><?php echo $data[0]['date']; ?></td>
+                    </tr>
 
-                <tr>
-                    <th class="thcls">Initial Weight</th>
-                    <td class="tdcls"><?php echo $data[0]['initial_weight_agent']; ?> Kg</td>
-                </tr>
+                    <tr>
+                        <th class="thcls">Initial Weight from Agent</th>
+                        <td class="tdcls"><?php echo $data[0]['initial_weight_agent']; ?> Kg</td>
+                    </tr>
 
-                <tr>
-                    <th class="thcls">Container Reduced Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['container_percentage'] == NULL) {
-                                            echo "Data not Availabale Yet";
-                                        } else {
-                                            echo $data[0]['container_percentage'];
-                                        } ?> Kg</td>
-                </tr>
+                    <tr>
+                        <th class="thcls">Initial Weight from supervisor</th>
+                        <td class="tdcls"><?php if ($data[0]['initial_weight_sup'] == NULL) {
+                                                echo "Data not Availabale Yet";
+                                            } else {
+                                                echo $data[0]['initial_weight_sup'];
+                                            } ?> Kg</td>
+                    </tr>
 
-                <tr>
-                    <th class="thcls">Water Reduce Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['water_percentage'] == NULL) {
-                                            echo "Data not Availabale Yet";
-                                        } else {
-                                            echo $data[0]['water_percentage'];
-                                        } ?> Kg</td>
-                </tr>
+                    <tr>
+                        <th class="thcls">Container Percentage</th>
+                        <td class="tdcls"><?php if ($data[0]['container_percentage'] == NULL) {
+                                                echo "Data not Availabale Yet";
+                                            } else {
+                                                echo $data[0]['container_percentage'];
+                                            } ?> </td>
+                    </tr>
 
-                <tr>
-                    <th class="thcls">Mature Reduced Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['matured_percentage'] == NULL) {
-                                            echo "Data not Availabale Yet";
-                                        } else {
-                                            echo $data[0]['matured_percentage'];
-                                        } ?> Kg</td>
-                </tr>
-                <tr>
-                    <th class="thcls">Net Weight</th>
-                    <td class="tdcls"><?php if ($data[0]['net_weight'] == NULL) {
-                                            echo "Data not Availabale Yet";
-                                        } else {
-                                            echo $data[0]['net_weight'];
-                                        } ?> Kg</td>
-                </tr>
-                                    <?php } ?>
-                                        
-                                    
+                    <tr>
+                        <th class="thcls">Water Percentage</th>
+                        <td class="tdcls"><?php if ($data[0]['water_percentage'] == NULL) {
+                                                echo "Data not Availabale Yet";
+                                            } else {
+                                                echo $data[0]['water_percentage'];
+                                            } ?> </td>
+                    </tr>
+
+                    <tr>
+                        <th class="thcls">Mature Percentage</th>
+                        <td class="tdcls"><?php if ($data[0]['matured_percentage'] == NULL) {
+                                                echo "Data not Availabale Yet";
+                                            } else {
+                                                echo $data[0]['matured_percentage'];
+                                            } ?> </td>
+                    </tr>
+                    <tr>
+                        <th class="thcls">Net Weight</th>
+                        <td class="tdcls"><?php if ($data[0]['net_weight'] == NULL) {
+                                                echo "Data not Availabale Yet";
+                                            } else {
+                                                echo ($data[0]['net_weight']);
+                                            } ?> kg</td>
+                    </tr>
+                <?php } ?>
+
+
 
 
             </table>

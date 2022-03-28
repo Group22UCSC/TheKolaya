@@ -1,7 +1,10 @@
 <script>
     $(document).ready(function() {
+
         $('#update_availability').click(function(event) {
+
             var form = $('#update_availability_form').serializeArray();
+            // console.log(form);
             var numberOfContainers = form[0]['value'];
             var errorMessage = "";
 
