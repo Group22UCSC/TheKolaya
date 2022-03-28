@@ -48,9 +48,9 @@
       <li>
         <a href="<?php echo URL ?>landowner/Monthly_Income">
           <i class="fas fa-money-bill-wave fa-2x"></i>
-          <span class="links_name">Monthly Income</span>
+          <span class="links_name">Monthly Details</span>
         </a>
-        <span class="tooltip">Monthly Income</span>
+        <span class="tooltip">Monthly Details</span>
       </li>
       <!-- Daily Net Weight -->
       <li>
@@ -76,27 +76,6 @@
         </a>
         <span class="tooltip">Make Requests</span>
       </li>
-
-      <li>
-        <a href="<?php echo URL ?>landowner/test">
-          <i class="fas fa-vial fa-2x"></i>
-          <span class="links_name">Test</span>
-        </a>
-        <span class="tooltip">Test</span>
-      </li>
-
-
-      <!-- <li class="profile">
-         <div class="profile-details">
-           <img src="profile.jpg" alt="profileImg">
-           <div class="name_job">
-             <div class="name">Prem Shahi</div>
-             <div class="job">Web designer</div>
-           </div>
-         </div>
-         <i class='bx bx-log-out' id="log_out" ></i>
-     </li> -->
-
     </ul>
   </div>
   <section class="home-section">

@@ -156,9 +156,9 @@ $pdf->SetFont('Arial','',10);
 		$pdf->Cell(10 ,6,$i+1,1,0);
 		$pdf->Cell(22 ,6,$data1[$i]['date'],1,0,'L');
 		$pdf->Cell(30 ,6,$data1[$i]['initial_weight_sup'],1,0,'L');//initial_weight_sup
-		$pdf->Cell(32 ,6,$data1[$i]['water_precentage'],1,0,'L');//water reduction
-		$pdf->Cell(32 ,6,$data1[$i]['container_precentage'],1,0,'L');
-		$pdf->Cell(28 ,6,$data1[$i]['matured_precentage'],1,0,'L');
+		$pdf->Cell(32 ,6,$data1[$i]['water_percentage'],1,0,'L');//water reduction
+		$pdf->Cell(32 ,6,$data1[$i]['container_percentage'],1,0,'L');
+		$pdf->Cell(28 ,6,$data1[$i]['matured_percentage'],1,0,'L');
 		$pdf->Cell(33 ,6,$data1[$i]['net_weight'],1,1,'L');
 		$totTeaWeight=$totTeaWeight+$data1[$i]['net_weight'];
 		// $pdf->Cell(40 ,6,'15100.00',1,1,'R');

@@ -91,8 +91,8 @@ $(document).ready(function() {
                 //   html:'<div>Line0<br />Line1<br /></div>',
                 html: '<pre>' + str + '</pre>',
                 //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
-                confirmButtonColor: '#4DD101',
-                cancelButtonColor: '#FF2400',
+                confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
                 confirmButtonText: 'Confirm!',
                 showCancelButton: true
             }).then((result) => {
@@ -112,11 +112,13 @@ $(document).ready(function() {
                         success: function(data) {
                             
                             console.log(data);
-                            Swal.fire(
-                                'Updated!',
-                                'Your file has been updated.',
-                                'success'
-                            )
+                            
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Updated!',
+                                text: 'Your file has been updated.',
+                                confirmButtonColor: '#4DD101'
+                            })
                             clearTable();
                             getTable();
                         },
@@ -238,11 +240,13 @@ $(document).ready(function() {
                   },
                   success: function(data) {
                       console.log(data);
-                      Swal.fire(
-                      'Deleted!',
-                      'Your Record Was Deleted Succesfully.',
-                      'success'
-                      )
+                      
+                      Swal.fire({
+                                icon: 'success',
+                                title: 'Deleted!',
+                                text: 'Your Record Was Deleted Succesfully.',
+                                confirmButtonColor: '#4DD101'
+                            })
                       clearTable();
                       getTable();
                   },

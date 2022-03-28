@@ -19,7 +19,7 @@
 .middle{
  /* position: relative;*/
   
-  background-image: url("../../images/admin/35.jpg");
+  background-image: url("../../images/admin/36.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 90%;
@@ -34,7 +34,7 @@
 .btn-list {
   width: 200px;
   position: absolute;
-  left: 50%;
+  left: 45%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
@@ -45,9 +45,9 @@
   cursor: pointer;
   transition: 0.5s;
   margin-top: 30px;
-  width: 200px;
+  width: 400px;
   height: 65px;
-  background: #8AF2AD;
+  background: green;
   border: 1px solid #000000;
   color: white;
   box-sizing: border-box;
