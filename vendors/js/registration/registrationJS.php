@@ -29,6 +29,16 @@
             return /\d/.test(string);
         }
 
+        function hasSpecialCharacters(string) {
+            var format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+            if (format.test(string)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         function showError(number, error) {
             inputField[number].value = '';
             inputField[number].placeholder = error;
@@ -74,6 +84,9 @@
         $(inputField[0]).change(function() {
             if (hasNumber(inputField[0].value)) {
                 errors.name = "Name cannot contain numbers";
+                showError(0, errors.name);
+            } else if(hasSpecialCharacters(inputField[0].value)) {
+                errors.name = "Name cannot contain special characters";
                 showError(0, errors.name);
             } else if (isEmpty(0)) {
                 errors.name = "Name must be filled";
@@ -191,10 +204,10 @@
         }
 
         $(inputField[4]).change(function() {
-            if(!CheckPassword(inputField[4].value)) {
+            if (!CheckPassword(inputField[4].value)) {
                 errors.password = "Not a Strong Password !";
                 showError(4, errors.password);
-            }else {
+            } else {
                 errors.password = "";
                 removeError(4);
             }

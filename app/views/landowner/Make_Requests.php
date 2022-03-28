@@ -55,10 +55,13 @@
                     <label for="qnty">Quantity(kg)</label>
                     <input type="number" id="qnty" class="input" name="fertilizer_amount">
                 </div>
+                <p id="quantity_error" style="color: red;"></p>
+
                 <div class="inputfield" id="Advance">
                     <label for="amount">Amount(Rs)</label>
                     <input type="number" id="amount" class="input" name="advance_amount">
                 </div>
+                <p id="amount_error" style="color: red;"></p>
                 <div class="inputfield">
                     <input type="submit" value="Request" class="btn" name="confirmReq" id="requestBtn">
                 </div>

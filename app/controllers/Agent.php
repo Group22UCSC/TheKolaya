@@ -51,8 +51,11 @@ class Agent extends Controller
     //request availability from manager
     function requestManager()
     {
-        $this->model->requestManager();
-        $this->view->showPage('agent/availabilityOn');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->model->requestManager();
+        } else {
+            $this->view->showPage('agent/availabilityOn');
+        }
     }
 
     //make the agent available after toggle 

@@ -29,13 +29,8 @@
                 var income = data[0].final_payment;
                 var advance = data[0].advance_expenses;
                 document.getElementById("income").innerHTML = income;
-
-
-
             }
         })
-
-
     }
 
 
@@ -190,7 +185,10 @@
                     //IF SO IT WILL SHOW THE RESULTS TWICE
                 }
                 if (data == "not_found") {
+                    clearTable();
                     dateNotFound();
+
+
                 }
 
 
@@ -207,11 +205,12 @@
 
 
     function dateNotFound() {
-        alert("df");
         Swal.fire({
             icon: 'error',
             title: 'Data Not Found',
-            text: 'Data not found for the searched date'
+            text: 'Data not found for the searched Month'
+        }).then(() => {
+            location.reload();
         })
     }
 

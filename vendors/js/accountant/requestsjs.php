@@ -133,8 +133,8 @@
                 //   html:'<div>Line0<br />Line1<br /></div>',
                 html: '<pre>' + str + '</pre>',
                 //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
-                confirmButtonColor: '#4DD101',
-                cancelButtonColor: '#FF2400',
+                confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
                 confirmButtonText: 'Confirm!',
                 showCancelButton: true
             }).then((result) => {
@@ -155,11 +155,12 @@
                         success: function(data) {
 
                             console.log(data);
-                            Swal.fire(
-                                'Updated!',
-                                'Your file has been updated.',
-                                'success'
-                            )
+                            Swal.fire({
+                  icon: 'success',
+                  title: 'Updated !',
+                  text: 'Your file has been updated.',
+                  confirmButtonColor: '#01830c'
+                })
                             clearTable();
                             getAdvanceRequests();
                             // getTable();
@@ -215,8 +216,8 @@
                 //   html:'<div>Line0<br />Line1<br /></div>',
                 html: '<pre>' + str + '</pre>',
                 //text: "Price Per Unit:  "+amount+"Amount: "+"<br>"+"Amount",
-                confirmButtonColor: '#4DD101',
-                cancelButtonColor: '#FF2400',
+                confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
                 confirmButtonText: 'Confirm!',
                 showCancelButton: true
             }).then((result) => {
@@ -237,11 +238,13 @@
                         success: function(data) {
 
                             console.log(data);
-                            Swal.fire(
-                                'Rejection Updated!',
-                                'Requested was rrejected.',
-                                'success'
-                            )
+                            Swal.fire({
+                  icon: 'success',
+                  title: 'Rejection Updated!',
+                  text: 'Requested was rejected.',
+                  confirmButtonColor: '#4DD101'
+                })
+                            
                             clearTable();
                             getAdvanceRequests();
                             // getTable();

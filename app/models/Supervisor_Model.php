@@ -12,7 +12,7 @@ class Supervisor_Model extends Model
     {
         $date = date("Y-m-d");
         // $date = '2021-10-29';
-        $query = "SELECT lid, initial_weight_agent, agent_id FROM tea WHERE date='$date'";
+        $query = "SELECT lid, initial_weight_agent, agent_id FROM tea WHERE date='$date' AND sup_id IS NULL";
         $row = $this->db->runQuery($query);
         if (count($row)) {
             return $row;

@@ -257,7 +257,7 @@ class Manager_Model extends Model
 
     function requestAssignRoute($route_number)
     {
-        $message = "Please Accept if you can collect the tea leaves of route number " .  $route_number;
+        $message = "You are requested to check route number " .  $route_number;
         $sender_id = $_SESSION['user_id'];
 
         $query = "DELETE FROM notification 
