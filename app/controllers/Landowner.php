@@ -9,6 +9,11 @@ class Landowner extends Controller
     }
 
 
+
+
+    //********************************* START dash board **********************************************************************
+    //dashbord chart
+
     function index()
     {
         //get fertilizer usage to the dash board chart
@@ -16,18 +21,31 @@ class Landowner extends Controller
         $this->view->render('landowner/landowner', $result);
     }
 
+    //dashbord cards
 
-    function Make_Requests()
+
+    //get last month income and advance to dashboard card
+    function lastMonthIncomeAndAdvance()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->model->insertRequest($_POST);
-        } else {
-            $this->view->render('landowner/Make_Requests');
-        }
+        $result = $this->model->lastMonthIncomeAndAdvance();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
     }
 
 
+    //get tea qulity to dashboard
+    function getTeaQulity()
+    {
+        $result = $this->model->getTeaQulity();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
 
+    //********************************* END dash board **********************************************************************
+
+    //********************************* START Update_Tea_Availability **********************************************************************
     function Update_Tea_Availability()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -48,6 +66,50 @@ class Landowner extends Controller
             $this->view->render('landowner/Update_Tea_Availability', $availability);
         }
     }
+    //********************************* END Update_Tea_Availability **********************************************************************
+
+
+    //********************************* START Monthly_Details **********************************************************************
+
+    //last month tea price for mothly details 
+    function lastMonthTeaPrice()
+    {
+        $result = $this->model->lastMonthTeaPrice();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+    //lastMonthIncomeAndAdvance is a dashboard function
+
+
+
+
+
+    //********************************* END Monthly_Details **********************************************************************
+
+    //get fertilizer usage to the dash board
+    function fertilizerUsage()
+    {
+        $result = $this->model->fertilizerUsage();
+        $json_arr = json_encode($result);
+        //print_r($json_arr);
+        echo $json_arr;
+    }
+
+
+    function Make_Requests()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->model->insertRequest($_POST);
+        } else {
+            $this->view->render('landowner/Make_Requests');
+        }
+    }
+
+
+
+
 
 
 
@@ -153,48 +215,9 @@ class Landowner extends Controller
 
 
 
-    //dashbord cards
-
-    function lastMonthIncomeAndAdvance()
-    {
-        $result = $this->model->lastMonthIncomeAndAdvance();
-        $json_arr = json_encode($result);
-        //print_r($json_arr);
-        echo $json_arr;
-    }
 
 
 
-    //get tea qulity to dashboard
-    function getTeaQulity()
-    {
-        $result = $this->model->getTeaQulity();
-        $json_arr = json_encode($result);
-        //print_r($json_arr);
-        echo $json_arr;
-    }
-
-
-
-
-    //get fertilizer usage to the dash board
-    function fertilizerUsage()
-    {
-        $result = $this->model->fertilizerUsage();
-        $json_arr = json_encode($result);
-        //print_r($json_arr);
-        echo $json_arr;
-    }
-
-
-    //last month tea price for mothly details 
-    function lastMonthTeaPrice()
-    {
-        $result = $this->model->lastMonthTeaPrice();
-        $json_arr = json_encode($result);
-        //print_r($json_arr);
-        echo $json_arr;
-    }
 
 
     function abc()
