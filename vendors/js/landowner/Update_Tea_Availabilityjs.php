@@ -38,8 +38,8 @@
                     text: 'You won\'t be able to revert this!',
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#01830c',
-                    cancelButtonColor: '#FF2400',
+                    confirmButtonColor: '#FF2400',
+      cancelButtonColor: '#4DD101',
                     confirmButtonText: 'Yes, Update it!'
                 }).then((result) => {
                     if (result.isConfirmed) {

@@ -61,6 +61,17 @@ class User extends Controller
         }
     }
 
+
+    function editName() {
+        if(isLoggedIn()){
+            if($_SERVER['REQUEST_METHOD'] == "POST") {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $this->model->editName($_POST['name'], $_SESSION['user_id']);
+            }
+        }
+        
+    }
+
     function passwordChange() {
         if(isset($_SESSION['changePassword'])) {
             $this->view->render('user/profile/changePassword');

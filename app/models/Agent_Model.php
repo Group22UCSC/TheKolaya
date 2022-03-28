@@ -276,7 +276,12 @@ class Agent_Model extends Model
         $agent_id = $_SESSION['user_id'];
         $agent_name = $_SESSION['name'];
         $route_no = $_SESSION['route'];
-        $message = $agent_name . " requested to make him available for  route no. " . $route_no;
+        $message = $agent_name . " requested to make him available for route number " . $route_no;
+
+        //Delete the notification
+        $query = "DELETE FROM notification 
+        WHERE message = '$message'";
+        $this->db->runQuery($query);
 
         $query = "INSERT INTO notification( read_unread, seen_not_seen, message,
         receiver_type, notification_type, sender_id) VALUES
@@ -285,19 +290,20 @@ class Agent_Model extends Model
 
         $query = "UPDATE agent SET availability_requested='1' WHERE emp_id='$agent_id'";
         $this->db->runQuery($query);
-        //    //----------------Pusher API------------------//
-        //    $options = array(
-        //        'cluster' => 'ap1',
-        //        'useTLS' => true
-        //    );
-        //    $pusher = new Pusher\Pusher(
-        //        'ef64da0120ca27fe19a3',
-        //        'd5033393ff3b228540f7',
-        //        '1290222',
-        //        $options
-        //    );
+           //----------------Pusher API------------------//
+           $options = array(
+               'cluster' => 'ap1',
+               'useTLS' => true
+           );
+           $pusher = new Pusher\Pusher(
+               'ef64da0120ca27fe19a3',
+               'd5033393ff3b228540f7',
+               '1290222',
+               $options
+           );
 
-        //    $pusher->trigger('my-channel', 'Manager_notification',$data);
+           $data = "Hello World";
+           $pusher->trigger('my-channel', 'Manager_notification',$data);
         //-------------------------------------------//  
     }
 
