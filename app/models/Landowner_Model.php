@@ -9,8 +9,6 @@ class landowner_Model extends Model
     }
 
 
-
-
     function editProfile()
     {
         $contact_number = $_SESSION['contact_number'];
@@ -19,8 +17,6 @@ class landowner_Model extends Model
         $query = "UPDATE user SET contact_number='$contact_number', name='$name' WHERE user_id='$user_id'";
         $this->db->runQuery($query);
     }
-
-
 
 
     function checkPassword($data)
@@ -38,9 +34,6 @@ class landowner_Model extends Model
         }
     }
 
-
-
-
     function changePassword($data = [])
     {
         $new_password = $data['new_password'];
@@ -55,14 +48,134 @@ class landowner_Model extends Model
         }
     }
 
-
-
     //Test
     function testModel()
     {
         $query = "SELECT * FROM product";
         return $this->db->runQuery($query);
     }
+
+    //********************************* START - dash board **********************************************************************
+
+    //get last month income and advance to dashboard card
+    function lastMonthIncomeAndAdvance()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 1 ";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+    //get last month tea qulity to dashboard card
+    function getTeaQulity()
+    {
+        $user_id = $_SESSION['user_id'];
+        $first = date('Y-m-01');
+        $last  = date('Y-m-t');
+        $sql = "SELECT quality FROM tea WHERE lid='{$user_id}' AND date <='{$last}' AND date >= '{$first}' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+    //get last month fertilizer usage to dashboard card
+    function fertilizerUsage()
+    {
+        $user_id = $_SESSION['user_id'];
+        $first = date('Y-m-01');
+        $last  = date('Y-m-t');
+        $sql = "SELECT fertilizer_request.amount
+          FROM fertilizer_request 
+          INNER JOIN request ON request.request_id=fertilizer_request.request_id 
+          WHERE lid='{$user_id}' AND fertilizer_request.date_delivered BETWEEN '{$first}'AND '{$last}' ";
+        $row = $this->db->selectQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+    //CHART VALUES FOR DASHBOARD
+    function chartValuse()
+    {
+        $lid = $_SESSION['user_id'];
+        $query = "SELECT date,net_weight FROM tea WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 7";
+        $row = $this->db->runQuery($query);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //********************************* END - dash board **********************************************************************
+
+
+    //********************************* START Update_Tea_Availability **********************************************************************
+
+    function Update_Tea_Availability($data = [])
+    {
+        $containers = $data['no_of_estimated_containers'];
+        $availability = $data['tea_availability'];
+        $user_id = $_SESSION['user_id'];
+
+        if ($containers != '') {
+            $query = "UPDATE landowner 
+                SET tea_availability=" . $availability . ", no_of_estimated_containers=" . $containers . " 
+                WHERE user_id='$user_id'";
+        } else {
+            $query = "UPDATE landowner 
+                SET tea_availability=" . $availability . ", no_of_estimated_containers=0 
+                WHERE user_id='$user_id'";
+        }
+
+        $this->db->runQuery($query);
+    }
+
+    public function getAvailability()
+    {
+        $user_id = $_SESSION['user_id'];
+        $query = "SELECT * FROM landowner WHERE user_id='$user_id'";
+        $row = $this->db->runQuery($query);
+
+        if (!empty($row)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    //********************************* END Update_Tea_Availability **********************************************************************
+
+    //********************************* START Monthly_Details **********************************************************************
+
+    //last month tea price for mothly details 
+    function lastMonthTeaPrice()
+    {
+        $sql = "SELECT price FROM `monthly_tea_price` ORDER BY date DESC LIMIT 1";
+        $row = $this->db->runQuery($sql);
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+
+    //********************************* END Monthly_Details **********************************************************************
+
 
 
 
@@ -155,40 +268,10 @@ class landowner_Model extends Model
 
 
 
-    function Update_Tea_Availability($data = [])
-    {
-        $containers = $data['no_of_estimated_containers'];
-        $availability = $data['tea_availability'];
-        $user_id = $_SESSION['user_id'];
-
-        if ($containers != '') {
-            $query = "UPDATE landowner 
-                SET tea_availability=" . $availability . ", no_of_estimated_containers=" . $containers . " 
-                WHERE user_id='$user_id'";
-        } else {
-            $query = "UPDATE landowner 
-                SET tea_availability=" . $availability . ", no_of_estimated_containers=0 
-                WHERE user_id='$user_id'";
-        }
-
-        $this->db->runQuery($query);
-    }
 
 
 
 
-    public function getAvailability()
-    {
-        $user_id = $_SESSION['user_id'];
-        $query = "SELECT * FROM landowner WHERE user_id='$user_id'";
-        $row = $this->db->runQuery($query);
-
-        if (!empty($row)) {
-            return $row;
-        } else {
-            return false;
-        }
-    }
 
 
 
@@ -249,89 +332,6 @@ class landowner_Model extends Model
     }
 
 
-
-
-    //get last month income and advance to dashboard card
-    function lastMonthIncomeAndAdvance()
-    {
-        $lid = $_SESSION['user_id'];
-        $query = "SELECT * FROM monthly_payment WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 1 ";
-        $row = $this->db->runQuery($query);
-        if ($row) {
-            return $row;
-        } else {
-            return false;
-        }
-    }
-
-
-
-
-    //get last month tea qulity to dashboard card
-    function getTeaQulity()
-    {
-        $user_id = $_SESSION['user_id'];
-
-
-        $first = date('Y-m-01');
-        $last  = date('Y-m-t');
-        $sql = "SELECT quality FROM tea WHERE lid='{$user_id}' AND date <='{$last}' AND date >= '{$first}' ";
-        $row = $this->db->selectQuery($sql);
-        if ($row) {
-            return $row;
-        } else {
-            return false;
-        }
-    }
-    //get last month tea qulity to dashboard card
-    function lastMonthTeaPrice()
-    {
-        $sql = "SELECT price FROM `monthly_tea_price` ORDER BY date DESC LIMIT 1";
-        $row = $this->db->runQuery($sql);
-        if ($row) {
-            return $row;
-        } else {
-            return false;
-        }
-    }
-
-
-
-
-    //get last month fertilizer usage to dashboard card
-    function fertilizerUsage()
-    {
-        $user_id = $_SESSION['user_id'];
-        $first = date('Y-m-01');
-        $last  = date('Y-m-t');
-        $sql = "SELECT fertilizer_request.amount
-        FROM fertilizer_request 
-        INNER JOIN request ON request.request_id=fertilizer_request.request_id 
-        WHERE lid='{$user_id}' AND fertilizer_request.date_delivered BETWEEN '{$first}'AND '{$last}' ";
-        $row = $this->db->selectQuery($sql);
-        if ($row) {
-            return $row;
-        } else {
-            return false;
-        }
-    }
-
-
-
-
-
-    //CHART VALUES FOR DASHBOARD
-    function chartValuse()
-    {
-        $lid = $_SESSION['user_id'];
-        $query = "SELECT date,net_weight FROM tea WHERE lid='{$lid}' ORDER BY Date DESC LIMIT 7";
-        $row = $this->db->runQuery($query);
-        if ($row) {
-            return $row;
-        } else {
-            return false;
-        }
-    }
 
 
 

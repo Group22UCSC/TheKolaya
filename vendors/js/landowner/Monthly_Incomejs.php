@@ -29,13 +29,8 @@
                 var income = data[0].final_payment;
                 var advance = data[0].advance_expenses;
                 document.getElementById("income").innerHTML = income;
-
-
-
             }
         })
-
-
     }
 
 

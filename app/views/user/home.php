@@ -29,10 +29,13 @@
     <section class="section-features" id="features">
         <div class="row">
             <h2>WHO ARE WE</h2>
-            <p class="long-copy">
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <p class="long-copy" style="text-align: justify;" >
+            We are Samrin Tea Factory situated in Naakiyadeniya, Galle Sri Lanka. 
+            For over 20 years, we have provided the finest tea leaves in the country with an everlasting taste.
+            This system is intended for use by all users who interact with our factory, including our employees, management, and landowners who provide the highest quality tea leaves
+            Our main goal is to increase the productivity of our factory by allowing users to interact with us in a smarter way than the traditional manual methods
+
+
             </p>
         </div> 
     </section>

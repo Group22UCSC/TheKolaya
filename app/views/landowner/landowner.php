@@ -3,18 +3,24 @@
 
 
 
-<!-- Top dashboard home content -->
 <link rel="stylesheet" href="<?php echo URL ?>vendors/css/landowner/landowner.css">
-<!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
+
 
 <body onload="lastMonthIncomeAndAdvance();getTeaQulity();fertilizerUsage();"></body>
 
-
+<!-- print chart values  -->
+<!-- <?php
+      echo "<pre>";
+      print_r($data);
+      echo "</pre>";
+      ?> -->
 <!-- middle grid -->
 
 <div class="container">
 
   <!-- first four boxes -->
+
+  <!-- 1) Last Month Income Box -->
   <div class="box-one">
     <div class="box">
       <div class="right-side">
@@ -30,6 +36,9 @@
     </div>
   </div>
 
+
+  <!-- 2) Last Month Fertilizer Usage -->
+
   <div class="box-two">
     <div class="box">
       <div class="right-side">
@@ -44,6 +53,7 @@
     </div>
   </div>
 
+  <!-- 3) This Month Advance -->
   <div class="box-tree">
     <div class="box">
       <div class="right-side">
@@ -58,6 +68,7 @@
     </div>
   </div>
 
+  <!--4) This Month Tea Rating -->
   <div class="box-four">
     <div class="box">
       <div class="right-side">
